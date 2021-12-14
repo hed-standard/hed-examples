@@ -1,6 +1,6 @@
 onset	duration	sample	event_type	face_type	rep_status	trial	rep_lag	value	stim_file
 0.004	n/a	1.0	setup_right_sym	n/a	n/a	n/a	n/a	3	n/a
-27.5589090909	n/a	6889.7273	show_face	scrambled_face	first_show	1	n/a	17	s044.bmp
+27.5589090909	n/a	6889.7273	show_face_initial	scrambled_face	first_show	1	n/a	17	s044.bmp
 28.2207272727	n/a	7055.1818	left_press	n/a	n/a	1	n/a	256	n/a
 28.4352727273	n/a	7108.8182	show_circle	n/a	n/a	1	n/a	0	circle.bmp
 30.1352727273	n/a	7533.8182	show_cross	n/a	n/a	2	n/a	1	cross.bmp
@@ -525,9 +525,7 @@ onset	duration	sample	event_type	face_type	rep_status	trial	rep_lag	value	stim_f
 444.6534545455	n/a	111163.3636	show_face	unfamiliar_face	first_show	132	n/a	13	u037.bmp
 445.24527272730006	n/a	111311.3182	left_press	n/a	n/a	132	n/a	256	n/a
 445.5025454545	n/a	111375.6364	show_circle	n/a	n/a	132	n/a	0	circle.bmp
-445.5034545455	n/a	111375.8636	show_circle	n/a	n/a	132	n/a	0	circle.bmp
 447.2025454545	n/a	111800.6364	show_cross	n/a	n/a	133	n/a	1	cross.bmp
-447.2034545455001	n/a	111800.8636	show_cross	n/a	n/a	134	n/a	1	cross.bmp
 447.6607272727	n/a	111915.1818	show_face	unfamiliar_face	first_show	134	n/a	13	u090.bmp
 448.4198181818	n/a	112104.9545	right_press	n/a	n/a	134	n/a	4096	n/a
 448.4789090909	n/a	112119.7273	show_circle	n/a	n/a	134	n/a	0	circle.bmp

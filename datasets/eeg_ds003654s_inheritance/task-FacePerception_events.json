@@ -8,6 +8,7 @@
     "Description": "The main category of the event.",
     "Levels": {
       "show_face": "Display a face to mark end of pre-stimulus and start of blink-inhibition.",
+      "show_face_initial": "Display a face at the beginning of the recording.",
       "show_circle": "Display a white circle to mark end of the stimulus and blink inhibition.",
       "show_cross": "Display only a white cross to mark start of trial and fixation.",
       "left_press": "Experiment participant presses a key with left index finger.",
@@ -18,6 +19,7 @@
     },
     "HED": {
       "show_face": "Sensory-event, Experimental-stimulus, (Def/Face-image, Onset), (Def/Blink-inhibition-task,Onset),(Def/Cross-only, Offset)",
+      "show_face_initial": "Sensory-event, Experimental-stimulus, (Def/Face-image, Onset), (Def/Blink-inhibition-task,Onset), (Def/Fixation-task, Onset)",
       "show_circle": "Sensory-event, (Intended-effect, Cue), (Def/Circle-only, Onset), (Def/Face-image, Offset), (Def/Blink-inhibition-task, Offset), (Def/Fixation-task, Offset)",
       "show_cross": "Sensory-event, (Intended-effect, Cue), (Def/Cross-only, Onset), (Def/Fixation-task, Onset),  (Def/Circle-only, Offset)",
       "left_press": "Agent-action, Participant-response, Def/Press-left-finger",

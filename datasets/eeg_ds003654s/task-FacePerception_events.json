@@ -1,5 +1,9 @@
 {
   "onset": {
+    "Description": "Position of event marker in seconds relative to the start.",
+    "Units": "s"
+  },
+  "duration": {
     "Description": "Duration of the event in seconds.",
     "Units": "s"
   },
@@ -8,6 +12,7 @@
     "Description": "The main category of the event.",
     "Levels": {
       "show_face": "Display a face to mark end of pre-stimulus and start of blink-inhibition.",
+      "show_face_initial": "Display a face at the beginning of the recording.",
       "show_circle": "Display a white circle to mark end of the stimulus and blink inhibition.",
       "show_cross": "Display only a white cross to mark start of trial and fixation.",
       "left_press": "Experiment participant presses a key with left index finger.",
@@ -18,6 +23,7 @@
     },
     "HED": {
       "show_face": "Sensory-event, Experimental-stimulus, (Def/Face-image, Onset), (Def/Blink-inhibition-task,Onset),(Def/Cross-only, Offset)",
+      "show_face_initial": "Sensory-event, Experimental-stimulus, (Def/Face-image, Onset), (Def/Blink-inhibition-task,Onset), (Def/Fixation-task, Onset)",
       "show_circle": "Sensory-event, (Intended-effect, Cue), (Def/Circle-only, Onset), (Def/Face-image, Offset), (Def/Blink-inhibition-task, Offset), (Def/Fixation-task, Offset)",
       "show_cross": "Sensory-event, (Intended-effect, Cue), (Def/Cross-only, Onset), (Def/Fixation-task, Onset),  (Def/Circle-only, Offset)",
       "left_press": "Agent-action, Participant-response, Def/Press-left-finger",
@@ -89,8 +95,8 @@
       "first_show_cond_def": "(Definition/First-show-cond, ((Condition-variable/Repetition-type, (Item-count/1, Face), Item-interval/0), Description/Factor level indicating the first display of this face.))",
       "immediate_repeat_cond_def": "(Definition/Immediate-repeat-cond, ((Condition-variable/Repetition-type, (Item-count/2, Face), Item-interval/1), Description/Factor level indicating this face was the same as previous one.))",
       "delayed_repeat_cond_def": "(Definition/Delayed-repeat-cond, (Condition-variable/Repetition-type, (Item-count/2, Face), (Item-interval, (Greater-than-or-equal-to, Item-interval/5)), Description/Factor level indicating face was seen 5 to 15 trials ago.))",
-      "left_sym_cond_def": "(Definition/Left-sym-cond, (Condition-variable/Key-assignment, ((Index-finger, (Left-side-of, Experiment-participant)), (Behavioral-evidence, Symmetrical)), ((Index-finger, (Right-side-of, Experiment-participant)), (Behavioral-evidence, Asymmetrical)), Description/Pressing a key with the left index finger indicates a face with above average symmetry.))",
-      "right_sym_cond_def": "(Definition/Right-sym-cond, (Condition-variable/Key-assignment, ((Index-finger, (Right-side-of, Experiment-participant)), (Behavioral-evidence, Symmetrical)), ((Index-finger, (Left-side-of, Experiment-participant)), (Behavioral-evidence, Asymmetrical)), Description/Right finger key press means above average symmetry.))"
+      "left_sym_cond_def": "(Definition/Left-sym-cond, (Condition-variable/Key-assignment, ((Index-finger, (Left-side-of, Experiment-participant)), (Behavioral-evidence, Symmetrical)), ((Index-finger, (Right-side-of, Experiment-participant)), (Behavioral-evidence, Asymmetrical)), Description/Left index finger key press indicates a face with above average symmetry.))",
+      "right_sym_cond_def": "(Definition/Right-sym-cond, (Condition-variable/Key-assignment, ((Index-finger, (Right-side-of, Experiment-participant)), (Behavioral-evidence, Symmetrical)), ((Index-finger, (Left-side-of, Experiment-participant)), (Behavioral-evidence, Asymmetrical)), Description/Right index finger key press indicates a face with above average symmetry.))"
     }
   },
   "hed_def_tasks": {

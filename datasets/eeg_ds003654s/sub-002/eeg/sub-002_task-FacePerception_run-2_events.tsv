@@ -1,6 +1,6 @@
 onset	duration	sample	event_type	face_type	rep_status	trial	rep_lag	value	stim_file
 0.004	n/a	1.0	setup_right_sym	n/a	n/a	n/a	n/a	3	n/a
-25.696181818200003	n/a	6424.0455	show_face	scrambled_face	first_show	1	n/a	17	s096.bmp
+25.696181818200003	n/a	6424.0455	show_face_initial	scrambled_face	first_show	1	n/a	17	s096.bmp
 26.5616363636	n/a	6640.4091	show_circle	n/a	n/a	1	n/a	0	circle.bmp
 28.2616363636	n/a	7065.4091	show_cross	n/a	n/a	2	n/a	1	cross.bmp
 28.8870909091	n/a	7221.7727	show_face	famous_face	first_show	2	n/a	5	f148.bmp
