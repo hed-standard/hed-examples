@@ -30,13 +30,8 @@ The suffix modifier indicates what this dataset is designed to test.
 
 ### Validating examples using the BIDS validator
 
-For general information on the `bids-validator`, including installation and usage,
+For general information on the `bids-validator`, including installation, configuration, and usage,
 see the [bids-validator README file](https://github.com/bids-standard/bids-validator#quickstart).
-
-Since all raw data files in this repository are empty,
-the `bids-validator` must be configured to not report empty data files as errors.
-(See more on bids-validator configuration in the
-[bids-validator README](https://github.com/bids-standard/bids-validator#configuration).)
 
 **Example:** The following command validates the  `eeg_ds003645s_hed` dataset:
 
@@ -45,17 +40,10 @@ bids-validator eeg_ds003645s_hed --config.ignore=99
 ```
 
 This example assumes that `npm` and the `bids-validator` npm package
-has been installed on the local machine. 
+have been installed on the local machine. 
 The command is run from the directory above the dataset root directory.
 The `--config.ignore=99` flag tells the bids-validator to ignore empty data files 
 rather than to report the empty file error.
-
-For datasets that contain NIfTI `.nii` files, you also need to add the `ignoreNiftiHeaders` flag
-to the `bids-validator` call, to suppress the issue that NIfTI headers are not found.
-
-For example:
-
-`bids-validator ds003 --config.ignore=99 --ignoreNiftiHeaders`
 
 For additional information on BIDS validation,
 see the [bids-examples](https://github.com/bids-standard/bids-examples#readme).
