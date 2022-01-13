@@ -4,8 +4,5 @@ This module contains example python scripts, MATLAB scripts, and Jupyter noteboo
 illustrating the use of the hedtools.
 
 ```
-git clone https://github.com/hed-standard/hed-python
-```
-
-
+git clone https://github.com/hed-standard/hed-examples
 ```

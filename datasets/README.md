@@ -1,0 +1,61 @@
+
+# HED-examples
+
+This repository contains a set of
+[HED-annotated](https://hed-specification.readthedocs.io/en/latest/index.html)
+datasets in [BIDS-compatible](https://bids.neuroimaging.io/) format.
+These datasets can be useful for:
+
+1. Writing lightweight software tests.
+1. Serving as examples of how to incorporate HED into BIDS-structured data.
+
+The datasets have **empty raw data files**. 
+However, some data headers containing the metadata are still intact.
+
+Datasets that are derived from datasets on [OpenNeuro](https://openneuro.org)
+are identified by their OpenNeuro accession number plus 's' plus a modifier.
+Datasets focused on particular a particular modality may have the modality
+prepended to the name.
+For example, eeg_ds003645s identifies a reduced dataset derived the EEG data
+in OpenNeuro dataset ds003645.
+The suffix modifier indicates what this dataset is designed to test.
+
+| Dataset | Description |
+| ----------------- | ------------|
+| eeg_ds003654s_hed | HED tags in short form with definitions. |
+| eeg_ds003654s_hed_inheritance | HED tags with multiple sidecars. |
+| eeg_ds003654s_hed_library | HED tags using libraries.  |
+| eeg_ds003654s_hed_longform | HED tags in long form with definitions. |
+
+
+### Validating examples using the BIDS validator
+
+For general information on the `bids-validator`, including installation and usage,
+see the [bids-validator README file](https://github.com/bids-standard/bids-validator#quickstart).
+
+Since all raw data files in this repository are empty,
+the `bids-validator` must be configured to not report empty data files as errors.
+(See more on bids-validator configuration in the
+[bids-validator README](https://github.com/bids-standard/bids-validator#configuration).)
+
+**Example:** The following command validates the  `eeg_ds003645s_hed` dataset:
+
+```code
+bids-validator eeg_ds003645s_hed --config.ignore=99
+```
+
+This example assumes that `npm` and the `bids-validator` npm package
+has been installed on the local machine. 
+The command is run from the directory above the dataset root directory.
+The `--config.ignore=99` flag tells the bids-validator to ignore empty data files 
+rather than to report the empty file error.
+
+For datasets that contain NIfTI `.nii` files, you also need to add the `ignoreNiftiHeaders` flag
+to the `bids-validator` call, to suppress the issue that NIfTI headers are not found.
+
+For example:
+
+`bids-validator ds003 --config.ignore=99 --ignoreNiftiHeaders`
+
+For additional information on BIDS validation,
+see the [bids-examples](https://github.com/bids-standard/bids-examples#readme).
