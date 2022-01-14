@@ -23,8 +23,9 @@ options = weboptions('MediaType', 'application/json', 'Timeout', 120, ...
 
 %% Set up some data to use for the examples
 json_text = fileread('../../data/wakeman_henson_data/task-FacePerception_events.json');
+json_bad_text = fileread('../../data/bids_data/both_types_events_errors.json');
 myURL = ['https://raw.githubusercontent.com/hed-standard/' ...
-         'hed-specification/master/hedxml/HED7.2.0.xml'];
+         'hed-specification/master/hedxml/HED8.0.0.xml'];
 schema_text = fileread('../../data/schema_data/HED8.0.0.xml');
 
 %% Example 1: Validate valid JSON sidecar using a HED version.
@@ -38,7 +39,7 @@ output_report(response1, 'Example 1 output');
 
 %% Example 2: Validate invalid JSON sidecar using HED URL.
 request2 = struct('service', 'sidecar_validate', ...
-                  'json_string', json_text, ...
+                  'json_string', json_bad_text, ...
                   'schema_url', myURL, ...    
                   'check_warnings_validate', 'on');
 response2 = webwrite(services_url, request2, options);
