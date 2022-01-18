@@ -6,7 +6,7 @@ hed_schema.check_compliance - Checks if a HedSchema object is hed3 compatible.
 """
 
 from hed.errors.error_reporter import get_printable_issue_string
-from hed.schema.hed_schema_file import load_schema
+from hed.schema.hed_schema_io import load_schema
 
 if __name__ == '__main__':
     # This old schema should produce many issues, including many duplicate terms

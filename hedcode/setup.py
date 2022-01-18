@@ -1,17 +1,17 @@
 import setuptools
 
-with open("../hedexamples/README.md", "r") as fh:
+with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="hedexamples",
+    name="hed-examples",
     version="1.0.0",
     author="VisLab, Ian Callanan, Kay Robbins",
     author_email="Kay.Robbins@utsa.edu",
     description="Examples using the HED tools.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/hed-standard/hed-python/master/hedexamples/",
+    url="https://github.com/hed-standard/hed-examples",
     packages=setuptools.find_namespace_packages(include=["hed.*"]),
     classifiers=[
         "Programming Language :: Python :: 3",

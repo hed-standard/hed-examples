@@ -8,7 +8,7 @@ HedValidator - Validates a given input string or file
 
 from hed.errors.error_reporter import get_printable_issue_string
 from hed.models.hed_string import HedString
-from hed.schema.hed_schema_file import load_schema, load_schema_version
+from hed.schema.hed_schema_io import load_schema, load_schema_version
 from hed.validator.hed_validator import HedValidator
 
 

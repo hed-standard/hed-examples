@@ -4,7 +4,7 @@ from hed.errors.error_reporter import get_printable_issue_string
 from hed.models.sidecar import Sidecar
 from hed.models.events_input import EventsInput
 from hed.validator.hed_validator import HedValidator
-from hed.schema.hed_schema_file import load_schema
+from hed.schema.hed_schema_io import load_schema
 from hed.schema.hed_schema_group import HedSchemaGroup
 
 

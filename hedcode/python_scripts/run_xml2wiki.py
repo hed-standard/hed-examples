@@ -12,7 +12,7 @@ hed.get_printable_issue_string - method that converts the list of issues to a hu
 from shutil import move
 from hed.util.file_util import write_strings_to_file
 from hed.errors.error_reporter import get_printable_issue_string
-from hed.schema.hed_schema_file import load_schema, convert_schema_to_format
+from hed.schema.hed_schema_io import load_schema, convert_schema_to_format
 
 
 if __name__ == '__main__':
