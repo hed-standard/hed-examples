@@ -9,7 +9,7 @@ HedSchema - Used to convert hed strings between short and long forms
 import os
 from hed.models.hed_input import HedInput
 from hed.models.hed_string import HedString
-from hed.schema.hed_schema_file import load_schema
+from hed.schema.hed_schema_io import load_schema
 
 local_hed = '../data/schema_data/HED8.0.0.xml'
 
