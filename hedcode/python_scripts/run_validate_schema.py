@@ -9,13 +9,16 @@ from hed.errors.error_reporter import get_printable_issue_string
 from hed.schema.hed_schema_io import load_schema
 
 if __name__ == '__main__':
-    # This old schema should produce many issues, including many duplicate terms
-    local_hed_xml = "../data/schema_data/HED7.2.0.xml"
-    hed_schema = load_schema(local_hed_xml)
+    # this should produce fairly minimal issues.
+    hed_xml_url = 'https://raw.githubusercontent.com/hed-standard/hed-specification/master/hedxml/HED8.0.0.xml'
+    hed_schema = load_schema(hed_xml_url)
+    print("\nValidating HED8.0.0 will produce 3 errors and a warning that do not prevent conversion...")
     issues = hed_schema.check_compliance()
     print(get_printable_issue_string(issues))
 
-    # this should produce fairly minimal issues.
-    local_hed_xml = "../data/HED8.0.0.xml"
+    # This old schema should produce many issues, including many duplicate terms
+    hed_xml_url = 'https://raw.githubusercontent.com/hed-standard/hed-specification/master/hedxml/HED7.2.0.xml'
+    hed_schema = load_schema(hed_xml_url)
+    print("\nValidating HED7.2.0 should produce many issues....")
     issues = hed_schema.check_compliance()
     print(get_printable_issue_string(issues))

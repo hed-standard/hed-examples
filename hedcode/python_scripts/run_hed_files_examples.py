@@ -15,7 +15,7 @@ from hed.errors.error_reporter import get_printable_issue_string
 from hed.errors.exceptions import HedFileError
 from hed.models.hed_input import HedInput
 from hed.validator.hed_validator import HedValidator
-from hed.schema.hed_schema_file import load_schema, load_schema_version
+from hed.schema.hed_schema_io import load_schema, load_schema_version
 
 
 if __name__ == '__main__':
