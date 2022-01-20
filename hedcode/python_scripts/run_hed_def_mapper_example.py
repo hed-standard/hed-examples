@@ -18,13 +18,11 @@ from hed.schema.hed_schema_io import load_schema
 
 if __name__ == '__main__':
     # Setup the files
-    local_hed_file = '../data/schema_data/HED8.0.0.xml'
-    data_path = '../data/'  # path to example data
-    events_file = os.path.join(data_path, 'sub-003_task-FacePerception_run-2_events.tsv')
-    json_file = os.path.join(data_path, 'task-FacePerception_events.json')
-
-    # Load the schema for the examples
-    hed_schema = load_schema(local_hed_file)
+    hed_xml_url = 'https://raw.githubusercontent.com/hed-standard/hed-specification/master/hedxml/HED8.0.0.xml'
+    hed_schema = load_schema(hed_xml_url)
+    events_file = \
+        os.path.join('../../datasets/eeg_ds003654s_hed/sub-003/eeg/sub-003_task-FacePerception_run-2_events.tsv')
+    json_file = os.path.join('../../datasets/eeg_ds003654s_hed/task-FacePerception_events.json')
 
     # Validate sidecar
     validator = HedValidator(hed_schema=hed_schema)
