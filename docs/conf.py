@@ -22,7 +22,7 @@ copyright = '2021, HED Working Group'
 author = 'HED Working Group'
 
 # The full version, including alpha/beta/rc tags
-release = '8.0.0'
+version = '0.0.1'
 
 
 # -- General configuration ---------------------------------------------------
@@ -53,10 +53,10 @@ html_theme_options = {
     'analytics_anonymize_ip': False,
     'logo_only': False,
     'display_version': True,
-    'prev_next_buttons_location': 'bottom',
+    'prev_next_buttons_location': 'top',
     'style_external_links': False,
     'vcs_pageview_mode': '',
-    'style_nav_header_background': 'white',
+    'style_nav_header_background': 'LightSlateGray',
     # Toc options
     'collapse_navigation': True,
     'sticky_navigation': True,
@@ -67,4 +67,4 @@ html_theme_options = {
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-# html_static_path = ['_static']
+html_static_path = ['_static']
