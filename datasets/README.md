@@ -9,7 +9,7 @@ These datasets can be useful for:
 1. Writing lightweight software tests.
 1. Serving as examples of how to incorporate HED into BIDS-structured data.
 
-The datasets have **empty raw data files**. 
+The datasets have **empty raw data files**.
 However, some data headers containing the metadata are still intact.
 
 Datasets that are derived from datasets on [OpenNeuro](https://openneuro.org)
@@ -26,6 +26,7 @@ The suffix modifier indicates what this dataset is designed to test.
 | eeg_ds003654s_hed_inheritance | HED tags with multiple sidecars. |
 | eeg_ds003654s_hed_library | HED tags using libraries.  |
 | eeg_ds003654s_hed_longform | HED tags in long form with definitions. |
+| fmri_soccer21_hed | HED tags using a single column |
 
 
 ### Validating examples using the BIDS validator
@@ -40,9 +41,9 @@ bids-validator eeg_ds003645s_hed --config.ignore=99
 ```
 
 This example assumes that `npm` and the `bids-validator` npm package
-have been installed on the local machine. 
+have been installed on the local machine.
 The command is run from the directory above the dataset root directory.
-The `--config.ignore=99` flag tells the bids-validator to ignore empty data files 
+The `--config.ignore=99` flag tells the bids-validator to ignore empty data files
 rather than to report the empty file error.
 
 For additional information on BIDS validation,

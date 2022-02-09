@@ -1,0 +1,44 @@
+{
+    "onset": {
+        "Description": "Onset (in seconds) of the event measured from the beginning of the acquisition of the first volume in the corresponding task imaging data file."
+    },
+    "duration": {
+        "Description": "Duration of the event (measured from onset) in seconds. Must always be either zero or positive."
+    },
+    "code": {
+        "Description": "Description for code",
+        "HED": {
+            "5": "Description/Tags for 5",
+            "train_block_end": "Description/Tags for train_block_end",
+            "DealingWithErrors_3": "Description/Tags for DealingWithErrors_3",
+            "DealingWithErrors_2": "Description/Tags for DealingWithErrors_2",
+            "DealingWithErrors_1": "Description/Tags for DealingWithErrors_1",
+            "Frust_post": "Description/Tags for Frust_post",
+            "Stress_post": "Description/Tags for Stress_post",
+            "survey_block_start": "Description/Tags for survey_block_start",
+            "DealingWithErrors_4": "Description/Tags for DealingWithErrors_4",
+            "rest_block_start": "Description/Tags for rest_block_start",
+            "rest_block_end": "Description/Tags for rest_block_end",
+            "experiment_block_start": "Description/Tags for experiment_block_start",
+            "experiment_block_end": "Description/Tags for experiment_block_end",
+            "70": "Description/Tags for 70",
+            "3": "Description/Tags for 3",
+            "2s": "Description/Tags for 2s",
+            "221": "Description/Tags for 221",
+            "212": "Description/Tags for 212",
+            "80": "Description/Tags for 80",
+            "222": "Description/Tags for 222",
+            "211": "Description/Tags for 211",
+            "1s": "Description/Tags for 1s",
+            "11": "Description/Tags for 11",
+            "12": "Description/Tags for 12",
+            "2": "Description/Tags for 2",
+            "1": "Description/Tags for 1",
+            "30": "Description/Tags for 30",
+            "40": "Description/Tags for 40"
+        }
+    },
+    "trial_number": {
+        "Description": "Trial that the event belongs two as counted from the beginning of each block"
+    }
+}
