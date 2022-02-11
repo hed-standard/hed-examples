@@ -1,4 +1,4 @@
-# 1. Overview
+# Overview
 This document contains the specification for third generation HED or HED-3G. 
 It is meant for the implementers and users of HED tools. Other tutorials and tagging 
 guides are available to researchers using HED to annotate their data. 

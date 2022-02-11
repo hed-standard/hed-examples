@@ -1,4 +1,4 @@
-# 1. Annotation quick start (online tools)
+# Basic HED annotation
 
 This tutorial takes you through the steps of annotating the events in your BIDS dataset
 using HED (Hierarchical Event Descriptors).
