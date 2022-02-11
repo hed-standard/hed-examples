@@ -1,5 +1,5 @@
-Welcome to HED examples repository!
-=============================================
+HED (Hierarchical Event Descriptors): Examples and tutorials
+============================================================
 
 A PDF version of this document can be found `here <https://hed-examples.readthedocs.io/_/downloads/en/latest/pdf/>`_
 
@@ -8,7 +8,7 @@ A PDF version of this document can be found `here <https://hed-examples.readthed
    :caption: Contents:
 
    Overview.md
-   AnnotationQuickStart.md
+   EventAnnotationQuickStart.md
    BasicHEDAnnotation.md
 
 
