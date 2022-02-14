@@ -1,0 +1,8 @@
+filename	acq_time
+fmap/sub-0725_magnitude1.nii	2021-06-27T13:23:43.045000
+fmap/sub-0725_magnitude2.nii	2021-06-27T13:23:43.045000
+fmap/sub-0725_phasediff.nii	2021-06-27T13:23:43.045000
+func/sub-0725_task-soc21gng_bold.nii	2021-06-27T13:28:29.552500
+func/sub-0725_task-rest_bold.nii	2021-06-27T13:42:39.660000
+anat/sub-0725_T1w.nii	2021-06-27T13:50:31.765000
+anat/sub-0725_T2w.nii	2021-06-27T13:57:20.565000
