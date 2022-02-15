@@ -1,0 +1,24 @@
+{
+    "Name": "Soccer21",
+    "GeneratedBy": [
+        {
+            "Name": "BIDScoin",
+            "Version": "3.7.0",
+            "CodeURL": "https://github.com/Donders-Institute/bidscoin"
+        }
+    ],
+    "BIDSVersion": "1.6.0",
+    "HEDVersion": "7.6.0",
+    "DatasetType": "raw",
+    "License": "Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)",
+    "Authors": [
+        "Fabio Richlan",
+        "Jürgen Birklbauer", 
+        "Monique Denissen",
+        "Mateusz Pawlik",
+        "Martin Kronbichler",
+        "Florian Hutzler"
+    ],
+    "HowToAcknowledge": "Please write to fabio.richlan@plus.ac.at for further information.",
+    "EthicsApprovals":"Ethical review committee of the Paris-Lodron-University of Salzburg"
+}
