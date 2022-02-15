@@ -1,14 +1,23 @@
-HED (Hierarchical Event Descriptors): Examples and tutorials
-============================================================
+HED examples and tutorials
+===========================
 
-A PDF version of this document can be found `here <https://hed-examples.readthedocs.io/_/downloads/en/latest/pdf/>`_
+.. sidebar:: **Downloads**
+
+   `HED Examples <https://hed-examples.readthedocs.io/_/downloads/en/latest/pdf/>`_
+
 
 .. toctree::
    :maxdepth: 5
    :caption: Contents:
 
    Overview.md
+
+.. toctree::
+   :maxdepth: 5
+   :caption: HED tagging:
+
    EventAnnotationQuickStart.md
+   Documentation.md
    BasicHEDAnnotation.md
-
-
+   HEDTaggingWithCTagger.md
+   EasierHEDEditing.md
