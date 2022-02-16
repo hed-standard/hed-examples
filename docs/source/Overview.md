@@ -56,7 +56,7 @@ of data across studies.
 
 HED annotations may be included in BIDS (Brain Imaging Data Structure)
 datasets [https://bids.neuroimaging.io](https://bids.neuroimaging.io) as described in 
-[Chapter 7: HED in BIDS](06_Infrastructure.md#6-infrastructure).
+[Appendix III: Hierarchical Event Descriptors](https://bids-specification.readthedocs.io/en/stable/99-appendices/03-hed.html).
 
 
 ## 1.2. Brief history of HED
@@ -106,10 +106,12 @@ user experience.
 ````
 
 Following basic design principles, the HED Working Group redesigned the HED vocabulary tree to
-be organized in a balanced hierarchy with a limited number of subcategories at each node. (See the
+be organized in a balanced hierarchy with a limited number of subcategories at each node. See the
 [expandable schema browser](https://www.hedtags.org/display_hed.html) to browser the vocabulary
-and explore the overall organization. [Chapter2:Terminology](02_Terminology.md#2-hed-terminology)
-defines some important HED tags and terminology used in HED.)
+and explore the overall organization. 
+[Chapter2: Terminology](https://hed-specification.readthedocs.io/en/latest/02_Terminology.html)
+of the HED specification
+defines some important HED tags and terminology used in HED.
 
 A major improvement in vocabulary design was the adoption of the requirement that individual
 nodes or terms in the HED vocabulary must be unique. This allows users to use individual

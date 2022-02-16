@@ -13,17 +13,21 @@
 import os
 import sys
 import sphinx_rtd_theme
+from datetime import date
+
 sys.path.insert(0, os.path.abspath('../../'))
 sys.path.insert(0, os.path.abspath('.'))
+sys.path.insert(0, os.path.abspath('./tutorial_data'))
 
 # -- Project information -----------------------------------------------------
 
 project = 'HED Examples'
-copyright = '2021, HED Working Group'
+copyright = '2017-{}, HED Working Group'.format(date.today().year)
 author = 'HED Working Group'
 
 # The full version, including alpha/beta/rc tags
 version = '0.0.1'
+release = '0.0.1'
 
 currentdir = os.path.abspath(os.path.dirname(__file__))
 # -- General configuration ---------------------------------------------------
@@ -31,7 +35,7 @@ currentdir = os.path.abspath(os.path.dirname(__file__))
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = extensions = [
+extensions = [
     "myst_parser",
     "sphinx.ext.autodoc",
     "sphinx.ext.autosummary",
@@ -41,24 +45,26 @@ extensions = extensions = [
     "sphinx.ext.mathjax",
     "sphinx.ext.viewcode",
     "sphinx.ext.githubpages",
-    "sphinx.ext.napoleon",
-    "sphinx.ext.extlinks",
-    "numpydoc"
+    "sphinx.ext.napoleon"
 ]
-myst_heading_anchors = 2
+
+autosummary_generate = True
+autodoc_default_flags = ['members', 'inherited-members']
+add_module_names = False
+myst_all_links_external = False
+myst_heading_anchors = 4
 myst_enable_extensions = ["deflist"]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
+source_suffix = ['.rst', '.md']
+master_doc = 'index'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ['_build', '_templates', 'Thumbs.db', '.DS_Store']
-source_suffix = ['.rst', '.md']
-master_doc = 'index'
 
-exclude_patterns = ['_build', '_templates', 'Thumbs.db', '.DS_Store']
 
 # -- Options for HTML output -------------------------------------------------
 
@@ -70,7 +76,7 @@ html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 # a list of builtin themes.
 #
 html_theme_options = {
-    'analytics_id': 'UA-XXXXXXX-1',  #  Provided by Google in your dashboard
+    'analytics_id': 'UA-XXXXXXX-1',  # Provided by Google in your dashboard
     'analytics_anonymize_ip': False,
     'logo_only': False,
     'display_version': True,
