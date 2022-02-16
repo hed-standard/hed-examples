@@ -1,5 +1,5 @@
 
-# HED-examples
+# HED example datasets
 
 This repository contains a set of
 [HED-annotated](https://hed-specification.readthedocs.io/en/latest/index.html)
