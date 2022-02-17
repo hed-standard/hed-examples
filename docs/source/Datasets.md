@@ -64,7 +64,17 @@ This dataset is used to test that tools work with either long-form or short-form
 This dataset is designed to illustrate a basic FMRI pipeline.
 
 
-## Validating examples using the BIDS validator
+
+## Repository datasets
+
+**This section is under development**
+
+| Dataset | Description |
+| ----------------- | ------------|
+| [eeg_ds003654s_hed](eeg_ds003654s_hed)| Short-form tags with definitions. |
+| [eeg_ds003654s_hed_inheritance](eeg_ds003654s_hed_inheritance) | Multiple sidecars with inheritance. |
+
+## Using the BIDS validator
 
 For general information on the `bids-validator`, including installation, configuration, and usage,
 see the [bids-validator README file](https://github.com/bids-standard/bids-validator#quickstart).
@@ -83,12 +93,3 @@ rather than to report the empty file error.
 
 For additional information on BIDS validation,
 see the [bids-examples](https://github.com/bids-standard/bids-examples#readme).
-
-## Repository datasets
-
-**This section is under development**
-
-| Dataset | Description |
-| ----------------- | ------------|
-| [eeg_ds003654s_hed](eeg_ds003654s_hed)| Short-form tags with definitions. |
-| [eeg_ds003654s_hed_inheritance](eeg_ds003654s_hed_inheritance) | Multiple sidecars with inheritance. |
