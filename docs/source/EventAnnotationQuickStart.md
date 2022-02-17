@@ -36,40 +36,40 @@ for editing convenience as described below in
 This tutorial creates a sidecar template from the information in one of the
 `_events.tsv` files in your BIDS dataset.
 Working from a template is much easier and faster than creating a sidecar from scratch.
-The steps involved in using the online tools to create a template as follows: 
+Using the [HED events online tools](https://hedtools.ucsd.edu/hed/events),
+the steps to create a template are: 
 
-* [**Step 1: Select the Extract action.**](step-1-select-action)  
-* [**Step 2: Upload an event file.**](step-2-upload-events-file)   
-* [**Step 3: Select annotation columns.**](step-3-choose-columns-to-use)  
-* [**Step 4: Download the template.**](step-4-download-json-template)  
-
+* [**Step 1: Select the Extract action.**](step-1-select-extract-sidecar-action)  
+* [**Step 2: Upload an event file.**](step-2-upload-events-file-for-extraction)   
+* [**Step 3: Select annotation columns.**](step-3-choose-columns-to-use-for-extraction)  
+* [**Step 4: Download the template.**](step-4-download-extracted-json-template)  
 
 You can then edit your JSON sidecar directly or convert it to a spreadsheet
 to fill in the annotations.
 
-(step-1-select-action)=
+(step-1-select-extract-sidecar-action)=
 ### Step 1: Select the Extract action
 
 Go to the [**Events**](https://hedtools.ucsd.edu/hed/events) page of the HED online tools.
 You will see the following menu:
 
 
-![ExtractSidecarTemplate1](./_static/ExtractSidecarTemplate1.png)
+![ExtractSidecarTemplate1](./_static/images/ExtractSidecarTemplate1.png)
 
 Select the **Extract sidecar template** action.
 The application will adjust to your selection, showing only the information you need to provide.
 
-(step-2-upload-events-file)=
+(step-2-upload-events-file-for-extraction)=
 ### Step 2: Upload an events file.
 
 Use the **Browse** button to choose an `_events.tsv` file to upload.
 When the upload is complete, the local file name of the uploaded events
 file will be displayed next to the **Browse** button.
 
-![ExtractSidecarTemplate2](./_static/ExtractSidecarTemplate2.png)
+![ExtractSidecarTemplate2](./_static/images/ExtractSidecarTemplate2.png)
 
 
-(step-3-choose-columns-to-use)=
+(step-3-choose-columns-to-use-for-extraction)=
 ### Step 3: Select annotation columns.
 
 When the upload is complete, the application will expand to show
@@ -89,7 +89,7 @@ categorical columns, since you will need to provide an individual annotation
 for each value in such a categorical column.
 
 
-![ExtractSidecarTemplate3](./_static/ExtractSidecarTemplate3.png)
+![ExtractSidecarTemplate3](./_static/images/ExtractSidecarTemplate3.png)
 
 In the example, we have selected 7 columns to annotation.
 We omitted the `onset`, `duration`, and `sample` columns,
@@ -110,7 +110,7 @@ by describing these columns as a whole, resulting in 4 additional annotations.
 In all, we will have to provide a total of 8 + 4 + 4 + 1 + 1 + 1 + 1 = 20
 annotation based on the selections we have made.
 
-(step-4-download-json-template)=
+(step-4-download-extracted-json-template)=
 ### Step 4: Download the template.
 
 After you press the **Process** button, the application will produce a JSON template
@@ -126,26 +126,58 @@ Here is a copy of the resulting
 ## Spreadsheet templates
 
 Many people find working with a spreadsheet of annotations easier than
-direct editing into a sidecar file. 
+direct editing a JSON events sidecar file.
+The HED online tools provide an easy method for converting between
+a JSON sidecar and a spreadsheet representation. 
 
-You can convert the JSON file into a spreadsheet for easier editing
-and then convert back afterwards.
+You can convert the JSON events sidecar file into a spreadsheet for easier
+editing and then convert back to a JSON file afterwards.
+This tutorial assumes that you already have a JSON events sidecar
+or have [extracted a JSON sidecar template](creating-a-template-anchor).
 
-Working from a template is much easier and faster than creating a sidecar from scratch.
-The steps involved in using the online tools to create a template as follows: 
+Using the [HED sidecar online tools](https://hedtools.ucsd.edu/hed/sidecar),
+the steps to create a template are:
 
-* [**Step 1: Select the Extract action.**](step-1-this-step)  
-* [**Step 2: Next step.**](step-2-next-step)   
+* [**Step 1: Select the Extract action.**](step-1-select-extract-spreadsheet-action)  
+* [**Step 2: Upload a sidecar for extraction.**](step-2-upload-json-sidecar-for-extraction)
+* [**Step 3: Download the extracted spreadsheet.**](step-3-download-extracted-spreadsheet)
 
-(step-1-this-step)=
-### Step 1: This step.
 
-Step 1
+(step-1-select-extract-spreadsheet-action)=
+### Step 1: Select extract spreadsheet
 
-(step-2-next-step)=
-### Step 2: Next step.
+Go to the [**Sidecar**](https://hedtools.ucsd.edu/hed/sidecar) page of the HED online tools.
+You will see the following menu:
 
-Step 2
+![SidecarToSpreadsheetTemplate1](./_static/images/SidecarToSpreadsheetTemplate1.png)
+
+Select the **Extract HED spreadsheet** action.
+The application will adjust to your selection, showing only the information you need to provide.
+
+(step-2-upload-json-sidecar-for-extraction)=
+### Step 2: Upload a sidecar.
+
+Use the **Browse** button to choose an `events.json` file to upload.
+When the upload is complete, the local file name of the uploaded events
+file will be displayed next to the **Browse** button.
+
+![SidecarToSpreadsheetTemplate2](./_static/images/SidecarToSpreadsheetTemplate2.png)
+
+
+(step-3-download-extracted-spreadsheet)=
+### Step 3: Download the extracted spreadsheet.
+
+Pressing the **Process** button causes the application to extract a downloadable
+tab-separated-value spreadsheet for editing:
+
+![SidecarToSpreadsheetTemplate3](./_static/images/SidecarToSpreadsheetTemplate3.png)
+
+After saving the file, you are free to edit in a text editor or convert it to Excel
+format.  
+
+The result
+
+
 
 ## Next steps
 
