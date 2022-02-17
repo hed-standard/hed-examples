@@ -1,4 +1,4 @@
-# Example datasets
+# Datasets
 
 This repository contains a set of
 [HED-annotated](https://hed-specification.readthedocs.io/en/latest/index.html)
@@ -11,7 +11,7 @@ These datasets can be useful for:
 The datasets have **empty raw data files**.
 However, some data headers containing the metadata are still intact.
 
-## Dataset overview
+## Test datasets
 Datasets that are derived from datasets on [OpenNeuro](https://openneuro.org)
 are identified by their OpenNeuro accession number plus 's' plus a modifier.
 Datasets focused on particular a particular modality may have the modality
@@ -84,3 +84,11 @@ rather than to report the empty file error.
 For additional information on BIDS validation,
 see the [bids-examples](https://github.com/bids-standard/bids-examples#readme).
 
+## Repository datasets
+
+**This section is under development**
+
+| Dataset | Description |
+| ----------------- | ------------|
+| [eeg_ds003654s_hed](eeg_ds003654s_hed)| Short-form tags with definitions. |
+| [eeg_ds003654s_hed_inheritance](eeg_ds003654s_hed_inheritance) | Multiple sidecars with inheritance. |

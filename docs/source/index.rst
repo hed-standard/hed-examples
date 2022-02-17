@@ -16,11 +16,10 @@ HED examples and tutorials
 
 .. toctree::
    :maxdepth: 5
-   :caption: HED tagging:
+   :caption: HED tagging resources:
 
    EventAnnotationQuickStart.md
-   EasierHEDEditing.md
    BasicHEDAnnotation.md
-   HEDTaggingWithCTagger.md
-   JupyterNotebooksForAnnotation.md
+   TaggingWithCTagger.md
+   JupyterNotebooks.md
 
