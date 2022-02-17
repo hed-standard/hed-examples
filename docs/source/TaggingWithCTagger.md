@@ -1,4 +1,4 @@
-# HED tagging with CTagger
+# Tagging with CTagger
 
 This tutorial takes you through the steps of annotating the events in your BIDS dataset
 using HED (Hierarchical Event Descriptors).
