@@ -47,6 +47,8 @@ the steps to create a template are:
 You can then edit your JSON sidecar directly or convert it to a spreadsheet
 to fill in the annotations.
 
+
+
 (step-1-select-extract-sidecar-action)=
 ### Step 1: Select the Extract action
 
@@ -68,6 +70,18 @@ file will be displayed next to the **Browse** button.
 
 ![ExtractSidecarTemplate2](./_static/images/ExtractSidecarTemplate2.png)
 
+In this example, we have uploaded 
+[**sub-002_task-FacePerception_run-1_events.tsv**](./_static/data/sub-002_task-FacePerception_run-1_events.tsv).
+Here is an excerpt from the beginning of this file:
+
+| onset	| duration | sample | event_type | face_type | rep_status | trial | rep_lag | value | stim_file |
+| ----- | -------- | ------ | ---------- | --------- | ---------- | ----- | ------- | ----- | --------- |
+| 0.004 | n/a | 1.0 | setup_right_sym | n/a | n/a | n/a | n/a | 3 | n/a |
+| 24.2098181818	| n/a | 6052.4545 | show_face_initial | unfamiliar_face | first_show | 1 | n/a | 13 | u032.bmp |
+| 25.0352727273 | n/a | 6258.8182 | show_circle | n/a | n/a | 1 | n/a | 0 | circle.bmp |
+| 25.158 | n/a | 6289.5 | left_press | n/a | n/a | 1 | n/a | 256 | n/a |
+| . . .  |     |        |            |     |     |   |     |     |     |
+
 
 (step-3-choose-columns-to-use-for-extraction)=
 ### Step 3: Select annotation columns.
@@ -87,7 +101,6 @@ of unique values in each column.
 You will not want to treat columns with a large number of unique values as
 categorical columns, since you will need to provide an individual annotation
 for each value in such a categorical column.
-
 
 ![ExtractSidecarTemplate3](./_static/images/ExtractSidecarTemplate3.png)
 
@@ -119,8 +132,37 @@ Save the file, and you are ready to begin the actual annotation.
 You can now edit the JSON sidecar using a text editor or other
 appropriate tool.
 
-Here is a copy of the resulting
-[**JSON sidecar template**](https://github.com/hed-standard/hed-examples/hedcode/data/tutorial_data/sub-002_task-FacePerception_run-1_events_extracted.json).
+Here is an excerpt from the resulting
+[**JSON sidecar template**](./_static/data/sub-002_task-FacePerception_run-1_events_extracted.json):
+
+```json
+{
+    "event_type": {
+        "Description": "Description for event_type",
+        "HED": {
+            "setup_right_sym": "Label/setup_right_sym",
+            "show_face_initial": "Label/show_face_initial",
+            "left_press": "Label/left_press",
+            "show_circle": "Label/show_circle"
+        },
+        "Levels": {
+            "setup_right_sym": "Description for setup_right_sym",
+            "show_face_initial": "Description for show_face_initial",
+            "left_press": "Description for left_press",
+            "show_circle": "Description for show_circle"
+        }
+    },
+    "stim_file": {
+        "Description": "Description for stim_file",
+        "HED": "Label/#"
+    }
+}
+```
+Notice the difference in structure between annotations for columns
+that were designated as categorical (such as `event_type`) and columns
+that were not (such as `stim_file`).
+The HED annotations for the non-categorical columns must contain a `#`
+so that at analysis time, the individual column values can be substituted for the `#` placeholder.
 
 (spreadsheet-templates-anchor)=
 ## Spreadsheet templates
@@ -133,12 +175,12 @@ a JSON sidecar and a spreadsheet representation.
 You can convert the JSON events sidecar file into a spreadsheet for easier
 editing and then convert back to a JSON file afterwards.
 This tutorial assumes that you already have a JSON events sidecar
-or have [extracted a JSON sidecar template](creating-a-template-anchor).
+or have [**extracted a JSON sidecar template**](creating-a-template-anchor).
 
-Using the [HED sidecar online tools](https://hedtools.ucsd.edu/hed/sidecar),
+Using the [**HED sidecar online tools**](https://hedtools.ucsd.edu/hed/sidecar),
 the steps to create a template are:
 
-* [**Step 1: Select the Extract action.**](step-1-select-extract-spreadsheet-action)  
+* [**Step 1: Select the extract spreadsheet action.**](step-1-select-extract-spreadsheet-action)  
 * [**Step 2: Upload a sidecar for extraction.**](step-2-upload-json-sidecar-for-extraction)
 * [**Step 3: Download the extracted spreadsheet.**](step-3-download-extracted-spreadsheet)
 
@@ -172,11 +214,38 @@ tab-separated-value spreadsheet for editing:
 
 ![SidecarToSpreadsheetTemplate3](./_static/images/SidecarToSpreadsheetTemplate3.png)
 
-After saving the file, you are free to edit in a text editor or convert it to Excel
-format.  
+An excerpt from the [**extracted spreadsheet**](./_static/data/sub-002_task-FacePerception_run-1_events_extracted_flattened.tsv)
+is:
 
-The result
 
+| **column_name** | **column_value** | **description** | **HED** |
+| --------------- | ---------------- | --------------- | ------- |
+| event_type | setup_right_sym | Description for setup_right_sym | Label/setup_right_sym |
+| event_type | show_face_initial | Description for show_face_initial | Label/show_face_initial |
+| event_type | left_press | Description for left_press | Label/left_press |
+| event_type | show_circle | Description for show_circle | Label/show_circle |
+| . . . |   |   |  |
+| stim_file | n/a | Description for stim_file | Label/# |
+
+The spreadsheet has 4 columns: the **column_name** corresponds to the column
+name in the `events.tsv` file.
+The **column_value** corresponds to one of the unique values within that column.
+The **description** column is used to fill in the corresponding `Levels` value,
+while the **HED** column is used for the 
+[**HED (Hierarchical Event Descriptor)**[https://hed-specification.readthedocs.io/en/latest/index.html]
+tags that make your annotation machine-actionable.
+These tags are from the corresponding `HED` entry in the sidecar.
+
+The last row of the excerpt has `stim_file` as the **column_name**.
+This column was not selected as a categorical column when the sidecar template was created.
+The **column_value** for such columns is always `n/a`.
+The **description** column is used for the `Description` value in the sidecar.
+The **HED** column tags must include a `#`.
+During analysis the column value is substituted for the `#` 
+when the HED annotation is assembled.
+
+After saving the file, you are free to edit it in a text editor
+or convert it to Excel format.  
 
 
 ## Next steps
