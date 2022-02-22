@@ -17,7 +17,7 @@ from datetime import date
 
 sys.path.insert(0, os.path.abspath('../../'))
 sys.path.insert(0, os.path.abspath('.'))
-sys.path.insert(0, os.path.abspath('./tutorial_data'))
+
 
 # -- Project information -----------------------------------------------------
 

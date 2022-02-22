@@ -1,4 +1,4 @@
-# Jupyter notebooks
+# HED Jupyter notebooks
 
 **Note: This tutorial is in the process of being developed.** 
 
@@ -13,8 +13,36 @@ This tutorial works through the use of various Jupyter notebooks that use the He
 (annotation-notebooks-anchor)=
 ## Annotation notebooks
 
+### Removing files of a certain type
+
+2
+
+
+Consider the below situation:
+
+.. code-block:: python
+
+   import os
+   from hed.util import get_file_list
+    
+   bids_root_path = 'G:\Sternberg\SternbergWorkingNew'
+   file_list = get_file_list(bids_root_path, extensions=[".tsv"], name_suffix="_temp")
+   for file in file_list:
+       os.remove(file)
+
 These notebooks are used to assist in creating annotation templates and
 other annotation activities.
+
+``` python
+
+[import os
+   from hed.util import get_file_list
+    
+   bids_root_path = 'G:\Sternberg\SternbergWorkingNew'
+   file_list = get_file_list(bids_root_path, extensions=[".tsv"], name_suffix="_temp")
+   for file in file_list:
+       os.remove(file)]()
+```
 
 (validation-notebooks-anchor)=
 ## Validation notebooks
