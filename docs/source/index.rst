@@ -3,23 +3,27 @@ HED examples and tutorials
 
 .. sidebar:: **Downloads**
 
-   `HED Examples <https://hed-examples.readthedocs.io/_/downloads/en/latest/pdf/>`_
+   * `PDF docs <https://hed-examples.readthedocs.io/_/downloads/en/latest/pdf/>`_
 
-
-.. toctree::
-   :maxdepth: 5
-   :caption: Contents:
-
-   Overview.md
-   Datasets.md
-   Documentation.md
+   * `Source code <https://github.com/hed-standard/hed-examples/>`_
 
 .. toctree::
-   :maxdepth: 5
-   :caption: HED tagging resources:
+   :maxdepth: 3
+   :caption: HED guides:
 
-   EventAnnotationQuickStart.md
-   BasicHEDAnnotation.md
+   HedIntroduction.md
+   BidsAnnotationQuickStart.md
+   BasicHedAnnotation.md
+   HedValidation.md
    TaggingWithCTagger.md
    JupyterNotebooks.md
+   HedServicesFromMatlab.md
+   MatlabUtilityScripts.md
 
+
+.. toctree::
+   :maxdepth: 3
+   :caption: HED datasets:
+
+   HedTestDatasets.md
+   HedRepositoryDatasets.md

@@ -1,6 +1,7 @@
 %% Dump the EEG.event structure from each EEG.set file in a dataset.
 
 %% Create a list with all of the .set files in the BIDS dataset
+
 pathname = 'G:\AttentionShift\AttentionShiftWorking1';
 
 eventList = {};
