@@ -1,6 +1,6 @@
 # HED Matlab utilities
 
-**Note: This tutorial is in the process of being developed.** 
+**This tutorial is underdevelopment.**
 
 * [**]
 * [**Dumping EEGLAB event files**](dump-eeglab-event-file-anchor)  

@@ -1,6 +1,6 @@
 # HED Jupyter notebooks
 
-**Note: This tutorial is in the process of being developed.** 
+**This tutorial is underdevelopment.**
 
 This tutorial works through the use of various Jupyter notebooks that use the HedTools.
 
