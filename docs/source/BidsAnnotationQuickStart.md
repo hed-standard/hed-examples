@@ -78,7 +78,7 @@ The following is an excerpt of a BIDS event file showing its tabular structure.
 | . . .  |     |        |            |     |     |   |     |     |     |
 ````
 
-BIDS requires that all `events.tsv` files have an `onset` time (in seconds)
+BIDS requires that all `events.tsv` files have an `onset` column containing the time (in seconds)
 of the event relative to the start of the data recording to which it is linked.
 
 BIDS also requires a `duration` column giving the duration in seconds of the event 
@@ -87,19 +87,18 @@ associated with this event marker.
 BIDS uses `n/a` to designate values that should be ignored.
 
 The BIDS specification also mentions several optional columns,
-but validation of appropriate use is not done.
+but validation of appropriate use is not done by the BIDS validator.
 
 The exception is the optional `HED` column, which is used for event-specific
 annotations and verified with the BIDS validator.
 
 Users are also free to add their own columns to any `events.tsv` file.
-
 This flexibility in the format of the `events.tsv` files is necessary
 to accommodate the variety of possible events across the spectrum of BIDS datasets,
 but it complicates data handling for downstream users,
 who won't know the meaning of these events.
 
-Luckily, BIDS has provided a mechanism for describing events in a machine-understandable,
+Luckily, BIDS provides a mechanism for describing events in a machine-understandable,
 validated format using JSON sidecars and HED (Hierarchical Event Descriptors).
 
 
@@ -110,7 +109,7 @@ meaning that downstream users can analyze the data with appropriate tools withou
 a lot of code.
 
 Here is an excerpt from a BIDS `events.json` sidecar that is associated with the
-above [`events.tsv](events-tsv-excerpt-overview-anchor) excerpt.
+above [`events.tsv`](events-tsv-excerpt-overview-anchor) excerpt.
 
 ```json
 {
@@ -152,17 +151,17 @@ The JSON sidecar is a dictionary, where the keys correspond to column names.
 
 In the above example, we have provided annotations for the columns
 `event_type`, `face_type`, and `stim_file`.
-The values corresponding to these keys are each themselves dictionaries
+The values corresponding to these keys are dictionaries
 of relevant metadata about the corresponding columns.
 
 Several columns in the `events.tsv` file do not have keys in the JSON sidecar
 (`onset`, `duration`, `sample`, `rep_status`, `trial`, `rep_lag`, `value`)
-Because we have chosen not to provide information about these columns.
+because we have chosen not to provide information about these columns.
 
-The `Description` sidecar fields provide information about the general meaning
+The `Description` fields provide information about the general meanings
 of the corresponding columns.
 
-The `Levels` sidecar fields provides information about individual categorical values
+The `Levels` fields provide information about individual categorical values
 within a column in a human-readable form.
 
 The `HED` sidecar fields contain descriptive tags from a controlled vocabulary,
@@ -179,7 +178,9 @@ For example the relevant HED tags for the second event in the
 
 The `stim_file` column has been annotated as a value column rather a categorical column,
 so the HED tags corresponding to that column are assembled by substituting the actual column
-value in the `events.tsv` file for the `#`.
+value in the `events.tsv` file for the `#` tag placeholder.
+HED tools can assemble the complete annotation for each event from the event file
+and its accompanying JSON sidecar.
 
 ````{admonition} Final assembled HED tags for second event in the [excerpted event file](events-tsv-excerpt-overview-anchor).
 *Sensory-event, Experimental-stimulus, Visual-presentation, Image, Face,*  
@@ -192,8 +193,9 @@ common tags across datasets.
 
 We recommend that when at all possible, you place your HED annotations in a
 single JSON sidecar file located in the root directory of your BIDS dataset.
+
 **Do not use the `HED` column in the individual `events.tsv`** unless you
-really need to annotate events individually because
+really need to annotate events individually, because
 individual event annotation is a lot more work and harder to maintain.
 
 The next section guides you through the creation of a JSON sidecar for event
@@ -216,7 +218,7 @@ Working from a template is **much easier and faster** than creating a sidecar fr
 Using the [**HED events online tools**](https://hedtools.ucsd.edu/hed/events),
 the steps to create a template are: 
 
-* [**Step 1: Select generate sidecar template action.**](step-1-select-generate-json-action-anchor)  
+* [**Step 1: Select generate JSON action.**](step-1-select-generate-json-action-anchor)  
 * [**Step 2: Upload an event file.**](step-2-upload-events-file-for-extraction-anchor)  
 * [**Step 3: Select columns to annotate.**](step-3-select-columns-to-annotate-anchor)  
 * [**Step 4: Download the extracted template.**](step-4-download-extracted-json-template-anchor)  
@@ -227,7 +229,7 @@ to fill in the annotations.
 
 
 (step-1-select-generate-json-action-anchor)=
-### Step 1: Select generate JSON
+### Step 1: Select generate JSON action
 
 Go to the [**Events**](https://hedtools.ucsd.edu/hed/events) page of the HED online tools.
 You will see the following menu:
@@ -292,10 +294,10 @@ for each value in such a categorical column.
 ![GenerateSidecarTemplate3](./_static/images/GenerateSidecarTemplate3.png)
 *Selection of which columns to include when generating a JSON sidecar in the HED [online sidecar tools](https://hedtools.ucds.edu.hed/sidecar).*
 
-In the example, we have selected 7 columns to annotation.
+In the example, we have selected 7 columns to annotate.
 We omitted the `onset`, `duration`, and `sample` columns,
 since these columns have standardized meanings.
-The `duration` column has only 1 unique value because particular 
+The `duration` column has only 1 unique value because this particular 
 dataset has `n/a` for all entries in the `duration` column.
 
 We have selected the `event_type`, `face_type`, and `rep_status` columns
@@ -398,9 +400,15 @@ to select HED tags.
 
 Once you have finished, you should validate your JSON file to make sure
 that your annotations are correct.
-See [HED validation](./HedValidation.md) for detailed guidance.
+See [**HED validation**](./HedValidation.md) for detailed guidance.
+When you are satisfied with your valid JSON sidecar,
+simply upload it to the root directory of your BIDS dataset and you are done.
 
 If you would rather work with spreadsheets when doing your annotations,
+you can extract a spreadsheet from the JSON sidecar to edit and merge
+back after you are finished.
+This process is described in the next section,
+which you can skip if you are going to edit the JSON directly.
 
 (spreadsheet-templates-anchor)=
 ## Spreadsheet templates
@@ -420,7 +428,7 @@ the steps to create a template are:
 
 * [**Step 1: Select the extract spreadsheet action.**](step-1-select-extract-spreadsheet-action-anchor)  
 * [**Step 2: Upload a sidecar and extract.**](step-2-upload-json-sidecar-and-extract-anchor)
-* [**Step 3: Edit the spreadsheet.**](step-3-edit the spreadsheet-anchor)
+* [**Step 3: Edit the spreadsheet.**](step-3-edit-the-spreadsheet-anchor)
 * [**Step 4: Merge the spreadsheet.**](step-4-merge-the-spreadsheet-anchor)
 
 (step-1-select-extract-spreadsheet-action-anchor)=
@@ -475,11 +483,11 @@ The last row of the excerpt has `stim_file` as the **column_name**.
 This column was not selected as a categorical column when the sidecar template was created.
 The **column_value** for such columns is always `n/a`.
 The **description** column is used for the `Description` value in the sidecar.
-The **HED** column tags must include a `#`.
+The **HED** column tags must include a `#` placeholder in this case.
 During analysis the column value is substituted for the `#` 
 when the HED annotation is assembled.
 
-(step-3-edit the spreadsheet-anchor)=
+(step-3-edit-the-spreadsheet-anchor)=
 ### Step 3: Edit the spreadsheet
 
 After saving the file, you are free to edit it in a text editor
