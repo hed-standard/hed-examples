@@ -24,15 +24,21 @@ you to explore these terms.
 
 In thinking about how to annotate an event, you should always start
 by selecting a tag from the *Event* subtree to indicate the general event category.
-Possible choices are: *Sensory-event*
+Possible choices are: *Sensory-event*, *Agent-action*, *Data-feature*, *Experiment-control*,
+*Experiment-procedure*, *Experiment-structure*, and *Measurement-event*.
 
 ```{admonition} Standard HED tag selections for minimal annotation
-|  Event tag    | Support tag category |  Examples  | Reason | 
+|  Event tag    | Support tag category |  Example tags  | Reason | 
 | ------------- | -------------------- | ------------ | ------ |
-| Sensory-event | Sensory-presentation | Visual-presentation<br>Auditory-presentation| Which sense is being used? | 
-|              | Task-event-role | Experimental-stimulus<br>Instructional | What is the role wrt task? | 
-|              | Task-stimulus-role | Cue<br>Target | If stimulus, what purpose? | 
-
+| *Sensory-event* | *Sensory-presentation* | *Visual-presentation*<br>*Auditory-presentation*| Which sense is being used? | 
+|              | *Task-event-role* | *Experimental-stimulus*<br>*Instructional* | What is the role wrt task? | 
+|              | Task-stimulus-role | *Cue*<br>*Target* | If stimulus, what purpose? | 
+| *Agent-action* | Task-stimulus-role | *Cue*<br>*Target* | If stimulus, what purpose? | 
+| *Data-feature* | Task-stimulus-role | *Cue*<br>*Target* | If stimulus, what purpose? | 
+| *Experiment-control* | Task-stimulus-role | *Cue*<br>*Target* | If stimulus, what purpose? | 
+| *Experiment-procedure* | Task-stimulus-role | *Cue*<br>*Target* | If stimulus, what purpose? | 
+| *Experiment-structure* | *Organizational-property | *Time-block*<br>*Condition-variable* | Used to mark structural organization in the data. | 
+| *Measurement-event* | Task-stimulus-role | *Cue*<br>*Target* | If stimulus, what purpose? | 
 ```
 
 You do 
