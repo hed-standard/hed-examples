@@ -323,7 +323,7 @@ Save the file, and you are ready to begin the actual annotation.
 You can edit the JSON sidecar using a text editor or other appropriate tool.
 
 The [**sub-002_task-FacePerception_run-1_events.tsv**](./_static/data/sub-002_task-FacePerception_run-1_events.tsv) file generates this
-[**JSON sidecar template**](./_static/data/sub-002_task-FacePerception_run-1_events_extracted.json).
+[**JSON sidecar template**](./_static/data/sub-002_task-FacePerception_run-1_events_generated.json).
 The following is a simplified excerpt of this template,
 which we will use to illustrate the rest of the annotation process.
 
