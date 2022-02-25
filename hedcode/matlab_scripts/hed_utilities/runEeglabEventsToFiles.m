@@ -1,7 +1,8 @@
 %% Call getFileList to find fullpaths of files of form *_eeg.set
 %rootPath = 'G:/Sternberg/SternbergWorking';
 %rootPath = 'G:/AuditoryOddball/AuditoryOddballWorking';
-rootPath = 'G:/GoNogo/GoNogoWorking';
+%rootPath = 'G:/GoNogo/GoNogoWorking';
+rootPath = 'G:/ImaginedEmotion/ImaginedEmotionWorking';
 excludeDirs = {'sourcedata', 'code', 'stimuli'};
 namePrefix = '';
 nameSuffix = '_eeg';

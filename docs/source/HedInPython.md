@@ -1,6 +1,9 @@
-# HED Jupyter notebooks
-
+# HED in Python
 **This tutorial is underdevelopment.**
+
+## Jupyter notebooks
+
+
 
 This tutorial works through the use of various Jupyter notebooks that use the HedTools.
 

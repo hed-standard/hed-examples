@@ -16,9 +16,8 @@ HED examples and tutorials
    BasicHedAnnotation.md
    HedValidation.md
    TaggingWithCTagger.md
-   JupyterNotebooks.md
-   HedServicesFromMatlab.md
-   MatlabUtilityScripts.md
+   HedInPython.md
+   HedInMatlab.md
 
 
 .. toctree::

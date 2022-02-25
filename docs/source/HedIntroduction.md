@@ -149,7 +149,7 @@ and columns in a single `_events.tsv` file.
 If the file you selected is not representative, you may need to manually add additional
 keys to your sidecar.
 
-The HED [**Jupyter notebooks**](JupyterNotebooks.md) provide
+The HED [**Jupyter notebooks**](HedInPython.md) provide
 examples of using the HEDTools directly to create a template using information from all
 the event files in the dataset.
 
