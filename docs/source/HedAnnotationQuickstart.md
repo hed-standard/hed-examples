@@ -1,4 +1,4 @@
-# Basic HED annotation
+# HED annotation quickstart
 
 **This tutorial is underdevelopment.**
 
@@ -8,9 +8,12 @@ This tutorial focuses on how to make good choices of HED annotations
 to make your data usable for downstream analysis.
 The mechanics of putting your selected HED annotations into
 [BIDS (Brain Imaging Data Structure)](https://bids.neuroimaging.io/) format
-is covered in the [BIDS Annotation Quick Start](./BidsAnnotationQuickStart.md).
+is covered in the [**BIDS annotation quickstart**](./BidsAnnotationQuickstart.md) guide.
 
-## What is a HED annotation?
+* [**What is HED annotation?](what-is-hed-annotation-anchor)
+
+(what-is-hed-annotation-anchor)=
+## What is HED annotation?
 
 A HED annotation consists of a comma separated list of tags selected from
 a HED vocabulary or schema.
@@ -22,6 +25,7 @@ The basic terms are organized into trees for easier access and search.
 The [Expandable browser](https://www.hedtags.org/display_hed.html) allows
 you to explore these terms.
 
+## Annotating an event
 In thinking about how to annotate an event, you should always start
 by selecting a tag from the *Event* subtree to indicate the general event category.
 Possible choices are: *Sensory-event*, *Agent-action*, *Data-feature*, *Experiment-control*,
@@ -41,9 +45,8 @@ Possible choices are: *Sensory-event*, *Agent-action*, *Data-feature*, *Experime
 | *Measurement-event* | Task-stimulus-role | *Cue*<br>*Target* | If stimulus, what purpose? | 
 ```
 
-You do 
 
-## Annotating an event
+
 We assume that the event metadata is given in tabular form with each row
 representing the metadata about a data event marker as shown in the following table:
 
@@ -69,7 +72,6 @@ Other columns such as `trial` or `stim_file` have many distinct values.
 For these "value" columns, we use annotation to describe the general
 characteristics that the values in such a column share.
 
-## Choosing the event type
 
 The single most important tag in the
 The goal is to construct a single `events.json` file located in the root directory

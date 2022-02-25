@@ -1,4 +1,4 @@
-# HED Repository datasets
+# HED repository datasets
 
 **This section is under development**
 

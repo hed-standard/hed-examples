@@ -12,13 +12,12 @@ HED examples and tutorials
    :caption: HED guides:
 
    HedIntroduction.md
-   BidsAnnotationQuickStart.md
-   BasicHedAnnotation.md
+   BidsAnnotationQuickstart.md
+   HedAnnotationQuickstart.md
    HedValidation.md
    TaggingWithCTagger.md
-   JupyterNotebooks.md
-   HedServicesFromMatlab.md
-   MatlabUtilityScripts.md
+   HedInPython.md
+   HedInMatlab.md
 
 
 .. toctree::

@@ -4,6 +4,9 @@
 
 This tutorial provides a step-by-step guide to creating a JSON sidecar
 containing the annotations needed to document your BIDs dataset events.
+See [*HED annotation quickstart**](HedAnnotationQuickstart.md) for
+guidelines on what annotations to choose.
+
 We assume that your dataset is already in the BIDS [**BIDS Brain Imaging Data Structure**](https://bids-specification.readthedocs.io/en/stable/) format
 and focus on the mechanics of event annotation in BIDS using HED.
 
@@ -201,7 +204,7 @@ individual event annotation is a lot more work and harder to maintain.
 The next section guides you through the creation of a JSON sidecar for event
 annotation using convenient online tools.
 
-The [**Basic HED Annotation**](./BasicHedAnnotation.md) tutorial walks you through
+The [**Basic HED Annotation**](./HedAnnotationQuickstart.md) tutorial walks you through
 the process of selecting HED tags for annotation.
 
 (create-a-json-template-anchor)=
@@ -395,7 +398,7 @@ If you feel comfortable working with JSON files you can edit the HED
 annotations and descriptions directly in the JSON file.
 
 The HED annotations in the examples are minimal to simplify the explanations.
-See [**Basic HED Annotation**](BasicHedAnnotation.md) for guidelines on how
+See [**Basic HED Annotation**](HedAnnotationQuickstart.md) for guidelines on how
 to select HED tags.
 
 Once you have finished, you should validate your JSON file to make sure
