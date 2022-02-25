@@ -12,8 +12,8 @@ HED examples and tutorials
    :caption: HED guides:
 
    HedIntroduction.md
-   BidsAnnotationQuickStart.md
-   BasicHedAnnotation.md
+   BidsAnnotationQuickstart.md
+   HedAnnotationQuickstart.md
    HedValidation.md
    TaggingWithCTagger.md
    HedInPython.md

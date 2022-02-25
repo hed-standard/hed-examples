@@ -155,5 +155,5 @@ the event files in the dataset.
 
 This tutorial takes you through the steps of creating a JSON sidecar template.
 The next step is to actually do the annotation.
-The [**Basic HED Annotation](BasicHedAnnotation.md) provides a short
+The [**Basic HED Annotation](HedAnnotationQuickstart.md) provides a short
 guide for fast and easy annotation.
