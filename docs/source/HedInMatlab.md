@@ -21,7 +21,7 @@ MATLAB has support for
 **This tutorial is underdevelopment.**
 
 * [**Find files in directory tree**](find-files-directory-tree-anchor)
-* [**EEGLAB events to tsv**](eeglab-events-to-tsv-anchor)  
+* [**EEGLAB events to a tsv file**](eeglab-events-to-a-tsv-file-anchor)  
 
 
 (find-files-directory-tree-anchor)=
@@ -48,8 +48,8 @@ end
 The `getFileList` function is useful in scripts designed to apply
 an operation to all files of a particular type in a directory tree.
 
-(eeglab-events-to-tsv-anchor)=
-### EEGLAB events to tsv
+(eeglab-events-to-a-tsv-file-anchor)=
+### EEGLAB events to a tsv file
 
 [**EEGLAB**](https://eeglab.org/) stores EEG files in `.set` format or as a
 combination of two files in `.set` and `.fdt` format, respectively.
@@ -68,7 +68,7 @@ containing the `EEG.event` structure in tab-separated-value form in the same
 directories as the corresponding `.set` files.
 
 ````matlab
-% Use eeglabEventsToTsv to save EEG.set events to tsv file
+% Use eeglabEventsToTsv to save EEG.set events to a tsv file
 saveSuffix = '_events.tsv';
 nameSuffix = '_eeg';
 eeglabEventsToTsv(selectedList, nameSuffix, saveSuffix);
