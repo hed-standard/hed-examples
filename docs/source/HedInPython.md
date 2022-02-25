@@ -5,7 +5,7 @@ The HED scripts and notebooks all assume that HedTools have been installed.
 HedTools is not yet available on PyPI, so you will need to install them
 directly from GitHub using:
 
-```swagger codegen
+```shell
  pip install git+https://github.com/hed-standard/hed-python/@master
 ```
 
@@ -21,21 +21,22 @@ directly from GitHub using:
 The following notebooks are specifically designed to support HED annotation
 and use in BIDS datasets.
 
-[**Validate HED in a BIDS dataset**](validate-hed-in-bids-dataset-anchor) 
+[**Summarize BIDS event files**](summarize-bids-event-files)
 [**Extract a JSON sidecar from event files**](extract-a-json-sidecar-from-event-files) 
+[**Validate HED in a BIDS dataset**](validate-hed-in-bids-dataset-anchor)
 
 
-(validate-hed-in-bids-dataset-anchor)=
-### Validate HED in a BIDS dataset
+(summarize-bids-event-files)=
+### Summarize BIDS event files
 
-Validating annotations HED as you develop them makes the annotation process much easier and
-faster to debug.
+A first step in annotating a BIDS dataset is to find out what is in the dataset
+event files.
+Sometimes event files will have a few unexpected or incorrect codes.
+It is usually a good idea to find out what is actually in the dataset
+event files before starting the annotation process.
 
-The [**bids_validate_hed.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_processing/bids_validate_hed.ipynb)
-Jupyter notebook validates HED in a BIDS dataset.
-
-**Note:** This validation pertains to event files and HED annotation only.
-It does not do a full BIDS validation.
+The [**bids_summarize_events.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_processing/bids_summarize_events.ipynb) Jupyter notebook summarizes the unique values
+that appear in a BIDS dataset `events.tsv` files along with the number of occurrences.
 
 (extract-a-json-sidecar-from-event-files)=
 ### Extract a JSON sidecar from event files
@@ -57,6 +58,18 @@ as a whole rather than by each individual value in that column.
 For an online tool that creates a template based on the information in a
 single `events.tsv` file see [**Create a JSON template**](https://hed-examples.readthedocs.io/en/latest/BidsAnnotationQuickstart.html#create-a-json-template).
 
+
+(validate-hed-in-bids-dataset-anchor)=
+### Validate HED in a BIDS dataset
+
+Validating HED annotationsas you develop them makes the annotation process much easier and
+faster to debug.
+
+The [**bids_validate_hed.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_processing/bids_validate_hed.ipynb)
+Jupyter notebook validates HED in a BIDS dataset.
+
+**Note:** This validation pertains to event files and HED annotation only.
+It does not do a full BIDS validation.
 
 
 (validation-notebooks-anchor)=
