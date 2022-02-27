@@ -1,4 +1,4 @@
-##Review of ImaginedEmotion: Review of ds003004
+## Review of ImaginedEmotion: Review of ds003004
 
 ### Overall
 The descriptions in the Levels in the JSON sidecars are extensive and useful.
@@ -24,9 +24,9 @@ Suggest eliminating these columns.
 * The `value` column has 30 distinct values. The names have inconsistent formats
 (camel-case, snake-case, underbar, lowercase).
 Some names are not self-explanatory (`press` vs `press1`).
-* Suggest renaming `trial_type` to `event_type` in both BIDS and EEG since multiple
+* Suggest renaming `trial_type` to `event_type` (or to `type`) in both BIDS and EEG since multiple
 events from same trial are included (both stimulus and response are events).
 * The `EEG.event` has a `chanindex` field which is either blank or 0.
-There is no information about what this field means or corresponding information in the BIDS `events.tsv`.
+There is no information about what this field means or is there corresponding information in the BIDS `events.tsv` files.
 In any case, `n/a` not blanks should be used in the BIDS version.
 * The information in the `events.json` file should also be in the `README`.
