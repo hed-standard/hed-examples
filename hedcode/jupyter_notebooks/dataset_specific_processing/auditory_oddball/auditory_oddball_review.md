@@ -5,7 +5,8 @@ The dataset has documentation of events with HED tags.
 The HED tags are reasonable, although some could be refined.
 
 ### Correspondence between BIDS and EEG
-`trial_type` (BIDS) <==> `trial_type` (EEG.event)  
+
+`trial_type` (BIDS) <==> `trial_type` (EEG.event)   
 `value` (BIDS) <==> `type` (EEG.event) 
 
 ### Questions/suggestions::
