@@ -13,7 +13,7 @@ Columns are misnamed in the `events.json`.
 
 * The `response_time` values are given in ms, but BIDS specifically says seconds.
 * The `sample` column is included but all `n/a`. This should be computed.
-* Suggest renaming `trial_type` to `event_type` since multiple
+* Suggest renaming `trial_type` to `event_type` (or to `type`) since multiple
 events from same trial are included (both stimulus and response are events).
 * The `urevent` field is missing from `EEG.event`.
 * **Here is a big one**: The `event.json` file refers to a column with
