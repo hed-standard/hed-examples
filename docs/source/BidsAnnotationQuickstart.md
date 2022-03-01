@@ -464,6 +464,7 @@ An excerpt from the
 generated from the 
 [extracted JSON file](./_static/data/sub-002_task-FacePerception_run-1_events_generated.json) is:
 
+(four-column-spreadsheet-format-anchor)=
 ````{admonition} HED annotation table extracted from JSON sidecar template.
 | **column_name** | **column_value** | **description** | **HED** |
 | --------------- | ---------------- | --------------- | ------- |
