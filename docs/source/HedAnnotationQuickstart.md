@@ -1,7 +1,5 @@
 # HED annotation quickstart
 
-**This tutorial is underdevelopment.**
-
 This tutorial takes you through the steps of annotating the events
 using HED (Hierarchical Event Descriptors).
 This tutorial focuses on how to make good choices of HED annotations
