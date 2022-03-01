@@ -26,3 +26,11 @@ HED examples and tutorials
 
    HedTestDatasets.md
    HedRepositoryDatasets.md
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

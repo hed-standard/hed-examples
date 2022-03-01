@@ -1,28 +1,28 @@
 # HED in Python
-**This tutorial is underdevelopment.**
 
-The HED scripts and notebooks all assume that HedTools have been installed.
+The HED (Hierarchical Event Descriptor) scripts and notebooks all assume
+that the Python HedTools have been installed.
 HedTools is not yet available on PyPI, so you will need to install them
 directly from GitHub using:
 
 ```shell
  pip install git+https://github.com/hed-standard/hed-python/@master
 ```
-
+There are several types of Jupyter notebooks supporting HED:
 * [**Jupyter notebooks for HED in BIDS**](jupyter-notebooks-for-hed-in-bids-anchor)   
 * [**Jupyter summary notebooks**](jupyter-summary-notebooks-anchor)  
-* [**Jupyter data curation notebooks**](jupyter-data-curation-notebooks-anchor)  
+* [**Jupyter data curation notebooks**](jupyter-data-curation-notebooks-anchor)   
 
 
 (jupyter-notebooks-for-hed-in-bids-anchor)=
 ## Jupyter notebooks for HED in BIDS
 
 The following notebooks are specifically designed to support HED annotation
-and use in BIDS datasets.
+for BIDS datasets.
 
-[**Summarize BIDS event files**](summarize-bids-event-files)
-[**Extract a JSON sidecar from event files**](extract-a-json-sidecar-from-event-files) 
-[**Validate HED in a BIDS dataset**](validate-hed-in-bids-dataset-anchor)
+[**Summarize BIDS event files**](summarize-bids-event-files)  
+[**Extract a JSON sidecar from event files**](extract-a-json-sidecar-from-event-files)  
+[**Validate HED in a BIDS dataset**](validate-hed-in-bids-dataset-anchor)  
 
 
 (summarize-bids-event-files)=
@@ -30,17 +30,23 @@ and use in BIDS datasets.
 
 A first step in annotating a BIDS dataset is to find out what is in the dataset
 event files.
-Sometimes event files will have a few unexpected or incorrect codes.
-It is usually a good idea to find out what is actually in the dataset
+Sometimes event files include unexpected or incorrect codes.
+It is a good idea to find out what is actually in the dataset
 event files before starting the annotation process.
 
 The [**bids_summarize_events.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_processing/bids_summarize_events.ipynb) Jupyter notebook summarizes the unique values
-that appear in a BIDS dataset `events.tsv` files along with the number of occurrences.
+that appear in a BIDS dataset `events.tsv` files along with the number of occurrences. 
+
+To use the notebook, supply the full path to the root directory of your BIDS dataset.
+Optionally, you can supply a list of column names of columns to skip in the summary. 
+
+The script returns the number of occurrences of each unique entry in each of the remaining
+columns across the BIDS dataset.
 
 (extract-a-json-sidecar-from-event-files)=
 ### Extract a JSON sidecar from event files
 
-General strategy for machine-actionable annotation using HED in BIDS is
+The usual strategy for producing machine-actionable event annotation using HED in BIDS is
 to create a single `events.json` sidecar file in the BIDS dataset root directory.
 Ideally, this sidecar will contain all the annotations needed for users to
 understand and analyze the data.
@@ -52,49 +58,63 @@ template based on the information in all of the `events.tsv` files in a BIDS dat
 
 To use the script, you will need to provide the path to the BIDS dataset root directory.
 You should also designate a list of column to skip and a list of columns to annotate
-as a whole rather than by each individual value in that column.
+as a whole rather than by each individual unique value in that column.
 
-For an online tool that creates a template based on the information in a
-single `events.tsv` file see [**Create a JSON template**](https://hed-examples.readthedocs.io/en/latest/BidsAnnotationQuickstart.html#create-a-json-template).
+[**Create a JSON template**](https://hed-examples.readthedocs.io/en/latest/BidsAnnotationQuickstart.html#create-a-json-template) provides a step-by-step tutorial for using the
+online tool that creates a template based on the information in a single `events.tsv` file.
+For most datasets, this is sufficient.
+In contrast, [**bids_extract_sidecar.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_processing/bids_extract_sidecar.ipynb)
+bases the extracted template on the entire dataset.
 
 
 (validate-hed-in-bids-dataset-anchor)=
 ### Validate HED in a BIDS dataset
 
-Validating HED annotations as you develop them makes the annotation process much easier and
+Validating HED annotations as you develop them makes the annotation process easier and
 faster to debug.
 
 The [**bids_validate_hed.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_processing/bids_validate_hed.ipynb)
 Jupyter notebook validates HED in a BIDS dataset using the `validate` method
 of `BidsDataset`.
-The method first  gathers all the relevant JSON sidecars for each events file
+The method first  gathers all the relevant JSON sidecars for each event file
+and validates the sidecars. It then validates the individual `events.tsv` files
+based on applicable sidecars.
 
 **Note:** This validation pertains to event files and HED annotation only.
 It does not do a full BIDS validation.
 
 
-
 (jupyter-summary-notebooks-anchor)=
 ## Jupyter summary notebooks
 
+** This section is under development. **
 These notebooks are used to produce JSON summaries of dataset events.
 
 (jupyter-data-curation-notebooks-anchor)=
 ## Jupyter data curation notebooks
 
+** This section is under development**
+
+* [Dictionaries of filenames](dictionaries-of-filenames-anchor)  
+
+
 These notebooks are used to check the consistency of datasets and
 to clean up minor inconsistencies in the `events.tsv` files.
 
-Generally, we want the event files in the dataset to have the same
-column names in the same order
+Generally, we want the event files in a BIDS dataset to have the same
+column names in the same order.
+We would like good descriptions of the `events.tsv` columns as well
+as of individual values.
+
 These notebooks are used to process specific datasets.
 Mainly these notebooks are used for detected and correcting errors
 and refactoring or reorganizing dataset events.
 
-(dictionaries=)
+(dictionaries-of-filenames-anchor)=
 ### Dictionaries of filenames
 
-In order to compare the events coming from the BIDS events files and those
+In order to compare the events coming from various BIDS events files,
+many of our Jupyter notebooks rely on and those
 from the EEG.set files, the script creates dictionaries of `key` to full path
 for each type of file.  The `key` is of the form `sub-xxx_run-y` which
 uniquely specify each event file in the dataset. If a dataset contains
