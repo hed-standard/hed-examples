@@ -32,6 +32,8 @@ In thinking about how to annotate an event, you should always start
 by selecting a tag from the *Event* subtree to indicate the general event category.
 Possible choices are: *Sensory-event*, *Agent-action*, *Data-feature*, *Experiment-control*,
 *Experiment-procedure*, *Experiment-structure*, and *Measurement-event*.
+See the [Expandable HED vocabulary viewer](https://www.hedtags.org/display_hed.html)
+to view the available tags.
 
 Most experiments will only have a few types of distinct events.
 The simplest way to create a minimal HED annotation for your events is:
@@ -62,7 +64,7 @@ The simplest way to create a minimal HED annotation for your events is:
 | **<em>Experiment-procedure</em>** | *Task-event-role* | *Task-activity* | What procedure? | 
 | **<em>Experiment-structure</em>** | *Organizational-property* | *Time-block*<br>*Condition-variable* | What structural property? | 
 | **<em>Measurement-event</em>** | *Data-source-type*  | *Instrument-measurement*<br>*Observation* | Source of the data. | 
-|                | *Label*            | *Label/Oximeter_O2Level* | What instrument?<br>What measurement type? |
+|                | *Label*            | *Label/Oximeter_O2Level* | Instrument name?<br>Measurement type? |
 |                | *Data-value*       | *Percentage/32.5* <br>*Time-interval/1.5 s* | What value or type? 
 ```
 
