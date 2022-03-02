@@ -27,11 +27,13 @@ MATLAB has support for
 (find-files-directory-tree-anchor)=
 ### Find files in directory tree
 
-The [`getFileList`](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/hed_utilities/getFileList.m)
+The [**getFileList**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/hed_utilities/getFileList.m)
 function returns a cell array of full path names of
 the files in a directory tree satisfying specified criteria.
 
-```matlab
+`````{admonition} Example call to getFileList.
+:class: tip
+````matlab
 %% Call getFileList to find fullpaths of files of form *_eeg.set
 rootPath = '/local/data/Sternberg';
 excludeDirs = {'sourcedata', 'code', 'stimuli'};
@@ -44,7 +46,9 @@ selectedList = getFileList(rootPath, namePrefix, nameSuffix, extensions, exclude
 for k = 1:length(selectedList)
     fprintf('%s\n', selectedList{k});
 end
-```
+````
+`````
+
 The `getFileList` function is useful in scripts designed to apply
 an operation to all files of a particular type in a directory tree.
 
@@ -67,12 +71,15 @@ function takes a list of full pathnames of EEGLAB `.set` files and creates `.tsv
 containing the `EEG.event` structure in tab-separated-value form in the same
 directories as the corresponding `.set` files.
 
+`````{admonition} Example call to eeglabEventsToTsv.
+:class: tip
 ````matlab
 % Use eeglabEventsToTsv to save EEG.set events to a tsv file
 saveSuffix = '_events.tsv';
 nameSuffix = '_eeg';
 eeglabEventsToTsv(selectedList, nameSuffix, saveSuffix);
 ````
+`````
 
 In this example, `/local/data/Sternberg/sub-01_task-memory_run-1_eeg.set`
 will produce an event file `/local/data/Sternberg/sub-01_task-memory_run-1_events.tsv`.

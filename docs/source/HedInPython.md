@@ -96,6 +96,7 @@ These notebooks are used to produce JSON summaries of dataset events.
 ** This section is under development**
 
 * [Dictionaries of filenames](dictionaries-of-filenames-anchor)  
+* [Logging of processing steps](logging-of-processing-steps-anchor)
 
 
 These notebooks are used to check the consistency of datasets and
@@ -110,23 +111,102 @@ These notebooks are used to process specific datasets.
 Mainly these notebooks are used for detected and correcting errors
 and refactoring or reorganizing dataset events.
 
+(getting-a-list-of-files-anchor)=
+### Getting a list of files
+
+This describes getting a list of files.
+
 (dictionaries-of-filenames-anchor)=
 ### Dictionaries of filenames
 
 In order to compare the events coming from various BIDS events files,
-many of our Jupyter notebooks rely on and those
-from the EEG.set files, the script creates dictionaries of `key` to full path
-for each type of file.  The `key` is of the form `sub-xxx_run-y` which
-uniquely specify each event file in the dataset. If a dataset contains
-multiple sessions for each subject, the `key` should include additional
-parts of the file name to uniquely specify each subject.
+many of the HED Jupyter notebooks rely on dictionaries of `key` to full path
+for each type of file.
+The HED data processing scripts make extensive use of the function
+`make_file_dict`.
 
-Keys are specified by a `name_indices` tuple which consists of the
-pieces of the file name to include. Here pieces are separated by the
-underbar character.
+````{admonition} Making a file dictionary
+:class: tip
+```python
+file_dict = make_file_dict(file_list, name_indices=name_indices)
+```
+````
 
-For a file name `sub-001_ses-3_task-target_run-01_events.tsv`,
-the tuple (0, 2) gives a key of `sub-001_task-target`,
+Keys are calculated from the filename using a `name_indices` tuple,
+which indicates the positions of the name-value entity pairs in the
+BIDS file name to use.
+
+````{admonition} Possible keys for a BIDS filename.
+
+The BIDS filename `sub-001_ses-3_task-target_run-01_events.tsv` has
+three name-value entity pairs (`sub-001`, `ses-3`, `task-target`,
+and `run-01`) separated by underbars.
+
+The tuple (0, 2) gives a key of `sub-001_task-target`,
 while the tuple (0, 3) gives a key of `sub-001_run-01`.
-The use of dictionaries of file names with such keys makes it
-easier to associate related files in the BIDS naming structure.
+Neither of these choices uniquely identifies the file.
+The tuple (0, 1, 3) gives a unique key of `sub-001_ses-3_run-01`.
+The tuple (0, 1, 2, 3) also works.
+````
+The Jupyter notebook
+[go_nogo_initial_summary.ipynb](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/jupyter_notebooks/dataset_specific_processing/go_nogo/go_nogo_initial_summary.ipynb)
+illustrates using this dictionary in a larger context.
+
+(logging-of-processing-steps-anchor)=
+### Logging of processing steps
+
+Often event data files require considerable processing to assure
+internal consistency and compliance with the BIDS specification.
+Once this processing is done and the files have been transformed
+it can be difficult to understand the relationship between the
+transformed files and the original data.
+
+The `HedLogger` allows you to document processing steps associated
+with the dataset by identifying key as illustrated in the following
+log file excerpt:
+
+(example-output-hed-logger-anchor)=
+`````{admonition} Example output from HED logger.
+:class: tip
+```text
+sub-001_run-01
+	Reordered BIDS columns as ['onset', 'duration', 'sample', 'trial_type', 'response_time', 'stim_file', 'value', 'HED']
+	Dropped BIDS skip columns ['trial_type', 'value', 'response_time', 'stim_file', 'HED']
+	Reordered EEG columns as ['sample_offset', 'event_code', 'cond_code', 'type', 'latency', 'urevent', 'usertags']
+	Dropped EEG skip columns ['urevent', 'usertags', 'type']
+	Concatenated the BIDS and EEG event files for processing
+	Dropped the sample_offset and latency columns
+	Saved as _events_temp1.tsv
+sub-002_run-01
+	Reordered BIDS columns as ['onset', 'duration', 'sample', 'trial_type', 'response_time', 'stim_file', 'value', 'HED']
+	Dropped BIDS skip columns ['trial_type', 'value', 'response_time', 'stim_file', 'HED']
+	Reordered EEG columns as ['sample_offset', 'event_code', 'cond_code', 'type', 'latency', 'urevent', 'usertags']
+	Dropped EEG skip columns ['urevent', 'usertags', 'type']
+	Concatenated the BIDS and EEG event files for processing
+	. . .
+```
+`````
+
+The most common use for a logger is to create a file dictionary
+using [**make_file_dict**](dictionaries-of-filenames-anchor)
+and then to log each processing step using the file's key.
+This allows a processing step to be applied to all files in the dataset.
+After all the processing is complete, the `print_log` method
+outputs the logged messages by key, thus showing all the
+processing steps that hav been applied to each file
+as shown in the [**previous example**](example-output-hed-logger-anchor).
+
+(using-hed-logger-example-anchor)=
+`````{admonition} Using the HED logger.
+:class: tip
+```python
+status = HedLogger()
+status.add(key, f"Concatenated the BIDS and EEG event files")
+
+# ... after processing is complete output or save the log
+status.print_log()
+```
+`````
+
+The `HedLogger` is used throughout the processing notebooks
+in this repository. 

@@ -328,6 +328,8 @@ The following is a simplified excerpt of this template,
 which we will use to illustrate the rest of the annotation process.
 
 (simplified-json-template)=
+`````{admonition} JSON sidecar generated template.
+:class: tip
 ```json
 {
     "event_type": {
@@ -351,6 +353,7 @@ which we will use to illustrate the rest of the annotation process.
     }
 }
 ```
+`````
 
 Notice the difference in structure between annotations for columns
 that are designated as categorical columns (such as `event_type`)
@@ -368,6 +371,8 @@ The following is an edited version of the
 containing a minimal set of HED annotations.
 
 (excerpted-json-file-with-tags)=
+`````{admonition} JSON sidecar with completed annotation.
+:class: tip
 ```json
 {
     "event_type": {
@@ -391,7 +396,7 @@ containing a minimal set of HED annotations.
     }
 }
 ```
-
+`````
 
 
 If you feel comfortable working with JSON files you can edit the HED
