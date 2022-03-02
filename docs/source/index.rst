@@ -16,6 +16,7 @@ HED examples and tutorials
    HedAnnotationQuickstart.md
    HedValidation.md
    TaggingWithCTagger.md
+   DataCuration101.md
    HedInPython.md
    HedInMatlab.md
 
