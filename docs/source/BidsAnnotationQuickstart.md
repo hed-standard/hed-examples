@@ -1,7 +1,5 @@
 # BIDS annotation quickstart
 
-**Note: This tutorial is in the process of being developed.** 
-
 This tutorial provides a step-by-step guide to creating a JSON sidecar
 containing the annotations needed to document your BIDs dataset events.
 See [*HED annotation quickstart**](HedAnnotationQuickstart.md) for
