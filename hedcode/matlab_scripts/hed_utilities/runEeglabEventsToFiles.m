@@ -3,7 +3,7 @@
 %rootPath = 'G:/AuditoryOddball/AuditoryOddballWorking';
 %rootPath = 'G:/GoNogo/GoNogoWorking';
 %rootPath = 'G:/ImaginedEmotion/ImaginedEmotionWorking';
-rootPath = 'G:/AttentionShift/AttentionShiftWorking';
+rootPath = 'G:\AttentionShift\AttentionShiftWorking';
 excludeDirs = {'sourcedata', 'code', 'stimuli'};
 namePrefix = '';
 nameSuffix = '_eeg';

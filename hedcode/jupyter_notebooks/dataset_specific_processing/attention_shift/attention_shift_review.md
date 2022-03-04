@@ -18,8 +18,11 @@ This was done and manually verified.
 
 requires extensive curation to fix issues.
 The BIDS `events.tsv` files have a `HED` column,
+
 ### Correspondence between BIDS and EEG
-`trial_type` (BIDS) <==> `trial_type` (EEG.event)  
+
+`trial_type` (BIDS) <==> `cond_code` (EEG.event)  
 `value` (BIDS) <==> `type` (EEG.event)
 
 ### Questions/suggestions:
+1. BIDS 
