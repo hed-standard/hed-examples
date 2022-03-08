@@ -9,8 +9,8 @@ directly from GitHub using:
  pip install git+https://github.com/hed-standard/hed-python/@master
 ```
 There are several types of Jupyter notebooks supporting HED:
-* [**Jupyter notebooks for HED in BIDS**](jupyter-notebooks-for-hed-in-bids-anchor)   
-* [**Jupyter summary notebooks**](jupyter-summary-notebooks-anchor)  
+* [**Jupyter notebooks for HED in BIDS**](jupyter-notebooks-for-hed-in-bids-anchor) - aids for HED annotation in BIDS.
+* [**Jupyter summary notebooks**](jupyter-summary-notebooks-anchor) 
 * [**Jupyter data curation notebooks**](jupyter-data-curation-notebooks-anchor)   
 
 
@@ -20,52 +20,103 @@ There are several types of Jupyter notebooks supporting HED:
 The following notebooks are specifically designed to support HED annotation
 for BIDS datasets.
 
-[**Summarize BIDS event files**](summarize-bids-event-files)  
-[**Extract a JSON sidecar from event files**](extract-a-json-sidecar-from-event-files)  
+[**Summarize BIDS event files**](summarize-bids-event-files-anchor) 
+[**Extract a JSON sidecar template from event files**](extract-a-json-sidecar-template-anchor)
+[**Convert a JSON sidecar to a 4-column spreadsheet**](sidecar-to-spreadsheet-anchor)
 [**Validate HED in a BIDS dataset**](validate-hed-in-bids-dataset-anchor)  
 
 
-(summarize-bids-event-files)=
+(summarize-bids-event-files-anchor)=
 ### Summarize BIDS event files
 
 A first step in annotating a BIDS dataset is to find out what is in the dataset
 event files.
 Sometimes event files include unexpected or incorrect codes.
 It is a good idea to find out what is actually in the dataset
-event files before starting the annotation process.
+event files and whether they are consistent before starting the annotation process.
 
-The [**bids_summarize_events.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_processing/bids_summarize_events.ipynb) Jupyter notebook summarizes the unique values
-that appear in a BIDS dataset `events.tsv` files along with the number of occurrences. 
+The [**bids_summarize_events.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_processing/bids_summarize_events.ipynb) finds the dataset event files and outputs
+the column names and number of events for each event file.
+You can visually inspect the output to make sure that the event file column names
+are consistent across the dataset.
+The script also summarizes the unique values
+that appear in different event file columns across the dataset.
 
-To use the notebook, supply the full path to the root directory of your BIDS dataset.
-Optionally, you can supply a list of column names of columns to skip in the summary. 
+To use this notebook, substitute the specifics of your BIDS
+dataset for the following variables:
 
-The script returns the number of occurrences of each unique entry in each of the remaining
-columns across the BIDS dataset.
+| Variable | Purpose |
+| -------- | ------- |
+| bids_root_path | Full path to root directory of dataset.|
+| exclude_dirs | List of directories to exclude when constructing file lists. |
+| name_indices  | Indices used by make_file_dict to construct a unique key.<br>(See [Dictionaries of filenames](dictionaries-of-filenames-anchor) for examples of how to choose these indices.)|
+| skip_columns  |  List of column names in the `events.tsv` files to skip in the analysis. |
 
-(extract-a-json-sidecar-from-event-files)=
-### Extract a JSON sidecar from event files
+For large datasets, you will want to be sure to exclude columns such as
+`onset` and `sample`, since the summary produces counts of the number of times
+each unique value appears somewhere in an event file.
+
+(extract-a-json-sidecar-template-anchor)=
+### Extract a JSON sidecar template
 
 The usual strategy for producing machine-actionable event annotation using HED in BIDS is
 to create a single `events.json` sidecar file in the BIDS dataset root directory.
 Ideally, this sidecar will contain all the annotations needed for users to
 understand and analyze the data.
-(See the [**BIDS annotation quickstart**](BidsAnnotationQuickstart.md) for additional
-information on this strategy.)
 
-The [**bids_extract_sidecar.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_processing/bids_extract_sidecar.ipynb) Jupyter notebook creates an `events.json` sidecar
-template based on the information in all of the `events.tsv` files in a BIDS dataset.
-
-To use the script, you will need to provide the path to the BIDS dataset root directory.
-You should also designate a list of column to skip and a list of columns to annotate
-as a whole rather than by each individual unique value in that column.
-
-[**Create a JSON template**](https://hed-examples.readthedocs.io/en/latest/BidsAnnotationQuickstart.html#create-a-json-template) provides a step-by-step tutorial for using the
-online tool that creates a template based on the information in a single `events.tsv` file.
+See the [**BIDS annotation quickstart**](BidsAnnotationQuickstart.md) for additional
+information on this strategy and an online version.
+The [**Create a JSON template**](https://hed-examples.readthedocs.io/en/latest/BidsAnnotationQuickstart.html#create-a-json-template) section
+provides a step-by-step tutorial for using the online tool that creates a 
+template based on the information in a single `events.tsv` file.
 For most datasets, this is sufficient.
 In contrast, [**bids_extract_sidecar.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_processing/bids_extract_sidecar.ipynb)
 bases the extracted template on the entire dataset.
 
+To use this notebook, substitute the specifics of your BIDS
+dataset for the following variables:
+
+| Variable | Purpose |
+| -------- | ------- |
+| bids_root_path | Full path to root directory of dataset.|
+| exclude_dirs | List of directories to exclude when constructing file lists. |
+| name_indices  | Indices used by make_file_dict to construct a unique key.<br>(See [Dictionaries of filenames](dictionaries-of-filenames-anchor) for examples of how to choose these indices.)|
+| skip_columns  |  List of column names in the `events.tsv` files to skip in the analysis. |
+| value_columns | List of columns in the `events.tsv` files to annotate as<br>as a whole rather than by individual column value. |
+
+For large datasets, you will want to be sure to exclude columns such as
+`onset` and `sample`, since the summary produces counts of the number of times
+each unique value appears somewhere in an event file.
+
+(sidecar-to-spreadsheet-anchor)=
+### Convert a JSON sidecar to a spreadsheet
+
+If you have a BIDS JSON event sidecar or a sidecar template,
+you may find it more convenient to view and edit the HED annotations in
+spreadsheet rather than working with the JSON file directly.
+
+The [**bids_sidecar_to_spreadsheet.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_processing/bids_sidecar_to_spreadsheet.ipynb) demonstrates how to extract the pertinent
+HED annotation to a 4-column spreadsheet (Pandas dataframe) corresponding
+to the HED content of a JSON sidecar.
+This is useful for quickly reviewing and editing HED annotations.
+You can easily merge the edited information back into the spreadsheet.
+Here is an example of the spreadsheet that is produced.
+
+| **column_name** | **column_value** | **description** | **HED** |
+| --------------- | ---------------- | --------------- | ------- |
+| event_type | setup_right_sym | Description for setup_right_sym | Label/setup_right_sym |
+| event_type | show_face | Description for show_face | Label/show_face |
+| event_type | left_press | Description for left_press | Label/left_press |
+| event_type | show_circle | Description for show_circle | Label/show_circle |
+| stim_file | n/a | Description for stim_file | Label/# |
+
+To use this notebook, you will need to provide the path to the JSON sidecar and a path to
+save the spreadsheet if you want to save it.
+If you don't wish to save the spreadsheet, assign `spreadsheet_filename` to be None.
+
+The [**bids_merge_sidecar.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_processing/bids_merge_sidecar.ipynb) notebook shows the complete process,
+from extracting the initial sidecar, to converting to a spreadsheet and then
+merging in another sidecar.
 
 (validate-hed-in-bids-dataset-anchor)=
 ### Validate HED in a BIDS dataset
@@ -80,6 +131,9 @@ The method first  gathers all the relevant JSON sidecars for each event file
 and validates the sidecars. It then validates the individual `events.tsv` files
 based on applicable sidecars.
 
+The script requires you to set the `check_for_warnings` flag and the root path to
+your BIDS dataset.
+
 **Note:** This validation pertains to event files and HED annotation only.
 It does not do a full BIDS validation.
 
@@ -87,13 +141,14 @@ It does not do a full BIDS validation.
 (jupyter-summary-notebooks-anchor)=
 ## Jupyter summary notebooks
 
-** This section is under development. **
+**This section is under development.**
+
 These notebooks are used to produce JSON summaries of dataset events.
 
 (jupyter-data-curation-notebooks-anchor)=
 ## Jupyter data curation notebooks
 
-** This section is under development**
+**This section is under development**
 
 * [Dictionaries of filenames](dictionaries-of-filenames-anchor)  
 * [Logging of processing steps](logging-of-processing-steps-anchor)
