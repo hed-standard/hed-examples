@@ -135,8 +135,9 @@ merging in another sidecar.
 ### Validate HED in a BIDS dataset
 
 Validating HED annotations as you develop them makes the annotation process easier and
-faster to debug.The [**HED validation guide**](https://hed-examples.readthedocs.io/en/latest/HedValidation.html) discusses various HED validation issues and how
-to fix them.
+faster to debug.
+The [**HED validation guide**](https://hed-examples.readthedocs.io/en/latest/HedValidation.html)
+discusses various HED validation issues and how to fix them.
 
 The [**bids_validate_hed.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_processing/bids_validate_hed.ipynb)
 Jupyter notebook validates HED in a BIDS dataset using the `validate` method
@@ -154,9 +155,29 @@ It does not do a full BIDS validation.
 (jupyter-curation-notebooks-anchor)=
 ## Jupyter notebooks for data curation
 
-**Under development**
+* [**Consistency of BIDS event files**](consistency-of-BIDS-event-files-anchor)
+* xxx
 
-These notebooks are used to produce JSON summaries of dataset events.
+
+
+(consistency-of-BIDS-event-files-anchor)=
+### Consistency of BIDS event files
+
+Some neuroimaging modalities such as EEG, typically contain event information
+encoded in the data recording files, and the BIDS `events.tsv` files are
+generated post hoc. 
+
+In general, the following things should be checked before data is released:
+1. The BIDS `events.tsv` files have the same number of events as the data
+recording and that onset times of corresponding events agree.
+2. The associated information contained in the data recording and event files is consistent.
+3. The relevant metadata is present in both versions of the data.
+
+The example data curation scripts discussed in this section assume that two versions
+of each BIDS event file are present: `_events.tsv` and a corresponding `_events_temp.tsv`
+
+
+
 
 (calling-hed-tools-anchor)=
 ## Calling HED tools
