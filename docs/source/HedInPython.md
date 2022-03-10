@@ -8,12 +8,11 @@ directly from GitHub using:
 ```shell
  pip install git+https://github.com/hed-standard/hed-python/@master
 ```
-There are several types of Jupyter notebooks and hedtools that support:
+There are several types of Jupyter notebooks and other HED support tools:
 * [**Jupyter notebooks for HED in BIDS**](jupyter-notebooks-for-hed-in-bids-anchor) - aids for HED annotation in BIDS.
 * [**Jupyter notebooks for data curation**](jupyter-curation-notebooks-anchor) - aids for
 summarizing and reorganizing event data.
-* [**Calling HED tools**](calling-hed-tools-anchor) - specific useful functions/classes
-hedtools.
+* [**Calling HED tools**](calling-hed-tools-anchor) - specific useful functions/classes.
 
 
 (jupyter-notebooks-for-hed-in-bids-anchor)=
@@ -55,7 +54,7 @@ dataset for the following variables:
 | skip_columns  |  List of column names in the `events.tsv` files to skip in the analysis. |
 ```
 
-For large datasets, be sure to exclude columns such as
+For large datasets, be sure to skip columns such as
 `onset` and `sample`, since the summary produces counts of the number of times
 each unique value appears somewhere in dataset event files.
 
@@ -90,7 +89,7 @@ dataset for the following variables:
 | value_columns | List of columns names in the `events.tsv` files to annotate as<br>as a whole rather than by individual column value. |
 ```
 
-For large datasets, be sure to exclude columns such as
+For large datasets, be sure to skip columns such as
 `onset` and `sample`, since the summary produces counts of the number of times
 each unique value appears somewhere in dataset event files.
 
@@ -155,8 +154,8 @@ It does not do a full BIDS validation.
 (jupyter-curation-notebooks-anchor)=
 ## Jupyter notebooks for data curation
 
-* [**Consistency of BIDS event files**](consistency-of-BIDS-event-files-anchor)
-* xxx
+* [**Consistency of BIDS event files**](consistency-of-BIDS-event-files-anchor) 
+
 
 
 
@@ -174,9 +173,11 @@ recording and that onset times of corresponding events agree.
 3. The relevant metadata is present in both versions of the data.
 
 The example data curation scripts discussed in this section assume that two versions
-of each BIDS event file are present: `_events.tsv` and a corresponding `_events_temp.tsv`
-
-
+of each BIDS event file are present: `events.tsv` and a corresponding `events_temp.tsv` file.
+The example datasets that are using for these tutorials assume that the recordings
+are in EEG.set format.
+We used the [runEeglabEventsToFiles](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/hed_utilities/runEeglabEventsToFiles.m)
+MATLAB script to dump the events stored in the data.
 
 
 (calling-hed-tools-anchor)=
@@ -184,11 +185,9 @@ of each BIDS event file are present: `_events.tsv` and a corresponding `_events_
 
 This section shows examples of useful processing functions provided in HedTools:
 
-* [**Getting a list of filenames**](getting-a-list-of-files-anchor)  get a list of full-paths of selected files.
-* [**Dictionaries of filenames**](dictionaries-of-filenames-anchor)  get a dictionary of keyed filenames.
-* [**Logging processing steps**](logging-processing-steps-anchor) log messages organized by file key.
-
-
+* [**Getting a list of filenames**](getting-a-list-of-files-anchor)  
+* [**Dictionaries of filenames**](dictionaries-of-filenames-anchor) 
+* [**Logging processing steps**](logging-processing-steps-anchor) 
 
 
 (getting-a-list-of-files-anchor)=
@@ -207,7 +206,7 @@ The search starts in the directory root `bids_root_path`:
 :class: tip
 ```python
 file_list = get_file_list(bids_root_path, extensions=[ ".json", ".tsv"], name_suffix="_events",
-                         name_prefix="", exclude_dirs=[ "code", "derivatives"])
+                          name_prefix="", exclude_dirs=[ "code", "derivatives"])
 ```
 ````
 
@@ -218,9 +217,8 @@ Many of the HED data processing tools make extensive use of dictionaries whose k
 specify a file within a BIDS dataset,
 and whose values are the full paths of the corresponding file.
 
-as illustrated in the following example:
 
-````{admonition} Create a key-file dictionary for files of form _events.json in bids_root_path directory tree.
+````{admonition} Create a key-file dictionary for files ending in events.json in bids_root_path directory tree.
 :class: tip
 ```python
 from hed.tools import FileDictionary
@@ -236,8 +234,6 @@ Keys are calculated from the filename using a `name_indices` tuple,
 which indicates the positions of the name-value entity pairs in the
 BIDS file name to use.
 
-````{admonition} Possible keys for a BIDS filename.
-
 The BIDS filename `sub-001_ses-3_task-target_run-01_events.tsv` has
 three name-value entity pairs (`sub-001`, `ses-3`, `task-target`,
 and `run-01`) separated by underbars.
@@ -246,22 +242,20 @@ The tuple (0, 2) gives a key of `sub-001_task-target`,
 while the tuple (0, 3) gives a key of `sub-001_run-01`.
 Neither of these choices uniquely identifies the file.
 The tuple (0, 1, 3) gives a unique key of `sub-001_ses-3_run-01`.
-The tuple (0, 1, 2, 3) also works.
-````
+The tuple (0, 1, 2, 3) also works giving `sub-001_ses-3_task-target_run-01`.
 
 If you choose the `name_indices` incorrectly, the keys for the event files
-will not be unique and the notebook will throw a `HedFileError`.
-If this happens, modify your `name_indices` key choice.
+will not be unique, and the notebook will throw a `HedFileError`.
+If this happens, modify your `name_indices` key choice to include more entity pairs.
 
 The Jupyter notebook
-[go_nogo_initial_summary.ipynb](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/jupyter_notebooks/dataset_specific_processing/go_nogo/go_nogo_initial_summary.ipynb)
+[go_nogo_01_initial_summary.ipynb](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/jupyter_notebooks/dataset_specific_processing/go_nogo/go_nogo_01_initial_summary.ipynb)
 illustrates using this dictionary in a larger context.
-
 
 For example, to compare the events stored in a recording file and the events
 in the `events.tsv` file associated with that recording,
 we might dump the recording events in files with the same name, but ending in `events_temp.tsv`.
-The `FileDictionary` class allows us to create a keyed dictionary for each of these event file
+The `FileDictionary` class allows us to create a keyed dictionary for each of these event files.
 
 
 (logging-processing-steps-anchor)=
@@ -269,7 +263,7 @@ The `FileDictionary` class allows us to create a keyed dictionary for each of th
 
 Often event data files require considerable processing to assure
 internal consistency and compliance with the BIDS specification.
-Once this processing is done and the files have been transformed
+Once this processing is done and the files have been transformed,
 it can be difficult to understand the relationship between the
 transformed files and the original data.
 
@@ -299,10 +293,12 @@ sub-002_run-01
 ```
 `````
 
+Each of the lines following a key represents a print message to the logger.
+
 The most common use for a logger is to create a file dictionary
 using [**make_file_dict**](dictionaries-of-filenames-anchor)
 and then to log each processing step using the file's key.
-This allows a processing step to be applied to all files in the dataset.
+This allows a processing step to be applied to all the relevant files in the dataset.
 After all the processing is complete, the `print_log` method
 outputs the logged messages by key, thus showing all the
 processing steps that hav been applied to each file
@@ -321,5 +317,4 @@ status.print_log()
 ```
 `````
 
-The `HedLogger` is used throughout the processing notebooks
-in this repository.
+The `HedLogger` is used throughout the processing notebooks in this repository.

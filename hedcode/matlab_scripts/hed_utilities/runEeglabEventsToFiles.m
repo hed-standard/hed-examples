@@ -1,4 +1,7 @@
-%% Call getFileList to find fullpaths of files of form *_eeg.set
+%% This script dumpts all of the EEG.set events to files named _events_temp.tsv.
+% You must provide the root path to your dataset directory tree and excude directories to skip
+
+%% Set up the specifics for your dataset
 %rootPath = 'G:/Sternberg/SternbergWorking';
 %rootPath = 'G:/AuditoryOddball/AuditoryOddballWorking';
 %rootPath = 'G:/GoNogo/GoNogoWorking';
