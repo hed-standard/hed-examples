@@ -38,7 +38,7 @@ def short_to_long_string(input_string, hed_schema):
 
 if __name__ == '__main__':
     # Convert a spreadsheet to
-    data_path = '../data/spreadsheet_data'
+    data_path = '../../data/spreadsheet_data'
     base_name = 'ExcelOneSheet'
     single_sheet = os.path.join(data_path, base_name + '.xlsx')
 
