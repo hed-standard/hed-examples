@@ -182,41 +182,53 @@ of each BIDS event file are present: `_events.tsv` and a corresponding `_events_
 (calling-hed-tools-anchor)=
 ## Calling HED tools
 
-* [**Getting a list of filenames**](getting-a-list-of-files-anchor)
-* [**Dictionaries of filenames**](dictionaries-of-filenames-anchor)  
-* [**Logging processing steps**](logging-processing-steps-anchor)
+This section shows examples of useful processing functions provided in HedTools:
+
+* [**Getting a list of filenames**](getting-a-list-of-files-anchor)  get a list of full-paths of selected files.
+* [**Dictionaries of filenames**](dictionaries-of-filenames-anchor)  get a dictionary of keyed filenames.
+* [**Logging processing steps**](logging-processing-steps-anchor) log messages organized by file key.
 
 
-These notebooks are used to check the consistency of datasets and
-to clean up minor inconsistencies in the `events.tsv` files.
 
-Generally, we want the event files in a BIDS dataset to have the same
-column names in the same order.
-We would like good descriptions of the `events.tsv` columns as well
-as of individual values.
-
-These notebooks are used to process specific datasets.
-Mainly these notebooks are used for detected and correcting errors
-and refactoring or reorganizing dataset events.
 
 (getting-a-list-of-files-anchor)=
 ### Getting a list of files
 
-This describes getting a list of files.
+Many situations require the selection of files in a directory tree based on specified criteria.
+The `get_file_list` function allows you to pick out files with a specified filename
+prefix and filename suffix and specified extensions
+
+The following example returns a list of full paths of the files whose names end in `_events.tsv`
+or `_events.json` that are not in any `code` or `derivatives` directories in the `bids_root_path`
+directory tree.
+The search starts in the directory root `bids_root_path`:
+
+````{admonition} Get a list of specified files in a specified directory tree.
+:class: tip
+```python
+file_list = get_file_list(bids_root_path, extensions=[ ".json", ".tsv"], name_suffix="_events",
+                         name_prefix="", exclude_dirs=[ "code", "derivatives"])
+```
+````
 
 (dictionaries-of-filenames-anchor)=
 ### Dictionaries of filenames
 
-In order to compare the events coming from various BIDS events files,
-many of the HED Jupyter notebooks rely on dictionaries of `key` to full path
-for each type of file.
-The HED data processing scripts make extensive use of the function
-`make_file_dict`.
+Many of the HED data processing tools make extensive use of dictionaries whose keys
+specify a file within a BIDS dataset,
+and whose values are the full paths of the corresponding file.
 
-````{admonition} Making a file dictionary
+as illustrated in the following example:
+
+````{admonition} Create a key-file dictionary for files of form _events.json in bids_root_path directory tree.
 :class: tip
 ```python
-file_dict = make_file_dict(file_list, name_indices=name_indices)
+from hed.tools import FileDictionary
+from hed.util import get_file_list
+
+file_list = get_file_list(bids_root_path, extensions=[ ".json"], name_suffix="_events", 
+                          exclude_dirs=[ "code", "derivatives"])
+file_dict = FileDictionary(file_list, name_indices=name_indices)
 ```
 ````
 
@@ -236,9 +248,21 @@ Neither of these choices uniquely identifies the file.
 The tuple (0, 1, 3) gives a unique key of `sub-001_ses-3_run-01`.
 The tuple (0, 1, 2, 3) also works.
 ````
+
+If you choose the `name_indices` incorrectly, the keys for the event files
+will not be unique and the notebook will throw a `HedFileError`.
+If this happens, modify your `name_indices` key choice.
+
 The Jupyter notebook
 [go_nogo_initial_summary.ipynb](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/jupyter_notebooks/dataset_specific_processing/go_nogo/go_nogo_initial_summary.ipynb)
 illustrates using this dictionary in a larger context.
+
+
+For example, to compare the events stored in a recording file and the events
+in the `events.tsv` file associated with that recording,
+we might dump the recording events in files with the same name, but ending in `events_temp.tsv`.
+The `FileDictionary` class allows us to create a keyed dictionary for each of these event file
+
 
 (logging-processing-steps-anchor)=
 ### Logging processing steps
@@ -288,6 +312,7 @@ as shown in the [**previous example**](example-output-hed-logger-anchor).
 `````{admonition} Using the HED logger.
 :class: tip
 ```python
+from hed.tools import HedLogger
 status = HedLogger()
 status.add(key, f"Concatenated the BIDS and EEG event files")
 
@@ -297,4 +322,4 @@ status.print_log()
 `````
 
 The `HedLogger` is used throughout the processing notebooks
-in this repository. 
+in this repository.

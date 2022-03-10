@@ -23,7 +23,7 @@ from hed.validator.hed_validator import HedValidator
 if __name__ == '__main__':
     hed_xml_url = 'https://raw.githubusercontent.com/hed-standard/hed-specification/master/hedxml/HED8.0.0.xml'
     hed_schema = load_schema(hed_xml_url)
-    json_filename = "../../datasets/eeg_ds003654s_hed/task-FacePerception_events.json"
+    json_filename = "../../../datasets/eeg_ds003654s_hed/task-FacePerception_events.json"
 
     # Example 1
     print("\nExample 1 demonstrating Sidecar validation....")

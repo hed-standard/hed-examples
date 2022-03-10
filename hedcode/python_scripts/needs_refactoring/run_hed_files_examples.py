@@ -20,8 +20,8 @@ from hed.schema.hed_schema_io import load_schema, load_schema_version
 
 if __name__ == '__main__':
     # Set up the file names for the tests
-    local_hed_file = '../data/schema_data/HED7.2.0.xml'  # path HED v7.1.1 stored locally
-    example_data_path = '../data/spreadsheet_data'  # path to example data
+    local_hed_file = '../../data/schema_data/HED7.2.0.xml'  # path HED v7.1.1 stored locally
+    example_data_path = '../../data/spreadsheet_data'  # path to example data
     valid_tsv_file = os.path.join(example_data_path, 'ValidTwoColumnHED7_1_1.tsv')
     valid_tsv_file_no_header = os.path.join(example_data_path, 'ValidTwoColumnHED7_1_1NoHeader.tsv')
     valid_tsv_file_separate_cols = os.path.join(example_data_path, 'LKTEventCodesHED2.tsv')
