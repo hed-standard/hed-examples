@@ -30,13 +30,13 @@ templates for editing convenience as described below in
 Although the HED web tools base the template on the information extracted from a single
 `events.tsv` file, this will be sufficient to produce a good template for most datasets.
 
-For datasets with widely-varying event files, you should use the Jupyter notebook version
-rather than the online tools.
+For datasets with widely-varying event files, you should use the 
+[bids_validate_hed.ipynb](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_processing/bids_validate_hed.ipynb)
+Jupyter notebook version rather than the online tools.
 The Jupyter notebook consolidates information from all of the `events.tsv` files in the dataset
 to produce a comprehensive JSON sidecar template.
 ````
 
- 
 We are using an
 [**abbreviated version**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/datasets/eeg_ds003654s_hed/sub-002/eeg/sub-002_task-FacePerception_run-1_events.tsv)
 of the `events.tsv`file from subject 002 run 1 from

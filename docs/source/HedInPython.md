@@ -50,6 +50,7 @@ dataset for the following variables:
 | -------- | ------- |
 | bids_root_path | Full path to root directory of dataset.|
 | exclude_dirs | List of directories to exclude when constructing the list of event files. |
+| entities  | Tuple of entity names used to construct a unique keys representing filenames. <br>(See [Dictionaries of filenames](dictionaries-of-filenames-anchor) for examples of how to choose the keys.)|
 | name_indices  | Indices used to construct a unique keys representing event filenames.<br>(See [Dictionaries of filenames](dictionaries-of-filenames-anchor) for examples of how to choose these indices.)|
 | skip_columns  |  List of column names in the `events.tsv` files to skip in the analysis. |
 ```
@@ -84,7 +85,7 @@ dataset for the following variables:
 | -------- | ------- |
 | bids_root_path | Full path to root directory of dataset.|
 | exclude_dirs | List of directories to exclude when constructing the list of event files. |
-| name_indices  | Indices used to construct a unique keys representing event filenames.<br>(See [Dictionaries of filenames](dictionaries-of-filenames-anchor) for examples of how to choose these indices.)|
+| entities  | Tuple of entity names used to construct a unique keys representing filenames. <br>(See [Dictionaries of filenames](dictionaries-of-filenames-anchor) for examples of how to choose the keys.)|
 | skip_columns  |  List of column names in the `events.tsv` files to skip in the analysis. |
 | value_columns | List of columns names in the `events.tsv` files to annotate as<br>as a whole rather than by individual column value. |
 ```
@@ -213,9 +214,69 @@ file_list = get_file_list(bids_root_path, extensions=[ ".json", ".tsv"], name_su
 (dictionaries-of-filenames-anchor)=
 ### Dictionaries of filenames
 
-Many of the HED data processing tools make extensive use of dictionaries whose keys
-specify a file within a BIDS dataset,
-and whose values are the full paths of the corresponding file.
+The HED tools provide both generic and BIDS-specific classes for dictionaries of filenames.
+
+
+The 
+Many of the HED data processing tools make extensive use of dictionaries specif
+
+#### BIDS-specific dictionaries of files
+
+Files in BIDS have unique names that indicate not only what the file represents, 
+but also where that file is located within the BIDS dataset directory tree.
+
+##### BIDS file names and keys
+A BIDS file name consists of an underbar-separated list of entities,
+each specified as a name-value pair, 
+followed by suffix indicating the data modality.
+
+For example, the file name `sub-001_ses-3_task-target_run-01_events.tsv`
+has entities subject (`sub`), task (`task`), and run (`run`).
+The suffix is `events` indicating that the file contains events.
+The extension `.tsv` gives the data format.
+
+Modality is not the same as data format, since some modalities allow
+multiple formats. For example, `sub-001_ses-3_task-target_run-01_eeg.set`
+and `sub-001_ses-3_task-target_run-01_eeg.edf` are both acceptable
+representations of EEG files, but the data is in different formats.
+
+The BIDS file dictionaries represented by the class `BidsFileDictionary`
+and its extension `BidsTsvDictionary` use a set combination of entities
+as the file key.
+
+For a file name `sub-001_ses-3_task-target_run-01_events.tsv`,
+the tuple ('sub', 'task') gives a key of `sub-001_task-target`,
+while the tuple ('sub', 'ses', 'run) gives a key of `sub-001_ses-3_run-01`.
+The use of dictionaries of file names with such keys makes it
+easier to associate related files in the BIDS naming structure.
+
+Notice that specifying entities ('sub', 'ses', 'run) gives the
+key `sub-001_ses-3_run-01` for all three files:
+`sub-001_ses-3_task-target_run-01_events.tsv`, `sub-001_ses-3_task-target_run-01_eeg.set`
+and `sub-001_ses-3_task-target_run-01_eeg.edf`.
+Thus, the expected usage is to create a dictionary of files of one modality.
+
+````{admonition} Create a key-file dictionary for files ending in events.tsv in bids_root_path directory tree.
+:class: tip
+```python
+from hed.tools import FileDictionary
+from hed.util import get_file_list
+
+file_list = get_file_list(bids_root_path, extensions=[ ".set"], name_suffix="_eeg", 
+                          exclude_dirs=[ "code", "derivatives"])
+file_dict = BidsFileDictionary(file_list, entities=('sub', 'ses', 'run) )
+```
+````
+
+In this example, the `get_file_list` filters the files of the appropriate type,
+while the `BidsFileDictionary` creates a dictionary with keys such as
+`sub-001_ses-3_run-01` and values that are `BidsFile` objects.
+`BidsFile` can hold the file name of any BIDS file and keeps a parsed
+version of the file name.
+
+
+
+#### A generic dictionary of filenames
 
 
 ````{admonition} Create a key-file dictionary for files ending in events.json in bids_root_path directory tree.

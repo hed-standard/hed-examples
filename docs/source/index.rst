@@ -17,8 +17,10 @@ HED examples and tutorials
    HedValidation.md
    TaggingWithCTagger.md
    DataCuration101.md
+   HedToolsOnline.md
    HedInPython.md
    HedInMatlab.md
+   HedInJavascript.md
 
 
 .. toctree::
