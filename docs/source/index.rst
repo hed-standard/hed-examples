@@ -1,7 +1,7 @@
 HED examples and tutorials
 ===========================
 
-.. sidebar:: **Downloads**
+.. sidebar:: **Links**
 
    * `PDF docs <https://hed-examples.readthedocs.io/_/downloads/en/latest/pdf/>`_
 
