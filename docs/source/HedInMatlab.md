@@ -1,24 +1,39 @@
 # HED in MATLAB
-**Note: This tutorial is in the process of being developed.** 
 
-MATLAB has support for  
+There are currently three types of support available for HED (Hierarchical Event Descriptors) supports in MATLAB:
 
-* [**HED services in MATLAB**](hed-services-matlab-anchor) 
-* [**HED MATLAB scripts**](hed-matlab-scripts-anchor) 
-* [**EEGLAB integration**](eeglab-integration-anchor)  
+* [**HED services in MATLAB**](hed-services-matlab-anchor) - web services called from MATLAB scripts
+* [**EEGLAB integration**](eeglab-integration-anchor) - EEGLAB plugins and other HED support 
+* [**HED MATLAB scripts**](hed-matlab-scripts-anchor) - useful MATLAB data processing scripts and functions
 
+HED services allow MATLAB programs to request the same services that are available 
+through the browser at [https://hedtools.ucsd.edu/hed](https://hedtools.ucsd.edu/hed).
 
 (hed-services-matlab-anchor)=
 ## HED services in MATLAB
 
+| Target | MATLAB Script |
+| ------ | ------------- |
+| Events | [`runEventsServices`](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/hed_services/runEventsServices.m) |
+| Schema |                |
+| Sidecar | [`runSidecarServices`](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/hed_services/runSidecarServices.m) |
+| Sidecar | [`runSidecarServices`](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/hed_services/runSidecarServices.m) |
+| Spreadsheet | [`runSidecarServices`](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/hed_services/runSpreadsheetServices.m) |
+
+HED RESTful services allow programs to make requests directly to the
 
 
 
+
+
+
+(eeglab-integration-anchor)=
+## EEGLAB integration
+
+This is where a description of use in EEGLAB with links.
 
 (hed-matlab-scripts-anchor)=
 ## HED MATLAB scripts
-
-**This tutorial is underdevelopment.**
 
 * [**Find files in directory tree**](find-files-directory-tree-anchor)
 * [**EEGLAB events to a tsv file**](eeglab-events-to-a-tsv-file-anchor)  
@@ -85,8 +100,3 @@ In this example, `/local/data/Sternberg/sub-01_task-memory_run-1_eeg.set`
 will produce an event file `/local/data/Sternberg/sub-01_task-memory_run-1_events.tsv`.
 The `nameSuffix` and extension are removed from the filename, and the 
 `saveSuffix` is appended.
-
-(eeglab-integration-anchor)=
-## EEGLAB integration
-
-This is where a description of use in EEGLAB with links.

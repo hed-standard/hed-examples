@@ -1,13 +1,18 @@
-function [] = output_report(response, theTitle)
+function [] = outputReport(response, theTitle)
 
-fprintf('\nHED services report for %s\n', theTitle);
-fprintf('Error report:  [%s] %s\n', response.error_type, response.error_msg);
+    fprintf('\nHED services report for %s\n', theTitle);
+    fprintf('Error report:  [%s] %s\n', response.error_type, response.error_msg);
 
-%% Print out the results if available
-if isfield(response, 'results') && ~isempty(response.results)
+    %% Print out the results if available
+    if ~isfield(response, 'results') || isempty(response.results)
+        return
+    end
+
     results = response.results;
     fprintf('[%s] status %s: %s\n', response.service, results.msg_category, results.msg);
-    fprintf('HED version: %s\n', results.schema_version);
+    if isfield(results, 'schema_version')
+       fprintf('HED version: %s\n', results.schema_version);
+    end
     fprintf('\nReturn data for service %s [command: %s]:\n', ...
         response.service, results.command);
     data = results.data;
@@ -22,7 +27,7 @@ if isfield(response, 'results') && ~isempty(response.results)
     end
 
     %% Output the spreadsheet if available
-    if  isfield(results, 'spreadsheet')
+    if isfield(results, 'spreadsheet')
         fprintf('\n----Spreadsheet result----\n');
         fprintf(results.spreadsheet);
     end
