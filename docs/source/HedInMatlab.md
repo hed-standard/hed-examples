@@ -15,14 +15,17 @@ through the browser at [https://hedtools.ucsd.edu/hed](https://hedtools.ucsd.edu
 | Target | MATLAB Script |
 | ------ | ------------- |
 | Events | [`runEventsServices`](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/hed_services/runEventsServices.m) |
-| Schema |                |
+| Schema |      *in progress*          |
 | Sidecar | [`runSidecarServices`](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/hed_services/runSidecarServices.m) |
 | Sidecar | [`runSidecarServices`](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/hed_services/runSidecarServices.m) |
 | Spreadsheet | [`runSidecarServices`](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/hed_services/runSpreadsheetServices.m) |
 
 HED RESTful services allow programs to make requests directly to the
+HED online tools available at
+[https://hedtools.ucsd.edu/hed](https://hedtools.ucsd.edu/hed) or
+in a locally-deployed docker module.
 
-
+### The process of 
 
 
 

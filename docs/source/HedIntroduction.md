@@ -52,7 +52,7 @@ control** parameters as well as **data feature events** and control **mishap eve
 cause operation to fall outside of normal experiment parameters. The goals of HED are to 
 provide a standardized annotation and supporting infrastructure.
 
-````{admonition} **Goals of HED.**
+````{admonition} Goals of HED.
 :class: tip
 
 1. **Document the exact nature of events** (sensory, behavioral, environmental, and other) that occur during recorded time series data in order to inform data analysis and interpretation.
@@ -74,86 +74,64 @@ The HED project seeks to formalize the development of this language,
 to develop and distribute tools that maximize its ease of use,
 and to inform new and existing researchers of its purpose and value.
 
-## HED annotation
+## A basic HED annotation
 
+HED annotations are comma-separated lists of tags selected from a 
+[**hierarchically-organized vocabulary**](https://www.hedtags.org/display_hed.html).
 
-Similarly, making validation and analysis code independent of the HEDschema (4) allows redesign of the 
-schema without having to re-implement the annotation tools. A well-specified and stable API 
-(application program interface) empowers tool developers.
+````{admonition} A simple HED annotation of presentation of a face image stimulus.
 
+Sensory-event</em>, <em>Experimental-stimulus</em>, (<em>Visual-presentation</em>, (<em>Image</em>, <em>Face</em>, <em>Hair</em>)),
+(<em>Image</em>, <em>Pathname/f032.bmp</em>), <em>Condition-variable/Famous-face</em>, <em>Condition-variable/Immediate-repeat</em> 
+````
+The annotation above is a very basic annotation of an event marker representing the
+presentation of a face image with hair.
+The event marker represents an experimental stimulus with two
+experimental conditions *Famous-face* and *Immediate-repeat* in effect.
 
-| **column_name** | **column_value** | **description** | **HED** |
-| --------------- | ---------------- | --------------- | ------- |
-| event_type | setup_right_sym | Description for <br>setup_right_sym | Label/setup_right_sym |
-| event_type | show_face_initial | Description for show_face_initial | Label/show_face_initial |
-| event_type | left_press | Description for left_press | Label/left_press |
-| event_type | show_circle | Description for show_circle | Label/show_circle |
-| . . . |   |   |  |
-| stim_file | n/a | Description for stim_file | Label/# |
+Because HED has a structured vocabulary,
+other researchers using HED will use the same terms, making it easier to compare experiments.
+Further, the HED infrastructure supports associating of these annotation strings
+with the actual event markers during processing,
+allowing tools to locate event markers based using experiment-independent strategies.
 
+The annotation in the example uses the most basic strategy for annotating
+condition variables --- just naming the different conditions.
+However, even this simple strategy allows tools to distinguish among events
+taken under different task conditions.
+HED also provides more advanced strategies that allow downstream tools to
+automatically extract dataset-independent design matrices.
 
-This tutorial provides a step-by-step guide to creating a JSON sidecar
-template file from one of your BIDS `events.tsv` files.
-You can then edit this JSON file directly using a text editor
-to put in descriptions and HED annotations of your events.
-Alternatively you can convert the JSON file to a spreadsheet for easier editing
-and then convert back afterwards.
+Every term in the HED structured vocabulary (HED schema) must be unique,
+allowing users to use a single word for each annotation tag.
+Tools can expand into their full paths within the HED schema,
+allowing tools to leverage hierarchical relationships during searching.
 
-Finally, there is a standalone GUI tool called CTagger,
-which provides user-friendly assistance.
-See [] that you can fill in with takes you through the steps of annotating
-the events in your BIDS dataset using HED (Hierarchical Event Descriptors)
-and the online tools available at
-[hedtools.ucsd.edu/hed](https://hedtools.ucsd.edu/hed).
+````{admonition} An equivalent long-form HED annotation of face image stimulus from above.
 
-The goal is to construct a single `events.json` sidecar file located in 
-the root directory of your dataset with all the annotations needed for
-users to understand and analyze your data.
+<em>Event/<b>Sensory-event</b></em>,  
+<em>Property/Task-property/Task-event-role/<b>Experimental-stimulus</b></em>, 
+(<em>Property/Sensory-property/Sensory-presentation/<b>Visual-presentation</b></em>,  
+(<em>Item/Object/Man-made-object/Media/Visualization/<b>Image</b></em>,  
+<em>Item/Biological-item/Anatomical-item/Body-part/Head/<b>Face</b></em>,  
+<em>Item/Biological-item/Anatomical-item/Body-part/Head/<b>Hair</b></em>)),  
+(<em>Item/Object/Man-made-object/Media/Visualization/<b>Image</b></em>,  
+<em>Property/Informational-property/Metadata/<b>Pathname/f032.bmp</b></em>),  
+<em>Property/Organizational-property/<b>Condition-variable/Famous-face</b></em>,  
+<em>Property/Organizational-property/<b>Condition-variable/Immediate-repeat</b></em>
+````
+HED is also extensible, in that most nodes can be extended to include more specific terms.
+HED also permits [**library schema**](https://github.com/hed-standard/hed-schema-library),
+which are specialized vocabularies.
+HED tools support seamless annotations that include both terms from the base schema and
+from specialized, discipline-specific vocabularies.
 
-| **column_name** | **column_value** | **description** | **HED** |
-| --------------- | ---------------- | --------------- | ------- |
-| event_type | setup_right_sym | Description xfor <br>setup_right_sym | Label/setup_right_sym |
-| event_type | show_face_initial | Description for show_face_initial | Label/show_face_initial |
-| event_type | double_press | Description for double_press | Label/double_press |
-| event_type | left_press | Description for left_press | Label/left_press |
-| event_type | right_press | Description for right_press | Label/right_press |
-| event_type | show_face | Description for show_face | Label/show_face |
-| event_type | show_circle | Description for show_circle | Label/show_circle |
-| event_type | show_cross | Description for show_cross | Label/show_cross |
-| face_type | unfamiliar_face | Description for unfamiliar_face | Label/unfamiliar_face |
-| face_type | famous_face | Description for famous_face | Label/famous_face |
-| face_type | scrambled_face | Description for scrambled_face | Label/scrambled_face |
-| rep_status | delayed_repeat | Description for delayed_repeat | Label/delayed_repeat |
-| rep_status | immediate_repeat | Description for immediate_repeat | Label/immediate_repeat |
-| rep_status | first_show | Description for first_show | Label/first_show |
-| trial | n/a | Description for trial | Label/# |
-| rep_lag | n/a | Description for rep_lag | Label/# |
-| value | n/a | Description for value | Label/# |
-| stim_file | n/a | Description for stim_file | Label/# |
+## How to get started
 
-
-Another alternative to direct editing of the JSON file is the standalone GUI application, 
-CTagger, which provides user-friendly assistance in tagging.
-See [**HED tagging with CTagger**](TaggingWithCTagger.md) for a step-by-step guide.
-
-Annotation is usually an iterative process.
-Once you have done the initial annotation, you can improve it by editing the sidecar.
-
-**Remember** The goal is to produce a single JSON file with annotations
-to describe your events. In a few cases, you will need to provide additional
-sidecars to annotate events specific to a particular event file.
-However, for most datasets only one top-level JSON file is required.
-
-**Caveat** The template generated from the online tools is based on the values
-and columns in a single `_events.tsv` file.
-If the file you selected is not representative, you may need to manually add additional
-keys to your sidecar.
-
-The HED [**Jupyter notebooks**](HedInPython.md) provide
-examples of using the HEDTools directly to create a template using information from all
-the event files in the dataset.
-
-This tutorial takes you through the steps of creating a JSON sidecar template.
-The next step is to actually do the annotation.
-The [**Basic HED Annotation](HedAnnotationQuickstart.md) provides a short
-guide for fast and easy annotation.
+The [**HED annotation quickstart**](HedAnnotationQuickstart.md#hed-annotation-quickstart)
+provides a simple step-by-step guide to doing basic HED annotation,
+while the [**Bids annotation quickstart**](BidsAnnotationQuickstart.md#bids-annotation-quickstart)
+introduces the various types of annotation that should be included in a BIDS
+([**Brain Imaging Data Structure**](https://bids-specification.readthedocs.io/en/stable/)) dataset.
+This tutorial also includes instructions for using the online tools to
+start the annotation process.
