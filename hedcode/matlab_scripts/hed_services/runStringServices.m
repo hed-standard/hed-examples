@@ -9,8 +9,8 @@
 %  Example 4: Convert valid strings to long using HED version.
 %
 %% Setup requires a csrfUrl and servicesUrl. Must set header and options.
-host = 'http://127.0.0.1:5000';
-%host = 'https://hedtools.ucsd.edu/hed';
+%host = 'http://127.0.0.1:5000';
+host = 'https://hedtools.ucsd.edu/hed';
 csrfUrl = [host '/services']; 
 servicesUrl = [host '/services_submit'];
 [cookie, csrftoken] = getSessionInfo(csrfUrl);

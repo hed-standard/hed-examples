@@ -11,8 +11,8 @@
 %  Example 5: Generate a JSON sidecar template from an events file.
 
 %% Setup requires a csrf_url and services_url. Must set header and options.
-host = 'http://127.0.0.1:5000';
-%host = 'https://hedtools.ucsd.edu/hed';
+%host = 'http://127.0.0.1:5000';
+host = 'https://hedtools.ucsd.edu/hed';
 csrfUrl = [host '/services']; 
 servicesUrl = [host '/services_submit'];
 [cookie, csrftoken] = getSessionInfo(csrfUrl);

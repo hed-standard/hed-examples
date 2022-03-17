@@ -13,11 +13,11 @@
 %  Example 6: Merge a 4-column spreadsheet with a JSON sidecar.
 %
 %% Setup requires a csrf_url and services_url. Must set header and options.
-host = 'http://127.0.0.1:5000';
-%host = 'https://hedtools.ucsd.edu/hed';
-csrf_url = [host '/services']; 
-services_url = [host '/services_submit'];
-[cookie, csrftoken] = getSessionInfo(csrf_url);
+%host = 'http://127.0.0.1:5000';
+host = 'https://hedtools.ucsd.edu/hed';
+csrfUrl = [host '/services']; 
+servicesUrl = [host '/services_submit'];
+[cookie, csrftoken] = getSessionInfo(csrfUrl);
 header = ["Content-Type" "application/json"; ...
           "Accept" "application/json"; 
           "X-CSRFToken" csrftoken; "Cookie" cookie];
@@ -38,7 +38,7 @@ request1 = struct('service', 'sidecar_validate', ...
                  'schema_version', '8.0.0', ...
                  'json_string', jsonText, ...
                  'check_for_warnings', 'on');
-response1 = webwrite(services_url, request1, options);
+response1 = webwrite(servicesUrl, request1, options);
 response1 = jsondecode(response1);
 outputReport(response1, 'Example 1 validate a valid JSON sidecar');
 
@@ -47,7 +47,7 @@ request2 = struct('service', 'sidecar_validate', ...
                   'json_string', jsonBadText, ...
                   'schema_url', myURL, ...    
                   'check_for_warnings', 'on');
-response2 = webwrite(services_url, request2, options);
+response2 = webwrite(servicesUrl, request2, options);
 response2 = jsondecode(response2);
 outputReport(response2, 'Example 2 validate an invalid JSON sidecar');
 
@@ -57,7 +57,7 @@ request3 = struct('service', 'sidecar_to_long', ...
                   'json_string', jsonText, ...
                   'expand_defs', 'off');
 
-response3 = webwrite(services_url, request3, options);
+response3 = webwrite(servicesUrl, request3, options);
 response3 = jsondecode(response3);
 outputReport(response3, 'Example 3 convert a JSON sidecar to long form');
 
@@ -66,14 +66,14 @@ request4 = struct('service', 'sidecar_to_short', ...
                   'schema_version', '8.0.0', ...
                   'json_string', jsonText, ...
                   'expand_defs', 'on');
-response4 = webwrite(services_url, request4, options);
+response4 = webwrite(servicesUrl, request4, options);
 response4 = jsondecode(response4);
 outputReport(response4, 'Example 4 convert a JSON sidecar to short form.');
 
 %%  Example 5: Extract a 4-column spreadsheet from a JSON sidecar.
 request5 = struct('service', 'sidecar_extract_spreadsheet', ...
                   'json_string', jsonText);
-response5 = webwrite(services_url, request5, options);
+response5 = webwrite(servicesUrl, request5, options);
 response5 = jsondecode(response5);
 outputReport(response5, ...
              'Example 5 extract a 4-column spreadsheet from a JSON sidecar.');
@@ -82,7 +82,7 @@ outputReport(response5, ...
 request6 = struct('service', 'sidecar_merge_spreadsheet', ...
                   'json_string', '{}', 'has_column_names', 'on', ...
                   'spreadsheet_string', spreadsheetText);
-response6 = webwrite(services_url, request6, options);
+response6 = webwrite(servicesUrl, request6, options);
 response6 = jsondecode(response6);
 outputReport(response6, ...
              'Example 6 merge a 4-column spreadsheet with a JSON sidecar.');
