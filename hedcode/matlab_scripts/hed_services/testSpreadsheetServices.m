@@ -42,7 +42,7 @@ request1 = struct('service', 'spreadsheet_validate', ...
                   'column_5_check', 'on');
 response1 = webwrite(services_url, request1, options);
 response1 = jsondecode(response1);
-output_report(response1, 'Example 1 output');
+outputReport(response1, 'Example 1 output');
 
 %% Example 2: Validate invalid spreadsheet file using HED URL.
 request2 = struct('service', 'spreadsheet_validate', ...
@@ -56,7 +56,7 @@ request2 = struct('service', 'spreadsheet_validate', ...
                   'column_5_check', 'on');
 response2 = webwrite(services_url, request2, options);
 response2 = jsondecode(response2);
-output_report(response2, 'Example 2 output');
+outputReport(response2, 'Example 2 output');
 
 %% Example 3: Convert valid spreadsheet file to long uploading HED schema.
 request3 = struct('service', 'spreadsheet_to_long', ...
@@ -72,7 +72,7 @@ request3 = struct('service', 'spreadsheet_to_long', ...
                   'column_5_check', 'on');
 response3 = webwrite(services_url, request3, options);
 response3 = jsondecode(response3);
-output_report(response3, 'Example 3 output');
+outputReport(response3, 'Example 3 output');
 results = response3.results;
 
 %% Example 4: Convert valid spreadsheet file to short using uploaded HED.
@@ -88,4 +88,4 @@ request4 = struct('service', 'spreadsheet_to_short', ...
                   'column_5_check', 'on');
 response4 = webwrite(services_url, request4, options);
 response4 = jsondecode(response4);
-output_report(response4, 'Example 4 output');
+outputReport(response4, 'Example 4 output');
