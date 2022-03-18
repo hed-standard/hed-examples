@@ -9,13 +9,12 @@
 %  Example 4: Convert valid spreadsheet file to short using HED version.
 %
 %% Setup requires a csrf_url and services_url. Must set header and options.
-%host = 'http://127.0.0.1:5000';
 host = 'https://hedtools.ucsd.edu/hed';
 csrfUrl = [host '/services']; 
 servicesUrl = [host '/services_submit'];
 [cookie, csrftoken] = getSessionInfo(csrfUrl);
 header = ["Content-Type" "application/json"; ...
-          "Accept" "application/json"; 
+          "Accept" "application/json"; ...
           "X-CSRFToken" csrftoken; "Cookie" cookie];
 
 options = weboptions('MediaType', 'application/json', 'Timeout', 120, ...
