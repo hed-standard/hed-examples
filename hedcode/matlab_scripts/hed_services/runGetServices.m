@@ -1,24 +1,22 @@
 %% Shows how to call hed-services to obtain a list of services
-%host = 'http://127.0.0.1:5000';
 host = 'https://hedtools.ucsd.edu/hed';
-csrf_url = [host '/services']; 
-services_url = [host '/services_submit'];
+csrfUrl = [host '/services']; 
+servicesUrl = [host '/services_submit'];
 
 %% Send an empty request to get the CSRF TOKEN and the session cookie
-[cookie, csrftoken] = getSessionInfo(csrf_url);
+[cookie, csrftoken] = getSessionInfo(csrfUrl);
 
 %% Set the header and weboptions
 header = ["Content-Type" "application/json"; ...
           "Accept" "application/json"; ...
-          "X-CSRFToken" csrftoken; ...
-          "Cookie" cookie];
+          "X-CSRFToken" csrftoken; "Cookie" cookie];
 
 options = weboptions('MediaType', 'application/json', 'Timeout', 60, ...
                      'HeaderFields', header);
 
 %% Send the request and get the response
-data = struct('service', 'get_services', 'service_parameters', '');
-response = webwrite(services_url, data, options);
+request = struct('service', 'get_services');
+response = webwrite(servicesUrl, request, options);
 response = jsondecode(response);
 fprintf('Error report:  [%s] %s\n', response.error_type, response.error_msg);
 
