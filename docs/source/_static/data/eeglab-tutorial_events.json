@@ -1,0 +1,14 @@
+{
+  "position": {
+    "HED": {
+      "1": "(Square, (To-left-of, Cross, Angle/0.096))",
+      "2": "(Square, (To-left-of, Cross, Angle/0.047))"
+    }
+  },
+  "type": {
+    "HED": {
+      "square": "Description/Appearance of a filled disk in a green colored square in on a black background. Subjects were supposed to respond with a button press, Sensory-event, Visual-presentation, (Foreground-view, ((Circle, Black), Within, (Square, Width/1.6 cm, Green))),(Background-view, Black)",
+      "rt": "Description/Subject presses a button; supposedly in response to seeing the filled disk appeaing in the attended square, Agent-action, (Participant-response, Intended-effect), (Press, Push-button)"
+    }
+  }
+}
