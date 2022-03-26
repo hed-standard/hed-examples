@@ -7,7 +7,17 @@
 %rootPath = 'G:/GoNogo/GoNogoWorking';
 %rootPath = 'G:/ImaginedEmotion/ImaginedEmotionWorking';
 %rootPath = 'G:\AttentionShift\AttentionShiftWorking';
-rootPath = 'G:/Sternberg/SternbergWorking';
+%rootPath = 'G:\AttentionShift\AttentionShiftWorking';
+%rootPath = 'f:/ARLBidsStart/AdvancedGuardDutyWorking';
+%rootPath = 'f:/ARLBidsStart/AuditoryCueingWorking';
+%rootPath = 'f:/ARLBidsStart/BaselineDrivingWorking';
+%rootPath = 'f:/ARLBidsStart/BasicGuardDutyWorking';
+%rootPath = 'f:/ARLBidsStart/CalibrationDrivingWorking';
+%rootPath = 'f:/ARLBidsStart/MindWanderingWorking';
+%rootPath = 'f:/ARLBidsStart/RSVPBaselineWorking';
+%rootPath = 'f:/ARLBidsStart/RSVPExpertiseWorking';
+%rootPath = 'f:/ARLBidsStart/SpeedControlWorking';
+rootPath = 'f:/ARLBidsStart/TrafficComplexityWorking';
 excludeDirs = {'sourcedata', 'code', 'stimuli'};
 namePrefix = '';
 nameSuffix = '_eeg';
@@ -23,4 +33,4 @@ end
 % Use eeglabEventsToTsv to save EEG.set events to tsv file
 saveSuffix = '_events_temp.tsv';
 nameSuffix = '_eeg';
-eeglabEventsToTsv(selectedList, nameSuffix, saveSuffix);
+srateList = eeglabEventsToTsv(selectedList, nameSuffix, saveSuffix);
