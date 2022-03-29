@@ -1,4 +1,4 @@
-function srateList = eeglabEventsToTsv(fileList, nameSuffix, saveSuffix)
+function srateMap = eeglabEventsToTsv(fileList, nameSuffix, saveSuffix)
 %% Save event structures as .tsv file for EEG.set files in fileList.
 %
 %  Parameters:
@@ -6,13 +6,16 @@ function srateList = eeglabEventsToTsv(fileList, nameSuffix, saveSuffix)
 %    nameSuffix  
 %    saveSuffix  Char suffix added to the filename (before ext) for
 %                created files.
+%
+%  Returns: 
+%     map (filebaseName, samplingRate)
     
     fprintf('Saving events from %d EEG.set files...\n', length(fileList));
-    srateList = zeros(length(fileList), 1);
+    srateMap = containers.Map('KeyType', 'char', 'ValueType', 'any');
     for k = 1:length(fileList)
         EEG = pop_loadset(fileList{k});
-        srateList(k) = EEG.srate;
         [pathName, fileName, ~] = fileparts(fileList{k});
+        srateMap(fileName) = EEG.srate;
         eventTable = struct2table(EEG.event);
         filePrefix = fileName(1:end-length(nameSuffix));
         newName = [pathName filesep filePrefix saveSuffix];
