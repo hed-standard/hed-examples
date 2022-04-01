@@ -15,9 +15,9 @@ function srateMap = eeglabEventsToTsv(fileList, nameSuffix, saveSuffix)
     for k = 1:length(fileList)
         EEG = pop_loadset(fileList{k});
         [pathName, fileName, ~] = fileparts(fileList{k});
-        srateMap(fileName) = EEG.srate;
         eventTable = struct2table(EEG.event);
         filePrefix = fileName(1:end-length(nameSuffix));
+        srateMap(filePrefix) = EEG.srate;
         newName = [pathName filesep filePrefix saveSuffix];
         fprintf('\t%s\n', newName) 
         writetable(eventTable, newName, 'WriteRowNames', false, ...

@@ -6,9 +6,9 @@
 %rootPath = 'G:/AuditoryOddball/AuditoryOddballWorking';
 %rootPath = 'G:/GoNogo/GoNogoWorking';
 %rootPath = 'G:/ImaginedEmotion/ImaginedEmotionWorking';
-rootPath = 'G:\AttentionShift\AttentionShiftWorking';
+%rootPath = 'G:\AttentionShift\AttentionShiftWorking';
 %rootPath = 'f:/ARLBidsStart/AdvancedGuardDutyWorking';
-%rootPath = 'f:/ARLBidsStart/AuditoryCueingWorking';
+rootPath = 'f:/ARLBidsStart/AuditoryCueingWorking';
 %rootPath = 'f:/ARLBidsStart/BaselineDrivingWorking';
 %rootPath = 'f:/ARLBidsStart/BasicGuardDutyWorking';
 %rootPath = 'f:/ARLBidsStart/CalibrationDrivingWorking';
@@ -44,6 +44,7 @@ if ~isfolder(sratePath)
 end
 srateFile = fopen([sratePath filesep 'samplingRates.tsv'], 'w');
 theKeys = keys(srateMap);
+fprintf(srateFile, 'file_basename\tsampling_rate\n');
 for k = 1:length(theKeys)
     fprintf(srateFile, '%s\t%g\n', theKeys{k}, srateMap(theKeys{k}));
 end
