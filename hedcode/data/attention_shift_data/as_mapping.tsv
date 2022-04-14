@@ -21,8 +21,8 @@ cond_code	event_code	event_type	attention_status	task_role
 3	12	dark_square	attended	nontarget
 3	13	low_tone	unattended	nontarget
 3	14	dark_square	unattended	nontarget
-1	201	button_press	n/a	indicate_target
-2	201	button_press	n/a	indicate_target
+1	201	button_press	n/a	indicate_auditory_target
+2	201	button_press	n/a	indicate_visual_target
 3	201	button_press	n/a	indicate_target
 1	202	pause	n/a	
 2	202	pause	n/a	

@@ -16,7 +16,8 @@ Order of script execution:
 | [attention_shift_07_remove_files.ipynb](#preliminary-summary-and-manual-editing)  | Summarize event file contents |
 | [attention_shift_08_generate_sidecar.ipynb](#preliminary-summary-and-manual-editing)  | Summarize event file contents |
 
-
+The original coding of the events was in the following tab
+![img.png](img.png)
 
 ### Issues
  sub-004 of the attention shift data.  The subject has two runs.  The first run is really short.  The second run won't read correctly with EEGLAB and truncates the data.   Can you look at this?  We may have to delete this subject entirely.  Let me know.... Thanks, Kay
