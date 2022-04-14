@@ -1,12 +1,14 @@
 # Tagging with CTagger
 
-**This tutorial is underdevelopment.**
+**This tutorial is under development.**
 
 This tutorial takes you through the process of using CTagger, a user interface we developed to ease the process of adding HED annotations. 
-CTagger can be used as a standalone application, or as part of the EEGLAB BIDS data pipeline, making it easily intergratable to the annotation pipeline mentioned in the Quick guide.
+CTagger can be used as a standalone application or as part of the EEGLAB BIDS data pipeline,
+making it easy to integrate the annotation pipeline mentioned in the Quick guide.
 
 ## Installation
-**Standalone application**
+
+### Standalone application installation
 
 - Check to see that you have Java installed. Linux usually comes with OpenJDK (open source version of JDK) already installed. We have tested up to Java version 11 in Mac and Ubuntu. Executing `java -version` on terminal should return something similar to
 `java version "1.8.0_211"` or `openjdk version "11.0.11" 2021-04-20`
@@ -16,13 +18,14 @@ CTagger can be used as a standalone application, or as part of the EEGLAB BIDS d
     * If you're on macOS you might need to update your Security settings to allow the app to run. On Linux, you might need to make the jar executable first by executing `chmod +x CTagger.jar` while in the directory containing the downloaded CTagger.
 
 
-**Within EEGLAB environment**
+### Installation in the EEGLAB environment
 
 Install HEDTools plugin.
 
 
-## Loading BIDS event files into CTagger
-From the CTagger launcher window, users have the option to import either the BIDS event dictionary or event spreadsheet to start tagging. 
+## Loading BIDS event files
+From the CTagger launcher window, users have the option to import either the BIDS event
+dictionary or event spreadsheet to start tagging. 
 
 ![tagger-launcher](_static/images/CTaggerLauncher.png)
 

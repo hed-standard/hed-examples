@@ -7,7 +7,14 @@ Order of script execution:
 
 | Script                              | Description  |
 | ----------------------------------- | ------------ |
-| [as_preliminary_summary](#preliminary-summary-and-manual-editing)  | Summarize event file contents |
+| [attention_shift_01_initial_summary.ipynb](#preliminary-summary-and-manual-editing)  | Summarize event file contents |
+| [attention_shift_02_initial_combination.ipynb](#preliminary-summary-and-manual-editing)  | Summarize event file contents |
+| [attention_shift_03_check_cond_consistency.ipynb](#preliminary-summary-and-manual-editing)  | Summarize event file contents |
+| [attention_shift_04_fix_cond_codes.ipynb](#preliminary-summary-and-manual-editing)  | Summarize event file contents |
+| [attention_shift_05_add_Trials.ipynb](#preliminary-summary-and-manual-editing)  | Summarize event file contents |
+| [attention_shift_06_final_consistency_check.ipynb](#preliminary-summary-and-manual-editing)  | Summarize event file contents |
+| [attention_shift_07_remove_files.ipynb](#preliminary-summary-and-manual-editing)  | Summarize event file contents |
+| [attention_shift_08_generate_sidecar.ipynb](#preliminary-summary-and-manual-editing)  | Summarize event file contents |
 
 
 

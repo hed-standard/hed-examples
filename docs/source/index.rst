@@ -1,7 +1,7 @@
 HED examples and tutorials
 ===========================
 
-.. sidebar:: **Downloads**
+.. sidebar:: **Links**
 
    * `PDF docs <https://hed-examples.readthedocs.io/_/downloads/en/latest/pdf/>`_
 
@@ -16,8 +16,11 @@ HED examples and tutorials
    HedAnnotationQuickstart.md
    HedValidation.md
    TaggingWithCTagger.md
+   DataCuration101.md
+   HedToolsOnline.md
    HedInPython.md
    HedInMatlab.md
+   HedInJavascript.md
 
 
 .. toctree::
@@ -26,3 +29,11 @@ HED examples and tutorials
 
    HedTestDatasets.md
    HedRepositoryDatasets.md
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

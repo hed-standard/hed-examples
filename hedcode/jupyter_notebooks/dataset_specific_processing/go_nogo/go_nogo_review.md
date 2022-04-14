@@ -21,4 +21,8 @@ name `type`, but there is no column name `type` on the BIDS side.
 * The `event.json` does not have any `Levels` or `Description` but should.
 * The `README` was quite detailed but did not explain the difference between
 the type of targets and distractors -- no clue from the tagging either.
-* The `dataset_description` should have actual citations to the papers.
+* The `dataset_description` should have actual citations to the papers. 
+* The `README` mentions two tasks -- a recognition task and a categorization task.
+There doesn't seem to be any designation of which task. Also, there is a learning
+phase and a test phase, but no indication in the data. Was this supposed to be achieved
+by counting trials? The actual description was not clear.
