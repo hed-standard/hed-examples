@@ -3,7 +3,7 @@
         "Description": "Description for code",
         "HED": {
             "5": "Agent-action, (((Human-agent, Experiment-controller)), (Press , Push-button))",
-            "train_block_end": "Experiment-structure, (Def/Train_block, Offset)",
+            "train_block_end": "Experiment-structure",
             "DealingWithErrors_3": "Sensory-event, (Visual-presentation, Computer-screen), (Textblock, Black, Foreground-view), (Background-view, White), (Query, (Agent-emotional-state/Distracted, (Participant-response, (Experimental-trial, Item-interval, Some)))) ",
             "DealingWithErrors_2": "Sensory-event, (Visual-presentation, Computer-screen), (Textblock, Black, Foreground-view), (Background-view, White), (Query, (Delay, (Participant-response, (Experimental-trial, Item-interval, Some)))) ",
             "DealingWithErrors_1": "Sensory-event, (Visual-presentation, Computer-screen), (Textblock, Black, Foreground-view), (Background-view, White), (Query, (Delay, (Participant-response, (Experimental-trial, Item-interval/1))))",
@@ -64,6 +64,14 @@
     },
     "trial_number": {
         "Description": "Number of the trial the event belongs to",
-        "HED": "(Definition/Exp_block, Time-block, Label/#)"
+        "HED": "(Def/Exp_block, Time-block, Label/#)"
+    },
+    "HED_definitions": {
+        "Description":"Definitions for soccer21 data.",
+        "HED":{
+            "def_rest":"(Definition/Rest_block, (Time-Block))",
+            "def_exp": "(Definition/Exp_block, (Time-Block))",
+            "def_survey": "(Definition/Survey_block, (Time-Block))"
+        }
     }
 }
