@@ -1,5 +1,6 @@
-%% This script dumpts all of the EEG.set events to files named _events_temp.tsv.
-% You must provide the root path to your dataset directory tree and excude directories to skip
+%% This script dumps all of the EEG.set events to files _eventstemp.tsv.
+% You must provide the root path to your dataset directory tree 
+% and also the exclude directories to skip.
 
 %% Set up the specifics for your dataset
 %rootPath = 'G:/Sternberg/SternbergWorking';
@@ -25,7 +26,7 @@ extensions = {'.set'};
 selectedList = getFileList(rootPath, namePrefix, nameSuffix, ...
                            extensions, excludeDirs);
 
-%% Generate the events_temp.tsv files and srate file from EEG.set files
+%% Generate the eventstemp.tsv files and srate file from EEG.set files
 
 % Output a list of ifiles
 for k = 1:length(selectedList)
@@ -33,7 +34,7 @@ for k = 1:length(selectedList)
 end
     
 % Use eeglabEventsToTsv to save EEG.set events to tsv file
-saveSuffix = '_events_temp.tsv';
+saveSuffix = '_eventstemp.tsv';
 nameSuffix = '_eeg';
 srateMap = eeglabEventsToTsv(selectedList, nameSuffix, saveSuffix);
 
