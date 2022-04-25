@@ -1,25 +1,11 @@
 %% This imports the _events.tsv into the corresponding EEG.set file
 
 %% Set up the specifics for your dataset
-%rootPath = 'G:/Sternberg/SternbergWorking';
-%rootPath = 'G:/AuditoryOddball/AuditoryOddballWorking';
-%rootPath = 'G:/GoNogo/GoNogoWorking';
-%rootPath = 'G:/ImaginedEmotion/ImaginedEmotionWorking';
-%rootPath = 'G:/AttentionShift/AttentionShiftWorking';
-%rootPath = 'f:/ARLBidsStart/AdvancedGuardDutyWorking';
-%rootPath = 'f:/ARLBidsStart/AuditoryCueingWorking';
 
-%rootPath = 'f:/ARLBidsStart/BaselineDrivingWorking';
-%rootPath = 'f:/ARLBidsStart/BasicGuardDutyWorking';
-%rootPath = 'f:/ARLBidsStart/CalibrationDrivingWorking';
-%rootPath = 'f:/ARLBidsStart/MindWanderingWorking';
-%rootPath = 'f:/ARLBidsStart/RSVPBaselineWorking';
-%rootPath = 'f:/ARLBidsStart/RSVPExpertiseWorking';
-%rootPath = 'f:/ARLBidsStart/SpeedControlWorking';
-%rootPath = 'f:/ARLBidsStart/TrafficComplexityWorking';
-%rootPath = 's:/bcit/AuditoryCueingWorkingPhaseTwo';
-%rootPath = 's:/bcit/SpeedControlWorking';
-
+rootPath = 'G:/AttentionShift/AttentionShiftWorkingPhaseTwo';
+setname = 'Auditory Visual Attention Shift';
+log_name = 'attention_shift_18_import_events_log.txt';
+v
 % rootPath = 's:/bcit/AdvancedGuardDutyWorkingPhaseTwo';
 % setname = 'BCIT Advanced Guard Duty';
 % log_name = 'bcit_advanced_guard_duty_10_import_events_log.txt';
@@ -28,9 +14,9 @@
 % setname = 'BCIT Auditory Cueing';
 % log_name = 'bcit_auditory_cueing_10_import_events_log.txt';
 
-rootPath = 's:/bcit/BaselineDrivingWorkingPhaseTwo';
-setname = 'BCIT Baseline Driving';
-log_name = 'bcit_baseline_driving_10_import_events_log.txt';
+% rootPath = 's:/bcit/BaselineDrivingWorkingPhaseTwo';
+% setname = 'BCIT Baseline Driving';
+% log_name = 'bcit_baseline_driving_10_import_events_log.txt';
 
 % rootPath = 's:/bcit/BasicGuardDutyWorkingPhaseTwo';
 % setname = 'BCIT Basic Guard Duty';
@@ -61,7 +47,7 @@ extensions = {'.set'};
 columnTypes = {'onset', 'double'; 
                'duration', 'double'; 
                'sample', 'int32'};
-renameColumns = {'value', 'type'; 'onset', 'latency'};
+renameColumns = {'event_type', 'type'; 'onset', 'latency'};
 convertLatency = true; 
 
 %% Open the log
