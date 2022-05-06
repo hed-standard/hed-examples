@@ -1,0 +1,12 @@
+code/curation_logs/attention_shift_07_final_consistency_check_log.txt 2022-04-18 12:54:01.433414
+
+
+Log output:
+attention_shift_07_final_consistency_check_log: Level None
+sub-005_run-01:
+	[ sub-005_run-01 has 6 event_code values of 255]
+	[ [266, 267, 268, 269, 270, 271]]
+
+ERROR Summary:
+attention_shift_07_final_consistency_check_log: Level ERROR
+sub-005_run-01:

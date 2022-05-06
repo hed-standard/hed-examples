@@ -1,0 +1,8 @@
+{
+  "ESS_dataRecordingUuid": {
+    "Description": "Unique universal ID used to reference the specific recording in ESS"
+  },
+  "ESS_inSessionRecordingNum": {
+    "Description": "Number of the recording associated with a particular subject in an ESS session"
+  }
+}

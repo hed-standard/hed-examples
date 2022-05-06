@@ -1,4 +1,6 @@
-%% This script dumps the channel labels to a JSON file.
+%% This script reads the channel.tsv files and updates the channels in
+% the EEG.set files.
+%%
 
 %% Set up the specifics for your dataset
 rootPath = 'G:/AttentionShift/AttentionShiftWorkingPhaseTwo';

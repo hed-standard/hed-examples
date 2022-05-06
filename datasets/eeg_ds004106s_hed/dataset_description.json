@@ -1,0 +1,23 @@
+{
+  "Name": "BCIT Advanced Guard Duty",
+  "BIDSVersion": "1.7.0",
+  "HEDVersion": "8.0.0",
+  "License": "CC0",
+  "Authors": [
+              "Jonathan Touryan (data and curation)", 
+              "Brent Lance (data)", 
+			  "Scott Kerick (data)",
+			  "Anthony Ries (data)", 
+			  "Kaleb McDowell(data)",
+			  "Tony Johnson (curation)",
+			  "Kay Robbins (curation)"],
+  "Acknowledgments": "Tony Johnson and Mike Dunkel from DCS Corporation originally curated the data in ESS (EEG Study Schema) format. Kay Robbins, Joe Lambeth and Jonathan Balraj placed this dataset in BIDS format. The experiments were performed at SAIC (Louisville, CO) under contract with the US Army Research Laboratory. The study was reviewed and approved by the U.S. Army Human Research Protections Office (Protocol ARL 12-041) before the study began.",
+  "HowToAcknowledge": "Touryan, J., Lance, B.J., Kerick, S.E., Ries, A.J., McDowell, K., 2016. Common EEG features for behavioral estimation in disparate, real-world tasks. Biol. Psychol. 114, 93–107 https://doi.org/10.1016/j.biopsycho.2015.12.009",
+  "Funding": ["This research was sponsored by the Army Research Laboratory and was accomplished under Cooperative Agreement Number W911NF-10-0-0002."],
+  "ReferencesAndLinks": [
+  "Touryan, J., Lance, B.J., Kerick, S.E., Ries, A.J., McDowell, K., 2016. Common EEG features for behavioral estimation in disparate, real-world tasks. Biol. Psychol. 114, 93–107 https://doi.org/10.1016/j.biopsycho.2015.12.009",
+  "Bigdely-Shamlo, N., Touryan, J., Ojeda, A., Kothe, C., Mullen, T., Robbins, K., 2019. Automated EEG mega-analysis I: Spectral and amplitude characteristics across studies, NeuroImage, p. 116361, https://doi.org/10.1016/j.neuroimage.2019.116361",
+  "Bigdely-Shamlo, N., Touryan, J., Ojeda, A., Kothe, C., Mullen, T., Robbins, K., 2019. Automated EEG mega-analysis II: Cognitive aspects of event related features, NeuroImage, p. 116054, https://doi.org/10.1016/j.neuroimage.2019.116054"
+  ],
+  "DatasetDOI": "n/a"
+}

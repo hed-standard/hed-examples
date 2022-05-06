@@ -1,0 +1,15 @@
+{
+  "TaskName": "DriveRandomSound",
+  "TaskDescription": "Control simulated vehicle with the objective of maintaining the cruising lane on a virtual road. Respond to perturbations (a perpendicular force) by steering back toward the center of the lane.",
+  "EEGReference": "CMS",
+  "SamplingFrequency": 1024.0,
+  "PowerLineFrequency": null,
+  "SoftwareFilters": "n/a",
+  "CapManufacturer": "BioSemi ActiveTwo biopotential measurement system",
+  "EEGChannelCount": 64,
+  "ECGChannelCount": 0,
+  "EMGChannelCount": 0,
+  "EOGChannelCount": 0,
+  "MiscChannelCount": 0,
+  "EEGPlacementScheme": "Custom"
+}

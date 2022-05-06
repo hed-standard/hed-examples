@@ -1,0 +1,68 @@
+{
+  "channels": {
+    "EXG1": [
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_1"
+        },
+        "type": "HEOG",
+		"description": "Left horizontal EOG"
+      }
+    ],
+    "EXG2": [
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_1"
+        },
+        "type": "HEOG",
+		"description": "Right horizontal EOG"
+      }
+    ],
+    "EXG3": [
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_1"
+        },
+        "type": "VEOG",
+		"description": "Upper vertical EOG"
+      }
+    ],
+    "EXG4": [
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_1"
+        },
+        "type": "VEOG",
+		"description": "Lower vertical EOG"
+      }
+    ],
+    "EXG5": [
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_1"
+        },
+       "type": "MISC",
+	   "description": "Left mastoid"
+      }
+    ],
+    "EXG6": [
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_1"
+        },
+        "type": "MISC",
+		"description": "Right mastoid"
+      }
+    ]
+  },
+  "tasks": {
+    "GuardDuty": [
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_1"
+        },
+        "PowerLineFrequency": 60
+      }
+    ]
+  }
+}

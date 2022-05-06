@@ -1,31 +1,22 @@
-%% This script dumps the channel labels to a JSON file.
-
+%% This script reads the channel.tsv files and updates the channels in
+% the EEG.set files. This script optionally supports renaming particular
+% channels in the EEG.chanlocs, reordering the channels in the 
+% EEG.chanlocs, and resetting the EEg.urchanlocs. 
+%
+% The script also sets the type field in EEG.chanlocs to agree with the
+% those in the BIDS files and write the X, Y. Z positions in the BIDS
+% channels.tsv to agree with those in the EEG.chanlocs.
+%
 %% Set up the specifics for your dataset
 
-%rootPath = 's:/bcit/AdvancedGuardDutyWorkingPhaseTwo';
-%log_name = 'bcit_advanced_guard_duty_09_fix_eeglab_channels_log.txt';
+% Sternberg requires reordering of channels as well as reset of urchanlocs.
+rootPath = 'G:/Sternberg/SternbergWorkingPhaseTwo';
+log_name = 'sternberg_12_fix_eeglab_channels_log.txt';
+resetUrchans = true;  % If true copies chanlocs into urchanlocs
+reorderChans = true;  % If true reorders channels to be BIDS order
+renameRemap = containers.Map();
 
-%rootPath = 's:/bcit/AuditoryCueingWorkingPhaseTwo';
-%log_name = 'bcit_auditory_cueing_09_fix_eeglab_channels_log.txt';
-
-%rootPath = 's:/bcit/BaselineDrivingWorkingPhaseTwo';
-%log_name = 'bcit_baseline_driving_09_fix_eeglab_channels_log.txt';
-
-% rootPath = 's:/bcit/BasicGuardDutyWorkingPhaseTwo';
-% log_name = 'bcit_basic_guard_duty_09_fix_eeglab_channels_log.txt';
-
-rootPath = 's:/bcit/CalibrationDrivingWorkingPhaseTwo';
-log_name = 'bcit_calibration_driving_09_fix_eeglab_channels_log.txt';
-
-% rootPath = 's:/bcit/MindWanderingWorkingPhaseTwo';
-% log_name = 'bcit_mind_wandering_09_fix_eeglab_channels_log.txt';
-
-%rootPath = 's:/bcit/SpeedControlWorkingPhaseTwo';
-%log_name = 'bcit_speed_control_09_fix_eeglab_channels_log.txt';
-
-% rootPath = 's:/bcit/TrafficComplexityWorkingPhaseTwo';
-% log_name = 'bcit_traffic_complexity_09_fix_eeglab_channels_log.txt';
-
+%% Set the common variables
 sratePath = [rootPath filesep 'code'];
 excludeDirs = {'sourcedata', 'code', 'stimuli'};
 namePrefix = '';
@@ -33,41 +24,61 @@ nameSuffix = '_eeg';
 extensions = {'.set'};
 fileList = getFileList(rootPath, namePrefix, nameSuffix, ...
                            extensions, excludeDirs);
-chanRemap = containers.Map(...
-    {'EXG1', 'EXG2', 'EXG3', 'EXG4', 'EXG5', 'EXG6'}, ...
-    {'LHEOG', 'RHEOG', 'UVEOG', 'LVEOG', 'LMAST', 'RMAST'});
 
 %% Open the log
 fid = fopen([rootPath filesep 'code/curation_logs', filesep log_name], 'w');
 fprintf(fid, 'Log of runEeglabFixChannels.m on %s\n', datetime('now'));
 
 %% Rename the channels and set the channel types
-fprintf('Renaming channels and setting the channel types\n');
-
+fprintf('Making the EEG channels and the BIDS channels compatible.\n');
 for k = 1:length(fileList)
-   EEG = pop_loadset(fileList{k});
-  
    [pathName, basename, ext] = fileparts(fileList{k});
    fprintf(fid, '%s:\n', basename);
    fprintf(fid, '\tLoading EEG.set file\n');
-   chanlocs = renameChannels(EEG.chanlocs, chanRemap);
-   fprintf(fid, '\tRenaming channels as requested\n');
+   EEG = pop_loadset(fileList{k});
+
+   %% Load the channels.tsv file and make the channel map.
+   fprintf(fid, '\tLoading channels.tsv file\n');
    chanFile = [pathName filesep basename(1:(end-3)) 'channels.tsv'];
+   [chanMap, chanNames] = getChannelMap(chanFile);
+   chanlocs = EEG.chanlocs;
    
-   [chanlocs, missing] = setChanTypes(chanlocs, chanFile);
-   fprintf(fid, '\tSetting the channel types\n');
+   %% Reset the urchanlocs if requested.
+   if resetUrchans
+      EEG.urchanlocs = rmfield(chanlocs, 'urchan');
+   end
+   
+   %% Rename channels if required.
+   if ~isempty(renameRemap)
+      mkeys = keys(renameRemap);
+      chanlocs = renameChannels(chanlocs, renameRemap);
+      fprintf(fid, '\Renaming channels [%s]\n', join(mkeys(:)', ' ')); 
+   end
+   
+   %% Set the channel types in the chanlocs.
+   [chanlocs, missing] = setChannelTypes(chanlocs, chanMap);
    if ~isempty(missing)
        missInfo = join(missing(:)', ' ');
        fprintf(fid, '\tWARNING---Missing channels [%s]\n', missInfo{1});
    end
+   EEG.chanlocs = chanlocs;
+   
+   %% Now reorder the channels and data if requested.
+   if reorderChans
+       chanLabels = {chanlocs.labels};
+       [C, ia, ib] = intersect(chanNames, chanLabels, 'stable');
+       EEG.data = EEG.data(ib(:), :);
+       EEG.chanlocs = chanlocs(ib);
+   end
 
+   %% Now write the electrode files.
    electrodePath = [pathName filesep basename(1:(end-3)) 'electrodes.tsv'];
-   num_written = writeElectrodeFile(chanlocs, electrodePath);
+   num_written = writeElectrodeFile(EEG.chanlocs, electrodePath);
    fprintf(fid, '\tWriting electrode file with %d electrodes\n', num_written);
    if num_written == 0
-       fprintf(fid, '\tWARNING---EEG missing chanlocs\n');
+       fprintf(fid, '\tWARNING---EEG missing chanlocs.\n');
    end
-   EEG.chanlocs = chanlocs;
+
    EEG = pop_saveset(EEG, 'savemode', 'resave', 'version', '7.3');
    fprintf(fid, '\tResaving the EEG.set file\n');
 end

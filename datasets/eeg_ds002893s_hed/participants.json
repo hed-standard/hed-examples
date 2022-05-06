@@ -1,0 +1,30 @@
+{
+  "Gender": {
+    "Description": "Participant gender",
+    "Units": "n/a",
+    "Levels": {
+      "F": "Female",
+      "M": "Male"
+    }
+  },
+  "Age": {
+    "Description": "Participant age (years)",
+    "Units": "years"
+  },
+  "Group": {
+    "Description": "Participant group label",
+    "Units": "n/a",
+    "Levels": {
+      "younger": "20 to 40 years",
+      "older": "41 to 89 years"
+    }
+  },
+  "YearOfBirth": {
+    "Description": "Participant year of birth",
+    "Units": "years"
+  },
+  "participant_id": {
+    "Description": "Unique participant label",
+    "Units": "n/a"
+  }
+}

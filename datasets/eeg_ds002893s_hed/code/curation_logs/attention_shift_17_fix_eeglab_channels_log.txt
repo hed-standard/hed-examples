@@ -1,0 +1,261 @@
+Log of runEeglabFixChannels.m on 25-Apr-2022 14:04:56
+sub-001_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-002_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-003_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-004_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-004_task-AuditoryVisualShift_run-02_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-005_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-006_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-007_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-008_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-009_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-010_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-011_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-012_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-013_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-014_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-015_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-016_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-017_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-018_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-019_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-020_task-AuditoryVisualShift_run-02_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-021_task-AuditoryVisualShift_run-02_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-022_task-AuditoryVisualShift_run-02_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-023_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-024_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-025_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-026_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-027_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-028_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-028_task-AuditoryVisualShift_run-02_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-029_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-030_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-031_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-032_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-033_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-034_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-035_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-036_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-036_task-AuditoryVisualShift_run-02_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-037_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-038_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-039_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-040_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-041_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-042_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-043_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-044_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-045_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-046_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-047_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-048_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file
+sub-049_task-AuditoryVisualShift_run-01_eeg:
+	Loading EEG.set file
+	Setting the channel types
+	Writing electrode file with 36 electrodes
+	Resaving the EEG.set file

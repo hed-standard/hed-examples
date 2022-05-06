@@ -1,0 +1,37 @@
+name	type	units	description
+Fp1	EEG	microV	n/a
+Fpz	EEG	microV	n/a
+Fp2	EEG	microV	n/a
+AF3	EEG	microV	n/a
+AF4	EEG	microV	n/a
+F7	EEG	microV	n/a
+F3	EEG	microV	n/a
+Fz	EEG	microV	n/a
+F4	EEG	microV	n/a
+F8	EEG	microV	n/a
+FC5	EEG	microV	n/a
+FC1	EEG	microV	n/a
+FC6	EEG	microV	n/a
+FC2	EEG	microV	n/a
+T7	EEG	microV	n/a
+C3	EEG	microV	n/a
+Cz	EEG	microV	n/a
+C4	EEG	microV	n/a
+T8	EEG	microV	n/a
+CP5	EEG	microV	n/a
+CP1	EEG	microV	n/a
+CP2	EEG	microV	n/a
+CP6	EEG	microV	n/a
+P7	EEG	microV	n/a
+P3	EEG	microV	n/a
+Pz	EEG	microV	n/a
+P4	EEG	microV	n/a
+P8	EEG	microV	n/a
+PO3	EEG	microV	n/a
+PO4	EEG	microV	n/a
+O1	EEG	microV	n/a
+Oz	EEG	microV	n/a
+O2	EEG	microV	n/a
+LM	MISC	microV	Left mastoid.
+REye	EOG	microV	Right EOG channel.
+LEye	EOG	microV	Right EOG channel.

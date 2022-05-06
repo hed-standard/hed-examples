@@ -1,0 +1,164 @@
+code/curation_logs/attention_shift_16_fix_coordsystem_log.txt 2022-04-25 14:03:57.836915
+
+
+Log output:
+attention_shift_16_fix_coordsystem_log: Level None
+sub-001_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-001_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-002_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-002_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-003_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-003_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-004_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-004_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-004_task-AuditoryVisualShift_run-02_eeg.set:
+	[ Saving the sub-004_task-AuditoryVisualShift_run-02_coordsystem.json coordinate system file]
+sub-005_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-005_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-006_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-006_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-007_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-007_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-008_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-008_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-009_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-009_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-010_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-010_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-011_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-011_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-012_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-012_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-013_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-013_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-014_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-014_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-015_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-015_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-016_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-016_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-017_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-017_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-018_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-018_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-019_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-019_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-020_task-AuditoryVisualShift_run-02_eeg.set:
+	[ Saving the sub-020_task-AuditoryVisualShift_run-02_coordsystem.json coordinate system file]
+sub-021_task-AuditoryVisualShift_run-02_eeg.set:
+	[ Saving the sub-021_task-AuditoryVisualShift_run-02_coordsystem.json coordinate system file]
+sub-022_task-AuditoryVisualShift_run-02_eeg.set:
+	[ Saving the sub-022_task-AuditoryVisualShift_run-02_coordsystem.json coordinate system file]
+sub-023_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-023_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-024_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-024_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-025_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-025_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-026_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-026_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-027_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-027_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-028_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-028_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-028_task-AuditoryVisualShift_run-02_eeg.set:
+	[ Saving the sub-028_task-AuditoryVisualShift_run-02_coordsystem.json coordinate system file]
+sub-029_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-029_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-030_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-030_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-031_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-031_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-032_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-032_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-033_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-033_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-034_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-034_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-035_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-035_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-036_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-036_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-036_task-AuditoryVisualShift_run-02_eeg.set:
+	[ Saving the sub-036_task-AuditoryVisualShift_run-02_coordsystem.json coordinate system file]
+sub-037_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-037_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-038_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-038_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-039_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-039_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-040_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-040_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-041_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-041_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-042_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-042_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-043_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-043_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-044_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-044_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-045_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-045_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-046_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-046_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-047_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-047_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-048_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-048_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+sub-049_task-AuditoryVisualShift_run-01_eeg.set:
+	[ Saving the sub-049_task-AuditoryVisualShift_run-01_coordsystem.json coordinate system file]
+
+ERROR Summary:
+attention_shift_16_fix_coordsystem_log: Level ERROR
+sub-001_task-AuditoryVisualShift_run-01_eeg.set:
+sub-002_task-AuditoryVisualShift_run-01_eeg.set:
+sub-003_task-AuditoryVisualShift_run-01_eeg.set:
+sub-004_task-AuditoryVisualShift_run-01_eeg.set:
+sub-004_task-AuditoryVisualShift_run-02_eeg.set:
+sub-005_task-AuditoryVisualShift_run-01_eeg.set:
+sub-006_task-AuditoryVisualShift_run-01_eeg.set:
+sub-007_task-AuditoryVisualShift_run-01_eeg.set:
+sub-008_task-AuditoryVisualShift_run-01_eeg.set:
+sub-009_task-AuditoryVisualShift_run-01_eeg.set:
+sub-010_task-AuditoryVisualShift_run-01_eeg.set:
+sub-011_task-AuditoryVisualShift_run-01_eeg.set:
+sub-012_task-AuditoryVisualShift_run-01_eeg.set:
+sub-013_task-AuditoryVisualShift_run-01_eeg.set:
+sub-014_task-AuditoryVisualShift_run-01_eeg.set:
+sub-015_task-AuditoryVisualShift_run-01_eeg.set:
+sub-016_task-AuditoryVisualShift_run-01_eeg.set:
+sub-017_task-AuditoryVisualShift_run-01_eeg.set:
+sub-018_task-AuditoryVisualShift_run-01_eeg.set:
+sub-019_task-AuditoryVisualShift_run-01_eeg.set:
+sub-020_task-AuditoryVisualShift_run-02_eeg.set:
+sub-021_task-AuditoryVisualShift_run-02_eeg.set:
+sub-022_task-AuditoryVisualShift_run-02_eeg.set:
+sub-023_task-AuditoryVisualShift_run-01_eeg.set:
+sub-024_task-AuditoryVisualShift_run-01_eeg.set:
+sub-025_task-AuditoryVisualShift_run-01_eeg.set:
+sub-026_task-AuditoryVisualShift_run-01_eeg.set:
+sub-027_task-AuditoryVisualShift_run-01_eeg.set:
+sub-028_task-AuditoryVisualShift_run-01_eeg.set:
+sub-028_task-AuditoryVisualShift_run-02_eeg.set:
+sub-029_task-AuditoryVisualShift_run-01_eeg.set:
+sub-030_task-AuditoryVisualShift_run-01_eeg.set:
+sub-031_task-AuditoryVisualShift_run-01_eeg.set:
+sub-032_task-AuditoryVisualShift_run-01_eeg.set:
+sub-033_task-AuditoryVisualShift_run-01_eeg.set:
+sub-034_task-AuditoryVisualShift_run-01_eeg.set:
+sub-035_task-AuditoryVisualShift_run-01_eeg.set:
+sub-036_task-AuditoryVisualShift_run-01_eeg.set:
+sub-036_task-AuditoryVisualShift_run-02_eeg.set:
+sub-037_task-AuditoryVisualShift_run-01_eeg.set:
+sub-038_task-AuditoryVisualShift_run-01_eeg.set:
+sub-039_task-AuditoryVisualShift_run-01_eeg.set:
+sub-040_task-AuditoryVisualShift_run-01_eeg.set:
+sub-041_task-AuditoryVisualShift_run-01_eeg.set:
+sub-042_task-AuditoryVisualShift_run-01_eeg.set:
+sub-043_task-AuditoryVisualShift_run-01_eeg.set:
+sub-044_task-AuditoryVisualShift_run-01_eeg.set:
+sub-045_task-AuditoryVisualShift_run-01_eeg.set:
+sub-046_task-AuditoryVisualShift_run-01_eeg.set:
+sub-047_task-AuditoryVisualShift_run-01_eeg.set:
+sub-048_task-AuditoryVisualShift_run-01_eeg.set:
+sub-049_task-AuditoryVisualShift_run-01_eeg.set:

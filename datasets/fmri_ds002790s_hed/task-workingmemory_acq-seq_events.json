@@ -1,0 +1,49 @@
+{
+  "onset": {
+    "Description": "Onset of the trial, i.e., the appearance of the grey screen (duration: 1 sec). Note, this is the onset of the trial. The onset of the different phases is as follows: encoding phase = onset + 1, retention phase = onset + 2, memory/retrieval phase = onset + 4"
+  },
+  "trial_type": {
+    "LongName": "Condition of trial",
+    "Description": "Whether the display was passive (no display), active which changed, or didn't change",
+    "Levels": {
+      "passive": "no display with oriented bars, only a grey screen",
+      "active_change": "display with oriented bars, which changed relative to the first display",
+      "active_nochange": "display with oriented bars, which DIDN'T change relative to the first display"
+    },
+    "HED": {
+      "passive": "Label/Passive-display",
+      "active_change": "Label/Active-change",
+      "active_nochange": "Label/Active-nochange"
+    }
+
+  },
+  "response_time": {
+    "LongName": "Time it took the participant to respond relative to the start of the memory/retrieval phase. To get the onset of the actual response: onset + 4 + response_time"
+  },
+  "response_accuracy": {
+    "LongName": "Accuracy of response",
+    "Description": "Whether the response was correct, incorrect, or a miss",
+    "Levels": {
+      "correct": "response was correct",
+      "incorrect": "response was incorrect",
+      "miss": "response was missed (i.e., too late)"
+    },
+    "HED": {
+      "correct": "Label/Correct-response",
+      "incorrect": "Label/Incorrect-response",
+      "miss": "Label/Missed-response"
+    }
+  },
+  "response_hand": {
+    "LongName": "Hand of response",
+    "Description": "Which hand was used to respond",
+    "Levels": {
+      "left": "left hand",
+      "right": "right hand"
+    },
+    "HED": {
+      "left": "Label/Left-hand",
+      "right": "Label/Right-hand"
+    }
+  }
+}

@@ -2,10 +2,15 @@
 
 %% Set up the specifics for your dataset
 
-rootPath = 'G:/AttentionShift/AttentionShiftWorkingPhaseTwo';
-setname = 'Auditory Visual Attention Shift';
-log_name = 'attention_shift_18_import_events_log.txt';
-v
+rootPath = 'G:/Sternberg/SternbergWorkingPhaseTwo';
+setname = '';
+log_name = 'sternberg_12_import_events_log.txt';
+renameColumns = {'event_type', 'type'; 'onset', 'latency'};
+
+% rootPath = 'G:/AttentionShift/AttentionShiftWorkingPhaseTwo';
+% setname = 'Auditory Visual Attention Shift';
+% log_name = 'attention_shift_18_import_events_log.txt';
+
 % rootPath = 's:/bcit/AdvancedGuardDutyWorkingPhaseTwo';
 % setname = 'BCIT Advanced Guard Duty';
 % log_name = 'bcit_advanced_guard_duty_10_import_events_log.txt';
@@ -44,10 +49,8 @@ nameSuffix = '_eeg';
 extensions = {'.set'};
 
 % Designate the columns that are numeric (rest are char)
-columnTypes = {'onset', 'double'; 
-               'duration', 'double'; 
-               'sample', 'int32'};
-renameColumns = {'event_type', 'type'; 'onset', 'latency'};
+columnTypes = {'onset', 'double'; 'duration', 'double'; 'sample', 'int32'};
+
 convertLatency = true; 
 
 %% Open the log
@@ -75,8 +78,9 @@ for k = 1:length(fileList)
    eventTable.('urevent') = transpose(1:size(eventTable));
    EEG.event = table2struct(eventTable)';
    fprintf(fid, '\tSet the EEG.event\n');
-   if ~isempty(setname)
+   if ~isempty(setname)    
       EEG.setname = [setname basename];
+      fprintf(fid, '\tSet the EEG.setname\n');
    end
    fprintf(fid, '\tResave the EEG.set file\n');
    EEG = pop_saveset(EEG, 'savemode', 'resave', 'version', '7.3');

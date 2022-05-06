@@ -1,0 +1,60 @@
+{
+  "trial_type": {
+    "LongName": "Type of trial",
+    "Description": "Whether the ",
+    "Levels": {
+      "go": "Indicating go",
+      "succesful_stop": "Indicating stop",
+      "unsuccesful_stop": "Missed a top"
+    },
+    "HED": {
+      "go": "Label/Go-trial",
+      "succesful_stop": "Label/Successful-stop-trial",
+      "unsuccesful_stop": "Label/Unsuccessful-stop-trial"
+    }
+  },
+  "stop_signal_delay": {
+    "LongName": "Stop signal delay",
+    "Description": "Time in between the onset of the stimulus (face image) and the stop signal",
+    "Units": "seconds"
+  },
+  "response_accuracy": {
+    "LongName": "Accuracy of response",
+    "Description": "Whether the response was correct, incorrect, or a miss",
+    "Levels": {
+      "correct": "response was correct",
+      "incorrect": "response was incorrect",
+      "miss": "response was missed (too late)"
+    },
+    "HED": {
+      "correct": "Label/Correct-response",
+      "incorrect": "Label/Incorrect-response",
+      "miss": "Label/Missed-response"
+    }
+  },
+  "response_hand": {
+    "LongName": "Hand of response",
+    "Description": "Which hand was used to respond",
+    "Levels": {
+      "left": "left hand",
+      "right": "right hand"
+    },
+    "HED": {
+      "left": "Label/Left-hand",
+      "right": "Label/Right-hand"
+    }
+  },
+  "sex": {
+    "LongName": "Sex of face images (in case of emotion trial)",
+    "Description": "Which sex did the presented faces have?",
+    "Levels": {
+      "male": "male",
+      "female": "female"
+    },
+    "HED": {
+      "male": "Label/Male-image",
+      "female": "Label/Female-image",
+      "n/a": "Label/Unknown-image"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "group": {
+    "Description": "type of subject group the subject belongs to (e.g. autistic, normal, control...)"
+  },
+  "year_of_birth": {
+    "Description": "subject\u2019s year of birth only"
+  },
+  "legacy_labID": {
+    "Description": "labID used to reference the subject in ESS"
+  }
+}
