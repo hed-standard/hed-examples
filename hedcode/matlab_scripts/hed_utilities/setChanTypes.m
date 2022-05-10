@@ -29,11 +29,3 @@ function [chanlocs, missing] = setChanTypes(chanlocs, chanFile)
     end
 end
 
-function chanMap = getChannelMap(chanFile)
-   opts = delimitedTextImportOptions( ...
-        'Delimiter', '\t', 'DataLines', 2, 'VariableNamesLine', 1);
-    T = readtable(chanFile, opts, 'ReadVariableNames', true);
-    names = T.name;
-    types = T.type;
-    chanMap = containers.Map(names, types);
-end  

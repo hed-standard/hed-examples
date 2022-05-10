@@ -1,20 +1,15 @@
-% eeg_writeelectrodes - write electrodes.tsv for an EEG dataset.
+function numchans = writeElectrodeFile(chanlocs, electrodesFile)
+%% Write the electrodes.tsv file for the chanlocs.
 %
-% Usage:
 %    writeElectrodeFile(chanlocs, electrodesFile)
 %
-%
 % Parameters:
-%    chanlocs        - [struct] the EEG.chanlocs structure
-%    electrodesFile  - [string] filepath of the electrodes file
+%    chanlocs        [struct] The EEG.chanlocs structure.
+%    electrodesFile  [string] The filepath of the electrodes file.
 %
 % Returns:
-%    numchans        - [numerical] number of channels in electrodes file.
-%
-%
-% Author: Kay Robbins, 2022
-function numchans = writeElectrodeFile(chanlocs, electrodesFile)
-
+%    numchans        [numerical] number of channels in electrodes file.
+%%
     if isempty(chanlocs) || ~isfield(chanlocs, 'X')
        numchans = 0;
        return

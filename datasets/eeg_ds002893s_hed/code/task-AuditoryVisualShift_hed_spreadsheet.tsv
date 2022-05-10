@@ -1,0 +1,24 @@
+column_name	column_value	description	HED
+focus_modality	auditory	Description for auditory	Label/auditory
+focus_modality	visual	Description for visual	Label/visual
+event_type	bad_event	Description for bad_event	Label/bad_event
+event_type	button_press	Description for button_press	Label/button_press
+event_type	dark_bar	Description for dark_bar	Label/dark_bar
+event_type	hear_word	Description for hear_word	Label/hear_word
+event_type	high_tone	Description for high_tone	Label/high_tone
+event_type	light_bar	Description for light_bar	Label/light_bar
+event_type	look_word	Description for look_word	Label/look_word
+event_type	low_tone	Description for low_tone	Label/low_tone
+event_type	pause_recording	Description for pause_recording	Label/pause_recording
+attention_status	attended	Description for attended	Label/attended
+attention_status	unattended	Description for unattended	Label/unattended
+task_role	cue_auditory	Description for cue_auditory	Label/cue_auditory
+task_role	cue_visual	Description for cue_visual	Label/cue_visual
+task_role	frequent_stimulus	Description for frequent_stimulus	Label/frequent_stimulus
+task_role	infrequent_stimulus	Description for infrequent_stimulus	Label/infrequent_stimulus
+task_role	target_detected	Description for target_detected	Label/target_detected
+condition	attend_auditory	Description for attend_auditory	Label/attend_auditory
+condition	attend_visual	Description for attend_visual	Label/attend_visual
+condition	shift_attention	Description for shift_attention	Label/shift_attention
+trial	n/a	Description for trial	Label/#
+sub_block	n/a	Description for sub_block	Label/#

@@ -1,0 +1,75 @@
+name	type	units	sampling_frequency	description
+Fp1	EEG	uV	1024	n/a
+AF7	EEG	uV	1024	n/a
+AF3	EEG	uV	1024	n/a
+F1	EEG	uV	1024	n/a
+F3	EEG	uV	1024	n/a
+F5	EEG	uV	1024	n/a
+F7	EEG	uV	1024	n/a
+FT7	EEG	uV	1024	n/a
+FC5	EEG	uV	1024	n/a
+FC3	EEG	uV	1024	n/a
+FC1	EEG	uV	1024	n/a
+C1	EEG	uV	1024	n/a
+C3	EEG	uV	1024	n/a
+C5	EEG	uV	1024	n/a
+T7	EEG	uV	1024	n/a
+TP7	EEG	uV	1024	n/a
+CP5	EEG	uV	1024	n/a
+CP3	EEG	uV	1024	n/a
+CP1	EEG	uV	1024	n/a
+P1	EEG	uV	1024	n/a
+P3	EEG	uV	1024	n/a
+P5	EEG	uV	1024	n/a
+P7	EEG	uV	1024	n/a
+P9	EEG	uV	1024	n/a
+PO7	EEG	uV	1024	n/a
+PO3	EEG	uV	1024	n/a
+O1	EEG	uV	1024	n/a
+Iz	EEG	uV	1024	n/a
+Oz	EEG	uV	1024	n/a
+POz	EEG	uV	1024	n/a
+Pz	EEG	uV	1024	n/a
+CPz	EEG	uV	1024	n/a
+Fpz	EEG	uV	1024	n/a
+Fp2	EEG	uV	1024	n/a
+AF8	EEG	uV	1024	n/a
+AF4	EEG	uV	1024	n/a
+AFz	EEG	uV	1024	n/a
+Fz	EEG	uV	1024	n/a
+F2	EEG	uV	1024	n/a
+F4	EEG	uV	1024	n/a
+F6	EEG	uV	1024	n/a
+F8	EEG	uV	1024	n/a
+FT8	EEG	uV	1024	n/a
+FC6	EEG	uV	1024	n/a
+FC4	EEG	uV	1024	n/a
+FC2	EEG	uV	1024	n/a
+FCz	EEG	uV	1024	n/a
+Cz	EEG	uV	1024	n/a
+C2	EEG	uV	1024	n/a
+C4	EEG	uV	1024	n/a
+C6	EEG	uV	1024	n/a
+T8	EEG	uV	1024	n/a
+TP8	EEG	uV	1024	n/a
+CP6	EEG	uV	1024	n/a
+CP4	EEG	uV	1024	n/a
+CP2	EEG	uV	1024	n/a
+P2	EEG	uV	1024	n/a
+P4	EEG	uV	1024	n/a
+P6	EEG	uV	1024	n/a
+P8	EEG	uV	1024	n/a
+P10	EEG	uV	1024	n/a
+PO8	EEG	uV	1024	n/a
+PO4	EEG	uV	1024	n/a
+O2	EEG	uV	1024	n/a
+LHEOG	EOG	uV	1024	Left horizontal EOG
+RHEOG	EOG	uV	1024	Right horizontal EOG
+UVEOG	EOG	uV	1024	Upper vertical EOG
+LVEOG	EOG	uV	1024	Lower vertical EOG
+LMAST	MISC	uV	1024	Left mastoid
+RMAST	MISC	uV	1024	Right mastoid
+LN	OTHER	n/a	1024	Lane deviation from center line in meters.
+ANG	OTHER	n/a	1024	Steering wheel deviation angle in degrees.
+SP	OTHER	n/a	1024	Vehicle speed in mph.
+SD	OTHER	n/a	1024	Vehicle speed deviation.

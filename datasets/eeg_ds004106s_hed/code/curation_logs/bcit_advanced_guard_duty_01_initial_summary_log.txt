@@ -1,0 +1,582 @@
+code/curation_logs/bcit_advanced_guard_duty_01_initial_summary_log.json.txt 2022-04-17 12:59:35.113802
+
+Summary for column dictionary :
+   Categorical columns (2):
+      duration (1 distinct values):
+         n/a: 27285
+      event_code (29 distinct values):
+         1121: 25
+         1122: 29
+         1211: 56
+         1212: 56
+         1221: 54
+         1222: 54
+         1231: 56
+         1232: 56
+         1241: 50
+         1242: 50
+         1251: 58
+         1252: 58
+         1311: 7307
+         1312: 7307
+         1321: 537
+         1322: 537
+         1331: 516
+         1332: 516
+         1341: 172
+         1342: 172
+         1351: 172
+         1352: 172
+         1361: 171
+         1362: 171
+         2110: 7223
+         2120: 1652
+         3111: 27
+         3112: 27
+         3232: 4
+   Value columns (0):
+
+Summary for column dictionary :
+   Categorical columns (3):
+      gid (317 distinct values):
+         0: 9384
+         1000: 56
+         1001: 58
+         1002: 56
+         1003: 54
+         1004: 54
+         1005: 56
+         1006: 58
+         1007: 56
+         1008: 62
+         1009: 54
+         1010: 52
+         1011: 60
+         1012: 58
+         1013: 56
+         1014: 54
+         1015: 52
+         1016: 56
+         1017: 54
+         1018: 56
+         1019: 54
+         1020: 52
+         1021: 52
+         1022: 50
+         1023: 60
+         1024: 56
+         1025: 54
+         1026: 52
+         1027: 52
+         1028: 56
+         1029: 58
+         1030: 62
+         1031: 56
+         1032: 54
+         1033: 58
+         1034: 58
+         1035: 52
+         1036: 58
+         1037: 56
+         1038: 54
+         1039: 56
+         1040: 56
+         1041: 54
+         1042: 58
+         1043: 58
+         1044: 58
+         1045: 54
+         1046: 52
+         1047: 58
+         1048: 52
+         1049: 52
+         1050: 58
+         1051: 54
+         1052: 54
+         1053: 54
+         1054: 62
+         1055: 54
+         1056: 56
+         1057: 50
+         1058: 54
+         1059: 56
+         1060: 58
+         1061: 56
+         1062: 58
+         1063: 52
+         1064: 54
+         1065: 58
+         1066: 50
+         1067: 56
+         1068: 54
+         1069: 68
+         1070: 56
+         1071: 52
+         1072: 56
+         1073: 58
+         1074: 60
+         1075: 58
+         1076: 62
+         1077: 58
+         1078: 54
+         1079: 52
+         1080: 58
+         1081: 54
+         1082: 64
+         1083: 54
+         1084: 52
+         1085: 54
+         1086: 62
+         1087: 58
+         1088: 60
+         1089: 56
+         1090: 56
+         1091: 56
+         1092: 58
+         1093: 62
+         1094: 56
+         1095: 60
+         1096: 54
+         1097: 58
+         1098: 56
+         1099: 60
+         1100: 58
+         1101: 60
+         1102: 52
+         1103: 54
+         1104: 60
+         1105: 56
+         1106: 56
+         1107: 56
+         1108: 54
+         1109: 56
+         1110: 58
+         1111: 56
+         1112: 58
+         1113: 58
+         1114: 58
+         1115: 56
+         1116: 54
+         1117: 52
+         1118: 54
+         1119: 56
+         1120: 56
+         1121: 54
+         1122: 54
+         1123: 60
+         1124: 62
+         1125: 58
+         1126: 56
+         1127: 54
+         1128: 56
+         1129: 54
+         1130: 60
+         1131: 52
+         1132: 52
+         1133: 50
+         1134: 60
+         1135: 56
+         1136: 56
+         1137: 56
+         1138: 56
+         1139: 56
+         1140: 52
+         1141: 60
+         1142: 58
+         1143: 60
+         1144: 62
+         1145: 54
+         1146: 50
+         1147: 62
+         1148: 60
+         1149: 58
+         1150: 56
+         1151: 66
+         1152: 54
+         1153: 58
+         1154: 60
+         1155: 54
+         1156: 56
+         1157: 64
+         1158: 54
+         1159: 52
+         1160: 52
+         1161: 54
+         1162: 58
+         1163: 60
+         1164: 54
+         1165: 52
+         1166: 52
+         1167: 54
+         1168: 56
+         1169: 52
+         1170: 54
+         1171: 54
+         1172: 50
+         1173: 56
+         1174: 58
+         1175: 54
+         1176: 54
+         1177: 54
+         1178: 60
+         1179: 56
+         1180: 60
+         1181: 58
+         1182: 54
+         1183: 52
+         1184: 58
+         1185: 48
+         1186: 56
+         1187: 54
+         1188: 56
+         1189: 60
+         1190: 52
+         1191: 54
+         1192: 54
+         1193: 54
+         1194: 56
+         1195: 46
+         1196: 60
+         1197: 52
+         1198: 56
+         1199: 54
+         1200: 54
+         1201: 56
+         1202: 62
+         1203: 58
+         1204: 52
+         1205: 52
+         1206: 58
+         1207: 52
+         1208: 60
+         1209: 60
+         1210: 54
+         1211: 60
+         1212: 56
+         1213: 62
+         1214: 54
+         1215: 58
+         1216: 52
+         1217: 52
+         1218: 58
+         1219: 48
+         1220: 58
+         1221: 50
+         1222: 64
+         1223: 54
+         1224: 58
+         1225: 62
+         1226: 64
+         1227: 54
+         1228: 52
+         1229: 56
+         1230: 52
+         1231: 52
+         1232: 48
+         1233: 56
+         1234: 62
+         1235: 56
+         1236: 50
+         1237: 58
+         1238: 60
+         1239: 58
+         1240: 56
+         1241: 56
+         1242: 56
+         1243: 54
+         1244: 50
+         1245: 54
+         1246: 60
+         1247: 60
+         1248: 54
+         1249: 54
+         1250: 58
+         1251: 54
+         1252: 56
+         1253: 56
+         1254: 62
+         1255: 64
+         1256: 32
+         1257: 10
+         1258: 4
+         1259: 2
+         4000: 54
+         4001: 52
+         4002: 56
+         4003: 56
+         4004: 52
+         4005: 60
+         4006: 54
+         4007: 56
+         4008: 62
+         4009: 60
+         4010: 56
+         4011: 60
+         4012: 54
+         4013: 54
+         4014: 60
+         4015: 54
+         4016: 56
+         4017: 60
+         4018: 50
+         4019: 52
+         4020: 54
+         4021: 50
+         4022: 52
+         4023: 58
+         4024: 52
+         4025: 62
+         4026: 56
+         4027: 52
+         4028: 54
+         4029: 58
+         4030: 54
+         4031: 60
+         4032: 52
+         4033: 62
+         4034: 56
+         4035: 56
+         4036: 54
+         4037: 58
+         4038: 54
+         4039: 58
+         4040: 54
+         4041: 58
+         4042: 54
+         4043: 60
+         4044: 60
+         4045: 52
+         4046: 58
+         4047: 46
+         4048: 62
+         4049: 58
+         4050: 56
+         4051: 56
+         4052: 62
+         4053: 52
+         4054: 48
+         4055: 26
+      imageid (2 distinct values):
+         0: 9384
+         NaN: 17468
+      type (30 distinct values):
+         1121: 27
+         1122: 27
+         1211: 54
+         1212: 54
+         1221: 54
+         1222: 54
+         1231: 54
+         1232: 54
+         1241: 54
+         1242: 54
+         1251: 54
+         1252: 54
+         1311: 7188
+         1312: 7188
+         1321: 524
+         1322: 524
+         1331: 518
+         1332: 518
+         1341: 166
+         1342: 166
+         1351: 170
+         1352: 170
+         1361: 168
+         1362: 168
+         2110: 7098
+         2120: 1636
+         3111: 26
+         3112: 26
+         3231: 2
+         3232: 2
+   Value columns (0):
+
+
+Log output:
+bcit_advanced_guard_duty_01_initial_summary_log.json: Level None
+overall:
+	[ Bids event files has 29 event files]
+	[ EEG event files has 29 event files]
+sub-01_ses-01_run-1:
+	[ Bids event files: sub-01_ses-01_task-GuardDuty_run-1_events.tsv]
+	[ EEG event files: sub-01_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Bids event files: [1086 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [1086 events] ['type', 'latency', 'urevent', 'gid', 'imageid', 'usertags']]
+sub-02_ses-01_run-1:
+	[ Bids event files: sub-02_ses-01_task-GuardDuty_run-1_events.tsv]
+	[ EEG event files: sub-02_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Bids event files: [984 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [984 events] ['type', 'latency', 'urevent', 'gid', 'imageid', 'usertags']]
+sub-03_ses-01_run-1:
+	[ Bids event files: sub-03_ses-01_task-GuardDuty_run-1_events.tsv]
+	[ EEG event files: sub-03_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Bids event files: [819 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [819 events] ['type', 'latency', 'urevent', 'gid', 'imageid', 'usertags']]
+sub-04_ses-01_run-1:
+	[ Bids event files: sub-04_ses-01_task-GuardDuty_run-1_events.tsv]
+	[ EEG event files: sub-04_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Bids event files: [1137 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [1137 events] ['type', 'latency', 'urevent', 'gid', 'imageid', 'usertags']]
+sub-05_ses-01_run-1:
+	[ Bids event files: sub-05_ses-01_task-GuardDuty_run-1_events.tsv]
+	[ EEG event files: sub-05_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Bids event files: [891 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [891 events] ['type', 'latency', 'urevent', 'gid', 'imageid', 'usertags']]
+sub-06_ses-01_run-1:
+	[ Bids event files: sub-06_ses-01_task-GuardDuty_run-1_events.tsv]
+	[ EEG event files: sub-06_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Bids event files: [1023 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [1023 events] ['type', 'latency', 'urevent', 'gid', 'imageid', 'usertags']]
+sub-07_ses-01_run-1:
+	[ Bids event files: sub-07_ses-01_task-GuardDuty_run-1_events.tsv]
+	[ EEG event files: sub-07_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Bids event files: [1185 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [1185 events] ['type', 'latency', 'urevent', 'gid', 'imageid', 'usertags']]
+sub-08_ses-01_run-1:
+	[ Bids event files: sub-08_ses-01_task-GuardDuty_run-1_events.tsv]
+	[ EEG event files: sub-08_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Bids event files: [1038 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [1038 events] ['type', 'latency', 'urevent', 'gid', 'imageid', 'usertags']]
+sub-09_ses-01_run-1:
+	[ Bids event files: sub-09_ses-01_task-GuardDuty_run-1_events.tsv]
+	[ EEG event files: sub-09_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Bids event files: [1068 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [1068 events] ['type', 'latency', 'urevent', 'gid', 'imageid', 'usertags']]
+sub-10_ses-01_run-1:
+	[ Bids event files: sub-10_ses-01_task-GuardDuty_run-1_events.tsv]
+	[ EEG event files: sub-10_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Bids event files: [1050 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [1050 events] ['type', 'latency', 'urevent', 'gid', 'imageid', 'usertags']]
+sub-11_ses-01_run-1:
+	[ Bids event files: sub-11_ses-01_task-GuardDuty_run-1_events.tsv]
+	[ EEG event files: sub-11_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Bids event files: [1038 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [1038 events] ['type', 'latency', 'urevent', 'gid', 'imageid', 'usertags']]
+sub-12_ses-01_run-1:
+	[ Bids event files: sub-12_ses-01_task-GuardDuty_run-1_events.tsv]
+	[ EEG event files: sub-12_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Bids event files: [1128 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [1128 events] ['type', 'latency', 'urevent', 'gid', 'imageid', 'usertags']]
+sub-13_ses-01_run-1:
+	[ Bids event files: sub-13_ses-01_task-GuardDuty_run-1_events.tsv]
+	[ EEG event files: sub-13_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Bids event files: [1035 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [1035 events] ['type', 'latency', 'urevent', 'gid', 'imageid', 'usertags']]
+sub-14_ses-01_run-1:
+	[ Bids event files: sub-14_ses-01_task-GuardDuty_run-1_events.tsv]
+	[ EEG event files: sub-14_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Bids event files: [714 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [714 events] ['type', 'latency', 'urevent', 'gid', 'imageid', 'usertags']]
+sub-15_ses-01_run-1:
+	[ Bids event files: sub-15_ses-01_task-GuardDuty_run-1_events.tsv]
+	[ EEG event files: sub-15_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Bids event files: [1035 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [1035 events] ['type', 'latency', 'urevent', 'gid', 'imageid', 'usertags']]
+sub-16_ses-01_run-1:
+	[ Bids event files: sub-16_ses-01_task-GuardDuty_run-1_events.tsv]
+	[ EEG event files: sub-16_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Bids event files: [897 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [897 events] ['type', 'latency', 'urevent', 'gid', 'imageid', 'usertags']]
+sub-17_ses-01_run-1:
+	[ Bids event files: sub-17_ses-01_task-GuardDuty_run-1_events.tsv]
+	[ EEG event files: sub-17_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Bids event files: [720 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [335 events] ['type', 'latency', 'urevent', 'gid', 'imageid', 'usertags']]
+	[ERROR The Bids event files file has 720 rows and the EEG event files event file has 335 rows]
+sub-17_ses-01_run-2:
+	[ Bids event files: sub-17_ses-01_task-GuardDuty_run-2_events.tsv]
+	[ EEG event files: sub-17_ses-01_task-GuardDuty_run-2_eventstemp.tsv]
+	[ Bids event files: [720 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [720 events] ['type', 'latency', 'urevent', 'gid', 'imageid', 'usertags']]
+sub-18_ses-01_run-1:
+	[ Bids event files: sub-18_ses-01_task-GuardDuty_run-1_events.tsv]
+	[ EEG event files: sub-18_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Bids event files: [1074 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [1074 events] ['type', 'latency', 'urevent', 'gid', 'imageid', 'usertags']]
+sub-19_ses-01_run-1:
+	[ Bids event files: sub-19_ses-01_task-GuardDuty_run-1_events.tsv]
+	[ EEG event files: sub-19_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Bids event files: [1131 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [1131 events] ['type', 'latency', 'urevent', 'gid', 'imageid', 'usertags']]
+sub-20_ses-01_run-1:
+	[ Bids event files: sub-20_ses-01_task-GuardDuty_run-1_events.tsv]
+	[ EEG event files: sub-20_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Bids event files: [930 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [930 events] ['type', 'latency', 'urevent', 'gid', 'imageid', 'usertags']]
+sub-21_ses-01_run-1:
+	[ Bids event files: sub-21_ses-01_task-GuardDuty_run-1_events.tsv]
+	[ EEG event files: sub-21_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Bids event files: [603 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [603 events] ['type', 'latency', 'urevent', 'gid', 'imageid', 'usertags']]
+sub-22_ses-01_run-1:
+	[ Bids event files: sub-22_ses-01_task-GuardDuty_run-1_events.tsv]
+	[ EEG event files: sub-22_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Bids event files: [909 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [909 events] ['type', 'latency', 'urevent', 'gid', 'imageid', 'usertags']]
+sub-23_ses-01_run-1:
+	[ Bids event files: sub-23_ses-01_task-GuardDuty_run-1_events.tsv]
+	[ EEG event files: sub-23_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Bids event files: [996 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [996 events] ['type', 'latency', 'urevent', 'gid', 'imageid', 'usertags']]
+sub-24_ses-01_run-1:
+	[ Bids event files: sub-24_ses-01_task-GuardDuty_run-1_events.tsv]
+	[ EEG event files: sub-24_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Bids event files: [795 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [795 events] ['type', 'latency', 'urevent', 'gid', 'imageid', 'usertags']]
+sub-25_ses-01_run-1:
+	[ Bids event files: sub-25_ses-01_task-GuardDuty_run-1_events.tsv]
+	[ EEG event files: sub-25_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Bids event files: [567 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [519 events] ['type', 'latency', 'urevent', 'gid', 'imageid', 'usertags']]
+	[ERROR The Bids event files file has 567 rows and the EEG event files event file has 519 rows]
+sub-25_ses-01_run-2:
+	[ Bids event files: sub-25_ses-01_task-GuardDuty_run-2_events.tsv]
+	[ EEG event files: sub-25_ses-01_task-GuardDuty_run-2_eventstemp.tsv]
+	[ Bids event files: [567 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [567 events] ['type', 'latency', 'urevent', 'gid', 'imageid', 'usertags']]
+sub-26_ses-01_run-1:
+	[ Bids event files: sub-26_ses-01_task-GuardDuty_run-1_events.tsv]
+	[ EEG event files: sub-26_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Bids event files: [1101 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [1101 events] ['type', 'latency', 'urevent', 'gid', 'imageid', 'usertags']]
+sub-27_ses-01_run-1:
+	[ Bids event files: sub-27_ses-01_task-GuardDuty_run-1_events.tsv]
+	[ EEG event files: sub-27_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Bids event files: [1044 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [1044 events] ['type', 'latency', 'urevent', 'gid', 'imageid', 'usertags']]
+
+ERROR Summary:
+bcit_advanced_guard_duty_01_initial_summary_log.json: Level ERROR
+overall:
+sub-01_ses-01_run-1:
+sub-02_ses-01_run-1:
+sub-03_ses-01_run-1:
+sub-04_ses-01_run-1:
+sub-05_ses-01_run-1:
+sub-06_ses-01_run-1:
+sub-07_ses-01_run-1:
+sub-08_ses-01_run-1:
+sub-09_ses-01_run-1:
+sub-10_ses-01_run-1:
+sub-11_ses-01_run-1:
+sub-12_ses-01_run-1:
+sub-13_ses-01_run-1:
+sub-14_ses-01_run-1:
+sub-15_ses-01_run-1:
+sub-16_ses-01_run-1:
+sub-17_ses-01_run-1:
+	[ERROR The Bids event files file has 720 rows and the EEG event files event file has 335 rows]
+sub-17_ses-01_run-2:
+sub-18_ses-01_run-1:
+sub-19_ses-01_run-1:
+sub-20_ses-01_run-1:
+sub-21_ses-01_run-1:
+sub-22_ses-01_run-1:
+sub-23_ses-01_run-1:
+sub-24_ses-01_run-1:
+sub-25_ses-01_run-1:
+	[ERROR The Bids event files file has 567 rows and the EEG event files event file has 519 rows]
+sub-25_ses-01_run-2:
+sub-26_ses-01_run-1:
+sub-27_ses-01_run-1:

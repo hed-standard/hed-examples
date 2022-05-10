@@ -1,0 +1,13 @@
+code/curation_logs/bcit_advanced_guard_duty_04_generate_sidecar_log.txt 2022-04-21 10:45:53.902132
+
+
+Log output:
+bcit_advanced_guard_duty_04_generate_sidecar_log: Level None
+overall:
+	[ Summarizing 29]
+	[ Saving a JSON sidecar template to task-GuardDuty_events.json]
+	[ Creating a spreadsheet template and saving to task-GuardDuty_hed_spreadsheet.tsv]
+
+ERROR Summary:
+bcit_advanced_guard_duty_04_generate_sidecar_log: Level ERROR
+overall:

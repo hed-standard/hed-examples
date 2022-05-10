@@ -1,0 +1,14 @@
+{
+  "ignore": [],
+  "warn": [
+    "INVALID_TSV_UNITS"
+  ],
+  "error": [],
+  "ignoredFiles": [
+    "/field_replacements.json",
+    "/archived/**",
+    "/VALIDATOR_OUTPUT.txt",
+    "/REPORT.txt",
+    "/additional_documentation/**"
+  ]
+}

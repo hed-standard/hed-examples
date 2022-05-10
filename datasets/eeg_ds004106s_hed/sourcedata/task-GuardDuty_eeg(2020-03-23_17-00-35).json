@@ -1,0 +1,14 @@
+{
+  "TaskName": "GuardDuty",
+  "TaskDescription": "Subjects performed a sustained vigilance task, simulating the role of guard duty for a restricted area. A series of replica ID badges was presented to subjects, each containing eight components or fields that required review for access. These components were: photo, name, date of birth (DOB), date of issue, date of expiration, area access, ID number, bar code and watermark. ID badges were presented along with a photo of the person requesting access. Subjects were required to ensure that the person in the picture requesting access was the same person on the badge, and had access (as specified on the badge) to the area guarded by the subject. Other considerations included expired badges, reasonable DOB, correct watermark, etc. Subject decisions were recorded when they pressed either an \"allow\" button or a \"deny\" button. The badge review process was self-paced, with a maximum of 20 seconds to complete. The task was performed in 10 blocks of 5 minutes each, and the rate of access requests was different for each block. A wait queue was displayed to indicate the number of people awaiting access. For the AdvancedGuardDuty study, subjects were given different restricted areas to each for each block.",
+  "EEGReference": "CMS",
+  "SamplingFrequency": 1024.0,
+  "SoftwareFilters": "n/a",
+  "CapManufacturer": "BioSemi ActiveTwo biopotential measurement system",
+  "EEGChannelCount": 256,
+  "ECGChannelCount": 0,
+  "EMGChannelCount": 0,
+  "EOGChannelCount": 0,
+  "MiscChannelCount": 0,
+  "EEGPlacementScheme": "Custom"
+}

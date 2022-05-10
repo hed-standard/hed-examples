@@ -1,0 +1,3 @@
+participant_id	age	sex	BMI	handedness	education_category	raven_score	NEO_N	NEO_E	NEO_O	NEO_A	NEO_C
+sub-0001	25.5	M	21.0	right	academic	33.0	23	40	52	47	32
+sub-0002	23.25	F	22.0	right	academic	19.0	22	47	34	53	46

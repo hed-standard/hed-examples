@@ -1,0 +1,24 @@
+column_name	column_value	description	HED
+focus_modality	auditory	Participant should focus only on auditory stimuli	"(Selective-attention, Auditory-presentation)"
+focus_modality	visual	Participant should focus only on visual stimuli.	"(Selective-attention, Visual-presentation)"
+event_type	bad_event	An event presentation that should not have been made.	"Sensory-presentation, Mishap"
+event_type	button_press	Participant presses a button.	"Participant-response, (Experiment-participant, (Press, Mouse-button))"
+event_type	dark_bar	Presentation of a dark blue square.	"Sensory-presentation, Experimental-stimulus, Visual-presentation, (Square, DarkBlue, (Center-of, Computer-screen))"
+event_type	hear_word	Auditory and visual presentation of a hear cue.	"Sensory-presentation, (Word, Label/Word-hear), Auditory-presentation, Visual-presentation"
+event_type	high_tone	Presentation of a 550 Hz tone.	"Sensory-presentation, Experimental-stimulus, Auditory-presentation, (Tone, Frequency/550 Hz)"
+event_type	light_bar	Presentation of a light blue square.	"Sensory-presentation, Experimental-stimulus, Visual-presentation, (Square, LightBlue, (Center-of, Computer-screen))"
+event_type	look_word	Auditory and visual presentation of a look cue.	"Sensory-presentation, (Word, Label/Word-look), Auditory-presentation, Visual-presentation"
+event_type	low_tone	Presentation of a 500 Hz tone.	"Sensory-presentation, Experimental-stimulus, Auditory-presentation, (Tone, Frequency/500 Hz)"
+event_type	pause_recording	Pause the recording of the experiment.	"Experiment-control, Pause"
+attention_status	attended	Indicates that the stimulus should be attended to.	Attend-to
+attention_status	unattended	Indicates that the stimulus should be ignored.	Think/Ignore
+task_role	cue_auditory	Cue indicating participant should focus on auditory stimuli.	"(Cue, Instructional, Focused-attention, Auditory-presentation)"
+task_role	cue_visual	Cue indicating participant should focus on visual stimuli.	"(Cue, Instructional, Focused-attention, Visual-presentation)"
+task_role	frequent_stimulus	Stimulus that is a non-target.	Non-target
+task_role	infrequent_stimulus	Stimulus that is designated as the one to be looked for.	"Target, Oddball"
+task_role	target_detected	A target in the attended to modality has been detected.	"(Detect, Target)"
+condition	attend_auditory	Experimental condition in which participant only pays attention to auditory stimuli.	"(Condition-variable/Auditory-focus, (Focused-attention, Auditory-presentation))"
+condition	attend_visual	Experimental condition in which participant only pays attention to visual stimuli.	"(Condition-variable/Visual-focus, (Focused-attention, Visual-presentation))"
+condition	shift_attention	Experimental condition in which participant shifts attention based on instructions.	"(Condition-variable/Shift-focus, (Switch-attention, Auditory-presentation, Visual-presentation))"
+trial	n/a	Number of the trial within the experiment.	Experimental-trial/#
+sub_block	n/a	Number of the sub-block within the experiment. A sub-block starts with a cue word and ends when the next sub-block begins.	Time-block/#

@@ -1,0 +1,88 @@
+{
+    "value": {
+        "Levels": {
+            "1121": "Start advanced guard duty scenario.",
+            "1122": "End advanced guard duty scenario.",
+            "1211": "Start block of images from Area A.",
+            "1212": "Stop block of images from Area A.",
+            "1221": "Start block of images from Area B.",
+            "1222": "Stop block of images from Area B.",
+            "1231": "Start block of images from Area C.",
+            "1232": "Stop block of images from Area C.",
+            "1241": "Start block of images from Area D.",
+            "1242": "Stop block of images from Area D.",
+            "1251": "Start block of images from Area E.",
+            "1252": "Stop block of images from Area E.",
+            "1311": "Start showing of a valid image",
+            "1312": "End showing of a valid image",
+            "1321": "Start showing image incorrect access level.",
+            "1322": "End showing image incorrect access level.",
+            "1331": "Start showing image of expired ID",
+            "1332": "End showing image of expired ID.",
+            "1341": "Start showing image with photo ID mismatch.",
+            "1342": "End showing image with photo ID mismatch.",
+            "1351": "Start showing image with suspicious DOB.",
+            "1352": "End showing image with suspicious DOB.",
+            "1361": "Start showing image with no watermark.",
+            "1362": "End showing image with no watermark.",
+            "2110": "Button press allow access.",
+            "2120": "Button press deny access.",
+            "3111": "Start taking survey",
+            "3112": "End taking survey.",
+            "3231": "Start of a system failure.",
+            "3232": "End of system failure."
+        },
+        "HED": {
+            "1121": "(Def/Advanced-guard-scenario, Onset)",
+            "1122": "(Def/Advanced-guard-scenario, Offset)",
+            "1211": "(Def/Room-area/Area_A, Onset)",
+            "1212": "(Def/Room-area/Area_A, Offset)",
+            "1221": "(Def/Room-area/Area_B, Onset)",
+            "1222": "(Def/Room-area/Area_B, Offset)",
+            "1231": "(Def/Room-area/Area_C, Onset)",
+            "1232": "(Def/Room-area/Area_C, Offset)",
+            "1241": "(Def/Room-area/Area_D, Onset)",
+            "1242": "(Def/Room-area/Area_D, Offset)",
+            "1251": "(Def/Room-area/Area_E, Onset)",
+            "1252": "(Def/Room-area/Area_E, Offset)",
+            "1311": "(Def/Show-image, (Valid), Onset)",
+            "1312": "(Def/Show-image, Offset)",
+            "1321": "(Def/Show-image, (Invalid, Label/No_access_to_level), Onset)",
+            "1322": "(Def/Show-image, Offset)",
+            "1331": "(Def/Show-image, (Invalid, Label/Expired_ID), Onset)",
+            "1332": "(Def/Show-image, Offset)",
+            "1341": "(Def/Show-image, (Invalid, Label/Photo_mismatch), Onset)",
+            "1342": "(Def/Show-image, Offset)",
+            "1351": "(Def/Show-image, (Invalid, Label/Suspicious_DOB), Onset)",
+            "1352": "(Def/Show-image, Offset)",
+            "1361": "(Def/Show-image, (Invalid, Label/No_watermark), Onset)",
+            "1362": "(Def/Show-image, Offset)",
+            "2110": "Agent-action, Participant-response, (Press, Push-button), (Allow, Label/Area_access)",
+            "2120": "Agent-action, Participant-response, (Press, Push-button), (Deny, Label/Area_access)",
+            "3111": "(Def/Take-survey, Onset)",
+            "3112": "(Def/Take-survey, Offset)",
+            "3231": "(Def/System-failure, Onset)",
+            "3232": "(Def/System-failure, Offset)"
+        }
+    },
+    "gid": {
+        "Description": "ID of the badge image.",
+        "HED": "(Label/Badge-image, ID/#)"
+    },
+    "hed_defs": {
+        "Levels": {
+            "advanced_guard_scenario": "Image identification forAdvanced Guard Experiment",
+            "start_area": "Checks should be for authorization to a specified area.",
+            "show_image": "Show an ID image.",
+            "take_survey": "Participant takes a survey",
+            "system_failure": "A system failure causes data to be invalid"
+        },
+        "HED": {
+            "advanced_guard_scenario": "(Definition/Advanced-guard-scenario,  (Experiment-structure, Task, Label/Advanced_guard_duty))",
+            "start_area": "(Definition/Room-area/#, (Experiment-structure,  Condition-variable/#, Time-block))",
+            "show_image": "(Definition/Show-image, (Sensory-event, Visual-presentation, (Image, Label/ID-badge)))",
+            "take_survey": "(Definition/Take-survey, (Agent-action, (Experiment-participant, (Perform, (Label/Take-survey, Touchscreen)))))",
+            "system_failure": "(Definition/System-failure, (Experiment-control, Mishap))"
+        }
+    }
+}

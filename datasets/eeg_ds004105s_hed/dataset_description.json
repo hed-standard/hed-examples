@@ -1,0 +1,22 @@
+{
+  "Name": "BCIT Auditory Cueing",
+  "BIDSVersion": "1.7.0",
+  "HEDVersion": "8.0.0",
+  "License": "CC0",
+  "Authors": [
+              "Javier Garcia (data)",
+			  "Justin Brooks (data)",
+			  "Scott Kerick (data)",
+			  "Tony Johnson (data and curation)",
+			  "Tim Mullen (data)",
+			  "Jean Vettel (data)",
+			  "Jonathan Touryan (curation)",
+			  "Kay Robbins (curation)"],
+  "Acknowledgments": "Tony Johnson and Mike Dunkel from DCS Corporation originally curated the data in ESS (EEG Study Schema) format. Kay Robbins, Joe Lambeth and Jonathan Balraj of the University of Texas at San Antonio performed further curation and placed this dataset in BIDS format. The experiments were performed at Teledyne Laboratories (Durham, NC)  under contract with the US Army Research Laboratory. The study was reviewed and approved by the U.S. Army Human Research Protections Office (Protocol ARL 12-040) before the study began.",
+  "HowToAcknowledge": "Garcia, J.O., Brooks, J., Kerick, S., Johnson, T., Mullen, T.R., Vettel, J.M., 2017. Estimating direction in brain-behavior interactions: Proactive and reactive brain states in driving. NeuroImage 150, 239-249, https://doi.org/10.1016/j.neuroimage.2017.02.057.",
+  "Funding": ["This research was sponsored by the Army Research Laboratory and was accomplished under Cooperative Agreement Number W911NF-10-0-0002."],
+  "ReferencesAndLinks": ["Garcia, J.O., Brooks, J., Kerick, S., Johnson, T., Mullen, T.R., Vettel, J.M., 2017. Estimating direction in brain-behavior interactions: Proactive and reactive brain states in driving. NeuroImage 150, 239-249. https://doi.org/10.1016/j.neuroimage.2017.02.057.", 
+  "Bigdely-Shamlo, N., Touryan, J., Ojeda, A., Kothe, C., Mullen, T., Robbins, K., 2019. Automated EEG mega-analysis I: Spectral and amplitude characteristics across studies, NeuroImage, p. 116361, https://doi.org/10.1016/j.neuroimage.2019.116361",
+  "Bigdely-Shamlo, N., Touryan, J., Ojeda, A., Kothe, C., Mullen, T., Robbins, K., 2019. Automated EEG mega-analysis II: Cognitive aspects of event related features, NeuroImage, p. 116054, https://doi.org/10.1016/j.neuroimage.2019.116054"],
+  "DatasetDOI": "n/a"
+}

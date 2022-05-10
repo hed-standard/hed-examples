@@ -1,0 +1,95 @@
+code/curation_logs/bcit_advanced_guard_duty_08_fix_coordsystem_log.txt 2022-04-21 10:48:25.880959
+
+
+Log output:
+bcit_advanced_guard_duty_08_fix_coordsystem_log: Level None
+sub-01_ses-01_task-GuardDuty_run-1_eeg.set:
+	[ Saving the sub-01_ses-01_task-GuardDuty_run-1_coordsystem.json coordinate system file]
+sub-02_ses-01_task-GuardDuty_run-1_eeg.set:
+	[ Saving the sub-02_ses-01_task-GuardDuty_run-1_coordsystem.json coordinate system file]
+sub-03_ses-01_task-GuardDuty_run-1_eeg.set:
+	[ Saving the sub-03_ses-01_task-GuardDuty_run-1_coordsystem.json coordinate system file]
+sub-04_ses-01_task-GuardDuty_run-1_eeg.set:
+	[ Saving the sub-04_ses-01_task-GuardDuty_run-1_coordsystem.json coordinate system file]
+sub-05_ses-01_task-GuardDuty_run-1_eeg.set:
+	[ Saving the sub-05_ses-01_task-GuardDuty_run-1_coordsystem.json coordinate system file]
+sub-06_ses-01_task-GuardDuty_run-1_eeg.set:
+	[ Saving the sub-06_ses-01_task-GuardDuty_run-1_coordsystem.json coordinate system file]
+sub-07_ses-01_task-GuardDuty_run-1_eeg.set:
+	[ Saving the sub-07_ses-01_task-GuardDuty_run-1_coordsystem.json coordinate system file]
+sub-08_ses-01_task-GuardDuty_run-1_eeg.set:
+	[ Saving the sub-08_ses-01_task-GuardDuty_run-1_coordsystem.json coordinate system file]
+sub-09_ses-01_task-GuardDuty_run-1_eeg.set:
+	[ Saving the sub-09_ses-01_task-GuardDuty_run-1_coordsystem.json coordinate system file]
+sub-10_ses-01_task-GuardDuty_run-1_eeg.set:
+	[ Saving the sub-10_ses-01_task-GuardDuty_run-1_coordsystem.json coordinate system file]
+sub-11_ses-01_task-GuardDuty_run-1_eeg.set:
+	[ Saving the sub-11_ses-01_task-GuardDuty_run-1_coordsystem.json coordinate system file]
+sub-12_ses-01_task-GuardDuty_run-1_eeg.set:
+	[ Saving the sub-12_ses-01_task-GuardDuty_run-1_coordsystem.json coordinate system file]
+sub-13_ses-01_task-GuardDuty_run-1_eeg.set:
+	[ Saving the sub-13_ses-01_task-GuardDuty_run-1_coordsystem.json coordinate system file]
+sub-14_ses-01_task-GuardDuty_run-1_eeg.set:
+	[ Saving the sub-14_ses-01_task-GuardDuty_run-1_coordsystem.json coordinate system file]
+sub-15_ses-01_task-GuardDuty_run-1_eeg.set:
+	[ Saving the sub-15_ses-01_task-GuardDuty_run-1_coordsystem.json coordinate system file]
+sub-16_ses-01_task-GuardDuty_run-1_eeg.set:
+	[ Saving the sub-16_ses-01_task-GuardDuty_run-1_coordsystem.json coordinate system file]
+sub-17_ses-01_task-GuardDuty_run-1_eeg.set:
+	[ Saving the sub-17_ses-01_task-GuardDuty_run-1_coordsystem.json coordinate system file]
+sub-17_ses-01_task-GuardDuty_run-2_eeg.set:
+	[ Saving the sub-17_ses-01_task-GuardDuty_run-2_coordsystem.json coordinate system file]
+sub-18_ses-01_task-GuardDuty_run-1_eeg.set:
+	[ Saving the sub-18_ses-01_task-GuardDuty_run-1_coordsystem.json coordinate system file]
+sub-19_ses-01_task-GuardDuty_run-1_eeg.set:
+	[ Saving the sub-19_ses-01_task-GuardDuty_run-1_coordsystem.json coordinate system file]
+sub-20_ses-01_task-GuardDuty_run-1_eeg.set:
+	[ Saving the sub-20_ses-01_task-GuardDuty_run-1_coordsystem.json coordinate system file]
+sub-21_ses-01_task-GuardDuty_run-1_eeg.set:
+	[ Saving the sub-21_ses-01_task-GuardDuty_run-1_coordsystem.json coordinate system file]
+sub-22_ses-01_task-GuardDuty_run-1_eeg.set:
+	[ Saving the sub-22_ses-01_task-GuardDuty_run-1_coordsystem.json coordinate system file]
+sub-23_ses-01_task-GuardDuty_run-1_eeg.set:
+	[ Saving the sub-23_ses-01_task-GuardDuty_run-1_coordsystem.json coordinate system file]
+sub-24_ses-01_task-GuardDuty_run-1_eeg.set:
+	[ Saving the sub-24_ses-01_task-GuardDuty_run-1_coordsystem.json coordinate system file]
+sub-25_ses-01_task-GuardDuty_run-1_eeg.set:
+	[ Saving the sub-25_ses-01_task-GuardDuty_run-1_coordsystem.json coordinate system file]
+sub-25_ses-01_task-GuardDuty_run-2_eeg.set:
+	[ Saving the sub-25_ses-01_task-GuardDuty_run-2_coordsystem.json coordinate system file]
+sub-26_ses-01_task-GuardDuty_run-1_eeg.set:
+	[ Saving the sub-26_ses-01_task-GuardDuty_run-1_coordsystem.json coordinate system file]
+sub-27_ses-01_task-GuardDuty_run-1_eeg.set:
+	[ Saving the sub-27_ses-01_task-GuardDuty_run-1_coordsystem.json coordinate system file]
+
+ERROR Summary:
+bcit_advanced_guard_duty_08_fix_coordsystem_log: Level ERROR
+sub-01_ses-01_task-GuardDuty_run-1_eeg.set:
+sub-02_ses-01_task-GuardDuty_run-1_eeg.set:
+sub-03_ses-01_task-GuardDuty_run-1_eeg.set:
+sub-04_ses-01_task-GuardDuty_run-1_eeg.set:
+sub-05_ses-01_task-GuardDuty_run-1_eeg.set:
+sub-06_ses-01_task-GuardDuty_run-1_eeg.set:
+sub-07_ses-01_task-GuardDuty_run-1_eeg.set:
+sub-08_ses-01_task-GuardDuty_run-1_eeg.set:
+sub-09_ses-01_task-GuardDuty_run-1_eeg.set:
+sub-10_ses-01_task-GuardDuty_run-1_eeg.set:
+sub-11_ses-01_task-GuardDuty_run-1_eeg.set:
+sub-12_ses-01_task-GuardDuty_run-1_eeg.set:
+sub-13_ses-01_task-GuardDuty_run-1_eeg.set:
+sub-14_ses-01_task-GuardDuty_run-1_eeg.set:
+sub-15_ses-01_task-GuardDuty_run-1_eeg.set:
+sub-16_ses-01_task-GuardDuty_run-1_eeg.set:
+sub-17_ses-01_task-GuardDuty_run-1_eeg.set:
+sub-17_ses-01_task-GuardDuty_run-2_eeg.set:
+sub-18_ses-01_task-GuardDuty_run-1_eeg.set:
+sub-19_ses-01_task-GuardDuty_run-1_eeg.set:
+sub-20_ses-01_task-GuardDuty_run-1_eeg.set:
+sub-21_ses-01_task-GuardDuty_run-1_eeg.set:
+sub-22_ses-01_task-GuardDuty_run-1_eeg.set:
+sub-23_ses-01_task-GuardDuty_run-1_eeg.set:
+sub-24_ses-01_task-GuardDuty_run-1_eeg.set:
+sub-25_ses-01_task-GuardDuty_run-1_eeg.set:
+sub-25_ses-01_task-GuardDuty_run-2_eeg.set:
+sub-26_ses-01_task-GuardDuty_run-1_eeg.set:
+sub-27_ses-01_task-GuardDuty_run-1_eeg.set:

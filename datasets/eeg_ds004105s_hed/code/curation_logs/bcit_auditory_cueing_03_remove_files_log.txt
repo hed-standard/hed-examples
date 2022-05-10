@@ -1,0 +1,212 @@
+code/curation_logs/bcit_auditory_cueing_03_remove_files_log.txt 2022-04-21 10:54:16.082810
+
+
+Log output:
+bcit_auditory_cueing_03_remove_files_log: Level None
+sub-01_ses-01_run-1:
+	[ Remove sub-01_ses-01_task-DriveRandomSound_run-1_events.tsv]
+	[ Removed sub-01_ses-01_task-DriveRandomSound_run-1_eventstemp.tsv]
+	[ Renamed sub-01_ses-01_task-DriveRandomSound_run-1_eventstemp1.tsv
+		to sub-01_ses-01_task-DriveRandomSound_run-1_events.tsv]
+sub-01_ses-01_run-2:
+	[ Remove sub-01_ses-01_task-DriveRandomSound_run-2_events.tsv]
+	[ Removed sub-01_ses-01_task-DriveRandomSound_run-2_eventstemp.tsv]
+	[ Renamed sub-01_ses-01_task-DriveRandomSound_run-2_eventstemp1.tsv
+		to sub-01_ses-01_task-DriveRandomSound_run-2_events.tsv]
+sub-02_ses-01_run-1:
+	[ Remove sub-02_ses-01_task-DriveRandomSound_run-1_events.tsv]
+	[ Removed sub-02_ses-01_task-DriveRandomSound_run-1_eventstemp.tsv]
+	[ Renamed sub-02_ses-01_task-DriveRandomSound_run-1_eventstemp1.tsv
+		to sub-02_ses-01_task-DriveRandomSound_run-1_events.tsv]
+sub-02_ses-01_run-2:
+	[ Remove sub-02_ses-01_task-DriveRandomSound_run-2_events.tsv]
+	[ Removed sub-02_ses-01_task-DriveRandomSound_run-2_eventstemp.tsv]
+	[ Renamed sub-02_ses-01_task-DriveRandomSound_run-2_eventstemp1.tsv
+		to sub-02_ses-01_task-DriveRandomSound_run-2_events.tsv]
+sub-03_ses-01_run-1:
+	[ Remove sub-03_ses-01_task-DriveRandomSound_run-1_events.tsv]
+	[ Removed sub-03_ses-01_task-DriveRandomSound_run-1_eventstemp.tsv]
+	[ Renamed sub-03_ses-01_task-DriveRandomSound_run-1_eventstemp1.tsv
+		to sub-03_ses-01_task-DriveRandomSound_run-1_events.tsv]
+sub-03_ses-01_run-2:
+	[ Remove sub-03_ses-01_task-DriveRandomSound_run-2_events.tsv]
+	[ Removed sub-03_ses-01_task-DriveRandomSound_run-2_eventstemp.tsv]
+	[ Renamed sub-03_ses-01_task-DriveRandomSound_run-2_eventstemp1.tsv
+		to sub-03_ses-01_task-DriveRandomSound_run-2_events.tsv]
+sub-04_ses-01_run-1:
+	[ Remove sub-04_ses-01_task-DriveRandomSound_run-1_events.tsv]
+	[ Removed sub-04_ses-01_task-DriveRandomSound_run-1_eventstemp.tsv]
+	[ Renamed sub-04_ses-01_task-DriveRandomSound_run-1_eventstemp1.tsv
+		to sub-04_ses-01_task-DriveRandomSound_run-1_events.tsv]
+sub-04_ses-01_run-2:
+	[ Remove sub-04_ses-01_task-DriveRandomSound_run-2_events.tsv]
+	[ Removed sub-04_ses-01_task-DriveRandomSound_run-2_eventstemp.tsv]
+	[ Renamed sub-04_ses-01_task-DriveRandomSound_run-2_eventstemp1.tsv
+		to sub-04_ses-01_task-DriveRandomSound_run-2_events.tsv]
+sub-05_ses-01_run-1:
+	[ Remove sub-05_ses-01_task-DriveRandomSound_run-1_events.tsv]
+	[ Removed sub-05_ses-01_task-DriveRandomSound_run-1_eventstemp.tsv]
+	[ Renamed sub-05_ses-01_task-DriveRandomSound_run-1_eventstemp1.tsv
+		to sub-05_ses-01_task-DriveRandomSound_run-1_events.tsv]
+sub-05_ses-01_run-2:
+	[ Remove sub-05_ses-01_task-DriveRandomSound_run-2_events.tsv]
+	[ Removed sub-05_ses-01_task-DriveRandomSound_run-2_eventstemp.tsv]
+	[ Renamed sub-05_ses-01_task-DriveRandomSound_run-2_eventstemp1.tsv
+		to sub-05_ses-01_task-DriveRandomSound_run-2_events.tsv]
+sub-06_ses-01_run-1:
+	[ Remove sub-06_ses-01_task-DriveRandomSound_run-1_events.tsv]
+	[ Removed sub-06_ses-01_task-DriveRandomSound_run-1_eventstemp.tsv]
+	[ Renamed sub-06_ses-01_task-DriveRandomSound_run-1_eventstemp1.tsv
+		to sub-06_ses-01_task-DriveRandomSound_run-1_events.tsv]
+sub-06_ses-01_run-2:
+	[ Remove sub-06_ses-01_task-DriveRandomSound_run-2_events.tsv]
+	[ Removed sub-06_ses-01_task-DriveRandomSound_run-2_eventstemp.tsv]
+	[ Renamed sub-06_ses-01_task-DriveRandomSound_run-2_eventstemp1.tsv
+		to sub-06_ses-01_task-DriveRandomSound_run-2_events.tsv]
+sub-07_ses-01_run-1:
+	[ Remove sub-07_ses-01_task-DriveRandomSound_run-1_events.tsv]
+	[ Removed sub-07_ses-01_task-DriveRandomSound_run-1_eventstemp.tsv]
+	[ Renamed sub-07_ses-01_task-DriveRandomSound_run-1_eventstemp1.tsv
+		to sub-07_ses-01_task-DriveRandomSound_run-1_events.tsv]
+sub-07_ses-01_run-2:
+	[ Remove sub-07_ses-01_task-DriveRandomSound_run-2_events.tsv]
+	[ Removed sub-07_ses-01_task-DriveRandomSound_run-2_eventstemp.tsv]
+	[ Renamed sub-07_ses-01_task-DriveRandomSound_run-2_eventstemp1.tsv
+		to sub-07_ses-01_task-DriveRandomSound_run-2_events.tsv]
+sub-08_ses-01_run-1:
+	[ Remove sub-08_ses-01_task-DriveRandomSound_run-1_events.tsv]
+	[ Removed sub-08_ses-01_task-DriveRandomSound_run-1_eventstemp.tsv]
+	[ Renamed sub-08_ses-01_task-DriveRandomSound_run-1_eventstemp1.tsv
+		to sub-08_ses-01_task-DriveRandomSound_run-1_events.tsv]
+sub-08_ses-01_run-2:
+	[ Remove sub-08_ses-01_task-DriveRandomSound_run-2_events.tsv]
+	[ Removed sub-08_ses-01_task-DriveRandomSound_run-2_eventstemp.tsv]
+	[ Renamed sub-08_ses-01_task-DriveRandomSound_run-2_eventstemp1.tsv
+		to sub-08_ses-01_task-DriveRandomSound_run-2_events.tsv]
+sub-09_ses-01_run-1:
+	[ Remove sub-09_ses-01_task-DriveRandomSound_run-1_events.tsv]
+	[ Removed sub-09_ses-01_task-DriveRandomSound_run-1_eventstemp.tsv]
+	[ Renamed sub-09_ses-01_task-DriveRandomSound_run-1_eventstemp1.tsv
+		to sub-09_ses-01_task-DriveRandomSound_run-1_events.tsv]
+sub-09_ses-01_run-2:
+	[ Remove sub-09_ses-01_task-DriveRandomSound_run-2_events.tsv]
+	[ Removed sub-09_ses-01_task-DriveRandomSound_run-2_eventstemp.tsv]
+	[ Renamed sub-09_ses-01_task-DriveRandomSound_run-2_eventstemp1.tsv
+		to sub-09_ses-01_task-DriveRandomSound_run-2_events.tsv]
+sub-10_ses-01_run-1:
+	[ Remove sub-10_ses-01_task-DriveRandomSound_run-1_events.tsv]
+	[ Removed sub-10_ses-01_task-DriveRandomSound_run-1_eventstemp.tsv]
+	[ Renamed sub-10_ses-01_task-DriveRandomSound_run-1_eventstemp1.tsv
+		to sub-10_ses-01_task-DriveRandomSound_run-1_events.tsv]
+sub-10_ses-01_run-2:
+	[ Remove sub-10_ses-01_task-DriveRandomSound_run-2_events.tsv]
+	[ Removed sub-10_ses-01_task-DriveRandomSound_run-2_eventstemp.tsv]
+	[ Renamed sub-10_ses-01_task-DriveRandomSound_run-2_eventstemp1.tsv
+		to sub-10_ses-01_task-DriveRandomSound_run-2_events.tsv]
+sub-11_ses-01_run-1:
+	[ Remove sub-11_ses-01_task-DriveRandomSound_run-1_events.tsv]
+	[ Removed sub-11_ses-01_task-DriveRandomSound_run-1_eventstemp.tsv]
+	[ Renamed sub-11_ses-01_task-DriveRandomSound_run-1_eventstemp1.tsv
+		to sub-11_ses-01_task-DriveRandomSound_run-1_events.tsv]
+sub-11_ses-01_run-2:
+	[ Remove sub-11_ses-01_task-DriveRandomSound_run-2_events.tsv]
+	[ Removed sub-11_ses-01_task-DriveRandomSound_run-2_eventstemp.tsv]
+	[ Renamed sub-11_ses-01_task-DriveRandomSound_run-2_eventstemp1.tsv
+		to sub-11_ses-01_task-DriveRandomSound_run-2_events.tsv]
+sub-12_ses-01_run-1:
+	[ Remove sub-12_ses-01_task-DriveRandomSound_run-1_events.tsv]
+	[ Removed sub-12_ses-01_task-DriveRandomSound_run-1_eventstemp.tsv]
+	[ Renamed sub-12_ses-01_task-DriveRandomSound_run-1_eventstemp1.tsv
+		to sub-12_ses-01_task-DriveRandomSound_run-1_events.tsv]
+sub-12_ses-01_run-2:
+	[ Remove sub-12_ses-01_task-DriveRandomSound_run-2_events.tsv]
+	[ Removed sub-12_ses-01_task-DriveRandomSound_run-2_eventstemp.tsv]
+	[ Renamed sub-12_ses-01_task-DriveRandomSound_run-2_eventstemp1.tsv
+		to sub-12_ses-01_task-DriveRandomSound_run-2_events.tsv]
+sub-13_ses-01_run-1:
+	[ Remove sub-13_ses-01_task-DriveRandomSound_run-1_events.tsv]
+	[ Removed sub-13_ses-01_task-DriveRandomSound_run-1_eventstemp.tsv]
+	[ Renamed sub-13_ses-01_task-DriveRandomSound_run-1_eventstemp1.tsv
+		to sub-13_ses-01_task-DriveRandomSound_run-1_events.tsv]
+sub-13_ses-01_run-2:
+	[ Remove sub-13_ses-01_task-DriveRandomSound_run-2_events.tsv]
+	[ Removed sub-13_ses-01_task-DriveRandomSound_run-2_eventstemp.tsv]
+	[ Renamed sub-13_ses-01_task-DriveRandomSound_run-2_eventstemp1.tsv
+		to sub-13_ses-01_task-DriveRandomSound_run-2_events.tsv]
+sub-14_ses-01_run-1:
+	[ Remove sub-14_ses-01_task-DriveRandomSound_run-1_events.tsv]
+	[ Removed sub-14_ses-01_task-DriveRandomSound_run-1_eventstemp.tsv]
+	[ Renamed sub-14_ses-01_task-DriveRandomSound_run-1_eventstemp1.tsv
+		to sub-14_ses-01_task-DriveRandomSound_run-1_events.tsv]
+sub-14_ses-01_run-2:
+	[ Remove sub-14_ses-01_task-DriveRandomSound_run-2_events.tsv]
+	[ Removed sub-14_ses-01_task-DriveRandomSound_run-2_eventstemp.tsv]
+	[ Renamed sub-14_ses-01_task-DriveRandomSound_run-2_eventstemp1.tsv
+		to sub-14_ses-01_task-DriveRandomSound_run-2_events.tsv]
+sub-15_ses-01_run-1:
+	[ Remove sub-15_ses-01_task-DriveRandomSound_run-1_events.tsv]
+	[ Removed sub-15_ses-01_task-DriveRandomSound_run-1_eventstemp.tsv]
+	[ Renamed sub-15_ses-01_task-DriveRandomSound_run-1_eventstemp1.tsv
+		to sub-15_ses-01_task-DriveRandomSound_run-1_events.tsv]
+sub-15_ses-01_run-2:
+	[ Remove sub-15_ses-01_task-DriveRandomSound_run-2_events.tsv]
+	[ Removed sub-15_ses-01_task-DriveRandomSound_run-2_eventstemp.tsv]
+	[ Renamed sub-15_ses-01_task-DriveRandomSound_run-2_eventstemp1.tsv
+		to sub-15_ses-01_task-DriveRandomSound_run-2_events.tsv]
+sub-16_ses-01_run-1:
+	[ Remove sub-16_ses-01_task-DriveRandomSound_run-1_events.tsv]
+	[ Removed sub-16_ses-01_task-DriveRandomSound_run-1_eventstemp.tsv]
+	[ Renamed sub-16_ses-01_task-DriveRandomSound_run-1_eventstemp1.tsv
+		to sub-16_ses-01_task-DriveRandomSound_run-1_events.tsv]
+sub-16_ses-01_run-2:
+	[ Remove sub-16_ses-01_task-DriveRandomSound_run-2_events.tsv]
+	[ Removed sub-16_ses-01_task-DriveRandomSound_run-2_eventstemp.tsv]
+	[ Renamed sub-16_ses-01_task-DriveRandomSound_run-2_eventstemp1.tsv
+		to sub-16_ses-01_task-DriveRandomSound_run-2_events.tsv]
+sub-17_ses-01_run-1:
+	[ Remove sub-17_ses-01_task-DriveRandomSound_run-1_events.tsv]
+	[ Removed sub-17_ses-01_task-DriveRandomSound_run-1_eventstemp.tsv]
+	[ Renamed sub-17_ses-01_task-DriveRandomSound_run-1_eventstemp1.tsv
+		to sub-17_ses-01_task-DriveRandomSound_run-1_events.tsv]
+sub-17_ses-01_run-2:
+	[ Remove sub-17_ses-01_task-DriveRandomSound_run-2_events.tsv]
+	[ Removed sub-17_ses-01_task-DriveRandomSound_run-2_eventstemp.tsv]
+	[ Renamed sub-17_ses-01_task-DriveRandomSound_run-2_eventstemp1.tsv
+		to sub-17_ses-01_task-DriveRandomSound_run-2_events.tsv]
+
+ERROR Summary:
+bcit_auditory_cueing_03_remove_files_log: Level ERROR
+sub-01_ses-01_run-1:
+sub-01_ses-01_run-2:
+sub-02_ses-01_run-1:
+sub-02_ses-01_run-2:
+sub-03_ses-01_run-1:
+sub-03_ses-01_run-2:
+sub-04_ses-01_run-1:
+sub-04_ses-01_run-2:
+sub-05_ses-01_run-1:
+sub-05_ses-01_run-2:
+sub-06_ses-01_run-1:
+sub-06_ses-01_run-2:
+sub-07_ses-01_run-1:
+sub-07_ses-01_run-2:
+sub-08_ses-01_run-1:
+sub-08_ses-01_run-2:
+sub-09_ses-01_run-1:
+sub-09_ses-01_run-2:
+sub-10_ses-01_run-1:
+sub-10_ses-01_run-2:
+sub-11_ses-01_run-1:
+sub-11_ses-01_run-2:
+sub-12_ses-01_run-1:
+sub-12_ses-01_run-2:
+sub-13_ses-01_run-1:
+sub-13_ses-01_run-2:
+sub-14_ses-01_run-1:
+sub-14_ses-01_run-2:
+sub-15_ses-01_run-1:
+sub-15_ses-01_run-2:
+sub-16_ses-01_run-1:
+sub-16_ses-01_run-2:
+sub-17_ses-01_run-1:
+sub-17_ses-01_run-2:

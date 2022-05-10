@@ -1,0 +1,313 @@
+code/curation_logs/bcit_auditory_cueing_01_initial_summary_log.txt 2022-04-15 13:24:36.327334
+
+Summary for column dictionary :
+   Categorical columns (2):
+      duration (1 distinct values):
+         n/a: 102524
+      event_code (25 distinct values):
+         1111: 2664
+         1112: 2664
+         1121: 2726
+         1122: 2726
+         1131: 3066
+         1132: 3066
+         1141: 3070
+         1142: 3070
+         1211: 34
+         1212: 34
+         1311: 5070
+         1312: 5070
+         1321: 6126
+         1322: 6126
+         2621: 2268
+         2622: 2266
+         3111: 34
+         3112: 34
+         3200: 2364
+         3310: 34
+         4210: 15220
+         4220: 6866
+         4230: 8370
+         4311: 11246
+         4312: 8310
+   Value columns (0):
+
+Summary for column dictionary :
+   Categorical columns (1):
+      type (26 distinct values):
+         1111: 2938
+         1112: 2938
+         1121: 2883
+         1122: 2883
+         1131: 2904
+         1132: 2904
+         1141: 2894
+         1142: 2894
+         1211: 34
+         1212: 34
+         1311: 5193
+         1312: 5193
+         1321: 5796
+         1322: 5796
+         2621: 2239
+         2622: 2238
+         3111: 34
+         3112: 34
+         3200: 2342
+         3310: 34
+         4210: 15172
+         4220: 6745
+         4230: 8439
+         4311: 11324
+         4312: 8484
+         4411: 1
+   Value columns (0):
+
+
+Log output:
+bcit_auditory_cueing_01_initial_summary_log: Level None
+overall:
+	[ Bids event files has 34 event files]
+	[ EEG event files has 34 event files]
+sub-01_ses-01_run-1:
+	[ Bids event files: sub-01_ses-01_task-DriveRandomSound_run-1_events.tsv]
+	[ EEG event files: sub-01_ses-01_task-DriveRandomSound_run-1_eventstemp.tsv]
+	[ Bids event files: [2967 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [2960 events] ['type', 'latency', 'urevent', 'usertags']]
+	[ERROR The Bids event files file has 2967 rows and the EEG event files event file has 2960 rows]
+sub-01_ses-01_run-2:
+	[ Bids event files: sub-01_ses-01_task-DriveRandomSound_run-2_events.tsv]
+	[ EEG event files: sub-01_ses-01_task-DriveRandomSound_run-2_eventstemp.tsv]
+	[ Bids event files: [2967 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [2967 events] ['type', 'latency', 'urevent', 'usertags']]
+sub-02_ses-01_run-1:
+	[ Bids event files: sub-02_ses-01_task-DriveRandomSound_run-1_events.tsv]
+	[ EEG event files: sub-02_ses-01_task-DriveRandomSound_run-1_eventstemp.tsv]
+	[ Bids event files: [3111 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [2851 events] ['type', 'latency', 'urevent', 'usertags']]
+	[ERROR The Bids event files file has 3111 rows and the EEG event files event file has 2851 rows]
+sub-02_ses-01_run-2:
+	[ Bids event files: sub-02_ses-01_task-DriveRandomSound_run-2_events.tsv]
+	[ EEG event files: sub-02_ses-01_task-DriveRandomSound_run-2_eventstemp.tsv]
+	[ Bids event files: [3111 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [3111 events] ['type', 'latency', 'urevent', 'usertags']]
+sub-03_ses-01_run-1:
+	[ Bids event files: sub-03_ses-01_task-DriveRandomSound_run-1_events.tsv]
+	[ EEG event files: sub-03_ses-01_task-DriveRandomSound_run-1_eventstemp.tsv]
+	[ Bids event files: [2956 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [3052 events] ['type', 'latency', 'urevent', 'usertags']]
+	[ERROR The Bids event files file has 2956 rows and the EEG event files event file has 3052 rows]
+sub-03_ses-01_run-2:
+	[ Bids event files: sub-03_ses-01_task-DriveRandomSound_run-2_events.tsv]
+	[ EEG event files: sub-03_ses-01_task-DriveRandomSound_run-2_eventstemp.tsv]
+	[ Bids event files: [2956 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [2956 events] ['type', 'latency', 'urevent', 'usertags']]
+sub-04_ses-01_run-1:
+	[ Bids event files: sub-04_ses-01_task-DriveRandomSound_run-1_events.tsv]
+	[ EEG event files: sub-04_ses-01_task-DriveRandomSound_run-1_eventstemp.tsv]
+	[ Bids event files: [3158 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [3145 events] ['type', 'latency', 'urevent', 'usertags']]
+	[ERROR The Bids event files file has 3158 rows and the EEG event files event file has 3145 rows]
+sub-04_ses-01_run-2:
+	[ Bids event files: sub-04_ses-01_task-DriveRandomSound_run-2_events.tsv]
+	[ EEG event files: sub-04_ses-01_task-DriveRandomSound_run-2_eventstemp.tsv]
+	[ Bids event files: [3158 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [3158 events] ['type', 'latency', 'urevent', 'usertags']]
+sub-05_ses-01_run-1:
+	[ Bids event files: sub-05_ses-01_task-DriveRandomSound_run-1_events.tsv]
+	[ EEG event files: sub-05_ses-01_task-DriveRandomSound_run-1_eventstemp.tsv]
+	[ Bids event files: [3272 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [3069 events] ['type', 'latency', 'urevent', 'usertags']]
+	[ERROR The Bids event files file has 3272 rows and the EEG event files event file has 3069 rows]
+sub-05_ses-01_run-2:
+	[ Bids event files: sub-05_ses-01_task-DriveRandomSound_run-2_events.tsv]
+	[ EEG event files: sub-05_ses-01_task-DriveRandomSound_run-2_eventstemp.tsv]
+	[ Bids event files: [3272 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [3272 events] ['type', 'latency', 'urevent', 'usertags']]
+sub-06_ses-01_run-1:
+	[ Bids event files: sub-06_ses-01_task-DriveRandomSound_run-1_events.tsv]
+	[ EEG event files: sub-06_ses-01_task-DriveRandomSound_run-1_eventstemp.tsv]
+	[ Bids event files: [2963 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [2916 events] ['type', 'latency', 'urevent', 'usertags']]
+	[ERROR The Bids event files file has 2963 rows and the EEG event files event file has 2916 rows]
+sub-06_ses-01_run-2:
+	[ Bids event files: sub-06_ses-01_task-DriveRandomSound_run-2_events.tsv]
+	[ EEG event files: sub-06_ses-01_task-DriveRandomSound_run-2_eventstemp.tsv]
+	[ Bids event files: [2963 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [2963 events] ['type', 'latency', 'urevent', 'usertags']]
+sub-07_ses-01_run-1:
+	[ Bids event files: sub-07_ses-01_task-DriveRandomSound_run-1_events.tsv]
+	[ EEG event files: sub-07_ses-01_task-DriveRandomSound_run-1_eventstemp.tsv]
+	[ Bids event files: [2989 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [3092 events] ['type', 'latency', 'urevent', 'usertags']]
+	[ERROR The Bids event files file has 2989 rows and the EEG event files event file has 3092 rows]
+sub-07_ses-01_run-2:
+	[ Bids event files: sub-07_ses-01_task-DriveRandomSound_run-2_events.tsv]
+	[ EEG event files: sub-07_ses-01_task-DriveRandomSound_run-2_eventstemp.tsv]
+	[ Bids event files: [2989 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [2989 events] ['type', 'latency', 'urevent', 'usertags']]
+sub-08_ses-01_run-1:
+	[ Bids event files: sub-08_ses-01_task-DriveRandomSound_run-1_events.tsv]
+	[ EEG event files: sub-08_ses-01_task-DriveRandomSound_run-1_eventstemp.tsv]
+	[ Bids event files: [2801 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [2630 events] ['type', 'latency', 'urevent', 'usertags']]
+	[ERROR The Bids event files file has 2801 rows and the EEG event files event file has 2630 rows]
+sub-08_ses-01_run-2:
+	[ Bids event files: sub-08_ses-01_task-DriveRandomSound_run-2_events.tsv]
+	[ EEG event files: sub-08_ses-01_task-DriveRandomSound_run-2_eventstemp.tsv]
+	[ Bids event files: [2801 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [2801 events] ['type', 'latency', 'urevent', 'usertags']]
+sub-09_ses-01_run-1:
+	[ Bids event files: sub-09_ses-01_task-DriveRandomSound_run-1_events.tsv]
+	[ EEG event files: sub-09_ses-01_task-DriveRandomSound_run-1_eventstemp.tsv]
+	[ Bids event files: [2805 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [2889 events] ['type', 'latency', 'urevent', 'usertags']]
+	[ERROR The Bids event files file has 2805 rows and the EEG event files event file has 2889 rows]
+sub-09_ses-01_run-2:
+	[ Bids event files: sub-09_ses-01_task-DriveRandomSound_run-2_events.tsv]
+	[ EEG event files: sub-09_ses-01_task-DriveRandomSound_run-2_eventstemp.tsv]
+	[ Bids event files: [2805 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [2805 events] ['type', 'latency', 'urevent', 'usertags']]
+sub-10_ses-01_run-1:
+	[ Bids event files: sub-10_ses-01_task-DriveRandomSound_run-1_events.tsv]
+	[ EEG event files: sub-10_ses-01_task-DriveRandomSound_run-1_eventstemp.tsv]
+	[ Bids event files: [2907 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [2799 events] ['type', 'latency', 'urevent', 'usertags']]
+	[ERROR The Bids event files file has 2907 rows and the EEG event files event file has 2799 rows]
+sub-10_ses-01_run-2:
+	[ Bids event files: sub-10_ses-01_task-DriveRandomSound_run-2_events.tsv]
+	[ EEG event files: sub-10_ses-01_task-DriveRandomSound_run-2_eventstemp.tsv]
+	[ Bids event files: [2907 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [2907 events] ['type', 'latency', 'urevent', 'usertags']]
+sub-11_ses-01_run-1:
+	[ Bids event files: sub-11_ses-01_task-DriveRandomSound_run-1_events.tsv]
+	[ EEG event files: sub-11_ses-01_task-DriveRandomSound_run-1_eventstemp.tsv]
+	[ Bids event files: [3018 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [3109 events] ['type', 'latency', 'urevent', 'usertags']]
+	[ERROR The Bids event files file has 3018 rows and the EEG event files event file has 3109 rows]
+sub-11_ses-01_run-2:
+	[ Bids event files: sub-11_ses-01_task-DriveRandomSound_run-2_events.tsv]
+	[ EEG event files: sub-11_ses-01_task-DriveRandomSound_run-2_eventstemp.tsv]
+	[ Bids event files: [3018 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [3018 events] ['type', 'latency', 'urevent', 'usertags']]
+sub-12_ses-01_run-1:
+	[ Bids event files: sub-12_ses-01_task-DriveRandomSound_run-1_events.tsv]
+	[ EEG event files: sub-12_ses-01_task-DriveRandomSound_run-1_eventstemp.tsv]
+	[ Bids event files: [2837 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [2966 events] ['type', 'latency', 'urevent', 'usertags']]
+	[ERROR The Bids event files file has 2837 rows and the EEG event files event file has 2966 rows]
+sub-12_ses-01_run-2:
+	[ Bids event files: sub-12_ses-01_task-DriveRandomSound_run-2_events.tsv]
+	[ EEG event files: sub-12_ses-01_task-DriveRandomSound_run-2_eventstemp.tsv]
+	[ Bids event files: [2837 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [2837 events] ['type', 'latency', 'urevent', 'usertags']]
+sub-13_ses-01_run-1:
+	[ Bids event files: sub-13_ses-01_task-DriveRandomSound_run-1_events.tsv]
+	[ EEG event files: sub-13_ses-01_task-DriveRandomSound_run-1_eventstemp.tsv]
+	[ Bids event files: [3258 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [3185 events] ['type', 'latency', 'urevent', 'usertags']]
+	[ERROR The Bids event files file has 3258 rows and the EEG event files event file has 3185 rows]
+sub-13_ses-01_run-2:
+	[ Bids event files: sub-13_ses-01_task-DriveRandomSound_run-2_events.tsv]
+	[ EEG event files: sub-13_ses-01_task-DriveRandomSound_run-2_eventstemp.tsv]
+	[ Bids event files: [3258 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [3258 events] ['type', 'latency', 'urevent', 'usertags']]
+sub-14_ses-01_run-1:
+	[ Bids event files: sub-14_ses-01_task-DriveRandomSound_run-1_events.tsv]
+	[ EEG event files: sub-14_ses-01_task-DriveRandomSound_run-1_eventstemp.tsv]
+	[ Bids event files: [3130 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [3129 events] ['type', 'latency', 'urevent', 'usertags']]
+	[ERROR The Bids event files file has 3130 rows and the EEG event files event file has 3129 rows]
+sub-14_ses-01_run-2:
+	[ Bids event files: sub-14_ses-01_task-DriveRandomSound_run-2_events.tsv]
+	[ EEG event files: sub-14_ses-01_task-DriveRandomSound_run-2_eventstemp.tsv]
+	[ Bids event files: [3130 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [3130 events] ['type', 'latency', 'urevent', 'usertags']]
+sub-15_ses-01_run-1:
+	[ Bids event files: sub-15_ses-01_task-DriveRandomSound_run-1_events.tsv]
+	[ EEG event files: sub-15_ses-01_task-DriveRandomSound_run-1_eventstemp.tsv]
+	[ Bids event files: [3180 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [3100 events] ['type', 'latency', 'urevent', 'usertags']]
+	[ERROR The Bids event files file has 3180 rows and the EEG event files event file has 3100 rows]
+sub-15_ses-01_run-2:
+	[ Bids event files: sub-15_ses-01_task-DriveRandomSound_run-2_events.tsv]
+	[ EEG event files: sub-15_ses-01_task-DriveRandomSound_run-2_eventstemp.tsv]
+	[ Bids event files: [3180 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [3180 events] ['type', 'latency', 'urevent', 'usertags']]
+sub-16_ses-01_run-1:
+	[ Bids event files: sub-16_ses-01_task-DriveRandomSound_run-1_events.tsv]
+	[ EEG event files: sub-16_ses-01_task-DriveRandomSound_run-1_eventstemp.tsv]
+	[ Bids event files: [2985 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [3071 events] ['type', 'latency', 'urevent', 'usertags']]
+	[ERROR The Bids event files file has 2985 rows and the EEG event files event file has 3071 rows]
+sub-16_ses-01_run-2:
+	[ Bids event files: sub-16_ses-01_task-DriveRandomSound_run-2_events.tsv]
+	[ EEG event files: sub-16_ses-01_task-DriveRandomSound_run-2_eventstemp.tsv]
+	[ Bids event files: [2985 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [2985 events] ['type', 'latency', 'urevent', 'usertags']]
+sub-17_ses-01_run-1:
+	[ Bids event files: sub-17_ses-01_task-DriveRandomSound_run-1_events.tsv]
+	[ EEG event files: sub-17_ses-01_task-DriveRandomSound_run-1_eventstemp.tsv]
+	[ Bids event files: [2925 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [3145 events] ['type', 'latency', 'urevent', 'usertags']]
+	[ERROR The Bids event files file has 2925 rows and the EEG event files event file has 3145 rows]
+sub-17_ses-01_run-2:
+	[ Bids event files: sub-17_ses-01_task-DriveRandomSound_run-2_events.tsv]
+	[ EEG event files: sub-17_ses-01_task-DriveRandomSound_run-2_eventstemp.tsv]
+	[ Bids event files: [2925 events] ['onset', 'duration', 'event_code']]
+	[ EEG event files: [2925 events] ['type', 'latency', 'urevent', 'usertags']]
+
+ERROR Summary:
+bcit_auditory_cueing_01_initial_summary_log: Level ERROR
+overall:
+sub-01_ses-01_run-1:
+	[ERROR The Bids event files file has 2967 rows and the EEG event files event file has 2960 rows]
+sub-01_ses-01_run-2:
+sub-02_ses-01_run-1:
+	[ERROR The Bids event files file has 3111 rows and the EEG event files event file has 2851 rows]
+sub-02_ses-01_run-2:
+sub-03_ses-01_run-1:
+	[ERROR The Bids event files file has 2956 rows and the EEG event files event file has 3052 rows]
+sub-03_ses-01_run-2:
+sub-04_ses-01_run-1:
+	[ERROR The Bids event files file has 3158 rows and the EEG event files event file has 3145 rows]
+sub-04_ses-01_run-2:
+sub-05_ses-01_run-1:
+	[ERROR The Bids event files file has 3272 rows and the EEG event files event file has 3069 rows]
+sub-05_ses-01_run-2:
+sub-06_ses-01_run-1:
+	[ERROR The Bids event files file has 2963 rows and the EEG event files event file has 2916 rows]
+sub-06_ses-01_run-2:
+sub-07_ses-01_run-1:
+	[ERROR The Bids event files file has 2989 rows and the EEG event files event file has 3092 rows]
+sub-07_ses-01_run-2:
+sub-08_ses-01_run-1:
+	[ERROR The Bids event files file has 2801 rows and the EEG event files event file has 2630 rows]
+sub-08_ses-01_run-2:
+sub-09_ses-01_run-1:
+	[ERROR The Bids event files file has 2805 rows and the EEG event files event file has 2889 rows]
+sub-09_ses-01_run-2:
+sub-10_ses-01_run-1:
+	[ERROR The Bids event files file has 2907 rows and the EEG event files event file has 2799 rows]
+sub-10_ses-01_run-2:
+sub-11_ses-01_run-1:
+	[ERROR The Bids event files file has 3018 rows and the EEG event files event file has 3109 rows]
+sub-11_ses-01_run-2:
+sub-12_ses-01_run-1:
+	[ERROR The Bids event files file has 2837 rows and the EEG event files event file has 2966 rows]
+sub-12_ses-01_run-2:
+sub-13_ses-01_run-1:
+	[ERROR The Bids event files file has 3258 rows and the EEG event files event file has 3185 rows]
+sub-13_ses-01_run-2:
+sub-14_ses-01_run-1:
+	[ERROR The Bids event files file has 3130 rows and the EEG event files event file has 3129 rows]
+sub-14_ses-01_run-2:
+sub-15_ses-01_run-1:
+	[ERROR The Bids event files file has 3180 rows and the EEG event files event file has 3100 rows]
+sub-15_ses-01_run-2:
+sub-16_ses-01_run-1:
+	[ERROR The Bids event files file has 2985 rows and the EEG event files event file has 3071 rows]
+sub-16_ses-01_run-2:
+sub-17_ses-01_run-1:
+	[ERROR The Bids event files file has 2925 rows and the EEG event files event file has 3145 rows]
+sub-17_ses-01_run-2:

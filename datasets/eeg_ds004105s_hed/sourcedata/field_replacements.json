@@ -1,0 +1,244 @@
+{
+  "channels": {
+    "EXG1": [
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_1"
+        },
+        "type": "HEOG",
+		"description": "Left horizontal EOG"
+      },
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_2"
+        },
+        "type": "HEOG",
+		"description": "Left horizontal EOG"
+      },
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_3"
+        },
+        "type": "HEOG",
+		"description": "Left horizontal EOG"
+      }
+    ],
+    "EXG2": [
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_1"
+        },
+        "type": "HEOG",
+		"description": "Right horizontal EOG"
+      },
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_2"
+        },
+        "type": "HEOG",
+		"description": "Right horizontal EOG"
+      },
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_3"
+        },
+        "type": "HEOG",
+		"description": "Right horizontal EOG"
+      }
+    ],
+    "EXG3": [
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_1"
+        },
+        "type": "VEOG",
+		"description": "Upper vertical EOG"
+      },
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_2"
+        },
+        "type": "VEOG",
+		"description": "Upper vertical EOG"
+      },
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_3"
+        },
+        "type": "VEOG",
+		"description": "Upper vertical EOG"
+      }
+    ],
+    "EXG4": [
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_1"
+        },
+        "type": "VEOG",
+		"description": "Lower vertical EOG"
+      },
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_2"
+        },
+        "type": "VEOG",
+		"description": "Lower vertical EOG"
+      },
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_3"
+        },
+         "type": "VEOG",
+		"description": "Lower vertical EOG"
+      }
+    ],
+    "EXG5": [
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_1"
+        },
+       "type": "MISC",
+	   "description": "Left mastoid"
+      },
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_2"
+        },
+       "type": "MISC",
+	   "description": "Left mastoid"
+      },
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_3"
+        },
+       "type": "MISC",
+	   "description": "Left mastoid"
+      }
+    ],
+    "EXG6": [
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_1"
+        },
+        "type": "MISC",
+		"description": "Right mastoid"
+      },
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_2"
+        },
+        "type": "MISC",
+		"description": "Right mastoid"
+      },
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_3"
+        },
+        "type": "MISC",
+		"description": "Right mastoid"
+      }
+    ],
+    "LN": [
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_1"
+        },
+        "type": "MISC",
+		"description": "Lane deviation"
+      },
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_2"
+        },
+        "type": "MISC",
+		"description": "Lane deviation"
+      },
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_3"
+        },
+        "type": "MISC",
+		"description": "Lane deviation from center line in meters"
+      }
+    ],
+    "ANG": [
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_1"
+        },
+        "type": "MISC",
+		"description": "Steering wheel deviation angle in degrees"
+      },
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_2"
+        },
+        "type": "MISC",
+		"description": "Steering wheel deviation angle in degrees"
+      },
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_3"
+        },
+        "type": "MISC",
+		"description": "Steering wheel deviation angle in degrees"
+      }
+    ],
+    "SP": [
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_1"
+        },
+        "type": "MISC",
+		"description": "Vehicle speed in mph"
+      },
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_2"
+        },
+        "type": "MISC",
+		"description": "Vehicle speed in mph"
+      },
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_3"
+        },
+        "type": "MISC",
+		"description": "Vehicle speed in mph"
+      }
+    ],
+    "SD": [
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_1"
+        },
+        "type": "MISC",
+		"description": "Vehicle speed deviation"
+      },
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_2"
+        },
+        "type": "MISC",
+		"description": "Vehicle speed deviation"
+      },
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_3"
+        },
+        "type": "MISC",
+		"description": "Vehicle speed deviation"
+      }
+    ]
+  },
+  "tasks": {
+    "DriveRandomSound": [
+      {
+        "where": {
+          "legacy_recordingParameterSet": "parameter_set_1"
+        },
+        "PowerLineFrequency": 60
+      }
+    ]
+  }
+}

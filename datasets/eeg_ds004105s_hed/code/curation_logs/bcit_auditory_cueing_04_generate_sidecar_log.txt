@@ -1,0 +1,13 @@
+code/curation_logs/bcit_auditory_cueing_04_generate_sidecar_log.txt 2022-04-21 10:55:23.033338
+
+
+Log output:
+bcit_auditory_cueing_04_generate_sidecar_log: Level None
+overall:
+	[ Summarizing 34]
+	[ Saving a JSON sidecar template to task-DrivingRandomSound_events.json]
+	[ Creating a spreadsheet template and saving to task-DrivingRandomSound_hed_spreadsheet.tsv]
+
+ERROR Summary:
+bcit_auditory_cueing_04_generate_sidecar_log: Level ERROR
+overall:

@@ -1,0 +1,327 @@
+code/curation_logs/bcit_advanced_guard_duty_02_initial_combination_log.json.txt 2022-04-17 13:00:25.469633
+
+
+Log output:
+bcit_advanced_guard_duty_02_initial_combination_log.json: Level None
+sub-01_ses-01_run-1:
+	[ Created a dataframe for sub-01_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Looked up sampling rate of 1024.0]
+	[ Dropped ['urevent', 'usertags', 'imageid'] drop_columns]
+	[ Calculate onset from latency and add an onset column]
+	[ Add a duration column]
+	[ Rename the latency column as sample and type column as value]
+	[ Reordered the columns as ['onset', 'duration', 'sample', 'value', 'gid']]
+	[ Replaced 0 blank or NaN values with n/a]
+	[ Saved as sub-01_ses-01_task-GuardDuty_run-1_eventstemp1.tsv]
+sub-02_ses-01_run-1:
+	[ Created a dataframe for sub-02_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Looked up sampling rate of 1024.0]
+	[ Dropped ['urevent', 'usertags', 'imageid'] drop_columns]
+	[ Calculate onset from latency and add an onset column]
+	[ Add a duration column]
+	[ Rename the latency column as sample and type column as value]
+	[ Reordered the columns as ['onset', 'duration', 'sample', 'value', 'gid']]
+	[ Replaced 0 blank or NaN values with n/a]
+	[ Saved as sub-02_ses-01_task-GuardDuty_run-1_eventstemp1.tsv]
+sub-03_ses-01_run-1:
+	[ Created a dataframe for sub-03_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Looked up sampling rate of 1024.0]
+	[ Dropped ['urevent', 'usertags', 'imageid'] drop_columns]
+	[ Calculate onset from latency and add an onset column]
+	[ Add a duration column]
+	[ Rename the latency column as sample and type column as value]
+	[ Reordered the columns as ['onset', 'duration', 'sample', 'value', 'gid']]
+	[ Replaced 0 blank or NaN values with n/a]
+	[ Saved as sub-03_ses-01_task-GuardDuty_run-1_eventstemp1.tsv]
+sub-04_ses-01_run-1:
+	[ Created a dataframe for sub-04_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Looked up sampling rate of 1024.0]
+	[ Dropped ['urevent', 'usertags', 'imageid'] drop_columns]
+	[ Calculate onset from latency and add an onset column]
+	[ Add a duration column]
+	[ Rename the latency column as sample and type column as value]
+	[ Reordered the columns as ['onset', 'duration', 'sample', 'value', 'gid']]
+	[ Replaced 0 blank or NaN values with n/a]
+	[ Saved as sub-04_ses-01_task-GuardDuty_run-1_eventstemp1.tsv]
+sub-05_ses-01_run-1:
+	[ Created a dataframe for sub-05_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Looked up sampling rate of 1024.0]
+	[ Dropped ['urevent', 'usertags', 'imageid'] drop_columns]
+	[ Calculate onset from latency and add an onset column]
+	[ Add a duration column]
+	[ Rename the latency column as sample and type column as value]
+	[ Reordered the columns as ['onset', 'duration', 'sample', 'value', 'gid']]
+	[ Replaced 0 blank or NaN values with n/a]
+	[ Saved as sub-05_ses-01_task-GuardDuty_run-1_eventstemp1.tsv]
+sub-06_ses-01_run-1:
+	[ Created a dataframe for sub-06_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Looked up sampling rate of 1024.0]
+	[ Dropped ['urevent', 'usertags', 'imageid'] drop_columns]
+	[ Calculate onset from latency and add an onset column]
+	[ Add a duration column]
+	[ Rename the latency column as sample and type column as value]
+	[ Reordered the columns as ['onset', 'duration', 'sample', 'value', 'gid']]
+	[ Replaced 0 blank or NaN values with n/a]
+	[ Saved as sub-06_ses-01_task-GuardDuty_run-1_eventstemp1.tsv]
+sub-07_ses-01_run-1:
+	[ Created a dataframe for sub-07_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Looked up sampling rate of 1024.0]
+	[ Dropped ['urevent', 'usertags', 'imageid'] drop_columns]
+	[ Calculate onset from latency and add an onset column]
+	[ Add a duration column]
+	[ Rename the latency column as sample and type column as value]
+	[ Reordered the columns as ['onset', 'duration', 'sample', 'value', 'gid']]
+	[ Replaced 0 blank or NaN values with n/a]
+	[ Saved as sub-07_ses-01_task-GuardDuty_run-1_eventstemp1.tsv]
+sub-08_ses-01_run-1:
+	[ Created a dataframe for sub-08_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Looked up sampling rate of 1024.0]
+	[ Dropped ['urevent', 'usertags', 'imageid'] drop_columns]
+	[ Calculate onset from latency and add an onset column]
+	[ Add a duration column]
+	[ Rename the latency column as sample and type column as value]
+	[ Reordered the columns as ['onset', 'duration', 'sample', 'value', 'gid']]
+	[ Replaced 0 blank or NaN values with n/a]
+	[ Saved as sub-08_ses-01_task-GuardDuty_run-1_eventstemp1.tsv]
+sub-09_ses-01_run-1:
+	[ Created a dataframe for sub-09_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Looked up sampling rate of 1024.0]
+	[ Dropped ['urevent', 'usertags', 'imageid'] drop_columns]
+	[ Calculate onset from latency and add an onset column]
+	[ Add a duration column]
+	[ Rename the latency column as sample and type column as value]
+	[ Reordered the columns as ['onset', 'duration', 'sample', 'value', 'gid']]
+	[ Replaced 0 blank or NaN values with n/a]
+	[ Saved as sub-09_ses-01_task-GuardDuty_run-1_eventstemp1.tsv]
+sub-10_ses-01_run-1:
+	[ Created a dataframe for sub-10_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Looked up sampling rate of 1024.0]
+	[ Dropped ['urevent', 'usertags', 'imageid'] drop_columns]
+	[ Calculate onset from latency and add an onset column]
+	[ Add a duration column]
+	[ Rename the latency column as sample and type column as value]
+	[ Reordered the columns as ['onset', 'duration', 'sample', 'value', 'gid']]
+	[ Replaced 0 blank or NaN values with n/a]
+	[ Saved as sub-10_ses-01_task-GuardDuty_run-1_eventstemp1.tsv]
+sub-11_ses-01_run-1:
+	[ Created a dataframe for sub-11_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Looked up sampling rate of 1024.0]
+	[ Dropped ['urevent', 'usertags', 'imageid'] drop_columns]
+	[ Calculate onset from latency and add an onset column]
+	[ Add a duration column]
+	[ Rename the latency column as sample and type column as value]
+	[ Reordered the columns as ['onset', 'duration', 'sample', 'value', 'gid']]
+	[ Replaced 0 blank or NaN values with n/a]
+	[ Saved as sub-11_ses-01_task-GuardDuty_run-1_eventstemp1.tsv]
+sub-12_ses-01_run-1:
+	[ Created a dataframe for sub-12_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Looked up sampling rate of 1024.0]
+	[ Dropped ['urevent', 'usertags', 'imageid'] drop_columns]
+	[ Calculate onset from latency and add an onset column]
+	[ Add a duration column]
+	[ Rename the latency column as sample and type column as value]
+	[ Reordered the columns as ['onset', 'duration', 'sample', 'value', 'gid']]
+	[ Replaced 0 blank or NaN values with n/a]
+	[ Saved as sub-12_ses-01_task-GuardDuty_run-1_eventstemp1.tsv]
+sub-13_ses-01_run-1:
+	[ Created a dataframe for sub-13_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Looked up sampling rate of 1024.0]
+	[ Dropped ['urevent', 'usertags', 'imageid'] drop_columns]
+	[ Calculate onset from latency and add an onset column]
+	[ Add a duration column]
+	[ Rename the latency column as sample and type column as value]
+	[ Reordered the columns as ['onset', 'duration', 'sample', 'value', 'gid']]
+	[ Replaced 0 blank or NaN values with n/a]
+	[ Saved as sub-13_ses-01_task-GuardDuty_run-1_eventstemp1.tsv]
+sub-14_ses-01_run-1:
+	[ Created a dataframe for sub-14_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Looked up sampling rate of 1024.0]
+	[ Dropped ['urevent', 'usertags', 'imageid'] drop_columns]
+	[ Calculate onset from latency and add an onset column]
+	[ Add a duration column]
+	[ Rename the latency column as sample and type column as value]
+	[ Reordered the columns as ['onset', 'duration', 'sample', 'value', 'gid']]
+	[ Replaced 0 blank or NaN values with n/a]
+	[ Saved as sub-14_ses-01_task-GuardDuty_run-1_eventstemp1.tsv]
+sub-15_ses-01_run-1:
+	[ Created a dataframe for sub-15_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Looked up sampling rate of 1024.0]
+	[ Dropped ['urevent', 'usertags', 'imageid'] drop_columns]
+	[ Calculate onset from latency and add an onset column]
+	[ Add a duration column]
+	[ Rename the latency column as sample and type column as value]
+	[ Reordered the columns as ['onset', 'duration', 'sample', 'value', 'gid']]
+	[ Replaced 0 blank or NaN values with n/a]
+	[ Saved as sub-15_ses-01_task-GuardDuty_run-1_eventstemp1.tsv]
+sub-16_ses-01_run-1:
+	[ Created a dataframe for sub-16_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Looked up sampling rate of 1024.0]
+	[ Dropped ['urevent', 'usertags', 'imageid'] drop_columns]
+	[ Calculate onset from latency and add an onset column]
+	[ Add a duration column]
+	[ Rename the latency column as sample and type column as value]
+	[ Reordered the columns as ['onset', 'duration', 'sample', 'value', 'gid']]
+	[ Replaced 0 blank or NaN values with n/a]
+	[ Saved as sub-16_ses-01_task-GuardDuty_run-1_eventstemp1.tsv]
+sub-17_ses-01_run-1:
+	[ Created a dataframe for sub-17_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Looked up sampling rate of 1024.0]
+	[ Dropped ['urevent', 'usertags', 'imageid'] drop_columns]
+	[ Calculate onset from latency and add an onset column]
+	[ Add a duration column]
+	[ Rename the latency column as sample and type column as value]
+	[ Reordered the columns as ['onset', 'duration', 'sample', 'value', 'gid']]
+	[ Replaced 0 blank or NaN values with n/a]
+	[ Saved as sub-17_ses-01_task-GuardDuty_run-1_eventstemp1.tsv]
+sub-17_ses-01_run-2:
+	[ Created a dataframe for sub-17_ses-01_task-GuardDuty_run-2_eventstemp.tsv]
+	[ Looked up sampling rate of 1024.0]
+	[ Dropped ['urevent', 'usertags', 'imageid'] drop_columns]
+	[ Calculate onset from latency and add an onset column]
+	[ Add a duration column]
+	[ Rename the latency column as sample and type column as value]
+	[ Reordered the columns as ['onset', 'duration', 'sample', 'value', 'gid']]
+	[ Replaced 0 blank or NaN values with n/a]
+	[ Saved as sub-17_ses-01_task-GuardDuty_run-2_eventstemp1.tsv]
+sub-18_ses-01_run-1:
+	[ Created a dataframe for sub-18_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Looked up sampling rate of 1024.0]
+	[ Dropped ['urevent', 'usertags', 'imageid'] drop_columns]
+	[ Calculate onset from latency and add an onset column]
+	[ Add a duration column]
+	[ Rename the latency column as sample and type column as value]
+	[ Reordered the columns as ['onset', 'duration', 'sample', 'value', 'gid']]
+	[ Replaced 0 blank or NaN values with n/a]
+	[ Saved as sub-18_ses-01_task-GuardDuty_run-1_eventstemp1.tsv]
+sub-19_ses-01_run-1:
+	[ Created a dataframe for sub-19_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Looked up sampling rate of 1024.0]
+	[ Dropped ['urevent', 'usertags', 'imageid'] drop_columns]
+	[ Calculate onset from latency and add an onset column]
+	[ Add a duration column]
+	[ Rename the latency column as sample and type column as value]
+	[ Reordered the columns as ['onset', 'duration', 'sample', 'value', 'gid']]
+	[ Replaced 0 blank or NaN values with n/a]
+	[ Saved as sub-19_ses-01_task-GuardDuty_run-1_eventstemp1.tsv]
+sub-20_ses-01_run-1:
+	[ Created a dataframe for sub-20_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Looked up sampling rate of 1024.0]
+	[ Dropped ['urevent', 'usertags', 'imageid'] drop_columns]
+	[ Calculate onset from latency and add an onset column]
+	[ Add a duration column]
+	[ Rename the latency column as sample and type column as value]
+	[ Reordered the columns as ['onset', 'duration', 'sample', 'value', 'gid']]
+	[ Replaced 0 blank or NaN values with n/a]
+	[ Saved as sub-20_ses-01_task-GuardDuty_run-1_eventstemp1.tsv]
+sub-21_ses-01_run-1:
+	[ Created a dataframe for sub-21_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Looked up sampling rate of 1024.0]
+	[ Dropped ['urevent', 'usertags', 'imageid'] drop_columns]
+	[ Calculate onset from latency and add an onset column]
+	[ Add a duration column]
+	[ Rename the latency column as sample and type column as value]
+	[ Reordered the columns as ['onset', 'duration', 'sample', 'value', 'gid']]
+	[ Replaced 0 blank or NaN values with n/a]
+	[ Saved as sub-21_ses-01_task-GuardDuty_run-1_eventstemp1.tsv]
+sub-22_ses-01_run-1:
+	[ Created a dataframe for sub-22_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Looked up sampling rate of 1024.0]
+	[ Dropped ['urevent', 'usertags', 'imageid'] drop_columns]
+	[ Calculate onset from latency and add an onset column]
+	[ Add a duration column]
+	[ Rename the latency column as sample and type column as value]
+	[ Reordered the columns as ['onset', 'duration', 'sample', 'value', 'gid']]
+	[ Replaced 0 blank or NaN values with n/a]
+	[ Saved as sub-22_ses-01_task-GuardDuty_run-1_eventstemp1.tsv]
+sub-23_ses-01_run-1:
+	[ Created a dataframe for sub-23_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Looked up sampling rate of 1024.0]
+	[ Dropped ['urevent', 'usertags', 'imageid'] drop_columns]
+	[ Calculate onset from latency and add an onset column]
+	[ Add a duration column]
+	[ Rename the latency column as sample and type column as value]
+	[ Reordered the columns as ['onset', 'duration', 'sample', 'value', 'gid']]
+	[ Replaced 0 blank or NaN values with n/a]
+	[ Saved as sub-23_ses-01_task-GuardDuty_run-1_eventstemp1.tsv]
+sub-24_ses-01_run-1:
+	[ Created a dataframe for sub-24_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Looked up sampling rate of 1024.0]
+	[ Dropped ['urevent', 'usertags', 'imageid'] drop_columns]
+	[ Calculate onset from latency and add an onset column]
+	[ Add a duration column]
+	[ Rename the latency column as sample and type column as value]
+	[ Reordered the columns as ['onset', 'duration', 'sample', 'value', 'gid']]
+	[ Replaced 0 blank or NaN values with n/a]
+	[ Saved as sub-24_ses-01_task-GuardDuty_run-1_eventstemp1.tsv]
+sub-25_ses-01_run-1:
+	[ Created a dataframe for sub-25_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Looked up sampling rate of 1024.0]
+	[ Dropped ['urevent', 'usertags', 'imageid'] drop_columns]
+	[ Calculate onset from latency and add an onset column]
+	[ Add a duration column]
+	[ Rename the latency column as sample and type column as value]
+	[ Reordered the columns as ['onset', 'duration', 'sample', 'value', 'gid']]
+	[ Replaced 0 blank or NaN values with n/a]
+	[ Saved as sub-25_ses-01_task-GuardDuty_run-1_eventstemp1.tsv]
+sub-25_ses-01_run-2:
+	[ Created a dataframe for sub-25_ses-01_task-GuardDuty_run-2_eventstemp.tsv]
+	[ Looked up sampling rate of 1024.0]
+	[ Dropped ['urevent', 'usertags', 'imageid'] drop_columns]
+	[ Calculate onset from latency and add an onset column]
+	[ Add a duration column]
+	[ Rename the latency column as sample and type column as value]
+	[ Reordered the columns as ['onset', 'duration', 'sample', 'value', 'gid']]
+	[ Replaced 0 blank or NaN values with n/a]
+	[ Saved as sub-25_ses-01_task-GuardDuty_run-2_eventstemp1.tsv]
+sub-26_ses-01_run-1:
+	[ Created a dataframe for sub-26_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Looked up sampling rate of 1024.0]
+	[ Dropped ['urevent', 'usertags', 'imageid'] drop_columns]
+	[ Calculate onset from latency and add an onset column]
+	[ Add a duration column]
+	[ Rename the latency column as sample and type column as value]
+	[ Reordered the columns as ['onset', 'duration', 'sample', 'value', 'gid']]
+	[ Replaced 0 blank or NaN values with n/a]
+	[ Saved as sub-26_ses-01_task-GuardDuty_run-1_eventstemp1.tsv]
+sub-27_ses-01_run-1:
+	[ Created a dataframe for sub-27_ses-01_task-GuardDuty_run-1_eventstemp.tsv]
+	[ Looked up sampling rate of 1024.0]
+	[ Dropped ['urevent', 'usertags', 'imageid'] drop_columns]
+	[ Calculate onset from latency and add an onset column]
+	[ Add a duration column]
+	[ Rename the latency column as sample and type column as value]
+	[ Reordered the columns as ['onset', 'duration', 'sample', 'value', 'gid']]
+	[ Replaced 0 blank or NaN values with n/a]
+	[ Saved as sub-27_ses-01_task-GuardDuty_run-1_eventstemp1.tsv]
+
+ERROR Summary:
+bcit_advanced_guard_duty_02_initial_combination_log.json: Level ERROR
+sub-01_ses-01_run-1:
+sub-02_ses-01_run-1:
+sub-03_ses-01_run-1:
+sub-04_ses-01_run-1:
+sub-05_ses-01_run-1:
+sub-06_ses-01_run-1:
+sub-07_ses-01_run-1:
+sub-08_ses-01_run-1:
+sub-09_ses-01_run-1:
+sub-10_ses-01_run-1:
+sub-11_ses-01_run-1:
+sub-12_ses-01_run-1:
+sub-13_ses-01_run-1:
+sub-14_ses-01_run-1:
+sub-15_ses-01_run-1:
+sub-16_ses-01_run-1:
+sub-17_ses-01_run-1:
+sub-17_ses-01_run-2:
+sub-18_ses-01_run-1:
+sub-19_ses-01_run-1:
+sub-20_ses-01_run-1:
+sub-21_ses-01_run-1:
+sub-22_ses-01_run-1:
+sub-23_ses-01_run-1:
+sub-24_ses-01_run-1:
+sub-25_ses-01_run-1:
+sub-25_ses-01_run-2:
+sub-26_ses-01_run-1:
+sub-27_ses-01_run-1:

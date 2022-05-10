@@ -1,0 +1,307 @@
+code/curation_logs/attention_shift_03_check_cond_consistency_log.txt 2022-04-18 09:19:53.944852
+
+Summary for column dictionary :
+   Categorical columns (2):
+      cond_code (4 distinct values):
+         0: 6067
+         1: 58184
+         2: 54044
+         3: 168840
+      event_code (16 distinct values):
+         1: 11703
+         10: 4702
+         11: 37548
+         12: 37524
+         13: 18778
+         14: 18779
+         2: 11701
+         201: 29028
+         202: 927
+         3: 9296
+         4: 9301
+         5: 37171
+         6: 37167
+         7: 9406
+         8: 9408
+         9: 4696
+   Value columns (0):
+
+
+Log output:
+attention_shift_03_check_cond_consistency_log: Level None
+sub-001_run-01:
+	[WARNING 6 event_code values of 202]
+sub-002_run-01:
+	[WARNING 20 event_code values of 202]
+sub-003_run-01:
+	[WARNING 20 event_code values of 202]
+sub-004_run-01:
+	[WARNING 1 event_code values of 202]
+sub-004_run-02:
+	[WARNING 19 event_code values of 202]
+sub-005_run-01:
+	[WARNING 5 shift event codes in a focus condition]
+	[WARNING 6 event_code values of 202]
+sub-006_run-01:
+	[WARNING 20 event_code values of 202]
+sub-007_run-01:
+	[WARNING 18 event_code values of 202]
+sub-008_run-01:
+	[WARNING 2874 shift event codes in a focus condition]
+	[WARNING 11 event_code values of 202]
+sub-009_run-01:
+	[WARNING 26 event_code values of 202]
+sub-010_run-01:
+	[WARNING 18 event_code values of 202]
+sub-011_run-01:
+	[WARNING 21 event_code values of 202]
+sub-012_run-01:
+	[WARNING 22 event_code values of 202]
+sub-013_run-01:
+	[WARNING 20 event_code values of 202]
+sub-014_run-01:
+	[WARNING 19 event_code values of 202]
+sub-015_run-01:
+	[WARNING 239 focus event codes in a shift condition]
+	[WARNING 21 event_code values of 202]
+sub-016_run-01:
+	[WARNING 22 event_code values of 202]
+sub-017_run-01:
+	[WARNING 19 event_code values of 202]
+sub-018_run-01:
+	[WARNING 19 event_code values of 202]
+sub-019_run-01:
+	[WARNING 16 event_code values of 202]
+sub-020_run-02:
+	[WARNING 9 event_code values of 202]
+sub-021_run-02:
+	[WARNING 22 event_code values of 202]
+sub-022_run-02:
+	[WARNING 17 event_code values of 202]
+sub-023_run-01:
+	[WARNING 20 event_code values of 202]
+sub-024_run-01:
+	[WARNING 13 event_code values of 202]
+sub-025_run-01:
+	[WARNING 20 event_code values of 202]
+sub-026_run-01:
+	[WARNING 20 event_code values of 202]
+sub-027_run-01:
+	[WARNING 17 event_code values of 202]
+sub-028_run-01:
+	[WARNING 14 event_code values of 202]
+sub-028_run-02:
+	[WARNING 5 event_code values of 202]
+sub-029_run-01:
+	[WARNING 20 event_code values of 202]
+sub-030_run-01:
+	[WARNING 20 event_code values of 202]
+sub-031_run-01:
+	[WARNING 6067 cond_code values of 0]
+	[WARNING 20 event_code values of 202]
+sub-032_run-01:
+	[WARNING 20 event_code values of 202]
+sub-033_run-01:
+	[WARNING 20 event_code values of 202]
+sub-034_run-01:
+	[WARNING 19 event_code values of 202]
+sub-035_run-01:
+	[WARNING 17 event_code values of 202]
+sub-036_run-01:
+	[WARNING 1 event_code values of 202]
+sub-036_run-02:
+	[WARNING 721 focus event codes in a shift condition]
+	[WARNING 20 event_code values of 202]
+sub-037_run-01:
+	[WARNING 22 event_code values of 202]
+sub-038_run-01:
+	[WARNING 20 event_code values of 202]
+sub-039_run-01:
+	[WARNING 21 event_code values of 202]
+sub-040_run-01:
+	[WARNING 20 event_code values of 202]
+sub-041_run-01:
+	[WARNING 19 event_code values of 202]
+sub-042_run-01:
+	[WARNING 22 event_code values of 202]
+sub-043_run-01:
+	[WARNING 21 event_code values of 202]
+sub-044_run-01:
+	[WARNING 21 event_code values of 202]
+sub-045_run-01:
+	[WARNING 19 event_code values of 202]
+sub-046_run-01:
+	[WARNING 20 event_code values of 202]
+sub-047_run-01:
+	[WARNING 21 event_code values of 202]
+sub-048_run-01:
+	[WARNING 23 event_code values of 202]
+sub-049_run-01:
+	[WARNING 20 event_code values of 202]
+
+ERROR Summary:
+attention_shift_03_check_cond_consistency_log: Level ERROR
+sub-001_run-01:
+sub-002_run-01:
+sub-003_run-01:
+sub-004_run-01:
+sub-004_run-02:
+sub-005_run-01:
+sub-006_run-01:
+sub-007_run-01:
+sub-008_run-01:
+sub-009_run-01:
+sub-010_run-01:
+sub-011_run-01:
+sub-012_run-01:
+sub-013_run-01:
+sub-014_run-01:
+sub-015_run-01:
+sub-016_run-01:
+sub-017_run-01:
+sub-018_run-01:
+sub-019_run-01:
+sub-020_run-02:
+sub-021_run-02:
+sub-022_run-02:
+sub-023_run-01:
+sub-024_run-01:
+sub-025_run-01:
+sub-026_run-01:
+sub-027_run-01:
+sub-028_run-01:
+sub-028_run-02:
+sub-029_run-01:
+sub-030_run-01:
+sub-031_run-01:
+sub-032_run-01:
+sub-033_run-01:
+sub-034_run-01:
+sub-035_run-01:
+sub-036_run-01:
+sub-036_run-02:
+sub-037_run-01:
+sub-038_run-01:
+sub-039_run-01:
+sub-040_run-01:
+sub-041_run-01:
+sub-042_run-01:
+sub-043_run-01:
+sub-044_run-01:
+sub-045_run-01:
+sub-046_run-01:
+sub-047_run-01:
+sub-048_run-01:
+sub-049_run-01:
+
+ERROR Summary:
+attention_shift_03_check_cond_consistency_log: Level WARNING
+sub-001_run-01:
+	[WARNING 6 event_code values of 202]
+sub-002_run-01:
+	[WARNING 20 event_code values of 202]
+sub-003_run-01:
+	[WARNING 20 event_code values of 202]
+sub-004_run-01:
+	[WARNING 1 event_code values of 202]
+sub-004_run-02:
+	[WARNING 19 event_code values of 202]
+sub-005_run-01:
+	[WARNING 5 shift event codes in a focus condition]
+	[WARNING 6 event_code values of 202]
+sub-006_run-01:
+	[WARNING 20 event_code values of 202]
+sub-007_run-01:
+	[WARNING 18 event_code values of 202]
+sub-008_run-01:
+	[WARNING 2874 shift event codes in a focus condition]
+	[WARNING 11 event_code values of 202]
+sub-009_run-01:
+	[WARNING 26 event_code values of 202]
+sub-010_run-01:
+	[WARNING 18 event_code values of 202]
+sub-011_run-01:
+	[WARNING 21 event_code values of 202]
+sub-012_run-01:
+	[WARNING 22 event_code values of 202]
+sub-013_run-01:
+	[WARNING 20 event_code values of 202]
+sub-014_run-01:
+	[WARNING 19 event_code values of 202]
+sub-015_run-01:
+	[WARNING 239 focus event codes in a shift condition]
+	[WARNING 21 event_code values of 202]
+sub-016_run-01:
+	[WARNING 22 event_code values of 202]
+sub-017_run-01:
+	[WARNING 19 event_code values of 202]
+sub-018_run-01:
+	[WARNING 19 event_code values of 202]
+sub-019_run-01:
+	[WARNING 16 event_code values of 202]
+sub-020_run-02:
+	[WARNING 9 event_code values of 202]
+sub-021_run-02:
+	[WARNING 22 event_code values of 202]
+sub-022_run-02:
+	[WARNING 17 event_code values of 202]
+sub-023_run-01:
+	[WARNING 20 event_code values of 202]
+sub-024_run-01:
+	[WARNING 13 event_code values of 202]
+sub-025_run-01:
+	[WARNING 20 event_code values of 202]
+sub-026_run-01:
+	[WARNING 20 event_code values of 202]
+sub-027_run-01:
+	[WARNING 17 event_code values of 202]
+sub-028_run-01:
+	[WARNING 14 event_code values of 202]
+sub-028_run-02:
+	[WARNING 5 event_code values of 202]
+sub-029_run-01:
+	[WARNING 20 event_code values of 202]
+sub-030_run-01:
+	[WARNING 20 event_code values of 202]
+sub-031_run-01:
+	[WARNING 6067 cond_code values of 0]
+	[WARNING 20 event_code values of 202]
+sub-032_run-01:
+	[WARNING 20 event_code values of 202]
+sub-033_run-01:
+	[WARNING 20 event_code values of 202]
+sub-034_run-01:
+	[WARNING 19 event_code values of 202]
+sub-035_run-01:
+	[WARNING 17 event_code values of 202]
+sub-036_run-01:
+	[WARNING 1 event_code values of 202]
+sub-036_run-02:
+	[WARNING 721 focus event codes in a shift condition]
+	[WARNING 20 event_code values of 202]
+sub-037_run-01:
+	[WARNING 22 event_code values of 202]
+sub-038_run-01:
+	[WARNING 20 event_code values of 202]
+sub-039_run-01:
+	[WARNING 21 event_code values of 202]
+sub-040_run-01:
+	[WARNING 20 event_code values of 202]
+sub-041_run-01:
+	[WARNING 19 event_code values of 202]
+sub-042_run-01:
+	[WARNING 22 event_code values of 202]
+sub-043_run-01:
+	[WARNING 21 event_code values of 202]
+sub-044_run-01:
+	[WARNING 21 event_code values of 202]
+sub-045_run-01:
+	[WARNING 19 event_code values of 202]
+sub-046_run-01:
+	[WARNING 20 event_code values of 202]
+sub-047_run-01:
+	[WARNING 21 event_code values of 202]
+sub-048_run-01:
+	[WARNING 23 event_code values of 202]
+sub-049_run-01:
+	[WARNING 20 event_code values of 202]

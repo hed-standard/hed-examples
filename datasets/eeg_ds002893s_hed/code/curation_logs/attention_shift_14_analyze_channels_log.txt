@@ -1,0 +1,16 @@
+code/curation_logs/attention_shift_14_analyze_channels_log.txt 2022-04-25 13:58:57.853253
+
+
+Log output:
+attention_shift_14_analyze_channels_log: Level None
+sub-001_task-AuditoryVisualShift_run-01_eeg.set:
+	[ This key has 52 files with the same 36 channels]
+	[ The channels are ['Fp1', 'Fpz', 'Fp2', 'AF3', 'AF4', 'F7', 'F3', 'Fz', 'F4', 'F8', 'FC5', 'FC1', 'FC6', 'FC2', 'T7', 'C3', 'Cz', 'C4', 'T8', 'CP5', 'CP1', 'CP2', 'CP6', 'P7', 'P3', 'Pz', 'P4', 'P8', 'PO3', 'PO4', 'O1', 'Oz', 'O2', 'LM', 'REye', 'LEye']]
+Overall:
+	[ Dataset has 36 unique channels]
+	[ {'REye', 'P4', 'PO3', 'Oz', 'T7', 'O1', 'Fpz', 'F3', 'Fp1', 'F4', 'CP5', 'C4', 'Fz', 'C3', 'P3', 'LM', 'AF3', 'FC5', 'F7', 'O2', 'CP1', 'Fp2', 'LEye', 'T8', 'CP2', 'P7', 'FC6', 'Cz', 'PO4', 'AF4', 'CP6', 'P8', 'Pz', 'FC2', 'FC1', 'F8'}]
+
+ERROR Summary:
+attention_shift_14_analyze_channels_log: Level ERROR
+sub-001_task-AuditoryVisualShift_run-01_eeg.set:
+Overall:
