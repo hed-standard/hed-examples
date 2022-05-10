@@ -1,0 +1,25 @@
+{
+  "ESS_subjectLabID": {
+    "Description": "labID used to reference the subject in this study as provided in original lab notes"
+  },
+  "ESS_sessionNum": {
+    "Description": "Number of the ESS session in which this recording is found"
+  },
+  "ESS_sessionID": {
+    "Description": "labID used to reference the session in original lab notes"
+  },
+  "caffeine": {
+    "Description": "hours since last caffeine intake, if less than 12 hours",
+    "Units": "hours"
+  },
+  "alcohol": {
+    "Description": "whether the subject has consumed alcohol within 12 hours before the recording",
+    "Levels": {
+      "Yes": "Has consumed caffeine within last 12 hours",
+      "No": "Has not consumed caffeine within last 12 hours"
+    }
+  },
+  "legacy_recordingParameterSet": {
+    "Description": "ID used to reference the recordingParameterSet in ESS"
+  }
+}

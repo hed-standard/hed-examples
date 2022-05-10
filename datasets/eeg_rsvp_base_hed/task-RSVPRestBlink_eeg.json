@@ -1,0 +1,15 @@
+{
+  "TaskName": "RSVPRestBlink",
+  "TaskDescription": "Subjects viewed a rapid serial visual presentation (RSVP) of images, presented on an LCD computer screen, and consisting of color photographs of indoor and outdoor scenes. Some of the images will contained target objects and, others did not. There were five classes of target objects that consisted  of the following common everyday objects: doors, posters, chairs, containers, and staircases. Subjects were instructed on the target objects and shown exemplars of each target class. The subjects were also instructed to press a button when they saw a target object in the RSVP stream. The RSVP Baseline task was divided into 6 blocks of 10 minutes each, with a one minute break between blocks. During breaks subjects were asked to complete one or more of the self-report fatigue and sleepiness questionnaires. Each block contained a single class of target objects in addition to the non-target distracters. The images were presented at a fixed rate (between 2 and 10 Hz, based on pilot testing). The target probability (or target frequency) randomly vary across blocks (between 0.01 and 0.20). The assigned target class for the RSVP Baseline task was different for each of the first five blocks, with the sixth block having the same target class as the first block.",
+  "EEGReference": "CMS",
+  "SamplingFrequency": 1024.0,
+  "PowerLineFrequency": 60,
+  "SoftwareFilters": "n/a",
+  "CapManufacturer": "BioSemi ActiveTwo biopotential measurement system",
+  "EEGChannelCount": 256,
+  "ECGChannelCount": 0,
+  "EMGChannelCount": 0,
+  "EOGChannelCount": 0,
+  "MiscChannelCount": 2,
+  "EEGPlacementScheme": "Custom"
+}
