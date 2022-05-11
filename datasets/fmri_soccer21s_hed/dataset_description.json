@@ -7,8 +7,8 @@
             "CodeURL": "https://github.com/Donders-Institute/bidscoin"
         }
     ],
-    "BIDSVersion": "1.6.0",
-    "HEDVersion": "7.6.0",
+    "BIDSVersion": "1.7.0",
+    "HEDVersion": "8.0.0",
     "DatasetType": "raw",
     "License": "Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)",
     "Authors": [
@@ -20,5 +20,7 @@
         "Florian Hutzler"
     ],
     "HowToAcknowledge": "Please write to fabio.richlan@plus.ac.at for further information.",
-    "EthicsApprovals":"Ethical review committee of the Paris-Lodron-University of Salzburg"
+    "EthicsApprovals": [
+        "Ethical review committee of the Paris-Lodron-University of Salzburg"
+    ]
 }

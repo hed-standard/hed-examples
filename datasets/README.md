@@ -38,7 +38,7 @@ The suffix modifier indicates what this dataset is designed to test.
 For general information on the `bids-validator`, including installation, configuration, and usage,
 see the [bids-validator README file](https://github.com/bids-standard/bids-validator#quickstart).
 
-**Example:** The following command validates the  `eeg_ds003645s_hed` dataset:
+**Example:** The following command validates the `eeg_ds003645s_hed` dataset:
 
 ```code
 bids-validator eeg_ds003645s_hed --config.ignore=99
@@ -47,8 +47,16 @@ bids-validator eeg_ds003645s_hed --config.ignore=99
 This example assumes that `npm` and the `bids-validator` npm package
 have been installed on the local machine.
 The command is run from the directory above the dataset root directory.
-The `--config.ignore=99` flag tells the bids-validator to ignore empty data files
-rather than to report the empty file error.
+The `--config.ignore=99` flag tells the `bids-validator` to ignore empty data
+files rather than to report the empty file error.
+
+For FMRI datasets you also need to use the `--ignoreNiftiHeaders` option.
+
+**Example:** The following command validates `fmri_soccer21s_hed` dataset:
+
+```code
+bids-validator fmri_soccer21s_hed --config.ignore=99 --ignoreNiftiHeaders
+```
 
 For additional information on BIDS validation,
 see the [bids-examples](https://github.com/bids-standard/bids-examples#readme).
