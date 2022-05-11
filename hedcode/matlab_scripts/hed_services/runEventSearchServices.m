@@ -6,7 +6,6 @@
 
 %% Setup requires a csrf_url and services_url. Must set header and options.
 host = 'https://hedtools.ucsd.edu/hed';
-%host = 'http://127.0.0.1:5000/';
 csrfUrl = [host '/services']; 
 servicesUrl = [host '/services_submit'];
 [cookie, csrftoken] = getSessionInfo(csrfUrl);
@@ -31,7 +30,7 @@ request1 = struct('service', 'events_search', ...
                   'schema_version', '8.0.0', ...
                   'json_string', jsonText, ...
                   'events_string', eventsText, ...
-                  'query', '[[White, Cross]]');
+                  'query', '[[Intended-effect, Cue]]');
 
 response1 = webwrite(servicesUrl, request1, options);
 response1 = jsondecode(response1);
