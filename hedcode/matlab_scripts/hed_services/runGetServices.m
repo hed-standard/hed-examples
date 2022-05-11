@@ -1,6 +1,5 @@
 %% Shows how to call hed-services to obtain a list of services
-%host = 'https://hedtools.ucsd.edu/hed';
-host = 'http://127.0.0.1:5000/';
+host = 'https://hedtools.ucsd.edu/hed';
 csrfUrl = [host '/services']; 
 servicesUrl = [host '/services_submit'];
 

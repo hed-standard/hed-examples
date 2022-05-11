@@ -5,8 +5,7 @@
 %  Example 2: Search an events file for HED using an invalid query.
 
 %% Setup requires a csrf_url and services_url. Must set header and options.
-%host = 'https://hedtools.ucsd.edu/hed';
-host = 'http://127.0.0.1:5000/';
+host = 'https://hedtools.ucsd.edu/hed';
 csrfUrl = [host '/services']; 
 servicesUrl = [host '/services_submit'];
 [cookie, csrftoken] = getSessionInfo(csrfUrl);
@@ -31,20 +30,8 @@ request1 = struct('service', 'events_search', ...
                   'schema_version', '8.0.0', ...
                   'json_string', jsonText, ...
                   'events_string', eventsText, ...
-                  'query', '[[sensory-event]]');
+                  'query', '[[Intended-effect, Cue]]');
 
 response1 = webwrite(servicesUrl, request1, options);
 response1 = jsondecode(response1);
 outputReport(response1, 'Example 1 Querying an events file');
-
-% %% Example 2: Search an events file for HED
-% request2 = struct('service', 'events_search', ...
-%                   'schema_version', '8.0.0', ...
-%                   'json_string', jsonText, ...
-%                   'events_string', eventsText, ...
-%                   'query', '');
-% 
-% response2 = webwrite(servicesUrl, request2, options);
-% response2 = jsondecode(response2);
-% outputReport(response2, 'Example 2 Querying an events file with empty query');
-
