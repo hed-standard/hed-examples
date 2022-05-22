@@ -4,11 +4,11 @@
 %
 %  Example 2: Validate invalid events file using a HED URL.
 %
-%  Example 3: Assemble valid events file uploading HED schema.
+%  Example 3: Assemble valid event HED strings uploading HED schema.
 %
-%  Example 4: Assemble valid events file (def expand) using HED version.
+%  Example 4: Assemble valid event HED strings (def expand) using HED version.
 %
-%  Example 5: Assemble valid events file (no def expand) with extra columns.
+%  Example 5: Assemble valid event HED strings (no def expand) with extra columns.
 %
 %  Example 6: Generate a JSON sidecar template from an events file.
 
@@ -62,25 +62,25 @@ request3 = struct('service', 'events_assemble', ...
                   'schema_string', schemaText, ...
                   'json_string', jsonText, ...
                   'events_string', eventsText, ...
+                  'columns_included', '', ...
                   'expand_defs', 'off');
-
+request3.columns_included = {'onset'};
 response3 = webwrite(servicesUrl, request3, options);
 response3 = jsondecode(response3);
 outputReport(response3, 'Example 3 output');
 
-%%  Example 4: Assemble valid events file (expand defs on) using HED version.
+%%  Example 4: Assemble valid event HED strings(expand defs on).
 request4 = struct('service', 'events_assemble', ...
                   'schema_version', '8.0.0', ...
                   'json_string', jsonText, ...
                   'events_string', eventsText, ...
                   'expand_defs', 'on');
-
 response4 = webwrite(servicesUrl, request4, options);
 response4 = jsondecode(response4);
 outputReport(response4, 'Example 4 assembling HED annotations for events');
 
-%%  Example 5: Assemble valid events file with additional columns using HED version.
-columns_included = {'face_type', 'rep_status'};
+%%  Example 5: Assemble valid event HED strings with additional columns.
+columns_included = {'onset', 'face_type', 'rep_status'};
 request5 = struct('service', 'events_assemble', ...
                   'schema_version', '8.0.0', ...
                   'json_string', jsonText, ...

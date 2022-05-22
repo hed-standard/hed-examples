@@ -241,7 +241,7 @@ and `sub-001_ses-3_task-target_run-01_eeg.edf` are both acceptable
 representations of EEG files, but the data is in different formats.
 
 The BIDS file dictionaries represented by the class `BidsFileDictionary`
-and its extension `BidsTsvDictionary` use a set combination of entities
+and its extension `BidsTabularDictionary` use a set combination of entities
 as the file key.
 
 For a file name `sub-001_ses-3_task-target_run-01_events.tsv`,

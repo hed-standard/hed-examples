@@ -2,7 +2,7 @@
 %
 %  Example 1: Search an events file for HED using a valid query.
 %
-%  Example 2: Search an events file for HED using an invalid query.
+%  Example 2: Search an events file for HED and return additional columns.
 
 %% Setup requires a csrf_url and services_url. Must set header and options.
 host = 'https://hedtools.ucsd.edu/hed';
@@ -36,3 +36,17 @@ request1 = struct('service', 'events_search', ...
 response1 = webwrite(servicesUrl, request1, options);
 response1 = jsondecode(response1);
 outputReport(response1, 'Example 1 Querying an events file');
+
+
+%% Example 2: Search an events file for HED
+request2 = struct('service', 'events_search', ...
+                  'schema_version', '8.0.0', ...
+                  'json_string', jsonText, ...
+                  'events_string', eventsText, ...
+                  'columns_included', '', ...
+                  'query', '[[Intended-effect, Cue]]');
+request2.columns_included = {'onset'};
+response2 = webwrite(servicesUrl, request2, options);
+response2 = jsondecode(response2);
+outputReport(response2, 'Example 2 Querying an events file with extra columns');
+
