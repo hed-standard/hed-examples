@@ -90,10 +90,10 @@ The event marker represents an experimental stimulus with two
 experimental conditions *Famous-face* and *Immediate-repeat* in effect.
 
 Because HED has a structured vocabulary,
-other researchers using HED will use the same terms, making it easier to compare experiments.
+other researchers use the same terms, making it easier to compare experiments.
 Further, the HED infrastructure supports associating of these annotation strings
 with the actual event markers during processing,
-allowing tools to locate event markers based using experiment-independent strategies.
+allowing tools to locate event markers using experiment-independent strategies.
 
 The annotation in the example uses the most basic strategy for annotating
 condition variables --- just naming the different conditions.
@@ -110,7 +110,7 @@ allowing tools to leverage hierarchical relationships during searching.
 ````{admonition} An equivalent long-form HED annotation of face image stimulus from above.
 
 <em>Event/<b>Sensory-event</b></em>,  
-<em>Property/Task-property/Task-event-role/<b>Experimental-stimulus</b></em>, 
+<em>Property/Task-property/Task-event-role/<b>Experimental-stimulus</b></em>,  
 (<em>Property/Sensory-property/Sensory-presentation/<b>Visual-presentation</b></em>,  
 (<em>Item/Object/Man-made-object/Media/Visualization/<b>Image</b></em>,  
 <em>Item/Biological-item/Anatomical-item/Body-part/Head/<b>Face</b></em>,  

@@ -3,7 +3,7 @@
 %% Create a list with all of the .set files in the BIDS dataset
 function selectedList = getFileList(rootPath, namePrefix, nameSuffix, ...
     extensions, excludeDirs)
-%% Return a full path list of specific files in the rootPath directory tree 
+%% Return a full path list of specified files in rootPath directory tree.
 %
 %  Parameters:
 %      rootPath    (char) full path of root of directory tree to search

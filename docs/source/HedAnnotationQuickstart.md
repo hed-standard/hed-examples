@@ -2,7 +2,7 @@
 
 This tutorial takes you through the steps of annotating the events
 using HED (Hierarchical Event Descriptors).
-This tutorial focuses on how to make good choices of HED annotations
+The tutorial focuses on how to make good choices of HED annotations
 to make your data usable for downstream analysis.
 The mechanics of putting your selected HED annotations into
 [BIDS (Brain Imaging Data Structure)](https://bids.neuroimaging.io/) format
@@ -21,7 +21,7 @@ free-form tagging for annotation is to avoid confusion and ambiguity
 and to promote data-sharing.
 
 The basic terms are organized into trees for easier access and search.
-The [Expandable browser](https://www.hedtags.org/display_hed.html) allows
+The [**Expandable HED vocabulary viewer**](https://www.hedtags.org/display_hed.html) allows
 you to explore these terms.
 
 (a-recipe-for-simple-annotation-anchor)=
@@ -30,7 +30,7 @@ In thinking about how to annotate an event, you should always start
 by selecting a tag from the *Event* subtree to indicate the general event category.
 Possible choices are: *Sensory-event*, *Agent-action*, *Data-feature*, *Experiment-control*,
 *Experiment-procedure*, *Experiment-structure*, and *Measurement-event*.
-See the [Expandable HED vocabulary viewer](https://www.hedtags.org/display_hed.html)
+See the [**Expandable HED vocabulary viewer**](https://www.hedtags.org/display_hed.html)
 to view the available tags.
 
 Most experiments will only have a few types of distinct events.
@@ -109,11 +109,11 @@ the `value` column as demonstrated in the following example.
 ````
 
 The table above shows the event category and the supporting tags as suggested in the
-[Standard hed tags for minimal annotation](standard-hed-tag-selections-anchor) table.
+[**Standard hed tags for minimal annotation**](standard-hed-tag-selections-anchor) table.
 
 A better format for your annotations is the 
-[4-column spreadsheet format](four-column-spreadsheet-format-anchor) described in
-[BIDS annotation quickstart](BidsAnnotationQuickstart.md), since there are online
+[**4-column spreadsheet format**](four-column-spreadsheet-format-anchor) described in
+[**BIDS annotation quickstart**](BidsAnnotationQuickstart.md), since there are online
 tools to convert this format into a JSON sidecar that can be deployed directly in
 a BIDS dataset. 
 
@@ -150,7 +150,7 @@ We have also included the annotation for the `stim_file` column in the last row
 of this table. 
 
 The assembled annotation for the first event (with onset 5.035) in the 
-[event file excerpt from go/no-go](example-go-no-go-event-table-anchor) above is:
+[**event file excerpt from go/no-go**](example-go-no-go-event-table-anchor) above is:
 
 > *Sensory-event*, *Visual-presentation*, *Experimental-stimulus*, *Target*, (*Animal*, *Image*), (*Image*, *Pathname/105064.jpg*)
 
@@ -159,7 +159,7 @@ the annotation process simpler, especially when annotations become more complex.
 Multiple column representation also can make analysis easier,
 particularly if the columns represent information such as design variables.
 
-See [BIDS annotation quick start](BidsAnnotationQuickstart.md#bids-annotation-quickstart) for how to
+See [**BIDS annotation quick start**](BidsAnnotationQuickstart.md#bids-annotation-quickstart) for how to
 create templates to fill in with your annotations using online tools.
 Once you have completed the annotation and converted it to a sidecar,
 you simply need to place this sidecar in the root directory of your BIDS dataset.
