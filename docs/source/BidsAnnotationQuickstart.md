@@ -2,7 +2,7 @@
 
 This tutorial provides a step-by-step guide to creating a JSON sidecar
 containing the annotations needed to document your BIDs dataset events.
-See [*HED annotation quickstart**](HedAnnotationQuickstart.md) for
+See [**HED annotation quickstart**](HedAnnotationQuickstart.md) for
 guidelines on what annotations to choose.
 
 We assume that your dataset is already in the BIDS [**BIDS Brain Imaging Data Structure**](https://bids-specification.readthedocs.io/en/stable/) format
@@ -23,7 +23,7 @@ You can then edit this JSON file directly using a text editor
 to insert data descriptions and HED annotations.
 
 You also have the option of converting this JSON template to a spreadsheet
-templates for editing convenience as described below in 
+template for editing convenience as described below in 
 [**Spreadsheet templates**](spreadsheet-templates-anchor).
 
 ````{warning}
@@ -31,13 +31,13 @@ Although the HED web tools base the template on the information extracted from a
 `events.tsv` file, this will be sufficient to produce a good template for most datasets.
 
 For datasets with widely-varying event files, you should use the 
-[bids_validate_hed.ipynb](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_processing/bids_validate_hed.ipynb)
+[bids_validate_hed.ipynb](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_processing/bids_generate_sidecar.ipynb)
 Jupyter notebook version rather than the online tools.
 The Jupyter notebook consolidates information from all of the `events.tsv` files in the dataset
 to produce a comprehensive JSON sidecar template.
 ````
 
-We are using an
+The examples in this tutorial use an
 [**abbreviated version**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/datasets/eeg_ds003654s_hed/sub-002/eeg/sub-002_task-FacePerception_run-1_events.tsv)
 of the `events.tsv`file from subject 002 run 1 from
 [ds003654:Face processing MEEG dataset with HED annotation](https://openneuro.org/datasets/ds003645/versions/2.0.0)
@@ -66,10 +66,10 @@ gives event markers relative to the EEG data file
 `sub_002_task-FacePerception-run-1_eeg.set` located in the same directory
 because the file names match up to the last underbar.
 
-The following is an excerpt of a BIDS event file showing its tabular structure.
+The following is an excerpt of a BIDS events file showing its tabular structure.
 
 (events-tsv-excerpt-overview-anchor)=
-````{admonition} A simplified excerpt from a BIDS event file.
+````{admonition} A simplified excerpt from a BIDS events file.
 | onset	| duration | sample | event_type | face_type | rep_status | trial | rep_lag | value | stim_file |
 | ----- | -------- | ------ | ---------- | --------- | ---------- | ----- | ------- | ----- | --------- |
 | 0.004 | n/a | 1 | setup_right_sym | n/a | n/a | n/a | n/a | 3 | n/a |
@@ -189,7 +189,7 @@ and its accompanying JSON sidecar.
 *(Image, Pathname/u032.bmp)*
 ````
 
-The common vocabulary allows HED tools to search for events with
+The standardized HED vocabulary allows tools to search for events with
 common tags across datasets.
 
 We recommend that when at all possible, you place your HED annotations in a
@@ -219,7 +219,7 @@ Working from a template is **much easier and faster** than creating a sidecar fr
 Using the [**HED events online tools**](https://hedtools.ucsd.edu/hed/events),
 the steps to create a template are: 
 
-* [**Step 1: Select generate JSON action.**](step-1-select-generate-json-action-anchor)  
+* [**Step 1: Select generate JSON.**](step-1-select-generate-json-anchor)  
 * [**Step 2: Upload an event file.**](step-2-upload-events-file-for-extraction-anchor)  
 * [**Step 3: Select columns to annotate.**](step-3-select-columns-to-annotate-anchor)  
 * [**Step 4: Download the extracted template.**](step-4-download-extracted-json-template-anchor)  
@@ -229,8 +229,8 @@ You can then edit your JSON sidecar directly or convert it to a spreadsheet
 to fill in the annotations.
 
 
-(step-1-select-generate-json-action-anchor)=
-### Step 1: Select generate JSON action
+(step-1-select-generate-json-anchor)=
+### Step 1: Select generate JSON
 
 Go to the [**Events**](https://hedtools.ucsd.edu/hed/events) page of the HED online tools.
 You will see the following menu:
@@ -239,7 +239,7 @@ You will see the following menu:
 ![GenerateSidecarTemplate1](./_static/images/GenerateSidecarTemplate1.png)
 *Default screen in the HED [online event tools](https://hedtools.ucds.edu.hed/event).*
 
-Select the **Generate sidecar template** action.
+Select **Generate sidecar template**.
 The application will adjust to your selection, showing only the information you need to provide.
 
 (step-2-upload-events-file-for-extraction-anchor)=
@@ -250,7 +250,7 @@ When the upload is complete, the local file name of the uploaded events
 file will be displayed next to the **Browse** button.
 
 ![GenerateSidecarTemplate2](./_static/images/GenerateSidecarTemplate2.png)
-*Generate sidecar template screen in the HED [online event tools](https://hedtools.ucds.edu.hed/event).**
+*Generate sidecar template screen in the HED [online event tools](https://hedtools.ucds.edu.hed/event).*
 
 In this example, we have uploaded 
 [**sub-002_task-FacePerception_run-1_events.tsv**](./_static/data/sub-002_task-FacePerception_run-1_events.tsv).
@@ -284,7 +284,7 @@ included in the JSON sidecar annotation template.
 
 The checkboxes on the right indicate which event file columns contain values that
 you wish to annotate individually.
-We refer to these columns as the categorical columns.
+We refer to these columns as the **categorical** columns.
 
 The numbers in parentheses next to the column names give the number
 of unique values in each column.
@@ -293,13 +293,13 @@ categorical columns, since you will need to provide an individual annotation
 for each value in such a categorical column.
 
 ![GenerateSidecarTemplate3](./_static/images/GenerateSidecarTemplate3.png)
-*Selection of which columns to include when generating a JSON sidecar in the HED [online sidecar tools](https://hedtools.ucds.edu.hed/sidecar).*
+*Selection of which columns to include when generating a JSON sidecar in the HED [online sidecar tools](https://hedtools.ucds.edu/hed/sidecar).*
 
 In the example, we have selected 7 columns to annotate.
 We omitted the `onset`, `duration`, and `sample` columns,
 since these columns have standardized meanings.
 The `duration` column has only 1 unique value because this particular 
-dataset has `n/a` for all entries in the `duration` column.
+dataset has `n/a` for all entries.
 
 We have selected the `event_type`, `face_type`, and `rep_status` columns
 as categorical columns, meaning that we will annotate each unique
@@ -310,7 +310,7 @@ In addition, we have elected to annotate `trial`, `rep_lag`, `value`, and `stim_
 by describing these columns as a whole, resulting in 4 additional annotations.
 
 In all, we will have to provide a total of 8 + 4 + 4 + 1 + 1 + 1 + 1 = 20
-annotation based on the selections we have made.
+HED annotations based on the selections we have made.
 
 (step-4-download-extracted-json-template-anchor)=
 ### Step 4: Download the template.
@@ -333,21 +333,21 @@ which we will use to illustrate the rest of the annotation process.
     "event_type": {
         "Description": "Description for event_type",
         "HED": {
-            "setup_right_sym": "Label/setup_right_sym",
-            "show_face": "Label/show_face",
-            "left_press": "Label/left_press",
-            "show_circle": "Label/show_circle"
+            "setup_right_sym": "(Label/event_type, Label/setup_right_sym)",
+            "left_press": "(Label/event_type, Label/left_press)",
+            "show_face": "(Label/event_type, Label/show_face)",
+            "show_circle": "(Label/event_type, Label/show_circle)"
         },
         "Levels": {
-            "setup_right_sym": "Description for setup_right_sym",
-            "show_face": "Description for show_face",
-            "left_press": "Description for left_press",
-            "show_circle": "Description for show_circle"
+            "setup_right_sym": "Description for setup_right_sym of event_type",
+            "left_press": "Description for left_press of event_type",
+            "show_face": "Description for show_face of event_type",
+            "show_circle": "Description for show_circle of event_type"
         }
     },
     "stim_file": {
         "Description": "Description for stim_file",
-        "HED": "Label/#"
+        "HED": "(Label/stim_file, Label/#)"
     }
 }
 ```
@@ -365,7 +365,7 @@ when the annotation is assembled.
 
 Once you have a JSON sidecar template, you should edit in your event annotations.
 The following is an edited version of the 
-[**simplified template excerpt](simplified-json-template)
+[**simplified template excerpt**](simplified-json-template)
 containing a minimal set of HED annotations.
 
 (excerpted-json-file-with-tags)=
@@ -377,14 +377,14 @@ containing a minimal set of HED annotations.
         "Description": "The main category of the event.",
         "HED": {
             "setup_right_sym": "Experiment-structure, Condition-variable/Right-key-assignment",
-            "show_face": "Sensory-event, Experimental-stimulus, Visual-presentation, Image, Face",
             "left_press": "Agent-action, Participant-response, (Press, Keyboard-key)",
+            "show_face": "Sensory-event, Experimental-stimulus, Visual-presentation, Image, Face",
             "show_circle": "Sensory-event, (White, Circle), (Intended-effect, Cue)"
         },
         "Levels": {
             "setup_right_sym": "Right index finger key press means above average symmetry.",
-            "show_face": "Display a stimulus face image.",
             "left_press": "Participant presses a key with left index finger.",
+            "show_face": "Display a stimulus face image.",
             "show_circle": "Display a white circle on black background."
         }
     },
@@ -408,7 +408,7 @@ Once you have finished, you should validate your JSON file to make sure
 that your annotations are correct.
 See [**HED validation**](./HedValidation.md) for detailed guidance.
 When you are satisfied with your valid JSON sidecar,
-simply upload it to the root directory of your BIDS dataset and you are done.
+simply upload it to the root directory of your BIDS dataset, and you are done.
 
 If you would rather work with spreadsheets when doing your annotations,
 you can extract a spreadsheet from the JSON sidecar to edit and merge
@@ -432,13 +432,13 @@ or have [**extracted a JSON sidecar template**](create-a-json-template-anchor).
 Using the [**HED sidecar online tools**](https://hedtools.ucsd.edu/hed/sidecar),
 the steps to create a template are:
 
-* [**Step 1: Select the extract spreadsheet action.**](step-1-select-extract-spreadsheet-action-anchor)  
+* [**Step 1: Select extract HED spreadsheet.**](step-1-select-extract-hed-spreadsheet-anchor)  
 * [**Step 2: Upload a sidecar and extract.**](step-2-upload-json-sidecar-and-extract-anchor)
 * [**Step 3: Edit the spreadsheet.**](step-3-edit-the-spreadsheet-anchor)
 * [**Step 4: Merge the spreadsheet.**](step-4-merge-the-spreadsheet-anchor)
 
-(step-1-select-extract-spreadsheet-action-anchor)=
-### Step 1: Select extract spreadsheet
+(step-1-select-extract-hed-spreadsheet-anchor)=
+### Step 1: Select extract HED spreadsheet
 
 Go to the [**Sidecar**](https://hedtools.ucsd.edu/hed/sidecar) page of the HED online tools.
 You will see the following menu:
@@ -446,7 +446,7 @@ You will see the following menu:
 ![SidecarToSpreadsheetTemplate1](./_static/images/SidecarToSpreadsheetTemplate1.png)
 *Default screen for the HED [online sidecar tools](https://hedtools.ucds.edu.hed/sidecar).*
 
-Select the **Extract HED spreadsheet** action.
+Select **Extract HED spreadsheet**.
 The application will adjust to your selection, showing only the information you need to provide.
 
 (step-2-upload-json-sidecar-and-extract-anchor)=
@@ -471,10 +471,10 @@ generated from the
 ````{admonition} HED annotation table extracted from JSON sidecar template.
 | **column_name** | **column_value** | **description** | **HED** |
 | --------------- | ---------------- | --------------- | ------- |
-| event_type | setup_right_sym | Description for setup_right_sym | Label/setup_right_sym |
-| event_type | show_face | Description for show_face | Label/show_face |
-| event_type | left_press | Description for left_press | Label/left_press |
-| event_type | show_circle | Description for show_circle | Label/show_circle |
+| event_type | setup_right_sym | Description for setup_right_sym | (Label/event_type, <br>Label/setup_right_sym) |
+| event_type | show_face | Description for show_face | (Label/event_type, <br>Label/show_face) |
+| event_type | left_press | Description for left_press | (Label/event_type, <br>Label/left_press) |
+| event_type | show_circle | Description for show_circle | (Label/event_type, <br>Label/show_circle) |
 | stim_file | n/a | Description for stim_file | Label/# |
 ````
 The spreadsheet has 4 columns: the **column_name** corresponds to the column
@@ -522,15 +522,15 @@ Although editing metadata in a spreadsheet is convenient,
 BIDS stores all of its metadata in JSON files.
 If you choose to extract a spreadsheet for editing your annotations,
 you will need to merge the edited spreadsheet back into a JSON sidecar
-before including in your BIDS dataset.
+before including it in your BIDS dataset.
 
 Using the [**HED sidecar online tools**](https://hedtools.ucsd.edu/hed/sidecar),
-select the merge HED spreadsheet action as shown below.
+select merge HED spreadsheet as shown below.
 You may choose an existing edited sidecar, the original template,
 or an empty sidecar as the JSON target file for the merge.
 
 ![MergeSpreadsheetTemplate1](./_static/images/MergeSpreadsheetTemplate1.png)
-*The Merge HED spreadsheet screen in the HED [online sidecar tools](https://hedtools.ucds.edu.hed/sidecar).*
+*The Merge HED spreadsheet screen in the HED [**online sidecar tools**](https://hedtools.ucds.edu.hed/sidecar).*
 
 Pressing the **Process** button causes the application to generate a downloadable
 version of the merged JSON file.
@@ -555,4 +555,3 @@ containing `n/a`.
 Notice that there is an option to include *Description* tags when doing the merge.
 If this box is checked, the contents of the **description** field are
 prepended with the *Description* tag and appended to the tags.
-
