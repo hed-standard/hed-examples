@@ -17,7 +17,7 @@ Detailed case study in using HED-3G for tagging:
 > NeuroImage Special Issue Practice in MEEG. NeuroImage  245  (2021)  118766.  
 > [https://www.sciencedirect.com/science/article/pii/S1053811921010387](https://www.sciencedirect.com/science/article/pii/S1053811921010387).
 
-## 2. HED schema viewers
+## HED schema viewers
 
 The HED schema is usually developed in `.mediawiki` format and converted to XML for use by tools.
 However, researchers wishing to tag datasets will find both of these views hard to read. 
@@ -31,18 +31,26 @@ and tagging hints.
 
 * - **Viewer**
   - **Link**
-* - **Base schema**
+* - **standard HED schema**
   -
 * - Expandable HTML	
   - [https://www.hedtags.org/display_hed.html](https://www.hedtags.org/display_hed.html)
+* - Expandable prerelease HTML	
+  - [https://www.hedtags.org/display_hed_prelease.html](https://www.hedtags.org/display_hed_prelease.html)
 * - Mediawiki	
   - [https://github.com/hed-standard/hed-specification/blob/master/hedwiki/HED8.0.0.mediawiki](https://github.com/hed-standard/hed-specification/blob/master/hedwiki/HED8.0.0.mediawiki)
 * - XML	
   - [https://github.com/hed-standard/hed-specification/blob/master/hedxml/HED8.0.0.xml](https://github.com/hed-standard/hed-specification/blob/master/hedxml/HED8.0.0.xml)
-* - **Library schemas**
+* - **Score library schemas**
   - 
 * - Expandable HTML
-  - [https://www.hedtags.org/display_hed_library.html](https://www.hedtags.org/display_hed_library.html)
+  - [https://www.hedtags.org/display_hed_score.html](https://www.hedtags.org/display_hed_score.html)
+* - Expandable prelease HTML
+  - [https://www.hedtags.org/display_hed_score_prerelease.html](https://www.hedtags.org/display_hed_score_prerelease.html)
+* - Mediawiki	
+  - [https://github.com/hed-standard/hed-schema-library/blob/main/library_schemas/score/hedwiki/HED_score_0.0.1.mediawiki](https://github.com/hed-standard/hed-schema-library/blob/main/library_schemas/score/hedwiki/HED_score_0.0.1.mediawiki)
+* - XML	
+  - [https://github.com/hed-standard/hed-schema-library/blob/main/library_schemas/score/hedxml/HED_score_0.0.1.xml](https://github.com/hed-standard/hed-schema-library/blob/main/library_schemas/score/hedxml/HED_score_0.0.1.xml)
 `````  
 
 ## 3. HED Websites
