@@ -135,7 +135,7 @@ response = jsondecode(response);
 
 The MATLAB `webwrite` returns a JSON structure as specified in the `options`.
 The MATLAB `jsondecode` function returns a MATLAB `struct` whose format is explained
-below in [**Decoding a MATLAB response**](decoding-a-service-response-anchor).
+below in [**Decoding a service response**](decoding-a-service-response-anchor).
 
 
 Except for `get_services`, all other services are of the form *target_command*
@@ -239,7 +239,7 @@ but rather whether the server was able to complete the request without raising a
 A failure `error_type` is highly unusual and indicates some type of
 unexpected internal web service error.
 Errors of this type should be reported using the
-[**hed-python issues**](https://github.com/hed-standard/hed-python/issues) mechanism.
+[**GitHub hed-python issues**](https://github.com/hed-standard/hed-python/issues) mechanism.
 
 The `results` structure has the actual results of the service request.
 

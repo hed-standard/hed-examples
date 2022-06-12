@@ -13,6 +13,10 @@ function errors = testSidecarServices(host)
 %
 %  Example 6: Merge a 4-column spreadsheet with a JSON sidecar.
 %
+%  Example 7: Validate a sidecar that is valid after merging.
+%
+%  Example 8: Validate a sidecar that is not valid until merging.
+
 %% Get the options and data
 [servicesUrl, options] = getHostOptions(host);
 data = getTestData();
@@ -97,5 +101,34 @@ if ~isempty(response6.error_type) || ...
   ~strcmpi(response6.results.msg_category, 'success')
    errors{end + 1} = ...
        'Example 6 failed to merge 4-column spreadsheet with JSON.';
+end 
+ 
+
+%%  Example 7: Validate a JSON sidecar with inheritance.
+request7 = struct('service', 'sidecar_validate', ...
+                  'schema_version', '8.1.0',...
+                  'json_list', '', 'has_column_names', 'on');
+request7.json_list = {data.jsonUpperText, data.jsonLower2Text};
+response7 = webwrite(servicesUrl, request7, options);
+response7 = jsondecode(response7);
+outputReport(response7, 'Example 7 validate a merged sidecar.');
+if ~isempty(response7.error_type) || ...
+  ~strcmpi(response7.results.msg_category, 'success')
+   errors{end + 1} = ...
+       'Example 7 failed to validate a merged sidecar.';
+end 
+
+%%  Example 8: Validate a JSON sidecar invalid without inheritance.
+request8 = struct('service', 'sidecar_validate', ...
+                  'schema_version', '8.1.0',...
+                  'json_list', '', 'has_column_names', 'on');
+request8.json_list = {data.jsonLower2Text};
+response8 = webwrite(servicesUrl, request8, options);
+response8 = jsondecode(response8);
+outputReport(response8, 'Example 8 validate a sidecar that was not merged.');
+if ~isempty(response8.error_type) || ...
+  ~strcmpi(response8.results.msg_category, 'warning')
+   errors{end + 1} = ...
+       'Example 8 failed to detect a sidecar that should have been merged.';
 end 
  

@@ -1,5 +1,4 @@
-
-host = 'http://192.168.0.25/hed';
+host = 'https://hedtools.ucsd.edu/hed';
 errorMap = containers.Map('KeyType', 'char', 'ValueType', 'any');
 errorMap('testGetServices') = testGetServices(host);
 errorMap('testEventServices') = testEventServices(host);
