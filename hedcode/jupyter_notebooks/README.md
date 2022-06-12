@@ -1,8 +1,7 @@
-## Jupyter notebooks to demo HED tag processes
+## Jupyter notebooks to demo HED tagging
 
-These notebooks demonstrate the process of redesigning event files and
-adding HED tags. The goal of the redesign is to have orthogonal column
-information that is clear and facilitates analysis. 
+These notebooks demonstrate the HED processing using the HED tools.
+
 
 ### BIDS processing notebooks
 
@@ -14,13 +13,16 @@ The Jupyter notebooks in this directory are useful for preparing your BIDS datas
 
 |Script                    | Purpose                            | 
 | ------------------------ | ---------------------------------- | 
-| `bids_summarize_events`  | Provides a summary of the unique values that appear in various columns of the dataset event files. | 
-| `bids_extract_sidecar` | Extracts a JSON events sidecar template based on the event files in a BIDS dataset. |
-| `bids_validate_hed`   | Validates the HED annotations in a BIDS dataset. |  
+| `bids_generate_sidecar`  | Creates a JSON sidecar based on all the event files in a dataset. |
+| `bids_merge_sidecar`    | Merges a spreadsheet version of a sidecar into a JSON sidecar. |
+| `bids_sidecar_to_spreadsheet` | Converts the HED portion of a JSON sidecar into a 4-column spreadsheet. |
+| `bids_validate_dataset`   | Validates the HED annotations in a BIDS dataset. |  
+| `bids_validate_dataset_with_libraries`   | Demonstrates use of HED libraries in validation. |  
 
 
 ### Event file restructuring notebooks
 
+**This section is out of date and will be updated soon.**
 The demo scripts use data in `../data/sternberg` and in the reduced
 attention shift dataset: 
 

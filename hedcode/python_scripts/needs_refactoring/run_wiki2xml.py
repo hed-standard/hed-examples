@@ -1,6 +1,7 @@
 """ Example of converting a hed schema from .mediawiki format to .xml format. """
 
-from hed.util.file_util import write_strings_to_file
+from hed.util.file_util import \
+    write_strings_to_file
 from hed.schema.hed_schema_io import load_schema
 
 
