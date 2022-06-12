@@ -26,5 +26,8 @@ function data = getTestData()
         fileread('../../data/spreadsheet_data/LKTEventCodesHED2.tsv');
     data.goodStrings = {'Red,Blue', 'Green', 'White, (Black, Image)'}; 
     data.badStrings = {'Red, Blue, Blech', 'Green', 'White, Black, Binge'}; 
-
+    data.jsonUpperText = ...
+        fileread('../../../datasets/eeg_ds003654s_hed_inheritance/task-FacePerception_events.json');
+    data.jsonLower2Text = ...
+        fileread('../../../datasets/eeg_ds003654s_hed_inheritance/sub-002/sub-002_task-FacePerception_events.json');
 end
