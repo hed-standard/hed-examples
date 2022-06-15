@@ -31,4 +31,14 @@ function [] = outputReport(response, theTitle)
         fprintf('\n----Spreadsheet result----\n');
         fprintf(results.spreadsheet);
     end
+    
+    if isfield(results, 'definitions') && isstruct(results.definitions)
+        fprintf('\n\n----------definitions---------\n');
+        defNames = fieldnames(results.definitions);
+        for k=1:length(defNames)
+            name = defNames{k};
+            fprintf('\n%s: %s\n', defNames{k}, results.definitions.(name));
+        end
+    end
+        
 end
