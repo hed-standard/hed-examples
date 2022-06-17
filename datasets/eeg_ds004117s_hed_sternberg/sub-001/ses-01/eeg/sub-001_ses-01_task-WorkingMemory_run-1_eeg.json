@@ -1,0 +1,11 @@
+{
+    "TaskName": "WorkingMemory",
+    "EEGReference": "common",
+    "RecordingType": "continuous",
+    "RecordingDuration": 652.952,
+    "SamplingFrequency": 250.0,
+    "EEGChannelCount": 69,
+    "EOGChannelCount": 2,
+    "PowerLineFrequency": 60,
+    "SoftwareFilters": "n/a"
+}

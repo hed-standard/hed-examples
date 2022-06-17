@@ -1,0 +1,71 @@
+{
+    "event_type": {
+        "Levels": {
+            "left_click": "Particpant pushes the left button.",
+            "right_click": "Participant pushes the right button",
+            "show_cross": "Display an image of a cross character on the screen.",
+            "show_dash": "Display an image of a dash character on the screen.",
+            "show_letter": "Display a letter on the screen.",
+            "sound_beep": "Play a beep sound.",
+            "sound_buzz": "Play a buzz sound"
+        },
+        "HED": {
+            "left_click": "Agent-action, Participant-response, (Press, (Push-button, (Left-side-of)))",
+            "right_click": "Agent-action, Participant-response, (Press, (Push-button, (Right-side-of)))",
+            "show_cross": "Sensory-event, Visual-presentation, (Cross, (Center-of, Computer-screen))",
+            "show_dash": "Sensory-event, Visual-presentation, (Dash, (Center-of, Computer-screen))",
+            "show_letter": "Sensory-event, Visual-presentation, (Character, (Center-of, Computer-screen))",
+            "sound_beep": "Sensory-event, Auditory-presentation, Beep",
+            "sound_buzz": "Sensory-event, Auditory-presentation, Buzz"
+        }
+    },
+    "task_role": {
+        "Levels": {
+            "bad_trial": "This event is part of a bad or incomplete trial. Some of the expected trial events are missing.",
+            "feedback_correct": "Feedback that the last participant response was correct.",
+            "feedback_incorrect": "Feedback that the last participant response was incorrect.",
+            "fixate": "Indicates participant should fixate.",
+            "ignored_correct": "The participant correctly indicated that the probe was not a target.",
+            "ignored_incorrect": "The participant indicated that the probe was not a target but the probe was a target.",
+            "indicate_ready": "The participant presses a button to indicate ready.",
+            "probe_not_shown": "The probe letter was not shown in the trial.",
+            "probe_target": "The probe letter was a target to be remembered.",
+            "remembered_correct": "Participant correctly indicated that the probe was a target.",
+            "remembered_incorrect": "Participant indicated that the probe was a target but the probe was not a target.",
+            "to_ignore": "This probe letter is not a target.",
+            "to_remember": "This probe letter is a target.",
+            "work_memory": "Cue to indicate that a probe letter is coming."
+        },
+        "HED": {
+            "bad_trial": "(Invalid, Experimental-trial)",
+            "feedback_correct": "(Feedback, Correct-action)",
+            "feedback_incorrect": "(Feedback, Incorrect-action)",
+            "fixate": "(Task, Fixate)",
+            "ignored_correct": "((Recall, Non-target), Correct-action)",
+            "ignored_incorrect": "((Recall, Non-target), Incorrect-action)",
+            "indicate_ready": "(Appropriate-action, Label/Indicate-ready)",
+            "probe_not_shown": "(Cue, Non-target)",
+            "probe_target": "(Cue, Target)",
+            "remembered_correct": "((Recall, Target), Correct-action)",
+            "remembered_incorrect": "((Recall, Target), Incorrect-action)",
+            "to_ignore": "Non-target",
+            "to_remember": "Target",
+            "work_memory": "(Cue, Recall)"
+        }
+    },
+    "trial": {
+        "Description": "Number of the trial in the experiment",
+        "HED": "Experimental-trial/#"
+    },
+    "letter": {
+        "Description": "The character appearing on the screen",
+        "HED": "(Character, Label/#)"
+    },
+    "memory_cond": {
+        "Description": "Number of letters that must be paid attention to or remembered.",
+        "HED": "(Condition-variable/Items-to-memorize, Item-count, Target, Label/#)"
+    },
+	"sample": {
+		"Description": "Number of the sample taken in acquisition relative to EEG with first sample being 1."
+	}
+}
