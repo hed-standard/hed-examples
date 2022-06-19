@@ -22,7 +22,7 @@ The suffix modifier indicates what this dataset is designed to test.
 
 | Dataset | Description |
 | ----------------- | ------------|
-| eeg_ds002893s_hed | Auditory-visual attention shift data.<br>Illustrates remapping of multiple event columns.
+| eeg_ds002893s_hed_attention_shift | Auditory-visual attention shift data.<br>Illustrates remapping of multiple event columns.
 | eeg_ds003654s_hed | Wakeman-Henson face processing data.<br>HED tags in short form with definitions. |
 | eeg_ds003654s_hed_inheritance |  Wakeman-Henson face processing data.<br>HED tags with multiple sidecars. |
 | eeg_ds003654s_hed_library |  Wakeman-Henson face processing data.<br>HED tags using libraries.  |

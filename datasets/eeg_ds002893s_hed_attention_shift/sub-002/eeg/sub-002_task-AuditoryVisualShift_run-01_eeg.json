@@ -1,0 +1,27 @@
+{
+    "PowerLineFrequency": 60,
+    "CapManufacturersModelName": "Electro-Cap International",
+    "TaskDescription": "For each subject, the experiment begins with one Focus Auditory (FA) block and one Focus Visual (FV) block, followed by 12 Shift (SH) blocks and another 3 FA and FV blocks each, where the order of the FA and FV sequences was randomized across subjects. In the Shift condition, subjects must shift their attention between the visual modality and the auditory modality based on the presentation of \\\"Look\\\" and \\\"Hear\\\" cues. In the Focus condition, subjects are told prior to the start of the block which modality (auditory or visual) to attend to. The stimuli is presented in blocks of 264 for duration of 2.64 min. The auditory stimuli are 100-ms 550-Hz (target) and 500-Hz (non-target) sine-wave tones, amplitude-modulated at 5 Hz. The visual stimuli are light-blue (target) and a dark-blue (non-target) 8.4 cm2 filled squares presented on a computer monitor. Altogether, 384 unattended non-target stimuli per modality were presented during the Focus condition and 576 non-target stimuli were presented during the Shift condition.",
+    "CapManufacturer": "SA Instruments",
+    "InstitutionAddress": "9500 Gilman Dr, Dept 0523, La Jolla, CA 92093, USA",
+    "InstitutionalDepartmentName": "Swartz Center for Computational Neuroscience",
+    "InstitutionName": "Institute for Neural Computation",
+    "Manufacturer": "BioSemi",
+    "Instructions": "In the Shift condition, not reported in this paper, the subjects shifted their attention following the cue. In the Focus condition, reported in this paper, subjects ignored the cues and attended to the same modality during the whole block. The modality to attend was indicated prior to each block. The subjects' task was to press a button upon a detection of a relevant-modality target. At all times, subjects had to fixate on a cross continuously presented in the middle of the computer monitor. They were visually monitored to ensure proper fixation.",
+    "EEGPlacementScheme": "10-20",
+    "EEGReference": "average of the left- and right-mastoid",
+    "SoftwareFilters": {
+        "FilterDescription": {
+            "Description": ".01 Hz and 60 Hz (high- and low-pass, respectively)"
+        }
+    },
+    "TaskName": "AuditoryVisualShift",
+    "EEGChannelCount": 33,
+    "EOGChannelCount": 2,
+    "MiscChannelCount": 1,
+    "RecordingType": "continuous",
+    "RecordingDuration": 2656.968201552207,
+    "SamplingFrequency": 250.0293378038558,
+    "ECGChannelCount": 0,
+    "EMGChannelCount": 0
+}
