@@ -6,7 +6,7 @@ The MATLAB scripts for processing are in two directories:
 ### HED MATLAB services
 
 The HED MATLAB services are located in the
-[**hed_services**](https://github.com/hed-standard/hed-examples/tree/main/hedcode/matlab_scripts/hed_services)
+[**hed_services**](https://github.com/hed-standard/hed-examples/tree/main/hedcode/matlab_scripts/web_services)
 subdirectory of [**hed-examples**](https://github.com/hed-standard/hed-examples).
 
 These scripts access HED Rest services.
@@ -21,7 +21,7 @@ You can read more about these services in
 
 ### HED MATLAB utilities
 
-A number of MATLAB utilities are available in
+Some MATLAB utilities are available in
 [**hed_utilities](https://github.com/hed-standard/hed-examples/tree/main/hedcode/matlab_scripts/hed_utilities).
 These utilities are main used for processing events and other information from EEGLAB `.set` files.
 

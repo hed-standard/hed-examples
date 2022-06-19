@@ -31,14 +31,14 @@ The individual test scripts illustrate how to call each type of available web se
 
 | Target | MATLAB source|  Purpose |
 | ------ | ------------- | ------- |
-| Overall | [**runAllTests.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/hed_services/runAllTests.m) | Harness for running all tests. |
-| Overall | [**testGetServices.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/hed_services/testGetServices.m) | List available services. |
-| Events | [**testEventServices.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/hed_services/testEventServices.m) | Validation, conversion, sidecar generation. |
-| Events | [**testEventSearchServices.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/hed_services/testEventSearchServices.m) | Search, assembly.|
+| Overall | [**runAllTests.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/runAllTests.m) | Harness for running all tests. |
+| Overall | [**testGetServices.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/testGetServices.m) | List available services. |
+| Events | [**testEventServices.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/testEventServices.m) | Validation, conversion, sidecar generation. |
+| Events | [**testEventSearchServices.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/testEventSearchServices.m) | Search, assembly.|
 | Schema |      *in progress*          | For schema library developers. |
-| Sidecars | [**testSidecarServices.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/hed_services/testSidecarServices.m) | Validation, conversion, extraction, merging. |
-| Spreadsheets | [**testSpreadsheetServices.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/hed_services/testSpreadsheetServices.m) | Validation, conversion.|
-| Strings | [**testStringServices.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/hed_services/testStringServices.m) | Validation, conversion. |
+| Sidecars | [**testSidecarServices.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/testSidecarServices.m) | Validation, conversion, extraction, merging. |
+| Spreadsheets | [**testSpreadsheetServices.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/testSpreadsheetServices.m) | Validation, conversion.|
+| Strings | [**testStringServices.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/testStringServices.m) | Validation, conversion. |
 
 
 ### Overview of service requests
@@ -58,7 +58,7 @@ to construct a fixed session header that can be used in subsequent requests in y
 ### Setting up a session from MATLAB
 
 The goal of the session setup is to construct a header that can be used in subsequent web requests.
-The first step is to call the [**getHostOptions.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/hed_services/getHostOptions.m).
+The first step is to call the [**getHostOptions.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/getHostOptions.m).
 This function constructs the services URL from the host URL.
 The function also makes a service request to obtain a CSRF token and a cookie.
 The function then constructs a header and calls the MATLAB `weboptions` function
@@ -187,7 +187,7 @@ and makes a request for validation using HED8.0.0.xml.
 The request indicates that validation warnings as well as errors should be included in the response.
 If you wish to exclude warnings, use `off` instead of `on` as the `check_for_warnings` field value.
 
-The [**testSidecarServices.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/hed_services/testSidecarServices.m)
+The [**testSidecarServices.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/testSidecarServices.m)
 function shows complete examples of the various HED services for JSON sidecars.
 
 ### Making a service request
@@ -206,7 +206,7 @@ outputReport(response, 'Example: validate a JSON sidecar');
 ```
 `````
 
-The [**<code>outputReport.m</code>**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/hed_services/outputReport.m)
+The [**<code>outputReport.m</code>**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/outputReport.m)
 MATLAB script outputs the response in readable form with a user-provided table.
 
 If the web server is down or times out during a request,
