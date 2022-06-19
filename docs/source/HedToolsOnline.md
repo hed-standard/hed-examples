@@ -501,8 +501,7 @@ JSON sidecars, BIDS-style events files, and spreadsheets in `.tsv` or `.xlsx` fo
 Support is also included for assembling the annotations for a BIDS-style 
 event file with a JSON sidecar and for generating a template of a JSON sidecar from a BIDS events file.
 
-The [MATLAB services documentation](https://github.com/hed-standard/hed-examples/tree/main/hedcode/matlab_scripts/hed_services)
-in the `hed-examples` repository gives running MATLAB examples of how to call these 
+The [**web_services**](https://github.com/hed-standard/hed-examples/tree/main/hedcode/matlab_scripts/web_services) directory in the `hed-examples` repository provides MATLAB examples of how to call these 
 services in MATLAB.
 
 ### Service setup

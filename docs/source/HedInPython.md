@@ -34,7 +34,7 @@ Sometimes event files include unexpected or incorrect codes.
 It is a good idea to find out what is actually in the dataset
 event files and whether the information is consistent before starting the annotation process.
 
-The [**bids_summarize_events.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_processing/bids_summarize_events.ipynb) finds the dataset event files and outputs
+The [**bids_summarize_events.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_summarize_events.ipynb) finds the dataset event files and outputs
 the column names and number of events for each event file.
 You can visually inspect the output to make sure that the event file column names
 are consistent across the dataset.
@@ -73,7 +73,7 @@ The [**Create a JSON template**](https://hed-examples.readthedocs.io/en/latest/B
 provides a step-by-step tutorial for using the online tool that creates a 
 template based on the information in a single `events.tsv` file.
 For most datasets, this is sufficient.
-In contrast, the [**bids_extract_sidecar.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_processing/bids_extract_sidecar.ipynb)
+In contrast, the [**bids_generate_sidecar.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_generate_sidecar.ipynb)
 notebook bases the extracted template on the entire dataset.
 
 To use this notebook, substitute the specifics of your BIDS
@@ -103,7 +103,7 @@ spreadsheet rather than working with the JSON file directly as explained in the
 [**Spreadsheet templates**](https://hed-examples.readthedocs.io/en/latest/BidsAnnotationQuickstart.html#spreadsheet-templates-anchor)
 tutorial.
 
-The [**bids_sidecar_to_spreadsheet.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_processing/bids_sidecar_to_spreadsheet.ipynb)
+The [**bids_sidecar_to_spreadsheet.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_sidecar_to_spreadsheet.ipynb)
 notebook demonstrates how to extract the pertinent
 HED annotation to a 4-column spreadsheet (Pandas dataframe) corresponding
 to the HED content of a JSON sidecar.
@@ -127,7 +127,7 @@ To use this notebook, you will need to provide the path to the JSON sidecar and 
 save the spreadsheet if you want to save it.
 If you don't wish to save the spreadsheet, assign `spreadsheet_filename` to be None.
 
-The [**bids_merge_sidecar.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_processing/bids_merge_sidecar.ipynb) notebook shows the complete process,
+The [**bids_merge_sidecar.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_merge_sidecar.ipynb) notebook shows the complete process,
 from extracting the initial sidecar, to converting to a spreadsheet and then
 merging in another sidecar.
 
@@ -139,7 +139,7 @@ faster to debug.
 The [**HED validation guide**](https://hed-examples.readthedocs.io/en/latest/HedValidation.html)
 discusses various HED validation issues and how to fix them.
 
-The [**bids_validate_hed.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_processing/bids_validate_hed.ipynb)
+The [**bids_validate_dataset.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_validate_dataset.ipynb)
 Jupyter notebook validates HED in a BIDS dataset using the `validate` method
 of `BidsDataset`.
 The method first  gathers all the relevant JSON sidecars for each event file
@@ -151,13 +151,18 @@ your BIDS dataset.
 
 **Note:** This validation pertains to event files and HED annotation only.
 It does not do a full BIDS validation.
+
+The [**bids_validate_dataset_with_libraries.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_validate_dataset_with_libraries.ipynb)
+Jupyter notebook validates HED in a BIDS dataset using the `validate` method of `BidsDataset`.
+The example uses three schemas and also illustrates how to manually override the
+schema specified in `dataset_description.json` with schemas from other places.
+This is very useful for testing new schemas that are underdevelopment.
  
 (jupyter-curation-notebooks-anchor)=
 ## Jupyter notebooks for data curation
 
-* [**Consistency of BIDS event files**](consistency-of-BIDS-event-files-anchor) 
-
-
+All data curation notebooks and other examples can now be found
+in the [**hed-curation**](https://github.com/hed-standard/hed-curation) repository.
 
 
 (consistency-of-BIDS-event-files-anchor)=
