@@ -1,0 +1,26 @@
+{
+    "participant_id": {
+        "Description": "Unique participant label",
+        "Units": "n/a"
+    },
+    "age": {
+        "Description": "Participant age (years).",
+        "Units": "years"
+    },
+    "year_of_birth": {
+        "Description": "Year participant was born in.",
+        "Units": "years"
+    },
+    "sex": {
+        "Description": "Participant sex",
+        "Units": "n/a",
+        "Levels": {
+            "F": "Female",
+            "M": "Male"
+        }
+    },
+    "subject_notes": {
+        "Description": "Experimenter text notes about the experiment and participants.",
+        "Units": "n/a"
+    }
+}

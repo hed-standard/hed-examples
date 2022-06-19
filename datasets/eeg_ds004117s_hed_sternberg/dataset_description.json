@@ -1,0 +1,21 @@
+{
+    "Name": "Sternberg Working Memory",
+    "BIDSVersion": "1.7.0",
+    "HEDVersion": "8.0.0",
+    "License": "CC0",
+    "Authors": [
+        "Julie Onton (data)",
+        "Scott Makeig (data and curation)",
+        "Arnaud Delorme (data and curation)",
+        "Dung Truong (curation)",
+        "Kay Robbins (curation)"
+    ],
+    "ReferencesAndLinks": [
+        "Onton, J., Delorme, A., and Makeig, S. (2005). Frontal midline EEG dynamics during working memory. Neuroimage 27, 241-356. https://doi.org/10.1016/j.neuroimage.2005.04.014."
+    ],
+    "Funding": [
+        "National Institutes of Health NS047293",
+        "Swartz Foundation"
+    ],
+    "HowToAcknowledge": "Cite this paper: https://pubmed.ncbi.nlm.nih.gov/15927487/ and consider including the following message: 'This data was obtained from the OpenNeuro database. Its accession number is ds00xxxx.'"
+}

@@ -22,7 +22,7 @@ The suffix modifier indicates what this dataset is designed to test.
 
 | Dataset | Description |
 | ----------------- | ------------|
-| eeg_ds002893s_hed | Auditory-visual attention shift data.<br>Illustrates remapping of multiple event columns.
+| eeg_ds002893s_hed_attention_shift | Auditory-visual attention shift data.<br>Illustrates remapping of multiple event columns.
 | eeg_ds003654s_hed | Wakeman-Henson face processing data.<br>HED tags in short form with definitions. |
 | eeg_ds003654s_hed_inheritance |  Wakeman-Henson face processing data.<br>HED tags with multiple sidecars. |
 | eeg_ds003654s_hed_library |  Wakeman-Henson face processing data.<br>HED tags using libraries.  |
@@ -30,6 +30,7 @@ The suffix modifier indicates what this dataset is designed to test.
 | eeg_ds003654s_hed_longform |  Wakeman-Henson face processing data.<br>HED tags in long form with definitions. |
 | eeg_ds004105s_hed | BCIT Driving with auditory cueing data.<br> Part of a test data corpus for BIDS-MEGA testing. |
 | eeg_ds004106s_hed | BCIT Advanced guard duty data.<br> Part of a test data corpus for BIDS-MEGA testing. |
+| eeg_ds004117s_hed_sternberg | Sternberg working memory task.<br>. Chosen as a replication study for (EEGManyLabs)[https://osf.io/yb3pq/].|
 | fmri_soccer21_hed | HED tags using a single column |
 
 
