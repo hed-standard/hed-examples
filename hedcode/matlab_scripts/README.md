@@ -1,12 +1,12 @@
 ## MATLAB Scripts for HED processing
 
 The MATLAB scripts for processing are in two directories: 
-**hed_services** and **hed_utilities**.
+**web_services** and **utility_scripts**.
 
 ### HED MATLAB services
 
 The HED MATLAB services are located in the
-[**hed_services**](https://github.com/hed-standard/hed-examples/tree/main/hedcode/matlab_scripts/web_services)
+[**web_services**](https://github.com/hed-standard/hed-examples/tree/main/hedcode/matlab_scripts/web_services)
 subdirectory of [**hed-examples**](https://github.com/hed-standard/hed-examples).
 
 These scripts access HED Rest services.
@@ -22,7 +22,7 @@ You can read more about these services in
 ### HED MATLAB utilities
 
 Some MATLAB utilities are available in
-[**hed_utilities](https://github.com/hed-standard/hed-examples/tree/main/hedcode/matlab_scripts/hed_utilities).
+[**utility_scripts**](https://github.com/hed-standard/hed-examples/tree/main/hedcode/matlab_scripts/utility_scripts).
 These utilities are main used for processing events and other information from EEGLAB `.set` files.
 
 EEGLAB also has a number of HED tools which are available as plugins for processing BIDS datasets

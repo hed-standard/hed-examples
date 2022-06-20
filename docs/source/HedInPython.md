@@ -182,7 +182,7 @@ The example data curation scripts discussed in this section assume that two vers
 of each BIDS event file are present: `events.tsv` and a corresponding `events_temp.tsv` file.
 The example datasets that are using for these tutorials assume that the recordings
 are in EEG.set format.
-We used the [runEeglabEventsToFiles](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/hed_utilities/runEeglabEventsToFiles.m)
+We used the [runEeglabEventsToFiles](https://raw.githubusercontent.com/hed-standard/hed-curation/main/src/curation/matlab_utility_scripts/hed_utilities/runEeglabEventsToFiles.m)
 MATLAB script to dump the events stored in the data.
 
 

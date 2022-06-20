@@ -18,7 +18,7 @@ in a locally-deployed docker module.
 See [**HED-web**](https://hed-web.readthedocs.io/en/latest/index.html)
 for additional information on the deployment.
 
-The [**runAllTests.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/hed_services/runAllTests.m)
+The [**runAllTests.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/runAllTests.m)
 is a main script that runs all the example code and reports whether
 the code runs successfully.
 You should start by running this script to make sure everything is working on your system,
