@@ -18,7 +18,8 @@ and Python scripts with direct calls to HedTools.
 The repository also contains example code in python and matlab. 
 See [**hedcode/README.md**](./hedcode/README.md) for details.
 The Python scripts and notebooks require the installation of
-`hedtools` whose [**installation**](./#installation) is described below.
+`hedtools` whose [**installation**](./README.md#installation-of-hedtools)
+is described below.
 
 The [**docs**](https://github.com/hed-standard/hed-examples/tree/main/docs)
 subdirectory contains the main documentation for this and other HED resources.
@@ -29,7 +30,7 @@ gathers the HED supporting resources, all of which are open source.
 ### Installation of hedtools
 
 The most of the Python-related resources in this repository
-require the installation of HEDTools Python module which can be
+require the installation of the HEDTools Python module, which can be
 installed using `pip` or directly from its GitHub repository as follows:
 
 To use `pip` to install `hedtools` from PyPI:

@@ -1,4 +1,4 @@
-# HED examples
+# HED code examples
 
 This repository contains user supporting code and documentation
 for using the Hierarchical Event Descriptor (HED) system for
@@ -23,5 +23,3 @@ subdirectory contains datasets for testing various aspects of HED.
 These datasets have stubs for actual imaging data in order to reduce their size.
 Most of these datasets have complete versions available on 
 [**openNeuro**](https://openneuro.org/).
-
-The

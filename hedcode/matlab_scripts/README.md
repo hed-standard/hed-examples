@@ -11,7 +11,7 @@ subdirectory of [**hed-examples**](https://github.com/hed-standard/hed-examples)
 
 These scripts access HED Rest services.
 They rely on the HED online services to be running somewhere,
-either on a local Docker module or remotely.
+either in a local Docker module or remotely.
 
 Access to the HED services are also available online through
 the [**HED Online Tools**](https://hedtools.ucsd.edu/hed).
