@@ -1,4 +1,4 @@
-# HED examples
+# HED code examples
 
 This repository contains user supporting code and documentation
 for using the Hierarchical Event Descriptor (HED) system for
