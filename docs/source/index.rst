@@ -15,6 +15,15 @@ HED examples and tutorials
    BidsAnnotationQuickstart.md
    HedAnnotationQuickstart.md
    HedValidation.md
+   HedSearchAndSummary.md
+   HedConditionsAndDesignMatrices.md
+   HedRemodelingTools.md
+
+
+.. toctree::
+   :maxdepth: 3
+   :caption: HED Tools:
+
    TaggingWithCTagger.md
    DataCuration101.md
    HedToolsOnline.md
