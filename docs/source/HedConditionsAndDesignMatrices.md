@@ -1,17 +1,45 @@
-# Event restructuring
+# HED conditions and design matrices
 
-This tutorial works through the process of restructuring event files using the HED event remodeling tools. The tools are designed to be run on an entire BIDS dataset.
+**Under construction**
+
+This tutorial takes you through the steps of annotating the events
+using HED (Hierarchical Event Descriptors).
+The tutorial focuses on how to make good choices of HED annotations
+to make your data usable for downstream analysis.
+The mechanics of putting your selected HED annotations into
+[BIDS (Brain Imaging Data Structure)](https://bids.neuroimaging.io/) format
+is covered in the [**BIDS annotation quickstart**](./BidsAnnotationQuickstart.md) guide.
 
 * [**What is HED annotation?**](what-is-hed-annotation-anchor)  
 * [**A recipe for simple annotation**](a-recipe-for-simple-annotation-anchor)  
 
-(what-is-event-restructuring-anchor)=
-## What is event restructuring?
+(what-is-hed-annotation-anchor)=
+## What is HED annotation?
 
+A HED annotation consists of a comma separated list of tags selected from
+a HED vocabulary or schema.
+An important reason for using an agreed-upon vocabulary rather than
+free-form tagging for annotation is to avoid confusion and ambiguity
+and to promote data-sharing.
+
+The basic terms are organized into trees for easier access and search.
+The [**Expandable HED vocabulary viewer**](https://www.hedtags.org/display_hed.html) allows
+you to explore these terms.
 
 (a-recipe-for-simple-annotation-anchor)=
-## Installation and running of the restructuring
+## A recipe for simple annotation
+In thinking about how to annotate an event, you should always start
+by selecting a tag from the *Event* subtree to indicate the general event category.
+Possible choices are: *Sensory-event*, *Agent-action*, *Data-feature*, *Experiment-control*,
+*Experiment-procedure*, *Experiment-structure*, and *Measurement-event*.
+See the [**Expandable HED vocabulary viewer**](https://www.hedtags.org/display_hed.html)
+to view the available tags.
 
+Most experiments will only have a few types of distinct events.
+The simplest way to create a minimal HED annotation for your events is:
+
+1. Select one of the 7 tags from the *Event* subtree to designate the general category of the event.  
+2. Use the following table to select the appropriate supporting tags given that event type.
 
 (standard-hed-tag-selections-anchor)=
 ```{admonition} Standard HED tag selections for minimal annotation.
@@ -20,6 +48,24 @@ This tutorial works through the process of restructuring event files using the H
 |  Event tag    | Support tag type |  Example tags  | Reason | 
 | ------------- | -------------------- | ------------ | ------ |
 | **<em>Sensory-event</em>** | *Sensory-presentation* | *Visual-presentation*<br>*Auditory-presentation*| Which sense? | 
+|              | *Task-event-role* | *Experimental-stimulus*<br>*Instructional* | What task role? | 
+|              | *Task-stimulus-role* | *Cue*<br>*Target* | Stimulus purpose? |  
+|              | *Item*  | *(Face, Image)*<br>*Siren* | What is presented? | 
+|              | *Sensory-attribute* | *Red* | What modifiers are needed? | 
+| **<em>Agent-action</em>** | *Agent-task-role* | *Experiment-participant* | Who is agent? |  
+|                | *Action*          | *Move*<br>*Press* | What action is performed? | 
+|                | *Task-action-type* | *Appropriate-action*<br>*Near-miss* | What task relationship? | 
+|                | *Item*            | *Arm*<br>*Mouse-button* | What is action target? | 
+| **<em>Data-feature</em>** | *Data-source-type* | *Expert-annotation*<br>*Computed-feature* | Where did the feature come from? |  
+|                | *Label*            | *Label/Blinker_BlinkMax* | Tool name?<br>Feature type? | 
+|                | *Data-value*       | *Percentage/32.5* <br>*Time-interval/1.5 s* | Feature value or type? | 
+| **<em>Experiment-control</em>** | *Agent* | *Controller-Agent* | What is the controller? | 
+|                      | *Informational* | *Label/Stop-recording* | What did the controller do? |
+| **<em>Experiment-procedure</em>** | *Task-event-role* | *Task-activity* | What procedure? | 
+| **<em>Experiment-structure</em>** | *Organizational-property* | *Time-block*<br>*Condition-variable* | What structural property? | 
+| **<em>Measurement-event</em>** | *Data-source-type*  | *Instrument-measurement*<br>*Observation* | Source of the data. | 
+|                | *Label*            | *Label/Oximeter_O2Level* | Instrument name?<br>Measurement type? |
+|                | *Data-value*       | *Percentage/32.5* <br>*Time-interval/1.5 s* | What value or type? 
 ```
 
 

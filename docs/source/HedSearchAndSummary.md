@@ -1,6 +1,6 @@
-# Event restructuring
+# HED search and summary
 
-
+**Under construction**
 
 This tutorial takes you through the steps of annotating the events
 using HED (Hierarchical Event Descriptors).
