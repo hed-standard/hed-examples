@@ -17,7 +17,7 @@ HED examples and tutorials
    HedValidation.md
    HedSearchAndSummary.md
    HedConditionsAndDesignMatrices.md
-   HedRemodelingTools.md
+   EventFileRestructuring.md
 
 
 .. toctree::
