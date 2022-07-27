@@ -4,10 +4,10 @@
 
 This tutorial works through the process of restructuring event files using the HED event remodeling tools. The tools are designed to be run on an entire BIDS dataset.
 
-* [**What is restructuring?**](what-is-event-file-restructuring-anchor)  
-* [**Installation of remodeling tools**](installation-of-remodeling-tools-anchor)
-* [**Running remodeling tools**](running-remodeling-tools-anchor)
-* [**Remodeling operations**](remodeling-operations-anchor) 
+* [**What is restructuring?**](what-is-event-file-restructuring-anchor) Docs in process
+* [**Installation of remodeling tools**](installation-of-remodeling-tools-anchor) Docs in process
+* [**Running remodeling tools**](running-remodeling-tools-anchor) Docs in process
+* [**Remodeling operations**](remodeling-operations-anchor) Docs in process
   * [**Add structure column**](add-structure-column-anchor) Docs in process
   * [**Add structure events**](add-structure-events-anchor) Docs in process
   * [**Add structure numbers**](add-structure-numbers-anchor) Docs in process
@@ -151,7 +151,7 @@ The results of executing this *add_structure_events* command on the [sample even
 | 0.0776 | 0.5083 | go | n/a | 0.565 | correct | right | female |
 | 5.5774 | 0.5083 | unsuccesful_stop | 0.2 | 0.49 | correct | right | female |
 | 9.5856 | 0.5084 | go | n/a | 0.45 | correct | right | female |
-| 13.5939 | 0.5083 | succesful_stop | 0.2 | n/a | n/a | right | female |
+| 13.5939 | 0.5083 | succesful_stop | 0.2 | n/a | n/a | n/a | female |
 | 17.1021 | 0.5083 | unsuccesful_stop | 0.25 | 0.633 | correct | left | male |
 | 21.6103 | 0.5083 | go | n/a | 0.443 | correct | left | male |
 ````
@@ -647,10 +647,13 @@ The results of executing the previous *rename_columns* command on the [sample ev
 ### Reorder columns
 
 Reorder the columns in the specified order. If *ignore_missing* is true,
-the dataframe columns not included are discarded.
+and items in the reorder list do not exist in the file, these columns are ignored.
 On the other hand, if *ignore_missing* is false,
-column names that do not appear in the reorder list are moved to the end
-of the dataframe in the same order that they appear.
+a column name not appearing in the reorder list causes a *ValueError* to be raised.
+
+The *keep_others* parameter controls whether or not columns in the dataframe that
+do not appear in the reorder list are dropped (*keep_others* is false) or
+put at the end of the dataframe in the order they appear (*keep_others* is true).
 
 (parameters-for-reorder-columns-anchor)=
 ```{admonition} Parameters for *reorder_columns*.
@@ -659,7 +662,8 @@ of the dataframe in the same order that they appear.
 |  Parameter   | Type | Description | 
 | ------------ | ---- | ----------- | 
 | column_order | list | A list of columns in the order they should appear in the data.| 
-| ignore_missing | boolean | If false, existing columns that aren't in column_names<br/>are moved to the end and in the same relative<br/>order that they originally appeared in the data. | 
+| ignore_missing | bool | If true and a column in column_order does not appear in the dataframe<br>a ValueError is raised, otherwise these columns are ignored. |
+| keep_others | bool | If true, existing columns that aren't in column_order<br/>are moved to the end in the same relative<br/>order that they originally appeared in the data,<br>otherwise these columns are dropped.| 
 
 ```
 
@@ -675,8 +679,9 @@ Since *ignore_missing* is true, these will be the only columns retained.
     "command": "reorder_columns",
     "description": "Reorder columns.",
     "parameters": {
-        "column_order": ["onset", "duration", "trial_type", "response_hand", "response_time"],
-        "ignore_missing": true
+        "column_order": ["onset", "duration", "response_time",  "trial_type"],
+        "ignore_missing": true,
+        "keep_others": false
     }
 }
 ```
@@ -687,23 +692,23 @@ The results of executing the previous *reorder_columns* command on the [sample e
 
 ````{admonition} Results of *reorder_columns*.
 
-| onset | duration | trial_type | response_hand | response_time |
-| ----- | -------- | ---------- | ------------- | ------------- |
-| 0.0776 | 0.5083 | go | right | 0.565 |
-| 5.5774 | 0.5083 | unsuccesful_stop | right | 0.49 |
-| 9.5856 | 0.5084 | go | right | 0.45 |
-| 13.5939 | 0.5083 | succesful_stop | n/a | n/a |
-| 17.1021 | 0.5083 | unsuccesful_stop | left | 0.633 |
-| 21.6103 | 0.5083 | go | left | 0.443 |
+| onset | duration | response_time | trial_type |
+| ----- | -------- | ---------- | ------------- |
+| 0.0776 | 0.5083 | 0.565 | go |
+| 5.5774 | 0.5083 | 0.49 | unsuccesful_stop |
+| 9.5856 | 0.5084 | 0.45 | go |
+| 13.5939 | 0.5083 | n/a | succesful_stop |
+| 17.1021 | 0.5083 | 0.633 | unsuccesful_stop |
+| 21.6103 | 0.5083 | 0.443 | go |
 ````
 
 (split-event-anchor)=
 ### Split event
 
-The *split_event* is the most complicated of the remodeling operations and is often used to
-convert event files from using *trial-level* encoding to *event-level* encoding.
+The *split_event*, which is one of the more complicated remodeling operations, 
+is often used to convert event files from using *trial-level* encoding to *event-level* encoding.
 In *trial-level* encoding each row of the event file represents all the events in a single trial
-(usually some variation of cue-stimulus-response-feedback-ready sequence).
+(usually some variation of the cue-stimulus-response-feedback-ready sequence).
 In *event-level* encoding, each row represents the marker for a single event.
 In this case a trial consists of a sequence of multiple events.
 
@@ -731,65 +736,69 @@ Unlisted columns are filled with n/a.
 |  Parameter   | Type | Description | 
 | ------------ | ---- | ----------- | 
 | anchor_event | str | The name of the column that will be used for split-event codes.|
-| event_selection | dict | Dictionary which events should be split (currently ignored and all events are split). | 
-| new_events | dict | Dictionary whose keys are the codes to be inserted as new events and whose values are dictionaries with keys *onset_source*, *duration*, and *copy_columns*. | 
-| add_event_numbers | boolean | If true, a column of event numbers are added before the split. |
-| remove_parent_event | boolean | If true, remove parent event. |
+| new_events | dict | Dictionary whose keys are the codes to be inserted as new events<br>and whose values are dictionaries with<br>keys *onset_source*, *duration*, and *copy_columns*. | 
+| add_event_numbers | bool | If true, adds a column called *event_numbers*. |
+| remove_parent_event | bool | If true, remove parent event. |
 
 ```
 
-The *split_event* command in the following example specifies that *response_hand* 
-column be renamed *hand_used* and that the *sex* column be renamed *image_sex*.
-The *face* entry in the mapping will be ignored because *ignore_missing* is true.
-If *ignore_missing* is false, a `KeyError` exception is raised if a column specified in
-the mapping does not correspond to a column name in the dataframe.
+The *split_event* command in the following example specifies that new rows should be added
+to encode the response and stop signal. The anchor column is still trial_type.
+In a full processing example, it might make sense to rename *trial_type* to be
+*event_type* and to delete the *response_time* and the *stop_signal_delay*
+since these items have been unfolded into separate events.
 
-````{admonition} An example split_event command.
+````{admonition} An example *split_event* command.
 :class: tip
 
 ```json
-{ 
-    "command": "split_event",
-    "description": "Takes trial-level encoding and turns it into event-level encoding.",
-    "parameters": {
-        "anchor_column": "trial_type",
-        "event_selection": {},
-        "new_events": {
-            "response": {
-                "onset": ["response_time"],
-                "duration": [0],
-                "column_columns": ["response_accuracy", "response_hand", "sex"]
-            },
-            "stop_signal": {
-                "onset": ["stop_signal_delay"],
-                "duration": [0.5],
-                "column_columns": ["response_accuracy", "response_hand", "sex"]
-            }            
-        },
-        "add_event_numbers": true,
-        "remove_parent_event": false
+{
+  "command": "split_events",
+  "description": "add response events to the trials.",
+        "parameters": {
+            "anchor_column": "trial_type",
+            "event_numbers_column": "trial_number",
+            "new_events": {
+                "response": {
+                    "onset_source": ["response_time"],
+                    "duration": [0],
+                    "copy_columns": ["response_accuracy", "response_hand", "sex", "trial_number"]
+                },
+                "stop_signal": {
+                    "onset_source": ["stop_signal_delay"],
+                    "duration": [0.5],
+                    "copy_columns": ["trial_number"]
+                }
+            },	
+            "remove_parent_event": false
+        }
     }
-}
 ```
 ````
 
 The results of executing this *split_event* command on the [sample events file](sample-remodeling-events-file-anchor) are:
 
-````{admonition} Results of the split_event command.
-| onset | duration | trial_type | response_accuracy | response_hand | sex | trial_number |
-| ----- | -------- | ---------- | ----------------- | ------------- | --- | ------------ |
-| 0.0776 | 0.5083 | go | correct | right | female | 1 |
-| 0.6426 | 0.0 | response | correct | right | female | 1 |
-| 5.5774 | 0.5083 | unsuccesful_stop | correct | right | female | 2 |
-| 5.7774 | 0.5 | stop_signal | correct | right | female | 2 |
-| 6.0674 | 0.0 | response | correct | right | female | 2 |
-| 9.5856 | 0.5084 | go | correct | right | female | 3 |
-| 10.0356 | 0.0 | response | correct | right | female | 3 |
-| 13.5939 | 0.5083 | succesful_stop | n/a | n/a | female | 4 |
-| 13.7939 | 0.5 | stop_signal | n/a | right | female | 4 |
-| 17.1021 | 0.5083 | unsuccesful_stop | correct | left | male | 5 |
-| 17.3521 | 0.5 | stop_signal | correct | left | male | 5 |
-| 17.7351 | 0.0 | response | correct | left | male | 5 |
-| 21.6103 | 0.5083 | go | correct | left | male | 6 |
-| 22.0533 | 0.0 | response | correct | left | male | 6 |
+````{admonition} Results of the previous *split_event* command.
+
+| onset | duration | trial_type | stop_signal_delay | response_time | response_accuracy | response_hand | sex | trial_number |
+| ----- | -------- | ---------- | ----------------- | ------------- | ----------------- | ------------- | --- | -------- |
+| 0.0776 | 0.5083 | go | n/a | 0.565 | correct | right | female | 1 |
+| 0.6426 | 0 | response | n/a | n/a | correct | right | female | 1 |
+| 5.5774 | 0.5083 | unsuccesful_stop | 0.2 | 0.49 | correct | right | female | 2 |
+| 5.7774 | 0.5 | stop_signal | n/a | n/a | n/a | n/a | n/a | 2 |
+| 6.0674 | 0 | response | n/a | n/a | correct | right | female | 2 |
+| 9.5856 | 0.5084 | go | n/a | 0.45 | correct | right | female | 3 |
+| 10.0356 | 0 | response | n/a | n/a | correct | right | female | 3 |
+| 13.5939 | 0.5083 | succesful_stop | 0.2 | n/a | n/a | n/a | female | 4 |
+| 13.7939 | 0.5 | stop_signal | n/a | n/a | n/a | n/a | n/a | 4 |
+| 17.1021 | 0.5083 | unsuccesful_stop | 0.25 | 0.633 | correct | left | male | 5 |
+| 17.3521 | 0.5 | stop_signal | n/a | n/a | n/a | n/a | n/a | 5 |
+| 17.7351 | 0 | response | n/a | n/a | correct | left | male | 5 |
+| 21.6103 | 0.5083 | go | n/a | 0.443 | correct | left | male | 6 |
+| 22.0533 | 0 | response | n/a | n/a | correct | left | male | 6 |
 ````
+
+Note that the event numbers are added before the splitting and then
+copied as the new events are created.
+This strategy results in a trial number column associated with the events,
+an alternative to the more complicated process of adding a structure column after splitting.
