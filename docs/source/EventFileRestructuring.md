@@ -101,7 +101,7 @@ The results of executing this *add_structure_column* command on the [sample even
 | 0.0776 | 0.5083 | go | n/a | 0.565 | correct | right | female |
 | 5.5774 | 0.5083 | unsuccesful_stop | 0.2 | 0.49 | correct | right | female |
 | 9.5856 | 0.5084 | go | n/a | 0.45 | correct | right | female |
-| 13.5939 | 0.5083 | succesful_stop | 0.2 | n/a | n/a | right | female |
+| 13.5939 | 0.5083 | succesful_stop | 0.2 | n/a | n/a | n/a | female |
 | 17.1021 | 0.5083 | unsuccesful_stop | 0.25 | 0.633 | correct | left | male |
 | 21.6103 | 0.5083 | go | n/a | 0.443 | correct | left | male |
 ````
@@ -119,9 +119,9 @@ Add events representing the start of a structural element such as a trial or a b
 
 |  Parameter   | Type | Description | 
 | ------------ | ---- | ----------- | 
-| column_name | str | The name of the column to be created or modified.| 
-| source_columns | list | Names of the columns to be used for remapping. | 
-| mapping | dict | The keys are the values to be placed in the derived columns and the values are each an array |  
+| *column_name* | str | The name of the column to be created or modified.| 
+| *source_columns* | list | Names of the columns to be used for remapping. | 
+| *mapping* | dict | The keys are the values to be placed in the derived columns and the values are each an array |  
 ```
 
 The *add_structure_events* command in the following example specifies . . .
@@ -171,9 +171,9 @@ Add a column with numbers corresponding to a structural element.
 
 |  Parameter   | Type | Description | 
 | ------------ | ---- | ----------- | 
-| column_name | str | The name of the column to be created or modified.| 
-| source_columns | list of str | A list of columns to be used for remapping. | 
-| mapping | dict | The keys are the values to be placed in the derived columns and the values are each an array |  
+| *column_name* | str | The name of the column to be created or modified.| 
+| *source_columns* | list of str | A list of columns to be used for remapping. | 
+| *mapping* | dict | The keys are the values to be placed in the derived columns and the values are each an array |  
 ```
 The *add_structure_numbers* command in the following example specifies . . .
 
@@ -227,9 +227,9 @@ based on predefined combinations of values in other columns.
 
 |  Parameter   | Type | Description | 
 | ------------ | ---- | ----------- | 
-| column_name | str | The name of the column to be created or modified.| 
-| source_columns | list of str | A list of columns to be used for remapping. | 
-| mapping | dict | The keys are the values to be placed in the derived columns and the values are each an array |  
+| *column_name* | str | The name of the column to be created or modified.| 
+| *source_columns* | list of str | A list of columns to be used for remapping. | 
+| *mapping* | dict | The keys are the values to be placed in the derived columns and the values are each an array |  
 ```
 The *derive_column* command in the following example specifies . . .
 
@@ -279,11 +279,11 @@ If no values are specified, all unique values in that column are factored.
 
 |  Parameter   | Type | Description | 
 | ------------ | ---- | ----------- | 
-| column_name | str | The name of the column to be factored.| 
-| factor_values | list | A list of column values to be included as factors. |
-| factor_names | list| A list of column names for created factors<br>of the same length as factor_values. |
-| ignore_missing| bool | If true, columns corresponding to factor values<br>that do not appear in column are included. |
-| overwrite_existing| bool | If true an existing factor column is overwritten. |
+| *column_name* | str | The name of the column to be factored.| 
+| *factor_values* | list | A list of column values to be included as factors. |
+| *factor_names* | list| A list of column names for created factors<br>of the same length as factor_values. |
+| *ignore_missing* | bool | If true, columns corresponding to factor values<br>that do not appear in column are included. |
+| *overwrite_existing* | bool | If true an existing factor column is overwritten. |
 ```
 The *factor_column* command in the following example specifies that factor columns
 should be created for *succesful_stop* and *unsuccesful_stop* of the *trial_type* column.
@@ -340,9 +340,9 @@ Produce a list of factor columns based on the specified HED condition-variable v
 
 |  Parameter   | Type | Description | 
 | ------------ | ---- | ----------- | 
-| column_name | str | The name of the column to be created or modified.| 
-| source_columns | list of str | A list of columns to be used for remapping. | 
-| mapping | dict | The keys are the values to be placed in the derived columns and the values are each an array |  
+| *column_name* | str | The name of the column to be created or modified.| 
+| *source_columns* | list of str | A list of columns to be used for remapping. | 
+| *mapping* | dict | The keys are the values to be placed in the derived columns and the values are each an array |  
 ```
 
 The *factor_hed-tags* command in the following example specifies . . .
@@ -383,9 +383,19 @@ The results of executing this *factor_hed-tags* command on the [sample events fi
 (factor-hed-type-anchor)=
 ### Factor HED type
 
-**NOT WRITTEN - PLACEHOLDER**
+The factor HED type operation produces factor columns in an event file
+based on values of the specified HED type tag. 
+The most common type is the HED *Condition-variable* tag, which corresponds to
+factor vectors based in the experimental design.
+Other commonly use type tags include *Task*, *Control-variable*, and *Time-block*.
 
-Produce a list of factor columns based on the specified HED condition-variable values.
+We assume that the dataset has been annotated using HED tags to properly document
+the experiment conditions and focus on how such an annotated dataset can be
+used with event remodeling to produce factor columns in the event file corresponding to these
+condition variables.
+
+For additional information on how to encode experimental designs using HED please see
+[HED conditions and design matrices](https://hed-examples.readthedocs.io/en/latest/HedConditionsAndDesignMatrices.html).
 
 (parameters-for-factor-hed-type-anchor)=
 ```{admonition} Parameters for *factor_hed_type* command.
@@ -393,20 +403,20 @@ Produce a list of factor columns based on the specified HED condition-variable v
 
 |  Parameter   | Type | Description | 
 | ------------ | ---- | ----------- | 
-| column_name | str | The name of the column to be created or modified.| 
-| source_columns | list of str | A list of columns to be used for remapping. | 
-| mapping | dict | The keys are the values to be placed in the derived columns and the values are each an array |  
+| *type_tag* | str | A HED tag used to produce the factors (most commonly *Condition-variable*).| 
+| *type_values* | list | A list of values to factor for the *type_tag*.<br>If empty all values of that type_tag are used. |
+| *overwrite_existing* | bool | If true an existing factor column is overwritten. |
 ```
 
-The *factor_hed-type* command in the following example specifies . . .
+To simplifyThe *factor_hed_type* command in the following example specifies . . .
 
-````{admonition} Example *factor_hed-type* command.
+````{admonition} Example *factor_hed_type* command.
 :class: tip
 
 ```json
 { 
     "command": "factor_hed_type"
-    "description": "xxx"
+    "description": "Factor based on the sex of the images being presented."
     "parameters": {
         "column_name": "match_side",
         "source_columns": ["response_accuracy", "response_hand"],
@@ -419,18 +429,48 @@ The *factor_hed-type* command in the following example specifies . . .
 ```
 ````
 
-The results of executing this *factor_hed-type* command on the [sample events file](sample-remodeling-events-file-anchor) are:
+In order to use the JSON file.  The full file is at:
+
+
+````{admonition} Example *factor_hed_type* command.
+:class: tip
+
+```json
+{
+    "trial_type": {
+        "HED": {
+            "succesful_stop": "Sensory-presentation, Visual-presentation, Image, Label/succesful_stop",
+            "unsuccesful_stop": "Sensory-presentation, Visual-presentation, Image, Label/unsuccesful_stop",
+            "go": "Sensory-presentation, Visual-presentation, Image, Label/go"
+        },
+    "sex": {
+        "HED": {
+            "male": "Def/Male-image-cond",
+            "female": "Def/Female-image-cond"
+        }
+    },
+    "hed_defs": {
+        "HED": {
+            "def_male": "(Definition/Male-image-cond, (Condition-variable/Image-sex, (Male, (Image, Face))))",
+            "def_female": "(Definition/Female-image-cond, (Condition-variable/Image-sex, (Female, (Image, Face))))"
+        }
+    }
+}
+```
+````
+
+The results of executing this *factor_hed_type* command on the [sample events file](sample-remodeling-events-file-anchor) are:
 
 ````{admonition} Results of *factor_hed_type*.
 
-| onset | duration | trial_type | match_side | stop_signal_delay | response_time | response_accuracy | response_hand | sex |
-| ----- | -------- | ---------- | ---------- | ----------------- | ------------- | ----------------- | ------------- | --- |
-| 0.0776 | 0.5083 | go |<b>right</b> | n/a | 0.565 | correct | right | female |
-| 5.5774 | 0.5083 | unsuccesful_stop | <b>right</b> | 0.2 | 0.49 | correct | right | female |
-| 9.5856 | 0.5084 | go | n/a | 0.45 | correct | right | female |
-| 13.5939 | 0.5083 | succesful_stop | 0.2 | n/a | n/a | n/a | female |
-| 17.1021 | 0.5083 | unsuccesful_stop | 0.25 | 0.633 | correct | left | male |
-| 21.6103 | 0.5083 | go | n/a | 0.443 | correct | left | male |
+| onset | duration | trial_type | match_side | stop_signal_delay | response_time | response_accuracy | response_hand | sex | Image-sex.Female-image-cond | Image-sex.Male-image-cond |
+| ----- | -------- | ---------- | ---------- | ----------------- | ------------- | ----------------- | ------------- | --- | ------- | ---------- |
+| 0.0776 | 0.5083 | go |<b>right</b> | n/a | 0.565 | correct | right | female | 1 | 0 |
+| 5.5774 | 0.5083 | unsuccesful_stop | <b>right</b> | 0.2 | 0.49 | correct | right | female | 1 | 0 |
+| 9.5856 | 0.5084 | go | n/a | 0.45 | correct | right | female | 1 | 0 |
+| 13.5939 | 0.5083 | succesful_stop | 0.2 | n/a | n/a | n/a | female | 1 | 0 |
+| 17.1021 | 0.5083 | unsuccesful_stop | 0.25 | 0.633 | correct | left | male | 0 | 1 |
+| 21.6103 | 0.5083 | go | n/a | 0.443 | correct | left | male | 0 | 1 |
 ````
 
 (merge-events-anchor)=
@@ -446,9 +486,9 @@ One long event is represented by multiple repeat events. Merges these same event
 
 |  Parameter   | Type | Description | 
 | ------------ | ---- | ----------- | 
-| column_name | str | The name of the column to be created or modified.| 
-| source_columns | list of str | A list of columns to be used for remapping. | 
-| mapping | dict | The keys are the values to be placed in the derived columns and the values are each an array |  
+| *column_name* | str | The name of the column to be created or modified.| 
+| *source_columns* | list of str | A list of columns to be used for remapping. | 
+| *mapping* | dict | The keys are the values to be placed in the derived columns and the values are each an array |  
 ```
 
 The *merge_events* command in the following example specifies . . .
@@ -500,8 +540,8 @@ parameter is *false*, a `KeyError` is raised for missing column.
 
 |  Parameter   | Type | Description | 
 | ------------ | ---- | ----------- | 
-| remove_names | list of str | A list of columns to remove.| 
-| ignore_missing | boolean | If true, missing columns are ignored, otherwise raise an error. |
+| *remove_names* | list of str | A list of columns to remove.| 
+| *ignore_missing* | boolean | If true, missing columns are ignored, otherwise raise an error. |
 ```
 
 The *remove_column* command in the following example removes the *stop_signal_delay* and
@@ -551,8 +591,8 @@ Remove rows in which the named column has one of the specified values.
 
 |  Parameter   | Type | Description | 
 | ------------ | ---- | ----------- | 
-| column_name | str | The name of the column to be tested.| 
-| remove_values | list | A list of values to be tested for removal. | 
+| *column_name* | str | The name of the column to be tested.| 
+| *remove_values* | list | A list of values to be tested for removal. | 
 ```
 
 The following example *remove_rows* command removes the rows whose *trial_type* column 
@@ -599,8 +639,8 @@ Rename columns by providing a dictionary of old names to new names.
 
 |  Parameter   | Type | Description | 
 | ------------ | ---- | ----------- | 
-| column_mapping | dict | The keys are the old column names and the values are the new names.| 
-| ignore_missing | bool | If false, a key error is raised if a dictionary key is not a column name . | 
+| *column_mapping* | dict | The keys are the old column names and the values are the new names.| 
+| *ignore_missing* | bool | If false, a key error is raised if a dictionary key is not a column name. | 
 
 ```
 The *rename_columns* command in the following example specifies that *response_hand* column be 
@@ -661,9 +701,9 @@ put at the end of the dataframe in the order they appear (*keep_others* is true)
 
 |  Parameter   | Type | Description | 
 | ------------ | ---- | ----------- | 
-| column_order | list | A list of columns in the order they should appear in the data.| 
-| ignore_missing | bool | If true and a column in column_order does not appear in the dataframe<br>a ValueError is raised, otherwise these columns are ignored. |
-| keep_others | bool | If true, existing columns that aren't in column_order<br/>are moved to the end in the same relative<br/>order that they originally appeared in the data,<br>otherwise these columns are dropped.| 
+| *column_order* | list | A list of columns in the order they should appear in the data.| 
+| *ignore_missing* | bool | If true and a column in *column_order* does not appear in the dataframe<br>a *ValueError* is raised, otherwise these columns are ignored. |
+| *keep_others* | bool | If true, existing columns that aren't in *column_order*<br/>are moved to the end in the same relative<br/>order that they originally appeared in the data,<br>otherwise these columns are dropped.| 
 
 ```
 
@@ -735,10 +775,10 @@ Unlisted columns are filled with n/a.
 
 |  Parameter   | Type | Description | 
 | ------------ | ---- | ----------- | 
-| anchor_event | str | The name of the column that will be used for split-event codes.|
-| new_events | dict | Dictionary whose keys are the codes to be inserted as new events<br>and whose values are dictionaries with<br>keys *onset_source*, *duration*, and *copy_columns*. | 
-| add_event_numbers | bool | If true, adds a column called *event_numbers*. |
-| remove_parent_event | bool | If true, remove parent event. |
+| *anchor_event* | str | The name of the column that will be used for split-event codes.|
+| *new_events* | dict | Dictionary whose keys are the codes to be inserted as new events<br>and whose values are dictionaries with<br>keys *onset_source*, *duration*, and *copy_columns*. | 
+| *add_event_numbers* | bool | If true, adds a column called *event_numbers*. |
+| *remove_parent_event* | bool | If true, remove parent event. |
 
 ```
 
