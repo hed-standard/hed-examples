@@ -19,11 +19,10 @@ tutorials as needed.
 * [**Neuroimaging experimental design**](neuroimaging-experimental-anchor)
   * [**Design matrices and factor variables**](design-matrices-and-factor-variables-anchor) 
   * [**Types of condition encoding**](types-of-condition-encoding-anchor)
-* [**Installation of remodeling tools**](installation-of-remodeling-tools-anchor) Docs in process
-* [**Running remodeling tools**](running-remodeling-tools-anchor) Docs in process
-* [**Remodeling operations**](remodeling-operations-anchor) Docs in process
-  * [**Add structure column**](add-structure-column-anchor) Docs in process
-  * [**Add structure events**](add-structure-events-anchor) Docs in process
+* [**HED annotations for conditions**](hed-annotations-for-conditions-anchor)
+  * [**Direct condition variables**](direct-condition-variables-anchor)
+  * [**Defined condition variables**](defined-condition-variables-anchor)
+  * [**Column vs row conditions**](column-vs-row-conditions-anchor)
 
 This tutorial introduces tools and strategies for including this information
 as part of a dataset without excessive effort on the part of the researcher.
@@ -123,8 +122,8 @@ A disadvantage is that it can generate a large number of columns if there
 are many unique categorical values. It can also cause a problem if not all
 files contain the same values, as then different files may have different columns.
 
-(hed-annotation-for-conditions-anchor)
-## HED annotation for conditions
+(hed-annotations-for-conditions-anchor)=
+## HED annotations for conditions
 
 As mentioned above, HED (Hierarchical Event Descriptors) provide several mechanisms for easily
 annotating the experimental conditions represented by a BIDS dataset so that
@@ -136,25 +135,23 @@ All three mechanisms use the *Condition-variable* tag as part of the annotation.
 The three mechanisms can be used in any combination to document the experimental design
 for a dataset.
 
-(condition-variables-without-definitions-anchor)=
-### Condition variables without definitions
+(direct-condition-variables-anchor)=
+### Direct condition variables
 
 The simplest way to encode experimental conditions is to use named *Condition-variable*
 tags for each condition value. The following is a sample excerpt from
-a possible event file for the experiment to distinguish brain responses
-for houses and faces. We assume that the participant has been 
-instructed to push a button to indicate that he/she has identified
-the image as a either a house or a face.
+a simplified event file for an experiment to distinguish brain responses
+for houses and faces. 
 
 (sample-house-face-example-anchor)=
-````{admonition} Example 2. Excerpt from a sample event file from house-face experiment.
-| onset | duration | event_type | response_time | stim_file |
-| ----- | -------- |----------- |-------- | ---------- |
-| 2.010 |  0.1     | house      |   0.23  | ranch1.png |
-| 3.210 |  0.1     | house      |   0.12  | colonial68.png |   
-| 4.630 |  0.1     | face       |   0.41  | female43.png | 
-| 6.012 |  0.1     | house      |   0.35  | castle2.png | 
-| 7.440 |  0.1     | face       |   0.32  | male81.png  |   
+````{admonition} Example 2. Excerpt from a sample event file from a simplified house-face experiment.
+| onset | duration | event_type | stim_file |
+| ----- | -------- |----------- | ---------- |
+| 2.010 |  0.1     | show_house  | ranch1.png |
+| 3.210 |  0.1     | show_house  | colonial68.png |   
+| 4.630 |  0.1     | show_face   | female43.png | 
+| 6.012 |  0.1     | show_house  | castle2.png | 
+| 7.440 |  0.1     | show_face  | male81.png  |   
 ````
 
 As explained in [**BIDS annotation quickstart**](https://hed-examples.readthedocs.io/en/latest/BidsAnnotationQuickstart.html), 
@@ -167,18 +164,15 @@ for the columns. The following shows a minimal example
 
 ```json
 {
-  "event_type": {
-    "HED": {
-      "house": "Sensory-presentation, Visual-presentation, Experimental-stimulus, (Image, Building/House), Condition-variable/House-cond",
-      "face": "Sensory-presentation, Visual-presentation, Experimental-stimulus, (Image, Face), Condition-variable/Face-cond"
-    }
-  },
-  "response_time": {
-    "HED": "(Participant-response, (Press, Push-button), Delay/#)"
-  },
-  "stim_file": {
-    "HED": "(Image, Pathname/#)"
-  }
+   "event_type": {
+      "HED": {
+         "show_house": "Sensory-presentation, Visual-presentation, Experimental-stimulus, (Image, Building/House), Condition-variable/House-cond",
+         "show_face": "Sensory-presentation, Visual-presentation, Experimental-stimulus, (Image, Face), Condition-variable/Face-cond"
+      }
+   },
+   "stim_file": {
+      "HED": "(Image, Pathname/#)"
+   }
 }
 ```
 ````
@@ -191,89 +185,273 @@ column values substituted when the annotation is assembled.
 
 ````{admonition} Example 3: HED annotation for first event in Example 1 using JSON sidecar of Example 2.
 :class: tip
-> "*Sensory-presentation*, *Visual-presentation*, *Experimental-stimulus*, 
-> (*Image*, *Building/House*), *Condition-variable/House-cond*, 
-> (*Participant-response*, (*Press*, *Push-button*), *Delay/0.23*),
+
+> "*Sensory-presentation*, *Visual-presentation*, *Experimental-stimulus*,  
+> (*Image*, *Building/House*), *Condition-variable/House-cond*,  
 > (*Image*, *Pathname/ranch1.png*)"
 ````
+
+Notice that *Building/House* is a partial path rather than a single tag.
+This is because *House* is currently not part of the base HED vocabulary.
+However, users are allowed to extend tags at most nodes in the HED schema,
+but they must use a path that includes a least one ancestor that is in the HED schema.
 
 HED tools have the capability of automatically detecting *Condition-variable*
 tags in annotated HED datasets and creating factor vectors and summaries automatically.
 Example 4 shows the event file after HED tools have appended one-hot factor vectors.
 
 
-````{admonition} Example 4. Example 2 after HED tools have extracted one-hot factor vectors.
-| onset | duration | event_type | response_time | stim_file | House-cond | Face-cond |
-| ----- | -------- |----------- |-------- | ---------- |----------- | ----------- |
-| 2.010 |  0.1     | house      |   0.23  | ranch1.png |    1  |   0    |
-| 3.210 |  0.1     | house      |   0.12  | colonial68.png |  1  |  0  | 
-| 4.630 |  0.1     | face       |   0.41  | female43.png |  0   |  1 |
-| 6.012 |  0.1     | house      |   0.35  | castle2.png |  1    |  0 |
-| 7.440 |  0.1     | face       |   0.32  | male81.png  |  0    | 1 |
+````{admonition} Example 4. Event file from Example 2 after one-hot factor vector extraction.
+
+| onset | duration | event_type | stim_file | house-cond | face-cond |
+| ----- | -------- |----------- |-------- | ---------- |----------- |
+| 2.010 |  0.1     | show_house      | ranch1.png |    1  |   0    |
+| 3.210 |  0.1     | show_house      | colonial68.png |  1  |  0  | 
+| 4.630 |  0.1     | show_face       | female43.png |  0   |  1 |
+| 6.012 |  0.1     | show_house      | castle2.png |  1    |  0 |
+| 7.440 |  0.1     | show_face       | male81.png  |  0    | 1 |
 ````
 
-Example 5 shows the JSON summary that HED tools can extract once a dataset has been
-annotated using HED. This very simple example only had two condition variables
-and only used direct references to condition variables.
-The summary shows that of the total of 5 events in the file 3 events were under
-the house condition and 2 events were under the face condition.
+Example 5 shows a JSON summary that HED tools can extract from a single events file
+once a dataset has been annotated using HED. 
+This very simple example only had two condition variables
+and only used direct references to these condition variables. 
+Dataset-wide summaries can also be extracted.
+
 
 ````{admonition} Example 5: The HED tools summary of condition variables for Example 4.
 :class: tip
 
 ```json
 {
-  "house-cond": {
-    "name": "house-cond",
-    "variable_type": "condition-variable",
-    "levels": 0,
-    "direct_references": 3,
-    "total events": 5,
-    "number events": 3,
+   "house-cond": {
+      "name": "house-cond",
+      "variable_type": "condition-variable",
+      "levels": 0,
+      "direct_references": 3,
+      "total events": 5,
+      "number events": 3,
       "number_multiple": 0,
       "multiple maximum": 1,
       "level counts": {}
-  },
-  "face-cond": {
-    "name": "face-cond",
-    "variable_type": "condition-variable",
-    "levels": 0,
-    "direct_references": 2,
-    "total events": 5,
-    "number events": 2,
+   },
+   "face-cond": {
+      "name": "face-cond",
+      "variable_type": "condition-variable",
+      "levels": 0,
+      "direct_references": 2,
+      "total events": 5,
+      "number events": 2,
       "number_multiple": 0,
       "multiple maximum": 1,
       "level counts": {}
-  }
+   }
 }
 ````
+The summary shows that of the total of 5 events in the file 3 events were under
+the house condition and 2 events were under the face condition.
 There were no events in multiple categories of the same condition variables
 (which would not be possible since these condition variables were referenced
-directly rather than assigned levels).
-All names are translated to lower case as HED is case-insensitive with respect to analysis.
+directly rather than using assigned levels).
+All names are translated to lower case as HED is case-insensitive with respect to analysis,
+and the summary and factorization tools convert to lower case before processing.
 
 These HED summaries can be created for other tags besides *Condition-variable*,
-hence the variable_type is given in the summary of Example 5.
+hence the *variable_type* is given in the summary of Example 5.
 Other commonly created summaries are for *Task* and *Control-variable*.
 
+In this example, the two conditions: *house-cond* and *face-cond* are
+treated is though they are unrelated. These direct condition variables
+are very easy to annotate--- just make up a name and stick the tags anywhere
+you want to create factor variables or summaries.
+However, a more common situation is for a condition variable to have multiple levels,
+which direct use condition variables do not support.
 
-## Definitions
-(sample-design-matrix-events-file-anchor)=
-````{admonition} Excerpt from event file for a stop-go task.
+Another disadvantage of direct condition variables is that there is
+no information about what the conditions represent beyond the arbitrarily chosen condition names.
 
-| onset | duration | sample | event_type | face_type | rep_status | trial | rep_lag | value | stim_file |
-| ----- | -------- | ------ | ---------- | --------- | ---------- | ----- | ------- | ----- | --------- |
-| 0.004 | n/a | 1.0 | setup_right_sym | n/a | n/a | n/a | n/a | 3 | n/a |
-| 24.2098181818 | n/a | 6052.4545 | show_face_initial | unfamiliar_face | first_show | 1 | n/a | 13 | u032.bmp |
-| 25.0352727273 | n/a | 6258.8182 | show_circle | n/a | n/a | 1 | n/a | 0 | circle.bmp |
-| 25.158 | n/a | 6289.5 | left_press | n/a | n/a | 1 | n/a | 256 | n/a |
-| 26.7352727273 | n/a | 6683.8182 | show_cross | n/a | n/a | 2 | n/a | 1 | cross.bmp |
-| 27.2498181818 | n/a | 6812.4545 | show_face | unfamiliar_face | immediate_repeat | 2 | 1 | 14 | u032.bmp |
-| 27.8970909091 | n/a | 6974.2727 | left_press | n/a | n/a | 2 | n/a | 256 | n/a |
-| 28.0998181818 | n/a | 7024.9545 | show_circle | n/a | n/a | 2 | n/a | 0 | circle.bmp |
-| 29.7998181818 | n/a | 7449.9545 | show_cross | n/a | n/a | 3 | n/a | 1 | cross.bmp |
-| 30.3570909091 | n/a | 7589.2727 | show_face | unfamiliar_face | first_show | 3 | n/a | 13 | u088.bmp |
+A third disadvantage is that direct condition variables can not be used to
+anchor events with temporal extent.
+
+The next section introduces the use of defined condition variables,
+which address both of these disadvantages.
+
+(defined-condition-variables-anchor)=
+## Defined condition variables
+
+
+````{admonition} Example 6: A revised JSON sidecar using defined conditions for Example 1.
+:class: tip
+
+```json
+{
+   "event_type": {
+      "HED": {
+         "show_house": "Sensory-presentation, Visual-presentation, Experimental-stimulus, (Image, Building/House), Def/House-cond",
+         "show_face": "Sensory-presentation, Visual-presentation, Experimental-stimulus, (Image, Face), Def/Face-cond"
+      }
+   },
+   "stim_file": {
+      "HED": "(Image, Pathname/#)"
+   },
+   "my_definitions": {
+      "HED": {
+          "house_cond_def": (Definition/House-cond, (Condition-variable/Presentation-type, (Image, Building/House))),
+          "face_cond_def": (Definition/Face-cond, (Condition-variable/Presentation-type, (Image, Face)))"
+}
+```
 ````
 
+Example 6 defines a condition variable called *Presentation-type* with two levels:
+*House-cond* and *Face-cond*.
+The definitions of *House-cond* and *Face-cond* both include the same *Presentation-type*
+*Condition-variable* so tools can recognize these as levels of the same variable and
+automatically extract 2-factor experimental design.
+
+Notice that the (*Image*, *Building/House*) tags are included both in the definition of
+the *House-cond* level of the *Presentation-type* condition variable
+and in the tags for the event_type *show_house*.
+Similarly, the (*Image*, *Face*) tags appear in both the definition of the
+*Face-cond* level of the *Presentation-type* condition variable
+and in the tags for the event_type *show_face*.
+We have included them in both places because generally the condition variable definitions
+are removed prior to searching for HED tags because the tags in the definitions
+define the meaning of the conditions.
+
+````{admonition} Example 7: The summary extracted when the JSON sidecar of Example 6 is used.
+:class: tip
+
+```json
+{
+   "presentation-type": {
+      "name": "presentation-type",
+      "variable_type": "condition-variable",
+      "levels": 2,
+      "direct_references": 0,
+      "total events": 5,
+      "number events": 5,
+      "number_multiple": 0,
+      "multiple maximum": 1,
+      "level counts": {
+         "house-cond": 3,
+         "face-cond": 2
+      }
+  }
+}
+```
+````
+
+(column-vs-row-conditions-anchor)=
+## Column vs row conditions
+
+In this section, we look at a more complicated example based on the Wakeman-Henson face-processing dataset. 
+This dataset, which is available on [OpenNeuro](https://openneuro.org) under accession number
+ds003654, was used in as a case study on HED annotation described in the 
+[Capturing the nature of events paper](https://www.sciencedirect.com/science/article/pii/S1053811921010387).
+
+The experiment is based on a 3 x 3 x 2 experimental design: face type x repetition status x key choice.
+The experimental stimulus is each trial was the visual presentation of one of 3 possible types of images:
+a well-known face, an unfamiliar face, and a scrambled face image. 
+The type of face was randomized across trials.
+
+The repetition status condition variable also had one of three possible values and indicated:
+whether the stimulus image had not been seen before (first show), 
+was just seen in the previous trial (immediate repeat),
+or had been seen in a several trials ago (delayed repeat). 
+The repetition status was randomized across trials.
+
+The final condition variable in the experimental design was the key assignment.
+In the right symmetry condition, participants pressed the right mouse button
+to indicate that the presented face had above average symmetry, 
+while in the left symmetry condition, participants pressed the left mouse button
+to indicate that the presented face had above average symmetry.
+The key assignment was held constant for each recording, but the key choice was 
+counter-balanced across participants.
 
 
+(sample-design-matrix-events-file-anchor)=
+```{admonition} Example 8: An excerpt from the Wakeman-Henson face-processing dataset..
+
+| onset | duration | event_type | face_type | rep_status | trial | rep_lag | value | stim_file |
+| ----- | -------- | ---------- | --------- | ---------- | ----- | ------- | ----- | --------- |
+| 0.004 | n/a | setup_right_sym | n/a | n/a | n/a | n/a | 3 | n/a |
+| 24.2098 | n/a | show_face_initial | unfamiliar_face | first_show | 1 | n/a | 13 | u032.bmp |
+| 25.0353 | n/a | show_circle | n/a | n/a | 1 | n/a | 0 | circle.bmp |
+| 25.158 | n/a | left_press | n/a | n/a | 1 | n/a | 256 | n/a |
+| 26.7353 | n/a | show_cross | n/a | n/a | 2 | n/a | 1 | cross.bmp |
+| 27.2498 | n/a | show_face | unfamiliar_face | immediate_repeat | 2 | 1 | 14 | u032.bmp |
+| 27.8971 | n/a | left_press | n/a | n/a | 2 | n/a | 256 | n/a |
+| 28.0998 | n/a | show_circle | n/a | n/a | 2 | n/a | 0 | circle.bmp |
+| 29.7998 | n/a | show_cross | n/a | n/a | 3 | n/a | 1 | cross.bmp |
+| 30.3571 | n/a | show_face | unfamiliar_face | first_show | 3 | n/a | 13 | u088.bmp |
+```
+
+Example 8 illustrates two different ways of using defined conditions for encoding.
+The key assignment is marked by inserting an event with temporal extent at the beginning
+of the file. The *setup_right_sym* event is encoded in the JSON sidecar as:
+
+The condition variab
+
+```{admonition} Example 9: HED tools automatic extraction of the design matrix in categorical form for Example 8.
+
+| onset | key-assignment | face-type | repetition-type | 
+| ----- | -------------- | ---- ---- | --------------- |
+| 0.004 | right-sym-com | n/a | n/a |
+| 24.2098 | right-sym-com | unfamiliar-face-cond | first-show-cond |
+| 25.0353 | right-sym-com | n/a | n/a |
+| 25.158 | right-sym-com | n/a| n/a |
+| 26.7353 | right-sym-com | n/a | n/a | 
+| 27.2498 | right-sym-com | unfamiliar-face-cond | immediate-repeat-cond |
+| 27.8971 | right-sym-com | n/a | n/a |
+| 28.0998 | right-sym-com | n/a | n/a |
+| 29.7998 | right-sym-com | n/a | n/a | 
+| 30.3571 | right-sym-com | unfamiliar-face-cond | first-show-cond | 
+```
+
+
+
+{
+    "key-assignment": {
+        "name": "key-assignment",
+        "variable_type": "condition-variable",
+        "levels": 1,
+        "direct_references": 0,
+        "total events": 200,
+        "number events": 200,
+        "number_multiple": 0,
+        "multiple maximum": 1,
+        "level counts": {
+            "right-sym-cond": 200
+        }
+    },
+    "face-type": {
+        "name": "face-type",
+        "variable_type": "condition-variable",
+        "levels": 3,
+        "direct_references": 0,
+        "total events": 200,
+        "number events": 52,
+        "number_multiple": 0,
+        "multiple maximum": 1,
+        "level counts": {
+            "unfamiliar-face-cond": 20,
+            "famous-face-cond": 14,
+            "scrambled-face-cond": 18
+        }
+    },
+    "repetition-type": {
+        "name": "repetition-type",
+        "variable_type": "condition-variable",
+        "levels": 3,
+        "direct_references": 0,
+        "total events": 200,
+        "number events": 52,
+        "number_multiple": 0,
+        "multiple maximum": 1,
+        "level counts": {
+            "first-show-cond": 28,
+            "immediate-repeat-cond": 12,
+            "delayed-repeat-cond": 12
+        }
+    }
+}
