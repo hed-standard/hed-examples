@@ -25,7 +25,14 @@ This tutorial works through the process of restructuring event files using the H
 (what-is-event-file-restructuring-anchor)=
 ## What is event file restructuring?
 
-**Need brief introduction to event remodeling here**
+Event file restructuring generally falls into four categories: cleanup,
+row modifications, column modifications, and structure modifications.
+
+#### Cleanup operations
+
+Cleanup operations include: *rename_columns*, *reorder_columns*, and *remove_columns*.
+
+#### Row modifications
 
 (installation-of-remodeling-tools-anchor)=
 ## Installation of remodeling tools 
@@ -44,7 +51,7 @@ The examples in this chapter use the following excerpt from sub-0013
 stop-go task of the AOMIC-PIOP2 dataset available on [OpenNeuro](https://openneuro.org) as ds002790.
 
 (sample-remodeling-events-file-anchor)=
-````{admonition} Excerpt from event file for a stop-go task.
+````{admonition} Excerpt from event file for a stop-go task of AOMIC-PIOP2 (ds002790).
 | onset | duration | trial_type | stop_signal_delay | response_time | response_accuracy | response_hand | sex |
 | ----- | -------- | ---------- | ----------------- | ------------- | ----------------- | ------------- | --- |
 | 0.0776 | 0.5083 | go | n/a | 0.565 | correct | right | female |
@@ -405,7 +412,9 @@ For additional information on how to encode experimental designs using HED pleas
 | ------------ | ---- | ----------- | 
 | *type_tag* | str | A HED tag used to produce the factors (most commonly *Condition-variable*).| 
 | *type_values* | list | A list of values to factor for the *type_tag*.<br>If empty all values of that type_tag are used. |
-| *overwrite_existing* | bool | If true an existing factor column is overwritten. |
+| *overwrite_existing* | bool | If true, an existing factor columns is overwritten. |
+| *include_hed_strings* | bool | If true, a column *hed_expand* with HED strings is included. |
+| *one_hot_factors* | bool | If true, the factors use one-hot representation (zeros and ones). |
 ```
 
 To simplifyThe *factor_hed_type* command in the following example specifies . . .
@@ -418,12 +427,11 @@ To simplifyThe *factor_hed_type* command in the following example specifies . . 
     "command": "factor_hed_type"
     "description": "Factor based on the sex of the images being presented."
     "parameters": {
-        "column_name": "match_side",
-        "source_columns": ["response_accuracy", "response_hand"],
-        "mapping": {
-            "left": [["correct", "left"], ["incorrect", "right"]],
-            "right": [["correct", "right"], ["incorrect", "left"]]
-        }
+        "type_tag": "Condition-variable",
+        "type_values": [],
+        "overwrite_existing": true,
+        "include_hed_strings": false,
+        "one_hot_factors": true
     }
 }
 ```

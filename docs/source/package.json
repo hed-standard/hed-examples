@@ -1,0 +1,14 @@
+{
+    "event_type": {
+        "HED": {
+            "house": "Sensory-presentation, Visual-presentation, Experimental-stimulus, (Image, Building/House), Condition-variable/House-cond",
+            "face": "Sensory-presentation, Visual-presentation, Experimental-stimulus, (Image, Face), Condition-variable/Face-cond"
+        }
+    },
+    "response_time": {
+        "HED": "Participant-response, Delay/#"
+    },
+    "stim_file": {
+        "HED": "(Image, Pathname/#)"
+    }
+}
