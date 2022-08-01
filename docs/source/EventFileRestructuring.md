@@ -11,11 +11,11 @@ This tutorial works through the process of restructuring event files using the H
   * [**Add structure column**](add-structure-column-anchor) Docs in process
   * [**Add structure events**](add-structure-events-anchor) Docs in process
   * [**Add structure numbers**](add-structure-numbers-anchor) Docs in process
-  * [**Derive column**](derive-column-anchor) Docs in process
   * [**Factor column**](factor-column-anchor) 
   * [**Factor HED tags**](factor-hed-tags-anchor) Docs in process
   * [**Factor HED type**](factor-hed-type-anchor) Docs in process
   * [**Merge events**](merge-events-anchor) Docs in process
+  * [**Remap columns**](remap-columns-anchor) Docs in process
   * [**Remove columns**](remove-columns-anchor) 
   * [**Rename columns**](rename-columns-anchor)
   * [**Reorder columns**](reorder-columns-anchor)
@@ -25,7 +25,21 @@ This tutorial works through the process of restructuring event files using the H
 (what-is-event-file-restructuring-anchor)=
 ## What is event file restructuring?
 
-**Need brief introduction to event remodeling here**
+Event file restructuring generally falls into four categories: cleanup,
+row modifications, column modifications, and structure modifications.
+
+#### Cleanup operations
+
+Cleanup operations include: *rename_columns*, *reorder_columns*, and *remove_columns*.
+
+#### Row and columns
+
+*factor_column*, *factor_hed_tags*, and *factor_hed_type* 
+
+#### Restructuring
+
+Restructuring operations include: *add_structure_column*, *add_structure_events*,
+*add_structure_numbers*, *merge_events*, *remap_columns*, and *split_event*
 
 (installation-of-remodeling-tools-anchor)=
 ## Installation of remodeling tools 
@@ -44,7 +58,7 @@ The examples in this chapter use the following excerpt from sub-0013
 stop-go task of the AOMIC-PIOP2 dataset available on [OpenNeuro](https://openneuro.org) as ds002790.
 
 (sample-remodeling-events-file-anchor)=
-````{admonition} Excerpt from event file for a stop-go task.
+````{admonition} Excerpt from event file for a stop-go task of AOMIC-PIOP2 (ds002790).
 | onset | duration | trial_type | stop_signal_delay | response_time | response_accuracy | response_hand | sex |
 | ----- | -------- | ---------- | ----------------- | ------------- | ----------------- | ------------- | --- |
 | 0.0776 | 0.5083 | go | n/a | 0.565 | correct | right | female |
@@ -211,61 +225,6 @@ The results of executing this *add_structure_numbers* command on the [sample eve
 | 21.6103 | 0.5083 | go | n/a | 0.443 | correct | left | male |
 ````
 
-(derive-column-anchor)=
-### Derive column
-
-**NOT WRITTEN - PLACEHOLDER**
-
-Create a new column or overwrite values in an existing column using a mapping from existing columns.
-This command can be used to overwrite values particular values in existing columns
-based on predefined combinations of values in other columns.
-
-
-(parameters-for-derive-column-anchor)=
-```{admonition} Parameters for the *derive_column* command.
-:class: tip
-
-|  Parameter   | Type | Description | 
-| ------------ | ---- | ----------- | 
-| *column_name* | str | The name of the column to be created or modified.| 
-| *source_columns* | list of str | A list of columns to be used for remapping. | 
-| *mapping* | dict | The keys are the values to be placed in the derived columns and the values are each an array |  
-```
-The *derive_column* command in the following example specifies . . .
-
-````{admonition} An example *derive_column* command.
-:class: tip
-
-```json
-{ 
-    "command": "derive_column"
-    "description": "xxx"
-    "parameters": {
-        "column_name": "match_side",
-        "source_columns": ["response_accuracy", "response_hand"],
-        "mapping": {
-            "left": [["correct", "left"], ["incorrect", "right"]],
-            "right": [["correct", "right"], ["incorrect", "left"]]
-        }
-    }
-}
-```
-````
-
-The results of executing the previous *derive_column* command on the [sample events file](sample-remodeling-events-file-anchor) are:
-
-````{admonition} Adding a *match_side* column using the *derive_column* command.
-
-| onset | duration | trial_type | match_side | stop_signal_delay | response_time | response_accuracy | response_hand | sex |
-| ----- | -------- | ---------- | ---------- | ----------------- | ------------- | ----------------- | ------------- | --- |
-| 0.0776 | 0.5083 | go |<b>right</b> | n/a | 0.565 | correct | right | female |
-| 5.5774 | 0.5083 | unsuccesful_stop | <b>right</b> | 0.2 | 0.49 | correct | right | female |
-| 9.5856 | 0.5084 | go | n/a | 0.45 | correct | right | female |
-| 13.5939 | 0.5083 | succesful_stop | 0.2 | n/a | n/a | right | female |
-| 17.1021 | 0.5083 | unsuccesful_stop | 0.25 | 0.633 | correct | left | male |
-| 21.6103 | 0.5083 | go | n/a | 0.443 | correct | left | male |
-````
-
 (factor-column-anchor)=
 ### Factor column
 
@@ -280,14 +239,15 @@ If no values are specified, all unique values in that column are factored.
 |  Parameter   | Type | Description | 
 | ------------ | ---- | ----------- | 
 | *column_name* | str | The name of the column to be factored.| 
-| *factor_values* | list | A list of column values to be included as factors. |
-| *factor_names* | list| A list of column names for created factors<br>of the same length as factor_values. |
-| *ignore_missing* | bool | If true, columns corresponding to factor values<br>that do not appear in column are included. |
-| *overwrite_existing* | bool | If true an existing factor column is overwritten. |
+| *factor_values* | list | Column values to be included as factors. |
+| *factor_names* | list| Column names for created factors. Must be the same length as *factor_values*. |
+| *ignore_missing* | bool | If true, include columns for factor values not in events. |
+| *overwrite_existing* | bool | If true, existing factor columns are overwritten. |
 ```
 The *factor_column* command in the following example specifies that factor columns
 should be created for *succesful_stop* and *unsuccesful_stop* of the *trial_type* column.
 The resulting columns are called *stopped* and *stop_failed*, respectively.
+
 If the *factor_values* is an empty list, 
 factors are created for all unique values in the *column_name* column.
 The *factor_names* parameters must be the same length as *factor_values*.
@@ -330,9 +290,12 @@ The results of executing this *factor_column* command on the [sample events file
 (factor-hed-tags-anchor)=
 ### Factor HED tags
 
-**NOT WRITTEN - PLACEHOLDER**
-
-Produce a list of factor columns based on the specified HED condition-variable values.
+Produce a one-hot factor based on a HED tag search.
+The search is based on a list of query filters, which are applied in succession
+to the assembled HED strings for the event file.
+Only events that satisfy each query filter as applied in succession 
+will have 1 for the factors.
+If an event fails one of the queries it does not get a factor 
 
 (parameters-for-factor-hed-tags-anchor)=
 ```{admonition} Parameters for *factor_hed_tags* command.
@@ -340,9 +303,11 @@ Produce a list of factor columns based on the specified HED condition-variable v
 
 |  Parameter   | Type | Description | 
 | ------------ | ---- | ----------- | 
-| *column_name* | str | The name of the column to be created or modified.| 
-| *source_columns* | list of str | A list of columns to be used for remapping. | 
-| *mapping* | dict | The keys are the values to be placed in the derived columns and the values are each an array |  
+| *factor_name* | str | Name of the column to create for the factor. | 
+| *remove_types* | list | Structural HED tags to be removed (usually *Condition-variable* and *Task*). | 
+| *filter_queries* | list | Queries to be applied in succession to filter. | 
+| *overwrite_existing* | bool | Overwrite the contents of factor_name column. |
+
 ```
 
 The *factor_hed-tags* command in the following example specifies . . .
@@ -403,9 +368,10 @@ For additional information on how to encode experimental designs using HED pleas
 
 |  Parameter   | Type | Description | 
 | ------------ | ---- | ----------- | 
-| *type_tag* | str | A HED tag used to produce the factors (most commonly *Condition-variable*).| 
-| *type_values* | list | A list of values to factor for the *type_tag*.<br>If empty all values of that type_tag are used. |
-| *overwrite_existing* | bool | If true an existing factor column is overwritten. |
+| *type_tag* | str | HED tag used to find the factors (most commonly *Condition-variable*).| 
+| *type_values* | list | Values to factor for the *type_tag*.<br>If empty all values of that type_tag are used. |
+| *overwrite_existing* | bool | If true, existing factor columns are overwritten. |
+| *factor_encoding* | str | Indicates type of encoding. Valid encodings are 'categorical' and 'one-hot'. |
 ```
 
 To simplifyThe *factor_hed_type* command in the following example specifies . . .
@@ -418,12 +384,10 @@ To simplifyThe *factor_hed_type* command in the following example specifies . . 
     "command": "factor_hed_type"
     "description": "Factor based on the sex of the images being presented."
     "parameters": {
-        "column_name": "match_side",
-        "source_columns": ["response_accuracy", "response_hand"],
-        "mapping": {
-            "left": [["correct", "left"], ["incorrect", "right"]],
-            "right": [["correct", "right"], ["incorrect", "left"]]
-        }
+        "type_tag": "Condition-variable",
+        "type_values": [],
+        "overwrite_existing": true,
+        "factor_encoding": "one-hot"
     }
 }
 ```
@@ -515,6 +479,64 @@ The *merge_events* command in the following example specifies . . .
 The results of executing the previous *merge_events* command on the [sample events file](sample-remodeling-events-file-anchor) are:
 
 ````{admonition} The results of the *merge_events* command.
+
+| onset | duration | trial_type | match_side | stop_signal_delay | response_time | response_accuracy | response_hand | sex |
+| ----- | -------- | ---------- | ---------- | ----------------- | ------------- | ----------------- | ------------- | --- |
+| 0.0776 | 0.5083 | go |<b>right</b> | n/a | 0.565 | correct | right | female |
+| 5.5774 | 0.5083 | unsuccesful_stop | <b>right</b> | 0.2 | 0.49 | correct | right | female |
+| 9.5856 | 0.5084 | go | n/a | 0.45 | correct | right | female |
+| 13.5939 | 0.5083 | succesful_stop | 0.2 | n/a | n/a | right | female |
+| 17.1021 | 0.5083 | unsuccesful_stop | 0.25 | 0.633 | correct | left | male |
+| 21.6103 | 0.5083 | go | n/a | 0.443 | correct | left | male |
+````
+
+
+(remap-columns-anchor)=
+### Remap columns
+
+This command maps the values that appear in a specified m columns of an event file
+into values in n columns using a defined mapping.
+This is often used for recoding the event file. 
+The mapping must have targets for all combinations of values that appear in the m columns.
+Create a new column or overwrite values in an existing column using a mapping from existing columns.
+This command can be used to overwrite values particular values in existing columns
+based on predefined combinations of values in other columns.
+
+
+(parameters-for-remap-columns-anchor)=
+```{admonition} Parameters for the *remap_columns* command.
+:class: tip
+
+|  Parameter   | Type | Description | 
+| ------------ | ---- | ----------- | 
+| *column_name* | str | The name of the column to be created or modified.| 
+| *source_columns* | list of str | A list of columns to be used for remapping. | 
+| *mapping* | dict | The keys are the values to be placed in the derived columns and the values are each an array |  
+```
+The *remap_columns* command in the following example specifies . . .
+
+````{admonition} An example *remap_columns* command.
+:class: tip
+
+```json
+{ 
+    "command": "remap_columns"
+    "description": "xxx"
+    "parameters": {
+        "column_name": "match_side",
+        "source_columns": ["response_accuracy", "response_hand"],
+        "mapping": {
+            "left": [["correct", "left"], ["incorrect", "right"]],
+            "right": [["correct", "right"], ["incorrect", "left"]]
+        }
+    }
+}
+```
+````
+
+The results of executing the previous *derive_column* command on the [sample events file](sample-remodeling-events-file-anchor) are:
+
+````{admonition} Adding a *match_side* column using the *remap_columns* command.
 
 | onset | duration | trial_type | match_side | stop_signal_delay | response_time | response_accuracy | response_hand | sex |
 | ----- | -------- | ---------- | ---------- | ----------------- | ------------- | ----------------- | ------------- | --- |
