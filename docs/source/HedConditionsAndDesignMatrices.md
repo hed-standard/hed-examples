@@ -229,22 +229,22 @@ Dataset-wide summaries can also be extracted.
       "variable_type": "condition-variable",
       "levels": 0,
       "direct_references": 3,
-      "total events": 5,
-      "number events": 3,
-      "number_multiple": 0,
-      "multiple maximum": 1,
-      "level counts": {}
+      "total_events": 5,
+      "number_type_events": 3,
+      "number_multiple_events": 0,
+      "multiple_event_maximum": 1,
+      "level_counts": {}
    },
    "face-cond": {
       "name": "face-cond",
       "variable_type": "condition-variable",
       "levels": 0,
       "direct_references": 2,
-      "total events": 5,
-      "number events": 2,
-      "number_multiple": 0,
-      "multiple maximum": 1,
-      "level counts": {}
+      "total_events": 5,
+      "number_type_events": 2,
+      "number_multiple_events": 0,
+      "multiple_event_maximum": 1,
+      "level_counts": {}
    }
 }
 ````
@@ -296,8 +296,8 @@ which address both of these disadvantages.
    },
    "my_definitions": {
       "HED": {
-          "house_cond_def": (Definition/House-cond, (Condition-variable/Presentation-type, (Image, Building/House))),
-          "face_cond_def": (Definition/Face-cond, (Condition-variable/Presentation-type, (Image, Face)))"
+          "house_cond_def": "(Definition/House-cond, (Condition-variable/Presentation-type, (Image, Building/House)))",
+          "face_cond_def": "(Definition/Face-cond, (Condition-variable/Presentation-type, (Image, Face)))"
 }
 ```
 ````
@@ -328,11 +328,11 @@ define the meaning of the conditions.
       "variable_type": "condition-variable",
       "levels": 2,
       "direct_references": 0,
-      "total events": 5,
-      "number events": 5,
-      "number_multiple": 0,
-      "multiple maximum": 1,
-      "level counts": {
+      "total_events": 5,
+      "number_type_events": 5,
+      "number_multiple_events": 0,
+      "multiple_event_maximum": 1,
+      "level_counts": {
          "house-cond": 3,
          "face-cond": 2
       }
@@ -368,9 +368,13 @@ to indicate that the presented face had above average symmetry.
 The key assignment was held constant for each recording, but the key choice was 
 counter-balanced across participants.
 
+Example 8 shows an excerpt from the event file of sub-002 run-1.
+(You may find it useful to look at the full event file [sub-002_task-FacePerception_run-1_events.tsv](./_static/data/sub-002_task-FacePerception_run-1_events.tsv) and the dataset's
+JSON sidecar with full HED annotations:
+[task-facePerception_events.json](./_static/data/task-FacePerception_events.json)
 
 (sample-design-matrix-events-file-anchor)=
-```{admonition} Example 8: An excerpt from the Wakeman-Henson face-processing dataset..
+```{admonition} Example 8: An excerpt from the Wakeman-Henson face-processing dataset.
 
 | onset | duration | event_type | face_type | rep_status | trial | rep_lag | value | stim_file |
 | ----- | -------- | ---------- | --------- | ---------- | ----- | ------- | ----- | --------- |
@@ -386,72 +390,195 @@ counter-balanced across participants.
 | 30.3571 | n/a | show_face | unfamiliar_face | first_show | 3 | n/a | 13 | u088.bmp |
 ```
 
-Example 8 illustrates two different ways of using defined conditions for encoding.
-The key assignment is marked by inserting an event with temporal extent at the beginning
-of the file. The *setup_right_sym* event is encoded in the JSON sidecar as:
+Example 8 illustrates two different ways of using defined conditions for encoding:
+**inserting an event with temporal extent** or using **column encoding**.
 
-The condition variab
+The key assignment condition is marked by inserting an event with *event_type* equal to
+*setup_right_sym* at the beginning of the file. 
+As we shall see below, this event is annotated with having temporal extent,
+as defined by HED *Onset* and *Offset* tags,
+so the condition is in effect until the event's extent ends.
 
-```{admonition} Example 9: HED tools automatic extraction of the design matrix in categorical form for Example 8.
+In the column strategy, an event file column represents the condition variable,
+and the values in that column represent the levels.
+With this encoding, the condition variable is only applicable at a particular
+level when that level name appears in the column.
+An n/a value in that column indicates the condition does not apply to that event.
+
+Example 9 shows the portion of the
+[**task-facePerception_events.json**](./_static/data/task-FacePerception_events.json)
+that encodes information about the *setup_right_sym* event found as the first event
+in the event file excerpt of Example 8.
+This file contains definitions for all the condition variables used in the dataset.
+
+
+````{admonition} Example 9: Excerpt of the JSON sidecar relevant to the *setup_right_sym* event.
+:class: tip
+
+```json
+{
+   "event_type": {
+      "HED": {
+         "setup_right_sym": "Experiment-structure, (Def/Right-sym-cond, Onset), (Def/Initialize-recording, Onset)"
+      }
+   },
+   "hed_def_conds": {
+      "HED": {
+        "right_sym_cond_def": "(Definition/Right-sym-cond, (Condition-variable/Key-assignment, ((Index-finger, (Right-side-of, Experiment-participant)), (Behavioral-evidence, Symmetrical)), ((Index-finger, (Left-side-of, Experiment-participant)), (Behavioral-evidence, Asymmetrical)), Description/Right index finger key press indicates a face with above average symmetry.))"
+      }
+   }
+}
+```
+````
+
+Only the *event_type* column is relevant for assembling the annotations for the first row
+of Example 8, since the other annotated columns have n/a values.
+The assembled HED annotation for the first row of Example 8 is shown in Example 10.
+
+````{admonition} Example 10: The HED annotation of the first row of Example 8.
+:class: tip
+> "*Experiment-structure*, 
+> (*Def/Right-sym-cond*, *Onset*), 
+> (*Def/Initialize-recording*, *Onset*)"
+
+````
+
+HED represents events of temporal extent using HED definitions with the *Onset* 
+and *Offset* tags grouped with a user-defined term.
+The (*Def/Right-sym-cond*, *Onset*) specifies that an event defined by
+*Right-sym-cond* begins at the time-marker represented by this row in the event file.
+This event continues until the end of the file or until an event marker with
+(*Def/Right-sym-cond*, *Offset*) occurs.
+In this case, no *Offset* marker for *Right-sym-cond* appears in the file,
+so the event represented by *Right-sym-cond* occurs over the entire recording.
+
+The user-defined term is prefixed with *Def/* and indicates what the event
+of temporal extent represents.
+If the definition includes a *Condition-variable*,
+then the event represents the occurrence of that experimental condition.
+The user-defined terms are usually defined in the `events.json` file
+located at the top-level of the BIDS dataset.
+
+
+Example 11 shows a more readable form for the definition of *Right-sym-cond*.
+
+````{admonition} Example 11: The contents of the definition for *Right-sym-cond*.
+:class: tip
+
+```text
+(  
+   Definition/Right-sym-cond, (  
+      Condition-variable/Key-assignment,   
+      ((Index-finger, (Right-side-of, Experiment-participant)), (Behavioral-evidence, Symmetrical)),  
+      ((Index-finger, (Left-side-of, Experiment-participant)), (Behavioral-evidence, Asymmetrical)),  
+      Description/Right index finger key press indicates a face with above average symmetry.  
+   )  
+)
+```
+````
+The primary use of the definitions for condition variables is to encode
+the experimental design in an actionable format.
+Thus, as a general practice, *Defs* representing condition variables are
+removed prior to searching for other tags to avoid repeats.
+Notice that both *Right-side-of* and *Left-side-of* appear in the definition.
+Thus, if these *Defs* were included, every event would have both left and right tags.
+
+Once a dataset includes the appropriate annotations,
+HED tools can automatically extract the experimental design.
+Example 12 shows the result of extraction of categorical factor vectors for
+the event file of Example 8.
+
+```{admonition} Example 12: HED tools categorical form extraction of the design matrix for Example 8.
 
 | onset | key-assignment | face-type | repetition-type | 
-| ----- | -------------- | ---- ---- | --------------- |
-| 0.004 | right-sym-com | n/a | n/a |
-| 24.2098 | right-sym-com | unfamiliar-face-cond | first-show-cond |
-| 25.0353 | right-sym-com | n/a | n/a |
-| 25.158 | right-sym-com | n/a| n/a |
-| 26.7353 | right-sym-com | n/a | n/a | 
-| 27.2498 | right-sym-com | unfamiliar-face-cond | immediate-repeat-cond |
-| 27.8971 | right-sym-com | n/a | n/a |
-| 28.0998 | right-sym-com | n/a | n/a |
-| 29.7998 | right-sym-com | n/a | n/a | 
-| 30.3571 | right-sym-com | unfamiliar-face-cond | first-show-cond | 
-```
+| ----- | -------------- | --------- | --------------- |
+| 0.004 | right-sym-cond | n/a | n/a |
+| 24.2098 | right-sym-cond | unfamiliar-face-cond | first-show-cond |
+| 25.0353 | right-sym-cond | n/a | n/a |
+| 25.158 | right-sym-cond | n/a | n/a |
+| 26.7353 | right-sym-cond | n/a | n/a | 
+| 27.2498 | right-sym-cond | unfamiliar-face-cond | immediate-repeat-cond |
+| 27.8971 | right-sym-cond | n/a | n/a |
+| 28.0998 | right-sym-cond | n/a | n/a |
+| 29.7998 | right-sym-cond | n/a | n/a | 
+| 30.3571 | right-sym-cond | unfamiliar-face-cond | first-show-cond | 
 
+````
 
+In the categorical representation,
+HED uses the condition variable name as the column name.
+The level values appear in the columns for event markers at which 
+the condition variable at that level applies.
+Notice that *right-sym-cond* appears in every row because it was used in an event
+that extended to the end of the file. 
+On the other hand, the other condition variables were encoded using
+columns and only appear when present in the column.
 
+Note that if an event has multiple levels of the same condition,
+categorical and ordinal encoding cannot be used.
+Only one-hot encoding supports multiple levels in the same event.
+
+Example 13 below shows the condition variable summary that HED produces for the
+full [sub-002_task-FacePerception_run-1_events.tsv](./_static/data/sub-002_task-FacePerception_run-1_events.tsv) 
+and JSON sidecar 
+[task-facePerception_events.json](./_static/data/task-FacePerception_events.json).
+
+````{admonition} Example 13: The condition variable summary extracted from the full event file.
+:class: tip
+
+```json
 {
-    "key-assignment": {
-        "name": "key-assignment",
-        "variable_type": "condition-variable",
-        "levels": 1,
-        "direct_references": 0,
-        "total events": 200,
-        "number events": 200,
-        "number_multiple": 0,
-        "multiple maximum": 1,
-        "level counts": {
-            "right-sym-cond": 200
-        }
-    },
-    "face-type": {
-        "name": "face-type",
-        "variable_type": "condition-variable",
-        "levels": 3,
-        "direct_references": 0,
-        "total events": 200,
-        "number events": 52,
-        "number_multiple": 0,
-        "multiple maximum": 1,
-        "level counts": {
-            "unfamiliar-face-cond": 20,
-            "famous-face-cond": 14,
-            "scrambled-face-cond": 18
-        }
-    },
-    "repetition-type": {
-        "name": "repetition-type",
-        "variable_type": "condition-variable",
-        "levels": 3,
-        "direct_references": 0,
-        "total events": 200,
-        "number events": 52,
-        "number_multiple": 0,
-        "multiple maximum": 1,
-        "level counts": {
-            "first-show-cond": 28,
-            "immediate-repeat-cond": 12,
-            "delayed-repeat-cond": 12
-        }
+   "key-assignment": {
+      "name": "key-assignment",
+      "variable_type": "condition-variable",
+      "levels": 1,
+      "direct_references": 0,
+      "total_events": 552,
+      "number_type_events": 552,
+      "number_multiple_events": 0,
+      "multiple_event_maximum": 1,
+      "level_counts": {
+         "right-sym-cond": 552
+      }
+   },
+   "face-type": {
+      "name": "face-type",
+      "variable_type": "condition-variable",
+      "levels": 3,
+      "direct_references": 0,
+      "total_events": 552,
+      "number_type_events": 146,
+      "number_multiple_events": 0,
+      "multiple_event_maximum": 1,
+      "level_counts": {
+         "unfamiliar-face-cond": 47,
+         "famous-face-cond": 49,
+         "scrambled-face-cond": 50
+      }
+   },
+   "repetition-type": {
+      "name": "repetition-type",
+      "variable_type": "condition-variable",
+      "levels": 3,
+      "direct_references": 0,
+      "total_events": 552,
+      "number_type_events": 146,
+      "number_multiple_events": 0,
+      "multiple_event_maximum": 1,
+      "level_counts": {
+         "first-show-cond": 75,
+         "immediate-repeat-cond": 36,
+         "delayed-repeat-cond": 35
+      }
     }
 }
+```
+````
+
+The file has 552 events.
+Since the *key-assignment* condition variable with level *right-sym-cond*
+applies to every event in this file, the *number_type_events* is also 552.
+On the other hand, the *face-type* condition variable is only applicable in 146 events.
+
+All the condition variables have *number_multiple_events* equal to 0,
+so any of the three possible encodings: categorical, ordinal, or one-hot can be used.

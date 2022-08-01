@@ -1,14 +1,12 @@
 {
-    "event_type": {
-        "HED": {
-            "house": "Sensory-presentation, Visual-presentation, Experimental-stimulus, (Image, Building/House), Condition-variable/House-cond",
-            "face": "Sensory-presentation, Visual-presentation, Experimental-stimulus, (Image, Face), Condition-variable/Face-cond"
-        }
-    },
-    "response_time": {
-        "HED": "Participant-response, Delay/#"
-    },
-    "stim_file": {
-        "HED": "(Image, Pathname/#)"
-    }
+   "event_type": {
+      "HED": {
+         "setup_right_sym": "Experiment-structure, (Def/Right-sym-cond, Onset), (Def/Initialize-recording, Onset)"
+      }
+   },
+   "hed_def_conds": {
+      "HED": {
+        "right_sym_cond_def": "(Definition/Right-sym-cond, (Condition-variable/Key-assignment, ((Index-finger, (Right-side-of, Experiment-participant)), (Behavioral-evidence, Symmetrical)), ((Index-finger, (Left-side-of, Experiment-participant)), (Behavioral-evidence, Asymmetrical)), Description/Right index finger key press indicates a face with above average symmetry.))"
+      }
+   }
 }
