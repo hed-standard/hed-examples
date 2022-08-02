@@ -61,7 +61,7 @@ stop-go task of the AOMIC-PIOP2 dataset available on [OpenNeuro](https://openneu
 ````{admonition} Excerpt from event file for a stop-go task of AOMIC-PIOP2 (ds002790).
 | onset | duration | trial_type | stop_signal_delay | response_time | response_accuracy | response_hand | sex |
 | ----- | -------- | ---------- | ----------------- | ------------- | ----------------- | ------------- | --- |
-| 0.0776 | 0.5083 | go | n/a | 0.565 | correct | right | female |
+| 0.0776 | 0.5083 | go | n/a | 0.565 | |correct | right | female 
 | 5.5774 | 0.5083 | unsuccesful_stop | 0.2 | 0.49 | correct | right | female |
 | 9.5856 | 0.5084 | go | n/a | 0.45 | correct | right | female |
 | 13.5939 | 0.5083 | succesful_stop | 0.2 | n/a | n/a | n/a | female |
@@ -494,13 +494,11 @@ The results of executing the previous *merge_events* command on the [sample even
 (remap-columns-anchor)=
 ### Remap columns
 
-This command maps the values that appear in a specified m columns of an event file
-into values in n columns using a defined mapping.
-This is often used for recoding the event file. 
-The mapping must have targets for all combinations of values that appear in the m columns.
-Create a new column or overwrite values in an existing column using a mapping from existing columns.
-This command can be used to overwrite values particular values in existing columns
-based on predefined combinations of values in other columns.
+This command maps the values that appear in a specified *m* columns of an event file
+into values in *n* columns using a defined mapping.
+This command is often used for recoding the event file. 
+The mapping should have targets for all combinations of values that appear in the *m* columns.
+
 
 
 (parameters-for-remap-columns-anchor)=
@@ -509,44 +507,56 @@ based on predefined combinations of values in other columns.
 
 |  Parameter   | Type | Description | 
 | ------------ | ---- | ----------- | 
-| *column_name* | str | The name of the column to be created or modified.| 
-| *source_columns* | list of str | A list of columns to be used for remapping. | 
-| *mapping* | dict | The keys are the values to be placed in the derived columns and the values are each an array |  
+| *source_columns* | list | Columns with combinations of values to be mapped.| 
+| *destination_columns* | list | Columns to be mapped into. |
+| *map_list* | list | A list. Each element consists n + m elements<br/> corresponding to the lengths of the source and destination lists respectively. |  
+| *ignore_missing* | bool | If false, a combination of 
 ```
-The *remap_columns* command in the following example specifies . . .
+The *map_list* parameter specifies how each unique combination of values from the source 
+columns will be mapped into the destination columns.
+If there are *m* source columns and *n* destination columns,
+then each entry in *map_list must be a list with *n* + *m* elements.
+
+The *remap_columns* command in the following example creates a new column called *response_type*
+based on the unique values in the combination of columns *response_accuracy* and *response_hand*.
 
 ````{admonition} An example *remap_columns* command.
 :class: tip
 
 ```json
 { 
-    "command": "remap_columns"
-    "description": "xxx"
+    "command": "remap_columns",
+    "description": "Map response_accuracy and response hand into a single column.",
     "parameters": {
-        "column_name": "match_side",
         "source_columns": ["response_accuracy", "response_hand"],
-        "mapping": {
-            "left": [["correct", "left"], ["incorrect", "right"]],
-            "right": [["correct", "right"], ["incorrect", "left"]]
-        }
+        "destination_columns": ["response_type"],
+        "map_list": [["correct", "left", "correct_left"],
+                     ["correct", "right", "correct_right"],
+                     ["incorrect", "left", "incorrect_left"],
+                     ["incorrect", "right", "incorrect_left"],
+                     ["n/a", "n/a", "n/a"]],
+        "ignore_missing": true
     }
 }
 ```
 ````
 
-The results of executing the previous *derive_column* command on the [sample events file](sample-remodeling-events-file-anchor) are:
+The results of executing the previous *remap_column* command on the [sample events file](sample-remodeling-events-file-anchor) are:
 
-````{admonition} Adding a *match_side* column using the *remap_columns* command.
+````{admonition} Mapping columns *response_accuracy* and *response_hand* into a *response_type* column.
 
-| onset | duration | trial_type | match_side | stop_signal_delay | response_time | response_accuracy | response_hand | sex |
-| ----- | -------- | ---------- | ---------- | ----------------- | ------------- | ----------------- | ------------- | --- |
-| 0.0776 | 0.5083 | go |<b>right</b> | n/a | 0.565 | correct | right | female |
-| 5.5774 | 0.5083 | unsuccesful_stop | <b>right</b> | 0.2 | 0.49 | correct | right | female |
-| 9.5856 | 0.5084 | go | n/a | 0.45 | correct | right | female |
-| 13.5939 | 0.5083 | succesful_stop | 0.2 | n/a | n/a | right | female |
-| 17.1021 | 0.5083 | unsuccesful_stop | 0.25 | 0.633 | correct | left | male |
-| 21.6103 | 0.5083 | go | n/a | 0.443 | correct | left | male |
+| onset | duration | trial_type | stop_signal_delay | response_time | response_accuracy | response_hand | sex | response_type |
+| ----- | -------- | ---------- | ---------- | ----------------- | ------------- | ----------------- |  --- | ------------------- |
+| 0.0776 | 0.5083 | go | n/a | 0.565 | correct | right | female | correct_right |
+| 5.5774 | 0.5083 | unsuccesful_stop | 0.2 | 0.49 | correct | right | female | correct_right |
+| 9.5856 | 0.5084 | go | n/a | 0.45 | correct | right | female | correct_right |
+| 13.5939 | 0.5083 | succesful_stop | 0.2 | n/a | n/a | n/a | female | n/a |
+| 17.1021 | 0.5083 | unsuccesful_stop | 0.25 | 0.633 | correct | left | male | correct_left |
+| 21.6103 | 0.5083 | go | n/a | 0.443 | correct | left | male | correct_left |
 ````
+
+Typically, the *remap_columns* command is used often used to map single codes in the experimental log
+into multiple columns in the final events file.
 
 (remove-columns-anchor)=
 ### Remove columns
