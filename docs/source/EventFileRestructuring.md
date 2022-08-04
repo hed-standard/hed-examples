@@ -809,7 +809,6 @@ Unlisted columns are filled with n/a.
 | ------------ | ---- | ----------- | 
 | *anchor_event* | str | The name of the column that will be used for split-event codes.|
 | *new_events* | dict | Dictionary whose keys are the codes to be inserted as new events<br>and whose values are dictionaries with<br>keys *onset_source*, *duration*, and *copy_columns*. | 
-| *add_event_numbers* | bool | If true, adds a column called *event_numbers*. |
 | *remove_parent_event* | bool | If true, remove parent event. |
 
 ```
@@ -829,7 +828,6 @@ since these items have been unfolded into separate events.
   "description": "add response events to the trials.",
         "parameters": {
             "anchor_column": "trial_type",
-            "event_numbers_column": "trial_number",
             "new_events": {
                 "response": {
                     "onset_source": ["response_time"],
@@ -852,22 +850,22 @@ The results of executing this *split_event* command on the [sample events file](
 
 ````{admonition} Results of the previous *split_event* command.
 
-| onset | duration | trial_type | stop_signal_delay | response_time | response_accuracy | response_hand | sex | trial_number |
-| ----- | -------- | ---------- | ----------------- | ------------- | ----------------- | ------------- | --- | -------- |
-| 0.0776 | 0.5083 | go | n/a | 0.565 | correct | right | female | 1 |
-| 0.6426 | 0 | response | n/a | n/a | correct | right | female | 1 |
-| 5.5774 | 0.5083 | unsuccesful_stop | 0.2 | 0.49 | correct | right | female | 2 |
-| 5.7774 | 0.5 | stop_signal | n/a | n/a | n/a | n/a | n/a | 2 |
-| 6.0674 | 0 | response | n/a | n/a | correct | right | female | 2 |
-| 9.5856 | 0.5084 | go | n/a | 0.45 | correct | right | female | 3 |
-| 10.0356 | 0 | response | n/a | n/a | correct | right | female | 3 |
-| 13.5939 | 0.5083 | succesful_stop | 0.2 | n/a | n/a | n/a | female | 4 |
-| 13.7939 | 0.5 | stop_signal | n/a | n/a | n/a | n/a | n/a | 4 |
-| 17.1021 | 0.5083 | unsuccesful_stop | 0.25 | 0.633 | correct | left | male | 5 |
-| 17.3521 | 0.5 | stop_signal | n/a | n/a | n/a | n/a | n/a | 5 |
-| 17.7351 | 0 | response | n/a | n/a | correct | left | male | 5 |
-| 21.6103 | 0.5083 | go | n/a | 0.443 | correct | left | male | 6 |
-| 22.0533 | 0 | response | n/a | n/a | correct | left | male | 6 |
+| onset | duration | trial_type | stop_signal_delay | response_time | response_accuracy | response_hand | sex |
+| ----- | -------- | ---------- | ----------------- | ------------- | ----------------- | ------------- | --- |
+| 0.0776 | 0.5083 | go | n/a | 0.565 | correct | right | female |
+| 0.6426 | 0 | response | n/a | n/a | correct | right | female |
+| 5.5774 | 0.5083 | unsuccesful_stop | 0.2 | 0.49 | correct | right | female |
+| 5.7774 | 0.5 | stop_signal | n/a | n/a | n/a | n/a | n/a |
+| 6.0674 | 0 | response | n/a | n/a | correct | right | female |
+| 9.5856 | 0.5084 | go | n/a | 0.45 | correct | right | female |
+| 10.0356 | 0 | response | n/a | n/a | correct | right | female |
+| 13.5939 | 0.5083 | succesful_stop | 0.2 | n/a | n/a | n/a | female |
+| 13.7939 | 0.5 | stop_signal | n/a | n/a | n/a | n/a | n/a |
+| 17.1021 | 0.5083 | unsuccesful_stop | 0.25 | 0.633 | correct | left | male |
+| 17.3521 | 0.5 | stop_signal | n/a | n/a | n/a | n/a | n/a |
+| 17.7351 | 0 | response | n/a | n/a | correct | left | male |
+| 21.6103 | 0.5083 | go | n/a | 0.443 | correct | left | male |
+| 22.0533 | 0 | response | n/a | n/a | correct | left | male |
 ````
 
 Note that the event numbers are added before the splitting and then
