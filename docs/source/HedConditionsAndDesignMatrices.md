@@ -14,7 +14,7 @@ the [**BIDS annotation quickstart**](https://hed-examples.readthedocs.io/en/late
 [**HED annotation quickstart**](https://hed-examples.readthedocs.io/en/latest/HedAnnotationQuickstart.html)
 tutorials as needed.
 
-The [**Neuorimaging experimental design**](neuroimaging-experimental-anchor)
+The [**Neuorimaging experimental design**](review-of-experimental-design-concepts-anchor)
 section at the end of this tutorial provides a basic introduction to the ideas
 of factor vectors and experimental design if you are unfamiliar with these topics.
 
@@ -26,17 +26,17 @@ of factor vectors and experimental design if you are unfamiliar with these topic
   * [**Design matrices and factor variables**](design-matrices-and-factor-variables-anchor) 
   * [**Types of condition encoding**](types-of-condition-encoding-anchor)
 
-This tutorial introduces tools and strategies for including this information
-as part of a dataset without excessive effort on the part of the researcher.
-The discussion mainly focuses on categorical variables, but HED
-also can encode numerical values as discussed later in the tutorial.
+This tutorial introduces tools and strategies for encoding information
+about the experimental design as part of a dataset metadata
+without excessive effort on the part of the researcher.
+The discussion mainly focuses on categorical variables.
 
 (hed-annotations-for-conditions-anchor)=
 ## HED annotations for conditions
 
 As mentioned above, HED (Hierarchical Event Descriptors) provide several mechanisms for easily
 annotating the experimental conditions represented by a BIDS dataset so that
-the information can be automatically extracted, summarized and used by tools.
+the information can be automatically extracted, summarized, and used by tools.
 
 HED has three ways of annotating experimental conditions: condition variables without definitions,
 condition variables with definitions but no levels, and condition variables with levels.
@@ -53,7 +53,7 @@ a simplified event file for an experiment to distinguish brain responses
 for houses and faces. 
 
 (sample-house-face-example-anchor)=
-````{admonition} Example 2. Excerpt from a sample event file from a simplified house-face experiment.
+````{admonition} Example 1. Excerpt from a sample event file from a simplified house-face experiment.
 | onset | duration | event_type | stim_file |
 | ----- | -------- |----------- | ---------- |
 | 2.010 |  0.1     | show_house  | ranch1.png |
@@ -66,9 +66,9 @@ for houses and faces.
 As explained in [**BIDS annotation quickstart**](https://hed-examples.readthedocs.io/en/latest/BidsAnnotationQuickstart.html), 
 the most commonly used strategy for annotating events in a BIDS dataset is
 to create a single JSON file located in the dataset root containing the annotations
-for the columns. The following shows a minimal example
+for the columns. The following shows a minimal example:
 
-````{admonition} Example 3: Minimal JSON sidecar with HED annotations for Example 1.
+````{admonition} Example 2: Minimal JSON sidecar with HED annotations for Example 1.
 :class: tip
 
 ```json
@@ -87,10 +87,12 @@ for the columns. The following shows a minimal example
 ````
 
 Each row in an `events.tsv` file represents a time marker in the corresponding data recording.
-At analysis time, HED tools look up each column value in the JSON file and concatenate the
+At analysis time, HED tools look up each `events.tsv` column value in the JSON file and concatenate the
 corresponding HED annotation into a single string representing the annotation for that row.
 Annotations without #'s are used directly, while annotations with # have the corresponding
 column values substituted when the annotation is assembled. 
+
+Example 3 shows the Hed annotation for the first row in the `events.tsv` file of Example 1.
 
 ````{admonition} Example 3: HED annotation for first event in Example 1 using JSON sidecar of Example 2.
 :class: tip
@@ -103,11 +105,15 @@ column values substituted when the annotation is assembled.
 Notice that *Building/House* is a partial path rather than a single tag.
 This is because *House* is currently not part of the base HED vocabulary.
 However, users are allowed to extend tags at most nodes in the HED schema,
-but they must use a path that includes a least one ancestor that is in the HED schema.
+but they must use a path that includes a least one ancestor in the HED schema.
 
 HED tools have the capability of automatically detecting *Condition-variable*
-tags in annotated HED datasets and creating factor vectors and summaries automatically.
-Example 4 shows the event file after HED tools have appended one-hot factor vectors.
+tags in annotated HED datasets to create factor vectors and summaries automatically.
+Example 4 shows the event file after HED tools have appended one-hot factor vectors
+for the two condition variables *Condition-variable/House-cond* and
+*Condition-variable/Face-cond*. 
+The 1's and 0's *house_cond* and *face-cond* columns indicate presence or absence
+of the corresponding condition variables.
 
 
 ````{admonition} Example 4. Event file from Example 2 after one-hot factor vector extraction.
@@ -157,7 +163,7 @@ Dataset-wide summaries can also be extracted.
    }
 }
 ````
-The summary shows that of the total of 5 events in the file 3 events were under
+The summary shows that of the total of 5 events in the file: 3 events were under
 the house condition and 2 events were under the face condition.
 There were no events in multiple categories of the same condition variables
 (which would not be possible since these condition variables were referenced
@@ -174,7 +180,7 @@ treated is though they are unrelated. These direct condition variables
 are very easy to annotate--- just make up a name and stick the tags anywhere
 you want to create factor variables or summaries.
 However, a more common situation is for a condition variable to have multiple levels,
-which direct use condition variables do not support.
+which direct use condition variables does not support.
 
 Another disadvantage of direct condition variables is that there is
 no information about what the conditions represent beyond the arbitrarily chosen condition names.
@@ -182,7 +188,7 @@ no information about what the conditions represent beyond the arbitrarily chosen
 A third disadvantage is that direct condition variables can not be used to
 anchor events with temporal extent.
 
-The next section introduces the use of defined condition variables,
+The next section introduces defined condition variables,
 which address both of these disadvantages.
 
 (defined-condition-variables-anchor)=
@@ -214,17 +220,17 @@ which address both of these disadvantages.
 Example 6 defines a condition variable called *Presentation-type* with two levels:
 *House-cond* and *Face-cond*.
 The definitions of *House-cond* and *Face-cond* both include the same *Presentation-type*
-*Condition-variable* so tools can recognize these as levels of the same variable and
-automatically extract 2-factor experimental design.
+*Condition-variable* so tools recognize these as levels of the same variable and
+automatically extract the 2-factor experimental design.
 
 Notice that the (*Image*, *Building/House*) tags are included both in the definition of
 the *House-cond* level of the *Presentation-type* condition variable
-and in the tags for the event_type *show_house*.
+and in the tags for the *event_type* column value *show_house*.
 Similarly, the (*Image*, *Face*) tags appear in both the definition of the
 *Face-cond* level of the *Presentation-type* condition variable
-and in the tags for the event_type *show_face*.
-We have included them in both places because generally the condition variable definitions
-are removed prior to searching for HED tags because the tags in the definitions
+and in the tags for the *event_type* column value *show_face*.
+We have included these tags in both places because generally the condition variable definitions
+are removed prior to searching for HED tags. The tags in the definitions
 define the meaning of the conditions.
 
 ````{admonition} Example 7: The summary extracted when the JSON sidecar of Example 6 is used.
@@ -257,16 +263,16 @@ In this section, we look at a more complicated example based on the Wakeman-Hens
 This dataset, which is available on [OpenNeuro](https://openneuro.org) under accession number
 ds003654, was used in as a case study on HED annotation described in the 
 [Capturing the nature of events paper](https://www.sciencedirect.com/science/article/pii/S1053811921010387).
-
 The experiment is based on a 3 x 3 x 2 experimental design: face type x repetition status x key choice.
-The experimental stimulus is each trial was the visual presentation of one of 3 possible types of images:
+
+The experimental stimulus in each trial was the visual presentation of one of 3 possible types of images:
 a well-known face, an unfamiliar face, and a scrambled face image. 
 The type of face was randomized across trials.
 
-The repetition status condition variable also had one of three possible values and indicated:
+The repetition status condition variable also had one of three possible values and indicated
 whether the stimulus image had not been seen before (first show), 
 was just seen in the previous trial (immediate repeat),
-or had been seen in a several trials ago (delayed repeat). 
+or had been last seen several trials ago (delayed repeat). 
 The repetition status was randomized across trials.
 
 The final condition variable in the experimental design was the key assignment.
@@ -318,7 +324,7 @@ Example 9 shows the portion of the
 [**task-facePerception_events.json**](./_static/data/task-FacePerception_events.json)
 that encodes information about the *setup_right_sym* event found as the first event
 in the event file excerpt of Example 8.
-This file contains definitions for all the condition variables used in the dataset.
+This excerpt only contains the relevent definition and the relevant annotation.
 
 
 ````{admonition} Example 9: Excerpt of the JSON sidecar relevant to the *setup_right_sym* event.
@@ -548,7 +554,7 @@ The duration column (also required by BIDS) contains the duration of the
 image presentation in seconds.
 
 (different-encodings-of-design-variables-anchor)=
-````{admonition} Example 1: Different encodings of a column with categorical values.
+````{admonition} Example 14: Illustration of categorical and one-hot encoding of categorical variables.
 | onset | duration | categorical | ordinal | one_hot.house | one_hot.face |
 | ----- | -------- |----------- |-------- | ------------- | ------------ |
 | 2.010 |  0.1     | house      |     1   |      1        |     0        | 
@@ -573,7 +579,7 @@ chosen, which may have undesirable affects on the results of analyses such
 as regression if the ordering/relative sizes do not reflect the 
 properties of the encoded experimental conditions.
 
-In the example above, the experimental conditions houses and faces do not
+In Example 14, the experimental conditions houses and faces do not
 have an ordering/size relationship reflected by the encoding (house=1, face=2).
 In addition, neither categorical nor ordinal encoding
 can represent items falling into multiple categories of the same condition at the same time.
