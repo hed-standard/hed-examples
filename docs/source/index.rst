@@ -26,10 +26,10 @@ HED examples and tutorials
 
    TaggingWithCTagger.md
    DataCuration101.md
-   HedToolsOnline.md
-   HedInPython.md
-   HedInMatlab.md
-   HedInJavascript.md
+   HedOnlineTools.md
+   HedPythonTools.md
+   HedMatlabTools.md
+   HedJavascriptTools.md
 
 
 .. toctree::

@@ -1,4 +1,4 @@
-# HED in JavaScript
+# HED JavaScript tools
 
 The JavaScript code for HED validation is in the validation directory of the 
 `hed-javascript` repository located at [https://github.com/hed-standard/hed-javascript](https://github.com/hed-standard/hed-javascript).
