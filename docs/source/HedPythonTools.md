@@ -1,4 +1,4 @@
-# HED in Python
+# HED Python tools
 
 The HED (Hierarchical Event Descriptor) scripts and notebooks assume
 that the Python HedTools have been installed.

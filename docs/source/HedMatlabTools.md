@@ -1,4 +1,4 @@
-# HED in MATLAB
+# HED MATLAB tools
 
 There are currently three types of support available for HED (Hierarchical Event Descriptors) supports in MATLAB:
 
