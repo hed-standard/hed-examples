@@ -16,7 +16,7 @@ The tools can be called in Jupyter notebook or run via command-line scripts.
   * [**Factor column**](factor-column-anchor) 
   * [**Factor HED tags**](factor-hed-tags-anchor) 
   * [**Factor HED type**](factor-hed-type-anchor)
-  * [**Merge events**](merge-events-anchor)
+  * [**Merge consecutive**](merge-consecutive-anchor)
   * [**Remap columns**](remap-columns-anchor)
   * [**Remove columns**](remove-columns-anchor) 
   * [**Rename columns**](rename-columns-anchor)
@@ -632,60 +632,77 @@ The results of executing this *factor_hed-tags* command on the
 | 21.6103 | 0.5083 | go | n/a | 0.443 | correct | left | male | 0 | 1 |
 ````
 
-(merge-events-anchor)=
-### Merge events
+(merge-consecutive-anchor)=
+### Merge consecutive
 
-**NOT WRITTEN - PLACEHOLDER**
-
-One long event is represented by multiple repeat events. 
+Sometimes in experimental logs, a single long event is represented by multiple repeat events. 
 Merges these same events occurring consecutively into one event with duration 
-of the new event updated as the sum of all merged events.
+of the new event updated to encompass the extent of the merged events..
 
-(parameters-for-merge-events-anchor)=
-```{admonition} Table 16: Parameters for the *merge_events* command.
+(parameters-for-merge-consecutive-anchor)=
+```{admonition} Table 16: Parameters for the *merge_consecutive* command.
 :class: tip
 
 |  Parameter   | Type | Description | 
 | ------------ | ---- | ----------- | 
-| *column_name* | str | The name of the column to be created or modified.| 
-| *source_columns* | list of str | A list of columns to be used for remapping. | 
-| *mapping* | dict | The keys are the values to be placed in the derived columns and the values are each an array |  
+| *column_name* | str | The name of the column to be merged.| 
+| *event_code* | str, int, float | The value in *column_name* . | 
+| *match_columns* | list | Columns of that must match to collapse events.  |
+| *set_durations* | bool | If True, set durations based on merged events. |
+| *ignore_missing* | bool | If True, missing *column_name* or *match_columns* does not raise an error. |  
 ```
 
-The *merge_events* command in the following example specifies . . .
+The *merge_consecutive* command in the following example specifies . . .
 
-````{admonition} A sample *merge_events* command.
+````{admonition} A sample *merge_consecutive* command.
 :class: tip
 
 ```json
 { 
-    "command": "merge_events"
-    "description": "xxx"
+    "command": "merge_consecutive"
+    "description": "Merge consecutive *succesful_stop* events that match the *match_columns."
     "parameters": {
-        "column_name": "match_side",
-        "source_columns": ["response_accuracy", "response_hand"],
-        "mapping": {
-            "left": [["correct", "left"], ["incorrect", "right"]],
-            "right": [["correct", "right"], ["incorrect", "left"]]
-        }
+        "column_name": "trial_type",
+        "event_code": "succesful_stop",
+        "match_columns": ["stop_signal_delay", "response_hand", "sex"],
+        "set_durations": true,
+        "ignore_missing": true
     }
 }
 ```
 ````
 
+The follo
+````{admonition} Table 17: Input file for a *merge_consecutive* command.
+
+| onset | duration | trial_type | stop_signal_delay | response_hand | sex |
+| ----- | -------- | ---------- | ----------------- | ------------- | --- |
+| 0.0776 | 0.5083 | go | n/a | right | female| 
+| 5.5774 | 0.5083 | unsuccesful_stop | 0.2 | right | female| 
+| 9.5856 | 0.5084 | go | n/a | right | female| 
+| 13.5939 | 0.5083 | succesful_stop | 0.2 | n/a | female| 
+| 14.2 | 0.5083 | succesful_stop | 0.2 |  n/a | female| 
+| 15.3 | 0.5083 | succesful_stop | 0.2 |  n/a | female| 
+| 17.3 | 0.5083 | succesful_stop | 0.25 |  n/a | female| 
+| 19.0 | 0.5083 | succesful_stop | 0.25 | n/a | female| 
+| 21.1021 | 0.5083 | unsuccesful_stop | 0.25 | left | male| 
+| 22.6103 | 0.5083 | go | n/a | left | male |
+````
+
 The results of executing the previous *merge_events* command on the 
 [sample events file](sample-remodeling-events-file-anchor) are:
 
-````{admonition} Table 17: The results of the *merge_events* command.
+````{admonition} Table 18: The results of the *merge_events* command.
 
-| onset | duration | trial_type | match_side | stop_signal_delay | response_time | response_accuracy | response_hand | sex |
-| ----- | -------- | ---------- | ---------- | ----------------- | ------------- | ----------------- | ------------- | --- |
-| 0.0776 | 0.5083 | go |<b>right</b> | n/a | 0.565 | correct | right | female |
-| 5.5774 | 0.5083 | unsuccesful_stop | <b>right</b> | 0.2 | 0.49 | correct | right | female |
-| 9.5856 | 0.5084 | go | n/a | 0.45 | correct | right | female |
-| 13.5939 | 0.5083 | succesful_stop | 0.2 | n/a | n/a | right | female |
-| 17.1021 | 0.5083 | unsuccesful_stop | 0.25 | 0.633 | correct | left | male |
-| 21.6103 | 0.5083 | go | n/a | 0.443 | correct | left | male |
+| onset | duration | trial_type |  stop_signal_delay | response_hand | sex |
+| ----- | -------- | ---------- | ------------------ | -------- ---- | --- |
+| 0.0776 | 0.5083 | go | n/a | right | female |
+| 5.5774 | 0.5083 | unsuccesful_stop | 0.2 | right | female |
+| 9.5856 | 0.5084 | go | n/a | right | female |
+| 13.5939 | 2.2144 | succesful_stop | 0.2 | n/a | female |
+| 17.3 | 2.2083 | succesful_stop | 0.25 |  n/a | female |
+| 21.1021 | 0.5083 | unsuccesful_stop | 0.25 | left | male |
+| 22.6103 | 0.5083 | go | n/a | left | male]
 ````
 
 
@@ -700,7 +717,7 @@ The mapping should have targets for all combinations of values that appear in th
 
 
 (parameters-for-remap-columns-anchor)=
-```{admonition} Table 18: Parameters for the *remap_columns* command.
+```{admonition} Table 19: Parameters for the *remap_columns* command.
 :class: tip
 
 |  Parameter   | Type | Description | 
@@ -742,7 +759,7 @@ based on the unique values in the combination of columns *response_accuracy* and
 The results of executing the previous *remap_column* command on the
 [sample events file](sample-remodeling-events-file-anchor) are:
 
-````{admonition} Table 19: Mapping columns *response_accuracy* and *response_hand* into a *response_type* column.
+````{admonition} Table 20: Mapping columns *response_accuracy* and *response_hand* into a *response_type* column.
 
 | onset | duration | trial_type | stop_signal_delay | response_time | response_accuracy | response_hand | sex | response_type | 
 | ----- | -------- | ---------- | ---------- | ----------------- | ------------- | ----------------- |  --- | ------------------- | 
@@ -766,7 +783,7 @@ parameter is *false*, a `KeyError` is raised for missing column.
 
 
 (parameters-for-remove-columns-anchor)=
-```{admonition} Table 20: Parameters for the *remove_columns* operation.
+```{admonition} Table 21: Parameters for the *remove_columns* operation.
 :class: tip
 
 |  Parameter   | Type | Description | 
@@ -801,7 +818,7 @@ Although *face* is not the name of a column in the dataframe,
 it is ignored because *ignore_missing* is true.
 If *ignore_missing* had been false, a `KeyError` would have been generated.
 
-```{admonition} Table 21: Results of executing the *remove_column*.
+```{admonition} Table 22: Results of executing the *remove_column*.
 | onset | duration | trial_type | response_time | response_hand | sex |
 | ----- | -------- | ---------- | ------------- | ------------- | --- |
 | 0.0776 | 0.5083 | go | 0.565 | right | female |
@@ -818,7 +835,7 @@ If *ignore_missing* had been false, a `KeyError` would have been generated.
 Remove rows in which the named column has one of the specified values.
 
 (parameters-for-remove-rows-anchor)=
-```{admonition} Table 22: Parameters for remove_rows.
+```{admonition} Table 23: Parameters for remove_rows.
 :class: tip
 
 |  Parameter   | Type | Description | 
@@ -848,7 +865,7 @@ has either *succesful_stop* or *unsuccesful_stop*.
 The results of executing the previous *remove_rows* command on the 
 [sample events file](sample-remodeling-events-file-anchor) are:
 
-````{admonition} Table 23: The results of executing the previous *remove_rows* command.
+````{admonition} Table 24: The results of executing the previous *remove_rows* command.
 
 | onset | duration | trial_type | stop_signal_delay | response_time | response_accuracy | response_hand | sex |
 | ----- | -------- | ---------- | ----------------- | ------------- | ----------------- | ------------- | --- |
@@ -866,7 +883,7 @@ three *go* trials remain.
 Rename columns by providing a dictionary of old names to new names.
 
 (parameters-for-rename-columns-anchor)=
-```{admonition} Table 24: Parameters for *rename_columns*.
+```{admonition} Table 25: Parameters for *rename_columns*.
 :class: tip
 
 |  Parameter   | Type | Description | 
@@ -905,7 +922,7 @@ the mapping does not correspond to a column name in the dataframe.
 The results of executing the previous *rename_columns* command on the
 [sample events file](sample-remodeling-events-file-anchor) are:
 
-````{admonition} Table 25: After the *rename_columns* command is executed, the sample events file is:
+````{admonition} Table 26: After the *rename_columns* command is executed, the sample events file is:
 | onset | duration | trial_type | stop_delay | response_time | response_accuracy | hand_used | image_sex |
 | ----- | -------- | ---------- | ----------------- | ------------- | ----------------- | ------------- | --- |
 | 0.0776 | 0.5083 | go | n/a | 0.565 | correct | right | female |
@@ -929,7 +946,7 @@ do not appear in the reorder list are dropped (*keep_others* is false) or
 put at the end of the dataframe in the order they appear (*keep_others* is true).
 
 (parameters-for-reorder-columns-anchor)=
-```{admonition} Table 26: Parameters for *reorder_columns*.
+```{admonition} Table 27: Parameters for *reorder_columns*.
 :class: tip
 
 |  Parameter   | Type | Description | 
@@ -964,7 +981,7 @@ Since *ignore_missing* is true, these will be the only columns retained.
 The results of executing the previous *reorder_columns* command on the
 [sample events file](sample-remodeling-events-file-anchor) are:
 
-````{admonition} Table 27: Results of *reorder_columns*.
+````{admonition} Table 28: Results of *reorder_columns*.
 
 | onset | duration | response_time | trial_type |
 | ----- | -------- | ---------- | ------------- |
@@ -1004,7 +1021,7 @@ Unlisted columns are filled with n/a.
 
 
 (parameters-for-split-event-anchor)=
-```{admonition} Table 28: Parameters for *split_event*.
+```{admonition} Table 29: Parameters for *split_event*.
 :class: tip
 
 |  Parameter   | Type | Description | 
@@ -1051,7 +1068,7 @@ since these items have been unfolded into separate events.
 The results of executing this *split_event* command on the
 [sample events file](sample-remodeling-events-file-anchor) are:
 
-````{admonition} Table 29: Results of the previous *split_event* command.
+````{admonition} Table 30: Results of the previous *split_event* command.
 
 | onset | duration | trial_type | stop_signal_delay | response_time | response_accuracy | response_hand | sex |
 | ----- | -------- | ---------- | ----------------- | ------------- | ----------------- | ------------- | --- |
