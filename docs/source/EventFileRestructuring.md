@@ -446,7 +446,7 @@ The results of executing this *add_structure_numbers* command on the
 
 For each of the specified values in the indicated column create a column containing 1’s and 0’s
 indicating presence or absence of the value.
-If no values are specified, all unique values in that column are factored.
+
 
 (parameters-for-factor-column-anchor)=
 ```{admonition} Table 10: Parameters for the *factor_column* command.
@@ -456,19 +456,19 @@ If no values are specified, all unique values in that column are factored.
 | ------------ | ---- | ----------- | 
 | *column_name* | str | The name of the column to be factored.| 
 | *factor_values* | list | Column values to be included as factors. |
-| *factor_names* | list| Column names for created factors. Must be the same length as *factor_values*. |
-| *ignore_missing* | bool | If true, include columns for factor values not in events. |
-| *overwrite_existing* | bool | If true, existing factor columns are overwritten. |
+| *factor_names* | list| Column names for created factors. |
 ```
-The *factor_column* command in the following example specifies that factor columns
-should be created for *succesful_stop* and *unsuccesful_stop* of the *trial_type* column.
-The resulting columns are called *stopped* and *stop_failed*, respectively.
 
-If the *factor_values* is an empty list, 
-factors are created for all unique values in the *column_name* column.
+If *column_name* is not a column in the data, a `ValueError` is raised.
+If *factor_values* is empty, factors are created for each unique value in *column_name*.
+These names of the columns for these factors are of the form *column_name.factor_value*.
 The *factor_names* parameters must be the same length as *factor_values*.
 If *factor_names* is empty, the newly created columns are of the 
 form *column_name.factor_value*.
+
+The *factor_column* command in the following example specifies that factor columns
+should be created for *succesful_stop* and *unsuccesful_stop* of the *trial_type* column.
+The resulting columns are called *stopped* and *stop_failed*, respectively.
 
 
 ````{admonition} A sample *factor_column* command.
@@ -481,9 +481,7 @@ form *column_name.factor_value*.
     "parameters": {
         "column_name": "trial_type",
         "factor_values": ["succesful_stop", "unsuccesful_stop"],
-        "factor_names": ["stopped", "stop_failed"],
-        "ignore_missing": false,
-        "overwrite_existing": true
+        "factor_names": ["stopped", "stop_failed"]
     }
 }
 ```
@@ -523,7 +521,6 @@ If an event fails one of the queries it does not get a factor
 | *factor_name* | str | Name of the column to create for the factor. | 
 | *remove_types* | list | Structural HED tags to be removed (usually *Condition-variable* and *Task*). | 
 | *filter_queries* | list | Queries to be applied in succession to filter. | 
-| *overwrite_existing* | bool | Overwrite the contents of factor_name column. |
 
 ```
 
@@ -590,7 +587,6 @@ For additional information on how to encode experimental designs using HED pleas
 | ------------ | ---- | ----------- | 
 | *type_tag* | str | HED tag used to find the factors (most commonly *Condition-variable*).| 
 | *type_values* | list | Values to factor for the *type_tag*.<br>If empty all values of that type_tag are used. |
-| *overwrite_existing* | bool | If true, existing factor columns are overwritten. |
 | *factor_encoding* | str | Indicates type of encoding. Valid encodings are 'categorical' and 'one-hot'. |
 ```
 
@@ -606,7 +602,6 @@ To simplifyThe *factor_hed_type* command in the following example specifies . . 
     "parameters": {
         "type_tag": "Condition-variable",
         "type_values": [],
-        "overwrite_existing": true,
         "factor_encoding": "one-hot"
     }
 }
@@ -682,7 +677,7 @@ The follo
 | 9.5856 | 0.5084 | go | n/a | right | female| 
 | 13.5939 | 0.5083 | succesful_stop | 0.2 | n/a | female| 
 | 14.2 | 0.5083 | succesful_stop | 0.2 |  n/a | female| 
-| 15.3 | 0.5083 | succesful_stop | 0.2 |  n/a | female| 
+| 15.3 | 0.7083 | succesful_stop | 0.2 |  n/a | female| 
 | 17.3 | 0.5083 | succesful_stop | 0.25 |  n/a | female| 
 | 19.0 | 0.5083 | succesful_stop | 0.25 | n/a | female| 
 | 21.1021 | 0.5083 | unsuccesful_stop | 0.25 | left | male| 
@@ -699,7 +694,7 @@ The results of executing the previous *merge_events* command on the
 | 0.0776 | 0.5083 | go | n/a | right | female |
 | 5.5774 | 0.5083 | unsuccesful_stop | 0.2 | right | female |
 | 9.5856 | 0.5084 | go | n/a | right | female |
-| 13.5939 | 2.2144 | succesful_stop | 0.2 | n/a | female |
+| 13.5939 | 2.4144 | succesful_stop | 0.2 | n/a | female |
 | 17.3 | 2.2083 | succesful_stop | 0.25 |  n/a | female |
 | 21.1021 | 0.5083 | unsuccesful_stop | 0.25 | left | male |
 | 22.6103 | 0.5083 | go | n/a | left | male]
