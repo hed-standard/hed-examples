@@ -14,15 +14,16 @@ the [**BIDS annotation quickstart**](https://hed-examples.readthedocs.io/en/late
 [**HED annotation quickstart**](https://hed-examples.readthedocs.io/en/latest/HedAnnotationQuickstart.html)
 tutorials as needed.
 
-The [**Neuorimaging experimental design**](review-of-experimental-design-concepts-anchor)
+The [**Experimental design concepts**](experimental-design-concepts-anchor)
 section at the end of this tutorial provides a basic introduction to the ideas
 of factor vectors and experimental design if you are unfamiliar with these topics.
 
 * [**HED annotations for conditions**](hed-annotations-for-conditions-anchor)
   * [**Direct condition variables**](direct-condition-variables-anchor)
   * [**Defined condition variables**](defined-condition-variables-anchor)
-  * [**Column vs row conditions**](column-vs-row-conditions-anchor)
-* [**Review of experimental design concepts**](review-of-experimental-design-concepts-anchor)
+  * [**Direct vs defined approaches**](direct-vs-defined-approaches-anchor))
+  * [**Column vs row annotations**](column-vs-row-annotations-anchor)
+* [**Experimental design concepts**](experimental-design-concepts-anchor)
   * [**Design matrices and factor variables**](design-matrices-and-factor-variables-anchor) 
   * [**Types of condition encoding**](types-of-condition-encoding-anchor)
 
@@ -163,7 +164,7 @@ Dataset-wide summaries can also be extracted.
    }
 }
 ````
-The summary shows that of the total of 5 events in the file: 3 events were under
+The summary shows that of the 5 events in the file: 3 events were under
 the house condition and 2 events were under the face condition.
 There were no events in multiple categories of the same condition variables
 (which would not be possible since these condition variables were referenced
@@ -176,7 +177,7 @@ hence the *variable_type* is given in the summary of Example 5.
 Other commonly created summaries are for *Task* and *Control-variable*.
 
 In this example, the two conditions: *house-cond* and *face-cond* are
-treated is though they are unrelated. These direct condition variables
+treated as though they were unrelated. These direct condition variables
 are very easy to annotate--- just make up a name and stick the tags anywhere
 you want to create factor variables or summaries.
 However, a more common situation is for a condition variable to have multiple levels,
@@ -192,7 +193,7 @@ The next section introduces defined condition variables,
 which address both of these disadvantages.
 
 (defined-condition-variables-anchor)=
-## Defined condition variables
+### Defined condition variables
 
 
 ````{admonition} Example 6: A revised JSON sidecar using defined conditions for Example 1.
@@ -256,8 +257,29 @@ define the meaning of the conditions.
 ```
 ````
 
-(column-vs-row-conditions-anchor)=
-## Column vs row conditions
+(direct-vs-defined-approaches-anchor)=
+### Direct vs defined approaches
+
+Table 1 compares the two approaches for encoding experimental conditions and design in HED.
+Both approaches use the *Condition-variable* tag.
+While direct condition variables (just using a *Condition-variable* tag without defining it)
+is very easy, it provides limited information about meaning in downstream summaries.
+In general defined condition variables, while more work, provide a more complete picture.
+
+(direct-vs-defined-anchor)=
+````{table} **Table 1:** Comparison of direct versus definition conditions.
+| Approach | Advantages  | Disadvantages |
+| -------- | ----------  | ------------- |
+| **Direct**   | Easy to use--just a label.<br/>Can appear in summaries.<br/>Can generate factor vectors. | Give no information about meaning.<br/>No levels for condition variables.<br/>Limited information about experimental design.<br/>Do not support event temporal extent. |
+| **Defined** | Better information in summaries.<br/>Encode condition variables with levels.<br/>Can give factor vectors for levels.<br/>Better experimental design information.</br>Can anchor events with temporal extent.| Must give definitions. |
+````
+
+It should be noted that other tags, particularly those in the HED `Structural-property` subtree such
+as `Task` can be summarized and used as factor vectors in a way similar to *Condition-variable*.
+
+
+(column-vs-row-annotations-anchor)=
+### Column vs row annotations
 
 In this section, we look at a more complicated example based on the Wakeman-Henson face-processing dataset. 
 This dataset, which is available on [OpenNeuro](https://openneuro.org) under accession number
@@ -499,9 +521,8 @@ All the condition variables have *number_multiple_events* equal to 0,
 so any of the three possible encodings: categorical, ordinal, or one-hot can be used.
 
 
-
-(review-of-experimental-design-concepts-anchor)=
-## Review of experimental design concepts
+(experimental-design-concepts-anchor)=
+## Experimental design concepts
 
 Traditional neuroimaging experiments are carefully designed to control and
 document the external conditions under which the experiment is conducted.
@@ -546,7 +567,7 @@ Consider the simple example introduced above of an experiment which
 varies the stimuli between pictures of houses and faces to measure
 differences in response.
 The following example shows three possible types of encodings
-(**categorical**, **ordinal**, and **one-hot**) that might be sued
+(**categorical**, **ordinal**, and **one-hot**) that might be used
 for this association. The table shows an excerpt from a putative events file,
 with the onset column (required by BIDS) containing the time of the event marker
 relative to the start of the associated data recording.
