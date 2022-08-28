@@ -162,7 +162,7 @@ This is very useful for testing new schemas that are underdevelopment.
 ## Jupyter notebooks for data curation
 
 All data curation notebooks and other examples can now be found
-in the [**hed-curation**](https://github.com/hed-standard/hed-curation) repository.
+in the [**hed-examples**](https://github.com/hed-standard/hed-examples) repository.
 
 
 (consistency-of-BIDS-event-files-anchor)=
