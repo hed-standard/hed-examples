@@ -22,6 +22,9 @@ The tools can be called in Jupyter notebook or run via command-line scripts.
   * [**Rename columns**](rename-columns-anchor)
   * [**Reorder columns**](reorder-columns-anchor)
   * [**Split event**](split-event-anchor)
+  * [**Summarize column names**](summarize-column-names-anchor)
+  * [**Summarize column values**](summarize-column-values-anchor)
+  * [**Summarize hed type**](summarize-hed-type-anchor)
 
 
 (what-is-event-file-restructuring-anchor)=
@@ -1087,3 +1090,21 @@ Note that the event numbers are added before the splitting and then
 copied as the new events are created.
 This strategy results in a trial number column associated with the events,
 an alternative to the more complicated process of adding a structure column after splitting.
+
+(summarize-column-names-anchor)=
+### Summarize column names
+
+Coming soon...
+
+
+(summarize-column-values-anchor)=
+### Summarize column values
+
+Coming soon ...
+
+(summarize-hed-type-anchor)=
+### Summarize HED type
+
+Coming soon...
+
+
