@@ -52,10 +52,10 @@ of a particular analysis.
 Thus, restructuring is an iterative process,
 which is supported by the HED remodeling tools for datasets with tabular event files.
 
-Table 1 gives a summary of the tools available in the HED remodeling toolbox.
+The following table gives a summary of the tools available in the HED remodeling toolbox.
 
 (summary-of-hed-remodeling-tools-anchor)=
-````{table} **Table 1:** Summary of the HED remodeling tools for tabular files.
+````{table} Summary of the HED remodeling tools for tabular files.
 | Category | Command | Example use case |
 | -------- | ------- | -----|
 | **clean-up** |  |  | 
@@ -133,10 +133,10 @@ he/she can correct the transformation file and restore the backup to rerun.
 
 The remodeling toolbox provides several scripts to apply the transformations
 to the files in a [BIDS-formatted dataset](https://bids.neuroimaging.io/).
-The basic scripts are summarized in Table 2.
+The basic scripts are summarized in the following table.
 
 (summary-of-remodeling-scripts-anchor)=
-````{table} **Table 2:** Summary of the remodeling scripts.
+````{table} Summary of the remodeling scripts.
 | Script name | Arguments | Purpose | 
 | ----------- | -------- | ------- |
 |*run_backup* | *bids_dir*<br/>*-t task_name*<br/>*-b backup-type*<br/>*-e exclude_dirs* | Backup the event files. |
@@ -232,7 +232,7 @@ The full events file is
 
 
 (sample-remodeling-events-file-anchor)=
-````{admonition} Table 3: Excerpt from an event file from the stop-go task of AOMIC-PIOP2 (ds002790).
+````{admonition} Excerpt from an event file from the stop-go task of AOMIC-PIOP2 (ds002790).
 | onset | duration | trial_type | stop_signal_delay | response_time | response_accuracy | response_hand | sex |
 | ----- | -------- | ---------- | ----------------- | ------------- | ----------------- | ------------- | --- |
 | 0.0776 | 0.5083 | go | n/a | 0.565 | |correct | right | female 
@@ -288,161 +288,20 @@ The tutorials use the latest version that is downloaded from the web.
 (add-structure-column-anchor)=
 ### Add structure column
 
-**NOT WRITTEN - PLACEHOLDER**
-
-Add a column of numbers corresponding to a structure elements such as trials or blocks. 
-
-(parameters-for-add-structure-column-anchor)=
-```{admonition} Table 4: Parameters for the *add_structure_column* command.
-:class: tip
-
-|  Parameter   | Type | Description | 
-| ------------ | ---- | ----------- | 
-| column_name | str | The name of the column to be created or modified.| 
-| source_columns | list | Names of the columns to be used for remapping. | 
-| mapping | dict | The keys are the values to be placed in the derived columns and the values are each an array |  
-```
-
-The *add_structure_column* command in the following example specifies . . .
-
-
-````{admonition} An example *add_structure_column* command.
-:class: tip
-
-```json
-{ 
-    "column_name": "add_structure_column",
-    "source_columns": ["response_accuracy", "response_hand"],
-    "mapping": {
-        "left": [["correct", "left"], ["incorrect", "right"]],
-        "right": [["correct", "right"], ["incorrect", "left"]]
-    }
-}
-```
-````
-
-The results of executing this *add_structure_column* command on the 
-[sample events file](sample-remodeling-events-file-anchor) are:
-
-
-````{admonition} Table 5: Results of the previous *add_structure_column* command.
-
-| onset | duration | trial_type | stop_signal_delay | response_time | response_accuracy | response_hand | sex |
-| ----- | -------- | ---------- | ----------------- | ------------- | ----------------- | ------------- | --- |
-| 0.0776 | 0.5083 | go | n/a | 0.565 | correct | right | female |
-| 5.5774 | 0.5083 | unsuccesful_stop | 0.2 | 0.49 | correct | right | female |
-| 9.5856 | 0.5084 | go | n/a | 0.45 | correct | right | female |
-| 13.5939 | 0.5083 | succesful_stop | 0.2 | n/a | n/a | n/a | female |
-| 17.1021 | 0.5083 | unsuccesful_stop | 0.25 | 0.633 | correct | left | male |
-| 21.6103 | 0.5083 | go | n/a | 0.443 | correct | left | male |
-````
+...coming soon...
 
 (add-structure-events-anchor)=
 ### Add structure events
 
-**NOT WRITTEN - PLACEHOLDER**
-
-Add events representing the start of a structural element such as a trial or a block.
-
-(parameters-for-add-structure-event-anchor)=
-```{admonition} Table 6: Parameters for the *add_structure_events* command.
-:class: tip
-
-|  Parameter   | Type | Description | 
-| ------------ | ---- | ----------- | 
-| *column_name* | str | The name of the column to be created or modified.| 
-| *source_columns* | list | Names of the columns to be used for remapping. | 
-| *mapping* | dict | The keys are the values to be placed in the derived columns and the values are each an array |  
-```
-
-The *add_structure_events* command in the following example specifies . . .
-
-````{admonition} An example *add_structure_events* command.
-:class: tip
-
-```json
-{ 
-    "column_name": "add_structure_events",
-    "source_columns": ["response_accuracy", "response_hand"],
-    "mapping": {
-        "left": [["correct", "left"], ["incorrect", "right"]],
-        "right": [["correct", "right"], ["incorrect", "left"]]
-    }
-}
-```
-````
-
-The results of executing this *add_structure_events* command on the
-[sample events file](sample-remodeling-events-file-anchor) are:
-
-
-````{admonition} Table 7: Results of the previous *add_structure_events* command.
-
-| onset | duration | trial_type | stop_signal_delay | response_time | response_accuracy | response_hand | sex |
-| ----- | -------- | ---------- | ----------------- | ------------- | ----------------- | ------------- | --- |
-| 0.0776 | 0.5083 | go | n/a | 0.565 | correct | right | female |
-| 5.5774 | 0.5083 | unsuccesful_stop | 0.2 | 0.49 | correct | right | female |
-| 9.5856 | 0.5084 | go | n/a | 0.45 | correct | right | female |
-| 13.5939 | 0.5083 | succesful_stop | 0.2 | n/a | n/a | n/a | female |
-| 17.1021 | 0.5083 | unsuccesful_stop | 0.25 | 0.633 | correct | left | male |
-| 21.6103 | 0.5083 | go | n/a | 0.443 | correct | left | male |
-````
+...coming soon...
 
 (add-structure-numbers-anchor)=
 ### Add structure numbers
 
 **NOT WRITTEN - PLACEHOLDER**
 
-Add a column with numbers corresponding to a structural element.  
+...coming soon...
 
-**TODO** clarify the difference between add_structure_numbers and add_structure_column.
-
-(parameters-for-add-structure-numbers-anchor)=
-```{admonition} Table 8: Parameters for the *add_structure_numbers* command.
-:class: tip
-
-|  Parameter   | Type | Description | 
-| ------------ | ---- | ----------- | 
-| *column_name* | str | The name of the column to be created or modified.| 
-| *source_columns* | list of str | A list of columns to be used for remapping. | 
-| *mapping* | dict | The keys are the values to be placed in the derived columns and the values are each an array |  
-```
-The *add_structure_numbers* command in the following example specifies . . .
-
-````{admonition} An example *add_structure_numbers* command.
-:class: tip
-
-```json
-{ 
-    "command": "add_structure_numbers"
-    "description": "xxx"
-    "parameters": {
-        "column_name": "match_side",
-        "source_columns": ["response_accuracy", "response_hand"],
-        "mapping": {
-            "left": [["correct", "left"], ["incorrect", "right"]],
-            "right": [["correct", "right"], ["incorrect", "left"]]
-        }
-    }
-}
-```
-````
-
-The results of executing this *add_structure_numbers* command on the
-[sample events file](sample-remodeling-events-file-anchor) are:
-
-
-````{admonition} Table 9: Results of executing the previous *add_structure_numbers* command.
-
-| onset | duration | trial_type | match_side | stop_signal_delay | response_time | response_accuracy | response_hand | sex |
-| ----- | -------- | ---------- | ---------- | ----------------- | ------------- | ----------------- | ------------- | --- |
-| 0.0776 | 0.5083 | go |<b>right</b> | n/a | 0.565 | correct | right | female |
-| 5.5774 | 0.5083 | unsuccesful_stop | <b>right</b> | 0.2 | 0.49 | correct | right | female |
-| 9.5856 | 0.5084 | go | n/a | 0.45 | correct | right | female |
-| 13.5939 | 0.5083 | succesful_stop | 0.2 | n/a | n/a | right | female |
-| 17.1021 | 0.5083 | unsuccesful_stop | 0.25 | 0.633 | correct | left | male |
-| 21.6103 | 0.5083 | go | n/a | 0.443 | correct | left | male |
-````
 
 (factor-column-anchor)=
 ### Factor column
@@ -452,7 +311,7 @@ indicating presence or absence of the value.
 
 
 (parameters-for-factor-column-anchor)=
-```{admonition} Table 10: Parameters for the *factor_column* command.
+```{admonition} Parameters for the *factor_column* command.
 :class: tip
 
 |  Parameter   | Type | Description | 
@@ -493,7 +352,7 @@ The resulting columns are called *stopped* and *stop_failed*, respectively.
 The results of executing this *factor_column* command on the 
 [sample events file](sample-remodeling-events-file-anchor) are:
 
-````{admonition} Table 11: Results of factoring column XXX.
+````{admonition} Results of factoring column XXX.
 
 | onset | duration | trial_type | stop_signal_delay | response_time | response_accuracy | response_hand | sex | stopped | stop_failed |
 | ----- | -------- | ---------- |  ----------------- | ------------- | ----------------- | ------------- | --- | ---------- | ---------- |
@@ -516,7 +375,7 @@ will have 1 for the factors.
 If an event fails one of the queries it does not get a factor 
 
 (parameters-for-factor-hed-tags-anchor)=
-```{admonition} Table 12: Parameters for *factor_hed_tags* command.
+```{admonition} Parameters for *factor_hed_tags* command.
 :class: tip
 
 |  Parameter   | Type | Description | 
@@ -553,7 +412,7 @@ The results of executing this *factor_hed-tags* command on the
 [sample sidecar file](sample-remodeling-sidecar-file-anchor) for HED annotations is:
 
 
-````{admonition} Table 13: Results of *factor_hed_tags*.
+````{admonition} Results of *factor_hed_tags*.
 
 | onset | duration | trial_type | stop_signal_delay | response_time | response_accuracy | response_hand | sex |
 | ----- | -------- |---------- | ----------------- | ------------- | ----------------- | ------------- | --- |
@@ -583,7 +442,7 @@ For additional information on how to encode experimental designs using HED pleas
 [HED conditions and design matrices](https://hed-examples.readthedocs.io/en/latest/HedConditionsAndDesignMatrices.html).
 
 (parameters-for-factor-hed-type-anchor)=
-```{admonition} Table 14: Parameters for *factor_hed_type* command.
+```{admonition} Parameters for *factor_hed_type* command.
 :class: tip
 
 |  Parameter   | Type | Description | 
@@ -618,7 +477,7 @@ The results of executing this *factor_hed-tags* command on the
 [sample sidecar file](sample-remodeling-sidecar-file-anchor) for HED annotations are:
 
 
-````{admonition} Table 15: Results of *factor_hed_type*.
+````{admonition} Results of *factor_hed_type*.
 
 | onset | duration | trial_type | stop_signal_delay | response_time | response_accuracy | response_hand | sex | Image-sex.Female-image-cond | Image-sex.Male-image-cond |
 | ----- | -------- | ---------- | ----------------- | ------------- | ----------------- | ------------- | --- | ------- | ---------- |
@@ -638,7 +497,7 @@ Merges these same events occurring consecutively into one event with duration
 of the new event updated to encompass the extent of the merged events..
 
 (parameters-for-merge-consecutive-anchor)=
-```{admonition} Table 16: Parameters for the *merge_consecutive* command.
+```{admonition} Parameters for the *merge_consecutive* command.
 :class: tip
 
 |  Parameter   | Type | Description | 
@@ -671,7 +530,7 @@ The *merge_consecutive* command in the following example specifies . . .
 ````
 
 The follo
-````{admonition} Table 17: Input file for a *merge_consecutive* command.
+````{admonition} Input file for a *merge_consecutive* command.
 
 | onset | duration | trial_type | stop_signal_delay | response_hand | sex |
 | ----- | -------- | ---------- | ----------------- | ------------- | --- |
@@ -690,7 +549,7 @@ The follo
 The results of executing the previous *merge_events* command on the 
 [sample events file](sample-remodeling-events-file-anchor) are:
 
-````{admonition} Table 18: The results of the *merge_events* command.
+````{admonition} The results of the *merge_events* command.
 
 | onset | duration | trial_type |  stop_signal_delay | response_hand | sex |
 | ----- | -------- | ---------- | ------------------ | -------- ---- | --- |
@@ -715,7 +574,7 @@ The mapping should have targets for all combinations of values that appear in th
 
 
 (parameters-for-remap-columns-anchor)=
-```{admonition} Table 19: Parameters for the *remap_columns* command.
+```{admonition} Parameters for the *remap_columns* command.
 :class: tip
 
 |  Parameter   | Type | Description | 
@@ -757,7 +616,7 @@ based on the unique values in the combination of columns *response_accuracy* and
 The results of executing the previous *remap_column* command on the
 [sample events file](sample-remodeling-events-file-anchor) are:
 
-````{admonition} Table 20: Mapping columns *response_accuracy* and *response_hand* into a *response_type* column.
+````{admonition} Mapping columns *response_accuracy* and *response_hand* into a *response_type* column.
 
 | onset | duration | trial_type | stop_signal_delay | response_time | response_accuracy | response_hand | sex | response_type | 
 | ----- | -------- | ---------- | ---------- | ----------------- | ------------- | ----------------- |  --- | ------------------- | 
@@ -781,7 +640,7 @@ parameter is *false*, a `KeyError` is raised for missing column.
 
 
 (parameters-for-remove-columns-anchor)=
-```{admonition} Table 21: Parameters for the *remove_columns* operation.
+```{admonition} Parameters for the *remove_columns* operation.
 :class: tip
 
 |  Parameter   | Type | Description | 
@@ -816,7 +675,7 @@ Although *face* is not the name of a column in the dataframe,
 it is ignored because *ignore_missing* is true.
 If *ignore_missing* had been false, a `KeyError` would have been generated.
 
-```{admonition} Table 22: Results of executing the *remove_column*.
+```{admonition} Results of executing the *remove_column*.
 | onset | duration | trial_type | response_time | response_hand | sex |
 | ----- | -------- | ---------- | ------------- | ------------- | --- |
 | 0.0776 | 0.5083 | go | 0.565 | right | female |
@@ -833,7 +692,7 @@ If *ignore_missing* had been false, a `KeyError` would have been generated.
 Remove rows in which the named column has one of the specified values.
 
 (parameters-for-remove-rows-anchor)=
-```{admonition} Table 23: Parameters for remove_rows.
+```{admonition} Parameters for remove_rows.
 :class: tip
 
 |  Parameter   | Type | Description | 
@@ -863,7 +722,7 @@ has either *succesful_stop* or *unsuccesful_stop*.
 The results of executing the previous *remove_rows* command on the 
 [sample events file](sample-remodeling-events-file-anchor) are:
 
-````{admonition} Table 24: The results of executing the previous *remove_rows* command.
+````{admonition} The results of executing the previous *remove_rows* command.
 
 | onset | duration | trial_type | stop_signal_delay | response_time | response_accuracy | response_hand | sex |
 | ----- | -------- | ---------- | ----------------- | ------------- | ----------------- | ------------- | --- |
@@ -881,7 +740,7 @@ three *go* trials remain.
 Rename columns by providing a dictionary of old names to new names.
 
 (parameters-for-rename-columns-anchor)=
-```{admonition} Table 25: Parameters for *rename_columns*.
+```{admonition} Parameters for *rename_columns*.
 :class: tip
 
 |  Parameter   | Type | Description | 
@@ -920,7 +779,7 @@ the mapping does not correspond to a column name in the dataframe.
 The results of executing the previous *rename_columns* command on the
 [sample events file](sample-remodeling-events-file-anchor) are:
 
-````{admonition} Table 26: After the *rename_columns* command is executed, the sample events file is:
+````{admonition} After the *rename_columns* command is executed, the sample events file is:
 | onset | duration | trial_type | stop_delay | response_time | response_accuracy | hand_used | image_sex |
 | ----- | -------- | ---------- | ----------------- | ------------- | ----------------- | ------------- | --- |
 | 0.0776 | 0.5083 | go | n/a | 0.565 | correct | right | female |
@@ -944,7 +803,7 @@ do not appear in the reorder list are dropped (*keep_others* is false) or
 put at the end of the dataframe in the order they appear (*keep_others* is true).
 
 (parameters-for-reorder-columns-anchor)=
-```{admonition} Table 27: Parameters for *reorder_columns*.
+```{admonition} Parameters for *reorder_columns*.
 :class: tip
 
 |  Parameter   | Type | Description | 
@@ -979,7 +838,7 @@ Since *ignore_missing* is true, these will be the only columns retained.
 The results of executing the previous *reorder_columns* command on the
 [sample events file](sample-remodeling-events-file-anchor) are:
 
-````{admonition} Table 28: Results of *reorder_columns*.
+````{admonition} Results of *reorder_columns*.
 
 | onset | duration | response_time | trial_type |
 | ----- | -------- | ---------- | ------------- |
@@ -1019,7 +878,7 @@ Unlisted columns are filled with n/a.
 
 
 (parameters-for-split-event-anchor)=
-```{admonition} Table 29: Parameters for *split_event*.
+```{admonition} Parameters for *split_event*.
 :class: tip
 
 |  Parameter   | Type | Description | 
@@ -1066,7 +925,7 @@ since these items have been unfolded into separate events.
 The results of executing this *split_event* command on the
 [sample events file](sample-remodeling-events-file-anchor) are:
 
-````{admonition} Table 30: Results of the previous *split_event* command.
+````{admonition} Results of the previous *split_event* command.
 
 | onset | duration | trial_type | stop_signal_delay | response_time | response_accuracy | response_hand | sex |
 | ----- | -------- | ---------- | ----------------- | ------------- | ----------------- | ------------- | --- |
@@ -1094,17 +953,17 @@ an alternative to the more complicated process of adding a structure column afte
 (summarize-column-names-anchor)=
 ### Summarize column names
 
-Coming soon...
+...Coming soon...
 
 
 (summarize-column-values-anchor)=
 ### Summarize column values
 
-Coming soon ...
+...Coming soon ...
 
 (summarize-hed-type-anchor)=
 ### Summarize HED type
 
-Coming soon...
+...Coming soon...
 
 
