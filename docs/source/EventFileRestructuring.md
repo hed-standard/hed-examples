@@ -141,6 +141,14 @@ The basic scripts are summarized in the following table.
 (command-line-interfaces-anchor)=
 ````{table} The command line interface scripts.
 | Script name | Parameters | Purpose | 
+=======
+to the files in a [BIDS-formatted dataset](https://bids.neuroimaging.io/).
+The basic scripts are summarized in the following table.
+
+(summary-of-remodeling-scripts-anchor)=
+````{table} Summary of the remodeling scripts.
+| Script name | Arguments | Purpose | 
+>>>>>>> 2b74ffddcd57d589286f4e766fb7d46ba44fbd19
 | ----------- | -------- | ------- |
 |*run_remodel* | *data_dir*<br/>*-m model-path*<br/>*-t task_name*<br/>*-e extensions*<br/>*-x extensions*<br/>*-f file-suffix*<br/>*-s save-formats*<br/>*-b bids-format*<br/>*-v verbose* | Remodel the event files. |
 |*run_remodel_backup* | *data_dir*<br/>*-t task_name*<br/>*-b backup-type*<br/>*-e exclude_dirs* | Backup the event files. |
