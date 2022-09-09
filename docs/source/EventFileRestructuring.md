@@ -6,17 +6,20 @@ The tools can be called in Jupyter notebook or run via command-line scripts.
 
 * [**What is restructuring?**](what-is-event-file-restructuring-anchor)
 * [**Installing remodeling tools**](installing-remodeling-tools-anchor)
-* [**Running remodeling scripts**](running-remodeling-scripts-anchor) 
-   * [**Backing up the events**](backing-up-the-events-anchor)
-   * [**Remodeling the events**](remodeling-the-events-anchor)
-* [**Remodeling operations**](remodeling-operations-anchor) 
-  * [**Add structure column**](add-structure-column-anchor) Docs in process
-  * [**Add structure events**](add-structure-events-anchor) Docs in process
-  * [**Add structure numbers**](add-structure-numbers-anchor) Docs in process
+* [**The remodeling process**](the-remodeling-process-anchor) 
+* [**Command line interface**](remodel-command-line-interface-anchor) 
+   * [**Command line arguments**](remodel-command-arguments-anchor)
+   * [**Remodel event files**](remodel-event-files-anchor)
+   * [**Backup event files**](backup-event-files-anchor)
+   * [**Restore event files**](restore-event-files-anchor)
+   * [**Remove event files**](remove-event-files-anchor)
+* [**Remodeling operations**](remodeling-operations-anchor)
   * [**Factor column**](factor-column-anchor) 
   * [**Factor HED tags**](factor-hed-tags-anchor) 
   * [**Factor HED type**](factor-hed-type-anchor)
   * [**Merge consecutive**](merge-consecutive-anchor)
+  * [**Number groups**](number-groups-anchor)
+  * [**Number rows**](number-rows-anchor)
   * [**Remap columns**](remap-columns-anchor)
   * [**Remove columns**](remove-columns-anchor) 
   * [**Rename columns**](rename-columns-anchor)
@@ -52,10 +55,10 @@ of a particular analysis.
 Thus, restructuring is an iterative process,
 which is supported by the HED remodeling tools for datasets with tabular event files.
 
-Table 1 gives a summary of the tools available in the HED remodeling toolbox.
+The following table gives a summary of the tools available in the HED remodeling toolbox.
 
 (summary-of-hed-remodeling-tools-anchor)=
-````{table} **Table 1:** Summary of the HED remodeling tools for tabular files.
+````{table} Summary of the HED remodeling tools for tabular files.
 | Category | Command | Example use case |
 | -------- | ------- | -----|
 | **clean-up** |  |  | 
@@ -71,9 +74,10 @@ Table 1 gives a summary of the tools available in the HED remodeling toolbox.
 |  | *remap_columns* | Create m columns from values in n columns (for recoding). |
 |  | *split_event* | Split trial-encoded rows into multiple events. |
 |  | *merge_consecutive* | Replace multiple consecutive events of the same type<br/>with one event of longer duration. |
-|  | *add_structure_column* | Add a column with condition names. |
-|  | *add_structure_rows* | Add a row representing the start of a block or trial. |
-|  | *add_structure_numbers* | Add a column with trial or block numbers. |
+| **summarization** |  |  | 
+|  | *summarize_column_names* | Summarize the column name and order of the events files. |
+|  | *summarize_column_values* | Summarize number of occurrences of unique column values. |
+|  | *summarize_hed_type* | Create a detailed summary of a HED in dataset <br/>(can be used to automatically extract experimental design matrices). |
 ````
 
 The **clean-up** commands are used at various phases of restructuring to assure consistency
@@ -85,40 +89,36 @@ See the
 [**HED conditions and design matrices**](https://hed-examples.readthedocs.io/en/latest/HedConditionsAndDesignMatrices.html)
 for more information on factoring and analysis.
 
-The **restructure** commands modify the way that events are encoded.
+The **restructure** commands modify the way that event files represent events.
+
+The **summarization** commands produce dataset-wide summaries of various aspects of the data.
 
 (installing-remodeling-tools-anchor)=
 ## Installing remodeling tools 
 
-Currently, the remodeling tools are available in the GitHub 
-[**hed-curation repository**](https://github.com/hed-standard/hed-curation)
+The remodeling tools are available in the GitHub 
+[**hed-python repository**](https://github.com/hed-standard/hed-python)
 along with other tools for data cleaning and curation.
-These tools rely on the *hedtools* library which is available on PyPI
-and can be installed via PIP.
-
-Once the HED remodeling tools are available in final form,
-the tools will be moved to the GitHub 
-[hed-python repository](https://github.com/hed-standard/hed-python)
-and be available for installation via PyPI.
-At that time, versions for single event files will become available
-as a web-service and through a web-interface
-on the [HED online tools](https://hedtools.ucsd.edu/hed).
-A docker version is also under development.
-
-In the meantime, if you want to run the latest version of the tools,
-you will need to install the development branch of both 
-*hed-python* and *hed-curation* using:
+Although version 0.1.0 of this repository is available on [**PyPI**](https://pypi.org/)
+as hedtools, the version containing the restructuring tools (Version 0.2.0)
+is still under development and has not been officially released.
+However, the code is publicly available on the hed-python repository and
+can be directly installed from GitHub using PIP:
 
 ```text
-pip install git+https://github.com/hed-standard/hed-python/@develop
-pip install git+https://github.com/hed-standard/hed-curation/@develop
+pip install git+https://github.com/hed-standard/hed-python/@master
 ```
 
-(running-remodeling-scripts-anchor)=
-## Running remodeling scripts 
+When version 0.2.0 is officially released on PyPI, restructuring
+of single event files will become available through a web-service
+through a web-interface on the [**HED online tools**](https://hedtools.ucsd.edu/hed).
+A docker version is also under development.
+
+(the-remodeling-process-anchor)=
+## The remodeling process 
 
 Remodeling consists of applying a list of commands to an events file
-to restructure or modify it in some way.
+to restructure or modify the file in some way.
 
 The following diagram shows a schematic of the remodeling process.
 
@@ -131,30 +131,95 @@ The transformation file provides a record of the operations performed on the fil
 If the user detects a mistake in the transformation,
 he/she can correct the transformation file and restore the backup to rerun.
 
+(remodel-command-line-interface-anchor)=
+## Command-line interface 
 The remodeling toolbox provides several scripts to apply the transformations
+to the files in a dataset. 
+All the scripts have a required parameter, which is the full path of the dataset root.
+The basic scripts are summarized in the following table.
+
+(command-line-interfaces-anchor)=
+````{table} The command line interface scripts.
+| Script name | Parameters | Purpose | 
+=======
 to the files in a [BIDS-formatted dataset](https://bids.neuroimaging.io/).
-The basic scripts are summarized in Table 2.
+The basic scripts are summarized in the following table.
 
 (summary-of-remodeling-scripts-anchor)=
-````{table} **Table 2:** Summary of the remodeling scripts.
+````{table} Summary of the remodeling scripts.
 | Script name | Arguments | Purpose | 
+>>>>>>> 2b74ffddcd57d589286f4e766fb7d46ba44fbd19
 | ----------- | -------- | ------- |
-|*run_backup* | *bids_dir*<br/>*-t task_name*<br/>*-b backup-type*<br/>*-e exclude_dirs* | Backup the event files. |
-|*run_remodel* | *bids_dir*<br/>*-t task_name*<br/>*-m model-path*<br/>*-e exclude_dirs* | Remodel the event files. |
-|*run_restore* | *bids_dir*<br/>*-t task_name*<br/>*-b backup-type*<br/>*-e exclude_dirs* | Restore the event files. |
-|*run_remove* | *bids_dir*<br/>*-t task_name*<br/>*-b backup-type*<br/>*-e exclude_dirs* | Remove the backup event files. |
+|*run_remodel* | *data_dir*<br/>*-m model-path*<br/>*-t task_name*<br/>*-e extensions*<br/>*-x extensions*<br/>*-f file-suffix*<br/>*-s save-formats*<br/>*-b bids-format*<br/>*-v verbose* | Remodel the event files. |
+|*run_remodel_backup* | *data_dir*<br/>*-t task_name*<br/>*-b backup-type*<br/>*-e exclude_dirs* | Backup the event files. |
+|*run_restore* | *data_dir*<br/>*-t task_name*<br/>*-b backup-type*<br/>*-e exclude_dirs* | Restore the event files. |
+|*run_remove* | *data_dir*<br/>*-t task_name*<br/>*-b backup-type*<br/>*-e exclude_dirs* | Remove the backup event files. |
+````
+The remainder of this section discusses the arguments for command-line processing in more detail.
+Datasets may be in free form under a directory root or may be in [BIDS-format](https://bids.neuroimaging.io/).
+BIDS (Brain Imaging Data Structure) is a standardized format for storing neuroimaging data.
+The file names have a specific format related to where they are located in the directory tree.
+The HED (Hierarchical Event Descriptor) operations are only available for BIDS-formatted datasets.
+The HED operations are mainly used at analysis time. 
+However, event file restructuring also can take place at data acquisition time, before the data is formatted.
+In this case, the data is assumed to be in a single directory tree and the event files are located by 
+their file-suffix and extension.
+
+(remodel-command-arguments-anchor)=
+### Command-line arguments
+
+#### Positional arguments
+
+`data_dir`
+> The full path of dataset root directory.
+
+#### Named arguments
+
+`-m`, `--model-path`
+> The full path of the JSON remodeling file.
+
+`-t`, `--task-names`
+> The name(s) of the tasks to be included. (For BIDS-formatted files only.)
+> Often, when a dataset includes multiple tasks, the event files are structured 
+> differently for each task and thus require different transformation files.
+
+`-e`, `--extensions`
+> The file extension(s) of the tab-separated data files to process. The default is `.tsv`.
+
+`-x`, `--exclude-dirs`
+> The directories to exclude when gather the data files to process.
+> For BIDS datasets this is often `derivatives`, `stimuli`, and `sourcecode`.
+
+`-f`, `--file-suffix`
+> Filename suffix excluding file type of items to be analyzed (events by default).
+    
+`-s`, `--save-formats`
+>Format for saving any summaries, if any. If empty, then no summaries are saved.
+
+`-b`, `--bids-format`
+> If present, the dataset is in BIDS format with sidecars. HED analysis is available.
+
+`-v`, `--verbose`
+> If present, output informative messages as computation.
+
+
+(remodel-event-files-anchor)=
+### Remodel event files
+
+The event remodeling process is given by the following example:
+
+(remodel-run-anchor)=
+````{admonition} Example command to remodel the events.
+:class: tip
+
+```bash
+python run_remodel.py t:\ds002790-data -m derivatives/models/simple_rmdl.json -e derivatives code simulus_files
+
+```
 ````
 
-All the scripts have a required parameter which is the full path of the BIDS dataset root.
-The *-t task_name* option specifies which task in the dataset the remodeling should apply to.
-Often, when a dataset includes multiple tasks, 
-the event files are structured differently for each task and thus require different transformation files.
-
-The other *-e exclude_dirs* gives a list of directories to ignore in searching for event file.
-In BIDS, typical directories to exclude are `derivatives`, `code`, and `stimulus_files`.
-
-(backing-up-the-events-anchor)=
-### Backing up the events
+(backup-event-files-anchor)=
+### Backup event files
 Before any remodeling is performed, you should always back up the event files.
 Usually this is just done once, before any remodeling is done.
 There are two strategies for doing the backup: *in-place* and *full-tree*.
@@ -180,48 +245,17 @@ python run_backup.py t:\ds002790-data -b full-tree -e derivatives code simulus_f
 ```
 ````
 
-(remodeling-the-events-anchor)=
-### Remodeling the events
+(restore-event-files-anchor)=
+### Restore event files
 
-The event remodeling process is given by the following example:
+Explain restoring event files....
 
-(remodel-run-anchor)=
-````{admonition} Example command to remodel the events.
-:class: tip
+(remove-event-files-anchor)=
+### Remove event files
 
-```bash
-python run_remodel.py t:\ds002790-data -m derivatives/models/simple_rmdl.json -e derivatives code simulus_files
+Explain removing event files....
 
-```
-````
 
-(remodel-backup-example-anchor)=
-````{admonition} Example remodeling file with commands to remove columns and reorder the rest.
-:class: tip
-
-```json
-[
-   {
-       "command": "remove_columns",
-       "description": "Get rid of the sample and the value columns.",
-       "parameters": {
-           "remove_names": ["sample", "value"],
-           "ignore_missing": true
-       }
-   },
-   {
-       "command": "reorder_columns",
-       "description": "Want event_type and task_role columns after onset and duration.",
-       "parameters": {
-           "column_order": ["onset", "duration", "event_type", "task_role"],
-           "ignore_missing": false,
-            "keep_others": true
-       }
-   }
-]
-```
-````
- 
 (remodeling-operations-anchor)=
 ## Remodeling operations
 
@@ -232,7 +266,7 @@ The full events file is
 
 
 (sample-remodeling-events-file-anchor)=
-````{admonition} Table 3: Excerpt from an event file from the stop-go task of AOMIC-PIOP2 (ds002790).
+````{admonition} Excerpt from an event file from the stop-go task of AOMIC-PIOP2 (ds002790).
 | onset | duration | trial_type | stop_signal_delay | response_time | response_accuracy | response_hand | sex |
 | ----- | -------- | ---------- | ----------------- | ------------- | ----------------- | ------------- | --- |
 | 0.0776 | 0.5083 | go | n/a | 0.565 | |correct | right | female 
@@ -285,165 +319,6 @@ The tutorials use the latest version that is downloaded from the web.
 ````
 
 
-(add-structure-column-anchor)=
-### Add structure column
-
-**NOT WRITTEN - PLACEHOLDER**
-
-Add a column of numbers corresponding to a structure elements such as trials or blocks. 
-
-(parameters-for-add-structure-column-anchor)=
-```{admonition} Table 4: Parameters for the *add_structure_column* command.
-:class: tip
-
-|  Parameter   | Type | Description | 
-| ------------ | ---- | ----------- | 
-| column_name | str | The name of the column to be created or modified.| 
-| source_columns | list | Names of the columns to be used for remapping. | 
-| mapping | dict | The keys are the values to be placed in the derived columns and the values are each an array |  
-```
-
-The *add_structure_column* command in the following example specifies . . .
-
-
-````{admonition} An example *add_structure_column* command.
-:class: tip
-
-```json
-{ 
-    "column_name": "add_structure_column",
-    "source_columns": ["response_accuracy", "response_hand"],
-    "mapping": {
-        "left": [["correct", "left"], ["incorrect", "right"]],
-        "right": [["correct", "right"], ["incorrect", "left"]]
-    }
-}
-```
-````
-
-The results of executing this *add_structure_column* command on the 
-[sample events file](sample-remodeling-events-file-anchor) are:
-
-
-````{admonition} Table 5: Results of the previous *add_structure_column* command.
-
-| onset | duration | trial_type | stop_signal_delay | response_time | response_accuracy | response_hand | sex |
-| ----- | -------- | ---------- | ----------------- | ------------- | ----------------- | ------------- | --- |
-| 0.0776 | 0.5083 | go | n/a | 0.565 | correct | right | female |
-| 5.5774 | 0.5083 | unsuccesful_stop | 0.2 | 0.49 | correct | right | female |
-| 9.5856 | 0.5084 | go | n/a | 0.45 | correct | right | female |
-| 13.5939 | 0.5083 | succesful_stop | 0.2 | n/a | n/a | n/a | female |
-| 17.1021 | 0.5083 | unsuccesful_stop | 0.25 | 0.633 | correct | left | male |
-| 21.6103 | 0.5083 | go | n/a | 0.443 | correct | left | male |
-````
-
-(add-structure-events-anchor)=
-### Add structure events
-
-**NOT WRITTEN - PLACEHOLDER**
-
-Add events representing the start of a structural element such as a trial or a block.
-
-(parameters-for-add-structure-event-anchor)=
-```{admonition} Table 6: Parameters for the *add_structure_events* command.
-:class: tip
-
-|  Parameter   | Type | Description | 
-| ------------ | ---- | ----------- | 
-| *column_name* | str | The name of the column to be created or modified.| 
-| *source_columns* | list | Names of the columns to be used for remapping. | 
-| *mapping* | dict | The keys are the values to be placed in the derived columns and the values are each an array |  
-```
-
-The *add_structure_events* command in the following example specifies . . .
-
-````{admonition} An example *add_structure_events* command.
-:class: tip
-
-```json
-{ 
-    "column_name": "add_structure_events",
-    "source_columns": ["response_accuracy", "response_hand"],
-    "mapping": {
-        "left": [["correct", "left"], ["incorrect", "right"]],
-        "right": [["correct", "right"], ["incorrect", "left"]]
-    }
-}
-```
-````
-
-The results of executing this *add_structure_events* command on the
-[sample events file](sample-remodeling-events-file-anchor) are:
-
-
-````{admonition} Table 7: Results of the previous *add_structure_events* command.
-
-| onset | duration | trial_type | stop_signal_delay | response_time | response_accuracy | response_hand | sex |
-| ----- | -------- | ---------- | ----------------- | ------------- | ----------------- | ------------- | --- |
-| 0.0776 | 0.5083 | go | n/a | 0.565 | correct | right | female |
-| 5.5774 | 0.5083 | unsuccesful_stop | 0.2 | 0.49 | correct | right | female |
-| 9.5856 | 0.5084 | go | n/a | 0.45 | correct | right | female |
-| 13.5939 | 0.5083 | succesful_stop | 0.2 | n/a | n/a | n/a | female |
-| 17.1021 | 0.5083 | unsuccesful_stop | 0.25 | 0.633 | correct | left | male |
-| 21.6103 | 0.5083 | go | n/a | 0.443 | correct | left | male |
-````
-
-(add-structure-numbers-anchor)=
-### Add structure numbers
-
-**NOT WRITTEN - PLACEHOLDER**
-
-Add a column with numbers corresponding to a structural element.  
-
-**TODO** clarify the difference between add_structure_numbers and add_structure_column.
-
-(parameters-for-add-structure-numbers-anchor)=
-```{admonition} Table 8: Parameters for the *add_structure_numbers* command.
-:class: tip
-
-|  Parameter   | Type | Description | 
-| ------------ | ---- | ----------- | 
-| *column_name* | str | The name of the column to be created or modified.| 
-| *source_columns* | list of str | A list of columns to be used for remapping. | 
-| *mapping* | dict | The keys are the values to be placed in the derived columns and the values are each an array |  
-```
-The *add_structure_numbers* command in the following example specifies . . .
-
-````{admonition} An example *add_structure_numbers* command.
-:class: tip
-
-```json
-{ 
-    "command": "add_structure_numbers"
-    "description": "xxx"
-    "parameters": {
-        "column_name": "match_side",
-        "source_columns": ["response_accuracy", "response_hand"],
-        "mapping": {
-            "left": [["correct", "left"], ["incorrect", "right"]],
-            "right": [["correct", "right"], ["incorrect", "left"]]
-        }
-    }
-}
-```
-````
-
-The results of executing this *add_structure_numbers* command on the
-[sample events file](sample-remodeling-events-file-anchor) are:
-
-
-````{admonition} Table 9: Results of executing the previous *add_structure_numbers* command.
-
-| onset | duration | trial_type | match_side | stop_signal_delay | response_time | response_accuracy | response_hand | sex |
-| ----- | -------- | ---------- | ---------- | ----------------- | ------------- | ----------------- | ------------- | --- |
-| 0.0776 | 0.5083 | go |<b>right</b> | n/a | 0.565 | correct | right | female |
-| 5.5774 | 0.5083 | unsuccesful_stop | <b>right</b> | 0.2 | 0.49 | correct | right | female |
-| 9.5856 | 0.5084 | go | n/a | 0.45 | correct | right | female |
-| 13.5939 | 0.5083 | succesful_stop | 0.2 | n/a | n/a | right | female |
-| 17.1021 | 0.5083 | unsuccesful_stop | 0.25 | 0.633 | correct | left | male |
-| 21.6103 | 0.5083 | go | n/a | 0.443 | correct | left | male |
-````
-
 (factor-column-anchor)=
 ### Factor column
 
@@ -452,7 +327,7 @@ indicating presence or absence of the value.
 
 
 (parameters-for-factor-column-anchor)=
-```{admonition} Table 10: Parameters for the *factor_column* command.
+```{admonition} Parameters for the *factor_column* command.
 :class: tip
 
 |  Parameter   | Type | Description | 
@@ -493,7 +368,7 @@ The resulting columns are called *stopped* and *stop_failed*, respectively.
 The results of executing this *factor_column* command on the 
 [sample events file](sample-remodeling-events-file-anchor) are:
 
-````{admonition} Table 11: Results of factoring column XXX.
+````{admonition} Results of factoring column XXX.
 
 | onset | duration | trial_type | stop_signal_delay | response_time | response_accuracy | response_hand | sex | stopped | stop_failed |
 | ----- | -------- | ---------- |  ----------------- | ------------- | ----------------- | ------------- | --- | ---------- | ---------- |
@@ -516,7 +391,7 @@ will have 1 for the factors.
 If an event fails one of the queries it does not get a factor 
 
 (parameters-for-factor-hed-tags-anchor)=
-```{admonition} Table 12: Parameters for *factor_hed_tags* command.
+```{admonition} Parameters for *factor_hed_tags* command.
 :class: tip
 
 |  Parameter   | Type | Description | 
@@ -553,7 +428,7 @@ The results of executing this *factor_hed-tags* command on the
 [sample sidecar file](sample-remodeling-sidecar-file-anchor) for HED annotations is:
 
 
-````{admonition} Table 13: Results of *factor_hed_tags*.
+````{admonition} Results of *factor_hed_tags*.
 
 | onset | duration | trial_type | stop_signal_delay | response_time | response_accuracy | response_hand | sex |
 | ----- | -------- |---------- | ----------------- | ------------- | ----------------- | ------------- | --- |
@@ -583,7 +458,7 @@ For additional information on how to encode experimental designs using HED pleas
 [HED conditions and design matrices](https://hed-examples.readthedocs.io/en/latest/HedConditionsAndDesignMatrices.html).
 
 (parameters-for-factor-hed-type-anchor)=
-```{admonition} Table 14: Parameters for *factor_hed_type* command.
+```{admonition} Parameters for *factor_hed_type* command.
 :class: tip
 
 |  Parameter   | Type | Description | 
@@ -618,7 +493,7 @@ The results of executing this *factor_hed-tags* command on the
 [sample sidecar file](sample-remodeling-sidecar-file-anchor) for HED annotations are:
 
 
-````{admonition} Table 15: Results of *factor_hed_type*.
+````{admonition} Results of *factor_hed_type*.
 
 | onset | duration | trial_type | stop_signal_delay | response_time | response_accuracy | response_hand | sex | Image-sex.Female-image-cond | Image-sex.Male-image-cond |
 | ----- | -------- | ---------- | ----------------- | ------------- | ----------------- | ------------- | --- | ------- | ---------- |
@@ -638,7 +513,7 @@ Merges these same events occurring consecutively into one event with duration
 of the new event updated to encompass the extent of the merged events..
 
 (parameters-for-merge-consecutive-anchor)=
-```{admonition} Table 16: Parameters for the *merge_consecutive* command.
+```{admonition} Parameters for the *merge_consecutive* command.
 :class: tip
 
 |  Parameter   | Type | Description | 
@@ -670,8 +545,9 @@ The *merge_consecutive* command in the following example specifies . . .
 ```
 ````
 
-The follo
-````{admonition} Table 17: Input file for a *merge_consecutive* command.
+The following sample file has several `succesful_stop` events to be merged into a single event of longer duration.
+
+````{admonition} Input file for a *merge_consecutive* command.
 
 | onset | duration | trial_type | stop_signal_delay | response_hand | sex |
 | ----- | -------- | ---------- | ----------------- | ------------- | --- |
@@ -687,21 +563,30 @@ The follo
 | 22.6103 | 0.5083 | go | n/a | left | male |
 ````
 
-The results of executing the previous *merge_events* command on the 
-[sample events file](sample-remodeling-events-file-anchor) are:
+The results of executing the previous *merge_consecutive* command this file are:
 
-````{admonition} Table 18: The results of the *merge_events* command.
+````{admonition} The results of the *merge_consecutive* command.
 
 | onset | duration | trial_type |  stop_signal_delay | response_hand | sex |
-| ----- | -------- | ---------- | ------------------ | -------- ---- | --- |
+| ----- | -------- | ---------- | ------------------ | ------------- | --- |
 | 0.0776 | 0.5083 | go | n/a | right | female |
 | 5.5774 | 0.5083 | unsuccesful_stop | 0.2 | right | female |
 | 9.5856 | 0.5084 | go | n/a | right | female |
 | 13.5939 | 2.4144 | succesful_stop | 0.2 | n/a | female |
 | 17.3 | 2.2083 | succesful_stop | 0.25 |  n/a | female |
 | 21.1021 | 0.5083 | unsuccesful_stop | 0.25 | left | male |
-| 22.6103 | 0.5083 | go | n/a | left | male]
+| 22.6103 | 0.5083 | go | n/a | left | male |
 ````
+
+(number-groups-anchor)=
+### Number groups
+
+... coming soon ...
+
+(number-rows-anchor)=
+### Number rows
+
+... coming soon ...
 
 
 (remap-columns-anchor)=
@@ -715,7 +600,7 @@ The mapping should have targets for all combinations of values that appear in th
 
 
 (parameters-for-remap-columns-anchor)=
-```{admonition} Table 19: Parameters for the *remap_columns* command.
+```{admonition} Parameters for the *remap_columns* command.
 :class: tip
 
 |  Parameter   | Type | Description | 
@@ -757,7 +642,7 @@ based on the unique values in the combination of columns *response_accuracy* and
 The results of executing the previous *remap_column* command on the
 [sample events file](sample-remodeling-events-file-anchor) are:
 
-````{admonition} Table 20: Mapping columns *response_accuracy* and *response_hand* into a *response_type* column.
+````{admonition} Mapping columns *response_accuracy* and *response_hand* into a *response_type* column.
 
 | onset | duration | trial_type | stop_signal_delay | response_time | response_accuracy | response_hand | sex | response_type | 
 | ----- | -------- | ---------- | ---------- | ----------------- | ------------- | ----------------- |  --- | ------------------- | 
@@ -781,7 +666,7 @@ parameter is *false*, a `KeyError` is raised for missing column.
 
 
 (parameters-for-remove-columns-anchor)=
-```{admonition} Table 21: Parameters for the *remove_columns* operation.
+```{admonition} Parameters for the *remove_columns* operation.
 :class: tip
 
 |  Parameter   | Type | Description | 
@@ -816,7 +701,7 @@ Although *face* is not the name of a column in the dataframe,
 it is ignored because *ignore_missing* is true.
 If *ignore_missing* had been false, a `KeyError` would have been generated.
 
-```{admonition} Table 22: Results of executing the *remove_column*.
+```{admonition} Results of executing the *remove_column*.
 | onset | duration | trial_type | response_time | response_hand | sex |
 | ----- | -------- | ---------- | ------------- | ------------- | --- |
 | 0.0776 | 0.5083 | go | 0.565 | right | female |
@@ -833,7 +718,7 @@ If *ignore_missing* had been false, a `KeyError` would have been generated.
 Remove rows in which the named column has one of the specified values.
 
 (parameters-for-remove-rows-anchor)=
-```{admonition} Table 23: Parameters for remove_rows.
+```{admonition} Parameters for remove_rows.
 :class: tip
 
 |  Parameter   | Type | Description | 
@@ -863,7 +748,7 @@ has either *succesful_stop* or *unsuccesful_stop*.
 The results of executing the previous *remove_rows* command on the 
 [sample events file](sample-remodeling-events-file-anchor) are:
 
-````{admonition} Table 24: The results of executing the previous *remove_rows* command.
+````{admonition} The results of executing the previous *remove_rows* command.
 
 | onset | duration | trial_type | stop_signal_delay | response_time | response_accuracy | response_hand | sex |
 | ----- | -------- | ---------- | ----------------- | ------------- | ----------------- | ------------- | --- |
@@ -881,7 +766,7 @@ three *go* trials remain.
 Rename columns by providing a dictionary of old names to new names.
 
 (parameters-for-rename-columns-anchor)=
-```{admonition} Table 25: Parameters for *rename_columns*.
+```{admonition} Parameters for *rename_columns*.
 :class: tip
 
 |  Parameter   | Type | Description | 
@@ -920,7 +805,7 @@ the mapping does not correspond to a column name in the dataframe.
 The results of executing the previous *rename_columns* command on the
 [sample events file](sample-remodeling-events-file-anchor) are:
 
-````{admonition} Table 26: After the *rename_columns* command is executed, the sample events file is:
+````{admonition} After the *rename_columns* command is executed, the sample events file is:
 | onset | duration | trial_type | stop_delay | response_time | response_accuracy | hand_used | image_sex |
 | ----- | -------- | ---------- | ----------------- | ------------- | ----------------- | ------------- | --- |
 | 0.0776 | 0.5083 | go | n/a | 0.565 | correct | right | female |
@@ -944,7 +829,7 @@ do not appear in the reorder list are dropped (*keep_others* is false) or
 put at the end of the dataframe in the order they appear (*keep_others* is true).
 
 (parameters-for-reorder-columns-anchor)=
-```{admonition} Table 27: Parameters for *reorder_columns*.
+```{admonition} Parameters for *reorder_columns*.
 :class: tip
 
 |  Parameter   | Type | Description | 
@@ -979,7 +864,7 @@ Since *ignore_missing* is true, these will be the only columns retained.
 The results of executing the previous *reorder_columns* command on the
 [sample events file](sample-remodeling-events-file-anchor) are:
 
-````{admonition} Table 28: Results of *reorder_columns*.
+````{admonition} Results of *reorder_columns*.
 
 | onset | duration | response_time | trial_type |
 | ----- | -------- | ---------- | ------------- |
@@ -1019,7 +904,7 @@ Unlisted columns are filled with n/a.
 
 
 (parameters-for-split-event-anchor)=
-```{admonition} Table 29: Parameters for *split_event*.
+```{admonition} Parameters for *split_event*.
 :class: tip
 
 |  Parameter   | Type | Description | 
@@ -1066,7 +951,7 @@ since these items have been unfolded into separate events.
 The results of executing this *split_event* command on the
 [sample events file](sample-remodeling-events-file-anchor) are:
 
-````{admonition} Table 30: Results of the previous *split_event* command.
+````{admonition} Results of the previous *split_event* command.
 
 | onset | duration | trial_type | stop_signal_delay | response_time | response_accuracy | response_hand | sex |
 | ----- | -------- | ---------- | ----------------- | ------------- | ----------------- | ------------- | --- |
@@ -1094,17 +979,29 @@ an alternative to the more complicated process of adding a structure column afte
 (summarize-column-names-anchor)=
 ### Summarize column names
 
+<<<<<<< HEAD
+...Coming soon...
+=======
 Coming soon...
+>>>>>>> caf473ceaaaad71696f7bab557b10f4f30cd6476
 
 
 (summarize-column-values-anchor)=
 ### Summarize column values
 
+<<<<<<< HEAD
+...Coming soon ...
+=======
 Coming soon ...
+>>>>>>> caf473ceaaaad71696f7bab557b10f4f30cd6476
 
 (summarize-hed-type-anchor)=
 ### Summarize HED type
 
+<<<<<<< HEAD
+...Coming soon...
+=======
 Coming soon...
+>>>>>>> caf473ceaaaad71696f7bab557b10f4f30cd6476
 
 

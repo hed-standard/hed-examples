@@ -1,4 +1,4 @@
-# HED tools online
+# HED online tools 
 
 HED web-based tools are available directly through a browser from 
 [https://hedtools.ucsd.edu/hed](https://hedtools.ucsd.edu/hed) or

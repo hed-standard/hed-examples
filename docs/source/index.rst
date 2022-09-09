@@ -9,7 +9,7 @@ HED examples and tutorials
 
 .. toctree::
    :maxdepth: 3
-   :caption: HED guides:
+   :caption: Guides:
 
    HedIntroduction.md
    BidsAnnotationQuickstart.md
@@ -22,10 +22,9 @@ HED examples and tutorials
 
 .. toctree::
    :maxdepth: 3
-   :caption: HED Tools:
+   :caption: Tools:
 
    TaggingWithCTagger.md
-   DataCuration101.md
    HedOnlineTools.md
    HedPythonTools.md
    HedMatlabTools.md
@@ -34,7 +33,7 @@ HED examples and tutorials
 
 .. toctree::
    :maxdepth: 3
-   :caption: HED datasets:
+   :caption: Datasets:
 
    HedTestDatasets.md
    HedRepositoryDatasets.md
