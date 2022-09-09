@@ -979,17 +979,29 @@ an alternative to the more complicated process of adding a structure column afte
 (summarize-column-names-anchor)=
 ### Summarize column names
 
+<<<<<<< HEAD
 ...Coming soon...
+=======
+Coming soon...
+>>>>>>> caf473ceaaaad71696f7bab557b10f4f30cd6476
 
 
 (summarize-column-values-anchor)=
 ### Summarize column values
 
+<<<<<<< HEAD
 ...Coming soon ...
+=======
+Coming soon ...
+>>>>>>> caf473ceaaaad71696f7bab557b10f4f30cd6476
 
 (summarize-hed-type-anchor)=
 ### Summarize HED type
 
+<<<<<<< HEAD
 ...Coming soon...
+=======
+Coming soon...
+>>>>>>> caf473ceaaaad71696f7bab557b10f4f30cd6476
 
 
