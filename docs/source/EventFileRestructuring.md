@@ -14,9 +14,11 @@ The tools can be called in Jupyter notebook or run via command-line scripts.
    * [**Restore event files**](restore-event-files-anchor)
    * [**Remove event files**](remove-event-files-anchor)
 * [**Remodeling operations**](remodeling-operations-anchor)
+  * [**Create event**](create-event-anchor)
   * [**Factor column**](factor-column-anchor) 
   * [**Factor HED tags**](factor-hed-tags-anchor) 
   * [**Factor HED type**](factor-hed-type-anchor)
+  * [**Label context**](label-context-anchor)
   * [**Merge consecutive**](merge-consecutive-anchor)
   * [**Number groups**](number-groups-anchor)
   * [**Number rows**](number-rows-anchor)
@@ -71,9 +73,13 @@ The following table gives a summary of the tools available in the HED remodeling
 |  | *factor_hed_tags* | Extract factor vectors from search queries of HED annotations. |
 |  | *factor_hed_types* | Extract design matrices and/or condition variables. |
 | **restructure** |  |  | 
+|  | *create_event* |   |   |
+|  | *label_context*  |   |   |
+|  | *merge_consecutive* | Replace multiple consecutive events of the same type<br/>with one event of longer duration. |
+|   | *number_groups*  |   |
+|   | *number_rows*   |    | 
 |  | *remap_columns* | Create m columns from values in n columns (for recoding). |
 |  | *split_event* | Split trial-encoded rows into multiple events. |
-|  | *merge_consecutive* | Replace multiple consecutive events of the same type<br/>with one event of longer duration. |
 | **summarization** |  |  | 
 |  | *summarize_column_names* | Summarize the column name and order of the events files. |
 |  | *summarize_column_values* | Summarize number of occurrences of unique column values. |
@@ -138,17 +144,9 @@ to the files in a dataset.
 All the scripts have a required parameter, which is the full path of the dataset root.
 The basic scripts are summarized in the following table.
 
-(command-line-interfaces-anchor)=
-````{table} The command line interface scripts.
-| Script name | Parameters | Purpose | 
-=======
-to the files in a [BIDS-formatted dataset](https://bids.neuroimaging.io/).
-The basic scripts are summarized in the following table.
-
 (summary-of-remodeling-scripts-anchor)=
 ````{table} Summary of the remodeling scripts.
 | Script name | Arguments | Purpose | 
->>>>>>> 2b74ffddcd57d589286f4e766fb7d46ba44fbd19
 | ----------- | -------- | ------- |
 |*run_remodel* | *data_dir*<br/>*-m model-path*<br/>*-t task_name*<br/>*-e extensions*<br/>*-x extensions*<br/>*-f file-suffix*<br/>*-s save-formats*<br/>*-b bids-format*<br/>*-v verbose* | Remodel the event files. |
 |*run_remodel_backup* | *data_dir*<br/>*-t task_name*<br/>*-b backup-type*<br/>*-e exclude_dirs* | Backup the event files. |
@@ -318,6 +316,10 @@ The tutorials use the latest version that is downloaded from the web.
 ```
 ````
 
+(create-event-anchor)=
+### Create event
+
+... coming soon ...
 
 (factor-column-anchor)=
 ### Factor column
@@ -504,6 +506,10 @@ The results of executing this *factor_hed-tags* command on the
 | 17.1021 | 0.5083 | unsuccesful_stop | 0.25 | 0.633 | correct | left | male | 0 | 1 |
 | 21.6103 | 0.5083 | go | n/a | 0.443 | correct | left | male | 0 | 1 |
 ````
+(label-context-anchor)=
+### Label context
+
+... coming soon ...
 
 (merge-consecutive-anchor)=
 ### Merge consecutive
@@ -979,29 +985,15 @@ an alternative to the more complicated process of adding a structure column afte
 (summarize-column-names-anchor)=
 ### Summarize column names
 
-<<<<<<< HEAD
 ...Coming soon...
-=======
-Coming soon...
->>>>>>> caf473ceaaaad71696f7bab557b10f4f30cd6476
 
 
 (summarize-column-values-anchor)=
 ### Summarize column values
 
-<<<<<<< HEAD
 ...Coming soon ...
-=======
-Coming soon ...
->>>>>>> caf473ceaaaad71696f7bab557b10f4f30cd6476
 
 (summarize-hed-type-anchor)=
 ### Summarize HED type
 
-<<<<<<< HEAD
 ...Coming soon...
-=======
-Coming soon...
->>>>>>> caf473ceaaaad71696f7bab557b10f4f30cd6476
-
-
