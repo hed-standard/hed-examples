@@ -6,17 +6,20 @@ The tools can be called in Jupyter notebook or run via command-line scripts.
 
 * [**What is restructuring?**](what-is-event-file-restructuring-anchor)
 * [**Installing remodeling tools**](installing-remodeling-tools-anchor)
-* [**Running remodeling scripts**](running-remodeling-scripts-anchor) 
-   * [**Backing up the events**](backing-up-the-events-anchor)
-   * [**Remodeling the events**](remodeling-the-events-anchor)
-* [**Remodeling operations**](remodeling-operations-anchor) 
-  * [**Add structure column**](add-structure-column-anchor) Docs in process
-  * [**Add structure events**](add-structure-events-anchor) Docs in process
-  * [**Add structure numbers**](add-structure-numbers-anchor) Docs in process
+* [**The remodeling process**](the-remodeling-process-anchor) 
+* [**Command line interface**](remodel-command-line-interface-anchor) 
+   * [**Command line arguments**](remodel-command-arguments-anchor)
+   * [**Remodel event files**](remodel-event-files-anchor)
+   * [**Backup event files**](backup-event-files-anchor)
+   * [**Restore event files**](restore-event-files-anchor)
+   * [**Remove event files**](remove-event-files-anchor)
+* [**Remodeling operations**](remodeling-operations-anchor)
   * [**Factor column**](factor-column-anchor) 
   * [**Factor HED tags**](factor-hed-tags-anchor) 
   * [**Factor HED type**](factor-hed-type-anchor)
   * [**Merge consecutive**](merge-consecutive-anchor)
+  * [**Number groups**](number-groups-anchor)
+  * [**Number rows**](number-rows-anchor)
   * [**Remap columns**](remap-columns-anchor)
   * [**Remove columns**](remove-columns-anchor) 
   * [**Rename columns**](rename-columns-anchor)
@@ -71,9 +74,10 @@ The following table gives a summary of the tools available in the HED remodeling
 |  | *remap_columns* | Create m columns from values in n columns (for recoding). |
 |  | *split_event* | Split trial-encoded rows into multiple events. |
 |  | *merge_consecutive* | Replace multiple consecutive events of the same type<br/>with one event of longer duration. |
-|  | *add_structure_column* | Add a column with condition names. |
-|  | *add_structure_rows* | Add a row representing the start of a block or trial. |
-|  | *add_structure_numbers* | Add a column with trial or block numbers. |
+| **summarization** |  |  | 
+|  | *summarize_column_names* | Summarize the column name and order of the events files. |
+|  | *summarize_column_values* | Summarize number of occurrences of unique column values. |
+|  | *summarize_hed_type* | Create a detailed summary of a HED in dataset <br/>(can be used to automatically extract experimental design matrices). |
 ````
 
 The **clean-up** commands are used at various phases of restructuring to assure consistency
@@ -85,40 +89,36 @@ See the
 [**HED conditions and design matrices**](https://hed-examples.readthedocs.io/en/latest/HedConditionsAndDesignMatrices.html)
 for more information on factoring and analysis.
 
-The **restructure** commands modify the way that events are encoded.
+The **restructure** commands modify the way that event files represent events.
+
+The **summarization** commands produce dataset-wide summaries of various aspects of the data.
 
 (installing-remodeling-tools-anchor)=
 ## Installing remodeling tools 
 
-Currently, the remodeling tools are available in the GitHub 
-[**hed-curation repository**](https://github.com/hed-standard/hed-curation)
+The remodeling tools are available in the GitHub 
+[**hed-python repository**](https://github.com/hed-standard/hed-python)
 along with other tools for data cleaning and curation.
-These tools rely on the *hedtools* library which is available on PyPI
-and can be installed via PIP.
-
-Once the HED remodeling tools are available in final form,
-the tools will be moved to the GitHub 
-[hed-python repository](https://github.com/hed-standard/hed-python)
-and be available for installation via PyPI.
-At that time, versions for single event files will become available
-as a web-service and through a web-interface
-on the [HED online tools](https://hedtools.ucsd.edu/hed).
-A docker version is also under development.
-
-In the meantime, if you want to run the latest version of the tools,
-you will need to install the development branch of both 
-*hed-python* and *hed-curation* using:
+Although version 0.1.0 of this repository is available on [**PyPI**](https://pypi.org/)
+as hedtools, the version containing the restructuring tools (Version 0.2.0)
+is still under development and has not been officially released.
+However, the code is publicly available on the hed-python repository and
+can be directly installed from GitHub using PIP:
 
 ```text
-pip install git+https://github.com/hed-standard/hed-python/@develop
-pip install git+https://github.com/hed-standard/hed-curation/@develop
+pip install git+https://github.com/hed-standard/hed-python/@master
 ```
 
-(running-remodeling-scripts-anchor)=
-## Running remodeling scripts 
+When version 0.2.0 is officially released on PyPI, restructuring
+of single event files will become available through a web-service
+through a web-interface on the [**HED online tools**](https://hedtools.ucsd.edu/hed).
+A docker version is also under development.
+
+(the-remodeling-process-anchor)=
+## The remodeling process 
 
 Remodeling consists of applying a list of commands to an events file
-to restructure or modify it in some way.
+to restructure or modify the file in some way.
 
 The following diagram shows a schematic of the remodeling process.
 
@@ -131,30 +131,95 @@ The transformation file provides a record of the operations performed on the fil
 If the user detects a mistake in the transformation,
 he/she can correct the transformation file and restore the backup to rerun.
 
+(remodel-command-line-interface-anchor)=
+## Command-line interface 
 The remodeling toolbox provides several scripts to apply the transformations
+to the files in a dataset. 
+All the scripts have a required parameter, which is the full path of the dataset root.
+The basic scripts are summarized in the following table.
+
+(command-line-interfaces-anchor)=
+````{table} The command line interface scripts.
+| Script name | Parameters | Purpose | 
+=======
 to the files in a [BIDS-formatted dataset](https://bids.neuroimaging.io/).
 The basic scripts are summarized in the following table.
 
 (summary-of-remodeling-scripts-anchor)=
 ````{table} Summary of the remodeling scripts.
 | Script name | Arguments | Purpose | 
+>>>>>>> 2b74ffddcd57d589286f4e766fb7d46ba44fbd19
 | ----------- | -------- | ------- |
-|*run_backup* | *bids_dir*<br/>*-t task_name*<br/>*-b backup-type*<br/>*-e exclude_dirs* | Backup the event files. |
-|*run_remodel* | *bids_dir*<br/>*-t task_name*<br/>*-m model-path*<br/>*-e exclude_dirs* | Remodel the event files. |
-|*run_restore* | *bids_dir*<br/>*-t task_name*<br/>*-b backup-type*<br/>*-e exclude_dirs* | Restore the event files. |
-|*run_remove* | *bids_dir*<br/>*-t task_name*<br/>*-b backup-type*<br/>*-e exclude_dirs* | Remove the backup event files. |
+|*run_remodel* | *data_dir*<br/>*-m model-path*<br/>*-t task_name*<br/>*-e extensions*<br/>*-x extensions*<br/>*-f file-suffix*<br/>*-s save-formats*<br/>*-b bids-format*<br/>*-v verbose* | Remodel the event files. |
+|*run_remodel_backup* | *data_dir*<br/>*-t task_name*<br/>*-b backup-type*<br/>*-e exclude_dirs* | Backup the event files. |
+|*run_restore* | *data_dir*<br/>*-t task_name*<br/>*-b backup-type*<br/>*-e exclude_dirs* | Restore the event files. |
+|*run_remove* | *data_dir*<br/>*-t task_name*<br/>*-b backup-type*<br/>*-e exclude_dirs* | Remove the backup event files. |
+````
+The remainder of this section discusses the arguments for command-line processing in more detail.
+Datasets may be in free form under a directory root or may be in [BIDS-format](https://bids.neuroimaging.io/).
+BIDS (Brain Imaging Data Structure) is a standardized format for storing neuroimaging data.
+The file names have a specific format related to where they are located in the directory tree.
+The HED (Hierarchical Event Descriptor) operations are only available for BIDS-formatted datasets.
+The HED operations are mainly used at analysis time. 
+However, event file restructuring also can take place at data acquisition time, before the data is formatted.
+In this case, the data is assumed to be in a single directory tree and the event files are located by 
+their file-suffix and extension.
+
+(remodel-command-arguments-anchor)=
+### Command-line arguments
+
+#### Positional arguments
+
+`data_dir`
+> The full path of dataset root directory.
+
+#### Named arguments
+
+`-m`, `--model-path`
+> The full path of the JSON remodeling file.
+
+`-t`, `--task-names`
+> The name(s) of the tasks to be included. (For BIDS-formatted files only.)
+> Often, when a dataset includes multiple tasks, the event files are structured 
+> differently for each task and thus require different transformation files.
+
+`-e`, `--extensions`
+> The file extension(s) of the tab-separated data files to process. The default is `.tsv`.
+
+`-x`, `--exclude-dirs`
+> The directories to exclude when gather the data files to process.
+> For BIDS datasets this is often `derivatives`, `stimuli`, and `sourcecode`.
+
+`-f`, `--file-suffix`
+> Filename suffix excluding file type of items to be analyzed (events by default).
+    
+`-s`, `--save-formats`
+>Format for saving any summaries, if any. If empty, then no summaries are saved.
+
+`-b`, `--bids-format`
+> If present, the dataset is in BIDS format with sidecars. HED analysis is available.
+
+`-v`, `--verbose`
+> If present, output informative messages as computation.
+
+
+(remodel-event-files-anchor)=
+### Remodel event files
+
+The event remodeling process is given by the following example:
+
+(remodel-run-anchor)=
+````{admonition} Example command to remodel the events.
+:class: tip
+
+```bash
+python run_remodel.py t:\ds002790-data -m derivatives/models/simple_rmdl.json -e derivatives code simulus_files
+
+```
 ````
 
-All the scripts have a required parameter which is the full path of the BIDS dataset root.
-The *-t task_name* option specifies which task in the dataset the remodeling should apply to.
-Often, when a dataset includes multiple tasks, 
-the event files are structured differently for each task and thus require different transformation files.
-
-The other *-e exclude_dirs* gives a list of directories to ignore in searching for event file.
-In BIDS, typical directories to exclude are `derivatives`, `code`, and `stimulus_files`.
-
-(backing-up-the-events-anchor)=
-### Backing up the events
+(backup-event-files-anchor)=
+### Backup event files
 Before any remodeling is performed, you should always back up the event files.
 Usually this is just done once, before any remodeling is done.
 There are two strategies for doing the backup: *in-place* and *full-tree*.
@@ -180,48 +245,17 @@ python run_backup.py t:\ds002790-data -b full-tree -e derivatives code simulus_f
 ```
 ````
 
-(remodeling-the-events-anchor)=
-### Remodeling the events
+(restore-event-files-anchor)=
+### Restore event files
 
-The event remodeling process is given by the following example:
+Explain restoring event files....
 
-(remodel-run-anchor)=
-````{admonition} Example command to remodel the events.
-:class: tip
+(remove-event-files-anchor)=
+### Remove event files
 
-```bash
-python run_remodel.py t:\ds002790-data -m derivatives/models/simple_rmdl.json -e derivatives code simulus_files
+Explain removing event files....
 
-```
-````
 
-(remodel-backup-example-anchor)=
-````{admonition} Example remodeling file with commands to remove columns and reorder the rest.
-:class: tip
-
-```json
-[
-   {
-       "command": "remove_columns",
-       "description": "Get rid of the sample and the value columns.",
-       "parameters": {
-           "remove_names": ["sample", "value"],
-           "ignore_missing": true
-       }
-   },
-   {
-       "command": "reorder_columns",
-       "description": "Want event_type and task_role columns after onset and duration.",
-       "parameters": {
-           "column_order": ["onset", "duration", "event_type", "task_role"],
-           "ignore_missing": false,
-            "keep_others": true
-       }
-   }
-]
-```
-````
- 
 (remodeling-operations-anchor)=
 ## Remodeling operations
 
@@ -283,24 +317,6 @@ The tutorials use the latest version that is downloaded from the web.
 }
 ```
 ````
-
-
-(add-structure-column-anchor)=
-### Add structure column
-
-...coming soon...
-
-(add-structure-events-anchor)=
-### Add structure events
-
-...coming soon...
-
-(add-structure-numbers-anchor)=
-### Add structure numbers
-
-**NOT WRITTEN - PLACEHOLDER**
-
-...coming soon...
 
 
 (factor-column-anchor)=
@@ -529,7 +545,8 @@ The *merge_consecutive* command in the following example specifies . . .
 ```
 ````
 
-The follo
+The following sample file has several `succesful_stop` events to be merged into a single event of longer duration.
+
 ````{admonition} Input file for a *merge_consecutive* command.
 
 | onset | duration | trial_type | stop_signal_delay | response_hand | sex |
@@ -546,21 +563,30 @@ The follo
 | 22.6103 | 0.5083 | go | n/a | left | male |
 ````
 
-The results of executing the previous *merge_events* command on the 
-[sample events file](sample-remodeling-events-file-anchor) are:
+The results of executing the previous *merge_consecutive* command this file are:
 
-````{admonition} The results of the *merge_events* command.
+````{admonition} The results of the *merge_consecutive* command.
 
 | onset | duration | trial_type |  stop_signal_delay | response_hand | sex |
-| ----- | -------- | ---------- | ------------------ | -------- ---- | --- |
+| ----- | -------- | ---------- | ------------------ | ------------- | --- |
 | 0.0776 | 0.5083 | go | n/a | right | female |
 | 5.5774 | 0.5083 | unsuccesful_stop | 0.2 | right | female |
 | 9.5856 | 0.5084 | go | n/a | right | female |
 | 13.5939 | 2.4144 | succesful_stop | 0.2 | n/a | female |
 | 17.3 | 2.2083 | succesful_stop | 0.25 |  n/a | female |
 | 21.1021 | 0.5083 | unsuccesful_stop | 0.25 | left | male |
-| 22.6103 | 0.5083 | go | n/a | left | male]
+| 22.6103 | 0.5083 | go | n/a | left | male |
 ````
+
+(number-groups-anchor)=
+### Number groups
+
+... coming soon ...
+
+(number-rows-anchor)=
+### Number rows
+
+... coming soon ...
 
 
 (remap-columns-anchor)=
