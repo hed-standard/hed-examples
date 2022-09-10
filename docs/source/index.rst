@@ -17,14 +17,15 @@ HED examples and tutorials
    HedValidation.md
    HedSearchAndSummary.md
    HedConditionsAndDesignMatrices.md
-   EventFileRestructuring.md
+   EventFileRestructuringQuickstart.md
 
 
 .. toctree::
    :maxdepth: 3
    :caption: Tools:
 
-   TaggingWithCTagger.md
+   CTaggerGuiTaggingTool.md
+   FileRemodelingTools.md
    HedOnlineTools.md
    HedPythonTools.md
    HedMatlabTools.md
