@@ -1,4 +1,4 @@
-# Tagging with CTagger
+# CTagger GUI tagging tool
 
 **This tutorial is under development.**
 
