@@ -374,7 +374,7 @@ but it can also be used as a standalone application.
 
 Instructions on downloading and using the standalone version of CTagger,
 as well as step-by-step guide on how to add HED annotation with CTagger,
-can be found at in [**Tagging with CTagger**](./TaggingWithCTagger.md).
+can be found at in [**Tagging with CTagger**](./CTaggerGuiTaggingTool.md).
 
 #### Tagging the events
 A brief step-by-step guide to selecting tags can be found at
