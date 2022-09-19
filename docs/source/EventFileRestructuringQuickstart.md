@@ -379,5 +379,3 @@ Looking at the different column combinations you can see there are three, one fo
 All event files for the stop signal task contain the `stop_signal_delay` column and the `response_time` column.
 
 Now you can try out the split_events on the full dataset!
-
-
