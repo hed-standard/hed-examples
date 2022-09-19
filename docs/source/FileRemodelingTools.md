@@ -902,6 +902,10 @@ Unlisted columns are filled with n/a.
 
 ```
 
+The *split_event* command sorts the split events by the `onset` column and creates an error
+if there is no such column. 
+The `onset` column is converted to numeric values as part splitting process.
+
 The *split_event* command in the following example specifies that new rows should be added
 to encode the response and stop signal. The anchor column is still trial_type.
 In a full processing example, it might make sense to rename *trial_type* to be
