@@ -9,12 +9,13 @@ develops some basic examples of how remodeling is used. See the
 guide for detailed descriptions of the available operations.
 
 * [**What is restructuring?**](what-is-event-file-restructuring-anchor)
-* [**The remodeling process**](the-remodeling-process-anchor) 
-* [**Design of a json remodeler file**](design-of-a-json-remodeler-file-anchor)
-* [**Using the online tools to test and debug**](using-the-online-tools-to-test-and-debug-anchor)
-  * [**Using online tools with HED commands**](using-online-tools-with-HED-commands-anchor)
-* [**Using a Jupyter notebook**](using-a-jupyter-notebook-anchor)
-* [**Using the command line interface**](using-the-command-line-interface-anchor)
+* [**The remodeling process**](the-remodeling-process-anchor)
+* [**JSON transformation files**](json-transformation-files-anchor)
+* [**Using the remodeling tools**](using-the-remodeling-tools-anchor)
+  * [**Online tools for debugging**](online-tools-for-debugging-anchor)
+  * [**Online tools with HED commands**](online-tools-with-HED-commands-anchor)
+  * [**Jupyter remodeling notebooks**](jupyter-remodeling-notebooks-anchor)
+  * [**The command line interface**](the-command-line-interface-anchor)
 
 (what-is-event-file-restructuring-anchor)=
 ## What is event file restructuring?
@@ -100,8 +101,8 @@ The transformation file provides a record of the operations performed on the fil
 If the user detects a mistake in the transformation,
 he/she can correct the transformation file and restore the backup to rerun.
 
-(design-of-a-json-remodeler-file-anchor)=
-# The design of a JSON transformation file
+(json-transformation-files-anchor)=
+## JSON transformation files
 
 To run the remodeler the most important step is the creation of a JSON transformation file. 
 This file provides the remodeler with a list of commands to modify the events.tsv file. 
@@ -169,8 +170,14 @@ For a BIDS dataset the remodeler json file should be saved in the derivatives fo
 
 In the next section we will go over several ways to call the remodeler, and illustrate the use of some commands.
 
-(using-the-online-tools-to-test-and-debug-anchor)=
-# Using the online tools to test and debug
+(using-the-remodeling-tools-anchor)=
+## Using the remodeling tools
+
+The remodeler can be called in a number of ways including using online tools and from the command line.
+The following sections explain various ways to use the available tools.
+
+(online-tools-for-debugging-anchor)=
+### Online tools for debugging
 
 When first creating a remodeler json file some issues may occur.
 Event files may contain unexpected values. Also, it is easy to make mistakes in setting up the json file.
@@ -237,7 +244,7 @@ The stop signal lasted 500 ms, based on the AOMIC data report.
 
 The copy columns can be used to transfer context information to the new events from the original parent event.
 In this case for the response, we would like to transfer the response_accuracy and the response_hand information.
-Transfering the trial_type information is a good idea, because we found that keeping general context information
+Transferring the trial_type information is a good idea, because we found that keeping general context information
 around is good practice in designing event files.
 
 Last parameter for the `` command is the `remove_parent_event`. 
@@ -290,19 +297,19 @@ but instead a txt file was downloaded. This txt file will contain error messages
 The issue might be an inconsistency in your event file or an error in the remodeler json file.
 Carefully read the error message to determine what went wrong, and update the remodeler json file if necessary.
 
-You can quickly and easily repeat the remodeler process on an event file using the webtools,
+You can quickly and easily repeat the remodeler process on an event file using the HED online tools,
 making it ideal for checking and debugging your remodeler json file.
 
-(using-online-tools-with-HED-commands-anchor)=
-## Using online tools with HED commands
+(online-tools-with-HED-commands-anchor)=
+### Online tools with HED commands
 ... Coming soon ...
 
-(using-a-jupyter-notebook-anchor)=
-# Using a Jupiter notebook
+(jupyter-remodeling-notebooks-anchor)=
+### Jupiter remodeling notebook
 ... Coming soon ...
 
-(using-the-command-line-interface-anchor)=
-# Using the command line interface
+(The-command-line-interface-anchor)=
+### The command line interface
 
 After installing the remodeler you can it on a full BIDS dataset, 
 or any directory with a set of events.tsv files, using the command line interface.
