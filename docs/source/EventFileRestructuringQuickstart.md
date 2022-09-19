@@ -380,4 +380,3 @@ All event files for the stop signal task contain the `stop_signal_delay` column 
 
 Now you can try out the split_events on the full dataset!
 
-
