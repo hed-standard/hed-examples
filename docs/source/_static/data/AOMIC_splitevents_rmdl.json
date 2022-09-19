@@ -1,0 +1,16 @@
+[
+    {
+        "command": "split_event",
+        "description": "Split response event from trial event based on response_time column.",
+        "parameters": {
+            "anchor_column": "event_type",
+            "new_events": {"response": {"onset_source": ["response_time"],
+                                        "duration": [0],
+                                        "copy_columns": ["trial_type", "response_accuracy", "response_hand"]},
+                           "stop_signal": {"onset_source": ["stop_signal_delay"],
+                                           "duration": [0.5],
+                                           "copy_columns": ["trial_type"]}},
+            "remove_parent_event": false
+          }
+     } 
+]
