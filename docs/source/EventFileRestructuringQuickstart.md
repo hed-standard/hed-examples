@@ -10,6 +10,11 @@ guide for detailed descriptions of the available operations.
 
 * [**What is restructuring?**](what-is-event-file-restructuring-anchor)
 * [**The remodeling process**](the-remodeling-process-anchor) 
+* [**Design of a json remodeler file**](design-of-a-json-remodeler-file-anchor)
+* [**Using the online tools to test and debug**](using-the-online-tools-to-test-and-debug-anchor)
+  * [**Using online tools with HED commands**](using-online-tools-with-HED-commands-anchor)
+* [**Using a Jupyter notebook**](using-a-jupyter-notebook-anchor)
+* [**Using the command line interface**](using-the-command-line-interface-anchor)
 
 (what-is-event-file-restructuring-anchor)=
 ## What is event file restructuring?
@@ -94,3 +99,278 @@ to produce a final result.
 The transformation file provides a record of the operations performed on the file.
 If the user detects a mistake in the transformation,
 he/she can correct the transformation file and restore the backup to rerun.
+
+(design-of-a-json-remodeler-file-anchor)=
+# The design of a JSON transformation file
+
+To run the remodeler the most important step is the creation of a JSON transformation file. 
+This file provides the remodeler with a list of commands to modify the events.tsv file. 
+The file is written in json format. 
+Each command is specified in a dictionary along with a description,
+and the command parameters. The basic syntax of a remodeler command is provided below with an example.
+
+
+````{admonition} Basic syntax for a remodeler command.
+:class: tip
+
+```json
+{ 
+    "command": "rename_columns",
+    "description": "Rename a trial type column to more specific event_type",
+    "parameters": {
+            "column_mapping": {"trial_type": "event_type"},
+            "ignore_missing": true
+    }
+}
+```
+````
+
+All of the remodeler commands have a specific set of required parameters 
+that can be found under [**File remodeling tools**](https://hed-examples.readthedocs.io/en/latest/FileRemodelingTools.html#). 
+For rename_columns the required commands are `column_mapping` and `ignore_missing`.
+Some commands also have optional parameters.
+
+In a remodeler transformation file one or more of these commands should be provided in a list.
+These commands will be performed by the remodeler in order. 
+It is important to consider the order of the remodeler commands.
+In the example below the summary will be performed after the renaming, so it will reflect the new column names.
+
+````{admonition} An example remodeler json file.
+:class: tip
+
+```json
+[
+    { 
+        "command": "rename_columns",
+        "description": "Rename a trial type column to more specific event_type",
+        "parameters": {
+                "column_mapping": {"trial_type": "event_type"},
+                "ignore_missing": true
+                }
+    },
+    {
+        "command": "summarize_column_headers",
+        "description": "Get all column names across event files to find out if there are missing columns"
+        "parameters": {
+                "summary_name": "AfterRemodel",
+                "summary_path" "D:\Data\BIDS_dataset\summaries"
+                }      
+    }
+]
+```
+````
+
+By stacking commands you can make several changes to an event file,
+which is important because the changes are always applied to a copy of the original events backup.
+If you are planning new changes to the event file, note that you are always changing the original file,
+not a previously remodeled events.tsv
+
+For a BIDS dataset the remodeler json file should be saved in the derivatives folder, with `rmdl` as a file suffix.
+
+In the next section we will go over several ways to call the remodeler, and illustrate the use of some commands.
+
+(using-the-online-tools-to-test-and-debug-anchor)=
+# Using the online tools to test and debug
+
+When first creating a remodeler json file some issues may occur.
+Event files may contain unexpected values. Also, it is easy to make mistakes in setting up the json file.
+Before running a json file across a dataset, it can be tested on a single file using the HED event online tools
+(currently the [**development tools**](https://hedtools.ucsd.edu/hed_dev/events))
+
+In this example we are using the [**sub-0013_task-stopsignal_acq-seq_events.tsv**](./_static/data/sub-0013_task-stopsignal_acq-seq_events.tsv).
+of the AOMIC-PIOP2 dataset available on [OpenNeuro](https://openneuro.org) as ds002790. 
+Here is an excerpt of the event file.
+
+(sample-remodeling-events-file-anchor)=
+````{admonition} Excerpt from an event file from the stop-go task of AOMIC-PIOP2 (ds002790).
+| onset | duration | trial_type | stop_signal_delay | response_time | response_accuracy | response_hand | sex |
+| ----- | -------- | ---------- | ----------------- | ------------- | ----------------- | ------------- | --- |
+| 0.0776 | 0.5083 | go | n/a | 0.565 | |correct | right | female 
+| 5.5774 | 0.5083 | unsuccesful_stop | 0.2 | 0.49 | correct | right | female |
+| 9.5856 | 0.5084 | go | n/a | 0.45 | correct | right | female |
+| 13.5939 | 0.5083 | succesful_stop | 0.2 | n/a | n/a | n/a | female |
+| 17.1021 | 0.5083 | unsuccesful_stop | 0.25 | 0.633 | correct | left | male |
+| 21.6103 | 0.5083 | go | n/a | 0.443 | correct | left | male |
+````
+
+In this stop-signal task subjects were presented with faces, and had to decide the sex of the face
+by pressing a button with their left or right hand. 
+Looking at the event file, note that each row represents multiple events. 
+The `stop_signal_delay` and `response_time` columns contain information about additional events that happened in the trial, 
+besides the go signal presentation.
+To get these events represented in a separate row
+we can split these events from the original using the `split_event` command.
+
+From the [**Split event**](https://hed-examples.readthedocs.io/en/latest/FileRemodelingTools.html#split-event)
+explanation under [**File remodeling tools**](https://hed-examples.readthedocs.io/en/latest/FileRemodelingTools.html#)
+we can read all the required parameters for the `split_event` command from the example. 
+The required parameters are `anchor_column`, `new_events`, `remove_parent_events`.
+
+The anchor column is the column we want to write the new event name in.
+In this case we are specifying new types of events, namely the stop signal, and the response,
+so we will add an `anchor_column`: `event_type`. Note that is also possible to choose an existing column as 
+an anchor column. The new events will be in new rows, so nothing will be overwritten.
+
+Next we have to specify the new events. This is the most complex part to fill in.
+Each new event has a name, which is a key in the new_events dictionary.
+For each of these keys we have another dictionary in which we specify the following parameters.
+
+* `onset_source`
+* `duration`
+* `copy_columns`
+
+The onset source specifies how to come to the onset for the new event. 
+It is a list containing a column name, an integer or both. 
+When the list contains a column name the remodeler will add the value in this column to 
+the onset of the row. If the list contains a number it will add the number to the row onset.
+If it contains both they will both be added to the original onset.
+
+In this case the response time and stop signal delay represent the offset compared to trial onset,
+so we only need to add the value from the column. Note that the events do not exist for every trial. 
+Rows where there was no stop signal have an n/a in the stop_signal_delay column.
+This is processed automatically by the remodeler, and no new event is created when the onset_source is missing.
+
+The duration specifies the duration for the new events. In case of the response we set this to 0.
+This is acceptable for modeling responses in fMRI studies, but depending on the goals of the study you
+might want to set it differently.
+The stop signal lasted 500 ms, based on the AOMIC data report. 
+
+The copy columns can be used to transfer context information to the new events from the original parent event.
+In this case for the response, we would like to transfer the response_accuracy and the response_hand information.
+Transfering the trial_type information is a good idea, because we found that keeping general context information
+around is good practice in designing event files.
+
+Last parameter for the `` command is the `remove_parent_event`. 
+Sometimes `split_event` can be used to replace the original parent event. 
+This is not the case here, since the original event still represents the stimulus presentation.
+When the original event is replaced by a new event however,
+it is possible for the remodeler to remove the parent event after creating the new events.
+Here we set `remove_parent_event` to `false`.
+
+
+````{admonition} Split events remodeler json file for the AOMIC stop signal task.
+:class: tip
+
+```json
+[
+    {
+        "command": "split_event",
+        "description": "Split response event from trial event based on response_time column.",
+        "parameters": {
+            "anchor_column": "event_type",
+            "new_events": {"response": {"onset_source": ["response_time"],
+                                        "duration": [0],
+                                        "copy_columns": ["trial_type", "response_accuracy", "response_hand"]},
+                           "stop_signal": {"onset_source": ["stop_signal_delay"],
+                                           "duration": [0.5],
+                                           "copy_columns": ["trial_type"]}
+                           },
+            "remove_parent_event": false
+            }    
+    }
+]
+```
+````
+
+The [**finished json remodeler**](./_static/data/AOMIC_splitevents_rmdl.json) file can now be used to remodel the event file using the online tools.
+Currently the remodeler is available in the [**development HED online tools**](https://hedtools.ucsd.edu/hed_dev/events).
+
+In the HED online tools select *remodel file*. The menu will change to what you see below.
+Use the indicated browse buttons to upload the events.tsv file and the remodeler json file.
+Click process.
+
+![RunRemodelerWebtool](./_static/images/remodeler_webtool.png)
+
+A new file events.tsv file should now be downloaded to your computer. If you followed the example,
+it should have the additional rows, and an added column `event_type` with  `response` and `stop_signal` values.
+
+If you are working with your own data, it is possible you did not get a tsv file,
+but instead a txt file was downloaded. This txt file will contain error messages returned by the remodeler.
+
+The issue might be an inconsistency in your event file or an error in the remodeler json file.
+Carefully read the error message to determine what went wrong, and update the remodeler json file if necessary.
+
+You can quickly and easily repeat the remodeler process on an event file using the webtools,
+making it ideal for checking and debugging your remodeler json file.
+
+(using-online-tools-with-HED-commands-anchor)=
+## Using online tools with HED commands
+... Coming soon ...
+
+(using-a-jupyter-notebook-anchor)=
+# Using a Jupiter notebook
+... Coming soon ...
+
+(using-the-command-line-interface-anchor)=
+# Using the command line interface
+
+After installing the remodeler you can it on a full BIDS dataset, 
+or any directory with a set of events.tsv files, using the command line interface.
+You do this by calling the remodeler and providing it with the necessary arguments.
+
+The main arguments to provide are the path to the root BIDS directory and the path to the json remodeler file.
+Depending on the operations you run, there may be other necessary arguments.
+A full overview of all arguments is provided under [**File remodeling tools**](https://hed-examples.readthedocs.io/en/latest/FileRemodelingTools.html#remodel-command-arguments-anchor)
+If you are not running the remodeler on a directory that is not in BIDS,
+you may specify a file extension and suffix to search for.
+
+From the command line it is possible to run summary operations. 
+These operations do not return a modified event file but provide a summary of values found in all events.tsv files in a dataset.
+
+If we want to run the split events operation we demonstrated earlier on the full AOMIC dataset, 
+we might first want to check whether the response_time exists for all subjects. 
+We can do this by running the `summarize_column_headers` operation.
+
+First we prepare the remodeler json file again.
+
+````{admonition} Split events remodeler json file for the AOMIC stop signal task.
+:class: tip
+
+```json
+[
+    {
+        "command": "summarize_column_names",
+        "description": "Summarize existing column header across entire AOMIC dataset.",
+        "parameters": {
+            "summary_name": "AOMIC_column_headers",
+            "summary_filename": "AOMIC_column_headers"
+            }    
+    }
+]
+```
+````
+
+This simple summary does not require many input parameters. Like any summary it requires you to indicate
+the summary name and the filename to write the summary to. 
+
+Open your computer's command line interface. 
+To run the summary we have to provide the following arguments:
+
+* `data dir`
+* `-m`, `--model-path`
+* `-s`, `--save-formats`
+* `-b`, `--bids-format`
+
+The exact paths will look different on your computer but the full command should look something like this:
+
+(remodel-run-anchor)=
+````{admonition} Command to run summary on AOMIC dataset.
+:class: tip
+
+```bash
+python run_remodel.py .\ds002790-data -m .\ds002790\derivatives\models\AOMIC_summarize_rmdl.json -s .txt -b 
+
+```
+````
+
+The summaries will be written to a `.\derivatives\summaries` folder the BIDS root folder.
+Here we specified we wanted the output in text format. It is also possible to get it in a json file.
+By default the summary operations will return both.
+
+The [**summary file**](./_static/data/AOMIC_column_headers_2022_09_14_T_14_38_40_600448.txt) list all different column combinations and for each combination, the files with those columns.
+Looking at the different column combinations you can see there are three, one for each task that was performed for this dataset.
+All event files for the stop signal task contain the `stop_signal_delay` column and the `response_time` column.
+
+Now you can try out the split_events on the full dataset!
+
+
