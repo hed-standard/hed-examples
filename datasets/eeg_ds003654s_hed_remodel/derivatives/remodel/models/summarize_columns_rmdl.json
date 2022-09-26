@@ -1,0 +1,21 @@
+[
+   {
+        "command": "summarize_column_names",
+        "description": "Summarize the unique orders of column names.",
+        "parameters": {
+            "summary_name": "Summary of column names",
+            "summary_filename": "column_name_summary"
+        }
+    },
+    {
+        "command": "summarize_column_values",
+        "description": "Summarize column values.",
+        "parameters": {
+            "summary_name": "Summary of column values",
+            "summary_filename": "column_values_summary",
+            "skip_columns": [],
+            "value_columns": [],
+            "task_names": []
+        }
+    }
+]
