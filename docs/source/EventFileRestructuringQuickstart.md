@@ -25,8 +25,8 @@ guide for detailed descriptions of the available operations.
   * [**Remodeling file locations**](remodeling-file-locations-anchor)
 * [**Using the remodeling tools**](using-the-remodeling-tools-anchor)
   * [**Online tools for debugging**](online-tools-for-debugging-anchor)
-  * [**Jupyter remodeling notebooks**](jupyter-remodeling-notebooks-anchor)
   * [**The command line interface**](the-command-line-interface-anchor)
+  * [**Jupyter remodeling notebooks**](jupyter-remodeling-notebooks-anchor)
 
 (what-is-event-file-restructuring-anchor)=
 ## What is event file restructuring?
@@ -201,7 +201,7 @@ which is important because the changes are always applied to a copy of the origi
 If you are planning new changes to the event file, note that you are always changing the original file,
 not a previously remodeled `events.tsv`.
 
-(more-complex-remodeling-anchor)
+(more-complex-remodeling-anchor)=
 ### More complex remodeling
 
 In this section we go over a more complex example using the
@@ -376,22 +376,27 @@ the result will be a zip file with the modified events file and the summaries in
 If you are using one of the remodeling commands that relies on HED tags, you will
 also need to upload a suitable JSON sidecar file containing the HED annotation for the events file.
 
-(jupyter-remodeling-notebooks-anchor)=
-### Jupiter remodeling notebook
-... Coming soon ...
-
 (The-command-line-interface-anchor)=
 ### The command line interface
 
 After installing the remodeler you can it on a full BIDS dataset, 
-or any directory with a set of events.tsv files, using the command line interface.
-You do this by calling the remodeler and providing it with the necessary arguments.
+or any directory with a set of `events.tsv` files, using the command line interface.
+You do this by calling one of three python scripts (`run_remodel_backup`, `run_remodel`, and `run_remodel_restore`) with the necessary arguments. A full overview of all arguments is available at
+[**File remodeling tools**](https://hed-examples.readthedocs.io/en/latest/FileRemodelingTools.html#remodel-command-arguments-anchor).
 
-The main arguments to provide are the path to the root BIDS directory and the path to the json remodeler file.
+The `run_remodel_backup` is usually run only once for a dataset. 
+It makes the baseline backup of the event files to assure that nothing will be lost. 
+The remodeling always starts from the backup files.
+The main script is the `run_remodel` which executes a remodeling script and overwrites
+the events files using the corresponding backup files as the starting point.
+This script can be run multiple times without doing backups and restores, 
+since it always starts with the backup.
+Finally, the `run_remodel_restore` overwrites the event files with their backups
+to restore the dataset to its original form.
+
+The first argument of any of the scripts is the full path to the root directory of the dataset. and the path to the json remodeler file.
 Depending on the operations you run, there may be other necessary arguments.
-A full overview of all arguments is provided under [**File remodeling tools**](https://hed-examples.readthedocs.io/en/latest/FileRemodelingTools.html#remodel-command-arguments-anchor)
-If you are not running the remodeler on a directory that is not in BIDS,
-you may specify a file extension and suffix to search for.
+
 
 From the command line it is possible to run summary operations. 
 These operations do not return a modified event file but provide a summary of values found in all events.tsv files in a dataset.
@@ -425,10 +430,11 @@ the summary name and the filename to write the summary to.
 Open your computer's command line interface. 
 To run the summary we have to provide the following arguments:
 
-* `data dir`
-* `-m`, `--model-path`
-* `-s`, `--save-formats`
-* `-b`, `--bids-format`
+* *data dir*
+*  *model-path*
+* *-s*, *--save-formats*
+* *-b*, *--bids-format*
+* *-x*, *--exclude-dirs*
 
 The exact paths will look different on your computer but the full command should look something like this:
 
@@ -437,17 +443,26 @@ The exact paths will look different on your computer but the full command should
 :class: tip
 
 ```bash
-python run_remodel.py .\ds002790-data -m .\ds002790\derivatives\models\AOMIC_summarize_rmdl.json -s .txt -b 
+python run_remodel.py /data/ds002790  /data/ds002790/derivatives/remodeling/models/AOMIC_summarize_rmdl.json \
+-s .txt -x derivatives -b 
 
 ```
 ````
 
-The summaries will be written to a `.\derivatives\summaries` folder the BIDS root folder.
-Here we specified we wanted the output in text format. It is also possible to get it in a json file.
-By default the summary operations will return both.
+The summaries will be written to `/data/ds002790/derivatives/remodeling/summaries` folder in text format. 
+By default, the summary operations will return both.
 
 The [**summary file**](./_static/data/AOMIC_column_headers_2022_09_14_T_14_38_40_600448.txt) list all different column combinations and for each combination, the files with those columns.
 Looking at the different column combinations you can see there are three, one for each task that was performed for this dataset.
 All event files for the stop signal task contain the `stop_signal_delay` column and the `response_time` column.
 
 Now you can try out the split_events on the full dataset!
+
+
+(jupyter-remodeling-notebooks-anchor)=
+### Jupyter remodeling notebooks
+
+Three Jupyter remodeling notebooks are available at 
+[**Jupyter notebooks for remodeling**](https://github.com/hed-standard/hed-examples/tree/main/hedcode/jupyter_notebooks/remodeling).
+
+These notebooks are wrappers that 
