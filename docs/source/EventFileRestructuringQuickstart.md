@@ -19,9 +19,12 @@ guide for detailed descriptions of the available operations.
 * [**What is restructuring?**](what-is-event-file-restructuring-anchor)
 * [**The remodeling process**](the-remodeling-process-anchor)
 * [**JSON transformation files**](json-transformation-files-anchor)
+  * [**Basic remodel command syntax**](basic-remodel-command-syntax-anchor)
+  * [**Using multiple remodel commands**](using-multiple-remodel-commands-anchor)
+  * [**More complex remodeling**](more-complex-remodeling-anchor)
+  * [**Remodeling file locations**](remodeling-file-locations-anchor)
 * [**Using the remodeling tools**](using-the-remodeling-tools-anchor)
   * [**Online tools for debugging**](online-tools-for-debugging-anchor)
-  * [**Online tools with HED commands**](online-tools-with-HED-commands-anchor)
   * [**Jupyter remodeling notebooks**](jupyter-remodeling-notebooks-anchor)
   * [**The command line interface**](the-command-line-interface-anchor)
 
@@ -128,7 +131,7 @@ This is useful if different versions of the events files are needed for differen
 The commands to restructure an event file are stored in a remodel file in JSON format.
 The file consists of a list of JSON dictionaries. 
 
-(basic-remode-command-syntax-anchor)=
+(basic-remodel-command-syntax-anchor)=
 ### Basic remodel command syntax
 
 Each dictionary specifies a command, a description of the purpose, and the command parameters.
@@ -158,8 +161,8 @@ that can be found under [**File remodeling tools**](https://hed-examples.readthe
 For *rename_columns*, the required commands are *column_mapping* and *ignore_missing*.
 Some commands also have optional parameters.
 
-(json-transformations-with-multiple-anchor)=
-### JSON transformations with multiple commands
+(using-multiple-remodel-commands-anchor)=
+### Using multiple remodel commands
 
 In a remodeler transformation file one or more remodel commands should be provided in a list.
 These commands will be performed by the remodeler in order. 
@@ -198,8 +201,8 @@ which is important because the changes are always applied to a copy of the origi
 If you are planning new changes to the event file, note that you are always changing the original file,
 not a previously remodeled `events.tsv`.
 
-(a-more-complex-example-using-split-event-anchor)
-### A more complex example using split_event
+(more-complex-remodeling-anchor)
+### More complex remodeling
 
 In this section we go over a more complex example using the
 [**sub-0013_task-stopsignal_acq-seq_events.tsv**](./_static/data/sub-0013_task-stopsignal_acq-seq_events.tsv) 
@@ -317,6 +320,9 @@ When the original event is replaced by a new event however,
 it is possible for the remodeler to remove the parent event after creating the new events.
 Here we set *remove_parent_event* to false.
 
+The final remodeling file can be found at:
+[**finished json remodeler**](./_static/data/AOMIC_splitevents_rmdl.json)
+
 (remodeling-file-locations-anchor)=
 ### Remodeling file locations
 
@@ -344,36 +350,31 @@ The following sections explain various ways to use the available tools.
 
 Although the event restructuring tools are designed to be run on an entire dataset,
 it is useful to work with a single event file during debugging.
-The HED online tools provide support for this When first creating a remodeler JSON file some issues may occur.
-Event files may contain unexpected values. Also, it is easy to make mistakes in setting up the json file.
-Before running a json file across a dataset, it can be tested on a single file using the HED event online tools
-(currently the [**development tools**](https://hedtools.ucsd.edu/hed_dev/events))
+The HED online tools provide support for this.
+Currently, the remodeling tools are only supported on the 
+[**HED development server**](https://hedtools.ucsd.edu/hed_dev),
+but will soon move to the regular [**HED online tools server](https://hedtools.ucsd.edu/hed).
 
+The online tools are very useful for debugging your remodeling script and for 
+seeing the effect on a single event file before running on the entire dataset.
 
-The [**finished json remodeler**](./_static/data/AOMIC_splitevents_rmdl.json) file can now be used to remodel the event file using the online tools.
-Currently the remodeler is available in the [**development HED online tools**](https://hedtools.ucsd.edu/hed_dev/events).
+To use the online remodeling tools, navigate to the events page and select the *Remodel file* action.
+You then should browse to select the events file you want to act on and the JSON remodel file 
+containing the remodeling commands. 
+The following image shows these selections for the split event example of the previous section.
 
-In the HED online tools select *remodel file*. The menu will change to what you see below.
-Use the indicated browse buttons to upload the events.tsv file and the remodeler json file.
-Click process.
+![Online tools remodeling example](./_static/images/OnlineToolsRemodelingExample.png)
 
-![RunRemodelerWebtool](./_static/images/remodeler_webtool.png)
+Just press the *Process* button to complete the action.
+If the remodeling script has errors,
+the result will be a downloaded text file with the errors identified.
+If the remodeling script is correct,
+the result will be an events file with the remodeling transformations applied.
+If the remodeling script contains summarization commands,
+the result will be a zip file with the modified events file and the summaries included.
 
-A new file events.tsv file should now be downloaded to your computer. If you followed the example,
-it should have the additional rows, and an added column `event_type` with  `response` and `stop_signal` values.
-
-If you are working with your own data, it is possible you did not get a tsv file,
-but instead a txt file was downloaded. This txt file will contain error messages returned by the remodeler.
-
-The issue might be an inconsistency in your event file or an error in the remodeler json file.
-Carefully read the error message to determine what went wrong, and update the remodeler json file if necessary.
-
-You can quickly and easily repeat the remodeler process on an event file using the HED online tools,
-making it ideal for checking and debugging your remodeler json file.
-
-(online-tools-with-HED-commands-anchor)=
-### Online tools with HED commands
-... Coming soon ...
+If you are using one of the remodeling commands that relies on HED tags, you will
+also need to upload a suitable JSON sidecar file containing the HED annotation for the events file.
 
 (jupyter-remodeling-notebooks-anchor)=
 ### Jupiter remodeling notebook
