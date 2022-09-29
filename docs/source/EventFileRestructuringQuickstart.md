@@ -5,10 +5,9 @@ The tools, which are written in Python, are designed to be run on an entire data
 This dataset can either be in BIDS 
 ([**Brain Imaging Data Structure**](https://bids.neuroimaging.io/)) format,
 or can consist of files in a directory tree.
-The later format is useful for restructuring that occurs early in the process,
-during the conversion from the experimental control software formats.
-In both cases, the event files are assumed to be in a tabular, tab-separated
-value format.
+The later format is useful for restructuring that occurs early in the experimental process,
+for example, during the conversion from the experimental control software formats.
+In both cases, the event files are assumed to be in a tabular, tab-separated value format.
 
 The tools can be run using a command-line script, called from a Jupyter notebook,
 or run using online tools. This quickstart covers the basic concepts of remodeling and
@@ -26,7 +25,7 @@ guide for detailed descriptions of the available operations.
 * [**Using the remodeling tools**](using-the-remodeling-tools-anchor)
   * [**Online tools for debugging**](online-tools-for-debugging-anchor)
   * [**The command line interface**](the-command-line-interface-anchor)
-  * [**Jupyter remodeling notebooks**](jupyter-remodeling-notebooks-anchor)
+  * [**Jupyter notebooks for remodeling**](jupyter-notebooks-for-remodeling-anchor)
 
 (what-is-event-file-restructuring-anchor)=
 ## What is event file restructuring?
@@ -59,33 +58,33 @@ The following table gives a summary of the tools available in the HED remodeling
 | Category | Command | Example use case |
 | -------- | ------- | -----|
 | **clean-up** |  |  | 
-|  | *remove_columns* | Remove temporary columns created during restructuring. |
-|  | *remove_rows* | Remove rows with a particular value in a specified column. |
-|  | *rename_columns* | Make columns names consistent across a dataset. |
-|  | *reorder_columns* | Make column order consistent across a dataset. |
+|  | [*remove_columns*](remove-columns-anchor) | Remove temporary columns created during restructuring. |
+|  | [*remove_rows*](remove-rows-anchor) | Remove rows with a particular value in a specified column. |
+|  | [*rename_columns*](rename-columns-anchor) | Make columns names consistent across a dataset. |
+|  | [*reorder_columns*](reorder-columns-anchor) | Make column order consistent across a dataset. |
 | **factor** |   |   | 
-|  | *factor_column* | Extract factor vectors from a column of condition variables. |
-|  | *factor_hed_tags* | Extract factor vectors from search queries of HED annotations. |
-|  | *factor_hed_types* | Extract design matrices and/or condition variables. |
+|  | [*factor_column*](factor-column-anchor) | Extract factor vectors from a column of condition variables. |
+|  | [*factor_hed_tags*](factor-hed-tags-anchor) | Extract factor vectors from search queries of HED annotations. |
+|  | [*factor_hed_type*](factor-hed-type-anchor) | Extract design matrices and/or condition variables. |
 | **restructure** |  |  | 
-|  | *create_event* |   |   |
-|  | *label_context*  |   |   |
-|  | *merge_consecutive* | Replace multiple consecutive events of the same type<br/>with one event of longer duration. |
-|   | *number_groups*  |   |
-|   | *number_rows*   |    | 
-|  | *remap_columns* | Create *m* columns from values in *n* columns (for recoding). |
-|  | *split_event* | Split trial-encoded rows into multiple events. |
+|  | [*create_event*](create-event-anchor) |   |   |
+|  | [*label_context*](label-context-anchor)  |   |   |
+|  | [*merge_consecutive*](merge-consecutive-anchor) | Replace multiple consecutive events of the same type<br/>with one event of longer duration. |
+|   | [*number_groups*](number-groups-anchor)  |   |
+|   | [*number_rows*](number-rows-anchor)  |    | 
+|  | [*remap_columns*](remap-columns-anchor) | Create *m* columns from values in *n* columns (for recoding). |
+|  | [*split_event*](split-event-anchor) | Split trial-encoded rows into multiple events. |
 | **summarization** |  |  | 
-|  | *summarize_column_names* | Summarize column names and order in the files. |
-|  | *summarize_column_values* |Count the occurrences of the unique column values. |
-|  | *summarize_hed_type* | Create a detailed summary of a HED in dataset <br/>(used to automatically extract experimental designs). |
+|  | [*summarize_column_names*](summarize-column-names-anchor) | Summarize column names and order in the files. |
+|  | [*summarize_column_values*](summarize-column-values-anchor) |Count the occurrences of the unique column values. |
+|  | [*summarize_hed_type*](summarize-hed-type-anchor) | Create a detailed summary of a HED in dataset <br/>(used to automatically extract experimental designs). |
 ````
 
 The **clean-up** commands are used at various phases of restructuring to assure consistency
 across event files in the dataset.
 
 The **factor** commands produce column vectors of the same length as the events file
-that encode condition variables, design matrices, or the results of other search criteria.
+in order to encode condition variables, design matrices, or the results of other search criteria.
 See the 
 [**HED conditions and design matrices**](https://hed-examples.readthedocs.io/en/latest/HedConditionsAndDesignMatrices.html)
 for more information on factoring and analysis.
@@ -98,8 +97,7 @@ The **summarization** commands produce dataset-wide summaries of various aspects
 ## The remodeling process 
 
 Remodeling consists of applying a list of commands to an events file
-to restructure or modify the file in some way.
-
+to restructure or modify the file in some way. 
 The following diagram shows a schematic of the remodeling process.
 
 ![Event remodeling process](./_static/images/EventRemappingProcess.png)
@@ -165,9 +163,11 @@ Some commands also have optional parameters.
 ### Using multiple remodel commands
 
 In a remodeler transformation file one or more remodel commands should be provided in a list.
-These commands will be performed by the remodeler in order. 
-It is important to consider the order of the remodeler commands.
-In the example below the summary will be performed after the renaming, so it will reflect the new column names.
+These commands are performed by the remodeler in order. 
+It is important to consider the order of the remodeler commands,
+since these operations are not commutative.
+In the example below the summary will be performed after the renaming, 
+so the result reflects the new column names.
 
 ````{admonition} An example JSON remodeler file with multiple commands.
 :class: tip
@@ -186,10 +186,10 @@ In the example below the summary will be performed after the renaming, so it wil
     },
     {
         "command": "summarize_column_headers",
-        "description": "Get column names across files to find any missing columns."
+        "description": "Get column names across files to find any missing columns.",
         "parameters": {
-            "summary_name": "AfterRemodel",
-            "summary_path" "D:\Data\BIDS_dataset\summaries"
+            "summary_name": "Columns after remodeling",
+            "summary_filename": "columns_after_remodel"
         }      
     }
 ]
@@ -204,15 +204,11 @@ not a previously remodeled `events.tsv`.
 (more-complex-remodeling-anchor)=
 ### More complex remodeling
 
-In this section we go over a more complex example using the
+This section discusses a complex example using the
 [**sub-0013_task-stopsignal_acq-seq_events.tsv**](./_static/data/sub-0013_task-stopsignal_acq-seq_events.tsv) 
 events file of AOMIC-PIOP2 dataset available on [OpenNeuro](https://openneuro.org) as ds002790.
-The example uses the *split_event* restructuring command to convert this
-file from trial encoding to event encoding.
-In trial encoding each event marker represents all the information in a single trial,
-while event encoding includes event markers for each individual event within the trial.
-
 Here is an excerpt of the event file.
+
 
 (sample-remodeling-events-file-anchor)=
 ````{admonition} Excerpt from an event file from the stop-go task of AOMIC-PIOP2 (ds002790).
@@ -226,17 +222,19 @@ Here is an excerpt of the event file.
 | 21.6103 | 0.5083 | go | n/a | 0.443 | correct | left | male |
 ````
 
-This event file correspond to a stop-signal experiment.
-Subjects were presented with faces and had to decide the sex of the face
+This event file corresponds to a stop-signal experiment.
+Participants were presented with faces and had to decide the sex of the face
 by pressing a button with left or right hand.
-However, if a stop signal occurred before their selection,
-the participant was to refrain from responding.
+However, if a stop signal occurred before this selection, the participant was to refrain from responding.
 
-Notice that each row in this event file represents multiple events. 
-The *stop_signal_delay* and *response_time* columns contain information about additional events
+Notice that the *stop_signal_delay* and *response_time* columns contain information events 
+in addition about additional events
 that happened in the trial in addition to the go signal presentation.
+These events are encoded implicitly as offsets from the presentation of the go signal.
+Each row is the event file encodes the information for an entire trial rather than a single event.
+This strategy is known as *trial-level* encoding. 
 
-Our goal is to represent each of these events (go signal, stop signal and response)
+Our goal is to represent each of these events (go signal, stop signal, and response)
 in a separate row of the event file using the *split_event* restructuring command.
 The following example shows the remodeling command to perform the splitting.
 
@@ -269,6 +267,15 @@ The following example shows the remodeling command to perform the splitting.
 ]
 ```
 ````
+
+
+The example uses the *split_event* restructuring command to convert this
+file from trial encoding to event encoding.
+In trial encoding each event marker (row in the event file) represents 
+all the information in a single trial.
+Event markers such as the participant's response key-press are encoded implicitly
+as an offset from the stimulus presentation.
+while event encoding includes event markers for each individual event within the trial.
 
 From the [**Split event**](https://hed-examples.readthedocs.io/en/latest/FileRemodelingTools.html#split-event)
 explanation under [**File remodeling tools**](https://hed-examples.readthedocs.io/en/latest/FileRemodelingTools.html#)
@@ -349,23 +356,22 @@ The following sections explain various ways to use the available tools.
 ### Online tools for debugging
 
 Although the event restructuring tools are designed to be run on an entire dataset,
-it is useful to work with a single event file during debugging.
-The HED online tools provide support for this.
-Currently, the remodeling tools are only supported on the 
-[**HED development server**](https://hedtools.ucsd.edu/hed_dev),
-but will soon move to the regular [**HED online tools server](https://hedtools.ucsd.edu/hed).
+you should consider working with a single event file during debugging.
+The HED online tools provide support for debugging your remodeling script and for 
+seeing the effect of remodeling on a single event file before running on the entire dataset.
 
-The online tools are very useful for debugging your remodeling script and for 
-seeing the effect on a single event file before running on the entire dataset.
+Currently, the remodeling tools are only available on the 
+[**HED tools development server**](https://hedtools.ucsd.edu/hed_dev),
+but will soon move to the regular [**HED tools online tools server**](https://hedtools.ucsd.edu/hed).
 
 To use the online remodeling tools, navigate to the events page and select the *Remodel file* action.
-You then should browse to select the events file you want to act on and the JSON remodel file 
+Browse to select the events file to be remodeled and the JSON remodel file 
 containing the remodeling commands. 
-The following image shows these selections for the split event example of the previous section.
+The following screenshot shows these selections for the split event example of the previous section.
 
-![Online tools remodeling example](./_static/images/OnlineToolsRemodelingExample.png)
+![Remodeling tools online](./_static/images/RemodelingOnline.png)
 
-Just press the *Process* button to complete the action.
+Press the *Process* button to complete the action.
 If the remodeling script has errors,
 the result will be a downloaded text file with the errors identified.
 If the remodeling script is correct,
@@ -374,16 +380,30 @@ If the remodeling script contains summarization commands,
 the result will be a zip file with the modified events file and the summaries included.
 
 If you are using one of the remodeling commands that relies on HED tags, you will
-also need to upload a suitable JSON sidecar file containing the HED annotation for the events file.
+also need to upload a suitable JSON sidecar file containing the HED annotations for the events file.
 
 (The-command-line-interface-anchor)=
 ### The command line interface
 
 After installing the remodeler you can it on a full BIDS dataset, 
-or any directory with a set of `events.tsv` files, using the command line interface.
+or on any directory using the command line interface using
+`run_remodel_backup`, `run_remodel`, and `run_remodel_restore`.
+
+The first step is to call `run_remodel_backup` with the necessary arguments to
+create a 
 You do this by calling one of three python scripts (`run_remodel_backup`, `run_remodel`, and `run_remodel_restore`) with the necessary arguments. A full overview of all arguments is available at
 [**File remodeling tools**](https://hed-examples.readthedocs.io/en/latest/FileRemodelingTools.html#remodel-command-arguments-anchor).
 
+
+(remodel-run-anchor)=
+````{admonition} Command to run summary on AOMIC dataset.
+:class: tip
+
+```bash
+python run_remodel.py /data/ds002790  /data/ds002790/derivatives/remodeling/models/AOMIC_summarize_rmdl.json \
+-s .txt -x derivatives -b 
+
+```
 The `run_remodel_backup` is usually run only once for a dataset. 
 It makes the baseline backup of the event files to assure that nothing will be lost. 
 The remodeling always starts from the backup files.
@@ -459,8 +479,8 @@ All event files for the stop signal task contain the `stop_signal_delay` column 
 Now you can try out the split_events on the full dataset!
 
 
-(jupyter-remodeling-notebooks-anchor)=
-### Jupyter remodeling notebooks
+(jupyter-notebooks-for-remodeling-anchor)=
+### Jupyter notebooks for remodeling
 
 Three Jupyter remodeling notebooks are available at 
 [**Jupyter notebooks for remodeling**](https://github.com/hed-standard/hed-examples/tree/main/hedcode/jupyter_notebooks/remodeling).

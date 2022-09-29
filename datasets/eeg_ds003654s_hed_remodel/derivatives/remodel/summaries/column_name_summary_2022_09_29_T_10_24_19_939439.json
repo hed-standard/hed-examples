@@ -1,0 +1,33 @@
+{
+    "context_name": "Summary of column names",
+    "context_type": "column_headers",
+    "context_filename": "column_name_summary",
+    "summary": {
+        "number_unique_column_headers": 1,
+        "number_files": 6,
+        "column_patterns": {
+            "0": {
+                "column_header": [
+                    "onset",
+                    "duration",
+                    "sample",
+                    "event_type",
+                    "face_type",
+                    "rep_status",
+                    "trial",
+                    "rep_lag",
+                    "value",
+                    "stim_file"
+                ],
+                "file_list": [
+                    "H:\\HEDExamples\\hed-examples\\datasets\\eeg_ds003654s_hed_remodel\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv",
+                    "H:\\HEDExamples\\hed-examples\\datasets\\eeg_ds003654s_hed_remodel\\sub-002\\eeg\\sub-002_task-FacePerception_run-2_events.tsv",
+                    "H:\\HEDExamples\\hed-examples\\datasets\\eeg_ds003654s_hed_remodel\\sub-002\\eeg\\sub-002_task-FacePerception_run-3_events.tsv",
+                    "H:\\HEDExamples\\hed-examples\\datasets\\eeg_ds003654s_hed_remodel\\sub-003\\eeg\\sub-003_task-FacePerception_run-1_events.tsv",
+                    "H:\\HEDExamples\\hed-examples\\datasets\\eeg_ds003654s_hed_remodel\\sub-003\\eeg\\sub-003_task-FacePerception_run-2_events.tsv",
+                    "H:\\HEDExamples\\hed-examples\\datasets\\eeg_ds003654s_hed_remodel\\sub-003\\eeg\\sub-003_task-FacePerception_run-3_events.tsv"
+                ]
+            }
+        }
+    }
+}

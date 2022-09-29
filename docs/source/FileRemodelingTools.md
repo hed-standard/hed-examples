@@ -1,14 +1,16 @@
 # File remodeling tools
 
-The file remodeling tools can be applied to any tab-separated value (`.tsv`) file,
+The file remodeling tools can be applied to any tab-separated value (`.tsv`) file
 but are particularly useful for restructuring files representing experimental events.
-You should read the [**Event file restructuring quickstart**](https://hed-examples.readthedocs.io/en/latest/EventFileRestructuring.html)
-tutorials if you are not familiar with file restructuring.
-This guide describes the syntax and usage of the tools.tutorial on how use the remodeling tools is available at of restructuring event files using the HED event remodeling tools.
-The tools, which are written in Python, are designed to be run on an entire dataset.
-The tools can be called in Jupyter notebook or run via command-line scripts.
-They are also available as a web service or through an online interface for application
-to processing a single file. This is useful for debugging the remodeling script.
+Please read the [**Event file restructuring quickstart**](https://hed-examples.readthedocs.io/en/latest/EventFileRestructuringQuickstart.html)
+tutorials for an introduction to file restructuring and basic use of the tools.
+
+The tools can be applied to individual files using the 
+[**HED online tools**](https://hedtools.ucsd.edu/hed_dev) or to entire datasets 
+using the [**Command line interface**](remodel-command-line-interface-anchor) or
+through [**Jupyter notebooks**](jupyter-remodeling-notebooks-anchor).
+The tools are also available as [**HED RESTful services**](https://hed-examples.readthedocs.io/en/latest/HedOnlineTools.html#hed-restful-services).
+The online tools are particularly useful for debugging.
 
 * [**Remodeling tool overview**](remodeling-tool-overview-anchor)
 * [**Installing remodeling tools**](installing-remodeling-tools-anchor)
@@ -17,7 +19,7 @@ to processing a single file. This is useful for debugging the remodeling script.
    * [**Remodel event files**](remodel-event-files-anchor)
    * [**Backup event files**](backup-event-files-anchor)
    * [**Restore event files**](restore-event-files-anchor)
-   * [**Remove event files**](remove-event-files-anchor)
+* [**Jupyter remodeling notebooks**](jupyter-remodeling-notebooks-anchor)
 * [**JSON remodel file format**](json-remodel-file-format-anchor)
 * [**Remodeling operations**](remodeling-operations-anchor)
   * [**Create event**](create-event-anchor)
@@ -40,39 +42,41 @@ to processing a single file. This is useful for debugging the remodeling script.
 (remodeling-tool-overview-anchor)=
 ## Remodeling tool overview
 
-Give an overview of the tools
+The following table summarizes the available tools with a brief example use case
+and links to further documentation.
+
 (remodeling-operations-summary-anchor)=
 ````{table} Summary of the HED remodeling commands for tabular files.
 | Category | Command | Example use case |
 | -------- | ------- | -----|
 | **clean-up** |  |  | 
-|  | *remove_columns* | Remove temporary columns created during restructuring. |
-|  | *remove_rows* | Remove rows with n/a values in a specified column. |
-|  | *rename_columns* | Make columns names consistent across a dataset. |
-|  | *reorder_columns* | Make column order consistent across a dataset. |
+|  | [*remove_columns*](remove-columns-anchor) | Remove temporary columns created during restructuring. |
+|  | [*remove_rows*](remove-rows-anchor) | Remove rows with n/a values in a specified column. |
+|  | [*rename_columns*](rename_columns-anchor) | Make columns names consistent across a dataset. |
+|  | [*reorder_columns*](reorder-columns-anchor) | Make column order consistent across a dataset. |
 | **factor** |   |   | 
-|  | *factor_column* | Extract factor vectors from a column of condition variables. |
-|  | *factor_hed_tags* | Extract factor vectors from search queries of HED annotations. |
-|  | *factor_hed_types* | Extract design matrices and/or condition variables. |
+|  | [*factor_column*](factor-column-anchor) | Extract factor vectors from a column of condition variables. |
+|  | [*factor_hed_tags*](factor-hed-tags-anchor) | Extract factor vectors from search queries of HED annotations. |
+|  | [*factor_hed_type*](factor-hed-type-anchor) | Extract design matrices and/or condition variables. |
 | **restructure** |  |  | 
-|  | *create_event* |   |   |
-|  | *label_context*  |   |   |
-|  | *merge_consecutive* | Replace multiple consecutive events of the same type<br/>with one event of longer duration. |
-|   | *number_groups*  |   |
-|   | *number_rows*   |    | 
-|  | *remap_columns* | Create m columns from values in n columns (for recoding). |
-|  | *split_event* | Split trial-encoded rows into multiple events. |
+|  | [*create_event*](create-event-anchor) |   |   |
+|  | [*label_context*](label-context-anchor)  |   |   |
+|  | [*merge_consecutive*](merge-consecutive-anchor) | Replace multiple consecutive events of the same type<br/>with one event of longer duration. |
+|   | [*number_groups*](number-groups-anchor)  |   |
+|   | [*number_rows*](number-rows-anchor)   |    | 
+|  | [*remap_columns*](remap-columns-anchor) | Create m columns from values in n columns (for recoding). |
+|  | [*split_event*](split-event-anchor) | Split trial-encoded rows into multiple events. |
 | **summarization** |  |  | 
-|  | *summarize_column_names* | Summarize column names and order in the files. |
-|  | *summarize_column_values* |Count the occurrences of the unique column values. |
-|  | *summarize_hed_type* | Create a detailed summary of a HED in dataset <br/>(used to automatically extract experimental designs). |
+|  | [*summarize_column_names*](summarize-column-names-anchor) | Summarize column names and order in the files. |
+|  | [*summarize_column_values*](summarize-column-values-anchor) |Count the occurrences of the unique column values. |
+|  | [*summarize_hed_type*](summarize-hed-type-anchor) | Create a detailed summary of a HED in dataset <br/>(used to automatically extract experimental designs). |
 ````
 
 The **clean-up** commands are used at various phases of restructuring to assure consistency
 across event files in the dataset.
 
 The **factor** commands produce column vectors of the same length as the events file
-that encode condition variables, design matrices, or satisfaction of other search criteria.
+in order to encode condition variables, design matrices, or satisfaction of other search criteria.
 See the 
 [**HED conditions and design matrices**](https://hed-examples.readthedocs.io/en/latest/HedConditionsAndDesignMatrices.html)
 for more information on factoring and analysis.
@@ -88,59 +92,66 @@ The remodeling tools are available in the GitHub
 [**hed-python repository**](https://github.com/hed-standard/hed-python)
 along with other tools for data cleaning and curation.
 Although version 0.1.0 of this repository is available on [**PyPI**](https://pypi.org/)
-as hedtools, the version containing the restructuring tools (Version 0.2.0)
+as `hedtools`, the version containing the restructuring tools (Version 0.2.0)
 is still under development and has not been officially released.
 However, the code is publicly available on the hed-python repository and
-can be directly installed from GitHub using PIP:
+can be directly installed from GitHub using `pip`:
 
 ```text
-pip install git+https://github.com/hed-standard/hed-python/@master
+pip install git+https://github.com/hed-standard/hed-python/@develop
 ```
 
-When version 0.2.0 is officially released on PyPI, restructuring
-of single event files will become available through a web-service
-through a web-interface on the [**HED online tools**](https://hedtools.ucsd.edu/hed).
+The web services and online tools supporting restructuring are available
+on the [**HED online tools dev server**](https://hedtools.ucsd.edu/hed_dev).
+When version 0.2.0 of `hedtools` is officially released on PyPI, restructuring
+will become available on the [**HED online tools**](https://hedtools.ucsd.edu/hed).
 A docker version is also under development.
 
 The following diagram shows a schematic of the remodeling process.
 
 
-The remodeling process is summarized in the following figure.
-
 ![Event remodeling process](./_static/images/EventRemappingProcess.png)
 
 Initially, the user creates a backup of the event files.
 Restructuring applies a sequence of remodeling commands given in a JSON transformation file
-to produce a final result.
+to the backup versions corresponding to the specified event files.
 The transformation file provides a record of the operations performed on the file.
 If the user detects a mistake in the transformation,
-he/she can correct the transformation file and restore the backup to rerun.
+he/she can correct the transformation file and rerun the transformations.
+Restructuring always runs on the backup version of the file rather than
+the transformed version, so the transformations can always be corrected and rerun.
 
 (remodel-command-line-interface-anchor)=
 ## Command-line interface 
-The remodeling toolbox provides several scripts to apply the transformations
-to the files in a dataset. 
-All the scripts have a required parameter, which is the full path of the dataset root.
+The remodeling toolbox provides Python scripts with command line interfaces
+to create or restore backups and to apply the transformations to the files in a dataset.
+The file remodeling tools may be applied to datasets that are in free form under a directory root
+or that are in [**BIDS-format**](https://bids.neuroimaging.io/).
+
+BIDS (Brain Imaging Data Structure) is a standardized format for storing neuroimaging data.
+The file names have a specific format related to their location in the directory tree.
+The [**HED (Hierarchical Event Descriptor)**](https://hed-examples.readthedocs.io/en/latest/HedIntroduction.html)
+operations are only available for BIDS-formatted datasets.
+The HED operations are mainly used at analysis time. 
+However, event file restructuring also can take place at data acquisition time before the data is formatted.
+In this case, the data is assumed to be in a single directory tree,
+and the event files are located by their file-suffix and extension.
+
+
 The basic scripts are summarized in the following table.
+All the scripts have a required parameter, which is the full path of the dataset root.
 
 (remodeling-operation-summary-anchor)=
 ````{table} Summary of the remodeling scripts.
 | Script name | Arguments | Purpose | 
 | ----------- | -------- | ------- |
-|*run_remodel* | *data_dir*<br/>*-m model-path*<br/>*-t task_name*<br/>*-e extensions*<br/>*-x extensions*<br/>*-f file-suffix*<br/>*-s save-formats*<br/>*-b bids-format*<br/>*-v verbose* | Remodel the event files. |
-|*run_remodel_backup* | *data_dir*<br/>*-t task_name*<br/>*-b backup-type*<br/>*-e exclude_dirs* | Backup the event files. |
-|*run_restore* | *data_dir*<br/>*-t task_name*<br/>*-b backup-type*<br/>*-e exclude_dirs* | Restore the event files. |
-|*run_remove* | *data_dir*<br/>*-t task_name*<br/>*-b backup-type*<br/>*-e exclude_dirs* | Remove the backup event files. |
+|*run_remodel* | *data_dir*<br/>*model_path*<br/>*-n --backup_name*<br/>*-t task-names*<br/>*-e --extensions*<br/>*-f --file-suffix*<br/>*-s --save-formats*<br/>*-x --exclude-dirs*<br/>*-b --bids-format*<br/>*-v --verbose* | Restructure or summarize the event files. |
+|*run_remodel_backup* | *data_dir*<br/>*-n --backup_name*<br/>*-t --task-names*<br/>*-e extensions*<br/>*-f --file-suffix*<br/>*-x exclude_dirs*<br/>*-v --verbose* | Create a backup event files. |
+|*run_remodel_restore* | *data_dir*<br/>*-n --backup_name*<br/>*-v --verbose* | Restore a backup of event files. |
+
 ````
-The remainder of this section discusses the arguments for command-line processing in more detail.
-Datasets may be in free form under a directory root or may be in [BIDS-format](https://bids.neuroimaging.io/).
-BIDS (Brain Imaging Data Structure) is a standardized format for storing neuroimaging data.
-The file names have a specific format related to where they are located in the directory tree.
-The HED (Hierarchical Event Descriptor) operations are only available for BIDS-formatted datasets.
-The HED operations are mainly used at analysis time. 
-However, event file restructuring also can take place at data acquisition time, before the data is formatted.
-In this case, the data is assumed to be in a single directory tree and the event files are located by 
-their file-suffix and extension.
+
+The following subsections describe the scripts and the command line arguments in more detail.
 
 (remodel-command-arguments-anchor)=
 ### Command-line arguments
@@ -150,34 +161,43 @@ their file-suffix and extension.
 `data_dir`
 > The full path of dataset root directory.
 
+`model_path`
+> The full path of the JSON remodel file.
+> 
 #### Named arguments
 
-`-m`, `--model-path`
-> The full path of the JSON remodeling file.
+`-b`, `--bids-format`
+> If this flag present, the dataset is in BIDS format with sidecars. HED analysis is available.
+
+
+`-e`, `--extensions`
+> This option is followed by the file extension(s) of the tab-separated data files to process. The default is `.tsv`.
+
+
+`-f`, `--file-suffix`
+> This option is followed by the suffix names of the files to be processed (`events` by default).
+
+
+`-n`, `--backup_name`
+> The name of the backup used for the remodeling (`default_back` by default).
+
+    
+`-s`, `--save-formats`
+> This option is followed by the extensions (including .) in which to save any Format for saving any summaries, if any. If empty, then no summaries are saved.
+
 
 `-t`, `--task-names`
-> The name(s) of the tasks to be included. (For BIDS-formatted files only.)
+> The name(s) of the tasks to be included (for BIDS-formatted files only).
+> 
 > Often, when a dataset includes multiple tasks, the event files are structured 
 > differently for each task and thus require different transformation files.
 
-`-e`, `--extensions`
-> The file extension(s) of the tab-separated data files to process. The default is `.tsv`.
+`-v`, `--verbose`
+> If present, output informative messages as computation.
 
 `-x`, `--exclude-dirs`
 > The directories to exclude when gather the data files to process.
 > For BIDS datasets this is often `derivatives`, `stimuli`, and `sourcecode`.
-
-`-f`, `--file-suffix`
-> Filename suffix excluding file type of items to be analyzed (events by default).
-    
-`-s`, `--save-formats`
->Format for saving any summaries, if any. If empty, then no summaries are saved.
-
-`-b`, `--bids-format`
-> If present, the dataset is in BIDS format with sidecars. HED analysis is available.
-
-`-v`, `--verbose`
-> If present, output informative messages as computation.
 
 
 (remodel-event-files-anchor)=
@@ -227,10 +247,8 @@ python run_backup.py t:\ds002790-data -b full-tree -e derivatives code simulus_f
 
 Explain restoring event files....
 
-(remove-event-files-anchor)=
-### Remove event files
-
-Explain removing event files....
+(jupyter-remodeling-notebooks-anchor)=
+### Jupyter remodeling notebooks
 
 (json-remodel-file-format-anchor)=
 ## JSON remodel file format
