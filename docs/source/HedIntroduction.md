@@ -1,3 +1,4 @@
+(hed-introduction-anchor)=
 # HED introduction
 
 HED (an acronym for Hierarchical Event Descriptors) is an evolving framework and
