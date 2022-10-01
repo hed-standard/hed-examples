@@ -1,6 +1,6 @@
 [
    {
-        "command": "summarize_column_names",
+        "operation": "summarize_column_names",
         "description": "Summarize the unique orders of column names.",
         "parameters": {
             "summary_name": "Summary of column names",
@@ -8,7 +8,7 @@
         }
     },
     {
-        "command": "summarize_column_values",
+        "operation": "summarize_column_values",
         "description": "Summarize column values.",
         "parameters": {
             "summary_name": "Summary of column values",
