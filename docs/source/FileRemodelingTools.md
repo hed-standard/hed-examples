@@ -1,3 +1,4 @@
+(file-remodeling-tools-anchor)=
 # File remodeling tools
 
 Restructuring or **remodeling** refers to the process of transforming a tabular file
@@ -238,7 +239,6 @@ all separated by spaces.
     
 `-s`, `--save-formats`
 > This option is followed by the extensions (including .) in which to save any Format for saving any summaries, if any. If empty, then no summaries are saved.
-
 
 `-t`, `--task-names`
 > The name(s) of the tasks to be included (for BIDS-formatted files only).
@@ -487,8 +487,6 @@ python run_remodel.py /datasets/eeg_ds003654s_hed_remodel /datasets/summarize_co
 
 ```
 ````
-
-
 
 (remodel-file-formats-anchor)=
 ## Remodel file formats

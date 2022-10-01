@@ -239,7 +239,6 @@ Our goal is to represent each of these events (go signal, stop signal, and respo
 in a separate row of the event file using the *split_event* restructuring operation.
 The following example shows the remodeling operations to perform the splitting.
 
-
 ````{admonition} Example of split_events operation for the AOMIC stop signal task.
 :class: tip
 
@@ -268,7 +267,6 @@ The following example shows the remodeling operations to perform the splitting.
 ]
 ```
 ````
-
 
 The example uses the *split_event* restructuring operation to convert this
 file from trial encoding to event encoding.
@@ -365,7 +363,7 @@ Currently, the remodeling tools are only available on the
 but will soon move to the regular [**HED tools online tools server**](https://hedtools.ucsd.edu/hed).
 
 To use the online remodeling tools, navigate to the events page and select the *Remodel file* action.
-Browse to select the events file to be remodeled and the JSON remodel file 
+Browse to select the events file to be remodeled and the JSON remodel file
 containing the remodeling operations. 
 The following screenshot shows these selections for the split event example of the previous section.
 
@@ -385,7 +383,7 @@ also need to upload a suitable JSON sidecar file containing the HED annotations 
 (The-command-line-interface-anchor)=
 ### The command-line interface
 
-After installing the remodeler you can it on a full BIDS dataset, 
+After installing the remodeler you can it on a full BIDS dataset,
 or on any directory using the command-line interface using
 `run_remodel_backup`, `run_remodel`, and `run_remodel_restore`.
 
