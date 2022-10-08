@@ -458,7 +458,7 @@ To run the summary we have to provide the following arguments:
 
 The exact paths will look different on your computer but the full command-line call should look something like this:
 
-(remodel-run-anchor)=
+(remodel-run-summary-anchor)=
 ````{admonition} Command to run summary on AOMIC dataset.
 :class: tip
 
@@ -485,4 +485,7 @@ Now you can try out the split_events on the full dataset!
 Three Jupyter remodeling notebooks are available at 
 [**Jupyter notebooks for remodeling**](https://github.com/hed-standard/hed-examples/tree/main/hedcode/jupyter_notebooks/remodeling).
 
-These notebooks are wrappers that 
+These notebooks are wrappers that create the backup as well as run restructuring operations on data files.
+If you do not have access to a Jupyter notebook facility, the article
+[Six easy ways to run your Jupyter Notebook in the cloud](https://www.dataschool.io/cloud-services-for-jupyter-notebook/) discusses various no-cost options
+for running Jupyter notebooks online.
