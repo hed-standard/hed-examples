@@ -13,8 +13,8 @@
         "parameters": {
             "summary_name": "Summary of column values",
             "summary_filename": "column_values_summary",
-            "skip_columns": [],
-            "value_columns": [],
+            "skip_columns": ["onset", "duration", "sample"],
+            "value_columns": ["trial", "response_time", "stimuli", "stim_file"],
             "task_names": []
         }
     }
