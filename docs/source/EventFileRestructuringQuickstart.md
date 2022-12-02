@@ -75,7 +75,8 @@ The following table gives a summary of the tools available in the HED remodeling
 | **summarization** |  |  | 
 |  | [*summarize_column_names*](summarize-column-names-anchor) | Summarize column names and order in the files. |
 |  | [*summarize_column_values*](summarize-column-values-anchor) |Count the occurrences of the unique column values. |
-|  | [*summarize_hed_type*](summarize-hed-type-anchor) | Create a detailed summary of a HED in dataset <br/>(used to automatically extract experimental designs). |
+|  | [*summarize_events_to_sidecar*](summarize-events-to-sidecar-anchor) | Generate a sidecar template from an event file. |
+|  | [*summarize_hed_type*](summarize-hed-type-anchor) | Create a detailed summary of a particular tag <br/>(used to automatically extract experimental designs). |
 ````
 
 The **clean-up** operations are used at various phases of restructuring to assure consistency
