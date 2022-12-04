@@ -22,14 +22,14 @@
             "pause_recording": "Pause the recording of the experiment."
         },
         "HED": {
-            "bad_event": "Sensory-presentation, Mishap",
-            "button_press": "Participant-response, (Experiment-participant, (Press, Mouse-button))",
-            "dark_bar": "Sensory-presentation, Experimental-stimulus, Visual-presentation, (Square, DarkBlue, (Center-of, Computer-screen))",
-            "hear_word": "Sensory-presentation, (Word, Label/Word-hear), Auditory-presentation, Visual-presentation",
-            "high_tone": "Sensory-presentation, Experimental-stimulus, Auditory-presentation, (Tone, Frequency/550 Hz)",
-            "light_bar": "Sensory-presentation, Experimental-stimulus, Visual-presentation, (Square, LightBlue, (Center-of, Computer-screen))",
-            "look_word": "Sensory-presentation, (Word, Label/Word-look), Auditory-presentation, Visual-presentation",
-            "low_tone": "Sensory-presentation, Experimental-stimulus, Auditory-presentation, (Tone, Frequency/500 Hz)",
+            "bad_event": "Sensory-event, Mishap",
+            "button_press": "Agent-action, (Experiment-participant, (Press, Mouse-button))",
+            "dark_bar": "Sensory-event, Experimental-stimulus, Visual-presentation, (Square, DarkBlue, (Center-of, Computer-screen))",
+            "hear_word": "Sensory-event, (Word, Label/Word-hear), Auditory-presentation, Visual-presentation",
+            "high_tone": "Sensory-event, Experimental-stimulus, Auditory-presentation, (Tone, Frequency/550 Hz)",
+            "light_bar": "Sensory-event, Experimental-stimulus, Visual-presentation, (Square, LightBlue, (Center-of, Computer-screen))",
+            "look_word": "Sensory-event, (Word, Label/Word-look), Auditory-presentation, Visual-presentation",
+            "low_tone": "Sensory-event, Experimental-stimulus, Auditory-presentation, (Tone, Frequency/500 Hz)",
             "pause_recording": "Experiment-control, Pause"
         }
     },

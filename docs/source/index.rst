@@ -1,4 +1,4 @@
-HED examples and tutorials
+HED resources
 ===========================
 
 .. sidebar:: **Links**
