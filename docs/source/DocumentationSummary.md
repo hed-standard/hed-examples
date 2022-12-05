@@ -17,7 +17,7 @@ Detailed case study in using HED-3G for tagging:
 > NeuroImage Special Issue Practice in MEEG. NeuroImage  245  (2021)  118766.  
 > [https://www.sciencedirect.com/science/article/pii/S1053811921010387](https://www.sciencedirect.com/science/article/pii/S1053811921010387).
 
-## HED schema viewers
+## HED viewers
 
 The HED schema is usually developed in `.mediawiki` format and converted to XML for use by tools.
 However, researchers wishing to tag datasets will find both of these views hard to read. 
