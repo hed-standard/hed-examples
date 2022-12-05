@@ -1,13 +1,15 @@
-# Event file restructuring quickstart
+# File restructuring quickstart
 
-This tutorial works through the process of restructuring event files using the HED event file remodeling tools.
+This tutorial works through the process of restructuring tabular (`.tsv) files using the HED file remodeling tools.
+These tools particularly useful for creating and restructuring event files from
+information in experimental logs and for restructuring events to enable a particular analysis.
+
 The tools, which are written in Python, are designed to be run on an entire dataset.
 This dataset can either be in BIDS 
 ([**Brain Imaging Data Structure**](https://bids.neuroimaging.io/)) format,
 or can consist of files in a directory tree.
 The later format is useful for restructuring that occurs early in the experimental process,
 for example, during the conversion from the experimental control software formats.
-In both cases, the event files are assumed to be in a tabular, tab-separated value format.
 
 The tools can be run using a command-line script, called from a Jupyter notebook,
 or run using online tools. This quickstart covers the basic concepts of remodeling and
