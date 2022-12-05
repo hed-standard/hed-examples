@@ -1,4 +1,4 @@
-HED examples and tutorials
+HED resources
 ===========================
 
 .. sidebar:: **Links**
@@ -14,16 +14,17 @@ HED examples and tutorials
    HedIntroduction.md
    BidsAnnotationQuickstart.md
    HedAnnotationQuickstart.md
-   HedValidation.md
+   HedValidationGuide.md
    HedSearchAndSummary.md
    HedConditionsAndDesignMatrices.md
-   EventFileRestructuringQuickstart.md
+   FileRestructuringQuickstart.md
 
 
 .. toctree::
    :maxdepth: 3
    :caption: Tools:
 
+   HedSchemaViewers.md
    CTaggerGuiTaggingTool.md
    FileRemodelingTools.md
    HedOnlineTools.md

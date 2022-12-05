@@ -41,6 +41,7 @@ This user's guide contains the following topics:
   * [**Split event**](split-event-anchor)
   * [**Summarize column names**](summarize-column-names-anchor)
   * [**Summarize column values**](summarize-column-values-anchor)
+  * [**Summarize events to sidecar**](summarize-events-to-sidecar-anchor)
   * [**Summarize hed type**](summarize-hed-type-anchor)
 * [**Remodel implementation details**](remodel-implementation-details-anchor)
 
@@ -114,8 +115,9 @@ and links to further documentation. Operations not listed in the summarization s
 |  | [*split_event*](split-event-anchor) | Split trial-encoded rows into multiple events. |
 | **summarize** |  |  | 
 |  | [*summarize_column_names*](summarize-column-names-anchor) | Summarize column names and order in the files. |
-|  | [*summarize_column_values*](summarize-column-values-anchor) |Count the occurrences of the unique column values. |
-|  | [*summarize_hed_type*](summarize-hed-type-anchor) | Create a detailed summary of a HED in dataset <br/>(used to automatically extract experimental designs). |
+|  | [*summarize_column_values*](summarize-column-values-anchor) | Count the occurrences of the unique column values. |
+|  | [*summarize_events_to_sidecar*](summarize-events-to-sidecar-anchor) | Generate a sidecar template from an event file. |
+|  | [*summarize_hed_type*](summarize-hed-type-anchor) | Create a detailed summary of a particular tag <br/>(used to automatically extract experimental designs). |
 ````
 
 The **clean-up** operations are used at various phases of restructuring to assure consistency
@@ -1532,7 +1534,6 @@ The following table lists the parameters required for using the summary.
 | *summary_filename* | str | A unique file basename to use for saving this summary. |
 | *skip_columns* | list | A list of column names to omit from the summary.| 
 | *value_columns* | list | A list of columns to omit the listing unique values. |
-| *task_names* | list | A list of tasks to include. If not empty, values are segregated by task.| 
 ```
 The standard summary parameters, *summary_name* and *summary_filename* are required.
 The *summary_name* is the unique key used to identify the
@@ -1553,8 +1554,7 @@ Some columns, such as *onset* are usually skipped because they are required and 
 event typically has a unique values.
 
 For datasets that include multiple tasks, the event values for each task may be distinct.
-The *summarize_column_values* operation separates listing of events by task if the *task_names*
-parameter is not an empty list.
+The *summarize_column_values* operation currently does not separate by task.
 
 
 (summarize-column-values-example-anchor)=
@@ -1572,8 +1572,7 @@ The following example shows the JSON for including this operation in a remodelin
        "summary_name": "AOMIC_column_values",
        "summary_filename": "AOMIC_column_values",
        "skip_columns": ["onset", "duration"],
-       "value_columns": ["response_time", "stop_signal_delay"],
-       "task_names": []
+       "value_columns": ["response_time", "stop_signal_delay"]
    }
 },  
 ```
@@ -1614,6 +1613,129 @@ Summary:
 Because the [sample remodel events file](sample-remodel-events-file-anchor)
 only has 6 events, we expect that no value will be represented in more than 6 events.
 The column names corresponding to value columns just have the event counts in them.
+
+(summarize-events-to-sidecar-anchor)=
+### Summarize events to sidecar
+
+The summarize events to sidecar operation generates a sidecar template from the event
+files in the dataset. 
+
+
+(summarize-events-to-sidecar-parameters-anchor)=
+#### Summarize events to sidecar parameters
+
+The following table lists the parameters required for using the summary.
+
+```{admonition} Parameters for the *summarize_events_to_sidecar* operation.
+:class: tip
+
+|  Parameter   | Type | Description | 
+| ------------ | ---- | ----------- | 
+| *summary_name* | str | A unique name used to identify this summary.| 
+| *summary_filename* | str | A unique file basename to use for saving this summary. |
+| *skip_columns* | list | A list of column names to omit from the sidecar.| 
+| *value_columns* | list | A list of columns to treat as value columns in the sidecar. |
+```
+The standard summary parameters, *summary_name* and *summary_filename* are required.
+The *summary_name* is the unique key used to identify the
+particular incarnation of this summary in the dispatcher.
+Since a particular operation file may use a given operation multiple times,
+care should be taken to make sure that it is unique.
+
+The *summary_filename* should also be unique and is used for saving the summary upon request.
+When the remodeler is applied to full datasets rather than single files,
+the summaries are saved in the `derivatives/remodel/summaries` directory under the dataset root.
+A time stamp and file extension are appended to the *summary_filename* when the
+summary is saved.
+
+In addition to the standard parameters, *summary_name* and *summary_filename* required of all summaries,
+the *summarize_column_values* operation requires two additional lists to be supplied.
+The *skip_columns* list specifies the names of columns to skip entirely in
+generating the sidecar template.
+The *value_columns* list specifies the names of columns to treat as value columns
+when generating the sidecar template.
+
+(summarize-events-to-sidecar-example-anchor)=
+#### Summarize events to sidecar example
+
+The following example shows the JSON for including this operation in a remodeling file.
+
+````{admonition} Sample *summarize_events_to_sidecar* operation.
+:class: tip
+```json
+{
+    "operation": "summarize_events_to_sidecar",
+    "description": "Generate a sidecar from the excerpted events file.",
+    "parameters": {
+        "summary_name": "AOMIC_generate_sidecar",
+        "summary_filename": "AOMIC_generate_sidecar",
+        "skip_columns": ["onset", "duration", "response_accuracy"],
+        "value_columns": ["response_time", "stop_signal_delay"]
+    }
+}
+  
+```
+````
+
+The results of executing this operation on the
+[sample remodel events file](sample-remodel-events-file-anchor)
+are shown in the following example using the text format.
+
+````{admonition} Sample *summarize_events_to_sidecar* operation results in text format.
+:class: tip
+```json
+{
+    "context_name": "AOMIC_generate_sidecar",
+    "context_type": "events_to_sidecar",
+    "context_filename": "AOMIC_generate_sidecar",
+    "summary": {
+        "trial_type": {
+            "Description": "Description for trial_type",
+            "HED": {
+                "go": "(Label/trial_type, Label/go)",
+                "succesful_stop": "(Label/trial_type, Label/succesful_stop)",
+                "unsuccesful_stop": "(Label/trial_type, Label/unsuccesful_stop)"
+            },
+            "Levels": {
+                "go": "Here describe column value go of column trial_type",
+                "succesful_stop": "Here describe column value succesful_stop of column trial_type",
+                "unsuccesful_stop": "Here describe column value unsuccesful_stop of column trial_type"
+            }
+        },
+        "response_hand": {
+            "Description": "Description for response_hand",
+            "HED": {
+                "left": "(Label/response_hand, Label/left)",
+                "right": "(Label/response_hand, Label/right)"
+            },
+            "Levels": {
+                "left": "Here describe column value left of column response_hand",
+                "right": "Here describe column value right of column response_hand"
+            }
+        },
+        "sex": {
+            "Description": "Description for sex",
+            "HED": {
+                "female": "(Label/sex, Label/female)",
+                "male": "(Label/sex, Label/male)"
+            },
+            "Levels": {
+                "female": "Here describe column value female of column sex",
+                "male": "Here describe column value male of column sex"
+            }
+        },
+        "response_time": {
+            "Description": "Description for response_time",
+            "HED": "(Label/response_time, Label/#)"
+        },
+        "stop_signal_delay": {
+            "Description": "Description for stop_signal_delay",
+            "HED": "(Label/stop_signal_delay, Label/#)"
+        }
+    }
+}
+```
+````
 
 
 (summarize-hed-type-anchor)=

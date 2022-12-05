@@ -1,13 +1,15 @@
-# Event file restructuring quickstart
+# File restructuring quickstart
 
-This tutorial works through the process of restructuring event files using the HED event file remodeling tools.
+This tutorial works through the process of restructuring tabular (`.tsv) files using the HED file remodeling tools.
+These tools particularly useful for creating and restructuring event files from
+information in experimental logs and for restructuring events to enable a particular analysis.
+
 The tools, which are written in Python, are designed to be run on an entire dataset.
 This dataset can either be in BIDS 
 ([**Brain Imaging Data Structure**](https://bids.neuroimaging.io/)) format,
 or can consist of files in a directory tree.
 The later format is useful for restructuring that occurs early in the experimental process,
 for example, during the conversion from the experimental control software formats.
-In both cases, the event files are assumed to be in a tabular, tab-separated value format.
 
 The tools can be run using a command-line script, called from a Jupyter notebook,
 or run using online tools. This quickstart covers the basic concepts of remodeling and
@@ -75,7 +77,8 @@ The following table gives a summary of the tools available in the HED remodeling
 | **summarization** |  |  | 
 |  | [*summarize_column_names*](summarize-column-names-anchor) | Summarize column names and order in the files. |
 |  | [*summarize_column_values*](summarize-column-values-anchor) |Count the occurrences of the unique column values. |
-|  | [*summarize_hed_type*](summarize-hed-type-anchor) | Create a detailed summary of a HED in dataset <br/>(used to automatically extract experimental designs). |
+|  | [*summarize_events_to_sidecar*](summarize-events-to-sidecar-anchor) | Generate a sidecar template from an event file. |
+|  | [*summarize_hed_type*](summarize-hed-type-anchor) | Create a detailed summary of a particular tag <br/>(used to automatically extract experimental designs). |
 ````
 
 The **clean-up** operations are used at various phases of restructuring to assure consistency
