@@ -25,12 +25,12 @@ HED resources
    :caption: Tools:
 
    HedSchemaViewers.md
+   HedOnlineTools.md
    CTaggerGuiTaggingTool.md
    FileRemodelingTools.md
-   HedOnlineTools.md
    HedPythonTools.md
-   HedMatlabTools.md
    HedJavascriptTools.md
+   HedMatlabTools.md
 
 
 .. toctree::
