@@ -6,9 +6,9 @@ This tutorial takes you through the process of using CTagger, a user interface w
 CTagger can be used as a standalone application or as part of the EEGLAB BIDS data pipeline,
 making it easy to integrate the annotation pipeline mentioned in the Quick guide.
 
-## Installation
+## CTAGGER installation
 
-### Standalone application installation
+### CTAGGER standalone installation
 
 #### Step 1:Check to see that you have Java installed.
 Linux usually comes with OpenJDK (open source version of JDK) already installed.
@@ -31,7 +31,7 @@ On Linux, you might need to make the jar executable first by executing `chmod +x
 while in the directory containing the downloaded CTagger.
 
 
-### Installation in the EEGLAB environment
+### CTAGGER in EEGLAB
 
 Install HEDTools plugin. Installation is done through the **Manage EEGLAB extensions**
 options on the EEGLAB GUI File menu. The HEDTools options then appear under the EEGLAB Edit
