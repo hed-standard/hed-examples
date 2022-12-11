@@ -25,9 +25,11 @@ This user's guide contains the following topics:
 * [**Remodel command-line interface**](remodel-command-line-interface-anchor)
 * [**Remodel scripts**](remodel-scripts-anchor)
 * [**Remodel with HED**](remodel-with-hed-anchor)
-* [**Remodel file format**](remodel-file-format-anchor)
-* [**Remodel operations**](remodel-operations-anchor)
-  * [**Create event**](create-event-anchor)
+* [**Remodel data formats**](remodel-file-format-anchor)
+  * [**Example remodel file**](example-remodel-file-anchor)
+  * [**Example event file**](example-event-file-anchor)
+  * [**Example json sidecar**](example-json-sidecar-anchor)
+* [**Remodel file operations**](remodel-file-operations-anchor)
   * [**Factor column**](factor-column-anchor) 
   * [**Factor HED tags**](factor-hed-tags-anchor) 
   * [**Factor HED type**](factor-hed-type-anchor)
@@ -39,6 +41,7 @@ This user's guide contains the following topics:
   * [**Rename columns**](rename-columns-anchor)
   * [**Reorder columns**](reorder-columns-anchor)
   * [**Split event**](split-event-anchor)
+* [**Remodel summary operations**](remodel-summary-operations-anchor)
   * [**Summarize column names**](summarize-column-names-anchor)
   * [**Summarize column values**](summarize-column-values-anchor)
   * [**Summarize events to sidecar**](summarize-events-to-sidecar-anchor)
@@ -107,7 +110,6 @@ and links to further documentation. Operations not listed in the summarization s
 |  | [*factor_hed_tags*](factor-hed-tags-anchor) | Extract factor vectors from search queries of HED annotations. |
 |  | [*factor_hed_type*](factor-hed-type-anchor) | Extract design matrices and/or condition variables. |
 | **restructure** |  |  | 
-|  | [*create_event*](create-event-anchor) |   |   |
 |  | [*merge_consecutive*](merge-consecutive-anchor) | Replace multiple consecutive events of the same type<br/>with one event of longer duration. |
 |   | [*number_groups*](number-groups-anchor)  |   |
 |   | [*number_rows*](number-rows-anchor)   |    | 
@@ -365,7 +367,7 @@ The backups provide useful state and provenance information about the data.
 (restructuring-event-files-anchor)=
 ### Restructuring event files
 
-Restructuring consists of applying a sequence of transformations from the 
+Restructuring consists of applying a sequence of operations from the 
 [**Remodel operation summary table**](remodel-operation-summary-anchor) 
 to the backup files corresponding to the event files in the dataset.
 The transformations are specified as a list of dictionaries in a JSON file in the
@@ -538,6 +540,8 @@ which contains a single operation with instructions to remove the `value` and `s
 from an event file if the columns exist.
 
 (example-remodel-file-anchor)=
+### Example remodel file
+
 ````{admonition} JSON remodeling file with an operation to remove the value and sample columns if they exist.
 :class: tip
 
@@ -564,7 +568,7 @@ Finally, the "parameters" value is a dictionary mapping parameter name to
 parameter value. 
 
 The parameters for each operation are listed in the 
-[**Remodel operations**](remodel-operations-anchor) section.
+[**Remodel file operations**](remodel-file-operations-anchor) section.
 An operation may have both required and optional parameters.
 Optional parameters may be omitted if unneeded, but all parameters are specified in
 the "parameters" section of the dictionary.
@@ -574,8 +578,8 @@ Although these files can be stored anywhere, their preferred location is
 in the `deriviatves/remodel/transformations` subdirectory under the dataset root so
 that they can provide provenance for the dataset.
 
-(remodel-operations-anchor)=
-## Remodel operations
+(example-event-file-anchor)=
+### Example event file
 
 The examples in this tutorial use the following excerpt of the stop-go task from sub-0013
 of the AOMIC-PIOP2 dataset available on [OpenNeuro](https://openneuro.org) as ds002790.
@@ -593,6 +597,10 @@ The full events file is
 | 17.1021 | 0.5083 | unsuccesful_stop | 0.25 | 0.633 | correct | left | male |
 | 21.6103 | 0.5083 | go | n/a | 0.443 | correct | left | male |
 ````
+
+(example-json-sidecar-anchor)=
+### Example JSON sidecar
+
 
 The *factor_hed_type* and *factor_hed_tags* also require HED annotations of
 the events and require a JSON sidecar that includes HED annotations. 
@@ -635,10 +643,8 @@ The tutorials use the latest version that is downloaded from the web.
 ```
 ````
 
-(create-event-anchor)=
-### Create event
-
-... coming soon ...
+(remodel-file-operations-anchor)=
+## Remodel file operations
 
 (factor-column-anchor)=
 ### Factor column
@@ -1096,7 +1102,7 @@ If *ignore_missing* had been false, a `KeyError` would have been generated.
 Remove rows eliminates rows in which the named column has one of the specified values.
 
 (remove-rows-parameters-anchor)=
-####Remove rows parameters
+#### Remove rows parameters
 
 ```{admonition} Parameters for *remove_rows*.
 :class: tip
@@ -1384,6 +1390,9 @@ Note that the event numbers are added before the splitting and then
 copied as the new events are created.
 This strategy results in a trial number column associated with the events,
 an alternative to the more complicated process of adding a structure column after splitting.
+
+(remodel-summary-operations-anchor)=
+## Remodel summary operations
 
 (summarize-column-names-anchor)=
 ### Summarize column names

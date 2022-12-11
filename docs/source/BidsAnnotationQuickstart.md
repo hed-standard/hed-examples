@@ -406,7 +406,7 @@ to select HED tags.
 
 Once you have finished, you should validate your JSON file to make sure
 that your annotations are correct.
-See [**HED validation**](./HedValidation.md) for detailed guidance.
+See the [**HED validation guide**](./HedValidationGuide.md) for detailed guidance.
 When you are satisfied with your valid JSON sidecar,
 simply upload it to the root directory of your BIDS dataset, and you are done.
 

@@ -9,7 +9,7 @@ HED resources
 
 .. toctree::
    :maxdepth: 3
-   :caption: Guides:
+   :caption: Tutorials:
 
    HedIntroduction.md
    BidsAnnotationQuickstart.md
@@ -22,15 +22,15 @@ HED resources
 
 .. toctree::
    :maxdepth: 3
-   :caption: Tools:
+   :caption: Tool documentation:
 
    HedSchemaViewers.md
+   HedOnlineTools.md
    CTaggerGuiTaggingTool.md
    FileRemodelingTools.md
-   HedOnlineTools.md
    HedPythonTools.md
-   HedMatlabTools.md
    HedJavascriptTools.md
+   HedMatlabTools.md
 
 
 .. toctree::
