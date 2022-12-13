@@ -1,26 +1,34 @@
 (file-remodeling-tools-anchor)=
 # File remodeling tools
 
-Restructuring or **remodeling** refers to the process of transforming a tabular file
-(usually representing dataset events) into a different form in order to disambiguate the
+**Remodeling** refers to the process of transforming a tabular file
+into a different form in order to disambiguate the
 information or to facilitate a particular analysis.
+The remodeling operations are specified in a JSON (`.json`) file,
+giving a record of the transformations performed.
+
+There are two types of remodeling operations: **transformation** and **summarization**.
+The **transformation** operations modify the tabular files,
+while **summarization** produces an auxiliary information file but leaves
+the tabular files unchanged.
 
 The file remodeling tools can be applied to any tab-separated value (`.tsv`) file
 but are particularly useful for restructuring files representing experimental events.
-Please read the [**Event file restructuring quickstart**](https://hed-examples.readthedocs.io/en/latest/EventFileRestructuringQuickstart.html)
-tutorials for an introduction to file restructuring and basic use of the tools.
+Please read the [**File remodeling quickstart**](./FileRemodelingQuickstart.md)
+tutorials for an introduction and basic use of the tools.
 
-These restructuring tools can be applied to individual files using the 
+The file remodeling tools can be applied to individual files using the 
 [**HED online tools**](https://hedtools.ucsd.edu/hed) or to entire datasets 
 using the [**remodel command-line interface**](remodel-command-line-interface-anchor)
 either by calling Python scripts directly from the command line 
 or by embedding calls in a Jupyter notebook.
-The tools are also available as [**HED RESTful services**](https://hed-examples.readthedocs.io/en/latest/HedOnlineTools.html#hed-restful-services).
+The tools are also available as 
+[**HED RESTful services**](./HedOnlineTools.md#hed-restful-services).
 The online tools are particularly useful for debugging.
 
 This user's guide contains the following topics:
 
-* [**Event remodel overview**](event-remodel-overview-anchor)
+* [**The remodeling process**](the-remodeling-process-anchor)
 * [**Installing the remodel tools**](installing-the-remodel-tools-anchor)
 * [**Remodel command-line interface**](remodel-command-line-interface-anchor)
 * [**Remodel scripts**](remodel-scripts-anchor)
@@ -29,7 +37,7 @@ This user's guide contains the following topics:
   * [**Example remodel file**](example-remodel-file-anchor)
   * [**Example event file**](example-event-file-anchor)
   * [**Example json sidecar**](example-json-sidecar-anchor)
-* [**Remodel file operations**](remodel-file-operations-anchor)
+* [**Remodel transformations**](remodel-transformations-anchor)
   * [**Factor column**](factor-column-anchor) 
   * [**Factor HED tags**](factor-hed-tags-anchor) 
   * [**Factor HED type**](factor-hed-type-anchor)
@@ -38,57 +46,76 @@ This user's guide contains the following topics:
   * [**Number rows**](number-rows-anchor)
   * [**Remap columns**](remap-columns-anchor)
   * [**Remove columns**](remove-columns-anchor) 
+  * [**Remove rows**](remove-rows-anchor) 
   * [**Rename columns**](rename-columns-anchor)
   * [**Reorder columns**](reorder-columns-anchor)
   * [**Split event**](split-event-anchor)
-* [**Remodel summary operations**](remodel-summary-operations-anchor)
+* [**Remodel summarizations**](remodel-summarizations-anchor)
   * [**Summarize column names**](summarize-column-names-anchor)
   * [**Summarize column values**](summarize-column-values-anchor)
   * [**Summarize events to sidecar**](summarize-events-to-sidecar-anchor)
+  * [**Summarize hed tags**](summarize-hed-tags-anchor)
   * [**Summarize hed type**](summarize-hed-type-anchor)
-* [**Remodel implementation details**](remodel-implementation-details-anchor)
+  * [**Summarize hed validation**](summarize-hed-validation-anchor)
+* [**Remodel implementation**](remodel-implementation-anchor)
 
 
-(event-remodel-overview-anchor)=
-## Event remodel overview
+(the-remodeling-process-anchor)=
+## The remodeling process
 
-Remodeling consists of restructuring event files based on a specified list of operations.
+Remodeling consists of restructuring and/or extracting information from tab-separated
+value files based on a specified list of operations contained in a JSON file.
+
+Internally, the remodeling operations represent the tabular file using a
+[**Pandas DataFrame**](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html).
 
 (transformation-operations-anchor)=
 ### Transformation operations
-The most common type of operation is a **transformation**, shown schematically in the following
-figure:
+
+**Transformation** operations, shown schematically in the following
+figure, are designed to transform an incoming tabular file
+into a new DataFrame without modifying the incoming data.
 
 ![Transformation operations](./_static/images/TransformationOperations.png)
 
-These operations are designed to transform an incoming tabular file 
-(internally a [Pandas DataFrame](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html))
-into a new data frame (without modifying the incoming data).
 Transformation operations are stateless and do not save any context information or
 affect future applications of the transformation.
-Transformations do not have any output except for the transformed dataframe.
-After all requested operations have been performed, the remodeling tools write the new dataframe.
 
+Transformations, themselves, do not have any output and just return a new,
+transformed DataFrame.
+In other words, transformations do not operate in place on the incoming DataFrame,
+but rather, they create a new DataFrame containing the result.
 
-(summary-operations-anchor)=
-### Summary operations
+Typically, the calling program is responsible for reading and saving the tabular file,
+so the user can choose whether to overwrite or create a new file.
 
-The other type of operation supported by the remodeling tools is the **summary** shown
-schematically in the following diagram.
+See the [**remodeling tool program interface**](remodel-command-line-interface-anchor)
+section for information on how to call the operations.
+
+(summarization-operations-anchor)=
+### Summarization operations
+
+**Summarization** operations do not modify the input DataFrame
+but rather extract and save information from the input DataFrame 
+in an internally stored context state as shown schematically in the following figure.
 
 ![Summary operations](./_static/images/SummaryOperation.png)
 
-Summary operations do not modify the input dataframe
-but rather extract and save information from the input dataframe in an internally stored context state.
-The dispatcher that executes remodeling operations can be interrogated at any time for the state information
-and can save the contexts.
-The information is accumulated in a summary context object, which, depending on the type of summary,
-may be kept individually for files or combined for files across the dataset.
-Summary operations may appear anywhere in the operation list, and the same type of summary may
-appear multiple times under different names in order to track progress.
+The dispatcher that executes remodeling operations can be interrogated at any time
+for the state information contained in the context and can save the contexts.
 Usually summaries are dumped at the end of processing to the `derivatives/remodel/summaries`
 subdirectory under the dataset root.
 
+Summarization operations may appear anywhere in the operation list,
+and the same type of summary may appear multiple times under different names in order to track progress.
+
+The dispatcher stores information from each uniquely named summarization operation 
+as a separate context.
+Within its context information, most summarization operations keep a separate 
+summary for each individual file and have methods to create an overall summary
+of the information for all the files that have been processed by the summarization..
+
+Summarization results are available in JSON (`.json`) and text (`.txt) formats.
 
 (available-operations-anchor)=
 ### Available operations
@@ -119,7 +146,9 @@ and links to further documentation. Operations not listed in the summarization s
 |  | [*summarize_column_names*](summarize-column-names-anchor) | Summarize column names and order in the files. |
 |  | [*summarize_column_values*](summarize-column-values-anchor) | Count the occurrences of the unique column values. |
 |  | [*summarize_events_to_sidecar*](summarize-events-to-sidecar-anchor) | Generate a sidecar template from an event file. |
-|  | [*summarize_hed_type*](summarize-hed-type-anchor) | Create a detailed summary of a particular tag <br/>(used to automatically extract experimental designs). |
+|  | [*summarize_hed_tags*](summarize-hed-tags-anchor) | Summarize the HED tags present in the  <br/> HED annotations for the dataset. |
+|  | [*summarize_hed_type*](summarize-hed-type-anchor) | Summarize the detailed usage of a particular type tag <br/> such as *Condition-variable* or *Task* <br/> (used to automatically extract experimental designs). |
+|  | [*summarize_hed_validation*](summarize-hed-validation-anchor) | Validate the data files and report any errors. |
 ````
 
 The **clean-up** operations are used at various phases of restructuring to assure consistency
@@ -139,12 +168,13 @@ The **summarize** operations produce dataset-wide summaries of various aspects o
 ## Installing the remodel tools 
 
 The remodeling tools are available in the GitHub 
-[**hed-python repository**](https://github.com/hed-standard/hed-python)
+[**hed-python**](https://github.com/hed-standard/hed-python) repository
 along with other tools for data cleaning and curation.
 Although version 0.1.0 of this repository is available on [**PyPI**](https://pypi.org/)
 as `hedtools`, the version containing the restructuring tools (Version 0.2.0)
 is still under development and has not been officially released.
-However, the code is publicly available on the hed-python repository and
+However, the code is publicly available on the `develop` brnach of the 
+hed-python repository and
 can be directly installed from GitHub using `pip`:
 
 ```text
@@ -154,11 +184,10 @@ pip install git+https://github.com/hed-standard/hed-python/@develop
 The web services and online tools supporting restructuring are available
 on the [**HED online tools dev server**](https://hedtools.ucsd.edu/hed_dev).
 When version 0.2.0 of `hedtools` is officially released on PyPI, restructuring
-will become available on the [**HED online tools**](https://hedtools.ucsd.edu/hed).
+will become available on the released [**HED online tools**](https://hedtools.ucsd.edu/hed).
 A docker version is also under development.
 
 The following diagram shows a schematic of the remodeling process.
-
 
 ![Event remodeling process](./_static/images/EventRemappingProcess.png)
 
@@ -166,13 +195,16 @@ Initially, the user creates a backup of the event files.
 This backup is a mirror of the events.tsv files in the dataset,
 but is located in the `derivatives/remodel/backups` directory and never modified once the backup is created.
 
-Restructuring applies a sequence of remodeling operations specified in a JSON transformation file
+Restructuring applies a sequence of remodeling operations specified in a JSON remodel file
 to the backup versions of the specified event files.
-The transformation file provides a record of the operations performed on the file.
+The JSON file provides a record of the operations performed on the file.
 If the user detects a mistake in the transformations,
 he/she can correct the transformation file and rerun the transformations.
+
 Restructuring always runs on the original backup version of the file rather than
 the transformed version, so the transformations can always be corrected and rerun.
+It is possible to by-pass the backup, particularly if only using summarization operations,
+but this is not recommended and should be done with care.
 
 (remodel-command-line-interface-anchor)=
 ## Remodel command-line interface
@@ -182,31 +214,37 @@ to create or restore backups and to apply the transformations to the files in a 
 The file remodeling tools may be applied to datasets that are in free form under a directory root
 or that are in [**BIDS-format**](https://bids.neuroimaging.io/).
 Some operations use [**HED (Hierarchical Event Descriptor)**](https://hed-examples.readthedocs.io/en/latest/HedIntroduction.html) annotations.
-See [**Remodel with HED**](remodel-with-hed-anchor) for a discussion
+See the [**Remodel with HED**](remodel-with-hed-anchor) section for a discussion
 of these operations and how to use them in your transformations.
 
 The remodeling command-line interface can be used from the command line,
 called from another Python program, 
 or used in a Jupyter notebooks.
-Example notebooks can be found in 
-[**Jupyter notebooks to support remodeling**](https://github.com/hed-standard/hed-examples/tree/main/hedcode/jupyter_notebooks/remodeling).
+Example notebooks can be found in the
+[**Jupyter notebooks**](https://github.com/hed-standard/hed-examples/tree/main/hedcode/jupyter_notebooks/remodeling)
+ to support remodeling.
 
 
 (calling-remodel-tools-anchor)=
 ### Calling remodel tools
 
-The basic scripts are summarized in the following table.
-All the scripts have a required parameter, which is the full path of the dataset root (*data_dir*).
+The remodeling tools provide three Python programs for backup (*run_remodel_backup*),
+remodeling (*run_remodel*) and restoring (*run_remodel_restore) event files.
+These programs can be called from the command line or from another Python program.
+
+The programs use a standard command line argument list for specifying input as summarized in the following table.
 
 (remodeling-operation-summary-anchor)=
-````{table} Summary of the remodeling scripts.
+````{table} Summary of command line arguments for the remodeling programs.
 | Script name | Arguments | Purpose | 
 | ----------- | -------- | ------- |
-|*run_remodel_backup* | *data_dir*<br/>*-n --backup_name*<br/>*-t --task-names*<br/>*-e --extensions*<br/>*-f --file-suffix*<br/>*-x --exclude_dirs*<br/>*-v --verbose* | Create a backup event files. |
-|*run_remodel* | *data_dir*<br/>*model_path*<br/>*-n --backup_name*<br/>*-t --task-names*<br/>*-e --extensions*<br/>*-f --file-suffix*<br/>*-j --json-sidecar*<br/>*-r --hed-version*<br/>*-s --save-formats*<br/>*-x --exclude-dirs*<br/>*-b --bids-format*<br/>*-v --verbose* | Restructure or summarize the event files. |
-|*run_remodel_restore* | *data_dir*<br/>*-n --backup_name*<br/>*-v --verbose* | Restore a backup of event files. |
+|*run_remodel_backup* | *data_dir*<br/>*-e -\\-extensions*<br/>*-f -\\-file-suffix*<br/>*-n -\\-backup-name*<br/>*-t -\\-task-names*<br/>*-v -\\-verbose*<br/>-x -\\-exclude-dirs*| Create a backup event files. |
+|*run_remodel* | *data_dir*<br/>*model_path*<br/>*-b -\\-bids-format*<br/>*-e -\\-extensions*<br/>*-f -\\-file-suffix*<br/>*-i =\\-include-individual*<br/>*-n -\\-backup-name*<br/>*-j -\\-json-sidecar*<br/>*-r -\\-hed-version*<br/>*-s -\\-save-formats*<br/>*-t -\\-task-names*<br/>*-v -\\-verbose*<br/>*-x -\\-exclude-dirs* | Restructure or summarize the event files. |
+|*run_remodel_restore* | *data_dir*<br/>*-n -\\-backup-name*<br/>*-v -\\-verbose* | Restore a backup of event files. |
 
 ````
+All the scripts have a required argument, which is the full path of the dataset root (*data_dir*).
+The *run_remodel* program has a required parameter which
 
 (remodel-command-line-arguments-anchor)=
 ### Remodel command-line arguments
@@ -222,68 +260,76 @@ Positional arguments are required and must be given in the order specified.
 > The full path of dataset root directory.
 
 `model_path`
-> The full path of the JSON remodel file.
+> The full path of the JSON remodel file (for *run_remodel* only).
 > 
 #### Named arguments
 
 Named arguments consist of a key starting with a hyphen and possibly a value.
-Named arguments can given in any order or omitted. 
+Named arguments can be given in any order or omitted. 
 If omitted, a specified default is used.
 Argument keys and values are separated by spaces.
 For argument values that are lists, the key is given followed by the items in the list,
 all separated by spaces.
+Each command has two different forms of the key name: a short form and a longer form.
+Users are free to use either form.
 
 `-b`, `--bids-format`
-> If this flag present, the dataset is in BIDS format with sidecars.
-
+> If this flag present, the dataset is in BIDS format with sidecars. Tabular files are located using BIDS naming.
 
 `-e`, `--extensions`
-> This option is followed by the file extension(s) of the tab-separated data files to process. The default is `.tsv`.
+> This option is followed by a list of file extension(s) of the data files to process.
+> The default is `.tsv`. Comma separated tabular files are not permitted.
 
 `-f`, `--file-suffix`
-> This option is followed by the suffix names of the files to be processed (`events` by default).
+> This option is followed by the suffix names of the files to be processed.
+> For example `events` (the default) captures files named `events.tsv` if the default extension is used.
 > The filename without the extension must end in one of the specified suffixes in order to be
 > backed up or transformed.
 
+`-i`, `--include-individual`
+> If this flag is present, summary information for individual files as well as an overall dataset summary
+> is reported for all summarization operations.
 
 `-j`, `--json-sidecar`
 > This option is followed by the full path of the JSON sidecar with HED annotations to be
-> applied during the processing of HED-related remodelng operations.
+> applied during the processing of HED-related remodeling operations.
 
 `-n`, `--backup_name`
 > The name of the backup used for the remodeling (`default_back` by default).
 
 `-r`, `--hed-versions`
-> This option is followed by one or more HED versions. Versions of the base schema are specified
+> This option is followed by one or more HED versions. Versions of the standard schema are specified
 > by their semantic versions (e.g., 8.1.0), while library schema versions are prefixed by their
 > library name (e.g., score_1.0.0). If more than one version is given,
 > only one version can be unprefixed. The remaining versions must have short-name prefixes such as sc:
 > to distinguish among them. These short names also prefix the tags used from the corresponding schema.
 
 `-s`, `--save-formats`
-> This option is followed by the extensions (including .) indicating the formats in which 
+> This option is followed by the extensions (including .) of the formats in which 
 > to save summaries (defaults: '.txt' '.json').
 
 `-t`, `--task-names`
 > The name(s) of the tasks to be included (for BIDS-formatted files only).
-> When a dataset includes multiple tasks, the event files are structured 
+> When a dataset includes multiple tasks, the event files are often structured 
 > differently for each task and thus require different transformation files.
 > This option allows the backups and operations to be restricted to a single task.
+> If this option is omitted, all tasks are used.
 
 `-v`, `--verbose`
-> If present, output more comprehensive messages documenting transformation progress.
+> If present, more comprehensive messages documenting transformation progress
+> are printed to standard output.
 
 `-x`, `--exclude-dirs`
 > The directories to exclude when gathering the data files to process.
-> For BIDS datasets, this is typically `derivatives`, `stimuli`, and `sourcecode`.
-> The `derivatives/remodel` directory is automatically excluded from remodeling, as
-> this directory is reserved to state and result information.
+> For BIDS datasets, these are typically `derivatives`, `stimuli`, and `sourcecode`.
+> Any subdirectory named `remodel` is automatically excluded from remodeling, as
+> these directories are reserved for storing backup, state, and result information for the remodeling process itself.
 
 (remodel-scripts-anchor)=
 ## Remodel scripts
 
 This section discusses the three main remodeling scripts with command-line interfaces
-to support backup, remodeling, and restoring.
+to support backup, remodeling, and restoring the tabular files used in the remodeling process.
 
 (backing-up-events-anchor)=
 ### Backing up events
@@ -301,6 +347,7 @@ which can be found in the `datasets` subdirectory of the
 The backup process creates a mirror of the directory structure of the source files to be backed up
 in the directory `derivatives/backup_name/backup_root` as shown in the figure above. 
 The default backup name is `default_back`.
+
 In the above example, the backup has subdirectories `sub-002` and `sub-003` just
 like the main directory of the dataset.
 These subdirectories only contain backups of the files to be transformed 
@@ -314,7 +361,7 @@ The following example shows how to run the `run_remodel_backup.py` program from 
 to back up the dataset located at `/datasets/eeg_ds003654s_hed_remodel`.
 
 (remodel-backup-anchor)=
-````{admonition} Example command to backup the events.
+````{admonition} Example command-line to backup the events.
 :class: tip
 
 ```bash
@@ -330,7 +377,7 @@ These choices can be overridden using additional command-line arguments.
 
 The following shows how the `run_remodel_backup` program can be called from a 
 Python program or a Jupyter notebook.
-The command-line arguments are given a list instead of on the command line.
+The command-line arguments are given in a list instead of on the command line.
 
 (remodel-backup-jupyter-anchor)=
 ````{admonition} Example Jupyter notebook to run backup.
@@ -358,26 +405,28 @@ Users can also create alternatively named backups by providing the `-n` argument
 the run_remodel_backup program.
 To use backup files from another named backup, call the remodeling program with
 the `-n` argument and the correct backup name.
-Alternatively named backups can provide the equivalent of checkpoints in order to execute
+Named backups can provide the equivalent of checkpoints in order to execute
 transformations from intermediate points.
 
 **NOTE**: You should not delete backups, even if you have created multiple named backups.
 The backups provide useful state and provenance information about the data.
 
-(restructuring-event-files-anchor)=
-### Restructuring event files
+(remodel-files-anchor)=
+### Remodel files
 
-Restructuring consists of applying a sequence of operations from the 
+Remodeling consists of applying a sequence of operations from the 
 [**Remodel operation summary table**](remodel-operation-summary-anchor) 
 to the backup files corresponding to the event files in the dataset.
+If the dataset has no backup files in `data-`
 The transformations are specified as a list of dictionaries in a JSON file in the
 [**Remodel file format**](remodel-file-format-anchor) as discussed below.
 
 Before running remodeling transformations on an entire dataset,
-consider using the [**HED online tools**](https://hedtools.ucds.edu/hed) 
+consider using the [**HED online tools**](https://hedtools.ucsd.edu/hed) 
 to debug your remodeling operations on a single file.
-You are also required to [**create the backup**](backing-up-events-anchor) (once) 
-before running the transformations on the entire dataset.
+You are expected create to [**create the backup**](backing-up-events-anchor) (just once) 
+before running the remodeling operations.
+The only time a backup is not necessary is if you are only doing summarization operations.
 
 The transformation process always starts with the original backup files,
 so the usual development path is to incrementally add operations to the end 
@@ -403,6 +452,7 @@ Usually, the JSON remodel files are stored with the dataset itself in the
 An additional keyword option, `-x` indicates that directory paths containing the component `derivatives`
 or the component `stimuli` should be excluded.
 Excluded directories do not have to be at the top level of the dataset.
+Directory paths containing the `remodel` component are automatically excluded.
 
 The command-line interface can also be used in a Jupyter notebook or as part of a larger Python
 program by calling the `main` function with the equivalent command-line arguments provided
@@ -567,8 +617,9 @@ not just a description of the operation itself.
 Finally, the "parameters" value is a dictionary mapping parameter name to 
 parameter value. 
 
-The parameters for each operation are listed in the 
-[**Remodel file operations**](remodel-file-operations-anchor) section.
+The parameters for each operation are listed in
+[**Remodel transformations**](remodel-transformations-anchor) and
+[**Remodel summarizations**](remodel-summarizations-anchor) and.
 An operation may have both required and optional parameters.
 Optional parameters may be omitted if unneeded, but all parameters are specified in
 the "parameters" section of the dictionary.
@@ -643,8 +694,8 @@ The tutorials use the latest version that is downloaded from the web.
 ```
 ````
 
-(remodel-file-operations-anchor)=
-## Remodel file operations
+(remodel-transformations-anchor)=
+## Remodel transformations
 
 (factor-column-anchor)=
 ### Factor column
@@ -1391,8 +1442,8 @@ copied as the new events are created.
 This strategy results in a trial number column associated with the events,
 an alternative to the more complicated process of adding a structure column after splitting.
 
-(remodel-summary-operations-anchor)=
-## Remodel summary operations
+(remodel-summarizations-anchor)=
+## Remodel summarizations
 
 (summarize-column-names-anchor)=
 ### Summarize column names
@@ -1746,6 +1797,102 @@ are shown in the following example using the text format.
 ```
 ````
 
+(summarize-hed-tags-anchor)=
+### Summarize HED tags
+
+The summarize HED tags operation extracts experimental design matrices or other
+experimental structure.
+This summary operation assumes that the structure in question is suitably 
+annotated with HED (Hierarchical Event Descriptors). 
+The [**HED conditions and design matrices**](https://hed-examples.readthedocs.io/en/latest/HedConditionsAndDesignMatrices.html)
+explains how this works.
+
+(summarize-hed-tags-parameters-anchor)=
+#### Summarize HED tags parameters
+
+The *summarize_column_names* operation only has the two parameters required of
+all summarizes. 
+The *summarize_column_names* operation only has the two parameters required of
+all summarizes. 
+
+```{admonition} Parameters for the *summarize_hed_tags* operation.
+:class: tip
+
+|  Parameter   | Type | Description | 
+| ------------ | ---- | ----------- | 
+| *summary_name* | str | A unique name used to identify this summary.| 
+| *summary_filename* | str | A unique file basename to use for saving this summary. |
+| *type_tag* | str | Tag to produce a summary for (most often *condition-variable*).| 
+```
+The *summary_name* is the unique key used to identify the
+particular incarnation of this summary in the dispatcher.
+Since a particular operation file may use a given operation multiple times,
+care should be taken to make sure that it is unique.
+
+The *summary_filename* should also be unique and is used for saving the summary upon request.
+When the remodeler is applied to full datasets rather than single files,
+the summaries are saved in the `derivatives/remodel/summaries` directory under the dataset root.
+A time stamp and file extension are appended to the *summary_filename* when the
+summary is saved.
+
+The *type_tag* can be any tag, but for experimental design summaries the *condition-variable*
+tag is used.
+
+
+(summarize-hed-tags-example-anchor)=
+#### Summarize HED tags example
+
+````{admonition} An example *summarize_hed_tags* operation.
+:class: tip
+```json
+{
+   "operation": "summarize_hed_tags",
+   "description": "Summarize column names.",
+   "parameters": {
+       "summary_name": "AOMIC_condition_variables",
+       "summary_filename": "AOMIC_condition_variables",
+       "type_tag": "condition-variable"
+   }
+}
+```
+````
+
+The results of executing this operation on the
+[sample remodel events file](sample-remodel-events-file-anchor) are shown below.
+
+````{admonition} Text summary of *summarize_hed_tags* operation on the sample remodel file.
+:class: tip
+
+```text
+Context name: AOMIC_condition_variables
+Context type: summarize_hed_tags
+Context filename: AOMIC_condition_variables
+Summary:
+    image-sex: 
+        variable_value: image-sex
+        variable_type: condition-variable
+        levels: 2
+        direct_references: 0
+        total_events: 6
+        events: 6
+        multiple_events: 0
+        multiple_event_maximum: 1
+        level_counts: 
+            female-image-cond: 
+                files: 1
+                events: 4          
+            male-image-cond: 
+                files: 1
+                events: 2
+```
+````
+
+Because *summarize_hed_tags* is a HED operations, we must also provide information
+about the HED annotations.
+This summary was produced by using `hed_version="8.1.0"` when creating the `dispatcher`
+and using the [HED aomic sidecar](sample-remodel-sidecar-file-anchor) in the `do_op`.
+The sidecar provides the annotations that use the `condition-variable` tag in the summary.
+
 
 (summarize-hed-type-anchor)=
 ### Summarize HED type
@@ -1843,8 +1990,104 @@ This summary was produced by using `hed_version="8.1.0"` when creating the `disp
 and using the [HED aomic sidecar](sample-remodel-sidecar-file-anchor) in the `do_op`.
 The sidecar provides the annotations that use the `condition-variable` tag in the summary.
 
-(remodel-implementation-details-anchor)=
-## Remodel implementation details
+(summarize-hed-validation-anchor)=
+### Summarize HED validation
+
+The summarize HED validation operation is designed to extract experimental design matrices or other
+experimental structure.
+This summary operation assumes that the structure in question is suitably 
+annotated with HED (Hierarchical Event Descriptors). 
+The [**HED conditions and design matrices**](./HedConditionsAndDesignMatrices.md)
+explains how this works.
+
+(summarize-hed-validation-parameters-anchor)=
+#### Summarize HED validation parameters
+
+The *summarize_column_names* operation only has the two parameters required of
+all summarizes. 
+The *summarize_column_names* operation only has the two parameters required of
+all summarizes. 
+
+```{admonition} Parameters for the *summarize_hed_validation* operation.
+:class: tip
+
+|  Parameter   | Type | Description | 
+| ------------ | ---- | ----------- | 
+| *summary_name* | str | A unique name used to identify this summary.| 
+| *summary_filename* | str | A unique file basename to use for saving this summary. |
+| *check_for_warnings* | bool | If true, warnings should be reported.| 
+```
+The *summary_name* is the unique key used to identify the
+particular incarnation of this summary in the dispatcher.
+Since a particular operation file may use a given operation multiple times,
+care should be taken to make sure that it is unique.
+
+The *summary_filename* should also be unique and is used for saving the summary upon request.
+When the remodeler is applied to full datasets rather than single files,
+the summaries are saved in the `derivatives/remodel/summaries` directory under the dataset root.
+A time stamp and file extension are appended to the *summary_filename* when the
+summary is saved.
+
+The *check_for_warnings* flag indicates whether warnings should be reported.
+**Add discussion of warnings versus errors**.
+
+
+(summarize-hed-validation-example-anchor)=
+#### Summarize HED validation example
+
+````{admonition} An example *summarize_hed_type* operation.
+:class: tip
+```json
+{
+   "operation": "summarize_hed_type",
+   "description": "Summarize column names.",
+   "parameters": {
+       "summary_name": "AOMIC_condition_variables",
+       "summary_filename": "AOMIC_condition_variables",
+       "type_tag": "condition-variable"
+   }
+}
+```
+````
+
+The results of executing this operation on the
+[sample remodel events file](sample-remodel-events-file-anchor) are shown below.
+
+````{admonition} Text summary of *summarize_hed_types* operation on the sample remodel file.
+:class: tip
+
+```text
+Context name: AOMIC_condition_variables
+Context type: summarize_hed_type
+Context filename: AOMIC_condition_variables
+Summary:
+    image-sex: 
+        variable_value: image-sex
+        variable_type: condition-variable
+        levels: 2
+        direct_references: 0
+        total_events: 6
+        events: 6
+        multiple_events: 0
+        multiple_event_maximum: 1
+        level_counts: 
+            female-image-cond: 
+                files: 1
+                events: 4          
+            male-image-cond: 
+                files: 1
+                events: 2
+```
+````
+
+Because *summarize_hed_validation* is a HED operation,
+we must also provide information about the HED annotations.
+This summary was produced by using `hed_version="8.1.0"` when creating the `dispatcher`
+and using the [HED aomic sidecar](sample-remodel-sidecar-file-anchor) in the `do_op`.
+The sidecar provides the annotations that use the `condition-variable` tag in the summary.
+
+(remodel-implementation-anchor)=
+## Remodel implementation
 
 Operations are defined as classes that extent `BaseOp` regardless of whether 
 they are transformations or summaries. However, summaries must also implement
