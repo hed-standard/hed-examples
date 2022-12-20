@@ -15,7 +15,7 @@ for example, during the conversion from the experimental control software format
 The tools can be run using a command-line script, called from a Jupyter notebook,
 or run using online tools. This quickstart covers the basic concepts of remodeling and
 develops some basic examples of how remodeling is used. See the 
-[**File remodeling tools**](https://hed-examples.readthedocs.io/en/latest/FileRemodelingTools.html#)
+[**File remodeling tools**](./FileRemodelingTools.md)
 guide for detailed descriptions of the available operations.
 
 * [**What is restructuring?**](what-is-event-file-restructuring-anchor)
@@ -71,8 +71,6 @@ The following table gives a summary of the tools available in the HED remodeling
 |  | [*factor_hed_type*](factor-hed-type-anchor) | Extract design matrices and/or condition variables. |
 | **restructure** |  |  | 
 |  | [*merge_consecutive*](merge-consecutive-anchor) | Replace multiple consecutive events of the same type<br/>with one event of longer duration. |
-|   | [*number_groups*](number-groups-anchor)  |   |
-|   | [*number_rows*](number-rows-anchor)  |    | 
 |  | [*remap_columns*](remap-columns-anchor) | Create *m* columns from values in *n* columns (for recoding). |
 |  | [*split_event*](split-event-anchor) | Split trial-encoded rows into multiple events. |
 | **summarization** |  |  | 
@@ -161,7 +159,7 @@ the *trial_type* column to *event_type*.
 ````
 
 Each remodeler operation has its own specific set of required parameters 
-that can be found under [**File remodeling tools**](https://hed-examples.readthedocs.io/en/latest/FileRemodelingTools.html#). 
+that can be found under [**File remodeling tools**](./FileRemodelingTools.md). 
 For *rename_columns*, the required operations are *column_mapping* and *ignore_missing*.
 Some operations also have optional parameters.
 
@@ -281,8 +279,8 @@ Event markers such as the participant's response key-press are encoded implicitl
 as an offset from the stimulus presentation.
 while event encoding includes event markers for each individual event within the trial.
 
-From the [**Split event**](https://hed-examples.readthedocs.io/en/latest/FileRemodelingTools.html#split-event)
-explanation under [**File remodeling tools**](https://hed-examples.readthedocs.io/en/latest/FileRemodelingTools.html#)
+From the [**Split event**](./FileRemodelingTools.md#split-event)
+explanation under [**File remodeling tools**](./FileRemodelingTools.md)
 we can read all the required parameters for the *split_event* operation from the example. 
 The required parameters are *anchor_column*, *new_events*, *remove_parent_event*.
 
@@ -395,7 +393,7 @@ or on any directory using the command-line interface using
 The first step is to call `run_remodel_backup` with the necessary arguments to
 create a 
 You do this by calling one of three python scripts (`run_remodel_backup`, `run_remodel`, and `run_remodel_restore`) with the necessary arguments. A full overview of all arguments is available at
-[**File remodeling tools**](https://hed-examples.readthedocs.io/en/latest/FileRemodelingTools.html#remodel-command-arguments-anchor).
+[**File remodeling tools**](./FileRemodelingTools.md#remodel-command-line-arguments).
 
 
 (remodel-run-anchor)=

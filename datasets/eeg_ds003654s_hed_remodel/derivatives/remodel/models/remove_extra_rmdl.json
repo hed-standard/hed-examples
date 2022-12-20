@@ -3,7 +3,7 @@
         "operation": "remove_columns",
         "description": "Remove unwanted columns prior to analysis",
         "parameters": {
-            "remove_names": ["value", "sample"],
+            "column_names": ["value", "sample"],
             "ignore_missing": true
         }
     }
