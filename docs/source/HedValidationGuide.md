@@ -250,7 +250,7 @@ Errors, if any are printed to the command line.
 #### Remodeling validation summaries
 
 Validation is also available through HED remodeling tool interface.
-As explained in [**File restructuring quickstart**](./FileRestructuringQuickstart.md),
+As explained in [**File remodeling quickstart**](./FileRemodelingQuickstart.md),
 the HED remodeling tools allow users to restructure their event files and/or
 summarize their contents in various ways.
 Users specify a list of operations in a JSON remodeling file,
@@ -271,12 +271,12 @@ validating event files.
 ```json
 [
     {
-        "operation": "sumarize_hed_validation",
+        "operation": "summarize_hed_validation",
         "description": "Validate event file and list errors in a summary.",
         "parameters": {
-            "summary_name": 'validate_initial',
-            "summary_filename": 'validate_initial',
-            "check_for_warnings": True
+            "summary_name": "validate_initial",
+            "summary_filename": "validate_initial",
+            "check_for_warnings": true
         }
     }
 ]
@@ -318,7 +318,7 @@ For example, the text file is:
 `/root_path/derivatives/remodel/summaries/validate_initial_xxx.txt`
 where xxx is the time of generation.
 
-For more information see [**File restructuring quickstart**](./FileRestructuringQuickstart.md)
+For more information see [**File remodeling quickstart**](./FileRemodelingQuickstart.md)
 for an overview of the remodeling process and
 [**File remodeling tools**](./FileRemodelingTools.md) for detailed descriptions of
 the operations that are currently supported.

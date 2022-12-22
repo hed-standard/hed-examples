@@ -1828,7 +1828,7 @@ The following example shows the JSON for including this operation in a remodelin
     "parameters": {
         "summary_name": "AOMIC_generate_sidecar",
         "summary_filename": "AOMIC_generate_sidecar",
-        "skip_columns": ["onset", "duration", "response_accuracy"],
+        "skip_columns": ["onset", "duration"],
         "value_columns": ["response_time", "stop_signal_delay"]
     }
 }
@@ -1842,60 +1842,75 @@ are shown in the following example using the text format.
 
 ````{admonition} Sample *summarize_events_to_sidecar* operation results in text format.
 :class: tip
-```json
+```text
+Context name: AOMIC_generate_sidecar
+Context type: events_to_sidecar
+Context filename: AOMIC_generate_sidecar
+
+Dataset: Currently no overall sidecar extraction is available
+
+Individual files:
+
+aomic_sub-0013_excerpt_events.tsv: Total events=6 Skip columns: ['onset', 'duration']
+Sidecar:
 {
-    "context_name": "AOMIC_generate_sidecar",
-    "context_type": "events_to_sidecar",
-    "context_filename": "AOMIC_generate_sidecar",
-    
-    "summary": {
-        "trial_type": {
-            "Description": "Description for trial_type",
-            "HED": {
-                "go": "(Label/trial_type, Label/go)",
-                "succesful_stop": "(Label/trial_type, Label/succesful_stop)",
-                "unsuccesful_stop": "(Label/trial_type, Label/unsuccesful_stop)"
-            },
-            "Levels": {
-                "go": "Here describe column value go of column trial_type",
-                "succesful_stop": "Here describe column value succesful_stop of column trial_type",
-                "unsuccesful_stop": "Here describe column value unsuccesful_stop of column trial_type"
-            }
+    "trial_type": {
+        "Description": "Description for trial_type",
+        "HED": {
+            "go": "(Label/trial_type, Label/go)",
+            "succesful_stop": "(Label/trial_type, Label/succesful_stop)",
+            "unsuccesful_stop": "(Label/trial_type, Label/unsuccesful_stop)"
         },
-        "response_hand": {
-            "Description": "Description for response_hand",
-            "HED": {
-                "left": "(Label/response_hand, Label/left)",
-                "right": "(Label/response_hand, Label/right)"
-            },
-            "Levels": {
-                "left": "Here describe column value left of column response_hand",
-                "right": "Here describe column value right of column response_hand"
-            }
-        },
-        "sex": {
-            "Description": "Description for sex",
-            "HED": {
-                "female": "(Label/sex, Label/female)",
-                "male": "(Label/sex, Label/male)"
-            },
-            "Levels": {
-                "female": "Here describe column value female of column sex",
-                "male": "Here describe column value male of column sex"
-            }
-        },
-        "response_time": {
-            "Description": "Description for response_time",
-            "HED": "(Label/response_time, Label/#)"
-        },
-        "stop_signal_delay": {
-            "Description": "Description for stop_signal_delay",
-            "HED": "(Label/stop_signal_delay, Label/#)"
+        "Levels": {
+            "go": "Here describe column value go of column trial_type",
+            "succesful_stop": "Here describe column value succesful_stop of column trial_type",
+            "unsuccesful_stop": "Here describe column value unsuccesful_stop of column trial_type"
         }
+    },
+    "response_accuracy": {
+        "Description": "Description for response_accuracy",
+        "HED": {
+            "correct": "(Label/response_accuracy, Label/correct)"
+        },
+        "Levels": {
+            "correct": "Here describe column value correct of column response_accuracy"
+        }
+    },
+    "response_hand": {
+        "Description": "Description for response_hand",
+        "HED": {
+            "left": "(Label/response_hand, Label/left)",
+            "right": "(Label/response_hand, Label/right)"
+        },
+        "Levels": {
+            "left": "Here describe column value left of column response_hand",
+            "right": "Here describe column value right of column response_hand"
+        }
+    },
+    "sex": {
+        "Description": "Description for sex",
+        "HED": {
+            "female": "(Label/sex, Label/female)",
+            "male": "(Label/sex, Label/male)"
+        },
+        "Levels": {
+            "female": "Here describe column value female of column sex",
+            "male": "Here describe column value male of column sex"
+        }
+    },
+    "response_time": {
+        "Description": "Description for response_time",
+        "HED": "(Label/response_time, Label/#)"
+    },
+    "stop_signal_delay": {
+        "Description": "Description for stop_signal_delay",
+        "HED": "(Label/stop_signal_delay, Label/#)"
     }
 }
 ```
 ````
+
+The current version of the summary does not generate a dataset-wide sidecar.
 
 (summarize-hed-tags-anchor)=
 ### Summarize HED tags
