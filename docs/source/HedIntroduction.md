@@ -39,8 +39,8 @@ simplification of the user experience.
 6. Encoding of experimental design
 
 ````
-See the [HED Specification](https://hed-specification.readthedocs.io/en/latest/)
-and the [HED Documentation Summary](HedDocumentationSummary.md) for additional details.
+See the [**HED Specification**](https://hed-specification.readthedocs.io/en/latest/)
+and the [**documentation summary**](DocumentationSummary.md) for additional details.
 
 ## Goals of HED
 
