@@ -17,7 +17,7 @@ HED resources
    HedValidationGuide.md
    HedSearchAndSummary.md
    HedConditionsAndDesignMatrices.md
-   FileRestructuringQuickstart.md
+   FileRemodelingQuickstart.md
 
 
 .. toctree::
