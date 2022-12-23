@@ -237,7 +237,7 @@ You will see the following menu:
 
 
 ![GenerateSidecarTemplate1](./_static/images/GenerateSidecarTemplate1.png)
-*Default screen in the HED [online event tools](https://hedtools.ucsd.edu/hed/event).*
+*Default screen in the HED [online event tools](https://hedtools.ucsd.edu/hed/events).*
 
 Select **Generate sidecar template**.
 The application will adjust to your selection, showing only the information you need to provide.
