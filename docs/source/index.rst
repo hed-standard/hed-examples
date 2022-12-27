@@ -7,6 +7,15 @@ HED resources
 
    * `Source code <https://github.com/hed-standard/hed-examples/>`_
 
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Overview:
+
+   AboutHED.md
+   HowCanYouUseHed.md
+
+
 .. toctree::
    :maxdepth: 3
    :caption: Tutorials:
@@ -18,6 +27,7 @@ HED resources
    HedSearchAndSummary.md
    HedConditionsAndDesignMatrices.md
    FileRemodelingQuickstart.md
+   HedSchemaDevelopmentGuide.md
 
 
 .. toctree::
