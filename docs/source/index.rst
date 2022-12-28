@@ -24,7 +24,8 @@ HED resources
    BidsAnnotationQuickstart.md
    HedAnnotationQuickstart.md
    HedValidationGuide.md
-   HedSearchAndSummary.md
+   HedSearching.md
+   HedSummaries.md
    HedConditionsAndDesignMatrices.md
    FileRemodelingQuickstart.md
    HedSchemaDevelopmentGuide.md

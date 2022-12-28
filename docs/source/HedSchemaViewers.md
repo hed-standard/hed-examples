@@ -1,4 +1,18 @@
 # HED schema viewers
+
+## HED schema basics
+
+### Schema is-a
+Each child tag is considered to be a special type of any of its parents (i.e., child is-a type of parent).  For example, *Square* is-a type of *Rectangle* which is-a type of *2D-shape*.
+
+The strict requirement of child is-a parent means that when downstream tools
+search for *2D-shape*, the search will return tag strings containing *Square* as well
+as those containing *Rectangle*.
+
+
+When you tag, you need only use the node name (e.g, *Square*).
+Tools can convert between this "short-form" and the complete path "long-form" (e.g. */Item/Object/Geometric-object/2D-shape/Rectangle/Square*) when needed in
+search and other processing.
  
 ## Viewing the standard schema
 
