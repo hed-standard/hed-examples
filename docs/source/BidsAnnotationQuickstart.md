@@ -40,7 +40,7 @@ to produce a comprehensive JSON sidecar template.
 The examples in this tutorial use an
 [**abbreviated version**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/datasets/eeg_ds003654s_hed/sub-002/eeg/sub-002_task-FacePerception_run-1_events.tsv)
 of the `events.tsv`file from subject 002 run 1 from
-[ds003654:Face processing MEEG dataset with HED annotation](https://openneuro.org/datasets/ds003645/versions/2.0.0)
+[**ds003654**](https://openneuro.org/datasets/ds003645/versions/2.0.0):Face processing MEEG dataset with HED annotation
 dataset on OpenNeuro.
 A reduced version of this dataset
 [**eeg_ds003654s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003654s_hed)
@@ -171,7 +171,7 @@ which can be read and processed by computer algorithms.
 At analysis time, tools are available to assemble the HED annotations for each event.
 
 For example the relevant HED tags for the second event in the 
-[excerpted event file](events-tsv-excerpt-overview-anchor) are:
+[**excerpted event file**](events-tsv-excerpt-overview-anchor) are:
 
 > **show_face**: *Sensory-event, Experimental-stimulus, Visual-presentation, Image, Face*  
 > **unfamiliar_face**: *(Condition-variable/Unfamiliar-face, (Image, (Face, Unfamiliar)))*  
@@ -237,7 +237,7 @@ You will see the following menu:
 
 
 ![GenerateSidecarTemplate1](./_static/images/GenerateSidecarTemplate1.png)
-*Default screen in the HED [online event tools](https://hedtools.ucsd.edu/hed/events).*
+*Default screen in the HED [**online event tools**](https://hedtools.ucsd.edu/hed/events).*
 
 Select **Generate sidecar template**.
 The application will adjust to your selection, showing only the information you need to provide.
@@ -250,7 +250,7 @@ When the upload is complete, the local file name of the uploaded events
 file will be displayed next to the **Browse** button.
 
 ![GenerateSidecarTemplate2](./_static/images/GenerateSidecarTemplate2.png)
-*Generate sidecar template screen in the HED [online event tools](https://hedtools.ucsd.edu/hed/events).*
+*Generate sidecar template screen in the HED [**online event tools**](https://hedtools.ucsd.edu/hed/events).*
 
 In this example, we have uploaded 
 [**sub-002_task-FacePerception_run-1_events.tsv**](./_static/data/sub-002_task-FacePerception_run-1_events.tsv).
@@ -293,7 +293,7 @@ categorical columns, since you will need to provide an individual annotation
 for each value in such a categorical column.
 
 ![GenerateSidecarTemplate3](./_static/images/GenerateSidecarTemplate3.png)
-*Selection of which columns to include when generating a JSON sidecar in the HED [online sidecar tools](https://hedtools.ucsd.edu/hed/sidecar).*
+*Selection of which columns to include when generating a JSON sidecar in the HED [**online sidecar tools**](https://hedtools.ucsd.edu/hed/sidecar).*
 
 In the example, we have selected 7 columns to annotate.
 We omitted the `onset`, `duration`, and `sample` columns,
@@ -444,7 +444,7 @@ Go to the [**Sidecar**](https://hedtools.ucsd.edu/hed/sidecar) page of the HED o
 You will see the following menu:
 
 ![SidecarToSpreadsheetTemplate1](./_static/images/SidecarToSpreadsheetTemplate1.png)
-*Default screen for the HED [online sidecar tools](https://hedtools.ucsd.edu/hed/sidecar).*
+*Default screen for the HED [**online sidecar tools**](https://hedtools.ucsd.edu/hed/sidecar).*
 
 Select **Extract HED spreadsheet**.
 The application will adjust to your selection, showing only the information you need to provide.
@@ -457,7 +457,7 @@ When the upload is complete, the local file name of the uploaded events
 file will be displayed next to the **Browse** button.
 
 ![SidecarToSpreadsheetTemplate2](./_static/images/SidecarToSpreadsheetTemplate2.png)
-*Choosing the Extract HED spreadsheet option in the HED [online sidecar tools](https://hedtools.ucsd.edu/hed/sidecar).*
+*Choosing the Extract HED spreadsheet option in the HED [**online sidecar tools**](https://hedtools.ucsd.edu/hed/sidecar).*
 
 Pressing the **Process** button causes the application to generate a downloadable
 tab-separated-value spreadsheet for editing
@@ -465,7 +465,7 @@ tab-separated-value spreadsheet for editing
 An excerpt from the
 [**spreadsheet**](./_static/data/sub-002_task-FacePerception_run-1_events_generated_flattened.tsv)
 generated from the 
-[extracted JSON file](./_static/data/sub-002_task-FacePerception_run-1_events_generated.json) is:
+[**extracted JSON file**](./_static/data/sub-002_task-FacePerception_run-1_events_generated.json) is:
 
 (four-column-spreadsheet-format-anchor)=
 ````{admonition} HED annotation table extracted from JSON sidecar template.
