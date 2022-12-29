@@ -81,11 +81,9 @@ using HED annotations and suggests best practices for annotation.
 
 - See the [**HED specification**](https://hed-specification.readthedocs.io/en/latest/05_Advanced_annotation.html) 
 for detailed information on the rules for HED.
-Of special interest to HED users are [**Chapter 4: Basic annotation**](https://hed-specification.readthedocs.io/en/latest/04_Basic_annotation.html) and [**Chapter 5: Advanced annotation**](https://hed-specification.readthedocs.io/en/latest/05_Advanced_annotation.html),
-which explain the different types of HED
+Of special interest to HED users are [**Chapter 4: Basic annotation**](https://hed-specification.readthedocs.io/en/latest/04_Basic_annotation.html) and [**Chapter 5: Advanced annotation**](https://hed-specification.readthedocs.io/en/latest/05_Advanced_annotation.html).
+These chapters explain the different types of HED
 annotations and the rules for using them.
-
-#### Reformatting event file
 
 
 #### Integrating HED in BIDS
@@ -100,7 +98,7 @@ Method 1 is the typical way that HED annotations are incorporated into a BIDS da
 The [**HED online tools**](https://hedtools.ucsd.edu/hed) allow you to easily generate a template JSON sidecar to fill in.
 The [**BIDS annotation quickstart**](https://www.hed-resources.org/en/latest/BidsAnnotationQuickstart.html) walks through this process step-by-step.
 
-Method 2 is usually used for instrument-generated annotations or for manual processing (such as a user marking bad sections of the data or special features).
+Method 2 is usually used for instrument-generated annotations or for manual processing (such as users marking bad sections of the data or special features).
 In both cases the annotations are usually created using special-purpose tools.
 
 When using HED you must provide a HED schema version indicating the HED vocabulary
@@ -111,7 +109,7 @@ See [**HED schema versions**](https://bids-specification.readthedocs.io/en/stabl
 examples.
 
 ### Adding HED annotations
-This sections discusses the strategy for adding annotations in a BIDS dataset. 
+This section discusses the strategy for adding annotations in a BIDS dataset using sidecars.
 The discussion assumes that you have a JSON sidecar template file ready to annotate.
 See [**BIDS annotation quickstart**](https://www.hed-resources.org/en/latest/BidsAnnotationQuickstart.html) for a walk-through of this process.
 
@@ -187,7 +185,7 @@ validated using the [**HED online tools**](https://hedtools.ucsd.edu/hed).
 <p></p>
 
 - You should validate the HED annotations separately using the online tools or
-other the Python tools before doing a full BIDS validation, as this will make the
+the HED Python tools before doing a full BIDS validation, as this will make the
 validation process much simpler.
 
 #### Checking for consistency
@@ -221,6 +219,11 @@ At this time, your only option is to do manual checks or write custom code to
 detect these types of experiment-specific inconsistencies.
 However, work is underway to include some standard types of checks in the
 HED [**File remodeling tools**](https://www.hed-resources.org/en/latest/FileRemodelingTools.html) in future releases.
+
+You may also want to reorganize the event files using the remodeling tools.
+See the [**Remapping columns**](./HowCanYouUseHed.md#remapping-columns) for
+a discussion and links to examples of how to reorganize the information in the
+columns of the event files.
 
 <hr style="border: 3px solid #000080;" />
 

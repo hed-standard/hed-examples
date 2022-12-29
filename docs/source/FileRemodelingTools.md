@@ -1925,10 +1925,8 @@ If the data has annotations in a JSON sidecar, you must also provide its path.
 (summarize-hed-tags-parameters-anchor)=
 #### Summarize HED tags parameters
 
-The *summarize_column_names* operation only has the two parameters required of
-all summarizes. 
-The *summarize_column_names* operation only has the two parameters required of
-all summarizes. 
+The *summarize_hed_tags* operation has the two required parameters 
+(*tags* and *expand_context*) in addition to the standard *summary_name* and *summary_filename* parameters.
 
 ```{admonition} Parameters for the *summarize_hed_tags* operation.
 :class: tip
@@ -1937,22 +1935,24 @@ all summarizes.
 | ------------ | ---- | ----------- | 
 | *summary_name* | str | A unique name used to identify this summary.| 
 | *summary_filename* | str | A unique file basename to use for saving this summary. |
-| *type_tag* | str | Tag to produce a summary for (most often *condition-variable*).| 
+| *tags* | dict | Dictionary with category title keys and tags in that category as values. |
+| *expand_context* | bool | If true, expand *Event-context* to account for onsets and offsets. |
 ```
-The *summary_name* is the unique key used to identify the
-particular incarnation of this summary in the dispatcher.
-Since a particular operation file may use a given operation multiple times,
-care should be taken to make sure that it is unique.
 
-The *summary_filename* should also be unique and is used for saving the summary upon request.
-When the remodeler is applied to full datasets rather than single files,
-the summaries are saved in the `derivatives/remodel/summaries` directory under the dataset root.
-A time stamp and file extension are appended to the *summary_filename* when the
-summary is saved.
+The *tags* dictionary has keys that specify how the user wishes the tags 
+to be categorized for display. 
+Note that these keys are titles designating display categories, not HED tags.
 
-The *type_tag* can be any tag, but for experimental design summaries the *condition-variable*
-tag is used.
+The *tags* dictionary values are lists of actual HED tags (or their children)
+that should be listed under the respective display categories.
 
+If *expand_context* is false (the default), the counts are calculated without
+expanding the event context. The option of expanding the event context to account
+for onset/offset effects is not implemented in this release.
+
+The following remodeling command specifies that the tag counts should be grouped
+under the titles: *Sensory events*, *Agent actions*, and *Objects*.
+Any leftover tags will appear under the title "Other tags".
 
 (summarize-hed-tags-example-anchor)=
 #### Summarize HED tags example
@@ -1960,15 +1960,22 @@ tag is used.
 ````{admonition} An example *summarize_hed_tags* operation.
 :class: tip
 ```json
-{
+[{
    "operation": "summarize_hed_tags",
-   "description": "Summarize column names.",
+   "description": "Summarize the HED tags in the dataset.",
    "parameters": {
        "summary_name": "AOMIC_condition_variables",
        "summary_filename": "AOMIC_condition_variables",
-       "type_tag": "condition-variable"
-   }
-}
+       "tags": {
+           "Sensory events": ["Sensory-event", "Sensory-presentation",
+                              "Task-stimulus-role", "Experimental-stimulus"],
+           "Agent actions": ["Agent-action", "Agent", "Action", "Agent-task-role",
+                             "Task-action-type", "Participant-response"],
+           "Objects": ["Item"]
+         },
+       "expand_context": false
+     }
+}]
 ```
 ````
 
@@ -2012,11 +2019,14 @@ Individual files:
 ```
 ````
 
-Because *summarize_hed_tags* is a HED operations, we must also provide information
-about the HED annotations.
-This summary was produced by using `hed_version="8.1.0"` when creating the `dispatcher`
-and using the [**sample sidecar file**](sample-remodel-sidecar-file-anchor) in the `do_op`.
-The sidecar provides the annotations that use the `condition-variable` tag in the summary.
+The HED tag *Task-action-type* was specified in the "Agent actions" category,
+*Incorrect-action* and *Correct-action*, which are children of *Task-action-type*
+in the [**HED schema**](https://www.hedtags.org/display_hed.html),
+will appear with counts in the list under this category.
+
+The sample events file had 6 events, including 1 correct action and 2 incorrect actions.
+Since only one file was processed, the information for *Dataset* was 
+similar to that presented under *Individual files*.
 
 
 (summarize-hed-type-anchor)=
