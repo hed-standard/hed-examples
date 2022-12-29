@@ -14,6 +14,14 @@ be applied to other types of tabular data.
 
 > <span style="font-size: 1.36em; font-weight: bold; color: #229955;">&nbsp;&nbsp;... designing experiments and acquiring data.</span>
 
+The lynch-pin of scientific inquiry is the planning and running of experiments to test 
+hypotheses and study behavior.
+The focus of the discussion here is not explicitly the standard concerns of how an experiment
+should be designed,
+but rather how data should be recorded and identified to maximize its downstream usability.
+
+**Here are some topics of interest to experiment designers:**
+
 * [**As an experimenter**](as-an-experimenter-anchor)
   * [**Planning and running an experiment**](planning-and-running-an-experiment-anchor)
   * [**Post processing the data**](post-processing-the-data-anchor)
@@ -21,6 +29,11 @@ be applied to other types of tabular data.
 (planning-and-running-an-experiment-anchor)=
 ### Planning and running an experiment
 
+
+
+
+- Data that isn't recorded is lost forever.
+- 
 #### Mapping events from logs
 
 #### Assuring completeness
@@ -43,8 +56,9 @@ The move towards open, reproducible science, both in the scientific community an
 by funding agencies, makes data sharing a requirement.
 An added benefit, is that data used by others is likely to garner increased recognition
 and additional citations.
+This section emphasizes the importance of complete and accurate metadata to enable analysis.
 
-**Here are some topics of interest for data curators:**
+**Here are some topics of interest to data curators:**
 
 * [**Standardizing the format**](standardizing-the-format-anchor)
   * [**Learning about BIDS**](learning-about-bids-anchor)
@@ -266,6 +280,13 @@ columns of the event files.
 
 > <span style="font-size: 1.36em; font-weight: bold; color: #229955;">&nbsp;&nbsp;... applying HED-informed data to answer scientific questions.</span>
 
+Whether you are analyzing your own data or using shared data produced by others to 
+answer a scientific question, fully understanding the data and its limitations are essential
+for accurate and reproducible analysis.
+This section discusses how HED annotations and tools can be used for effective analysis.
+
+**Here are some topics of interest to data analysts:**
+
 * [**Understanding the data**](understanding-the-data-anchor)
 * [**Analyzing the data**](analyzing-the-data-anchor)
   * [**Factors based on columns**](factors-based-on-columns-anchor)
@@ -321,6 +342,14 @@ The factor generation as described in this section relies on the HED
 
 > <span style="font-size: 1.36em; font-weight: bold; color: #229955;">&nbsp;&nbsp;... modifying and adding to the growing HED tool base.</span>
 
+The power of HED is ability to capture important details of the experiment design and events in
+a form that is both human-understandable and directly usable in processing programs.
+The HED ecosystem relies on tools that read, understand, and incorporate HED as part of this analysis.
+This section describes how, as a tool developer, you can contribute to this growing ecosystem
+to support HED for processing and analysis.
+
+**Here are some topics of interest to developers:**
+
 * [**Integrating with existing tools**](integrating-with-existing-tools-anchor)
 * [**Developing new tools**](developing-new-tools-anchor)
 
@@ -342,10 +371,14 @@ The factor generation as described in this section relies on the HED
 HED annotations are drawn from structured vocabularies called **HED schemas**.
 The HED standard schema contains basic terms that are common across
 most human neuroimaging, behavioral, and physiological experiments.
-
 However, many experiments also require specialized terms to fully capture
 the important information in machine-actionable annotations.
-For this reason, the HED ecosystem now supports 
+For this reason, the HED supports the addition of specialized vocabularies
+(**library schemas**) to expand the HED vocabulary in a scalable manner.
+This section describes how you can contribute to existing HED vocabularies
+or create an entirely new one.
+
+**Here are some topics of interest to developers:**
 
 [**Expandable viewer**](https://www.hedtags.org/display_hed.html) for the HED standard
 schema.
