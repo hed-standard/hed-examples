@@ -28,9 +28,10 @@ be applied to other types of tabular data.
 
 <hr style="border: 3px solid #000080;" />
 
-## As a data curator ...
+## <span style="color: #4D7731; background: gold;">As a data curator ...</span>
 
-<p style="font-size: 1.36em; font-weight: bold; color: #229955;">... organizing data.</p>
+> <p style="font-size: 1.36em; font-weight: bold; color: #229955;">&nbsp;&nbsp;... organizing data.</p>
+
 
 The move towards open, reproducible science, both in the scientific community and
 by funding agencies, makes data sharing a requirement.
@@ -40,8 +41,8 @@ and additional citations.
 ### Standardizing the format
 
 An important aspect of data-sharing is putting your data into a standardized format
-so that tools can read and manipulate the data without users having to write
-special-purpose reformatting.
+so that tools can read and manipulate the data without the need for
+special-purpose reformatting code.
 
 [**BIDS**](https://bids.neuroimaging.io/) (Brain Imaging data Structure)
 is a widely used data organization standard for neuroimaging data.
@@ -52,7 +53,7 @@ HED is well-integrated into the BIDS standard.
 [**BIDS Start Kit**](https://bids-standard.github.io/bids-starter-kit/index.html).
 <p></p>
 
-- The [**Folders and Files**](https://bids-standard.github.io/bids-starter-kit/folders_and_files/folders.html)
+- [**Folders and Files**](https://bids-standard.github.io/bids-starter-kit/folders_and_files/folders.html)
 gives an overview of how files in a BIDS dataset are organized.
 <p></p>
 
@@ -62,7 +63,7 @@ of how to get the appropriate metadata into a BIDS dataset.
 
 - See the [**BIDS specification**](https://bids-specification.readthedocs.io/en/stable/)
 for detailed information on the rules for BIDS.
-Of special interest to HED users are the sections on [**Task events**](https://bids-specification.readthedocs.io/en/stable/04-modality-specific-files/05-task-events.html)
+Of special interest to HED annotators are the sections on [**Task events**](https://bids-specification.readthedocs.io/en/stable/04-modality-specific-files/05-task-events.html)
 and the [**Hierarchical Event Descriptors**](https://bids-specification.readthedocs.io/en/stable/appendices/hed.html) appendix.
 <p></p>
 
@@ -150,7 +151,7 @@ is a standalone tagging assistant with a user-friendly GUI to ease the tagging p
 #### More advanced annotations
 
 HED supports a number of advanced annotation concepts which are necessary for a complete
-description of the experiment ([**Advanced annotation**](https://hed-specification.readthedocs.io/en/latest/05_Advanced_annotation.html)).
+description of the experiment. 
 
 - **HED definitions**: allow users to define complex concepts.
 See [**HED definitions**](https://hed-specification.readthedocs.io/en/latest/05_Advanced_annotation.html#hed-definitions) for an overview and syntax.
@@ -164,6 +165,9 @@ and *Duration* together with the *Definition* tag. See [**Temporal scope**](http
 - **Conditions and experimental design**: HED allows users to express annotate experiment
 design, as well as other information such as task, and the experiment's temporal organization.
 See [**HED conditions and design matrices**](https://www.hed-resources.org/en/latest/HedConditionsAndDesignMatrices.html).
+
+The [**Advanced annotation**](https://hed-specification.readthedocs.io/en/latest/05_Advanced_annotation.html)) chapter of the HED specification
+explains the rules for using these more advanced concepts.
 
 ### Checking correctness
 
@@ -180,7 +184,7 @@ Thus, as you are adding HED annotations, you should frequently revalidate.
 documentation lists the different types of HED errors and their potential causes.
 <p></p>
 
-- The JSON sidecar, which usually contains most of the HED annotations can be easily 
+- The JSON sidecar, which usually contains most of the HED annotations, can be easily 
 validated using the [**HED online tools**](https://hedtools.ucsd.edu/hed).
 <p></p>
 
@@ -193,7 +197,7 @@ validation process much simpler.
 Several HED summary tools allow you to check consistency.
 The [**Understanding the data**](./HowCanYouUseHed.md#understanding-the-data)
 tutorial in the next section describes some tools that are available
-to help check the contents of the events file for surprises.
+to help check the contents of the events files for surprises.
 
 The summary tools are a start, but there are also experiment-specific 
 aspects which ideally should be checked.
