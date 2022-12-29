@@ -9,17 +9,23 @@ be applied to other types of tabular data.
 
 <hr style="border: 3px solid #000080" />
 
+(as-an-experimenter-anchor)=
 ## As an experimenter ...
 
-<p style="font-size: 1.36em; font-weight: bold; color: #229955;">... designing experiments and acquiring data.</p>
+> <span style="font-size: 1.36em; font-weight: bold; color: #229955;">&nbsp;&nbsp;... designing experiments and acquiring data.</span>
 
+* [**As an experimenter**](as-an-experimenter-anchor)
+  * [**Planning and running an experiment**](planning-and-running-an-experiment-anchor)
+  * [**Post processing the data**](post-processing-the-data-anchor)
 
-### Planning and executing an experiment
+(planning-and-running-an-experiment-anchor)=
+### Planning and running an experiment
 
 #### Mapping events from logs
 
 #### Assuring completeness
 
+(post-processing-the-data-anchor)=
 ### Post-processing the data
 
 #### Remapping columns
@@ -28,16 +34,31 @@ be applied to other types of tabular data.
 
 <hr style="border: 3px solid #000080;" />
 
+(as-a-data-curator-anchor)=
 ## <span style="color: #4D7731; background: gold;">As a data curator ...</span>
 
-> <p style="font-size: 1.36em; font-weight: bold; color: #229955;">&nbsp;&nbsp;... organizing data.</p>
-
+> <span style="font-size: 1.36em; font-weight: bold; color: #229955;">&nbsp;&nbsp;... organizing data for sharing and analysis.</span>
 
 The move towards open, reproducible science, both in the scientific community and
 by funding agencies, makes data sharing a requirement.
 An added benefit, is that data used by others is likely to garner increased recognition
 and additional citations.
 
+**Here are some topics of interest for data curators:**
+
+* [**Standardizing the format**](standardizing-the-format-anchor)
+  * [**Learning about BIDS**](learning-about-bids-anchor)
+  * [**Learning about HED**](learning-about-hed-anchor)
+  * [**Integrating HED in BIDS**](integrating-hed-in-bids-anchor)
+* [**Adding HED annotations**](adding-hed-annotations-anchor)
+  * [**Viewing available tags**](viewing-available-tags-anchor)
+  * [**Basic annotation strategies**](basic-annotation-strategies-anchor)
+  * [**More advanced annotations**](more-advanced-annotations-anchor)
+* [**Checking correctness**](checking-correctness-anchor)
+  * [**Validating HED annotations**](validating-hed-annotations-anchor)
+  * [**Checking for consistency**](checking-for-consistency-anchor)
+
+(standardizing-the-format-anchor)=
 ### Standardizing the format
 
 An important aspect of data-sharing is putting your data into a standardized format
@@ -48,6 +69,7 @@ special-purpose reformatting code.
 is a widely used data organization standard for neuroimaging data.
 HED is well-integrated into the BIDS standard.
 
+(learning-about-bids-anchor)=
 #### Learning about BIDS
 - If you are unfamiliar with BIDS, we recommend the
 [**BIDS Start Kit**](https://bids-standard.github.io/bids-starter-kit/index.html).
@@ -70,6 +92,7 @@ and the [**Hierarchical Event Descriptors**](https://bids-specification.readthed
 - There are a variety of tools available to convert to and from BIDS format as summarized
 in [**Software currently supporting BIDS**](https://bids.neuroimaging.io/benefits.html#software-currently-supporting-bids).
 
+(learning-about-hed-anchor)=
 #### Learning about HED
 
 - The [**HED introduction**](https://www.hed-resources.org/en/latest/HedIntroduction.html)
@@ -87,6 +110,7 @@ These chapters explain the different types of HED
 annotations and the rules for using them.
 
 
+(integrating-hed-in-bids-anchor)=
 #### Integrating HED in BIDS
 
 There are two strategies for incorporating HED annotations in a BIDS dataset:
@@ -109,11 +133,13 @@ a required JSON file that must be placed in the root directory of the dataset.
 See [**HED schema versions**](https://bids-specification.readthedocs.io/en/stable/appendices/hed.html#hed-schema-versions) in the BIDS specification for
 examples.
 
+(adding-hed-annotations-anchor)=
 ### Adding HED annotations
 This section discusses the strategy for adding annotations in a BIDS dataset using sidecars.
 The discussion assumes that you have a JSON sidecar template file ready to annotate.
 See [**BIDS annotation quickstart**](https://www.hed-resources.org/en/latest/BidsAnnotationQuickstart.html) for a walk-through of this process.
 
+(viewing-available-tags-anchor)=
 #### Viewing available tags
 
 - The HED vocabulary is hierarchically organized as shown
@@ -125,7 +151,8 @@ of the HED standard vocabulary.
 gives links to different versions of the HED standard HED vocabularies as well as 
 library vocabularies.
 
-#### Basic annotation strategy
+(basic-annotation-strategies-anchor)=
+#### Basic annotation strategies
 HED annotations come in variety of levels and complexity.
 If your HED annotations are in a JSON sidecar, 
 it is easy to start simple and incrementally improve your annotations just by editing
@@ -147,7 +174,7 @@ gives options for viewing tags to select.
 - [**CTAGGER**](https://www.hed-resources.org/en/latest/CTaggerGuiTaggingTool.html)
 is a standalone tagging assistant with a user-friendly GUI to ease the tagging process.
 
-
+(more-advanced-annotations-anchor)=
 #### More advanced annotations
 
 HED supports a number of advanced annotation concepts which are necessary for a complete
@@ -169,12 +196,14 @@ See [**HED conditions and design matrices**](https://www.hed-resources.org/en/la
 The [**Advanced annotation**](https://hed-specification.readthedocs.io/en/latest/05_Advanced_annotation.html)) chapter of the HED specification
 explains the rules for using these more advanced concepts.
 
+(checking-correctness-anchor)=
 ### Checking correctness
 
 Checking for errors is an ongoing and iterative process.
 It is much easier to build more complex annotations on a foundation of valid annotations.
 Thus, as you are adding HED annotations, you should frequently revalidate.
 
+(validating-hed-annotations-anchor)=
 #### Validating HED annotations
 
 - The [**HED validation guide**](https://www.hed-resources.org/en/latest/HedValidationGuide.html) describes the different types of validators available.
@@ -192,6 +221,7 @@ validated using the [**HED online tools**](https://hedtools.ucsd.edu/hed).
 the HED Python tools before doing a full BIDS validation, as this will make the
 validation process much simpler.
 
+(checking-for-consistency-anchor)=
 #### Checking for consistency
 
 Several HED summary tools allow you to check consistency.
@@ -231,10 +261,18 @@ columns of the event files.
 
 <hr style="border: 3px solid #000080;" />
 
+(as-a-data-analyst-anchor)=
 ## As a data analyst ...
 
-<p style="font-size: 1.36em; font-weight: bold; color: #229955;">... applying HED-informed data to answer scientific questions.</p>
+> <span style="font-size: 1.36em; font-weight: bold; color: #229955;">&nbsp;&nbsp;... applying HED-informed data to answer scientific questions.</span>
 
+* [**Understanding the data**](understanding-the-data-anchor)
+* [**Analyzing the data**](analyzing-the-data-anchor)
+  * [**Factors based on columns**](factors-based-on-columns-anchor)
+  * [**Factors based on experimental conditions**](factors-based-on-experimental-conditions-anchor)
+  * [**Factors based on HED tags**](factors-based-on-hed-tags-anchor)
+
+(understanding-the-data-anchor)=
 ### Understanding the data
 
 Sadly, most currently shared data is under-annotated and may require considerable
@@ -245,9 +283,8 @@ single event file (in BIDS `_events.tsv`) and its associated JSON sidecar
 (`_events.json`). Typically, the sidecar is a single file in the root directory
 of the dataset.
 
-The
 
-
+(analyzing-the-data-anchor)=
 ### Analyzing the data
 
 The most common analysis application is to select events satisfying a particular criteria,
@@ -268,35 +305,55 @@ experiments.
 The factor generation as described in this section relies on the HED
 [**File remodeling tools**](https://www.hed-resources.org/en/latest/FileRemodelingTools.
 
-
+(factors-based-on-columns-anchor)=
 #### Factors based on columns
+
+(factors-based-on-experimental-conditions-anchor)=
 #### Factors based on experimental conditions
+
+(factors-based-on-hed-tags-anchor)=
+#### Factors based on HED tags
 
 <hr style="border: 3px solid #000080" />
 
+(as-a-tool-developer-anchor)=
 ## As a tool developer ...
 
-<p style="font-size: 1.36em; font-weight: bold; color: #229955;">... modifying and adding to the growing HED tool base.</p>
+> <span style="font-size: 1.36em; font-weight: bold; color: #229955;">&nbsp;&nbsp;... modifying and adding to the growing HED tool base.</span>
 
+* [**Integrating with existing tools**](integrating-with-existing-tools-anchor)
+* [**Developing new tools**](developing-new-tools-anchor)
+
+(integrating-with-existing-tools-anchor)=
+### Integrating with existing tools
+
+(developing-new-tools-anchor)=
 ### Developing new tools
 
-### Integration with existing tools
+
 
 <hr style="border: 3px solid #000080;" />
 
+(as-a-schema-developer-anchor)=
 ## As a schema developer ...
 
-<p style="font-size: 1.36em; font-weight: bold; color: #229955;">... extending HED vocabulary to support new research directions.</p>
+> <span style="font-size: 1.36em; font-weight: bold; color: #229955;">&nbsp;&nbsp;... extending HED to support new research directions.</span>
 
-The HED standard library contains the basic terms needed to annotate experimental events.
-The standard schema is organized into 6 subgroups: *Event*, *Agent*, *Action*, *Item*,
-*Property*, and *Relation* as can be seen in the 
+HED annotations are drawn from structured vocabularies called **HED schemas**.
+The HED standard schema contains basic terms that are common across
+most human neuroimaging, behavioral, and physiological experiments.
+
+However, many experiments also require specialized terms to fully capture
+the important information in machine-actionable annotations.
+For this reason, the HED ecosystem now supports 
+
 [**Expandable viewer**](https://www.hedtags.org/display_hed.html) for the HED standard
 schema.
 
 Many fields have much more specific annotation needs, and HED supports the
 creation of library schema to meet these needs.
 
+(getting-involved-anchor)=
 ### Getting involved
 If you are interested in developing a new HED library or joining an existing
 development effort:
@@ -306,7 +363,7 @@ development effort:
 
 - Post an issue on the [**hed-schemas/issues**](https://github.com/hed-standard/hed-schemas/issues) GitHub repository.
 
-
+(schema-rules-anchor)=
 ### Schema rules
 
 - [**The HED schema](https://hed-specification.readthedocs.io/en/latest/03_Schema.html#)
