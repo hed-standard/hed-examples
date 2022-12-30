@@ -393,7 +393,7 @@ the result will be a zip file with the modified data file and the summaries incl
 If you are using one of the remodeling operations that relies on HED tags, you will
 also need to upload a suitable JSON sidecar file containing the HED annotations for the data file.
 
-(The-command-line-interface-anchor)=
+(the-command-line-interface-anchor)=
 ### The command-line interface
 
 After [**installing the remodeler**](./FileRemodelingTools.md#installing-the-remodel-tools),

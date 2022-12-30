@@ -182,7 +182,8 @@ their own behavior.
 
 ### Syntax checking
 
-Regardless of whether a specification is in the base-schema or not, HED tools can perform basic syntax checking.
+Regardless of whether a specification is in the standard schema or a library schema,
+HED tools can perform basic syntax checking.
 
 ````{admonition} Basic syntax checking for library schema.
 :class: tip
@@ -193,17 +194,24 @@ Regardless of whether a specification is in the base-schema or not, HED tools ca
 4. Actual handling of the semantics by HED tools only occurs for entities appearing in the base schema.
 ````
 
+### Procedure for updating a schema.
 
-As modifications to the HED schema are proposed, they are entered into the
-[PROPOSED](PROPOSED.md) document for discussion.
-Approved changes and corrections are first made in a working version of the
-schema that is located in the [prelease directory](https://github.com/hed-standard/hed-specification/tree/master/prelease) and can be viewed
-using the following viewer:
+#### Proposing changes
+As modifications to the HED schema are proposed, they are added to the
+**PROPOSED.md** file for the respective schema.
+As changes are accepted, they are incorporated into the 
+**prerelease** version of the schema and added as part of the 
+**prerelease CHANGES.md**. 
+These files are located in the **prerelease** subdirectory for the respective schema.
+Examples of these files for the standard schema can be found in the standard schema
+[**prelease directory**](https://github.com/hed-standard/hed-schemas/tree/main/standard_schema/prerelease).
+[**Expandable html view of the prerelease HED schema**](https://www.hedtags.org/display_hed_prelease.html) 
 
-> [**Expandable html view of the prerelease HED schema**](https://www.hedtags.org/display_hed_prelease.html) 
+Upon final review, the new HED schema is released, the XML file is copied to the
+[**hedxml directory**](https://github.com/hed-standard/hed-schemas/tree/main/standard_schema/hedxml),
+the mediawiki file is copied to the
+[**hed]
 
-Upon final review, the new HED schema is released and moved to the
-[hedxml directory](https://github.com/hed-standard/hed-specification/tree/master/hedxml).
 
 ## HED schema details
 _HED schema_ is the structured vocabulary from which HED annotations base on. HED annotations consist of comma-separated path strings,

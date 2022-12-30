@@ -1,6 +1,7 @@
-(hed-introduction-anchor)=
+(about-hed-anchor)=
 # About HED
 
+(what-is-hed-anchor)=
 ## What is HED?
 
 - **HED** (**‘Hierarchical Event Descriptors’**, pronounced either as /hed/ or /H//E//D/)
@@ -57,7 +58,7 @@ for use [**online**](https://hedtools.ucsd.edu/hed), as well as for use in the
 
 To begin using HED tools to tag, search, and analyze data, browse the 
 [**HED resources**](https://www.hed-resources.org) page.
-Visit the [**Who are you?**](WhoAreYou.md) page for information about
+Visit the [**How can you use HED?**](HowCanYouUseHed.md) guide for information about
 how specific types of users can leverage HED.
 
 ## History and Support
