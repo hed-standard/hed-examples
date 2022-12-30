@@ -1,7 +1,14 @@
-# HED summaries
+(hed-summary-guide-anchor)=
+# HED summary guide
 
 The HED [**File remodeling tools**](https://www.hed-resources.org/en/latest/FileRemodelingTools.html) provide a number of event summaries
 and event file transformations that are very useful during curation and analysis.
+
+The summaries described in this guide are:
+
+* [**Column value summary**](column-value-summary-anchor)
+* [**HED tag summary**](hed-tag-summary-anchor)
+* [**Experimental design summary**](experimental-design-summary-anchor)
 
 As described in more detail in the [**File remodeling quickstart**](https://www.hed-resources.org/en/latest/FileRemodelingQuickstart.html) tutorial and the
 [**File remodeling tools**](https://www.hed-resources.org/en/latest/FileRemodelingTools.html)
@@ -25,16 +32,17 @@ Each example only shows the overall summary with links to the full summaries tha
 include individual summaries. The summaries use a **[number events, number files]**
 display of the counts of how many events and files an item appears in.
 
-## Summarizing event file values
+(column-value-summary-anchor)=
+## Column value summary
 
 The `summarize_column_value` operation produces a summary of three types of columns:
 
 - **categorical column**: the summary counts the number of events (rows) and files for each unique column value. 
-<p></p>
+
 
 - **value column**: the summary counts the number of files containing the column and 
 total number of rows in the column.
-<p></p>
+
 
 - **skip columns**: are ignored.
 
@@ -74,7 +82,6 @@ categorical columns.
 
 The following excerpt shows the dataset portion of the resulting summary in text format:
 
-(dataset-level-summary-column-values-anchor)=
 ````{admonition} Text format excerpt with dataset-level summary of column values.
 ```text
 Context name: column_values_summary
@@ -119,8 +126,8 @@ specified for the stimulus events:
 
 As expected, the *show_face_initial* appears exactly once in each file (e.g., [6 events, 6 files]) since it is a setup-event.
 
-
-## Summarizing HED tags
+(hed-tag-summary-anchor)=
+## HED tag summary
 
 The HED tag summary gives an overall picture of the types of HED tags in the
 dataset along with counts and the number of files that these tags appear in.
@@ -190,14 +197,17 @@ The summary indicates that the event type breakdown:
 
 Further, there were 626 cues and 316 experimental stimuli among the sensory events.
 
-## Summarizing experimental design
+
+(experimental-design-summary-anchor)=
+## Experimental design summary
 
 The HED type summary allows users to obtain a detailed summary of a particular tag.
 Usually type summaries are used for *Condition-variable* tag, which encodes experimental
-conditions and design. 
-Type summaries based on the **Task** tag and *Time-block* tag are also informative.
-**See the [**HED conditions and design matrices**](./HedConditionsAndDesignMatrices.md)
-tutorial for more details on how this information is encoded.
+conditions and design.
+The [**HED conditions and design matrices**](./HedConditionsAndDesignMatrices.md)
+tutorial explains how this information is encoded and can be used.
+
+Type summaries based on the *Task* tag and *Time-block* tag are also informative.
 
 
 ````{admonition} Example JSON remodeling file for a HED type summary based on *Condition-variable*.
@@ -267,8 +277,9 @@ The *face-type* and *repetition-type* each have three levels encoding a 3 x 3 ex
 The *face-type* condition variable has three levels with roughly equal numbers of occurrences
 (*famous-face-cond* with 108 events, *scrambled-face-cond* with 103 events, and
 *unfamiliar-face-cond* with 105 events).
+
 This information is similar to that obtained in the 
-[**summary of column values**](./HedSummaries.md#dataset-level-summary-column-values-anchor),
+[**column value summary**](column-value-summary-anchor),
 but only because these condition variables were directly encoded by columns `face_type` and
 `repetition_type` in the events files.
 The HED approach allows a more general, dataset-independent extraction of design matrices
