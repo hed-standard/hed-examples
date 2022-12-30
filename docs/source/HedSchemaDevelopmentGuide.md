@@ -1,5 +1,19 @@
 # HED schema development guide
 
+HED annotations consist of comma-separated terms drawn from a hierarchically
+structured vocabulary called a HED schema.
+The **HED standard schema** contains basic terms that are common across
+most human neuroimaging, behavioral, and physiological experiments.
+The HED ecosystem also supports (**HED library schemas**) to expand the HED vocabulary 
+in a scalable manner to support specialized data.
+
+Although you can create a private HED vocabulary for your
+
+This guide describes how to begin developing your own schema. 
+
+This section describes how you can contribute to existing HED vocabularies
+or creating an entirely new one.
+
 
 ## Setting up for schema development
 
