@@ -10,9 +10,16 @@ be applied to other types of tabular data.
 <hr style="border: 3px solid #000080" />
 
 (as-an-experimenter-anchor)=
-## As an experimenter ...
+## <span style="color: #229955;">As an experimenter</span>
+> <span style="font-size: 1.5em; font-weight: 900; color: #229955; font-family: Roboto Slab,ff-tisa-web-pro,Georgia,Arial,sans-serif;">&nbsp;&nbsp;... designing experiments and acquiring data:</span>
 
-> <span style="font-size: 1.36em; font-weight: bold; color: #229955;">&nbsp;&nbsp;... designing experiments and acquiring data.</span>
+The lynch-pin of scientific inquiry is the planning and running of experiments to test 
+hypotheses and study behavior.
+The focus of the discussion here is not explicitly the standard concerns of how an experiment
+should be designed,
+but rather how data should be recorded and identified to maximize its downstream usability.
+
+**Here are some topics of interest to experiment designers:**
 
 The lynch-pin of scientific inquiry is the planning and running of experiments to test 
 hypotheses and study behavior.
@@ -29,6 +36,23 @@ but rather how data should be recorded and identified to maximize its downstream
 (planning-and-running-an-experiment-anchor)=
 ### Planning and running an experiment
 
+<<<<<<< HEAD
+Most laboratory experiments use a combination of peripheral devices and neuroimaging equipment in
+combination with experiment control software to acquire the experimental data.
+
+From a data perspective, important considerations include:
+
+- How will 
+
+#### Encoding of events and design
+
+Some considerations are:
+
+- 
+
+#### The importance of pilot data
+=======
+>>>>>>> a363acbe55e791a685fe6f96dcb0a6f8a51b9af3
 
 
 
@@ -48,9 +72,8 @@ but rather how data should be recorded and identified to maximize its downstream
 <hr style="border: 3px solid #000080;" />
 
 (as-a-data-curator-anchor)=
-## <span style="color: #4D7731; background: gold;">As a data curator ...</span>
-
-> <span style="font-size: 1.36em; font-weight: bold; color: #229955;">&nbsp;&nbsp;... organizing data for sharing and analysis.</span>
+## <span style="color: #229955;">As a data curator</span>
+> <span style="font-size: 1.5em; font-weight: bold; color: #229955; font-family: Roboto Slab,ff-tisa-web-pro,Georgia,Arial,sans-serif;">&nbsp;&nbsp;... organizing data for sharing and analysis:</span>
 
 The move towards open, reproducible science, both in the scientific community and
 by funding agencies, makes data sharing a requirement.
@@ -276,9 +299,15 @@ columns of the event files.
 <hr style="border: 3px solid #000080;" />
 
 (as-a-data-analyst-anchor)=
-## As a data analyst ...
+## <span style="color: #229955;">As a data analyst</span>
+> <span style="font-size: 1.5em; font-weight: bold; color: #229955; font-family: Roboto Slab,ff-tisa-web-pro,Georgia,Arial,sans-serif;">&nbsp;&nbsp;... applying HED tools to answer scientific questions:</span>
 
-> <span style="font-size: 1.36em; font-weight: bold; color: #229955;">&nbsp;&nbsp;... applying HED-informed data to answer scientific questions.</span>
+Whether you are analyzing your own data or using shared data produced by others to 
+answer a scientific question, fully understanding the data and its limitations are essential
+for accurate and reproducible analysis.
+This section discusses how HED annotations and tools can be used for effective analysis.
+
+**Here are some topics of interest to data analysts:**
 
 Whether you are analyzing your own data or using shared data produced by others to 
 answer a scientific question, fully understanding the data and its limitations are essential
@@ -338,10 +367,20 @@ The factor generation as described in this section relies on the HED
 <hr style="border: 3px solid #000080" />
 
 (as-a-tool-developer-anchor)=
-## As a tool developer ...
+## <span style="color: #229955;">As a tool developer</span>
+> <span style="font-size: 1.5em; font-weight: bold; color: #229955; font-family: Roboto Slab,ff-tisa-web-pro,Georgia,Arial,sans-serif;">&nbsp;&nbsp;... helping expand the growing HED tool base:</span>
 
-> <span style="font-size: 1.36em; font-weight: bold; color: #229955;">&nbsp;&nbsp;... modifying and adding to the growing HED tool base.</span>
+The power of HED is its ability to capture important details of the experiment design and events in
+a form that is both human-understandable and directly usable in processing programs.
+The HED ecosystem relies on tools that read, understand, and incorporate HED as part of analysis.
+This section describes how, as a tool developer, you can contribute to this growing ecosystem
+to support HED for processing and analysis.
 
+<<<<<<< HEAD
+**Here are some topics of interest to developers:**
+
+* [**Integrating with other tools**](integrating-with-existing-tools-anchor)
+=======
 The power of HED is ability to capture important details of the experiment design and events in
 a form that is both human-understandable and directly usable in processing programs.
 The HED ecosystem relies on tools that read, understand, and incorporate HED as part of this analysis.
@@ -351,53 +390,130 @@ to support HED for processing and analysis.
 **Here are some topics of interest to developers:**
 
 * [**Integrating with existing tools**](integrating-with-existing-tools-anchor)
+>>>>>>> a363acbe55e791a685fe6f96dcb0a6f8a51b9af3
 * [**Developing new tools**](developing-new-tools-anchor)
 
 (integrating-with-existing-tools-anchor)=
-### Integrating with existing tools
+### Integration with existing tools
 
 (developing-new-tools-anchor)=
 ### Developing new tools
+
+(requesting-features-anchor)=
+### Requesting features
+
+(reporting-issues-anchor)=
+### Reporting issues
+
 
 
 
 <hr style="border: 3px solid #000080;" />
 
 (as-a-schema-developer-anchor)=
-## As a schema developer ...
+## <span style="color: #229955;">As a schema developer</span>
+> <span style="font-size: 1.5em; font-weight: bold; color: #229955; font-family: Roboto Slab,ff-tisa-web-pro,Georgia,Arial,sans-serif;">&nbsp;&nbsp;... extending HED in new directions:</span>
 
-> <span style="font-size: 1.36em; font-weight: bold; color: #229955;">&nbsp;&nbsp;... extending HED to support new research directions.</span>
-
-HED annotations are drawn from structured vocabularies called **HED schemas**.
-The HED standard schema contains basic terms that are common across
+HED annotations consist of comma-separated terms drawn from a hierarchically
+structured vocabulary called a HED schema.
+The **HED standard schema** contains basic terms that are common across
 most human neuroimaging, behavioral, and physiological experiments.
-However, many experiments also require specialized terms to fully capture
-the important information in machine-actionable annotations.
-For this reason, the HED supports the addition of specialized vocabularies
-(**library schemas**) to expand the HED vocabulary in a scalable manner.
-This section describes how you can contribute to existing HED vocabularies
-or create an entirely new one.
 
-**Here are some topics of interest to developers:**
+The HED ecosystem also includes **HED library schemas** to expand the HED vocabulary 
+in a scalable manner to support more specialized data.
 
-[**Expandable viewer**](https://www.hedtags.org/display_hed.html) for the HED standard
+**Here are some topics of interest to schema developers:**
+
+* [**Viewing available schemas**](viewing-available-schemas-anchor)
+* [**Improving an existing schema**](improving-an-existing-schema-anchor)
+* [**Creating a new library schema**](creating-a-new-library-schema-anchor)
+* [**Private vocabularies and extensions**](private-vocabularies-and-extensions-anchor)
+
+The SCORE library for clinical EEG annotations has been released.
+Other schema libraries are under development include a movie annotation library and
+a language annotation library, but these have not yet reached the stage 
+that they are available for community comment.
+
+If you are interested in participating in the development of any ongoing library development efforts,
+please email hed.maintainers@gmail.com.
+
+(viewing-available-schemas-anchor)=
+### Viewing available schemas
+
+The first step in using or improving the HED vocabularies is to explore what
+is there using the [**Standard viewer**](https://www.hedtags.org/display_hed.html) for the HED standard
 schema.
 
-Many fields have much more specific annotation needs, and HED supports the
-creation of library schema to meet these needs.
+The SCORE library for clinical annotation of EEG
+can be viewed using the [**Score viewer**](https://www.hedtags.org/display_hed_score.html)
 
-(getting-involved-anchor)=
-### Getting involved
-If you are interested in developing a new HED library or joining an existing
-development effort:
+(improving-an-existing-schema-anchor)=
+### Improving an existing schema
 
-- Read the Setting up section of the  [**HED schema development guide**](https://www.hed-resources.org/en/latest/HedSchemaDevelopmentGuide.html).
-<p></p>
+If you see a need for additional terms in an existing schema,
+post an issue to schema to
+[**hed-schemas/issues**](https://github.com/hed-standard/hed-schemas/issues) on GitHub 
+with the following information:
 
-- Post an issue on the [**hed-schemas/issues**](https://github.com/hed-standard/hed-schemas/issues) GitHub repository.
+````{admonition} Proposing a new tag in an existing HED schema.
+Be sure to include the following when posting an issue to add a schema term.
 
-(schema-rules-anchor)=
-### Schema rules
+- The name of the schema (standard or library-name).
+- The proposed name of the term or the name of term to be modified. 
+- A brief and informative text description of its meaning. 
+- A suggestion for where term should be placed in the schema if new.
+- An explanation of why this term is needed and how it might be used. 
 
-- [**The HED schema](https://hed-specification.readthedocs.io/en/latest/03_Schema.html#)
+Proposals for modifications to existing terms should include similar information.
 
+````
+
+The posting of an issue will start the discussion going.
+A HED schema term must stand on its own and must not exist elsewhere in the schema.
+When thinking about where a term should be located within the schema hierarchy,
+also remember that every term satisfies the **is-a** relationship with any of its schema parents.
+
+Besides adding new terms, you might suggest improvements to an existing term's
+description or a modification of its attributes.
+You might also suggest the need for modifications or additions to the schema attributes, 
+value classes, or unit classes.
+
+All suggested changes or errors should be reported using the same mechanism
+as proposing new terms through the [**hed-schemas/issues**](https://github.com/hed-standard/hed-schemas/issues) mechanism on GitHub.
+
+(creating-a-new-library-schema-anchor)=
+### Creating a new library schema
+
+If you are interested in developing a library schema in a new area,
+you should post an issue on the [**hed-schemas/issues**](https://github.com/hed-standard/hed-schemas/issues) 
+GitHub repository. Your post should start with a brief description of the 
+proposed library and its applications.
+
+````{admonition} Starting the process of developing a new HED schema library.
+Be sure to include the following for your initial post proposing creation of a new library.
+
+- A proposed name for the HED library schema.
+- A brief description of the library's purpose and contents.
+- GitHub handles for potential collaborators.
+ 
+````
+
+You should also read the [**HED schema development guide**](https://www.hed-resources.org/en/latest/HedSchemaDevelopmentGuide.html) to get an overview of the development process.
+
+**Note**: You must have a GitHub account in order to work on the development of a
+new schema as all development processes for HED use the GitHub Pull Request mechanism for
+development and community comment.
+
+(private-vocabularies-and-extensions-anchor)=
+### Private vocabularies and extensions
+
+Although you can create a private HED vocabulary for your own use,
+many HED tools assume that only standardized schemas available on the
+[**hed-schemas**](https://github.com/hed-standard/hed-schemas) GitHub repository will be used. 
+These tools fetch or internally cache the most recent versions of the HED schemas,
+and users need only specify the HED schema versions during validation and analysis.
+
+The decision to only support standardized schemas was after serious deliberation
+by the HED Working Group based on the observation that the ability of
+HED to enable standardized dataset summaries and comparisons would be compromised by
+allowing unvetted, private vocabularies.
