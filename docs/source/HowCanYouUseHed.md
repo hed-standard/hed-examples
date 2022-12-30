@@ -7,6 +7,14 @@ participant state, experimental control, task parameters, and experimental condi
 HED annotations are most commonly associated with event files, but can also
 be applied to other types of tabular data.
 
+**This guide organizes useful HED resources for how you might use HED:**
+
+* [**As an experimenter**](as-an-experimenter-anchor)
+* [**As a data curator**](as-a-data-curator-anchor)
+* [**As a data analyst**](as-a-data-analyst-anchor)
+* [**As a tool developer**](as-a-tool-developer-anchor)
+* [**As a schema developer**](as-a-schema-developer-anchor)
+
 <hr style="border: 3px solid #000080" />
 
 (as-an-experimenter-anchor)=
@@ -36,7 +44,6 @@ but rather how data should be recorded and identified to maximize its downstream
 (planning-and-running-an-experiment-anchor)=
 ### Planning and running an experiment
 
-<<<<<<< HEAD
 Most laboratory experiments use a combination of peripheral devices and neuroimaging equipment in
 combination with experiment control software to acquire the experimental data.
 
@@ -51,10 +58,6 @@ Some considerations are:
 - 
 
 #### The importance of pilot data
-=======
->>>>>>> a363acbe55e791a685fe6f96dcb0a6f8a51b9af3
-
-
 
 - Data that isn't recorded is lost forever.
 - 
@@ -376,21 +379,9 @@ The HED ecosystem relies on tools that read, understand, and incorporate HED as 
 This section describes how, as a tool developer, you can contribute to this growing ecosystem
 to support HED for processing and analysis.
 
-<<<<<<< HEAD
 **Here are some topics of interest to developers:**
 
 * [**Integrating with other tools**](integrating-with-existing-tools-anchor)
-=======
-The power of HED is ability to capture important details of the experiment design and events in
-a form that is both human-understandable and directly usable in processing programs.
-The HED ecosystem relies on tools that read, understand, and incorporate HED as part of this analysis.
-This section describes how, as a tool developer, you can contribute to this growing ecosystem
-to support HED for processing and analysis.
-
-**Here are some topics of interest to developers:**
-
-* [**Integrating with existing tools**](integrating-with-existing-tools-anchor)
->>>>>>> a363acbe55e791a685fe6f96dcb0a6f8a51b9af3
 * [**Developing new tools**](developing-new-tools-anchor)
 
 (integrating-with-existing-tools-anchor)=
