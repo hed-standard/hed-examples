@@ -29,14 +29,6 @@ but rather how data should be recorded and identified to maximize its downstream
 
 **Here are some topics of interest to experiment designers:**
 
-The lynch-pin of scientific inquiry is the planning and running of experiments to test 
-hypotheses and study behavior.
-The focus of the discussion here is not explicitly the standard concerns of how an experiment
-should be designed,
-but rather how data should be recorded and identified to maximize its downstream usability.
-
-**Here are some topics of interest to experiment designers:**
-
 * [**Planning and running an experiment**](planning-and-running-an-experiment-anchor)
 * [**Post processing the data**](post-processing-the-data-anchor)
 
@@ -45,29 +37,32 @@ but rather how data should be recorded and identified to maximize its downstream
 
 Most laboratory experiments use a combination of peripheral devices and neuroimaging equipment in
 combination with experiment control software to acquire the experimental data.
+This section describes some HED tools that may be of use during this process,
+focusing on the experimental logs and event reporting. 
 
-From a data perspective, important considerations include:
 
-- How will 
+Key questions are:
+- What should go into an experimental log?
+- How should information about the experimental design temporal structure be included?
+- How will the log data be synchronized with other data?
 
-#### Encoding of events and design
+We assume that event information is primarily contained in experimental logs,
+whose log entries contain a timestamp, a code, and possibly other information.
+We assume that this information can be extracted into a tabular format.
 
-Some considerations are:
 
-- 
+><span style="color:#A00000; font-weight:bold;">Data that isn't recorded is lost forever!</span>
 
-#### The importance of pilot data
 
-- Data that isn't recorded is lost forever.
-- 
-#### Mapping events from logs
-
-#### Assuring completeness
 
 (post-processing-the-data-anchor)=
-### Post-processing the data
+### Post-processing the event data
 
+
+(remapping-columns-anchor)=
 #### Remapping columns
+
+
 
 #### Other useful operations
 
@@ -291,11 +286,11 @@ to improperly handle these situations, reducing the accuracy of analysis.
 At this time, your only option is to do manual checks or write custom code to
 detect these types of experiment-specific inconsistencies.
 However, work is underway to include some standard types of checks in the
-HED [**File remodeling tools**](https://www.hed-resources.org/en/latest/FileRemodelingTools.html) in future releases.
+HED [**File remodeling tools**](./FileRemodelingTools.md) in future releases.
 
 You may also want to reorganize the event files using the remodeling tools.
-See the [**Remapping columns**](./HowCanYouUseHed.md#remapping-columns) for
-a discussion and links to examples of how to reorganize the information in the
+See the [**Remapping columns**](remapping-columns-anchor) 
+a discussion above and links to examples of how to reorganize the information in the
 columns of the event files.
 
 <hr style="border: 3px solid #000080;" />
@@ -312,25 +307,69 @@ This section discusses how HED annotations and tools can be used for effective a
 **Here are some topics of interest to data analysts:**
 
 * [**Understanding the data**](understanding-the-data-anchor)
+* [**Preparing the data**](preparing-the-data-anchor)
 * [**Analyzing the data**](analyzing-the-data-anchor)
-  * [**Factors based on columns**](factors-based-on-columns-anchor)
-  * [**Factors based on experimental conditions**](factors-based-on-experimental-conditions-anchor)
-  * [**Factors based on HED tags**](factors-based-on-hed-tags-anchor)
+  * [**Factors vectors and selection**](factor-vectors-and-selection-anchor)
+  * [**HED analysis in EEGLAB**](hed-analysis-in-eeglab-anchor)
+
 
 (understanding-the-data-anchor)=
 ### Understanding the data
 
 Sadly, most currently shared data is under-annotated and may require considerable
-work and possibly contact with the data authors for correct interpretation.
+work and possibly contact with the data authors for correct use and interpretation.
 
-You can get a preliminary sense about what is in the data by downloading a
-single event file (in BIDS `_events.tsv`) and its associated JSON sidecar
-(`_events.json`). Typically, the sidecar is a single file in the root directory
-of the dataset.
+You can get a preliminary sense about what is actually in the data by downloading a
+single event file (e.g., a BIDS `_events.tsv`) and its associated JSON sidecar
+(e.g., a BIDS `_events.json`) and creating HED remodeling tool summaries using the 
+[**HED online tools for debugging**](./FileRemodelingQuickstart.md#online-tools-for-debugging).
+Summaries of particular use for analysts include the following.
 
+- The [**column value summary**](./HedSummaryGuide.md#column-value-summary)summarizes
+the values in the various columns of the event files in the dataset. This summary does not require any HED information.
+<p></p>
+
+- The [**HED tag summary**](./HedSummaryGuide.md#hed-tag-summary)
+summarizes the HED tags used to annotate the data.
+<p></p>
+
+- The [**experimental design summary**](./HedSummaryGuide.md#experimental-design-summary)
+gives a summary of the condition variables or other structural tags relating to experimental design, task,
+or temporal layout of the experiment. 
+
+While HED tag summary and the experimental design summaries require that the dataset have HED annotations, these summaries do not rely on the experiment-specific
+event-coding used in each experiment and can be used to compare information for different datasets.
+
+The [**File remodeling quickstart**](./FileRemodelingQuickstart.md) tutorial
+gives an overview of the remodeling tools and how to use them.
+More detailed information can be found in [**File remodeling tools**](./FileRemodelingTools.md)
+
+The [**Online tools for debugging**](./FileRemodelingQuickstart.md#online-tools-for-debugging)
+shows how to use remodeling tools to obtain these summaries without writing any code.
+
+The [**HED conditions and design matrices**](HedConditionsAndDesignMatrices.md) guide explains how
+information structure information is encoded in HED and how to interpret the summaries of this information.
+
+(preparing-the-data-anchor)=
+### Preparing the data
+
+In deciding on an analysis, you may discover that the information in the event files is not
+organized in a way that would support your analyses. 
 
 (analyzing-the-data-anchor)=
 ### Analyzing the data
+
+The power of HED is two-fold -- its flexibility and its generality in specifying criteria.
+Flexibility allows users to specify quite complex criteria without having to write 
+additional code, while generality allows comparison of criteria across different
+experiments.
+
+The factor generation as described in the next section relies on the HED
+[**File remodeling tools**](FileRemodelingTools.md).
+See [**File remodeling tools**](FileRemodelingTools.md).
+
+(factor-vectors-and-selection-anchor)=
+#### Factor vectors and selection
 
 The most common analysis application is to select events satisfying a particular criteria,
 and compare some measure on signals containing these events with a control.
@@ -342,22 +381,23 @@ rows as the event file (each row corresponding to an event marker).
 Factor vectors contain 1's for rows in which a specified criterion is satisfied
 and 0's otherwise.
 
-The power of HED is two-fold -- its flexibility and its generality in specifying criteria.
-Flexibility allows users to specify quite complex criteria without having to write 
-additional code, while generality allows comparison of criteria across different
-experiments.
+- The [**factor column operation**](./FileRemodelingTools.md#factor-column)
+creates factor vectors based on the unique values in specified columns.
+This factor operation does not require any HED information.
+<p></p>
 
-The factor generation as described in this section relies on the HED
-[**File remodeling tools**](https://www.hed-resources.org/en/latest/FileRemodelingTools.
+- The [**factor HED tags**](./FileRemodelingTools.md#factor-hed-tags)
+creates factor vectors based on a HED tag query.
+<p></p>
 
-(factors-based-on-columns-anchor)=
-#### Factors based on columns
+- The [**factor HED type**](./FileRemodelingTools.md#factor-hed-type)
+creates factors based on a HED tag representing structural information about the data such as
+*Condition-variable* (for experimental design and experimental conditions) or *Task*.
 
-(factors-based-on-experimental-conditions-anchor)=
-#### Factors based on experimental conditions
+(hed-analysis-in-eeglab-anchor)=
+#### HED analysis in EEGLAB
 
-(factors-based-on-hed-tags-anchor)=
-#### Factors based on HED tags
+Coming soon...
 
 <hr style="border: 3px solid #000080" />
 
@@ -375,20 +415,30 @@ to support HED for processing and analysis.
 
 * [**Integrating with other tools**](integrating-with-existing-tools-anchor)
 * [**Developing new tools**](developing-new-tools-anchor)
+* [**Requesting features**](requesting-features-anchor)
+* [**Reporting issues**](reporting-issues-anchor)
+
+
 
 (integrating-with-existing-tools-anchor)=
 ### Integration with existing tools
 
+Coming soon...
+
 (developing-new-tools-anchor)=
 ### Developing new tools
+
+Coming soon...
 
 (requesting-features-anchor)=
 ### Requesting features
 
+Coming soon...
+
 (reporting-issues-anchor)=
 ### Reporting issues
 
-
+Coming soon...
 
 
 <hr style="border: 3px solid #000080;" />
