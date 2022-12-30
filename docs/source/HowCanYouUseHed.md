@@ -21,6 +21,14 @@ but rather how data should be recorded and identified to maximize its downstream
 
 **Here are some topics of interest to experiment designers:**
 
+The lynch-pin of scientific inquiry is the planning and running of experiments to test 
+hypotheses and study behavior.
+The focus of the discussion here is not explicitly the standard concerns of how an experiment
+should be designed,
+but rather how data should be recorded and identified to maximize its downstream usability.
+
+**Here are some topics of interest to experiment designers:**
+
 * [**As an experimenter**](as-an-experimenter-anchor)
   * [**Planning and running an experiment**](planning-and-running-an-experiment-anchor)
   * [**Post processing the data**](post-processing-the-data-anchor)
@@ -28,6 +36,7 @@ but rather how data should be recorded and identified to maximize its downstream
 (planning-and-running-an-experiment-anchor)=
 ### Planning and running an experiment
 
+<<<<<<< HEAD
 Most laboratory experiments use a combination of peripheral devices and neuroimaging equipment in
 combination with experiment control software to acquire the experimental data.
 
@@ -42,6 +51,8 @@ Some considerations are:
 - 
 
 #### The importance of pilot data
+=======
+>>>>>>> a363acbe55e791a685fe6f96dcb0a6f8a51b9af3
 
 
 
@@ -298,6 +309,13 @@ This section discusses how HED annotations and tools can be used for effective a
 
 **Here are some topics of interest to data analysts:**
 
+Whether you are analyzing your own data or using shared data produced by others to 
+answer a scientific question, fully understanding the data and its limitations are essential
+for accurate and reproducible analysis.
+This section discusses how HED annotations and tools can be used for effective analysis.
+
+**Here are some topics of interest to data analysts:**
+
 * [**Understanding the data**](understanding-the-data-anchor)
 * [**Analyzing the data**](analyzing-the-data-anchor)
   * [**Factors based on columns**](factors-based-on-columns-anchor)
@@ -358,9 +376,21 @@ The HED ecosystem relies on tools that read, understand, and incorporate HED as 
 This section describes how, as a tool developer, you can contribute to this growing ecosystem
 to support HED for processing and analysis.
 
+<<<<<<< HEAD
 **Here are some topics of interest to developers:**
 
 * [**Integrating with other tools**](integrating-with-existing-tools-anchor)
+=======
+The power of HED is ability to capture important details of the experiment design and events in
+a form that is both human-understandable and directly usable in processing programs.
+The HED ecosystem relies on tools that read, understand, and incorporate HED as part of this analysis.
+This section describes how, as a tool developer, you can contribute to this growing ecosystem
+to support HED for processing and analysis.
+
+**Here are some topics of interest to developers:**
+
+* [**Integrating with existing tools**](integrating-with-existing-tools-anchor)
+>>>>>>> a363acbe55e791a685fe6f96dcb0a6f8a51b9af3
 * [**Developing new tools**](developing-new-tools-anchor)
 
 (integrating-with-existing-tools-anchor)=
@@ -388,6 +418,7 @@ HED annotations consist of comma-separated terms drawn from a hierarchically
 structured vocabulary called a HED schema.
 The **HED standard schema** contains basic terms that are common across
 most human neuroimaging, behavioral, and physiological experiments.
+
 The HED ecosystem also includes **HED library schemas** to expand the HED vocabulary 
 in a scalable manner to support more specialized data.
 
