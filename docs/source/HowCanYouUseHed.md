@@ -7,7 +7,7 @@ participant state, experimental control, task parameters, and experimental condi
 HED annotations are most commonly associated with event files, but can also
 be applied to other types of tabular data.
 
-**This guide organizes useful HED resources for how you might use HED:**
+**This guide organizes HED resources based on how you might use HED:**
 
 * [**As an experimenter**](as-an-experimenter-anchor)
 * [**As a data curator**](as-a-data-curator-anchor)
@@ -37,9 +37,8 @@ but rather how data should be recorded and identified to maximize its downstream
 
 **Here are some topics of interest to experiment designers:**
 
-* [**As an experimenter**](as-an-experimenter-anchor)
-  * [**Planning and running an experiment**](planning-and-running-an-experiment-anchor)
-  * [**Post processing the data**](post-processing-the-data-anchor)
+* [**Planning and running an experiment**](planning-and-running-an-experiment-anchor)
+* [**Post processing the data**](post-processing-the-data-anchor)
 
 (planning-and-running-an-experiment-anchor)=
 ### Planning and running an experiment
@@ -304,13 +303,6 @@ columns of the event files.
 (as-a-data-analyst-anchor)=
 ## <span style="color: #229955;">As a data analyst</span>
 > <span style="font-size: 1.5em; font-weight: bold; color: #229955; font-family: Roboto Slab,ff-tisa-web-pro,Georgia,Arial,sans-serif;">&nbsp;&nbsp;... applying HED tools to answer scientific questions:</span>
-
-Whether you are analyzing your own data or using shared data produced by others to 
-answer a scientific question, fully understanding the data and its limitations are essential
-for accurate and reproducible analysis.
-This section discusses how HED annotations and tools can be used for effective analysis.
-
-**Here are some topics of interest to data analysts:**
 
 Whether you are analyzing your own data or using shared data produced by others to 
 answer a scientific question, fully understanding the data and its limitations are essential
