@@ -1,4 +1,4 @@
-# HED searching
+# HED search guide
 
 **Under construction**
 

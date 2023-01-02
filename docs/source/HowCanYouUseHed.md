@@ -38,17 +38,15 @@ but rather how data should be recorded and identified to maximize its downstream
 Most laboratory experiments use a combination of peripheral devices and neuroimaging equipment in
 combination with experiment control software to acquire the experimental data.
 This section describes some HED tools that may be of use during this process,
-focusing on the experimental logs and event reporting. 
+focusing on the experimental logs and event reporting. Key questions are:
 
-
-Key questions are:
 - What should go into an experimental log?
 - How should information about the experimental design temporal structure be included?
 - How will the log data be synchronized with other data?
 
 We assume that event information is primarily contained in experimental logs,
 whose log entries contain a timestamp, a code, and possibly other information.
-We assume that this information can be extracted into a tabular format.
+We assume that this information can be extracted in tabular format.
 
 
 ><span style="color:#A00000; font-weight:bold;">Data that isn't recorded is lost forever!</span>
@@ -397,7 +395,15 @@ creates factors based on a HED tag representing structural information about the
 (hed-analysis-in-eeglab-anchor)=
 #### HED analysis in EEGLAB
 
-Coming soon...
+[**EEGLAB**](https://sccn.ucsd.edu/eeglab/index.php), the interactive
+MATLAB toolbox for EEG/MEG analysis supports HED through the
+[**EEGLAB HEDTools plugin**](./HedMatlabTools.md#eeglab-plug-in-integration).
+
+#### HED support in other tools
+
+Work is underway to integrate HED support in other analysis packages.
+If you are interested in helping in this effort please email
+hed.maintainers@gmail.com
 
 <hr style="border: 3px solid #000080" />
 
