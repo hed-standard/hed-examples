@@ -13,13 +13,13 @@ be applied to other types of tabular data.
 * [**As a data curator**](as-a-data-curator-anchor)
 * [**As a data analyst**](as-a-data-analyst-anchor)
 * [**As a tool developer**](as-a-tool-developer-anchor)
-* [**As a schema developer**](as-a-schema-developer-anchor)
+* [**As a schema designer**](as-a-schema-designer-anchor)
 
 <hr style="border: 3px solid #000080" />
 
 (as-an-experimenter-anchor)=
 ## <span style="color: #229955;">As an experimenter</span>
-> <span style="font-size: 1.5em; font-weight: 900; color: #229955; font-family: Roboto Slab,ff-tisa-web-pro,Georgia,Arial,sans-serif;">&nbsp;&nbsp;... designing experiments and acquiring data:</span>
+> <span style="font-size: 1.5em; font-weight: 900; color: #229955; font-family: Roboto Slab,ff-tisa-web-pro,Georgia,Arial,sans-serif;">&nbsp;&nbsp;... doing experiments and acquiring data:</span>
 
 The lynch-pin of scientific inquiry is the planning and running of experiments to test 
 hypotheses and study behavior.
@@ -47,22 +47,57 @@ focusing on the experimental logs and event reporting. Key questions are:
 We assume that event information is primarily contained in experimental logs,
 whose log entries contain a timestamp, a code, and possibly other information.
 We assume that this information can be extracted in tabular format.
-
+The key point here is:
 
 ><span style="color:#A00000; font-weight:bold;">Data that isn't recorded is lost forever!</span>
 
+With that caveat in mind, most researchers will run a pilot before the actual
+experiment to detect issues that might reduce the effectiveness or correctness of the experiment.
+The HED tools can help in smoothing the transition from acquisition to data,
+both in the pilot and the 
 
+#### Event acquisition
+
+In a traditional neuroimaging experiment that is organized by trial, it is easy
+focus exclusively on marking the experimental stimuli and just mark whether
+the response was correct or incorrect.
+However, the incidental sensory presentations can also be important,
+particularly for analysis that uses regression techniques.
+Examples of incidental sensory presentations include, cues, instructions, feedback,
+and experimental control events that are visible to the participant.
+
+Participant responses should be marked in the timeline.
+A common approach is to identify the closing of a switch on a push-button,
+marking the end of the participant's response.
+More sophisticated instrumentation might include detection of initiation and termination
+of muscle movement using EMG (electromyography) sensors.
+
+Another issue which should be addressed in the pilot is how experimental control
+information will be embedded in the data.
+Will there be embedded markers for trial or block beginnings?
+How will information about experimental conditions be embedded?
+Often a condition will be counterbalanced within a run, and embedding markers
+identifying the current conditions in the log, will facilitate the use of tools
+in post-processing and assure that the conditions are correctly marked.
+
+#### Logs to event files
+
+Although the HED tools do not yet directly support any particular experimental presentation/control
+software packages, the HED [**File remodeling tools**](./FileRemodelingTools.md) can
+be useful in working with your pilot data.
+
+Assuming that you can put the information from your experimental log into a tabular form such as:
+
+````{admonition}
+| onset  | code  | description |
+|--------|-------|-------------|
+
+````
 
 (post-processing-the-data-anchor)=
 ### Post-processing the event data
 
-
-(remapping-columns-anchor)=
-#### Remapping columns
-
-
-
-#### Other useful operations
+The
 
 <hr style="border: 3px solid #000080;" />
 
@@ -449,8 +484,8 @@ Coming soon...
 
 <hr style="border: 3px solid #000080;" />
 
-(as-a-schema-developer-anchor)=
-## <span style="color: #229955;">As a schema developer</span>
+(as-a-schema-designer-anchor)=
+## <span style="color: #229955;">As a schema designer</span>
 > <span style="font-size: 1.5em; font-weight: bold; color: #229955; font-family: Roboto Slab,ff-tisa-web-pro,Georgia,Arial,sans-serif;">&nbsp;&nbsp;... extending HED in new directions:</span>
 
 HED annotations consist of comma-separated terms drawn from a hierarchically

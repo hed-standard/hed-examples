@@ -432,9 +432,7 @@ To use HED epoching, you must have annotated the EEG dataset.
 If the dataset is not tagged, please refer to [Annotating datasets](#annotating-datasets)
 on how to tag a dataset.
 
-Start by choosing the menu option:
-
-> **Tools --> Extract epochs by tags**:
+Start by choosing the menu option: **Tools --> Extract epochs by tags**:
 
 <img src="_static/images/extract-epoch-selection.png" alt="extract-epoch-selection" style="zoom:50%;" />
 
