@@ -669,7 +669,7 @@ from the data file if the columns exist.
 (sample-remodel-file-anchor)=
 ### Sample remodel file
 
-````{admonition} JSON remodeling file with an operation to remove the value and sample columns if they exist.
+````{admonition} A sample JSON remodeling file with a single remove_columns transformation operation.
 :class: tip
 
 ```json
@@ -818,11 +818,11 @@ should be created for *succesful_stop* and *unsuccesful_stop* of the *trial_type
 The resulting columns are called *stopped* and *stop_failed*, respectively.
 
 
-````{admonition} A sample *factor_column* operation.
+````{admonition} A sample JSON file with a single *factor_column* transformation operation.
 :class: tip
 
 ```json
-{ 
+[{ 
     "operation": "factor_column"
     "description": "Create factors for the succesful_stop and unsuccesful_stop values."
     "parameters": {
@@ -830,7 +830,7 @@ The resulting columns are called *stopped* and *stop_failed*, respectively.
         "factor_values": ["succesful_stop", "unsuccesful_stop"],
         "factor_names": ["stopped", "stop_failed"]
     }
-}
+}]
 ```
 ````
 
@@ -892,11 +892,11 @@ columns with 1's where the HED string for a row contains the *Correct-action*
 and *Incorrect-action*, respectively. 
 The resulting factor columns are named *correct* and *incorrect*, respectively.
 
-````{admonition} Example *factor_hed_tags* operation.
+````{admonition} A sample JSON file with a single *factor_hed_tags* transformation operation.
 :class: tip
 
 ```json
-{ 
+[{ 
     "operation": "factor_hed_tags"
     "description": "Create factors based on whether the event represented a correct or incorrect action.",
     "parameters": {
@@ -905,7 +905,7 @@ The resulting factor columns are named *correct* and *incorrect*, respectively.
         "remove-types": [],
         "expand_context": false
     }
-}
+}]
 ```
 ````
 
@@ -964,18 +964,18 @@ each possible value of each *Condition-variable* tag.
 The columns contain 1's for rows corresponding to rows (e.g., events) for which that condition
 applies and 0's otherwise.
 
-````{admonition} Example *factor_hed_type* operation.
+````{admonition} A JSON file with a single *factor_hed_type* transformation operation.
 :class: tip
 
 ```json
-{ 
+[{ 
     "operation": "factor_hed_type"
     "description": "Factor based on the sex of the images being presented."
     "parameters": {
         "type_tag": "Condition-variable",
         "type_values": []
     }
-}
+}]
 ```
 ````
 
@@ -1045,11 +1045,11 @@ The *merge_consecutive* operation in the following example causes consecutive
 have the same values to be merged into a single event.
 
 
-````{admonition} A sample *merge_consecutive* operation.
+````{admonition} A JSON file with a single *merge_consecutive* transformation operation.
 :class: tip
 
 ```json
-{ 
+[{ 
     "operation": "merge_consecutive"
     "description": "Merge consecutive *succesful_stop* events that match the *match_columns."
     "parameters": {
@@ -1059,7 +1059,7 @@ have the same values to be merged into a single event.
         "set_durations": true,
         "ignore_missing": true
     }
-}
+}]
 ```
 ````
 
@@ -1152,11 +1152,11 @@ use a *remove_columns* transformation after the *remap_columns*.
 The *remap_columns* operation in the following example creates a new column called *response_type*
 based on the unique values in the combination of columns *response_accuracy* and *response_hand*.
 
-````{admonition} An example *remap_columns* operation.
+````{admonition} A JSON file with a single *remap_columns* transformation operation.
 :class: tip
 
 ```json
-{ 
+[{ 
     "operation": "remap_columns",
     "description": "Map response_accuracy and response hand into a single column.",
     "parameters": {
@@ -1169,7 +1169,7 @@ based on the unique values in the combination of columns *response_accuracy* and
                      ["n/a", "n/a", "n/a"]],
         "ignore_missing": true
     }
-}
+}]
 ```
 ````
 
@@ -1218,18 +1218,18 @@ parameter is *false*, a `KeyError` is raised for the missing column.
 The following example specifies that the *remove_columns* operation should remove the `stop_signal_delay`,
 `response_accuracy`, and `face` columns from the tabular data.
 
-````{admonition} An example *remove_columns* operation.
+````{admonition} A JSON file with a single *remove_columns* transformation operation.
 :class: tip
 
 ```json
-{   
+[{   
     "operation": "remove_columns",
     "description": "Remove extra columns before the next step.",
     "parameters": {
         "column_names": ["stop_signal_delay", "response_accuracy", "face"],
         "ignore_missing": true
     }
-}
+}]
 ```
 ````
 
@@ -1278,18 +1278,18 @@ The operation does not raise an error if a data file does not have a column name
 The following *remove_rows* operation removes the rows whose *trial_type* column 
 contains either `succesful_stop` or `unsuccesful_stop`.
 
-````{admonition} Sample *remove_rows* operation.
+````{admonition} A JSON file with a single *remove_rows* transformation operation.
 :class: tip
 
 ```json
-{   
+[{   
     "operation": "remove_rows",
     "description": "Remove rows where trial_type is either succesful_stop or unsuccesful_stop.",
     "parameters": {
         "column_name": "trial_type",
         "remove_values": ["succesful_stop", "unsuccesful_stop"]
     }
-}
+}]
 ```
 ````
 
@@ -1336,11 +1336,11 @@ the mapping does not correspond to a column name in the data file.
 The following example renames the `stop_signal_delay` column to be `stop_delay` and
 the `response_hand` to be `hand_used`.
 
-````{admonition} Example *rename_columns* operation.
+````{admonition} A JSON file with a single *rename_columns* transformation operation.
 :class: tip
 
 ```json
-{   
+[{   
     "operation": "rename_columns",
     "description": "Rename columns to be more descriptive.",
     "parameters": {
@@ -1350,7 +1350,7 @@ the `response_hand` to be `hand_used`.
         },
         "ignore_missing": true
     }
-}
+}]
 
 ```
 ````
@@ -1409,11 +1409,11 @@ The *reorder_columns* operation in the following example specifies that the firs
 columns of the dataset should be: `onset`, `duration`, `response_time`, and `trial_type`.
 Since *keep_others* is false, these will be the only columns retained.
 
-````{admonition} An example specification of the *reorder_columns* operation.
+````{admonition} A JSON file with a single *reorder_columns* transformation operation.
 :class: tip
 
 ```json
-{   
+[{   
     "operation": "reorder_columns",
     "description": "Reorder columns.",
     "parameters": {
@@ -1421,7 +1421,7 @@ Since *keep_others* is false, these will be the only columns retained.
         "ignore_missing": true,
         "keep_others": false
     }
-}
+}]
 ```
 ````
 
@@ -1500,11 +1500,11 @@ The *split_event* operation in the following example specifies that new rows sho
 to encode the response and stop signal. The anchor column is `trial_type`.
 
 
-````{admonition} An example *split_event* operation.
+````{admonition} A JSON file with a single *split_event* transformation operation.
 :class: tip
 
 ```json
-{
+[{
   "operation": "split_events",
   "description": "add response events to the trials.",
         "parameters": {
@@ -1523,7 +1523,7 @@ to encode the response and stop signal. The anchor column is `trial_type`.
             },	
             "remove_parent_event": false
         }
-    }
+    }]
 ```
 ````
 
@@ -1615,17 +1615,17 @@ The following example remodeling file produces a summary, which when saved
 will appear with file name `AOMIC_column_names_xxx.txt` or
 `AOMIC_column_names_xxx.json` where `xxx` is a timestamp.
 
-````{admonition} An example *summarize_column_names* operation.
+````{admonition} A JSON file with a single *summarize_column_names* summarization operation.
 :class: tip
 ```json   
-{
+[{
     "operation": "summarize_column_names",
     "description": "Summarize column names.",
     "parameters": {
         "summary_name": "AOMIC_column_names",
         "summary_filename": "AOMIC_column_names"
     }    
-}
+}]
 ```
 ````
 
@@ -1706,10 +1706,10 @@ The `run_remodel` program supports selecting files corresponding to a particular
 
 The following example shows the JSON for including this operation in a remodeling file.
 
-````{admonition} Sample *summarize_column_values* operation.
+````{admonition} A JSON file with a single *summarize_column_values* summarization operation.
 :class: tip
 ```json
-{
+[{
    "operation": "summarize_column_values",
    "description": "Summarize the column values in an excerpt.",
    "parameters": {
@@ -1718,7 +1718,7 @@ The following example shows the JSON for including this operation in a remodelin
        "skip_columns": ["onset", "duration"],
        "value_columns": ["response_time", "stop_signal_delay"]
    }
-},  
+}]
 ```
 ````
 
@@ -1822,10 +1822,10 @@ when generating the sidecar template.
 
 The following example shows the JSON for including this operation in a remodeling file.
 
-````{admonition} Sample *summarize_events_to_sidecar* operation.
+````{admonition} A JSON file with a single *summarize_events_to_sidecar* summarization operation.
 :class: tip
 ```json
-{
+[{
     "operation": "summarize_events_to_sidecar",
     "description": "Generate a sidecar from the excerpted events file.",
     "parameters": {
@@ -1834,7 +1834,7 @@ The following example shows the JSON for including this operation in a remodelin
         "skip_columns": ["onset", "duration"],
         "value_columns": ["response_time", "stop_signal_delay"]
     }
-}
+}]
   
 ```
 ````
@@ -1960,7 +1960,7 @@ Any leftover tags will appear under the title "Other tags".
 (summarize-hed-tags-example-anchor)=
 #### Summarize HED tags example
 
-````{admonition} An example *summarize_hed_tags* operation.
+````{admonition} A JSON file with a single *summarize_hed_tags* summarization operation.
 :class: tip
 ```json
 [{
@@ -2066,10 +2066,10 @@ for multiple type tags.
 (summarize-hed-type-example-anchor)=
 #### Summarize HED type example
 
-````{admonition} An example *summarize_hed_type* operation.
+````{admonition} A JSON file with a single *summarize_hed_type* summarization operation.
 :class: tip
 ```json
-{
+[{
    "operation": "summarize_hed_type",
    "description": "Summarize column names.",
    "parameters": {
@@ -2077,7 +2077,7 @@ for multiple type tags.
        "summary_filename": "AOMIC_condition_variables",
        "type_tag": "condition-variable"
    }
-}
+}]
 ```
 ````
 
@@ -2161,10 +2161,10 @@ for every line in the corresponding data file.
 (summarize-hed-validation-example-anchor)=
 #### Summarize HED validation example
 
-````{admonition} An example *summarize_hed_validation* operation.
+````{admonition} A JSON file with a single *summarize_hed_validation* summarization operation.
 :class: tip
 ```json
-{
+[{
    "operation": "summarize_hed_validation",
    "description": "Summarize validation errors in the sample dataset.",
    "parameters": {
@@ -2172,7 +2172,7 @@ for every line in the corresponding data file.
        "summary_filename": "AOMIC_sample_validation",
        "check_for_warnings": true
    }
-}
+}]
 ```
 ````
 

@@ -9,8 +9,9 @@
   experiment events of all types (perceptual, action, experiment control, task ...).   
 <p/>
 
-- The **goals of HED** are to enable and support its users to **store and share** recorded
-  data in a fully **analysis-ready** format, and to support efficient data **search and analysis**.
+- The **goals of HED** are to enable and support its users to **store and share** recorded data in a
+  fully **analysis-ready** format, and to support efficient (and/or extended cross-study) 
+  data **search and analysis**.
 <p/>
 
 - HED enables users to use a standard method to **detail the nature** of each experiment event,
@@ -18,23 +19,25 @@
   both human- and machine-readable record embedded in the data record for use in any further analysis, re-analysis, and meta/mega-analysis.
 <p/>
 
-- HED may be used to **annotate type of data** – but particularly data acquired in functional brain 
+- HED may be used to **annotate any type of data** – but particularly data acquired in functional brain 
   imaging (EEG, MEG, fNIRS, fMRI), multimodal (aka MoBI, mobile brain/body imaging),
   psychophysiological (ECG, EMG, GSR), or purely behavioral experiments.
 <p/>
 
-- **HED annotations** are composed of comma-separated **tags** drawn from a hierarchically-structured
-  vocabulary called the [**HED standard schema**](https://www.hedtags.org/display_hed.html).
+- **HED annotations** are composed of comma-separated **tags** from a hierarchically-structured
+  vocabulary called the [**HED standard schema**](https://www.hedtags.org/display_hed.html)
+  (possibly augmented by terms from one or more specialized **HED library schemas**).
 <p/>
 
-- **HED vocabulary extensions** for use in individual research subfields as well as the standard
+- **HED library schemas** for use in individual research subfields as well as the standard
   schema and vocabularies under development are housed in the 
   [**hed-schemas**](https://github.com/).
 <p/>
 
-- The **HED working group** is an ongoing open-source organization to maintain and extend 
-  the HED standard. Visit the [**hed-standard**](https://github.com/hed-standard) site on 
-  GitHub for information on how to join the HED community of users and developers.
+- The **HED working group** is an ongoing open-source development organization whose mission is
+  to extend and maintain the HED standard and associated tools. 
+  Visit the [**hed-standard**](https://github.com/hed-standard) site on GitHub for information on 
+  how to join the HED community of users and developers.
 
 ## HED and BIDS
 
@@ -44,15 +47,14 @@
   number of neuroimaging data modalities.
 <p/>
 
-- An efficient approach to integrating HED information into BIDS metadata has been demonstrated
-  in this [**2021 paper**](https://www.sciencedirect.com/science/article/pii/S1053811921010387?via%3Dihub).
+- An efficient approach to integrating HED event descriptions into BIDS metadata has been demonstrated
+in this [**2021 paper**](https://www.sciencedirect.com/science/article/pii/S1053811921010387?via%3Dihub).
 
 ## HED Tools
 
-Data annotation, validation, search, and extraction tools using HED are currently available 
-for use [**online**](https://hedtools.ucsd.edu/hed), as well as for use in the 
+Currently, tools using HED for data annotation, validation, search, and extraction are  available for
+use [**online**](https://hedtools.ucsd.edu/hed), or (as MATLAB functions) within the
 [**EEGLAB environment**](https://sccn.ucsd.edu/eeglab/index.php) running on Matlab.
-[**Command line**]
 
 ## Where to begin?
 
