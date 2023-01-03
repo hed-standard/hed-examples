@@ -23,7 +23,7 @@ be applied to other types of tabular data.
 
 The lynch-pin of scientific inquiry is the planning and running of experiments to test 
 hypotheses and study behavior.
-The focus of the discussion here is not explicitly the standard concerns of how an experiment
+The focus of the discussion here is not explicitly how an experiment
 should be designed,
 but rather how data should be recorded and identified to maximize its downstream usability.
 
@@ -32,16 +32,22 @@ but rather how data should be recorded and identified to maximize its downstream
 * [**Planning and running an experiment**](planning-and-running-an-experiment-anchor)
 * [**Post processing the data**](post-processing-the-data-anchor)
 
+The *Actionable event annotation and analysis in fMRI: A practical guide to event handling* preprint,
+which can be found at [**https://osf.io/93km8/**](https://osf.io/93km8/),
+provides concrete guidance and discussion of pitfalls in transforming experimental logs
+into usable event data.
+The site includes sample data to use in running the examples.
+
 (planning-and-running-an-experiment-anchor)=
 ### Planning and running an experiment
 
-Most laboratory experiments use a combination of peripheral devices and neuroimaging equipment in
+Most laboratory experiments use neuroimaging equipment and peripheral devices in
 combination with experiment control software to acquire the experimental data.
-This section describes some HED tools that may be of use during this process,
-focusing on the experimental logs and event reporting. Key questions are:
+This section describes some HED tools that may be of use during the log-to-data extraction process. 
+Key questions are:
 
 - What should go into an experimental log?
-- How should information about the experimental design temporal structure be included?
+- How should information about the experimental design and temporal structure be included?
 - How will the log data be synchronized with other data?
 
 We assume that event information is primarily contained in experimental logs,
@@ -53,22 +59,25 @@ The key point here is:
 
 With that caveat in mind, most researchers will run a pilot before the actual
 experiment to detect issues that might reduce the effectiveness or correctness of the experiment.
-The HED tools can help in smoothing the transition from acquisition to data,
-both in the pilot and the 
+The HED tools can help smooth the transition from acquisition to data,
+both in the pilot and the experiment itself.
 
 #### Event acquisition
 
-In a traditional neuroimaging experiment that is organized by trial, it is easy
-focus exclusively on marking the experimental stimuli and just mark whether
-the response was correct or incorrect.
-However, the incidental sensory presentations can also be important,
+In a traditional neuroimaging experiment that is organized by trial, it may be easy to
+focus exclusively on marking the experimental stimuli, but
+the incidental sensory presentations can also be important,
 particularly for analysis that uses regression techniques.
 Examples of incidental sensory presentations include, cues, instructions, feedback,
 and experimental control events that are visible to the participant.
 
-Participant responses should be marked in the timeline.
-A common approach is to identify the closing of a switch on a push-button,
-marking the end of the participant's response.
+Participant responses should also be marked in the timeline, even though
+this may require synchronization of presentation with the acquisition of the participant's
+response indicator.
+Downstream analysis may include time-locking to the actual response point to study
+neural correlates of the motor reaction.
+A common approach for including participant's response is to identify the closing of a switch
+on a push-button, marking the end of the participant's response.
 More sophisticated instrumentation might include detection of initiation and termination
 of muscle movement using EMG (electromyography) sensors.
 
@@ -88,16 +97,86 @@ be useful in working with your pilot data.
 
 Assuming that you can put the information from your experimental log into a tabular form such as:
 
-````{admonition}
+(sample-tabular-log-anchor)=
+````{admonition} A sample log file in tabular form.
 | onset  | code  | description |
-|--------|-------|-------------|
+| -------- | ------- | ------------- |
+| 0.3423 | 4332  | Presentation of a fixation cross for 0.25 seconds. |
+| 0.5923 | 4333  | Presentation of a face image for 0.5 seconds. |
+| 1.7000 | 4332  | Presentation of a fixation cross for 0.25 seconds. |
+|  ...   |  ...  | ... |
 
+````
+
+The [**summarize column values](./FileRemodelingTools.md#summarize-column-values)
+operation in the HED [**file remodeling tools**](./FileRemodelingTools.md)
+will give you a summary of the content of this tabular file.
+Use the following remodeling file and your log file as input 
+to the HED online [**event remodeling**](https://hedtools.ucsd.edu/hed_dev/events) tools
+to quickly get an overview of the contents of your tabular output.
+
+````{admonition} Sample *summarize_column_values.json* remodel file.
+:class: tip
+```json
+[{
+   "operation": "summarize_column_values",
+   "description": "Summarize the column values in my log.",
+   "parameters": {
+       "summary_name": "Log_summary",
+       "summary_filename": "Log_summary",
+       "skip_columns": ["onset"],
+       "value_columns": ["description"]
+   }
+}]
+```
 ````
 
 (post-processing-the-data-anchor)=
 ### Post-processing the event data
 
-The
+The information that first comes off the experimental logs is usually not directly usable for
+sharing and analysis. A number of HED [**File remodeling tools**](./FileRemodelingTools.md) tools
+might be helpful for restructuring your first pass at the event files.
+
+The [**remap columns**](./FileRemodelingTools.md#remap-columns) transformation is 
+particularly useful during the initial processing of tabular log information.
+
+Using the following JSON remodel file 
+
+````{admonition} A JSON remodel for transforming the `code` column.
+:class: tip
+
+```json
+[{ 
+    "operation": "remap_columns",
+    "description": "Expand the code column.",
+    "parameters": {
+        "source_columns": ["code"],
+        "destination_columns": ["duration", "event_type"],
+        "map_list": [["4332", 0.25, "show_cross"],
+                     ["4333", 0.50, "show_face"]],
+        "ignore_missing": true
+    }
+}]
+
+```
+
+The result of applying the above transformation to the [**sample tabular log**](sample-tabular-log-anchor)
+file is shown in the following table:
+
+````{admonition} Result of applying remap_columns to the sample tabular log file.
+| onset  | code  | description | duration | event_type |
+| -------- | ------- | ------------- | ------- | ------ |
+| 0.3423 | 4332  | Presentation of a fixation cross for 0.25 seconds. | 0.25  | show_cross |
+| 0.5923 | 4333  | Presentation of a face image for 0.5 seconds. | 0.50  | show_face |
+| 1.7000 | 4332  | Presentation of a fixation cross for 0.25 seconds. | 0.25  | show_cross |
+|  ...   |  ...  | ... | ... | ... |
+
+````
+
+The remapping transformation retains all the columns. At this point you may want to delete and/or
+reorder columns, as BIDS requires that the first two columns in all events files be *onset* and *duration*,
+respectively. The remodeling JSON file can be expanded to include these transformations as well.
 
 <hr style="border: 3px solid #000080;" />
 
@@ -322,7 +401,7 @@ However, work is underway to include some standard types of checks in the
 HED [**File remodeling tools**](./FileRemodelingTools.md) in future releases.
 
 You may also want to reorganize the event files using the remodeling tools.
-See the [**Remapping columns**](remapping-columns-anchor) 
+See the [**Remap columns**](remap-columns-anchor) 
 a discussion above and links to examples of how to reorganize the information in the
 columns of the event files.
 
@@ -434,11 +513,21 @@ creates factors based on a HED tag representing structural information about the
 MATLAB toolbox for EEG/MEG analysis supports HED through the
 [**EEGLAB HEDTools plugin**](./HedMatlabTools.md#eeglab-plug-in-integration).
 
+The *End-to-end processing of EEG with HED and EEGLAB* preprint, which can be found 
+at [**https://osf.io/8brgv/**](https://osf.io/8brgv/),
+works through the entire analysis process, including porting the analysis
+to high performance computing platforms.
+The site include sample data to use in running the examples.
+
 #### HED support in other tools
 
 Work is underway to integrate HED support in other analysis packages.
 If you are interested in helping in this effort please email
-hed.maintainers@gmail.com
+hed.maintainers@gmail.com.
+
+#### Other resources of interest to 
+
+The [**]
 
 <hr style="border: 3px solid #000080" />
 
