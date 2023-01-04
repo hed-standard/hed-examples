@@ -4,7 +4,7 @@ There are currently three types of support available for HED (Hierarchical Event
 
 * [**HED services in MATLAB**](hed-services-matlab-anchor) - web services called from MATLAB scripts
 * [**EEGLAB plug-in integration**](eeglab-integration-anchor) - EEGLAB plugins and other HED support
-* [**Accessing Python HEDTools from MATLAB**](accessing-python-hedtools-from-matlab-anchor) - explains how to call the HED python tools from within MATLAB.
+* [**Python HEDTools in MATLAB**](python-hedtools-in-matlab-anchor) - explains how to call the HED python tools from within MATLAB.
 
 HED services allow MATLAB programs to request the same services that are available 
 through the browser at [https://hedtools.ucsd.edu/hed](https://hedtools.ucsd.edu/hed).
@@ -463,5 +463,188 @@ Pressing "Enter" selects the current tag in the list and adds the tag to the sea
 You can continue search and add tags after adding a comma after each tag.
 When done, click the **Ok** button to return to the main epoching menu. 
 
-(accessing-python-hedtools-from-matlab-anchor)=
-## Accessing Python HEDTools from MATLAB
+(python-hedtools-in-matlab-anchor)=
+## Python HEDTools in MATLAB
+
+**Under construction...**
+
+If you are running MATLAB version 2019a or later, you can run functions from the Python `hedtools` library
+directly in MATLAB. With these tools you can incorporate validation, summary, search, factorization,
+and other HED processing operations directly into your MATLAB processing scripts without needing to
+reimplement these operations in MATLAB.
+
+**Note:** For your reference, the source for `hedtools` is the 
+[**hed-python**](https://github.com/hed-standard/hed-python) GitHub repository.
+The code is fully open-source with an MIT license.
+The actual API documentation is available [**here**](https://hed-python.readthedocs.io/en/latest/api.html),
+but the tutorials and tool documentation for `hedtools` on 
+[**HED Resources**](https://www.hed-resources.org/en/latest/index.html) provides more
+examples of use.
+
+
+### Getting started
+
+#### Requirements
+
+The `hedtools` library requires a Python version >= 3.7. 
+In order to call functions from this library in MATLAB, 
+you must be running MATLAB version >= R2019a and have a 
+[**compatible version of Python**](https://www.mathworks.com/support/requirements/python-compatibility.html)
+installed on your machine.
+
+
+#### Installation
+
+The example setup in this section assumes MATLAB R2022b with Python 3.9,
+but the instructions are similar for other compatible combinations of MATLAB and Python.
+
+First a little background for non-Python users... A typical setup
+is to do a system-wide installation of Python and then to create a separate
+virtual environment for each application that references the system-wide
+Python installation, but has the specific extra libraries required for the application.
+
+These instructions install a copy of Python specifically for your use in MATLAB
+in your user space with the specific libraries needed.
+Create a new directory in your user space for the installation.
+We will refer to this directory as **PythonPath**.
+
+Go [**Python downloads**](https://www.python.org/downloads/) and pick the correct installer
+for your operating system and version.
+
+You will need to keep track of what folder you installed python to for the next steps, especially if you didn't install it system-wide.  
+<hr/>
+**See if you can create a Python virtual environment in MATLAB using the MATLAB system command.**
+
+system("? venv xxxx")
+
+
+Example setup.
+
+
+#### Adding the hed support package to the python installation
+This is done via going to [PythonPath]/bin in a terminal(python.exe will be in this folder) and typing:
+
+**Don't think this works... shouldn't it be "pip install hedtools"**
+```bash
+pip install hed
+```
+
+#### Pointing Matlab to your python install
+
+**This section will be moved**
+In matlab, type **pyenv** to see what your current python install is and other version details.
+
+To set the location type the following, where PythonPath is your local path.
+```
+pyenv("Version", "[PythonPath]/bin/python")
+```
+If this all worked, you should now be able to successfully run the following in Matlab:
+```
+pyrun("from hed import _version as vr; print(f'Using HEDTOOLS version: {str(vr.get_versions())}')")
+```
+
+### MATLAB calling syntax
+
+The following table lists the relevant MATLAB commands that you will need to run Python in MATLAB.
+You should refer to the help facility for your version of MATLAB to get the details of what is
+supported for your version of MATLAB.
+
+| MATLAB command | Purpose |
+| -------------- | --------|
+| `pyenv`   | Setup your Python environment in MATLAB.<br/>Without arguments outputs information about your current Python environment. |
+| `pyrun`  | Run a Python statement and return results. |
+| `pyargs` | A recent addition for more advanced argument handling. |
+| `pyrunfile` | Run a Python script from MATLAB. |
+
+The MATLAB `matlab.exception.PyException` captures error information generated during Python execution.
+
+This syntax is easier to use, but more limited as it stays entirely in the python code.
+
+**What does "stays entirely in the python code" mean? Let's add an introductory paragraph
+explaining the difference**
+
+````{admonition} What is this illustrating?
+:class: tip
+
+```matlab
+    % Load the python library.  This only needs to be called once when you first load python.
+    pyrun("import hed")
+    % Retrieve and/or load the schema you wish to validate against
+    pyrun("schema = hed.load_schema_version(version)", version="8.0.0")
+    % Open the datafile you wish to validate
+    pyrun("data = hed.TabularInput(filename)", filename="test_events.tsv")
+    % Validate the datafile
+    pyrun("errors = data.validate_file(hed_ops=schema)")
+    % Translate the errors to a string, and print them.
+    pyrun("print(hed.get_printable_issue_string(errors))")
+```
+````  
+
+
+
+**This needs a paragraph of explanation.  Why is this extended syntax. Not sure what is different?**
+
+````{admonition} What does this do?
+:class: tip
+
+```matlab
+    % Load the python library.  This only needs to be called once when you first load python.
+    pyrun("import hed")
+    % Note the second parameter "schema".  This specifies the names variable(s) we are returning from python.
+    schema = pyrun("schema = hed.load_schema_version(version)", "schema", version="8.0.0");
+    % Note the second parameter "data", which is the return value like above.
+    data = pyrun("data = hed.TabularInput(filename)", "data", filename="test_events.tsv");
+    % Validate the file against the schema, and return the errors as a list.
+    errors = pyrun("errors = data.validate_file(validation_schema)", "errors", validation_schema=schema);
+    % Translate the error_list to a string, and print them.
+    pyrun("print(hed.get_printable_issue_string(error_list))", error_list=errors)
+```
+````
+
+
+**Need an example of exception handling here**
+
+(matlab-wrappers-for-HED-tools-anchor)=
+### MATLAB wrappers for HEDTools
+
+The [**hedtools_wrappers**](https://github.com/hed-standard/hed-examples/tree/main/hedcode/matlab_scripts/hedtools_wrappers) directory in the
+[**hed-examples**](https://github.com/hed-standard/hed-examples) GitHub repository
+contains MATLAB wrapper functions for calling various commonly used HED tools.
+
+The following example shows the MATLAB wrapper function
+[**validateHedInBids.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/hedtools-wrappers/validateHedInBids.m),
+which contains the underlying calls to HEDTools Python BIDs validation.
+
+
+````{admonition} A MATLAB wrapper function for validating HED in a BIDS dataset.
+:class: tip
+
+```matlab
+function issueString = validateBidsHed(dataPath)
+    issueString = '';
+    pyrun("bids = hed.tools.BidsDataset(dataPath)")
+    pyrun("issues = bids.validate()")
+    pyrun("issueString = hed.get_printable_issue_string(issues))")
+```
+
+Example MATLAB calling code for this function:
+
+```matlab
+myPath = '/myDatasetRoot';
+issueString = validateHedInBids(dataPath);
+if isempty(issueString)
+    fprintf('Dataset %s has no HED validation errors\n', myPath);
+else
+    fprintf('Validation errors for dataset %s:\n%s\n', myPath, issueString);
+end
+
+```
+````
+
+**What happens when there are no validation errors? Will the string be empty?**
+
+original code:
+
+    pyrun("bids = hed.tools.BidsDataset('bids_tests/test_bids_dataset/')")
+    pyrun("issues = bids.validate()")
+    pyrun("print(hed.get_printable_issue_string(issues))")
