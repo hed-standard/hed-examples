@@ -553,51 +553,73 @@ to support HED for processing and analysis.
 (integrating-with-existing-tools-anchor)=
 ### Integration with existing tools
 
-The HED Working Group currently supports three tool bases:
+The [**HED standard organization**](https://github.com/hed-standard) has several
+code projects and distinct tool bases in Python, MATLAB, and JavaScript.
+All HED efforts are open source.
+The GitHub repositories and other resources associated with these projects are described in this section.
+The HED project page is [**https://hedtags.org**](https://hedtags.org).
+The documentation and examples are housed in the 
+[**hed-examples**](https://github.com/hed-standard/hed-examples) GitHub repository.
+
+Contributions are welcome in any area (e.g., code, examples, documentation, ideas, issues).
+Use the **issues** mechanism of the most appropriate HED standard repository to ask questions or to
+describe your ideas and how you would like to contribute.
+Alternatively, you can email hed.maintainers@gmail.com.
+
 
 #### HED python tool base
 
-The code is in the [**hed-python**](https://github.com/hed-standard/hed-python) GitHub repository.
-The python tools contain the core technology for HED including the code for validation, analysis,
+The Python HED tools contain the core technology for HED including code for validation, analysis,
 and schema development.
+The code for HEDTools is in the [**hed-python**](https://github.com/hed-standard/hed-python) GitHub repository.
 
 The latest stable release is available as [**hedtools**](https://pypi.org/project/hedtools/)
 on PyPI and can be installed using the regular `pip` install mechanism.
 
 The `develop` branch of [**hed-python**](https://github.com/hed-python) contains the latest
-versions of the tools.
+versions of the tools and can be installed from GitHub using:
 
-The [**HED Python tools**]
+```bash
+ pip install git+https://github.com/hed-standard/hed-python/@develop
+```
 
 #### HED JavaScript tool base
 
-The code is in the [**hed-javascript**](https://github.com/hed-standard/hed-javascript) 
-GitHub repository. The JavaScript tools contain mainly code for validation and its main client is the 
+GitHub repository. The JavaScript tools focus on HED validation and its main client is the 
 [**Bids validator**](https://github.com/bids-standard/bids-javascript).
+The code for this project is in the [**hed-javascript**](https://github.com/hed-standard/hed-javascript)
 
 The latest stable release is available as the [**hed-validator**](https://www.npmjs.com/package/hed-validator)
 on npm.
 
 #### The HED MATLAB tool base
-The MATLAB platform is primarily for analysis, although support for annotation is also
-available as follows:
+The MATLAB HED tools project focuses primarily on analysis using HED, 
+although there is substantial support for annotation as well.
 
-- [**CTagger**](https://github.com/hed-standard/ctagger) is the GUI for annotation and validation.
-CTagger can be run as a standalone program but is also integrated and callable from MATLAB.
-See [**CTAGGER GUI tagging tool**](https://www.hed-resources.org/en/latest/CTaggerGuiTaggingTool.html)
-for more information.
+- The **HEDTools plugin** is available for installation through [**EEGLAB**](https://sccn.ucsd.edu/eeglab/index.php). The[**EEGLAB plug-in integration**](https://www.hed-resources.org/en/latest/HedMatlabTools.html#eeglab-plug-in-integration) tutorial explains the installation 
+and integration of HED tools in the EEGLAB environment.
+Although this toolset focuses on analysis, it also includes extensive tools for importing and annotating
+HED data through the **CTagger** GUI.
 <p></p>
 
-- [**EEGLAB plug-in integration**](https://www.hed-resources.org/en/latest/HedMatlabTools.html#eeglab-plug-in-integration) explains the installation and integration of HED tools in
-the EEGLAB analysis environment.
+- **CTagger** is a GUI for HED annotation and validation. 
+CTagger can be run as a standalone program, but is also integrated and callable from MATLAB via an
+[**EEGLAB plug-in**](https://www.hed-resources.org/en/latest/HedMatlabTools.html#eeglab-plug-in-integration).
+See [**CTAGGER GUI tagging tool**](https://www.hed-resources.org/en/latest/CTaggerGuiTaggingTool.html) tutorial
+for more information on installation and use.
+
+The project source code is located in the [**CTagger**](https://github.com/hed-standard/ctagger) GitHub repository.
 <p></p>
 
 - [**HED services in MATLAB**](https://www.hed-resources.org/en/latest/HedMatlabTools.html#hed-services-in-matlab) explains how the [**HED online services**](https://hedtools.ucsd.edu/hed)
 can be called programmatically in MATLAB.
+
+The HED services are deployed online through a docker container. 
+The project source code is located in the [**hed-web**](https://github.com/hed-standard/hed-web)  GitHub repository.
 <p></p>
 
-- [**Accessing Python HEDTools from MATLAB**](./HedMatlabTools.md/accessing-python-hedtools-from-matlab)
-explains how to install and call various Python tools.
+- [**Python HEDTools in MATLAB**](./HedMatlabTools.md#python-hedtools-in-matlab)
+explains how to install and call various Python tools from MATLAB.
 <p></p>
 
 
