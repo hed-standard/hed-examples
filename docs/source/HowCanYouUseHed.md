@@ -4,8 +4,8 @@ HED (Hierarchical Event Descriptors) annotations provide an essential link betwe
 experimental data and analysis.
 HED annotations can be used to describe what happened while data was acquired,
 participant state, experimental control, task parameters, and experimental conditions.
-HED annotations are most commonly associated with event files, but can also
-be applied to other types of tabular data.
+HED annotations are most commonly associated with event files, 
+but these annotations can also be applied to other types of tabular data.
 
 **This guide organizes HED resources based on how you might use HED:**
 
@@ -23,9 +23,9 @@ be applied to other types of tabular data.
 
 The lynch-pin of scientific inquiry is the planning and running of experiments to test 
 hypotheses and study behavior.
-The focus of the discussion here is not explicitly how an experiment
+The focus of the discussion here is not explicitly on how an experiment
 should be designed,
-but rather how data should be recorded and identified to maximize its downstream usability.
+but rather on how data should be recorded and transformed to maximize its downstream usability.
 
 **Here are some topics of interest to experiment designers:**
 
@@ -59,7 +59,7 @@ The key point here is:
 
 With that caveat in mind, most researchers will run a pilot before the actual
 experiment to detect issues that might reduce the effectiveness or correctness of the experiment.
-The HED tools can help smooth the transition from acquisition to data,
+HED file remodeling tools can help smooth the transition from acquisition to data,
 both in the pilot and the experiment itself.
 
 #### Event acquisition
@@ -67,13 +67,13 @@ both in the pilot and the experiment itself.
 In a traditional neuroimaging experiment that is organized by trial, it may be easy to
 focus exclusively on marking the experimental stimuli, but
 the incidental sensory presentations can also be important,
-particularly for analysis that uses regression techniques.
-Examples of incidental sensory presentations include, cues, instructions, feedback,
+particularly for analyses that use regression techniques.
+Examples of incidental sensory presentations include cues, instructions, feedback,
 and experimental control events that are visible to the participant.
 
 Participant responses should also be marked in the timeline, even though
 this may require synchronization of presentation with the acquisition of the participant's
-response indicator.
+response indicators.
 Downstream analysis may include time-locking to the actual response point to study
 neural correlates of the motor reaction.
 A common approach for including participant's response is to identify the closing of a switch
@@ -85,15 +85,15 @@ Another issue which should be addressed in the pilot is how experimental control
 information will be embedded in the data.
 Will there be embedded markers for trial or block beginnings?
 How will information about experimental conditions be embedded?
-Often a condition will be counterbalanced within a run, and embedding markers
-identifying the current conditions in the log, will facilitate the use of tools
+Often a condition will be counterbalanced within a run and embedding markers that
+identify the current conditions in the log can facilitate the use of tools
 in post-processing and assure that the conditions are correctly marked.
 
 #### Logs to event files
 
 Although the HED tools do not yet directly support any particular experimental presentation/control
 software packages, the HED [**File remodeling tools**](./FileRemodelingTools.md) can
-be useful in working with your pilot data.
+be useful in working with logged data.
 
 Assuming that you can put the information from your experimental log into a tabular form such as:
 
@@ -108,14 +108,14 @@ Assuming that you can put the information from your experimental log into a tabu
 
 ````
 
-The [**summarize column values](./FileRemodelingTools.md#summarize-column-values)
+The [**summarize column values**](./FileRemodelingTools.md#summarize-column-values)
 operation in the HED [**file remodeling tools**](./FileRemodelingTools.md)
-will give you a summary of the content of this tabular file.
-Use the following remodeling file and your log file as input 
+compiles detailed summaries of the contents of tabular files.
+Use the following remodeling file and your tabular log file as input 
 to the HED online [**event remodeling**](https://hedtools.ucsd.edu/hed_dev/events) tools
-to quickly get an overview of the contents of your tabular output.
+to quickly get an overview of its contents.
 
-````{admonition} Sample *summarize_column_values.json* remodel file.
+````{admonition} A sample JSON file with the command to get a summary of the column values in a file.
 :class: tip
 ```json
 [{
@@ -139,11 +139,10 @@ sharing and analysis. A number of HED [**File remodeling tools**](./FileRemodeli
 might be helpful for restructuring your first pass at the event files.
 
 The [**remap columns**](./FileRemodelingTools.md#remap-columns) transformation is 
-particularly useful during the initial processing of tabular log information.
+particularly useful during the initial processing of tabular log information
+as exemplified by the following example
 
-Using the following JSON remodel file 
-
-````{admonition} A JSON remodel for transforming the `code` column.
+````{admonition} A sample JSON remodel to create *duration* and *event_type* columns from *code*.
 :class: tip
 
 ```json
@@ -160,6 +159,7 @@ Using the following JSON remodel file
 }]
 
 ```
+````
 
 The result of applying the above transformation to the [**sample tabular log**](sample-tabular-log-anchor)
 file is shown in the following table:
@@ -174,8 +174,9 @@ file is shown in the following table:
 
 ````
 
-The remapping transformation retains all the columns. At this point you may want to delete and/or
-reorder columns, as BIDS requires that the first two columns in all events files be *onset* and *duration*,
+The remapping transformation retains all the columns. At this point you can delete and/or
+reorder columns using other remodeling commands, 
+since BIDS requires that the first two columns in all events files be *onset* and *duration*,
 respectively. The remodeling JSON file can be expanded to include these transformations as well.
 
 <hr style="border: 3px solid #000080;" />
@@ -412,7 +413,7 @@ columns of the event files.
 > <span style="font-size: 1.5em; font-weight: bold; color: #229955; font-family: Roboto Slab,ff-tisa-web-pro,Georgia,Arial,sans-serif;">&nbsp;&nbsp;... applying HED tools to answer scientific questions:</span>
 
 Whether you are analyzing your own data or using shared data produced by others to 
-answer a scientific question, fully understanding the data and its limitations are essential
+answer a scientific question, fully understanding the data and its limitations is essential
 for accurate and reproducible analysis.
 This section discusses how HED annotations and tools can be used for effective analysis.
 
@@ -435,14 +436,14 @@ You can get a preliminary sense about what is actually in the data by downloadin
 single event file (e.g., a BIDS `_events.tsv`) and its associated JSON sidecar
 (e.g., a BIDS `_events.json`) and creating HED remodeling tool summaries using the 
 [**HED online tools for debugging**](./FileRemodelingQuickstart.md#online-tools-for-debugging).
-Summaries of particular use for analysts include the following.
+Summaries of particular use for analysts include:
 
-- The [**column value summary**](./HedSummaryGuide.md#column-value-summary)summarizes
+- The [**column value summary**](./HedSummaryGuide.md#column-value-summary) compiles a summary of 
 the values in the various columns of the event files in the dataset. This summary does not require any HED information.
 <p></p>
 
 - The [**HED tag summary**](./HedSummaryGuide.md#hed-tag-summary)
-summarizes the HED tags used to annotate the data.
+creates a summary of the HED tags used to annotate the data.
 <p></p>
 
 - The [**experimental design summary**](./HedSummaryGuide.md#experimental-design-summary)
@@ -454,7 +455,7 @@ event-coding used in each experiment and can be used to compare information for 
 
 The [**File remodeling quickstart**](./FileRemodelingQuickstart.md) tutorial
 gives an overview of the remodeling tools and how to use them.
-More detailed information can be found in [**File remodeling tools**](./FileRemodelingTools.md)
+More detailed information can be found in [**File remodeling tools**](./FileRemodelingTools.md).
 
 The [**Online tools for debugging**](./FileRemodelingQuickstart.md#online-tools-for-debugging)
 shows how to use remodeling tools to obtain these summaries without writing any code.
@@ -499,7 +500,9 @@ This factor operation does not require any HED information.
 <p></p>
 
 - The [**factor HED tags**](./FileRemodelingTools.md#factor-hed-tags)
-creates factor vectors based on a HED tag query.
+creates factor vectors based on a HED tag query. 
+The [**HED search guide**](./HedSearchGuide.md) explains the HED query structure and
+available search options.
 <p></p>
 
 - The [**factor HED type**](./FileRemodelingTools.md#factor-hed-type)
@@ -510,14 +513,14 @@ creates factors based on a HED tag representing structural information about the
 #### HED analysis in EEGLAB
 
 [**EEGLAB**](https://sccn.ucsd.edu/eeglab/index.php), the interactive
-MATLAB toolbox for EEG/MEG analysis supports HED through the
+MATLAB toolbox for EEG/MEG analysis, supports HED through the
 [**EEGLAB HEDTools plugin**](./HedMatlabTools.md#eeglab-plug-in-integration).
 
 The *End-to-end processing of EEG with HED and EEGLAB* preprint, which can be found 
 at [**https://osf.io/8brgv/**](https://osf.io/8brgv/),
 works through the entire analysis process, including porting the analysis
 to high performance computing platforms.
-The site include sample data to use in running the examples.
+The site includes sample data to use in running the examples.
 
 #### HED support in other tools
 
@@ -525,9 +528,6 @@ Work is underway to integrate HED support in other analysis packages.
 If you are interested in helping in this effort please email
 hed.maintainers@gmail.com.
 
-#### Other resources of interest to 
-
-The [**]
 
 <hr style="border: 3px solid #000080" />
 
@@ -553,7 +553,55 @@ to support HED for processing and analysis.
 (integrating-with-existing-tools-anchor)=
 ### Integration with existing tools
 
-Coming soon...
+The HED Working Group currently supports three tool bases:
+
+#### HED python tool base
+
+The code is in the [**hed-python**](https://github.com/hed-standard/hed-python) GitHub repository.
+The python tools contain the core technology for HED including the code for validation, analysis,
+and schema development.
+
+The latest stable release is available as [**hedtools**](https://pypi.org/project/hedtools/)
+on PyPI and can be installed using the regular `pip` install mechanism.
+
+The `develop` branch of [**hed-python**](https://github.com/hed-python) contains the latest
+versions of the tools.
+
+The [**HED Python tools**]
+
+#### HED JavaScript tool base
+
+The code is in the [**hed-javascript**](https://github.com/hed-standard/hed-javascript) 
+GitHub repository. The JavaScript tools contain mainly code for validation and its main client is the 
+[**Bids validator**](https://github.com/bids-standard/bids-javascript).
+
+The latest stable release is available as the [**hed-validator**](https://www.npmjs.com/package/hed-validator)
+on npm.
+
+#### The HED MATLAB tool base
+The MATLAB platform is primarily for analysis, although support for annotation is also
+available as follows:
+
+- [**CTagger**](https://github.com/hed-standard/ctagger) is the GUI for annotation and validation.
+CTagger can be run as a standalone program but is also integrated and callable from MATLAB.
+See [**CTAGGER GUI tagging tool**](https://www.hed-resources.org/en/latest/CTaggerGuiTaggingTool.html)
+for more information.
+<p></p>
+
+- [**EEGLAB plug-in integration**](https://www.hed-resources.org/en/latest/HedMatlabTools.html#eeglab-plug-in-integration) explains the installation and integration of HED tools in
+the EEGLAB analysis environment.
+<p></p>
+
+- [**HED services in MATLAB**](https://www.hed-resources.org/en/latest/HedMatlabTools.html#hed-services-in-matlab) explains how the [**HED online services**](https://hedtools.ucsd.edu/hed)
+can be called programmatically in MATLAB.
+<p></p>
+
+- [**Accessing Python HEDTools from MATLAB**](./HedMatlabTools.md/accessing-python-hedtools-from-matlab)
+explains how to install and call various Python tools.
+<p></p>
+
+
+
 
 (developing-new-tools-anchor)=
 ### Developing new tools
