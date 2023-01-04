@@ -4,6 +4,7 @@ There are currently three types of support available for HED (Hierarchical Event
 
 * [**HED services in MATLAB**](hed-services-matlab-anchor) - web services called from MATLAB scripts
 * [**EEGLAB plug-in integration**](eeglab-integration-anchor) - EEGLAB plugins and other HED support
+* [**Accessing Python HEDTools from MATLAB**](accessing-python-hedtools-from-matlab-anchor) - explains how to call the HED python tools from within MATLAB.
 
 HED services allow MATLAB programs to request the same services that are available 
 through the browser at [https://hedtools.ucsd.edu/hed](https://hedtools.ucsd.edu/hed).
@@ -461,3 +462,6 @@ next or previous tag in the list.
 Pressing "Enter" selects the current tag in the list and adds the tag to the search bar.
 You can continue search and add tags after adding a comma after each tag.
 When done, click the **Ok** button to return to the main epoching menu. 
+
+(accessing-python-hedtools-from-matlab-anchor)=
+## Accessing Python HEDTools from MATLAB
