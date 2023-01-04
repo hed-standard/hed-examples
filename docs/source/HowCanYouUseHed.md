@@ -543,19 +543,19 @@ to support HED for processing and analysis.
 
 **Here are some topics of interest to developers:**
 
-* [**Integrating with other tools**](integrating-with-existing-tools-anchor)
-* [**Developing new tools**](developing-new-tools-anchor)
-* [**Requesting features**](requesting-features-anchor)
-* [**Reporting issues**](reporting-issues-anchor)
-
+* [**Integrating with existing tools**](integrating-with-existing-tools-anchor)
+* [**The HED code base**](the-hed-code-base-anchor)
+  * [**The HED Python code base**](the-hed-python-code-base-anchor)
+  * [**The HED JavaScript code base**](the-hed-javascript-code-base-anchor)
+  * [**The HED MATLAB code base**](the-hed-matlab-code-base-anchor)
+  * [**Web tools and REST services**](web-tools-and-rest-services-anchor)
+* [**Future development plans**](future-development-plans-anchor)
 
 
 (integrating-with-existing-tools-anchor)=
 ### Integration with existing tools
 
-The [**HED standard organization**](https://github.com/hed-standard) has several
-code projects and distinct tool bases in Python, MATLAB, and JavaScript.
-All HED efforts are open source.
+
 The GitHub repositories and other resources associated with these projects are described in this section.
 The HED project page is [**https://hedtags.org**](https://hedtags.org).
 The documentation and examples are housed in the 
@@ -566,8 +566,15 @@ Use the **issues** mechanism of the most appropriate HED standard repository to 
 describe your ideas and how you would like to contribute.
 Alternatively, you can email hed.maintainers@gmail.com.
 
+(the-hed-code-base-anchor)=
+### The HED code base
 
-#### HED python tool base
+The [**HED standard organization**](https://github.com/hed-standard) has several
+code projects and distinct tool bases in Python, MATLAB, and JavaScript.
+All HED efforts are open source.
+
+(the-hed-python-code-base-anchor)=
+#### The HED python code base
 
 The Python HED tools contain the core technology for HED including code for validation, analysis,
 and schema development.
@@ -583,7 +590,8 @@ versions of the tools and can be installed from GitHub using:
  pip install git+https://github.com/hed-standard/hed-python/@develop
 ```
 
-#### HED JavaScript tool base
+(the-hed-javascript-code-base-anchor)=
+#### The HED JavaScript code base
 
 GitHub repository. The JavaScript tools focus on HED validation and its main client is the 
 [**Bids validator**](https://github.com/bids-standard/bids-javascript).
@@ -592,54 +600,65 @@ The code for this project is in the [**hed-javascript**](https://github.com/hed-
 The latest stable release is available as the [**hed-validator**](https://www.npmjs.com/package/hed-validator)
 on npm.
 
-#### The HED MATLAB tool base
+(the-hed-matlab-code-base-anchor)=
+#### The HED MATLAB code base
+
 The MATLAB HED tools project focuses primarily on analysis using HED, 
 although there is substantial support for annotation as well.
 
-- The **HEDTools plugin** is available for installation through [**EEGLAB**](https://sccn.ucsd.edu/eeglab/index.php). The[**EEGLAB plug-in integration**](https://www.hed-resources.org/en/latest/HedMatlabTools.html#eeglab-plug-in-integration) tutorial explains the installation 
+The **HEDTools plugin** is available for installation through [**EEGLAB**](https://sccn.ucsd.edu/eeglab/index.php). The[**EEGLAB plug-in integration**](https://www.hed-resources.org/en/latest/HedMatlabTools.html#eeglab-plug-in-integration) tutorial explains the installation 
 and integration of HED tools in the EEGLAB environment.
 Although this toolset focuses on analysis, it also includes extensive tools for importing and annotating
 HED data through the **CTagger** GUI.
 <p></p>
 
-- **CTagger** is a GUI for HED annotation and validation. 
+**CTagger** is a GUI for HED annotation and validation. 
 CTagger can be run as a standalone program, but is also integrated and callable from MATLAB via an
 [**EEGLAB plug-in**](https://www.hed-resources.org/en/latest/HedMatlabTools.html#eeglab-plug-in-integration).
 See [**CTAGGER GUI tagging tool**](https://www.hed-resources.org/en/latest/CTaggerGuiTaggingTool.html) tutorial
 for more information on installation and use.
-
 The project source code is located in the [**CTagger**](https://github.com/hed-standard/ctagger) GitHub repository.
 <p></p>
 
-- [**HED services in MATLAB**](https://www.hed-resources.org/en/latest/HedMatlabTools.html#hed-services-in-matlab) explains how the [**HED online services**](https://hedtools.ucsd.edu/hed)
-can be called programmatically in MATLAB.
-
-The HED services are deployed online through a docker container. 
-The project source code is located in the [**hed-web**](https://github.com/hed-standard/hed-web)  GitHub repository.
+[**HED services in MATLAB**](https://www.hed-resources.org/en/latest/HedMatlabTools.html#hed-services-in-matlab) explains how the [**HED online services**](https://hedtools.ucsd.edu/hed)
+can be called programmatically in MATLAB. The HED services are deployed online through a docker container
+as described in [**Web tools and rest services**](web-tools-and-rest-services-anchor).
 <p></p>
 
-- [**Python HEDTools in MATLAB**](./HedMatlabTools.md#python-hedtools-in-matlab)
+[**Python HEDTools in MATLAB**](./HedMatlabTools.md#python-hedtools-in-matlab)
 explains how to install and call various Python tools from MATLAB.
 <p></p>
 
+(web-tools-and-rest-services-anchor)=
+#### Web tools and REST services
+
+The HED online tools are available at [**https://hedtools.ucsd.edu/hed**](https://hedtools.ucsd.edu/hed).
+
+A development version of the online tools is available at [**https://hedtools.ucsd.edu/hed_dev**](https://hedtools.ucsd.edu/hed_dev).
+
+These servers not only provide a GUI interface to the tools that is useful for debugging or for a quick analysis,
+but they also provide REST services for various HED tools as described in
+[**HED RESTful services**](hed-restful-services-anchor).
+
+The project source code is located in the [**hed-web**](https://github.com/hed-standard/hed-web) GitHub repository.
 
 
 
-(developing-new-tools-anchor)=
-### Developing new tools
+(future-development-plans-anchor)=
+### Future development plans
 
-Coming soon...
+We are always looking for people with suggestions or new ideas to join our community.
+In the short term we have the following development goals:
 
-(requesting-features-anchor)=
-### Requesting features
+- Finish integration of search for epoching and its documentation in [**fieldtrip**](https://www.fieldtriptoolbox.org/).
+- Integrate searching, summary, and epoching into [**MNE-Python**](https://mne.tools/stable/index.html).
+- Integrate search and summary into the [**Nemar**](https://nemar.org) and [**EEGNET**](http://eegnet.org/) platforms.
 
-Coming soon...
+Longer term we hope to develop more sophisticated analysis methods based on HED and 
+to better integrate presentation and experimental control software with the annotation process.
 
-(reporting-issues-anchor)=
-### Reporting issues
-
-Coming soon...
-
+We are also tackling the problem of how to effectively capture event relationships to facilitate
+more complex and sophisticated automated analysis.
 
 <hr style="border: 3px solid #000080;" />
 
