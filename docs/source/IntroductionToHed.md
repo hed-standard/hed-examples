@@ -1,5 +1,5 @@
-(hed-introduction-anchor)=
-# HED introduction
+(introduction-to-hed-anchor)=
+# Introduction to HED
 
 HED (an acronym for Hierarchical Event Descriptors) is an evolving framework and
 structured vocabulary for annotating data,

@@ -1,6 +1,9 @@
 # HED search guide
 
-**Under construction**
+<div style="background-color:gold;">
+<span style="color:red;font-weight:bold;">UNDER CONSTRUCTION</span>
+</div>
+
 
 Many analysis methods locate event markers with specified properties and
 extract sections of the data surrounding these markers for analysis.
