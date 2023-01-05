@@ -494,7 +494,6 @@ installed on your machine.
 
 
 #### Installation
-
 The example setup in this section assumes MATLAB R2022b with Python 3.9,
 but the instructions are similar for other compatible combinations of MATLAB and Python.
 
@@ -513,96 +512,52 @@ for your operating system and version.
 
 You will need to keep track of what folder you installed python to for the next steps, especially if you didn't install it system-wide.  
 <hr/>
-**See if you can create a Python virtual environment in MATLAB using the MATLAB system command.**
 
-system("? venv xxxx")
+If you are an adept python user, feel free to point matlab to any compatible installation.  The only package required is "hedtools" and its dependencies.
 
-
-Example setup.
-
-
-#### Adding the hed support package to the python installation
-This is done via going to [PythonPath]/bin in a terminal(python.exe will be in this folder) and typing:
-
-**Don't think this works... shouldn't it be "pip install hedtools"**
-```bash
-pip install hed
+#### Basic installer instructions
+Verify you can use the version of python you want in matlab.  This is done by opening matlab and typing<br>
+```
+pyenv
 ```
 
-#### Pointing Matlab to your python install
+This should display something like the following:
+```text
 
-**This section will be moved**
-In matlab, type **pyenv** to see what your current python install is and other version details.
+  PythonEnvironment with properties:
 
-To set the location type the following, where PythonPath is your local path.
+          Version: "3.10"
+       Executable: "/usr/bin/python3"
+          Library: "libpython3.10.so.1.0"
+             Home: "..."
+           Status: NotLoaded
+    ExecutionMode: InProcess
+```
+
+As long as the Version box denotes the version of python you want, this step is complete.
+
+If version is empty, or you do not see the one you want, you can set it via the following:
+
+To set the location type the following, where PythonPath is your local path you noted earlier.
 ```
 pyenv("Version", "[PythonPath]/bin/python")
 ```
-If this all worked, you should now be able to successfully run the following in Matlab:
+
+##### Creating virtual environment using script
+
+Now create the virtual environment by running the create_venv function(found in wherever we put the matlab scripts).  Simply pass it the folder name you wish to create the virtual environment in and it will update your matlab python and install hedtools there.
+```
+% It's fine if location of venv is your project directory.  It will be created in a subfolder called "venv".
+create_venv(location_of_venv)
+```
+If this all worked, you should be able to now copy and paste the following line into matlab:
 ```
 pyrun("from hed import _version as vr; print(f'Using HEDTOOLS version: {str(vr.get_versions())}')")
 ```
-
-### MATLAB calling syntax
-
-The following table lists the relevant MATLAB commands that you will need to run Python in MATLAB.
-You should refer to the help facility for your version of MATLAB to get the details of what is
-supported for your version of MATLAB.
-
-| MATLAB command | Purpose |
-| -------------- | --------|
-| `pyenv`   | Setup your Python environment in MATLAB.<br/>Without arguments outputs information about your current Python environment. |
-| `pyrun`  | Run a Python statement and return results. |
-| `pyargs` | A recent addition for more advanced argument handling. |
-| `pyrunfile` | Run a Python script from MATLAB. |
-
-The MATLAB `matlab.exception.PyException` captures error information generated during Python execution.
-
-This syntax is easier to use, but more limited as it stays entirely in the python code.
-
-**What does "stays entirely in the python code" mean? Let's add an introductory paragraph
-explaining the difference**
-
-````{admonition} What is this illustrating?
-:class: tip
-
-```matlab
-    % Load the python library.  This only needs to be called once when you first load python.
-    pyrun("import hed")
-    % Retrieve and/or load the schema you wish to validate against
-    pyrun("schema = hed.load_schema_version(version)", version="8.0.0")
-    % Open the datafile you wish to validate
-    pyrun("data = hed.TabularInput(filename)", filename="test_events.tsv")
-    % Validate the datafile
-    pyrun("errors = data.validate_file(hed_ops=schema)")
-    % Translate the errors to a string, and print them.
-    pyrun("print(hed.get_printable_issue_string(errors))")
+Output:
 ```
-````  
-
-
-
-**This needs a paragraph of explanation.  Why is this extended syntax. Not sure what is different?**
-
-````{admonition} What does this do?
-:class: tip
-
-```matlab
-    % Load the python library.  This only needs to be called once when you first load python.
-    pyrun("import hed")
-    % Note the second parameter "schema".  This specifies the names variable(s) we are returning from python.
-    schema = pyrun("schema = hed.load_schema_version(version)", "schema", version="8.0.0");
-    % Note the second parameter "data", which is the return value like above.
-    data = pyrun("data = hed.TabularInput(filename)", "data", filename="test_events.tsv");
-    % Validate the file against the schema, and return the errors as a list.
-    errors = pyrun("errors = data.validate_file(validation_schema)", "errors", validation_schema=schema);
-    % Translate the error_list to a string, and print them.
-    pyrun("print(hed.get_printable_issue_string(error_list))", error_list=errors)
+Using HEDTOOLS version: {'date': '2022-06-20T14:40:24-0500', 'dirty': False, 'error': None, 'full-revisionid': 'c4ecd1834cd31a05ebad3e97dc57e537550da044', 'version': '0.1.0'}
 ```
-````
-
-
-**Need an example of exception handling here**
 
 (matlab-wrappers-for-HED-tools-anchor)=
 ### MATLAB wrappers for HEDTools
@@ -612,7 +567,7 @@ The [**hedtools_wrappers**](https://github.com/hed-standard/hed-examples/tree/ma
 contains MATLAB wrapper functions for calling various commonly used HED tools.
 
 The following example shows the MATLAB wrapper function
-[**validateHedInBids.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/hedtools-wrappers/validateHedInBids.m),
+[**validateHedInBids.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/hedtools_wrappers/validateHedInBids.m),
 which contains the underlying calls to HEDTools Python BIDs validation.
 
 
@@ -641,10 +596,70 @@ end
 ```
 ````
 
-**What happens when there are no validation errors? Will the string be empty?**
+### Exceptions
+By default, python handles things like file not found by raising an exception.  Matlab automatically converts these to matlab exceptions, which can be caught as follows:
+```
+try
+   validate_bids("this file does not exist")
+catch ME
+   disp(ME.message)
+end
+```
+Output similar to:
 
-original code:
+```
+Python Error: FileNotFoundError: [Errno 2] No such file or directory: '/home/user/hed_matlab/this file does not exist/dataset_description.json'
+```
 
-    pyrun("bids = hed.tools.BidsDataset('bids_tests/test_bids_dataset/')")
-    pyrun("issues = bids.validate()")
-    pyrun("print(hed.get_printable_issue_string(issues))")
+### Directly calling python code from matlab
+#### MATLAB calling syntax
+
+The following table lists the relevant MATLAB commands that you will need to run Python in MATLAB.
+You should refer to the help facility for your version of MATLAB to get the details of what is
+supported for your version of MATLAB.
+
+| MATLAB command | Purpose |
+| -------------- | --------|
+| `pyenv`   | Setup your Python environment in MATLAB.<br/>Without arguments outputs information about your current Python environment. |
+| `pyrun`  | Run a Python statement and return results. |
+| `pyargs` | A recent addition for more advanced argument handling. |
+| `pyrunfile` | Run a Python script from MATLAB. |
+
+The MATLAB `matlab.exception.PyException` captures error information generated during Python execution.
+
+### Example of validating a file via pyrun commands
+This is not really recommended, but you can use the pyrun command to directly execute python commands similar to the following:
+````{admonition} 
+:class: tip
+
+```matlab
+    % Load the python library.  This only needs to be called once when you first load python.
+    pyrun("import hed")
+    % Retrieve and/or load the schema you wish to validate against
+    pyrun("schema = hed.load_schema_version(version)", version="8.0.0")
+    % Open the datafile you wish to validate
+    pyrun("data = hed.TabularInput(filename)", filename="test_events.tsv")
+    % Validate the datafile
+    pyrun("errors = data.validate_file(hed_ops=schema)")
+    % Translate the errors to a string, and print them.
+    pyrun("print(hed.get_printable_issue_string(errors))")
+```
+````
+
+````{admonition} This demonstrates how to get return values out from the python code back to matlab.
+:class: tip
+
+```matlab
+    % Load the python library.  This only needs to be called once when you first load python.
+    pyrun("import hed")
+    % Note the second parameter "schema".  This specifies the names variable(s) we are returning from python.
+    schema = pyrun("schema = hed.load_schema_version(version)", "schema", version="8.0.0");
+    % Note the second parameter "data", which is the return value like above.
+    data = pyrun("data = hed.TabularInput(filename)", "data", filename="test_events.tsv");
+    % Validate the file against the schema, and return the errors as a list.
+    errors = pyrun("errors = data.validate_file(validation_schema)", "errors", validation_schema=schema);
+    % Translate the error_list to a string, and print them.
+    pyrun("print(hed.get_printable_issue_string(error_list))", error_list=errors)
+```
+````
+
