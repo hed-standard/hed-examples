@@ -466,7 +466,9 @@ When done, click the **Ok** button to return to the main epoching menu.
 (python-hedtools-in-matlab-anchor)=
 ## Python HEDTools in MATLAB
 
-**Under construction...**
+<div style="background-color:gold;">
+<span style="color:red;font-weight:bold;">UNDER CONSTRUCTION</span>
+</div>
 
 If you are running MATLAB version 2019a or later, you can run functions from the Python `hedtools` library
 directly in MATLAB. With these tools you can incorporate validation, summary, search, factorization,
@@ -492,38 +494,20 @@ you must be running MATLAB version >= R2019a and have a
 [**compatible version of Python**](https://www.mathworks.com/support/requirements/python-compatibility.html)
 installed on your machine.
 
+#### Finding Python
 
-#### Installation
-The example setup in this section assumes MATLAB R2022b with Python 3.9,
-but the instructions are similar for other compatible combinations of MATLAB and Python.
+Call the MATLAB `pyenv` command without arguments to find out if MATLAB recognizes Python.
 
-First a little background for non-Python users... A typical setup
-is to do a system-wide installation of Python and then to create a separate
-virtual environment for each application that references the system-wide
-Python installation, but has the specific extra libraries required for the application.
+````{Admonition} Does your MATLAB recognize Python?
 
-These instructions install a copy of Python specifically for your use in MATLAB
-in your user space with the specific libraries needed.
-Create a new directory in your user space for the installation.
-We will refer to this directory as **PythonPath**.
+In your MATLAB command window execute the command:
 
-Go [**Python downloads**](https://www.python.org/downloads/) and pick the correct installer
-for your operating system and version.
-
-You will need to keep track of what folder you installed python to for the next steps, especially if you didn't install it system-wide.  
-<hr/>
-
-If you are an adept python user, feel free to point matlab to any compatible installation.  The only package required is "hedtools" and its dependencies.
-
-#### Basic installer instructions
-Verify you can use the version of python you want in matlab.  This is done by opening matlab and typing<br>
-```
-pyenv
+```matlab
+>> pyenv
 ```
 
-This should display something like the following:
+This result should display something like the following:
 ```text
-
   PythonEnvironment with properties:
 
           Version: "3.10"
@@ -532,18 +516,55 @@ This should display something like the following:
              Home: "..."
            Status: NotLoaded
     ExecutionMode: InProcess
-```
+``
+````
+As long as the *Version* listed in the properties is non-empty and is at least 3.7,
+you should be fine, even though the status says *NotLoaded*.
 
-As long as the Version box denotes the version of python you want, this step is complete.
+The Python executable in this example is located in the `/usr/bin/python3` directory,
+which is a typical location on Linux systems.
+If you are Windows, The path to your python executable might be something like `C:\Proram files\Python310\python.exe` or to a directory in your user space.
+
+If no version appears in the box, either your system doesn't have Python installed or
+MATLAB doesn't know about it.
+If Python is installed, you can skip the installation instructions and go
+to the [**Setting Python location**](./HedMatlabTools.md./setting-python-location-anchor)=
+
+(python-installation-anchor)=
+#### Python installation
+
+The example setup in this section assumes MATLAB R2022b with Python 3.10,
+but the instructions are similar for other compatible combinations of MATLAB and Python.
+
+Go to [**Python downloads**](https://www.python.org/downloads/) and pick the correct installer
+for your operating system and version.
+
+Depending on your OS and the installer you selected, the Python may be installed in
+your user space or in system space for all users.
+You should keep track of what directory you installed the in Python for the next step.
+
+(setting-the-python-location-anchor)=
+#### Setting the Python location
+
+Once your installation is complete, 
+
+[#### Basic installer instructions
+
+
 
 If version is empty, or you do not see the one you want, you can set it via the following:
 
 To set the location type the following, where PythonPath is your local path you noted earlier.
-```
-pyenv("Version", "[PythonPath]/bin/python")
-```
+
+
+>> pyrun("print('Hello world')")
 
 ##### Creating virtual environment using script
+
+First a little background for non-Python users... A typical setup
+is to do a system-wide installation of Python and then to create a separate
+virtual environment for each application that references the system-wide
+Python installation, but has the specific extra libraries required for the application.
 
 Now create the virtual environment by running the create_venv function(found in wherever we put the matlab scripts).  Simply pass it the folder name you wish to create the virtual environment in and it will update your matlab python and install hedtools there.
 ```
@@ -629,7 +650,8 @@ The MATLAB `matlab.exception.PyException` captures error information generated d
 
 ### Example of validating a file via pyrun commands
 This is not really recommended, but you can use the pyrun command to directly execute python commands similar to the following:
-````{admonition} 
+
+````{admonition} MATLAB example
 :class: tip
 
 ```matlab
