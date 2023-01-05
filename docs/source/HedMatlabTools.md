@@ -522,7 +522,7 @@ pyenv
 ```
 
 This should display something like the following:
-```ans = 
+```text
 
   PythonEnvironment with properties:
 
