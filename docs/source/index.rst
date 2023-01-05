@@ -13,6 +13,7 @@ HED resources
    :caption: Overview:
 
    AboutHED.md
+   WhatsNew.md
    HowCanYouUseHed.md
 
 
