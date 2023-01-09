@@ -470,10 +470,11 @@ When done, click the **Ok** button to return to the main epoching menu.
 <span style="color:red;font-weight:bold;">UNDER CONSTRUCTION</span>
 </div>
 
-If you are running MATLAB version 2019a or later, you can run functions from the Python `hedtools` library
-directly in MATLAB. With these tools you can incorporate validation, summary, search, factorization,
-and other HED processing operations directly into your MATLAB processing scripts without needing to
-reimplement these operations in MATLAB.
+You can run functions from the Python `hedtools` library
+directly in MATLAB versions R2019a or later. 
+With these tools you can incorporate validation, summary, search, factorization,
+and other HED processing directly into your MATLAB processing scripts without 
+reimplementing these operations in MATLAB.
 
 **Note:** For your reference, the source for `hedtools` is the 
 [**hed-python**](https://github.com/hed-standard/hed-python) GitHub repository.
@@ -486,99 +487,207 @@ examples of use.
 
 ### Getting started
 
-#### Requirements
-
 The `hedtools` library requires a Python version >= 3.7. 
 In order to call functions from this library in MATLAB, 
 you must be running MATLAB version >= R2019a and have a 
 [**compatible version of Python**](https://www.mathworks.com/support/requirements/python-compatibility.html)
 installed on your machine.
 
-#### Finding Python
+The most difficult part of the process for users who are unfamiliar with Python is
+getting Python connected to MATLAB.
+Once that is done, many of the standard `hedtools` functions have 
+[**MATLAB wrapper functions**](https://github.com/hed-standard/hed-examples/tree/main/hedcode/matlab_scripts/hedtools_wrappers),
+which take MATLAB variables as arguments and return MATLAB variables.
+Thus, once the setup is done, you don't have to learn any additional Python syntax to use the tools.
+You should only have to do this setup once, since MATLAB retains the setup information
+from session to session.
 
-Call the MATLAB `pyenv` command without arguments to find out if MATLAB recognizes Python.
+````{admonition} Steps for setting up Python HEDtools for MATLAB.
 
-````{Admonition} Does your MATLAB recognize Python?
+[**Step 1: Find Python**](step-1-find-python-anchor). If yes, skip to Step 3.
+<p></p1>
 
-In your MATLAB command window execute the command:
+[**Step 2: Install Python if needed**](step-2-install-python-if-needed-anchor) .
+<p></p> 
+
+[**Step 3: Connect Python to MATLAB**](step-3-connect-python-to-matlab-anchor).
+If already connected, skip to Step 4.
+<p></p> 
+
+[**Step 4: Install HEDtools**](step-4-install-hedtools-anchor)
+````
+
+(step-1-find-python-anchor)=
+#### Step 1: Find Python
+
+Follow these steps until you find a Python executable that is version 3.7 or greater.
+If you can't locate one, you will need to install it.
+
+````{Admonition} Does MATLAB already have a good version of Python you can use?
+
+In your MATLAB command window execute the following function:
 
 ```matlab
->> pyenv
+pyenv
 ```
+The following example response shows that MATLAB is using Python version 3.9
+with executable located at `C:\Program Files\Python39\pythonw.exe`.
 
-This result should display something like the following:
-```text
+```matlab
   PythonEnvironment with properties:
 
-          Version: "3.10"
-       Executable: "/usr/bin/python3"
-          Library: "libpython3.10.so.1.0"
-             Home: "..."
+          Version: "3.9"
+       Executable: "C:\Program Files\Python39\pythonw.exe"
+          Library: "C:\Program Files\Python39\python39.dll"
+             Home: "C:\Program Files\Python39"
            Status: NotLoaded
     ExecutionMode: InProcess
-``
+```
 ````
-As long as the *Version* listed in the properties is non-empty and is at least 3.7,
-you should be fine, even though the status says *NotLoaded*.
 
-The Python executable in this example is located in the `/usr/bin/python3` directory,
-which is a typical location on Linux systems.
-If you are Windows, The path to your python executable might be something like `C:\Proram files\Python310\python.exe` or to a directory in your user space.
+If MATLAB has already knows about a suitable Python version that is at least 3.7,
+you are ready to go to [**Step 4: Install HEDTools**](step-4-install-hedtools-anchor).
+Keep track of the location of the Python executable.
 
-If no version appears in the box, either your system doesn't have Python installed or
-MATLAB doesn't know about it.
-If Python is installed, you can skip the installation instructions and go
-to the [**Setting Python location**](./HedMatlabTools.md./setting-python-location-anchor)=
+If the `pyenv` did not indicate a suitable Python version, you will need to
+find the Python on your system (if there is one), or install your own.
 
-(python-installation-anchor)=
-#### Python installation
+There are several likely places to look for Python on your system.
 
-The example setup in this section assumes MATLAB R2022b with Python 3.10,
-but the instructions are similar for other compatible combinations of MATLAB and Python.
+**For Linux users**:
+>Some likely places to find a Python executable
+are `/bin`, `/local/bin`, `/usr/bin`, `/usr/local/bin`,
+or `/opt/bin` as well places in your home directory such as `~/bin`.
 
+**For Windows users**:
+> System-level installations are usually directly
+under `C:\`, `C:\Python`, or `C:\Program Files`.
+If you did a personal installation of Python in your *username* Windows account, you might find it
+in `C:\Users\yourname\AppData\Local\Programs\Python\python311` where `yourname` is your Windows account name.
+
+If you don't have any success finding a Python executable,
+you will need to install Python as described in 
+[**Step 2: Install Python if needed**](step-2-install-python-if-needed-anchor).
+
+Otherwise, you can skip to [**Step 3:Connect Python to MATLAB**](step-3-connect-python-to-matlab-anchor).
+
+```{warning}
+**You need to keep track of the path to your Python executable for Step 3.**
+```
+
+(step-2-install-python-if-needed-anchor)=
+#### Step 2: Install Python if needed
+
+If you don't have Python on your system, you will need to install it.
 Go to [**Python downloads**](https://www.python.org/downloads/) and pick the correct installer
 for your operating system and version.
 
-Depending on your OS and the installer you selected, the Python may be installed in
-your user space or in system space for all users.
-You should keep track of what directory you installed the in Python for the next step.
-
-(setting-the-python-location-anchor)=
-#### Setting the Python location
-
-Once your installation is complete, 
-
-[#### Basic installer instructions
+Depending on your OS and the installer options you selected,
+Python may be installed in your user space or in system space for all users. 
+- You should keep track of the directory that Python was installed in.
+- You may want to add the location of the Python executable to your PATH.
+  (Most installers give you that option as part of the installation.)
 
 
+(step-3-connect-python-to-matlab-anchor)=
+#### Step 3: Connect Python to Matlab
 
-If version is empty, or you do not see the one you want, you can set it via the following:
+Setting the Python version uses the MATLAB `pyenv` function with the `'Version'` argument
+as illustrated by the following example.
 
-To set the location type the following, where PythonPath is your local path you noted earlier.
+````{admonition} Example MATLAB function call connect MATLAB to Python.
 
-
->> pyrun("print('Hello world')")
-
-##### Creating virtual environment using script
-
-First a little background for non-Python users... A typical setup
-is to do a system-wide installation of Python and then to create a separate
-virtual environment for each application that references the system-wide
-Python installation, but has the specific extra libraries required for the application.
-
-Now create the virtual environment by running the create_venv function(found in wherever we put the matlab scripts).  Simply pass it the folder name you wish to create the virtual environment in and it will update your matlab python and install hedtools there.
+```matlab
+>> pyenv('Version', 'C:\Program Files\Python39\python.exe')
 ```
-% It's fine if location of venv is your project directory.  It will be created in a subfolder called "venv".
-create_venv(location_of_venv)
+````
+
+Be sure to substitute the path of the Python that you have found.
+Notice that the executable listed in Step 1 was pythonw.exe, but we have used python.exe here
+to indicate the command line version.
+
+Use the MATLAB `pyenv` function again without arguments to check that your installation is as expected.
+
+````{Admonition} Example response for pyenv all with no argments after setting environment.
+
+```matlab
+ PythonEnvironment with properties:
+
+          Version: "3.9"
+       Executable: "C:\Program Files\Python39\python.exe"
+          Library: "C:\Program Files\Python39\python39.dll"
+             Home: "C:\Program Files\Python39"
+           Status: NotLoaded
+    ExecutionMode: InProcess
 ```
-If this all worked, you should be able to now copy and paste the following line into matlab:
+````
+
+(step-4-install-hedtools-anchor)=
+##### Step 4: Install HEDTools  
+
+The general-purpose package manager for Python is called `pip`.
+By default, `pip` retrieves packages to be installed from the [**PyPI**](https://pypi.org)
+package repository. You will need to use the version of `pip` that corresponds
+to the version of Python that is connected to MATLAB.
+This may not be the default `pip` used from the command line.
+
+````{admonition} Command to install hedtools in MATLAB.
+To install the latest released version of `hedtools` type a pip command such as the
+following in your MATLAB command window.
+
+```matlab
+system('"C:\Program Files\Python39\Scripts\pip" install hedtools')
 ```
+Use the full path of the pip associated
+with the Python that you are using with MATLAB
+````
+
+Giving the full path to `pip` corresponding to the Python installation that MATLAB
+is using ensures that MATLAB knows about `HEDtools`.
+(The version of MATLAB that Python is using may not be the same as the Python in the system PATH.)
+
+Also watch the resulting messages in the command window to make sure that HEDtools
+was successfully installed.
+In the case of the above example, the Python being used is in system space,
+which requires administrator privileges.
+
+The first line of the output was:
+
+```matlab
+   Defaulting to user installation because normal site-packages is not writeable
+```
+
+On Windows these packages will be found in a `site-packages` directory such as:
+
+```text
+`C:\Users\username\AppData\Roaming\Python\Python39\site-packages`
+```
+
+**What happens on linux?**
+
+
+```{warning}
+If your system had a Python 2 installed at some point, your Python 3
+executable might be named `python3` rather than `python`.
+
+Similarly, the `pip` package manager might be named `pip3` instead of `pip`.
+
+```
+
+The following MATLAB statement can be used to test that everything was installed correctly.
+
+````{Admonition} Test that everything is installed.
+
+```matlab
 pyrun("from hed import _version as vr; print(f'Using HEDTOOLS version: {str(vr.get_versions())}')")
 ```
-Output:
-```
+If everything installed correctly, the output will be something like
+
+```matlab
 Using HEDTOOLS version: {'date': '2022-06-20T14:40:24-0500', 'dirty': False, 'error': None, 'full-revisionid': 'c4ecd1834cd31a05ebad3e97dc57e537550da044', 'version': '0.1.0'}
 ```
+````
+
 
 (matlab-wrappers-for-HED-tools-anchor)=
 ### MATLAB wrappers for HEDTools
@@ -596,43 +705,33 @@ which contains the underlying calls to HEDTools Python BIDs validation.
 :class: tip
 
 ```matlab
-function issueString = validateBidsHed(dataPath)
-    issueString = '';
-    pyrun("bids = hed.tools.BidsDataset(dataPath)")
-    pyrun("issues = bids.validate()")
-    pyrun("issueString = hed.get_printable_issue_string(issues))")
+function issueString = validateHedInBids(dataPath)
+    py.importlib.import_module('hed');
+    bids = py.hed.tools.BidsDataset(dataPath);
+    issues = bids.validate();
+    issueString = string(py.hed.get_printable_issue_string(issues));
+
 ```
 
 Example MATLAB calling code for this function:
 
 ```matlab
-myPath = '/myDatasetRoot';
+dataPath = 'H:\datasets\eeg_ds003654s_hed';
 issueString = validateHedInBids(dataPath);
 if isempty(issueString)
-    fprintf('Dataset %s has no HED validation errors\n', myPath);
+    fprintf('Dataset %s has no HED validation errors\n', dataPath);
 else
-    fprintf('Validation errors for dataset %s:\n%s\n', myPath, issueString);
+    fprintf('Validation errors for dataset %s:\n%s\n', dataPath, issueString);
 end
 
 ```
 ````
+In above example assumes that the BIDS dataset was located at `H:\datasets\eeg_ds003654s_hed`.
+We tested it with the [**eeg_ds003654s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003654s_hed) available on GitHub.
+You can download and use this test data or set `dataPath` to the root directory of your own dataset.
 
-### Exceptions
-By default, python handles things like file not found by raising an exception.  Matlab automatically converts these to matlab exceptions, which can be caught as follows:
-```
-try
-   validate_bids("this file does not exist")
-catch ME
-   disp(ME.message)
-end
-```
-Output similar to:
 
-```
-Python Error: FileNotFoundError: [Errno 2] No such file or directory: '/home/user/hed_matlab/this file does not exist/dataset_description.json'
-```
 
-### Directly calling python code from matlab
 #### MATLAB calling syntax
 
 The following table lists the relevant MATLAB commands that you will need to run Python in MATLAB.
@@ -647,41 +746,3 @@ supported for your version of MATLAB.
 | `pyrunfile` | Run a Python script from MATLAB. |
 
 The MATLAB `matlab.exception.PyException` captures error information generated during Python execution.
-
-### Example of validating a file via pyrun commands
-This is not really recommended, but you can use the pyrun command to directly execute python commands similar to the following:
-
-````{admonition} MATLAB example
-:class: tip
-
-```matlab
-    % Load the python library.  This only needs to be called once when you first load python.
-    pyrun("import hed")
-    % Retrieve and/or load the schema you wish to validate against
-    pyrun("schema = hed.load_schema_version(version)", version="8.0.0")
-    % Open the datafile you wish to validate
-    pyrun("data = hed.TabularInput(filename)", filename="test_events.tsv")
-    % Validate the datafile
-    pyrun("errors = data.validate_file(hed_ops=schema)")
-    % Translate the errors to a string, and print them.
-    pyrun("print(hed.get_printable_issue_string(errors))")
-```
-````
-
-````{admonition} This demonstrates how to get return values out from the python code back to matlab.
-:class: tip
-
-```matlab
-    % Load the python library.  This only needs to be called once when you first load python.
-    pyrun("import hed")
-    % Note the second parameter "schema".  This specifies the names variable(s) we are returning from python.
-    schema = pyrun("schema = hed.load_schema_version(version)", "schema", version="8.0.0");
-    % Note the second parameter "data", which is the return value like above.
-    data = pyrun("data = hed.TabularInput(filename)", "data", filename="test_events.tsv");
-    % Validate the file against the schema, and return the errors as a list.
-    errors = pyrun("errors = data.validate_file(validation_schema)", "errors", validation_schema=schema);
-    % Translate the error_list to a string, and print them.
-    pyrun("print(hed.get_printable_issue_string(error_list))", error_list=errors)
-```
-````
-
