@@ -11,4 +11,4 @@ edited by Robert Whelan and Herve Lemaitre
 
 **January 3, 2023**: **Project page live**<br/>
 
->New HED organization homepage goes live at [**https://www.hedtags.org**](**https://www.hedtags.org**).
+>New HED organization homepage goes live at [**https://www.hedtags.org**](https://www.hedtags.org).
