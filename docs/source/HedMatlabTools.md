@@ -555,15 +555,13 @@ find the Python on your system (if there is one), or install your own.
 There are several likely places to look for Python on your system.
 
 **For Linux users**:
->Some likely places to find a Python executable
-are `/bin`, `/local/bin`, `/usr/bin`, `/usr/local/bin`,
-or `/opt/bin` as well places in your home directory such as `~/bin`.
+
+>Likely places for system-space installation are `/bin`, `/local/bin`, `/usr/bin`, `/usr/local/bin`, or `/opt/bin`. User-space installations are usually some where in your home directory such as `~/bin`. 
 
 **For Windows users**:
-> System-level installations are usually directly
-under `C:\`, `C:\Python`, or `C:\Program Files`.
-If you did a personal installation of Python in your *username* Windows account, you might find it
-in `C:\Users\yourname\AppData\Local\Programs\Python\python311` where `yourname` is your Windows account name.
+> Likely places for system-space installation are `C:\`, `C:\Python`, or `C:\Program Files`.
+User-space installations default to your personal account 
+in `C:\Users\yourname\AppData\Local\Programs\Python\python311` where `yourname` is your Windows accountname.
 
 If you don't have any success finding a Python executable,
 you will need to install Python as described in 
@@ -663,7 +661,11 @@ On Windows these packages will be found in a `site-packages` directory such as:
 `C:\Users\username\AppData\Roaming\Python\Python39\site-packages`
 ```
 
-**What happens on linux?**
+On Linux these packages might be found in directory such as:
+
+```text
+/home/username/.local/lib/python3.9/site-packages/
+```
 
 
 ```{warning}

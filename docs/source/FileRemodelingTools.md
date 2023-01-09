@@ -238,8 +238,8 @@ The programs use a standard command-line argument list for specifying input as s
 | Script name | Arguments | Purpose | 
 | ----------- | -------- | ------- |
 |*run_remodel_backup* | *data_dir*<br/>*-e -\\-extensions*<br/>*-f -\\-file-suffix*<br/>*-n -\\-backup-name*<br/>*-t -\\-task-names*<br/>*-v -\\-verbose*<br/>*-x -\\-exclude-dirs*| Create a backup event files. |
-|*run_remodel* | *data_dir*<br/>*model_path*<br/>*-b -\\-bids-format*<br/>*-e -\\-extensions*<br/>*-f -\\-file-suffix*<br/>*-i -\\-include-individual*<br/>*-n -\\-backup-name*<br/>*-j -\\-json-sidecar*<br/>*-r -\\-hed-version*<br/>*-s -\\-save-formats*<br/>*-t -\\-task-names*<br/>*-v -\\-verbose*<br/>*-x -\\-exclude-dirs* | Restructure or summarize the event files. |
-|*run_remodel_restore* | *data_dir*<br/>*-n -\\-backup-name*<br/>*-v -\\-verbose* | Restore a backup of event files. |
+|*run_remodel* | *data_dir*<br/>*model_path*<br/>*-b -\\-bids-format*<br/>*-e -\\-extensions*<br/>*-f -\\-file-suffix*<br/>*-i -\\-include-individual*<br/>*-n -\\-backup-name*<br/>*-j -\\-json-sidecar*<br/>*-r -\\-hed-version*<br/>*-s -\\-save-formats*<br/>*-t -\\-task-names*<br/>*-v -\\-verbose*<br/>*-x -\\-exclude-dirs* | Restructure or summarize the event files.<br/> <br/>If the backup name (*-n*) argument is omitted,<br>the backup called *default_back* is used.<br/>If you want to skip the backup, use *''*. |
+|*run_remodel_restore* | *data_dir*<br/>*-n -\\-backup-name*<br/>*-t -\\-task-names**-v -\\-verbose* | Restore a backup of event files. |
 
 ````
 All the scripts have a required argument, which is the full path of the dataset root (*data_dir*).
@@ -299,6 +299,7 @@ Users are free to use either form.
 
 `-n`, `--backup_name`
 > The name of the backup used for the remodeling (default: `default_back`).
+> Use `''` if you wish to omit the backup (in `run_remodel`).
 
 `-r`, `--hed-versions`
 > This option is followed by one or more HED versions. Versions of the standard schema are specified

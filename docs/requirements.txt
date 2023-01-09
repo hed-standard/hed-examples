@@ -23,6 +23,7 @@ python-dateutil==2.8.2
 pytz>=2022.1
 semantic_version>=2.9.0
 six==1.16.0
+sphinx-tabs>=3.4.1
 Sphinx==5.2.2
 SphinxExtensions==0.2.0
 sphinx_rtd_theme==1.0.0
