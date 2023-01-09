@@ -8,8 +8,7 @@ function issueString = validateHedInBids(dataPath)
 %     issueString - A string with the validation issues suitable for
 %                   printing (has newlines).
 %
-%
-    issueString = '';
-    pyrun("bids = hed.tools.BidsDataset(dataPath)")
-    pyrun("issues = bids.validate()")
-    pyrun("issueString = hed.get_printable_issue_string(issues))")
+    py.importlib.import_module('hed');
+    bids = py.hed.tools.BidsDataset(dataPath);
+    issues = bids.validate();
+    issueString = string(py.hed.get_printable_issue_string(issues));

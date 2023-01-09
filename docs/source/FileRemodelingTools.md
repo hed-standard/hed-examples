@@ -213,7 +213,7 @@ The remodeling toolbox provides Python scripts with command-line interfaces
 to create or restore backups and to apply operations to the files in a dataset.
 The file remodeling tools may be applied to datasets that are in free form under a directory root
 or that are in [**BIDS-format**](https://bids.neuroimaging.io/).
-Some operations use [**HED (Hierarchical Event Descriptors)**](./HedIntroduction.md) annotations.
+Some operations use [**HED (Hierarchical Event Descriptors)**](./IntroductionToHed.md) annotations.
 See the [**Remodel with HED**](remodel-with-hed-anchor) section for a discussion
 of these operations and how to use them.
 
@@ -522,7 +522,7 @@ cli_remodel.main([data_root])
 (remodel-with-hed-anchor)=
 ## Remodel with HED
 
-[**HED**](hed-introduction-anchor) (Hierarchical Event Descriptors) is a
+[**HED**](introduction-to-hed-anchor) (Hierarchical Event Descriptors) is a
 system for annotating data in a manner that is both human-understandable and machine-actionable.
 HED provides much more detail about the events and their meanings,
 If you are new to HED see the 
