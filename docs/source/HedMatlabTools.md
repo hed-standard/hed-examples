@@ -623,7 +623,7 @@ Use the MATLAB `pyenv` function again without arguments to check that your insta
 ````
 
 (step-4-install-hedtools-anchor)=
-##### Step 4: Install HEDTools  
+#### Step 4: Install HEDTools  
 
 The general-purpose package manager for Python is called `pip`.
 By default, `pip` retrieves packages to be installed from the [**PyPI**](https://pypi.org)
@@ -732,7 +732,7 @@ You can download and use this test data or set `dataPath` to the root directory 
 
 
 
-#### MATLAB calling syntax
+### MATLAB calling syntax
 
 The following table lists the relevant MATLAB commands that you will need to run Python in MATLAB.
 You should refer to the help facility for your version of MATLAB to get the details of what is
