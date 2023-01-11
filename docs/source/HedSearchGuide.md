@@ -166,3 +166,74 @@ Meaning: Find a group containing a direct child group that does not contain Even
 | '(((Clear-throat)),(Event))' | "[[ [[~Event]] ]]" | True   | This is found because the ((Clear-throat)) subgroup does not contain Event   |
 | '((Clear-throat,Event))'     | "[[ [[~Event]] ]]" | False  | This is not found because the child subgroup contains Clear-throat and Event |
 
+---
+
+| Token               | Meaning (* Denotes recently renamed)                                                             | Example        | Example Meaning                                                      |
+|---------------------|--------------------------------------------------------------------------------------------------|----------------|----------------------------------------------------------------------|
+| Single term         | Searches matches the term <br/>or any of its children.<br/>No values or extensions are considered. | *Event*        | Matches string containing *Event*<br/>tag, or any child tag of Event. |
+| Tag with slash      | A tag with extension or value                                                                    | Def/Def1       | Find strings that contain the exact tag Def/Def1.                    |
+| *                   | Wildcard on tag searches.  Turns term searches into tag searches.                                | Def/Def1/*     | Find tags that start with Def/Def1/                                  |
+| ,                   | and                                                                                              | A, B           | Find strings or groups with both A and B                             |
+| and                 | and                                                                                              | A and B        | Find strings or groups with both A and B                             |
+| or                  | or                                                                                               | A or B         | Find strings or groups with either A or B                            |
+| [[                  | Containing* group start                                                                          | [[A, B]]       | Find a group that contains both A and B.                             |
+| ]]                  | Containing* group end                                                                            |                | eg "(A, B)" or "(A, B, C)"                                           |
+| [                   | Descendant* group start                                                                          | [A, B]         | Find a group that contains A and B as descendant members             |
+| ]                   | Descendant* group end                                                                            |                | eg "(A, B)" or "(A, (B, C))"                                         |
+| (                   | Logical group Start                                                                              | A or (B and C) | Logically group operations to override precedence                    |
+| )                   | Logical group End                                                                                |                | Find string with A or both B and C.                                  |
+| ~                   | Logical Negation                                                                                 | ~A             | Find lines that do not contain A                                     |
+| ? - Temp notation   | Any Tag or Group                                                                                 | [[A, ?]]       | Find a group with A and any tag or subgroup.                         |
+| ?? - Temp notation  | Any Tag                                                                                          | [[A, ??]]      | Find a group with A and any other tag.                               |
+| ??? - Temp notation | Any Group                                                                                        | [[A, ???]]     | Find a group with A and any subgroup.                                |
+| {} - Temp notation  | No additional tags or groups                                                                     | {A}            | Find a group or string with A nothing else.                          |
+
+    Note: {} notation does NOT require a group.
+
+    {A} would match "A" or "(A)" or "B, (A)"
+    [{A}] would match "(A)" or "B, (A)"
+
+---
+
+    Note: Adding a wildcard to a search will automatically make whatever group it's found in an "exact group"<br>
+    e.g.: Query: A ?
+    This would match: 
+        1. A, B
+        2. (A, B)
+        3. A, (B)
+        4. (A, (B))
+    But NOT:
+        1. (A), B
+          This is because once A is found, there needs to be wildcard group or tag at the same level.
+                     
+    Note: Wildcards should be as late in a search as possible for efficency.  eg "A and ?" rather than "? and A"
+
+#### Wildcards
+    Wildcards are supported under the new system.  They mostly make sense in containing groups.  They can be mixed and matched,
+    e.g: [[A or B and ??? and ??]]
+    Meaning: Find a group containing tag A or tag B, while also containing another unrelated tag and another unrelated group.
+    
+#### Search Term Wildcards
+Term search - Checks all parent terms in the tags searched as well, does not interact with extensions of values in any way.
+Tag search - Finds tags where the short form IS the indicated search string, unless it has a wildcard.(any search term with a "/" or a "*" or wrapped in double quotes turns it into a tag search)
+
+Examples:
+1. Orange : would be a TERM search, finding the children as well since Orange is a term in any children of orange.
+2. Orange/* : Would be a TAG search, finding any Orange tags that have an extension or value
+3. Orange/2*: Would be a TAG search, finding any Orange tags that have an extension or value beginning with 2.
+4. Orange* : would be a TAG search, but the wildcard would have it find the children too.
+    This would additionally find any potentially completely unrelated tags that start with Orange in short form.  Say "OrangeTheFruit"
+5. **NOT IMPLEMENTED YET**<br>"Orange":  would be a TAG search, with no extensions allowed due to the quotes.
+    The entire short form of the tag must be "Orange" and nothing else.
+
+### Updated search:
+Query: Event and Sensory-event<br>
+String being searched: Sensory-event<br>
+##### Old System
+    In the old system this would match.  It would first find an Event tag, matching Sensory-event.  It would then find a Sensory-event tag, also matching Sensory-event.
+    It did not care it was matching the same tag twice.
+
+##### New System
+    Once it matches a tag, it "consumes" the tag and marks it as used.  
+    So it would find Event, then be unable to match Sensory-event as there were no tags left.
+    
