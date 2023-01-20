@@ -59,11 +59,15 @@ Notes: If you're searching many strings for the same expression, make sure you c
 
 ## Query types
 
-| Token      | Meaning                       | Example        | Example Meaning                                                                             |
-|------------|-------------------------------|----------------|-----------------------------------|
-| Single term | Searches matches the term <br/>or any of its children.<br/>No values or extensions are considered.| *Event*          | Matches string containing *Event*<br/>tag, or any child tag of Event. |
-| Tag path<br/> with slash | A tag with extension or value | Def/Def1       | Find strings that contain the exact tag Def/Def1.                                           |
-| ,          | and                           | A, B           | Find strings or groups with both A and B                                                    |
+### Single term queries
+
+
+
+| Query form     | Meaning                       | Example query        | Matches | Does not match |
+|------------|-------------------------------|----------------| --------------- | ---------------- |
+| Single term | Match the term or any of its children.<br/>Don't consider values or extensions.| *Event* | *Event*<br/>*Sensory-event*<br/>*Event/New-event*<br/>*Event/Sensory-event*|
+| Tag path<br/>with slash | Match the exact tag with extension or value | Def/Def1       | Find strings that contain the exact tag Def/Def1.                                           |
+| A, B         | Match both A and B. | *Event*, *Sensory-event* |               |    |
 | and        | and                           | A and B        | Find strings or groups with both A and B                                                    |
 | or         | or                            | A or B         | Find strings or groups with either A or B                                                   |
 | [[         | Exact group start             | [[A, B]]       | Find a group that contains both A and B.                                                    |
@@ -208,12 +212,12 @@ Meaning: Find a group containing a direct child group that does not contain Even
                      
     Note: Wildcards should be as late in a search as possible for efficency.  eg "A and ?" rather than "? and A"
 
-#### Wildcards
+### Wildcards
     Wildcards are supported under the new system.  They mostly make sense in containing groups.  They can be mixed and matched,
     e.g: [[A or B and ??? and ??]]
     Meaning: Find a group containing tag A or tag B, while also containing another unrelated tag and another unrelated group.
     
-#### Search Term Wildcards
+### Search Term Wildcards
 Term search - Checks all parent terms in the tags searched as well, does not interact with extensions of values in any way.
 Tag search - Finds tags where the short form IS the indicated search string, unless it has a wildcard.(any search term with a "/" or a "*" or wrapped in double quotes turns it into a tag search)
 
@@ -223,17 +227,17 @@ Examples:
 3. Orange/2*: Would be a TAG search, finding any Orange tags that have an extension or value beginning with 2.
 4. Orange* : would be a TAG search, but the wildcard would have it find the children too.
     This would additionally find any potentially completely unrelated tags that start with Orange in short form.  Say "OrangeTheFruit"
-5. **NOT IMPLEMENTED YET**<br>"Orange":  would be a TAG search, with no extensions allowed due to the quotes.
+5. "Orange":  would be a TAG search, with no extensions allowed due to the quotes.
     The entire short form of the tag must be "Orange" and nothing else.
 
 ### Updated search:
 Query: Event and Sensory-event<br>
 String being searched: Sensory-event<br>
-##### Old System
+#### Old System
     In the old system this would match.  It would first find an Event tag, matching Sensory-event.  It would then find a Sensory-event tag, also matching Sensory-event.
     It did not care it was matching the same tag twice.
 
-##### New System
+#### New System
     Once it matches a tag, it "consumes" the tag and marks it as used.  
     So it would find Event, then be unable to match Sensory-event as there were no tags left.
     

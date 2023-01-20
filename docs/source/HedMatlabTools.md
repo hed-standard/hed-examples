@@ -556,12 +556,14 @@ There are several likely places to look for Python on your system.
 
 **For Linux users**:
 
->Likely places for system-space installation are `/bin`, `/local/bin`, `/usr/bin`, `/usr/local/bin`, or `/opt/bin`. User-space installations are usually some where in your home directory such as `~/bin`. 
+>Likely places for system-space installation are `/bin`, `/local/bin`, `/usr/bin`, `/usr/local/bin`, or `/opt/bin`. User-space installations are usually your home directory in a subdirectory such as `~/bin`
+or `~/.local/bin`. 
 
 **For Windows users**:
 > Likely places for system-space installation are `C:\`, `C:\Python`, or `C:\Program Files`.
 User-space installations default to your personal account 
-in `C:\Users\yourname\AppData\Local\Programs\Python\python311` where `yourname` is your Windows accountname.
+in `C:\Users\yourname\AppData\Local\Programs\Python\python39` where `yourname` is your Windows account name
+and `python39` will be the particular version (in this case Python 3.9).
 
 If you don't have any success finding a Python executable,
 you will need to install Python as described in 
@@ -601,7 +603,7 @@ as illustrated by the following example.
 ````
 
 Be sure to substitute the path of the Python that you have found.
-Notice that the executable listed in Step 1 was pythonw.exe, but we have used python.exe here
+Notice that the executable listed in Step 1 was `pythonw.exe`, but we have used `python.exe` here
 to indicate the command line version.
 
 Use the MATLAB `pyenv` function again without arguments to check that your installation is as expected.
