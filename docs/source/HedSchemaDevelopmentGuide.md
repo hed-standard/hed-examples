@@ -17,6 +17,17 @@ or creating an entirely new one.
 
 ## Setting up for schema development
 
+Although schema developers work with HED schema in `.mediawiki` format for ease in editing,
+HED tools generally use XML versions of the HED schema. 
+
+````{admonition} **Standard development process for XML schema.**
+:class: tip
+
+1. Create or modify a `.mediawiki` file containing the schema.
+2. Validate the `.mediawiki` file using the [**HED online tools**](https://hedtools.ucsd.edu/hed/schema).
+2. Convert to `.xml` using the [**HED online tools**](https://hedtools.ucsd.edu/hed/schema).
+3. View in the [**expandable schema viewer**](https://www.hedtags.org/display_hed.html) to verify.
+````
 
 ## Design principles for schema
 

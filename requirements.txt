@@ -9,8 +9,7 @@ portalocker>=2.4.0
 semantic_version>=2.9.0
 Werkzeug>=2.1.2
 flake8>=4.0.1
-importlib-metadata<3.8.0
-sphinx-tabs>=3.4.1
+importlib-metadata>=3.8.0
 sphinx>=4.5.0
 SphinxExtensions>=0.2.0
 attrs>=21.4.0
