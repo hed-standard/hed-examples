@@ -227,7 +227,7 @@ Examples:
 3. Orange/2*: Would be a TAG search, finding any Orange tags that have an extension or value beginning with 2.
 4. Orange* : would be a TAG search, but the wildcard would have it find the children too.
     This would additionally find any potentially completely unrelated tags that start with Orange in short form.  Say "OrangeTheFruit"
-5. **NOT IMPLEMENTED YET**<br>"Orange":  would be a TAG search, with no extensions allowed due to the quotes.
+5. "Orange":  would be a TAG search, with no extensions allowed due to the quotes.
     The entire short form of the tag must be "Orange" and nothing else.
 
 ### Updated search:
