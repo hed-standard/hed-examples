@@ -45,8 +45,7 @@ extensions = [
     "sphinx.ext.mathjax",
     "sphinx.ext.viewcode",
     "sphinx.ext.githubpages",
-    "sphinx.ext.napoleon",
-    "sphinx_tabs.tabs"
+    "sphinx.ext.napoleon"
 ]
 
 autosummary_generate = True
