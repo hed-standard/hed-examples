@@ -119,7 +119,7 @@ stored in the `derivatives/remodel/backups` subdirectory of the dataset.
 Restructuring applies a sequence of remodeling operations given in a JSON remodeling
 file to produce a final result.
 By convention, we name these remodeling instruction files `_rmdl.json` 
-and try to store them in the `derivatives/remodel/models` directory relative
+and try to store them in the `derivatives/remodel/remodeling_files` directory relative
 to the dataset root directory.
 
 The restructuring always proceeds by looking up each data file in the backup
@@ -349,7 +349,7 @@ The remodeling tools expect the full path for the JSON remodeling operation file
 when the remodeling is executed.
 However, it is a good practice to include all remodeling files used with the dataset.
 The JSON remodeling operation files are usually located in the
-`derivatives/remodel/models` subdirectory below the dataset root,
+`derivatives/remodel/remodeling_files` subdirectory below the dataset root,
 and have file names ending in `_rmdl.json`.
 
 The backups are always in the `derivatives/remodel/backups` subdirectory under the dataset root.
@@ -415,7 +415,7 @@ An example command line call for `run_remodel` is shown in the following example
 :class: tip
 
 ```bash
-python run_remodel.py /data/ds002790  /data/ds002790/derivatives/remodel/models/AOMIC_summarize_rmdl.json \
+python run_remodel.py /data/ds002790  /data/ds002790/derivatives/remodel/remodeling_files/AOMIC_summarize_rmdl.json \
 -s .txt -x derivatives -b 
 
 ```
@@ -473,7 +473,7 @@ The exact paths will look different on your computer but the full command-line c
 :class: tip
 
 ```bash
-python run_remodel.py /data/ds002790  /data/ds002790/derivatives/remodel/models/AOMIC_summarize_rmdl.json \
+python run_remodel.py /data/ds002790  /data/ds002790/derivatives/remodel/remodeling_files/AOMIC_summarize_rmdl.json \
 -s .txt -x derivatives -b 
 
 ```

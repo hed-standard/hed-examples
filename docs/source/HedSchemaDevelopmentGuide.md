@@ -215,8 +215,8 @@ As changes are accepted, they are incorporated into the
 **prerelease CHANGES.md**. 
 These files are located in the **prerelease** subdirectory for the respective schema.
 Examples of these files for the standard schema can be found in the standard schema
-[**prelease directory**](https://github.com/hed-standard/hed-schemas/tree/main/standard_schema/prerelease).
-[**Expandable html view of the prerelease HED schema**](https://www.hedtags.org/display_hed_prelease.html) 
+[**prerelease directory**](https://github.com/hed-standard/hed-schemas/tree/main/standard_schema/prerelease).
+[**Expandable html view of the prerelease HED schema**](https://www.hedtags.org/display_hed_prerelease.html) 
 
 Upon final review, the new HED schema is released, the XML file is copied to the
 [**hedxml directory**](https://github.com/hed-standard/hed-schemas/tree/main/standard_schema/hedxml),

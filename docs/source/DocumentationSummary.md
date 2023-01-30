@@ -36,21 +36,21 @@ and tagging hints.
 * - Expandable HTML	
   - [https://www.hedtags.org/display_hed.html](https://www.hedtags.org/display_hed.html)
 * - Expandable prerelease HTML	
-  - [https://www.hedtags.org/display_hed_prelease.html](https://www.hedtags.org/display_hed_prelease.html)
+  - [https://www.hedtags.org/display_hed_prerelease.html](https://www.hedtags.org/display_hed_prerelease.html)
 * - Mediawiki	
-  - [https://github.com/hed-standard/hed-specification/blob/master/hedwiki/HED8.0.0.mediawiki](https://github.com/hed-standard/hed-specification/blob/master/hedwiki/HED8.0.0.mediawiki)
+  - [https://github.com/hed-standard/hed-schemas/blob/main/standard_schema/hedwiki/HED8.1.0.mediawiki](https://github.com/hed-standard/hed-schemas/blob/main/standard_schema/hedwiki/HED8.1.0.mediawiki)
 * - XML	
-  - [https://github.com/hed-standard/hed-specification/blob/master/hedxml/HED8.0.0.xml](https://github.com/hed-standard/hed-specification/blob/master/hedxml/HED8.0.0.xml)
+  - [https://github.com/hed-standard/hed-schemas/blob/main/standard_schema/hedxml/HED8.1.0.xml](https://github.com/hed-standard/hed-schemas/blob/main/standard_schema/hedxml/HED8.1.0.xml)
 * - **Score library schemas**
   - 
 * - Expandable HTML
   - [https://www.hedtags.org/display_hed_score.html](https://www.hedtags.org/display_hed_score.html)
-* - Expandable prelease HTML
+* - Expandable prerelease HTML
   - [https://www.hedtags.org/display_hed_score_prerelease.html](https://www.hedtags.org/display_hed_score_prerelease.html)
 * - Mediawiki	
-  - [https://github.com/hed-standard/hed-schema-library/blob/main/library_schemas/score/hedwiki/HED_score_0.0.1.mediawiki](https://github.com/hed-standard/hed-schema-library/blob/main/library_schemas/score/hedwiki/HED_score_0.0.1.mediawiki)
+  - [https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/score/hedwiki/HED_score_1.0.0.mediawiki](https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/score/hedwiki/HED_score_1.0.0.mediawiki)
 * - XML	
-  - [https://github.com/hed-standard/hed-schema-library/blob/main/library_schemas/score/hedxml/HED_score_0.0.1.xml](https://github.com/hed-standard/hed-schema-library/blob/main/library_schemas/score/hedxml/HED_score_0.0.1.xml)
+  - [https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/score/hedxml/HED_score_1.0.0.xml](https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/score/hedxml/HED_score_1.0.0.xml)
 `````  
 
 ## 3. HED Websites

@@ -1,6 +1,14 @@
 (whats-new-anchor)=
 # What's new?
 
+**January 28, 2023**: **HED SCORE Library v1.0.0 released**<br/>
+
+The HED score library schema v1.0.0 has been officially released.
+This library is based on the on Standardized Computer-based Organized Reporting of EEG
+([**SCORE**](https://pubmed.ncbi.nlm.nih.gov/28838815/)) standard and adapted for
+annotation using the HED infrastructure and requirements. 
+For more information see the [**SCORE schema library**](https://hed-schemas.readthedocs.io/en/latest/hed_score_library.html) guide.
+
 **January 20, 2023**: **New preprint available**<br/>
 
 > **Actionable event annotation and analysis in fMRI** [**preprint**](https://osf.io/h7puk)<br/>
