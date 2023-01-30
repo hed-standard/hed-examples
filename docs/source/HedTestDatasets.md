@@ -49,7 +49,7 @@ This is eeg_ds003654s_hed_inheritance
 
 This dataset is designed to test the HED library schema facility.
 It uses HED 8.0.0 as a base schema and as the "test" library schema.
-In addition, this dataset uses the SCORE library version 0.0.1 as a library schema.
+In addition, this dataset uses the SCORE library version 1.0.0 as a library schema.
 
 The schema used are specified in the `dataset_description.json` file using the 
 proposed format.
