@@ -1131,10 +1131,16 @@ Remapping can be used to convert the column containing these codes into one or m
 | *destination_columns* | list | A list of *n* names of the destination columns for the map. |
 | *map_list* | list | A list of mappings. Each element is a list of *m* source <br/>column values followed by *n* destination values.<br/> Mapping source values are treated as strings. |  
 | *ignore_missing* | bool | If false, source column values not in the map generate "n/a"<br/> destination values instead of errors. |
+| *integer_sources* | list | [**Optional**] A list of source columns that are integers.<br/> The *integer_sources* must be a subset of *source_columns*. |
 ```
 A column cannot be both a source and a destination,
 and all source columns must be present in the data files.
 New columns are created for destination columns that are missing from a data file.
+
+The *remap_columns* operation only works for columns containing strings or integers,
+as it is meant for remapping categorical codes.
+You must specify the which source columns contain integers so that `n/a` values
+can be handled appropriately.
 
 The *map_list* parameter specifies how each unique combination of values from the source 
 columns will be mapped into the destination columns.
