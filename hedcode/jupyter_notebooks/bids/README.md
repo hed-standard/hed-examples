@@ -31,6 +31,3 @@ To install directly from the
 
 HEDTools require python 3.7 or greater.
 
-A related GitHub repository
-[**hed-curation**](https://github.com/hed-standard/hed-curation)
-is holds code related to curation.

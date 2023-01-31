@@ -116,7 +116,7 @@ Within its context information, most summarization operations keep a separate
 summary for each individual file and have methods to create an overall summary
 of the information for all the files that have been processed by the summarization..
 
-Summarization results are available in JSON (`.json`) and text (`.txt) formats.
+Summarization results are available in JSON (`.json`) and text (`.txt`) formats.
 
 (available-operations-anchor)=
 ### Available operations
@@ -228,7 +228,7 @@ Example notebooks can be found in the
 ### Calling remodel tools
 
 The remodeling tools provide three Python programs for backup (`run_remodel_backup`),
-remodeling (`run_remodel`) and restoring (`run_remodel_restor`) event files.
+remodeling (`run_remodel`) and restoring (`run_remodel_restore`) event files.
 These programs can be called from the command line or from another Python program.
 
 The programs use a standard command-line argument list for specifying input as summarized in the following table.
@@ -238,7 +238,7 @@ The programs use a standard command-line argument list for specifying input as s
 | Script name | Arguments | Purpose | 
 | ----------- | -------- | ------- |
 |*run_remodel_backup* | *data_dir*<br/>*-e -\\-extensions*<br/>*-f -\\-file-suffix*<br/>*-n -\\-backup-name*<br/>*-t -\\-task-names*<br/>*-v -\\-verbose*<br/>*-x -\\-exclude-dirs*| Create a backup event files. |
-|*run_remodel* | *data_dir*<br/>*model_path*<br/>*-b -\\-bids-format*<br/>*-e -\\-extensions*<br/>*-f -\\-file-suffix*<br/>*-i -\\-include-individual*<br/>*-n -\\-backup-name*<br/>*-j -\\-json-sidecar*<br/>*-r -\\-hed-version*<br/>*-s -\\-save-formats*<br/>*-t -\\-task-names*<br/>*-v -\\-verbose*<br/>*-x -\\-exclude-dirs* | Restructure or summarize the event files.<br/> <br/>If the backup name (*-n*) argument is omitted,<br>the backup called *default_back* is used.<br/>If you want to skip the backup, use *''*. |
+|*run_remodel* | *data_dir*<br/>*model_path*<br/>*-b -\\-bids-format*<br/>*-e -\\-extensions*<br/>*-f -\\-file-suffix*<br/>*-i -\\-individual-summaries*<br/>*-n -\\-backup-name*<br/>*-j -\\-json-sidecar*<br/>*-r -\\-hed-version*<br/>*-s -\\-save-formats*<br/>*-t -\\-task-names*<br/>*-v -\\-verbose*<br/>*-x -\\-exclude-dirs* | Restructure or summarize the event files.<br/> <br/>If the backup name (*-n*) argument is omitted,<br>the backup called *default_back* is used.<br/>If you want to skip the backup, use *''*. |
 |*run_remodel_restore* | *data_dir*<br/>*-n -\\-backup-name*<br/>*-t -\\-task-names**-v -\\-verbose* | Restore a backup of event files. |
 
 ````
@@ -289,9 +289,11 @@ Users are free to use either form.
 > The filename without the extension must end in one of the specified suffixes in order to be
 > backed up or transformed.
 
-`-i`, `--include-individual`
-> If this flag is present, summary information for individual files as well as an overall dataset summary
-> is reported for all summarization operations.
+`-i`, `--individual-summaries`
+> This option offers a choice among three options:
+>    - `separate`: Individual summaries for each file in separate files in addition the overall summary.
+>    - `consolidated`: Individual summaries written in the same file as the overall summary.
+>    - `none`: Only an overall summary.
 
 `-j`, `--json-sidecar`
 > This option is followed by the full path of the JSON sidecar with HED annotations to be
@@ -457,7 +459,7 @@ python run_remodel.py /datasets/eeg_ds003654s_hed_remodel /datasets/remove_extra
 
 The script has two required arguments the dataset root and the path to the JSON remodel file.
 Usually, the JSON remodel files are stored with the dataset itself in the 
-`derivatives/remodel/models` subdirectory, but common scripts can be stored in a central place elsewhere.
+`derivatives/remodel/remodeling_files` subdirectory, but common scripts can be stored in a central place elsewhere.
 
 The additional keyword option, `-x` in the example indicates that directory paths containing the component `derivatives` or the component `stimuli` should be excluded.
 Excluded directories need not have their excluded path component at the top level of the dataset.
@@ -582,7 +584,7 @@ using the `-r` option.
 The `-r` option supports a list of HED versions if multiple HED schemas are used.
 For example: `-r 8.1.0 sc:score_1.0.0` specifies that vocabulary will be drawn
 from standard HED Version [**8.1.0**](https://www.hedtags.org/display_hed.html) and from
-HED SCORE library version [**0.0.1**](https://www.hedtags.org/display_hed_score.html).
+HED SCORE library version [**1.0.0**](https://www.hedtags.org/display_hed_score.html).
 Annotations containing tags from SCORE should be prefixed with `sc:`.
 
 Usually, annotators will consolidate HED annotations in a single JSON sidecar file
