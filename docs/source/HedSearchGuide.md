@@ -80,13 +80,13 @@ be sure to create the `TagExpressionParser` only once.
 The simplest type of query is to search for the presence of absence of a single tag.
 HED offers four variations on the single tag query as summarized in the following table.
 
-| Query type  | Example query  | Matches | Does not match |
-|------------ |----------------| --------------- | ---------------- |
-| **Single-term**<br/>Match the term or any child.<br/>Don't consider values or<br/>extensions when matching.| *Agent-trait* | *Agent-trait*<br/>*Age*<br/>*Age/35*<br/>*Right-handed*<br/>*Agent-trait/Glasses*<br/>*Agent-property/Agent-trait*<br/>*(Age, Blue)* |*Agent-property* |
-| **Quoted-tag**<br/>Match the exact tag with<br/>extension or value | "*Age*"    | *Age*<br/>*Agent-trait/Age*  | *Age/35* |
-| | "*Age/34*"    | *Age/34*<br/>*Agent-trait/Age/34*  | *Age/35* |
-| **Tag-path with slash**<br/>Match the exact tag with<br/>extension or value | *Age/34*    | *Age/34* | *Age*<br/>*Age/35*<br/>*Agent-trait/Age/34* |
-| **Tag-prefix with wildcard**<br/>Match the starting portion<br/>of a tag and possibly its<br/>value or extension. | <em>Age/3*</em>  | *Age/34*<br/>*Age/3*<br/>*Agent-trait/Age/34* | *Age*<br/>*Age/40*
+| Query type                                                                                                        | Example query   | Matches                                                                                                                              | Does not match                              |
+|-------------------------------------------------------------------------------------------------------------------|-----------------|--------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------|
+| **Single-term**<br/>Match the term or any child.<br/>Don't consider values or<br/>extensions when matching.       | *Agent-trait*   | *Agent-trait*<br/>*Age*<br/>*Age/35*<br/>*Right-handed*<br/>*Agent-trait/Glasses*<br/>*Agent-property/Agent-trait*<br/>*(Age, Blue)* | *Agent-property*                            |
+| **Quoted-tag**<br/>Match the exact tag with<br/>extension or value                                                | "*Age*"         | *Age*<br/>*Agent-trait/Age*                                                                                                          | *Age/35*                                    |
+|                                                                                                                   | "*Age/34*"      | *Age/34*<br/>*Agent-trait/Age/34*                                                                                                    | *Age/35*                                    |
+| **Tag-path with slash**<br/>Match the exact tag with<br/>extension or value                                       | *Age/34*        | *Age/34*                                                                                                                             | *Age*<br/>*Age/35*<br/>*Agent-trait/Age/34* |
+| **Tag-prefix with wildcard**<br/>Match the starting portion<br/>of a tag and possibly its<br/>value or extension. | <em>Age/3*</em> | *Age/34*<br/>*Age/3*<br/>*Agent-trait/Age/34*                                                                                        | *Age*<br/>*Age/40*                          |
 
 The meanings of the different queries are explained in the following subsections.
 
@@ -109,18 +109,17 @@ Hence, *Agent-trait* matches *Age* which is a child and *Age/35* which is child 
 *Agent-trait*, itself, may be extended, so *Agent-trait* also matches *Agent-trait/Glasses*.
 Here *Glasses* is a user-extension.
 
-#### Quoted-tag search
-
-If you enclose a tag-term in quotes, the search matches that tag exactly.
-If you want to match a value as well, you must include that value in the quoted tag-term.
-**IAN** check this --- how is this different from tag-path with slash
-
 #### Tag-path with slash
 
 If the query includes a slash in the tag path, then the query must match the exact value with
 the slash.  Thus, *Age/34* does not match *Age* or *Age/35*.
 The query does match *Agent-trait/Age/34* because the short-form of this tag-path is *Age/34*.
 The tag short forms are used for the matching to assure consistency.
+
+#### Quoted-tag search
+
+If you enclose a tag-term in quotes, the search matches that tag exactly.
+If you want to match a value as well, you must include that value in the quoted tag-term.  This is exactly the same as Tag-path with slash, except you can search a single term without a slash.
 
 #### Tag-prefix with wildcard
 
@@ -137,16 +136,14 @@ comma separated tags and parenthesized groups.
 `A` and `B` may also contain group queries as described in the next section.
 The expressions for `A` and `B` are each evaluated and then combined using standard logic.
 
-| Query form | Example query        | Matches | Does not match |
-|------------|----------------------|----------------| --------------- | 
-| **`A`, `B`**<br/>Match if both `A` and `B`<br/>are matched. | *Event*, *Sensory-event* | *Event*, *Sensory-event*<br/>*Sensory-event*, *Event*<br/>(*Event*, *Sensory-event*) | *Event*   |
-| **`A` and `B`**<br/>Match strings or groups<br/>with both `A` and `B`.  |   |     |
-| **`A` or `B`**<br/>Match strings or groups<br/>with either `A` or `B`. |   |     |
-| **~`A`**<br/>Match strings that do<br/>not contain `A`<br/>Note: not what you think. |   |     |    |
-| **@`A`**<br/>Match a line that does not contain `A`. |   |    |     |
 
-**Ian:** please fill in the examples.
-Also, what does `A` and `B` return?
+| Query form                                                                                                            | Example query               | Matches                                                                                                              | Does not match                                                                                        |
+|-----------------------------------------------------------------------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
+| **`A`, `B`**<br/>Match if both `A` and `B`<br/>are matched.                                                           | *Event*, *Sensory-event*    | *Event*, *Sensory-event*<br/>*Sensory-event*, *Event*<br/>(*Event*, *Sensory-event*)                                 | *Event*                                                                                               |
+| **`A` and `B`**<br/>Match strings or groups<br/>with both `A` and `B`.  <br>This is identical to comma notation above. | *Event* and *Sensory-event* | *Event*, *Sensory-event*<br/>*Sensory-event*, *Event*<br/>(*Event*, *Sensory-event*)                                 |                                                                                                       |  *Event*         |
+| **`A` or `B`**<br/>Match strings or groups<br/>with either `A` or `B`.                                                | *Event* or *Sensory-event*  | *Event*, *Sensory-event*<br/>*Sensory-event*, *Event*<br/>(*Event*, *Sensory-event*)<br/>*Event*<br/>*Sensory-event* | *Agent-trait*                                                                                         |
+| **~`A`**<br/>Match groups that do<br/>not contain `A`<br/> `A` can be an arbitrary expression.                          | [[ *Event*, ~*Action* ]]    | (*Event*)<br/>(*Event*, *Animal-agent*)<br/>(*Sensory-event*, (*Action*))                                            | *Event*<br/>*Event*, *Action*<br/>(*Event*, *Action*)<br>                                             |
+| **@`A`**<br/>Match a line that does not contain `A`.                                                                  | @*Event*                    | *Action*<br>*Agent-trait*<br>*Action, Agent-Trait*<br>(*Action*, *Agent*)                                            | *Event*<br>(*Action*, *Event*)<br>(*Action*, *Sensory-event*)<br>(*Agent*, (*Sensory-event*, *Blue*)) |
 
 ### Group queries
 
@@ -156,11 +153,11 @@ independent of ordering of tags or tag groups at the same level.
 Thus, tools have no way of distinguishing which color goes with which shape in the annotation *Red*, *Square*, *Blue, *Triangle*. Annotators must group tags using parentheses to make the meaning clear:
 (*Red*, *Square*), (*Blue, *Triangle*).  Group queries allow analysts to detect these groupings.
 
-| Query form | Example query        | Matches | Does not match |
-|------------|----------------------|----------------| --------------- |
-| **[[`A`, `B`]]**<br/>Match a group that<br/>contains both `A` and `B`<br/>at the same level<br/>in the same group. | *[[Red, Blue]]* | *(Red, Blue)*<br/>*(Red, Blue, Green)* | *(Red, (Blue, Green))*  |
-| **[`A`, `B`]** <br/> Match a group that<br/>contains `A` and `B`.<br/> Both `A` and `B` could<br/>be any subgroup level. | *[Red, Blue]* |*(Red, (Blue, Green))*<br/>*((Red, Yellow), (Blue, Green))*| *Red, (Blue, Green)* |
-                
+| Query form                                                                                                               | Example query   | Matches                                                     | Does not match         |
+|--------------------------------------------------------------------------------------------------------------------------|-----------------|-------------------------------------------------------------|------------------------|
+| **[[`A`, `B`]]**<br/>Match a group that<br/>contains both `A` and `B`<br/>at the same level<br/>in the same group.       | *[[Red, Blue]]* | *(Red, Blue)*<br/>*(Red, Blue, Green)*                      | *(Red, (Blue, Green))* |
+| **[`A`, `B`]** <br/> Match a group that<br/>contains `A` and `B`.<br/> Both `A` and `B` could<br/>be any subgroup level. | *[Red, Blue]*   | *(Red, (Blue, Green))*<br/>*((Red, Yellow), (Blue, Green))* | *Red, (Blue, Green)*   |
+              
 
 These operations (including exact, containing, and logical groups) can be
 arbitrarily nested and combined, as for example in the query:
@@ -178,15 +175,16 @@ This may change in the future.
 
 Some more advanced wild card searches are also under discussion. 
 
-| Query form | Example query  | Matches | Does not match |
-|----------- |--------------- |-------- | ---------|
-| **[[`A`, ?]]** <br/>Match a group with `A`<br/>and any tag or subgroup. |    |     |
-| **[[`A`, ??]]** <br/>Match a group with `A`<br/> and any tag. |  |    |
-| **[[`A`, ???]]** <br/>Match a group with `A`<br/> and any subgroup.  |   |   |
-| **{`A`}** <br/>Match a group or string<br/> with `A` and nothing else. |    |  |
+| Query form                                                                                                                            | Example query          | Matches                                                                                                                                                                                                                                    | Does not match                                                                                                                                                                                                     |
+|---------------------------------------------------------------------------------------------------------------------------------------|------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **?** <br/>Match any tag or subgroup.                                                                                                 | [[ *Event*, ? ]]       | (*Event*, *Action*)<br>(*Event*, *Agent*)<br>(*Event*, *Agent*, Action)<br>(*Event*, *Agent*, (*Action*))<br>(*Event*, (*Action*))<br>(*Event*, (*Action*), *Agent*)<br>(*Event*, (*Action*), (*Agent*))<br>(*Event*, (*Action*, *Agent*)) | *Event*, *Agent*<br>*Event*<br>(*Event*), *Action*<br>(*Event*)                                                                                                                                                    |
+| **??** <br/>Match any tag.                                                                                                            | [[ *Event*, ??]]       | (*Event*, *Action*)<br>(*Event*, *Agent*)<br>(*Event*, *Agent*, *Action*)<br>(*Event*, *Agent*, (*Action*))                                                                                                                                | *Event*, *Agent*<br>*Event*<br>(*Event*), *Action*<br>(*Event*)<br>(*Event*, (*Action*))                                                                                                                           |
+| **???** <br/>Match any subgroup                                                                                                       | [[ *Event*, ???]]      | (*Event*, (*Action*))<br>(*Event*, (*Action*), *Agent*)<br>(*Event*, (*Action*), (*Agent*))<br>(*Event*, (*Action*, *Agent*))                                                                                                              | (*Event*, *Action*)<br>(*Event*, *Agent*)<br>(*Event*, *Agent*, *Action*)<br>*Event*, *Agent*<br>*Event*<br>(*Event*), *Action*<br>(*Event*)                                                                       |
+| **{`A`}** <br/>Match a group or string<br/> with `A` and nothing else.                                                                | { *Event* }            | *Event*<br>(*Event*)<br>*Agent*, (*Event*)<br>(*Action*, (*Event*))                                                                                                                                                                        | *Event*, *Action*<br>(*Event*, *Action*)<br>(*Sensory-event*, (*Action*))                                                                                                                                          |
+| **[[ {A, ???} ]]** <br/>More complex example.  This query means A must be in a group with a single sibling subgroup and nothing else. | [[ { *Event*, ??? } ]] | (*Event*, (*Action*))<br>(*Event*, (*Action*, *Agent*))<br>(*Agent*, (*Event*, (*Action*)))                                                                                                                                                | (*Event*, *Action*)<br>(*Event*, *Agent*)<br>(*Event*, *Agent*, *Action*)<br>*Event*, *Agent*<br>*Event*<br>(*Event*), *Action*<br>(*Event*)<br>(*Event*, (*Action*), *Agent*)<br>(*Event*, (*Action*), (*Agent*)) |
 
-
-    Note: {} notation does NOT require a group.
+Note: None of the wildcard terms require groups, but they are unlikely to make sense without them and implicitly convert the surrounding section to an exact group.<br/>
+Note: {} notation does NOT require a group.
 
     {A} would match "A" or "(A)" or "B, (A)"
     [{A}] would match "(A)" or "B, (A)"
@@ -224,17 +222,7 @@ Examples:
 5. "Orange":  would be a TAG search, with no extensions allowed due to the quotes.
     The entire short form of the tag must be "Orange" and nothing else.
 
-### Updated search:
-Query: Event and Sensory-event<br>
-String being searched: Sensory-event<br>
-#### Old System
-    In the old system this would match.  It would first find an Event tag, matching Sensory-event.  It would then find a Sensory-event tag, also matching Sensory-event.
-    It did not care it was matching the same tag twice.
 
-#### New System
-    Once it matches a tag, it "consumes" the tag and marks it as used.  
-    So it would find Event, then be unable to match Sensory-event as there were no tags left.
-    
 <hr/>
 
 <hr/>
