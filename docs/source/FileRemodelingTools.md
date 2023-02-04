@@ -114,7 +114,7 @@ The dispatcher stores information from each uniquely named summarization operati
 as a separate context.
 Within its context information, most summarization operations keep a separate 
 summary for each individual file and have methods to create an overall summary
-of the information for all the files that have been processed by the summarization..
+of the information for all the files that have been processed by the summarization.
 
 Summarization results are available in JSON (`.json`) and text (`.txt`) formats.
 
@@ -434,7 +434,7 @@ before running the remodeling operations.
 Going without backup is not recommended unless you are only doing summarization operations.
 
 The operations are specified as a list of dictionaries in a JSON file in the
-[**remodel sampe files**](remodel-sample-files-anchor) as discussed below.
+[**remodel sample files**](remodel-sample-files-anchor) as discussed below.
 
 Before running remodeling transformations on an entire dataset,
 consider using the [**HED online tools**](https://hedtools.ucsd.edu/hed) 
@@ -2384,5 +2384,5 @@ The `BaseContext` provides universal methods for converting this summary to JSON
   get_summary_details(self, verbose=True)
 ```
 ````
-The operation associated with this instance of it associated with a given informat
+The operation associated with this instance of it associated with a given format
 implementation
