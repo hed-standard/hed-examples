@@ -1,14 +1,8 @@
 # HED search guide
 
-<div style="background-color:gold;">
-<span style="color:red;font-weight:bold;">UNDER CONSTRUCTION</span>
-</div>
-
-
 Many analysis methods locate event markers with specified properties and
 extract sections of the data surrounding these markers for analysis.
-This extraction process is often referred to as **epoching** the data
-or sometimes **trial selection**.
+This extraction process is called **epoching** or **trial selection**.
 
 Analysis may also exclude data surrounding particular event markers.
 
@@ -36,8 +30,7 @@ Once created, this query object can then be applied to any number of HED annotat
 -- say to the annotations for each event-marker associated with a data recording.
 
 The query object returns a list of matches within the annotation.
-Usually, users just test whether this list is empty or not to determine whether the query
-was satisfied.
+Usually, users just test whether this list is empty to determine if the query was satisfied.
 
 ### Calling syntax
 
@@ -49,6 +42,7 @@ The syntax is demonstrated in the following example:
 ````{admonition} Example calling syntax for HED search.
 
 ```python
+schema = load_schema_version(
 hed_string = HedString("Sensory-event, Sensory-presentation", schema=schema)
 query_string = "Sensory-event"
 query = TagExpressionParser(query_string)
@@ -61,6 +55,7 @@ if result:
 In the example the strings containing HED annotations are converted to a `HedString` object,
 which is a parsed representation of the HED annotation.
 The query facility assumes that the annotations have been validated.
+A `HedSchema` is required
 
 The query is represented by a `TagExpressionParser` object.
 The `search_hed_string` method returns a list of groups in the HED string that match the query.
@@ -171,151 +166,6 @@ Precedence is purely left to right outside of grouping operations.
 Thus, unlike many traditional programming languages, **and** does not take precedence over **or**.
 This may change in the future.
 
-### Notations under discussion
-
-Some more advanced wild card searches are also under discussion. 
-
-| Query form                                                                                                                            | Example query          | Matches                                                                                                                                                                                                                                    | Does not match                                                                                                                                                                                                     |
-|---------------------------------------------------------------------------------------------------------------------------------------|------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **?** <br/>Match any tag or subgroup.                                                                                                 | [[ *Event*, ? ]]       | (*Event*, *Action*)<br>(*Event*, *Agent*)<br>(*Event*, *Agent*, Action)<br>(*Event*, *Agent*, (*Action*))<br>(*Event*, (*Action*))<br>(*Event*, (*Action*), *Agent*)<br>(*Event*, (*Action*), (*Agent*))<br>(*Event*, (*Action*, *Agent*)) | *Event*, *Agent*<br>*Event*<br>(*Event*), *Action*<br>(*Event*)                                                                                                                                                    |
-| **??** <br/>Match any tag.                                                                                                            | [[ *Event*, ??]]       | (*Event*, *Action*)<br>(*Event*, *Agent*)<br>(*Event*, *Agent*, *Action*)<br>(*Event*, *Agent*, (*Action*))                                                                                                                                | *Event*, *Agent*<br>*Event*<br>(*Event*), *Action*<br>(*Event*)<br>(*Event*, (*Action*))                                                                                                                           |
-| **???** <br/>Match any subgroup                                                                                                       | [[ *Event*, ???]]      | (*Event*, (*Action*))<br>(*Event*, (*Action*), *Agent*)<br>(*Event*, (*Action*), (*Agent*))<br>(*Event*, (*Action*, *Agent*))                                                                                                              | (*Event*, *Action*)<br>(*Event*, *Agent*)<br>(*Event*, *Agent*, *Action*)<br>*Event*, *Agent*<br>*Event*<br>(*Event*), *Action*<br>(*Event*)                                                                       |
-| **{`A`}** <br/>Match a group or string<br/> with `A` and nothing else.                                                                | { *Event* }            | *Event*<br>(*Event*)<br>*Agent*, (*Event*)<br>(*Action*, (*Event*))                                                                                                                                                                        | *Event*, *Action*<br>(*Event*, *Action*)<br>(*Sensory-event*, (*Action*))                                                                                                                                          |
-| **[[ {A, ???} ]]** <br/>More complex example.  This query means A must be in a group with a single sibling subgroup and nothing else. | [[ { *Event*, ??? } ]] | (*Event*, (*Action*))<br>(*Event*, (*Action*, *Agent*))<br>(*Agent*, (*Event*, (*Action*)))                                                                                                                                                | (*Event*, *Action*)<br>(*Event*, *Agent*)<br>(*Event*, *Agent*, *Action*)<br>*Event*, *Agent*<br>*Event*<br>(*Event*), *Action*<br>(*Event*)<br>(*Event*, (*Action*), *Agent*)<br>(*Event*, (*Action*), (*Agent*)) |
-
-Note: None of the wildcard terms require groups, but they are unlikely to make sense without them and implicitly convert the surrounding section to an exact group.<br/>
-Note: {} notation does NOT require a group.
-
-    {A} would match "A" or "(A)" or "B, (A)"
-    [{A}] would match "(A)" or "B, (A)"
-
----
-
-    Note: Adding a wildcard to a search will automatically make whatever group it's found in an "exact group"<br>
-    e.g.: Query: A ?
-    This would match: 
-        1. A, B
-        2. (A, B)
-        3. A, (B)
-        4. (A, (B))
-    But NOT:
-        1. (A), B
-          This is because once A is found, there needs to be wildcard group or tag at the same level.
-                     
-    Note: Wildcards should be as late in a search as possible for efficency.  eg "A and ?" rather than "? and A"
-
-### Wildcards
-    Wildcards are supported under the new system.  They mostly make sense in containing groups.  They can be mixed and matched,
-    e.g: [[A or B and ??? and ??]]
-    Meaning: Find a group containing tag A or tag B, while also containing another unrelated tag and another unrelated group.
-    
-### Search Term Wildcards
-Term search - Checks all parent terms in the tags searched as well, does not interact with extensions of values in any way.
-Tag search - Finds tags where the short form IS the indicated search string, unless it has a wildcard.(any search term with a "/" or a "*" or wrapped in double quotes turns it into a tag search)
-
-Examples:
-1. Orange : would be a TERM search, finding the children as well since Orange is a term in any children of orange.
-2. Orange/* : Would be a TAG search, finding any Orange tags that have an extension or value
-3. Orange/2*: Would be a TAG search, finding any Orange tags that have an extension or value beginning with 2.
-4. Orange* : would be a TAG search, but the wildcard would have it find the children too.
-    This would additionally find any potentially completely unrelated tags that start with Orange in short form.  Say "OrangeTheFruit"
-5. "Orange":  would be a TAG search, with no extensions allowed due to the quotes.
-    The entire short form of the tag must be "Orange" and nothing else.
-
-
-<hr/>
-
-<hr/>
-<div style="background-color:gold;">
-<span style="color:red;font-weight:bold;">Examples not for discussion---under revision.</span>
-</div>
-
-## Example queries
-
-https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003654s_hed <br>
-These strings are used in the basic examples.
-
-| #   | Line     |
-|-----|-----------|
-| 1   | *Experiment-structure,(Def/Right-sym-cond,Onset),<br/>(Def/Initialize-recording,Onset)   |
-| 2   | Sensory-event,Experimental-stimulus,(Def/Face-image,Onset),(Def/Blink-inhibition-task,Onset),(Def/Fixation-task,Onset),Def/Scrambled-face-cond,Def/First-show-cond,Experimental-trial/1,(Image,Pathname/s096.bmp)                         |
-| 3   | Sensory-event,(Intended-effect,Cue),(Def/Circle-only,Onset),(Def/Face-image,Offset),(Def/Blink-inhibition-task,Offset),(Def/Fixation-task,Offset),Experimental-trial/1,(Image,Pathname/circle.bmp)                                        |
-| 4   | Sensory-event,(Intended-effect,Cue),(Def/Cross-only,Onset),(Def/Fixation-task,Onset),(Def/Circle-only,Offset),Experimental-trial/2,(Image,Pathname/cross.bmp)                                                                             |
-| 5   | Sensory-event,Experimental-stimulus,(Def/Face-image,Onset),(Def/Blink-inhibition-task,Onset),(Def/Cross-only,Offset),Def/Famous-face-cond,Def/First-show-cond,Experimental-trial/2,(Image,Pathname/f148.bmp)                              |
-| 6   | Agent-action,Participant-response,Def/Press-right-finger,Experimental-trial/2                                                                                                                                                             |
-| 7   | Sensory-event,(Intended-effect,Cue),(Def/Circle-only,Onset),(Def/Face-image,Offset),(Def/Blink-inhibition-task,Offset),(Def/Fixation-task,Offset),Experimental-trial/2,(Image,Pathname/circle.bmp)                                        |
-| 8   | Sensory-event,(Intended-effect,Cue),(Def/Cross-only,Onset),(Def/Fixation-task,Onset),(Def/Circle-only,Offset),Experimental-trial/3,(Image,Pathname/cross.bmp)                                                                             |
-| 9   | Sensory-event,Experimental-stimulus,(Def/Face-image,Onset),(Def/Blink-inhibition-task,Onset),(Def/Cross-only,Offset),Def/Famous-face-cond,Def/Immediate-repeat-cond,Experimental-trial/3,(Face,Item-interval/1),(Image,Pathname/f148.bmp) |
-| 10  | Agent-action,Participant-response,Def/Press-right-finger,Experimental-trial/3                                                                                                                                                             |
-
-### Basic query examples
-
-| Query  | Meaning  | Lines matching  | Explanation/Notes  |
-|------- |----------|-----------|------------|
-| Experiment-structure   | Match *Experiment-structure* the term  | [1]  | The tag is only on line 1                                                                                 |
-| Event   | Find lines with Event term  | [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] | Finds every line as the first<br/>tag in each line is<br/> inherited from Event                               |
-| Image, Pathname/f148.bmp   | Find lines with term *Image*<br/> or any of its child terms<br/> and the exact tag *Pathname/f148.bmp*  | [5, 9]    | Match *Pathname/f148.bmp* and *Image*.  |
-| Image and ~Pathname/f148.bmp  | Match *Image* but without the exact<br/> tag *Pathname/f148.bmp* | [2, 3, 4, 7, 8]  | Lines 5 and 9 contain *Pathname/f148.bmp*  |
-| Pathname/circle.bmp or Pathname/cross.bmp | Match either exact tag *Pathname/circle.bmp* or *Pathname/cross.bmp* | [3, 4, 7, 8]   |         |
-| Def/Cross-only, Onset  |Match the exact tag *Def/Cross-only*<br/> and the term *Onset*   | [4, 5, 8, 9]                    | Matches every line with *Def/Cross-only*<br/> because it isn't checking if the <br/> *Onset* tag is in the same group. |
-
-### Group query examples
-
-| Query    | Meaning     | Lines matching | 
-|----------|-------------|----------------|
-| [Def/Cross-only, Onset]  | Match exact tag *Def/Cross-only* and<br/> the term *Onset* in the same group or subgroup. | [4, 8]   |
- | [Def/Cross-only, Onset] and Experimental-trial/3   | Same as previous, but now the line must also<br/> contain *Experimental-trial/3*  | [8]    | 
-| [[Def/Cross-only, Onset]]  | Match the exact tag *Def/Cross-only* and<br/> the term *Onset* in the exact same group. | [4, 8]    | 
- | [[Def/Cross-only, Onset]] and Experimental-trial/3 | Same as previous, but now the line must also<br/> contain *Experimental-trial/3*  | [8]  | 
-
-
-### Complex query examples
-
-Here are some slightly more complex queries and example results from searching simple strings.  These examples are more contrived than those above to show group searching abilities.
-
-Expression: **"(Item or Agent) and [[Action or Event]]"**<br>
-Meaning: Find a line that contains Item or Agent anywhere, and also contains a subgroup somewhere containing an Action or Event.
-
-| Query | String   | Result | Notes  |
-| ----- | -------- | ------ |--------|
-| "(Clear-throat),Item"   | "(Item or Agent) and [[Action or Event]]" | True   |                                                                                             |
-| "((Clear-throat),Item)" | "(Item or Agent) and [[Action or Event]]" | True   |                                                                                             |
-| "Clear-throat,Item"     | "(Item or Agent) and [[Action or Event]]" | False  | This is not found as the [[Action or Event]] part means the event term must be in a group.  |
-| "Clear-throat,Agent"    | "(Item or Agent) and [[Action or Event]]" | False  | This is not found as the [[Action or Event]] part means the event term must be in a group.  |
-| 'Agent,Event'           | "(Item or Agent) and [[Action or Event]]" | False  | This is not found as the [[Action or Event]] part means the event term must be in a group.  |
-| 'Agent,(Event)'         | "(Item or Agent) and [[Action or Event]]" | True   |                                                                                             |
-| (Event),(Item)'         | "(Item or Agent) and [[Action or Event]]" | True   | This is found as the (Item or Agent) part can be anywhere in the string, including a group. |
-
-Expression: **"[[ [[Event]], [[Action]] ]]"**<br>
-Meaning: Find a group that has a direct child subgroup containing Event, and a direct child subgroup containing Action.
-
-| Search String                | Expression                    | Result | Notes                                                                                                                                 |
-|------------------------------|-------------------------------|--------|---------------------------------------------------------------------------------------------------------------------------------------|
-| '((Event),(Clear-throat))'   | "[[ [[Event]], [[Action]] ]]" | True   | This is the most basic example perfectly mirroring the search string.                                                                 |
-| '(Clear-throat,Event)'       | "[[ [[Event]], [[Action]] ]]" | False  | This is not found because the two pairs of double brackets require at least one nested subgroup.                                      |
-| '((Event),((Clear-throat)))' | "[[ [[Event]], [[Action]] ]]" | False  | This is not found because the Clear-throat subgroup is not a direct child of the group containing (Event)                             |
-| '((Clear-throat,Event))'     | "[[ [[Event]], [[Action]] ]]" | True   | This is found due to a quirk in the searching.  It does not strictly require [[Event]] and [[Action]] to be in separate child groups. |
-
-Expression: **"[[ [Event], [Action] ]]"**<br>
-Meaning: Find a group that has a descendant subgroup containing Event, and a descendant subgroup containing Action
-
-| Search String   | Expression  | Result | Notes   |
-|----------------|------------|--------|--------|
-| '((Event),(Clear-throat))'   | "[[ [Event]], [Action] ]]" | True   | This is the most basic example perfectly mirroring the search string.                                                                 |
-| '(Clear-throat,Event)'       | "[[ [Event]], [Action] ]]" | False  | This is not found because the two pairs of double brackets require at least one nested subgroup.                                      |
-| '((Event),((Clear-throat)))' | "[[ [Event]], [Action] ]]" | True   | This is now found as the single brackets don't require it to be a direct child.                                                       |
-| '((Clear-throat,Event))'     | "[[ [Event]], [Action] ]]" | True   | This is found due to a quirk in the searching.  It does not strictly require [[Event]] and [[Action]] to be in separate child groups. |
-
-Expression: **"[[ [[~Event]] ]]"**<br>
-Meaning: Find a group containing a direct child group that does not contain Event.
-
-| Search String   | Expression         | Result | Notes     |
-|-----------------|--------------------|--------|-----------|
-| '(Clear-throat,Event)'       | "[[ [[~Event]] ]]" | False  | This is not found as the group has no subgroups.                             |
-| '((Clear-throat),(Event))'   | "[[ [[~Event]] ]]" | True   | This is found because one of the subgroups does not contain Event            |
-| '((Event))'                  | "[[ [[~Event]] ]]" | False  | This is not found because the only subgroup contains Event                   |
-| '(((Clear-throat)),(Event))' | "[[ [[~Event]] ]]" | True   | This is found because the ((Clear-throat)) subgroup does not contain Event   |
-| '((Clear-throat,Event))'     | "[[ [[~Event]] ]]" | False  | This is not found because the child subgroup contains Clear-throat and Event |
 
 
 ## Where can HED search be used?

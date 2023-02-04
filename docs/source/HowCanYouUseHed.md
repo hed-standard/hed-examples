@@ -10,10 +10,10 @@ but these annotations can also be applied to other types of tabular data.
 **This guide organizes HED resources based on how you might use HED:**
 
 * [**As an experimenter**](as-an-experimenter-anchor)
-* [**As a data curator**](as-a-data-curator-anchor)
+* [**As a data annotator**](as-a-data-annotator-anchor)
 * [**As a data analyst**](as-a-data-analyst-anchor)
 * [**As a tool developer**](as-a-tool-developer-anchor)
-* [**As a schema designer**](as-a-schema-designer-anchor)
+* [**As a schema builder**](as-a-schema-builder-anchor)
 
 <hr style="border: 3px solid #000080" />
 
@@ -27,7 +27,7 @@ The focus of the discussion here is not explicitly on how an experiment
 should be designed,
 but rather on how data should be recorded and transformed to maximize its downstream usability.
 
-**Here are some topics of interest to experiment designers:**
+**Here are some topics of interest to experimenters:**
 
 * [**Planning and running an experiment**](planning-and-running-an-experiment-anchor)
 * [**Post processing the data**](post-processing-the-data-anchor)
@@ -181,9 +181,9 @@ respectively. The remodeling JSON file can be expanded to include these transfor
 
 <hr style="border: 3px solid #000080;" />
 
-(as-a-data-curator-anchor)=
-## <span style="color: #229955;">As a data curator</span>
-> <span style="font-size: 1.5em; font-weight: bold; color: #229955; font-family: Roboto Slab,ff-tisa-web-pro,Georgia,Arial,sans-serif;">&nbsp;&nbsp;... organizing data for sharing and analysis:</span>
+(as-a-data-annotator-anchor)=
+## <span style="color: #229955;">As a data annotator</span>
+> <span style="font-size: 1.5em; font-weight: bold; color: #229955; font-family: Roboto Slab,ff-tisa-web-pro,Georgia,Arial,sans-serif;">&nbsp;&nbsp;... organizing data and tagging events:</span>
 
 The move towards open, reproducible science, both in the scientific community and
 by funding agencies, makes data sharing a requirement.
@@ -191,7 +191,7 @@ An added benefit, is that data used by others is likely to garner increased reco
 and additional citations.
 This section emphasizes the importance of complete and accurate metadata to enable analysis.
 
-**Here are some topics of interest to data curators:**
+**Here are some topics of interest to data annotators:**
 
 * [**Standardizing the format**](standardizing-the-format-anchor)
   * [**Learning about BIDS**](learning-about-bids-anchor)
@@ -392,7 +392,7 @@ forget to press the key, press the wrong key, press the key multiple times,
 or press the key both before and after the feedback.
 ````
 
-Ideally, a curator would provide information in the event file marking
+Ideally, a data annotator would provide information in the event file marking
 unusual things such as these bad trials, since it is easy for downstream users
 to improperly handle these situations, reducing the accuracy of analysis.
 
@@ -662,9 +662,9 @@ more complex and sophisticated automated analysis.
 
 <hr style="border: 3px solid #000080;" />
 
-(as-a-schema-designer-anchor)=
-## <span style="color: #229955;">As a schema designer</span>
-> <span style="font-size: 1.5em; font-weight: bold; color: #229955; font-family: Roboto Slab,ff-tisa-web-pro,Georgia,Arial,sans-serif;">&nbsp;&nbsp;... extending HED in new directions:</span>
+(as-a-schema-builder-anchor)=
+## <span style="color: #229955;">As a schema builder</span>
+> <span style="font-size: 1.5em; font-weight: bold; color: #229955; font-family: Roboto Slab,ff-tisa-web-pro,Georgia,Arial,sans-serif;">&nbsp;&nbsp;... extending HED vocabulary in new directions:</span>
 
 HED annotations consist of comma-separated terms drawn from a hierarchically
 structured vocabulary called a HED schema.

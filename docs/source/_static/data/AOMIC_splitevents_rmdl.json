@@ -1,6 +1,6 @@
 [
     {
-        "operation": "split_event",
+        "operation": "split_rows",
         "description": "Split response event from trial event based on response_time column.",
         "parameters": {
             "anchor_column": "trial_type",
@@ -16,7 +16,7 @@
                     "copy_columns": []
                 }
             },
-            "remove_parent_event": false
+            "remove_parent_row": false
         }
     }
 ]

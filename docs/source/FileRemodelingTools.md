@@ -50,11 +50,11 @@ This user's guide contains the following topics:
   * [**Remove rows**](remove-rows-anchor) 
   * [**Rename columns**](rename-columns-anchor)
   * [**Reorder columns**](reorder-columns-anchor)
-  * [**Split event**](split-event-anchor)
+  * [**Split rows**](split-rows-anchor)
 * [**Remodel summarizations**](remodel-summarizations-anchor)
   * [**Summarize column names**](summarize-column-names-anchor)
   * [**Summarize column values**](summarize-column-values-anchor)
-  * [**Summarize events to sidecar**](summarize-events-to-sidecar-anchor)
+  * [**Summarize sidecar from events**](summarize-sidecar-from-events-anchor)
   * [**Summarize hed tags**](summarize-hed-tags-anchor)
   * [**Summarize hed type**](summarize-hed-type-anchor)
   * [**Summarize hed validation**](summarize-hed-validation-anchor)
@@ -140,11 +140,11 @@ and links to further documentation. Operations not listed in the summarize secti
 | **restructure** |  |  | 
 |  | [*merge_consecutive*](merge-consecutive-anchor) | Replace multiple consecutive events of the same type<br/>with one event of longer duration. |
 |  | [*remap_columns*](remap-columns-anchor) | Create m columns from values in n columns (for recoding). |
-|  | [*split_event*](split-event-anchor) | Split trial-encoded rows into multiple events. |
+|  | [*split_rows*](split-rows-anchor) | Split trial-encoded rows into multiple events. |
 | **summarize** |  |  | 
 |  | [*summarize_column_names*](summarize-column-names-anchor) | Summarize column names and order in the files. |
 |  | [*summarize_column_values*](summarize-column-values-anchor) | Count the occurrences of the unique column values. |
-|  | [*summarize_events_to_sidecar*](summarize-events-to-sidecar-anchor) | Generate a sidecar template from an event file. |
+|  | [*summarize_sidecar_from_events*](summarize-sidecar-from-events-anchor) | Generate a sidecar template from an event file. |
 |  | [*summarize_hed_tags*](summarize-hed-tags-anchor) | Summarize the HED tags present in the  <br/> HED annotations for the dataset. |
 |  | [*summarize_hed_type*](summarize-hed-type-anchor) | Summarize the detailed usage of a particular type tag <br/> such as *Condition-variable* or *Task* <br/> (used to automatically extract experimental designs). |
 |  | [*summarize_hed_validation*](summarize-hed-validation-anchor) | Validate the data files and report any errors. |
@@ -1450,10 +1450,10 @@ The results of executing the previous *reorder_columns* transformation on the
 | 21.6103 | 0.5083 | 0.443 | go |
 ````
 
-(split-event-anchor)=
-### Split event
+(split-rows-anchor)=
+### Split rows
 
-The *split_event* operation
+The *split_rows* operation
 is often used to convert event files from trial-level encoding to event-level encoding.
 
 In **trial-level** encoding, all the events in a single trial
@@ -1466,22 +1466,22 @@ In **event-level** encoding, each row represents the temporal marker for a singl
 In this case a trial consists of a sequence of multiple events.
 
 
-(split-event-parameters-anchor)=
-#### Split event parameters
+(split-rows-parameters-anchor)=
+#### Split rows parameters
 
-```{admonition} Parameters for the *split_event* operation.
+```{admonition} Parameters for the *split_rows* operation.
 :class: tip
 
 |  Parameter   | Type | Description | 
 | ------------ | ---- | ----------- | 
-| *anchor_column* | str | The name of the column that will be used for split-event codes.| 
+| *anchor_column* | str | The name of the column that will be used for split_rows codes.| 
 | *new_events* | dict | Dictionary whose keys are the codes to be inserted as new events<br>in the *anchor_column* and whose values are dictionaries with<br>keys *onset_source*, *duration*, and *copy_columns*. | 
 | *remove_parent_event* | bool | If true, remove parent event. | 
 
 ```
 
 
-The *split_event* operation requires an *anchor_column*, which could be an existing
+The *split_rows* operation requires an *anchor_column*, which could be an existing
 column or a new column to be appended to the data.
 The purpose of the *anchor_column* is to hold the codes for the new events.
 
@@ -1498,23 +1498,23 @@ to compute the `duration` column value for the new event.
 Unlisted columns are filled with `n/a`.
 
 
-The *split_event* operation sorts the split events by the `onset` column and raises a `TypeError`
+The *split_rows* operation sorts the split rows by the `onset` column and raises a `TypeError`
 if the `onset` and `duration` are improperly defined.
 The `onset` column is converted to numeric values as part splitting process.
 
-(split-events-example-anchor)=
-#### Split events example
+(split-rows-example-anchor)=
+#### Split rows example
 
-The *split_event* operation in the following example specifies that new rows should be added
+The *split_rows* operation in the following example specifies that new rows should be added
 to encode the response and stop signal. The anchor column is `trial_type`.
 
 
-````{admonition} A JSON file with a single *split_event* transformation operation.
+````{admonition} A JSON file with a single *split_rows* transformation operation.
 :class: tip
 
 ```json
 [{
-  "operation": "split_events",
+  "operation": "split_rows",
   "description": "add response events to the trials.",
         "parameters": {
             "anchor_column": "trial_type",
@@ -1536,10 +1536,10 @@ to encode the response and stop signal. The anchor column is `trial_type`.
 ```
 ````
 
-The results of executing this *split_event* operation on the
+The results of executing this *split_rows* operation on the
 [**sample remodel event file**](sample-remodel-event-file-anchor) are:
 
-````{admonition} Results of the previous *split_event* operation.
+````{admonition} Results of the previous *split_rows* operation.
 
 | onset | duration | trial_type | stop_signal_delay | response_time | response_accuracy | response_hand | sex |
 | ----- | -------- | ---------- | ----------------- | ------------- | ----------------- | ------------- | --- |
@@ -1785,19 +1785,19 @@ results from the individual data files are shown after the overall summary.
 The individual results are similar to the overall summary because only one data file
 was processed.
 
-(summarize-events-to-sidecar-anchor)=
-### Summarize events to sidecar
+(summarize-sidecar-from-events-anchor)=
+### Summarize sidecar from events
 
-The summarize events to sidecar operation generates a sidecar template from the event
+The summarize sidecar from events operation generates a sidecar template from the event
 files in the dataset. 
 
 
-(summarize-events-to-sidecar-parameters-anchor)=
-#### Summarize events to sidecar parameters
+(summarize-sidecar-from-events-parameters-anchor)=
+#### Summarize sidecar from events parameters
 
 The following table lists the parameters required for using the summary.
 
-```{admonition} Parameters for the *summarize_events_to_sidecar* operation.
+```{admonition} Parameters for the *summarize_sidcar_from_eventsr* operation.
 :class: tip
 
 |  Parameter   | Type | Description | 
@@ -1826,16 +1826,16 @@ generating the sidecar template.
 The *value_columns* list specifies the names of columns to treat as value columns
 when generating the sidecar template.
 
-(summarize-events-to-sidecar-example-anchor)=
-#### Summarize events to sidecar example
+(summarize-sidecar-from-events-example-anchor)=
+#### Summarize sidecar from events example
 
 The following example shows the JSON for including this operation in a remodeling file.
 
-````{admonition} A JSON file with a single *summarize_events_to_sidecar* summarization operation.
+````{admonition} A JSON file with a single *summarize_sidecar_from_events* summarization operation.
 :class: tip
 ```json
 [{
-    "operation": "summarize_events_to_sidecar",
+    "operation": "summarize_sidecar_from_events",
     "description": "Generate a sidecar from the excerpted events file.",
     "parameters": {
         "summary_name": "AOMIC_generate_sidecar",
@@ -1852,7 +1852,7 @@ The results of executing this operation on the
 [**sample remodel event file**](sample-remodel-event-file-anchor)
 are shown in the following example using the text format.
 
-````{admonition} Sample *summarize_events_to_sidecar* operation results in text format.
+````{admonition} Sample *summarize_sidecar_from_events* operation results in text format.
 :class: tip
 ```text
 Context name: AOMIC_generate_sidecar
