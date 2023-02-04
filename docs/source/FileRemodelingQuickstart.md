@@ -76,11 +76,11 @@ The following table gives a summary of the tools available in the HED remodeling
 | **restructure** |  |  | 
 |  | [*merge_consecutive*](merge-consecutive-anchor) | Replace multiple consecutive events of the same type<br/>with one event of longer duration. |
 |  | [*remap_columns*](remap-columns-anchor) | Create *m* columns from values in *n* columns (for recoding). |
-|  | [*split_event*](split-event-anchor) | Split trial-encoded rows into multiple events. |
+|  | [*split_rows*](split-rows-anchor) | Split trial-encoded rows into multiple events. |
 | **summarization** |  |  | 
 |  | [*summarize_column_names*](summarize-column-names-anchor) | Summarize column names and order in the files. |
 |  | [*summarize_column_values*](summarize-column-values-anchor) |Count the occurrences of the unique column values. |
-|  | [*summarize_events_to_sidecar*](summarize-events-to-sidecar-anchor) | Generate a sidecar template from an event file. |
+|  | [*summarize_sidecar_from_events*](summarize-sidecar-from-events-anchor) | Generate a sidecar template from an event file. |
 |  | [*summarize_hed_tags*](summarize-hed-tags-anchor) | Summarize the HED tags present in the  <br/> HED annotations for the dataset. |
 |  | [*summarize_hed_type*](summarize-hed-type-anchor) | Summarize the detailed usage of a particular type tag <br/> such as *Condition-variable* or *Task* <br/> (used to automatically extract experimental designs). |
 |  | [*summarize_hed_validation*](summarize-hed-validation-anchor) | Validate the data files and report any errors. |
@@ -255,16 +255,16 @@ at a single temporal marker.
 This strategy is known as *trial-level* encoding. 
 
 Our goal is to represent all the trial events (e.g., go signal, stop signal, and response)
-in separate rows of the event file using the *split_event* restructuring operation.
+in separate rows of the event file using the *split_rows* restructuring operation.
 The following example shows the remodeling operations to perform the splitting.
 
-````{admonition} Example of split_events operation for the AOMIC stop signal task.
+````{admonition} Example of split_rows operation for the AOMIC stop signal task.
 :class: tip
 
 ```json
 [
     {
-        "operation": "split_event",
+        "operation": "split_rows",
         "description": "Split response event from trial event based on response_time column.",
         "parameters": {
             "anchor_column": "trial_type",
@@ -280,14 +280,14 @@ The following example shows the remodeling operations to perform the splitting.
                     "copy_columns": []
                 }
             },
-            "remove_parent_event": false
+            "remove_parent_row": false
         }    
     }
 ]
 ```
 ````
 
-The example uses the *split_event* operation to convert this
+The example uses the *split_rows* operation to convert this
 file from trial encoding to event encoding.
 In trial encoding each event marker (row in the event file) represents 
 all the information in a single trial.
@@ -295,10 +295,10 @@ Event markers such as the participant's response key-press are encoded implicitl
 as an offset from the stimulus presentation.
 while event encoding includes event markers for each individual event within the trial.
 
-The [**Split event**](./FileRemodelingTools.md#split-event)
+The [**Split rows**](./FileRemodelingTools.md#split-rows)
 explanation under [**File remodeling tools**](./FileRemodelingTools.md)
-shows the required parameters for the *split_event* operation. 
-The required parameters are *anchor_column*, *new_events*, and *remove_parent_event*.
+shows the required parameters for the *split_rows* operation. 
+The required parameters are *anchor_column*, *new_events*, and *remove_parent_row*.
 
 The *anchor_column* is the column we want to add new events corresponding to the stop signal and the response.
 In this case we are going to add events to an existing column: *trial_type*.
@@ -378,7 +378,7 @@ but will soon move to the regular [**HED tools online tools server**](https://he
 To use the online remodeling tools, navigate to the events page and select the *Remodel file* action.
 Browse to select the data file to be remodeled and the JSON remodel file
 containing the remodeling operations. 
-The following screenshot shows these selections for the split event example of the previous section.
+The following screenshot shows these selections for the split rows example of the previous section.
 
 ![Remodeling tools online](./_static/images/RemodelingOnline.png)
 
@@ -432,13 +432,13 @@ A number of optional key-value arguments are also available.
 After the `run_remodel` finishes, it overwrites the data files (not the backups)
 and writes any requested summaries in `derivatives/remodel/summaries`.
 
-If we want to run the split events operation we demonstrated earlier on the full AOMIC dataset, 
+If we want to run the split rows operation we demonstrated earlier on the full AOMIC dataset, 
 we might first want to check whether the response_time exists for all subjects. 
 We can do this by running the `summarize_column_headers` operation.
 
 First we prepare the remodeler json file again.
 
-````{admonition} Split events remodeler json file for the AOMIC stop signal task.
+````{admonition} Split rows remodeler json file for the AOMIC stop signal task.
 :class: tip
 
 ```json
@@ -486,7 +486,7 @@ The [**summary file**](./_static/data/AOMIC_column_names_2022_12_21_T_13_12_35_6
 Looking at the different column combinations you can see there are three, one for each task that was performed for this dataset.
 All event files for the stop signal task contain the `stop_signal_delay` column and the `response_time` column.
 
-Now you can try out the *split_events* on the full dataset!
+Now you can try out the *split_rows* on the full dataset!
 
 
 (jupyter-notebooks-for-remodeling-anchor)=
