@@ -42,11 +42,11 @@ The syntax is demonstrated in the following example:
 ````{admonition} Example calling syntax for HED search.
 
 ```python
-schema = load_schema_version(
+schema = load_schema_version("8.1.0")
 hed_string = HedString("Sensory-event, Sensory-presentation", schema=schema)
 query_string = "Sensory-event"
-query = TagExpressionParser(query_string)
-result = query.search_hed_string(hed_string)
+query = QueryParser(query_string)
+result = query.search(hed_string)
 if result:
     print(f"{query_string} found in {str(hed_string)})
 ```
@@ -55,10 +55,12 @@ if result:
 In the example the strings containing HED annotations are converted to a `HedString` object,
 which is a parsed representation of the HED annotation.
 The query facility assumes that the annotations have been validated.
-A `HedSchema` is required
+A `HedSchema` is required.
+In the example standard schema version 8.1.0 is loaded.
+The schemas are available on GitHub.
 
-The query is represented by a `TagExpressionParser` object.
-The `search_hed_string` method returns a list of groups in the HED string that match the query.
+The query is represented by a `QueryParser` object.
+The `search` method returns a list of groups in the HED string that match the query.
 This return list can be quite complex and usually must be filtered before being used directly.
 In many applications, we are not interested in the exact groups,
 but just whether the query was satisfied. 
@@ -66,7 +68,7 @@ In the above example, the `result` is treated as a boolean value.
 
 ````{warning}
 - If you are searching many strings for the same expression, 
-be sure to create the `TagExpressionParser` only once.
+be sure to create the `QueryParser` only once.
 - The current search facility is case-insensitive.
 ````
 
@@ -93,41 +95,45 @@ The query may not contain any slashes or wildcards.
 
 Single-term queries leverage the HED hierarchical structure,
 recognizing that schema children of the query term should also satisfy the query.
+This is HED's **is-a** principle.
 
-The example the query in the above table is *Agent-trait*.
+The example query in the above table is *Agent-trait*.
 The full path of *Agent-trait* in the HED schema is *Property/Agent-property/Agent-trait*.
 Further, the *Agent-trait* has several child nodes including: *Age*, *Agent-experience-level*,
-*Gender*, *Sex*, and *Handedness*
+*Gender*, *Sex*, and *Handedness*.
 
 The single-term query matches child tags without regard to tag extension or value.
 Hence, *Agent-trait* matches *Age* which is a child and *Age/35* which is child with a value.
 *Agent-trait*, itself, may be extended, so *Agent-trait* also matches *Agent-trait/Glasses*.
 Here *Glasses* is a user-extension.
 
-#### Tag-path with slash
-
-If the query includes a slash in the tag path, then the query must match the exact value with
-the slash.  Thus, *Age/34* does not match *Age* or *Age/35*.
-The query does match *Agent-trait/Age/34* because the short-form of this tag-path is *Age/34*.
-The tag short forms are used for the matching to assure consistency.
-
 #### Quoted-tag search
 
-If you enclose a tag-term in quotes, the search matches that tag exactly.
-If you want to match a value as well, you must include that value in the quoted tag-term.  This is exactly the same as Tag-path with slash, except you can search a single term without a slash.
+If the tag-term is enclosed in quotes, the search matches that tag exactly.
+If you want to match a value as well, you must include that specific value in the quoted tag-term.  This is exactly the same as Tag-path with slash, except you can search a single term without a slash.
+
+
+#### Tag-path with slash
+
+If the query includes a slash in the tag path, then the query must match the 
+exact value with the slash.
+Thus, *Age/34* does not match *Age* or *Age/35*.
+The query matches *Agent-trait/Age/34* because the short-form of this tag-path is *Age/34*.
+The tag short forms are used for the matching to assure consistency.
+
 
 #### Tag-prefix with wildcard
 
 Matching using a tag prefix with the `*` wildcard, matches the starting portion of the tag.
-Thus, <em>Age/3*</em> matches *Age/3* as well as *Age/34.
+Thus, <em>Age/3*</em> matches *Age/3* as well as *Age/34*.
 
-Note that the query <em>Age*</em> matches a myraid of tags including *Agent*, *Agent-state*,
+Notice that the query <em>Age*</em> matches a myraid of tags including *Agent*, *Agent-state*,
 and *Agent-property*.
 
 ### Logical queries
 
-In the following `A` and `B` represent arbitrary HED strings, which may contain multiple
-comma separated tags and parenthesized groups.
+In the following `A` and `B` represent HED expressions that may contain multiple
+comma-separated tags and parenthesized groups.
 `A` and `B` may also contain group queries as described in the next section.
 The expressions for `A` and `B` are each evaluated and then combined using standard logic.
 
@@ -135,18 +141,32 @@ The expressions for `A` and `B` are each evaluated and then combined using stand
 | Query form                                                                                                            | Example query               | Matches                                                                                                              | Does not match                                                                                        |
 |-----------------------------------------------------------------------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
 | **`A`, `B`**<br/>Match if both `A` and `B`<br/>are matched.                                                           | *Event*, *Sensory-event*    | *Event*, *Sensory-event*<br/>*Sensory-event*, *Event*<br/>(*Event*, *Sensory-event*)                                 | *Event*                                                                                               |
-| **`A` and `B`**<br/>Match strings or groups<br/>with both `A` and `B`.  <br>This is identical to comma notation above. | *Event* and *Sensory-event* | *Event*, *Sensory-event*<br/>*Sensory-event*, *Event*<br/>(*Event*, *Sensory-event*)                                 |                                                                                                       |  *Event*         |
-| **`A` or `B`**<br/>Match strings or groups<br/>with either `A` or `B`.                                                | *Event* or *Sensory-event*  | *Event*, *Sensory-event*<br/>*Sensory-event*, *Event*<br/>(*Event*, *Sensory-event*)<br/>*Event*<br/>*Sensory-event* | *Agent-trait*                                                                                         |
+| **`A` and `B`**<br/>Match if both `A` and `B` <br/>are matched.  <br>Same as the comma notation. | *Event* and *Sensory-event* | *Event*, *Sensory-event*<br/>*Sensory-event*, *Event*<br/>(*Event*, *Sensory-event*)                                 |                                                                                                       |  *Event*         |
+| **`A` or `B`**<br/>Match if either `A` or `B`.                                                | *Event* or *Sensory-event*  | *Event*, *Sensory-event*<br/>*Sensory-event*, *Event*<br/>(*Event*, *Sensory-event*)<br/>*Event*<br/>*Sensory-event* | *Agent-trait*                                                                                         |
 | **~`A`**<br/>Match groups that do<br/>not contain `A`<br/> `A` can be an arbitrary expression.                          | [[ *Event*, ~*Action* ]]    | (*Event*)<br/>(*Event*, *Animal-agent*)<br/>(*Sensory-event*, (*Action*))                                            | *Event*<br/>*Event*, *Action*<br/>(*Event*, *Action*)<br>                                             |
-| **@`A`**<br/>Match a line that does not contain `A`.                                                                  | @*Event*                    | *Action*<br>*Agent-trait*<br>*Action, Agent-Trait*<br>(*Action*, *Agent*)                                            | *Event*<br>(*Action*, *Event*)<br>(*Action*, *Sensory-event*)<br>(*Agent*, (*Sensory-event*, *Blue*)) |
+| **@`A`**<br/>Match a line that <br/>does not contain `A`.                                                                  | @*Event*                    | *Action*<br>*Agent-trait*<br>*Action, Agent-Trait*<br>(*Action*, *Agent*)                                            | *Event*<br>(*Action*, *Event*)<br>(*Action*, *Sensory-event*)<br>(*Agent*, (*Sensory-event*, *Blue*)) |
 
 ### Group queries
 
-Tag grouping with parentheses is an essential part of HED annotation since HED strings are
+Tag grouping with parentheses is an essential part of HED annotation,
+since HED strings are
 independent of ordering of tags or tag groups at the same level.
 
-Thus, tools have no way of distinguishing which color goes with which shape in the annotation *Red*, *Square*, *Blue, *Triangle*. Annotators must group tags using parentheses to make the meaning clear:
-(*Red*, *Square*), (*Blue, *Triangle*).  Group queries allow analysts to detect these groupings.
+Consider the annotation:
+
+> *Red*, *Square*, *Blue*, *Triangle*
+
+In this form, tools cannot distinguish which color goes with which shape.
+Annotators must group tags using parentheses to make the meaning clear:
+
+> (*Red*, *Square*), (*Blue, *Triangle*)
+
+Indicates a red square and a blue triangle.
+Group queries allow analysts to detect these groupings.
+
+As with logical queries, 
+`A` and `B` represent HED expressions that may contain multiple
+comma-separated tags and parenthesized groups.
 
 | Query form                                                                                                               | Example query   | Matches                                                     | Does not match         |
 |--------------------------------------------------------------------------------------------------------------------------|-----------------|-------------------------------------------------------------|------------------------|
@@ -154,18 +174,20 @@ Thus, tools have no way of distinguishing which color goes with which shape in t
 | **[`A`, `B`]** <br/> Match a group that<br/>contains `A` and `B`.<br/> Both `A` and `B` could<br/>be any subgroup level. | *[Red, Blue]*   | *(Red, (Blue, Green))*<br/>*((Red, Yellow), (Blue, Green))* | *Red, (Blue, Green)*   |
               
 
-These operations (including exact, containing, and logical groups) can be
+These operations can be
 arbitrarily nested and combined, as for example in the query:
 
 > *[`A` or [[`B` and `C`]] ]*
 
+In this query
 Ordering on either the search terms or strings to be searched doesn't matter unless it will impact
-precedence on the expression.  Use logical grouping with parentheses if you aren't sure.
+precedence on the expression.  Use logical grouping with parentheses to assure
+the expected order.
 
 Precedence is purely left to right outside of grouping operations.
-Thus, unlike many traditional programming languages, **and** does not take precedence over **or**.
+Thus, unlike many traditional programming languages, 
+**and** does not take precedence over **or**.
 This may change in the future.
-
 
 
 ## Where can HED search be used?
