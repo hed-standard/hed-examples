@@ -368,7 +368,7 @@ In addition to the `backup_root`, the backup directory also contains a dictionar
 in the `backup_lock.json` file. This dictionary is used internally by the remodeling tools.
 The backup should be created once and not modified by the user.
 
-The following example shows how to run the `run_remodel_backup.py` program from the command line
+The following example shows how to run the `run_remodel_backup` program from the command line
 to back up the dataset located at `/datasets/eeg_ds003654s_hed_remodel`.
 
 (remodel-backup-anchor)=
@@ -376,7 +376,7 @@ to back up the dataset located at `/datasets/eeg_ds003654s_hed_remodel`.
 :class: tip
 
 ```bash
-python run_remodel_backup.py /datasets/eeg_ds003654s_hed_remodel -x derivatives stimuli
+python run_remodel_backup /datasets/eeg_ds003654s_hed_remodel -x derivatives stimuli
 
 ```
 ````
@@ -452,7 +452,7 @@ The example assumes that the backup has already been created for the dataset.
 :class: tip
 
 ```bash
-python run_remodel.py /datasets/eeg_ds003654s_hed_remodel /datasets/remove_extra_rmdl.json -x derivatives simuli
+python run_remodel /datasets/eeg_ds003654s_hed_remodel /datasets/remove_extra_rmdl.json -x derivatives simuli
 
 ```
 ````
@@ -504,7 +504,7 @@ The restore operation restores all the files in the specified backup.
 :class: tip
 
 ```bash
-python run_remodel_restore.py /datasets/eeg_ds003654s_hed_remodel
+python run_remodel_restore /datasets/eeg_ds003654s_hed_remodel
 
 ```
 ````
@@ -601,7 +601,7 @@ the path to the JSON file with the HED annotations.
 :class: tip
 
 ```bash
-python run_remodel.py /datasets/eeg_ds003654s_hed_remodel /datasets/summarize_conditions_rmdl.json \
+python run_remodel /datasets/eeg_ds003654s_hed_remodel /datasets/summarize_conditions_rmdl.json \
 -x derivatives simuli -r 8.1.0 -j /datasets/eeg_ds003654s_hed_remodel/task-FacePerception_events.json
 
 ```
@@ -628,7 +628,8 @@ cli_remodel.main(arg_list)
 
 Errors can occur during several stages in during remodeling and how they are
 handled depends on the type of error and where the error occurs.
-The underlying
+Except for the validation summary, the underlying remodeling code raises exceptions for most errors.
+
 
 (errors-in-the-remodel-file-anchor)=
 ### Errors in the remodel file
@@ -998,7 +999,6 @@ The results of executing this *factor_hed-tags* operation on the
 | 17.1021 | 0.5083 | unsuccesful_stop | 0.25 | 0.633 | correct | left | male | 0 | 1 |
 | 21.6103 | 0.5083 | go | n/a | 0.443 | correct | left | male | 0 | 1 |
 ````
-**Note**: Put in a table of the assembled HED tags here to explain how these variables were created.
 
 (merge-consecutive-anchor)=
 ### Merge consecutive
@@ -1181,6 +1181,11 @@ based on the unique values in the combination of columns *response_accuracy* and
 }]
 ```
 ````
+In this example there are two source columns and one destination column,
+so each entry in *map_list* must be a list with three elements 
+two source values and one destination value).
+Since all the values in *map_list* are strings,
+the optional *integer_sources* list is not needed. 
 
 The results of executing the previous *remap_column* command on the
 [**sample remodel event file**](sample-remodel-event-file-anchor) are:
@@ -1576,8 +1581,9 @@ All summary operations have two required parameters: *summary_name* and *summary
 
 The *summary_name* is the unique key used to identify the
 particular incarnation of this summary in the dispatcher.
-Since a particular operation file may use a given operation multiple times,
-care should be taken to make sure that it is unique.
+Care should be taken to make sure that the *summary_name* is unique within
+a given JSON remodeling file if the same summary operation is used more than
+once within the file (e.g. for before and after summary information).
 
 The *summary_filename* should also be unique and is used for saving the summary upon request.
 When the remodeler is applied to full datasets rather than single files,
@@ -1700,9 +1706,15 @@ In addition to the standard parameters, *summary_name* and *summary_filename* re
 the *summarize_column_values* operation requires two additional lists to be supplied.
 The *skip_columns* list specifies the names of columns to skip entirely in the summary.
 Typically, the `onset` and `sample` columns are skipped, since they have unique values for
-each row and their values have limited information. Limited information is also gathered for
-those columns are specified as *value_columns*. The unique values in the remaining columns
-are counted.
+each row and their values have limited information.
+
+The *summarize_column_values* is mainly meant for creating summary information about columns
+containing a finite number of distinct values.
+Columns that contain numeric information will usually have distinct entries for
+each row in a tabular file and are not amenable to such summarization.
+These columns could be specified as *skip_columns*, but another option is to
+designate them as *value_columns*. The *value_columns* are reported in the summary,
+but their distinct values are not reported individually.
 
 For datasets that include multiple tasks, the event values for each task may be distinct.
 The *summarize_column_values* operation does not separate by task, but expects the
@@ -2157,14 +2169,16 @@ The *summarize_hed_validation* is a HED operation and the calling program must p
 and usually a JSON sidecar containing the HED annotations.
 
 The validation process takes place in two stages: first the JSON sidecar is validated.
+This strategy is used because a single error in the JSON sidecar can generate an error message
+for every line in the corresponding data file.
+
 If the JSON sidecar has errors (warnings don't count), the validation process is terminated
 without validation of the data file and assembled HED annotations.
+
 If the JSON sidecar does not have errors, 
 the validator assembles the annotations for each line in the data files and validates
 the assembled HED annotation.
 Data file-wide consistency, such as matched onsets and offsets, is also checked.
-This strategy is used because a single error in the JSON sidecar can generate an error message
-for every line in the corresponding data file.
 
 
 (summarize-hed-validation-example-anchor)=
@@ -2318,7 +2332,7 @@ replaced by `numpy.NaN` values in the incoming dataframe `df`.
 The `Dispatcher` class has a static method `prep_data` that does this replacement.
 At the end of running all the remodeling operations on a data file `Dispatcher` `run_operations`
 method replaces all of the `numpy.NaN` values with `n/a`, the value expected by BIDS.
-This operation is performed by the `Dispatcher` static method `post_proc_data`. replaces
+This operation is performed by the `Dispatcher` static method `post_proc_data`.
 
 (the-do_op-for summarization-anchor)=
 ### The do_op for summarization
