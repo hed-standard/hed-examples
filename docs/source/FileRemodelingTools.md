@@ -1797,6 +1797,15 @@ results from the individual data files are shown after the overall summary.
 The individual results are similar to the overall summary because only one data file
 was processed.
 
+For a more extensive example see the 
+[**text**](./_static/data/summaries/FacePerception_column_values_summary.txt) 
+and [**JSON**](./_static/data/summaries/FacePerception_column_values_summary.json) 
+format summaries of the sample dataset 
+[**ds003645s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) 
+using the [**summarize_columns_rmdl.json**](./static/data/summarize_columns_rmdl.json)
+remodeling file.
+
+
 (summarize-sidecar-from-events-anchor)=
 ### Summarize sidecar from events
 
@@ -2052,6 +2061,13 @@ The sample events file had 6 events, including 1 correct action and 2 incorrect 
 Since only one file was processed, the information for *Dataset* was 
 similar to that presented under *Individual files*.
 
+For a more extensive example, see the 
+[**text**](./_static/data/summaries/FacePerception_hed_tag_summary.txt) 
+and [**JSON**](./_static/data/summaries/FacePerception_hed_tag_summary.json) 
+format summaries of the sample dataset 
+[**ds003645s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) 
+using the [**summarize_hed_tags_rmdl.json**](./static/data/summarize_hed_tags_rmdl.json)
+remodeling file.
 
 (summarize-hed-type-anchor)=
 ### Summarize HED type
@@ -2139,6 +2155,14 @@ a HED schema version is required and a JSON sidecar is also usually needed.
 This summary was produced by using `hed_version="8.1.0"` when creating the `dispatcher`
 and using the [**sample remodel sidecar file**](sample-remodel-sidecar-file-anchor) in the `do_op`.
 The sidecar provides the annotations that use the `condition-variable` tag in the summary.
+
+For a more extensive example, see the 
+[**text**](./_static/data/summaries/FacePerception_hed_type_summary.txt) 
+and [**JSON**](./_static/data/summaries/FacePerception_hed_type_summary.json) 
+format summaries of the sample dataset 
+[**ds003645s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) 
+using the [**summarize_hed_types_rmdl.json**](./static/data/summarize_hed_types_rmdl.json)
+remodeling file.
 
 (summarize-hed-validation-anchor)=
 ### Summarize HED validation
