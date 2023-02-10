@@ -1754,8 +1754,7 @@ Context name: AOMIC_column_values
 Context type: column_values
 Context filename: AOMIC_column_values
 
-Summary details:
-
+Overall summary:
 Dataset: Total events=6 Total files=1
    Categorical column values[Events, Files]:
       response_accuracy:
