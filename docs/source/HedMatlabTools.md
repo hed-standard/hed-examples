@@ -175,7 +175,7 @@ versions available in the
 `````{admonition} Create a request for the sidecar_validate web service.
 :class: tip
 ```matlab
-jsonText = fileread('../../../datasets/eeg_ds003654s_hed/task-FacePerception_events.json');
+jsonText = fileread('../../../datasets/eeg_ds003645s_hed/task-FacePerception_events.json');
 request = struct('service', 'sidecar_validate', ...
                  'schema_version', '8.0.0', ...
                  'json_string', jsonText, ...
@@ -720,7 +720,7 @@ function issueString = validateHedInBids(dataPath)
 Example MATLAB calling code for this function:
 
 ```matlab
-dataPath = 'H:\datasets\eeg_ds003654s_hed';
+dataPath = 'H:\datasets\eeg_ds003645s_hed';
 issueString = validateHedInBids(dataPath);
 if isempty(issueString)
     fprintf('Dataset %s has no HED validation errors\n', dataPath);
@@ -730,8 +730,8 @@ end
 
 ```
 ````
-In above example assumes that the BIDS dataset was located at `H:\datasets\eeg_ds003654s_hed`.
-We tested it with the [**eeg_ds003654s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003654s_hed) available on GitHub.
+In above example assumes that the BIDS dataset was located at `H:\datasets\eeg_ds003645s_hed`.
+We tested it with the [**eeg_ds003645s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) available on GitHub.
 You can download and use this test data or set `dataPath` to the root directory of your own dataset.
 
 

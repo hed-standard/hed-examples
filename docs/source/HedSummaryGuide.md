@@ -23,10 +23,10 @@ files that have been processed and, if requested, also include an individual sum
 for each input file.
 
 The examples in this tutorial use the Wakeman-Hanson Face Processing dataset as an example.
-A [**reduced version**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003654s_hed) 
+A [**reduced version**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) 
 containing 2 subjects and no imaging data is used to produce the summaries in the examples.
 The reduced dataset has 6 event files each containing 200 events.
-The full dataset is available on OpenNeuro as [**ds003654**](https://openneuro.org/datasets/ds003645/versions/2.0.0).
+The full dataset is available on OpenNeuro as [**ds003645**](https://openneuro.org/datasets/ds003645/versions/2.0.0).
 
 Each example only shows the overall summary with links to the full summaries that
 include individual summaries. The summaries use a **[number events, number files]**
@@ -167,7 +167,7 @@ Tags that don't fit in these three categories will be grouped under "Other tags"
 
 
 The following excerpt shows the dataset portion of the resulting summary in text format
-when running on the [**reduced version**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003654s_hed) face processing
+when running on the [**reduced version**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) face processing
 dataset, which has 6 event files containing a total of 1200 events.
 
 ````{admonition} Text format excerpt with dataset-level summary of hed tag counts
