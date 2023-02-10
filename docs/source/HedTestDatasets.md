@@ -21,14 +21,14 @@ The suffix modifier indicates what this dataset is designed to test.
 
 | Dataset | Description |
 | ----------------- | ------------|
-| [eeg_ds003654s_hed](eeg_ds003654s_hed_anchor)| Short-form tags with definitions. |
-| [eeg_ds003654s_hed_inheritance](eeg_ds003654s_hed_inheritance_anchor) | Multiple sidecars with inheritance. |
-| [eeg_ds003654s_hed_library](eeg_ds003654s_hed_library_anchor) | Multiple HED library schemas. |
-| [eeg_ds003654s_hed_longform](eeg_ds003654s_hed_longform_anchor) | Long-form with definitions. |
+| [eeg_ds003645s_hed](eeg_ds003645s_hed_anchor)| Short-form tags with definitions. |
+| [eeg_ds003645s_hed_inheritance](eeg_ds003645s_hed_inheritance_anchor) | Multiple sidecars with inheritance. |
+| [eeg_ds003645s_hed_library](eeg_ds003645s_hed_library_anchor) | Multiple HED library schemas. |
+| [eeg_ds003645s_hed_longform](eeg_ds003645s_hed_longform_anchor) | Long-form with definitions. |
 | [fmri_soccer21_hed](fmri_soccer21_hed_anchor) | Annotation with single column. |
 
-(eeg_ds003654s_hed_anchor)=
-## eeg_ds003654s_hed
+(eeg_ds003645s_hed_anchor)=
+## eeg_ds003645s_hed
 
 This dataset was originally released as a multi-modal dataset by 
 
@@ -39,13 +39,13 @@ Detailed case study in using HED for tagging:
 > BioRxiv, 2021.05.06.442841. 
 > [https://doi.org/10.1101/2021.05.06.442841](https://doi.org/10.1101/2021.05.06.442841)
 
-(eeg_ds003654s_hed_inheritance_anchor)=
-## eeg_ds003654s_hed_inheritance
+(eeg_ds003645s_hed_inheritance_anchor)=
+## eeg_ds003645s_hed_inheritance
 
-This is eeg_ds003654s_hed_inheritance 
+This is eeg_ds003645s_hed_inheritance 
 
-(eeg_ds003654s_hed_library_anchor)=
-## eeg_ds003654s_hed_library
+(eeg_ds003645s_hed_library_anchor)=
+## eeg_ds003645s_hed_library
 
 This dataset is designed to test the HED library schema facility.
 It uses HED 8.0.0 as a base schema and as the "test" library schema.
@@ -54,8 +54,8 @@ In addition, this dataset uses the SCORE library version 1.0.0 as a library sche
 The schema used are specified in the `dataset_description.json` file using the 
 proposed format.
 
-(eeg_ds003654s_hed_longform_anchor)=
-## eeg_ds003654s_hed_longform
+(eeg_ds003645s_hed_longform_anchor)=
+## eeg_ds003645s_hed_longform
 This dataset is used to test that tools work with either long-form or short-form HED tags.
 
 (fmri_soccer21_hed_anchor)=

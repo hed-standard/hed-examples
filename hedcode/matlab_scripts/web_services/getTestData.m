@@ -7,8 +7,8 @@ function data = getTestData()
                   'schemaUrl', '', 'schemaText', '', ...
                   'spreadsheetText', '', 'spreadsheetTextInvalid', '');
        
-    remodelPath = '../../../datasets/eeg_ds003654s_hed_remodel/';
-    libraryPath = '../../../datasets/eeg_ds003654s_hed_library/';
+    remodelPath = '../../../datasets/eeg_ds003645s_hed_remodel/';
+    libraryPath = '../../../datasets/eeg_ds003645s_hed_library/';
     data.jsonLibrary = fileread(...
         [libraryPath 'task-FacePerception_events.json']);
     data.jsonText = fileread(...
@@ -39,7 +39,7 @@ function data = getTestData()
     data.goodStrings = {'Red,Blue', 'Green', 'White, (Black, Image)'}; 
     data.badStrings = {'Red, Blue, Blech', 'Green', 'White, Black, Binge'}; 
     data.jsonUpperText = ...
-        fileread('../../../datasets/eeg_ds003654s_hed_inheritance/task-FacePerception_events.json');
+        fileread('../../../datasets/eeg_ds003645s_hed_inheritance/task-FacePerception_events.json');
     data.jsonLower2Text = ...
-        fileread('../../../datasets/eeg_ds003654s_hed_inheritance/sub-002/sub-002_task-FacePerception_events.json');
+        fileread('../../../datasets/eeg_ds003645s_hed_inheritance/sub-002/sub-002_task-FacePerception_events.json');
 end

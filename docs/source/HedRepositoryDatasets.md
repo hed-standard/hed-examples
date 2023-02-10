@@ -4,5 +4,5 @@
 
 | Dataset | Description |
 | ----------------- | ------------|
-| [eeg_ds003654s_hed](eeg_ds003654s_hed)| Short-form tags with definitions. |
-| [eeg_ds003654s_hed_inheritance](eeg_ds003654s_hed_inheritance) | Multiple sidecars with inheritance. |
+| [eeg_ds003645s_hed](eeg_ds003645s_hed)| Short-form tags with definitions. |
+| [eeg_ds003645s_hed_inheritance](eeg_ds003645s_hed_inheritance) | Multiple sidecars with inheritance. |

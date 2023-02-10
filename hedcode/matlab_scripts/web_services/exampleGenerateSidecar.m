@@ -1,6 +1,6 @@
 host = 'https://hedtools.ucsd.edu/hed';
 [servicesUrl, options] = getHostOptions(host); % Setup the options
-pathname = '../../../datasets/eeg_ds003654s_hed/sub-002/eeg/';
+pathname = '../../../datasets/eeg_ds003645s_hed/sub-002/eeg/';
 filename = 'sub-002_task-FacePerception_run-1_events.tsv';
 eventsText = fileread([pathname filename]); % Read the data
 request = struct('service', 'events_generate_sidecar', ...

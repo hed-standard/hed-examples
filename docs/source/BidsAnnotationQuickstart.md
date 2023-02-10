@@ -38,12 +38,12 @@ to produce a comprehensive JSON sidecar template.
 ````
 
 The examples in this tutorial use an
-[**abbreviated version**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/datasets/eeg_ds003654s_hed/sub-002/eeg/sub-002_task-FacePerception_run-1_events.tsv)
+[**abbreviated version**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/datasets/eeg_ds003645s_hed/sub-002/eeg/sub-002_task-FacePerception_run-1_events.tsv)
 of the `events.tsv`file from subject 002 run 1 from
-[**ds003654**](https://openneuro.org/datasets/ds003645/versions/2.0.0):Face processing MEEG dataset with HED annotation
+[**ds003645**](https://openneuro.org/datasets/ds003645/versions/2.0.0):Face processing MEEG dataset with HED annotation
 dataset on OpenNeuro.
 A reduced version of this dataset
-[**eeg_ds003654s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003654s_hed)
+[**eeg_ds003645s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed)
 is also available.
 
 (how-hed-works-in-bids-anchor)=

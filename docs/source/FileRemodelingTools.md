@@ -348,7 +348,7 @@ These scripts can be run from the command line or from another Python program us
 The `run_remodel_backup` Python program creates a backup of the specified files.
 The backup is always created in the `derivatives/remodel/backups` subdirectory
 under the dataset root as shown in the following example for the
-sample dataset `eeg_ds003654s_hed_remodel`,
+sample dataset `eeg_ds003645s_hed_remodel`,
 which can be found in the `datasets` subdirectory of the 
 [**hed-examples**](https://github.com/hed-standard/hed-examples) GitHub repository.
 
@@ -369,14 +369,14 @@ in the `backup_lock.json` file. This dictionary is used internally by the remode
 The backup should be created once and not modified by the user.
 
 The following example shows how to run the `run_remodel_backup` program from the command line
-to back up the dataset located at `/datasets/eeg_ds003654s_hed_remodel`.
+to back up the dataset located at `/datasets/eeg_ds003645s_hed_remodel`.
 
 (remodel-backup-anchor)=
 ````{admonition} Example of calling run_remodel_backup from the command line.
 :class: tip
 
 ```bash
-python run_remodel_backup /datasets/eeg_ds003654s_hed_remodel -x derivatives stimuli
+python run_remodel_backup /datasets/eeg_ds003645s_hed_remodel -x derivatives stimuli
 
 ```
 ````
@@ -398,7 +398,7 @@ The command-line arguments are given in a list instead of on the command line.
 
 import hed.tools.remodeling.cli.run_remodel_backup as cli_backup
 
-data_root = '/datasets/eeg_ds003654s_hed_remodel'
+data_root = '/datasets/eeg_ds003645s_hed_remodel'
 arg_list = [data_root, '-x', 'derivatives', 'stimuli']
 cli_backup.main(arg_list)
 
@@ -452,7 +452,7 @@ The example assumes that the backup has already been created for the dataset.
 :class: tip
 
 ```bash
-python run_remodel /datasets/eeg_ds003654s_hed_remodel /datasets/remove_extra_rmdl.json -x derivatives simuli
+python run_remodel /datasets/eeg_ds003645s_hed_remodel /datasets/remove_extra_rmdl.json -x derivatives simuli
 
 ```
 ````
@@ -478,7 +478,7 @@ This code can be used in a Jupyter notebook or in another Python program.
 ```python
 import hed.tools.remodeling.cli.run_remodel as cli_remodel
 
-data_root = '/datasets/eeg_ds003654s_hed_remodel'
+data_root = '/datasets/eeg_ds003645s_hed_remodel'
 model_path = '/datasets/remove_extra_rmdl.json'
 arg_list = [data_root, model_path, '-x', 'derivatives', 'stimuli']
 cli_remodel.main(arg_list)
@@ -504,7 +504,7 @@ The restore operation restores all the files in the specified backup.
 :class: tip
 
 ```bash
-python run_remodel_restore /datasets/eeg_ds003654s_hed_remodel
+python run_remodel_restore /datasets/eeg_ds003645s_hed_remodel
 
 ```
 ````
@@ -517,7 +517,7 @@ As with the other command-line programs, `run_remodel_restore` can be also calle
 ```python
 import hed.tools.remodeling.cli.run_restore as cli_remodel
 
-data_root = '/datasets/eeg_ds003654s_hed_remodel'
+data_root = '/datasets/eeg_ds003645s_hed_remodel'
 cli_remodel.main([data_root])
 
 ```
@@ -601,8 +601,8 @@ the path to the JSON file with the HED annotations.
 :class: tip
 
 ```bash
-python run_remodel /datasets/eeg_ds003654s_hed_remodel /datasets/summarize_conditions_rmdl.json \
--x derivatives simuli -r 8.1.0 -j /datasets/eeg_ds003654s_hed_remodel/task-FacePerception_events.json
+python run_remodel /datasets/eeg_ds003645s_hed_remodel /datasets/summarize_conditions_rmdl.json \
+-x derivatives simuli -r 8.1.0 -j /datasets/eeg_ds003645s_hed_remodel/task-FacePerception_events.json
 
 ```
 ````
@@ -614,9 +614,9 @@ python run_remodel /datasets/eeg_ds003654s_hed_remodel /datasets/summarize_condi
 ```python
 import hed.tools.remodeling.cli.run_remodel as cli_remodel
 
-data_root = '/datasets/eeg_ds003654s_hed_remodel'
+data_root = '/datasets/eeg_ds003645s_hed_remodel'
 model_path = '/datasets/summarize_conditions_rmdl.json'
-json_path = '/datasets/eeg_ds003654s_hed_remodel/task-FacePerception_events.json'
+json_path = '/datasets/eeg_ds003645s_hed_remodel/task-FacePerception_events.json'
 arg_list = [data_root, model_path, '-x', 'derivatives', 'stimuli', '-r' 8.1.0 '-j' json_path]
 cli_remodel.main(arg_list)
 
@@ -1797,6 +1797,15 @@ results from the individual data files are shown after the overall summary.
 The individual results are similar to the overall summary because only one data file
 was processed.
 
+For a more extensive example see the 
+[**text**](./_static/data/summaries/FacePerception_column_values_summary.txt) 
+and [**JSON**](./_static/data/summaries/FacePerception_column_values_summary.json) 
+format summaries of the sample dataset 
+[**ds003645s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) 
+using the [**summarize_columns_rmdl.json**](./static/data/summarize_columns_rmdl.json)
+remodeling file.
+
+
 (summarize-sidecar-from-events-anchor)=
 ### Summarize sidecar from events
 
@@ -2052,6 +2061,13 @@ The sample events file had 6 events, including 1 correct action and 2 incorrect 
 Since only one file was processed, the information for *Dataset* was 
 similar to that presented under *Individual files*.
 
+For a more extensive example, see the 
+[**text**](./_static/data/summaries/FacePerception_hed_tag_summary.txt) 
+and [**JSON**](./_static/data/summaries/FacePerception_hed_tag_summary.json) 
+format summaries of the sample dataset 
+[**ds003645s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) 
+using the [**summarize_hed_tags_rmdl.json**](./static/data/summarize_hed_tags_rmdl.json)
+remodeling file.
 
 (summarize-hed-type-anchor)=
 ### Summarize HED type
@@ -2139,6 +2155,14 @@ a HED schema version is required and a JSON sidecar is also usually needed.
 This summary was produced by using `hed_version="8.1.0"` when creating the `dispatcher`
 and using the [**sample remodel sidecar file**](sample-remodel-sidecar-file-anchor) in the `do_op`.
 The sidecar provides the annotations that use the `condition-variable` tag in the summary.
+
+For a more extensive example, see the 
+[**text**](./_static/data/summaries/FacePerception_hed_type_summary.txt) 
+and [**JSON**](./_static/data/summaries/FacePerception_hed_type_summary.json) 
+format summaries of the sample dataset 
+[**ds003645s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) 
+using the [**summarize_hed_types_rmdl.json**](./static/data/summarize_hed_types_rmdl.json)
+remodeling file.
 
 (summarize-hed-validation-anchor)=
 ### Summarize HED validation
