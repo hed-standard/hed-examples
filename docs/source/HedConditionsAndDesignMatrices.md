@@ -283,7 +283,7 @@ as `Task` can be summarized and used as factor vectors in a way similar to *Cond
 
 In this section, we look at a more complicated example based on the Wakeman-Henson face-processing dataset. 
 This dataset, which is available on [OpenNeuro](https://openneuro.org) under accession number
-ds003654, was used in as a case study on HED annotation described in the 
+ds003645, was used in as a case study on HED annotation described in the 
 [Capturing the nature of events paper](https://www.sciencedirect.com/science/article/pii/S1053811921010387).
 The experiment is based on a 3 x 3 x 2 experimental design: face type x repetition status x key choice.
 

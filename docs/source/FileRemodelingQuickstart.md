@@ -7,7 +7,7 @@ information in experimental logs and for restructuring event files to enable a p
 
 The tools, which are written in Python, are designed to be run on an entire dataset.
 This dataset can be in BIDS 
-([**Brain Imaging Data Structure**](https://bids.neuroimaging.io/)) format,
+([**Brain Imaging Data Structure**](https://bids.neuroimaging.io/)),
 Alternative users can specify files with a particular suffix and extension appearing 
 in a specified directory tree.
 The later format is useful for restructuring that occurs early in the experimental process,
@@ -76,11 +76,11 @@ The following table gives a summary of the tools available in the HED remodeling
 | **restructure** |  |  | 
 |  | [*merge_consecutive*](merge-consecutive-anchor) | Replace multiple consecutive events of the same type<br/>with one event of longer duration. |
 |  | [*remap_columns*](remap-columns-anchor) | Create *m* columns from values in *n* columns (for recoding). |
-|  | [*split_event*](split-event-anchor) | Split trial-encoded rows into multiple events. |
+|  | [*split_rows*](split-rows-anchor) | Split trial-encoded rows into multiple events. |
 | **summarization** |  |  | 
 |  | [*summarize_column_names*](summarize-column-names-anchor) | Summarize column names and order in the files. |
 |  | [*summarize_column_values*](summarize-column-values-anchor) |Count the occurrences of the unique column values. |
-|  | [*summarize_events_to_sidecar*](summarize-events-to-sidecar-anchor) | Generate a sidecar template from an event file. |
+|  | [*summarize_sidecar_from_events*](summarize-sidecar-from-events-anchor) | Generate a sidecar template from an event file. |
 |  | [*summarize_hed_tags*](summarize-hed-tags-anchor) | Summarize the HED tags present in the  <br/> HED annotations for the dataset. |
 |  | [*summarize_hed_type*](summarize-hed-type-anchor) | Summarize the detailed usage of a particular type tag <br/> such as *Condition-variable* or *Task* <br/> (used to automatically extract experimental designs). |
 |  | [*summarize_hed_validation*](summarize-hed-validation-anchor) | Validate the data files and report any errors. |
@@ -119,7 +119,7 @@ stored in the `derivatives/remodel/backups` subdirectory of the dataset.
 Restructuring applies a sequence of remodeling operations given in a JSON remodeling
 file to produce a final result.
 By convention, we name these remodeling instruction files `_rmdl.json` 
-and try to store them in the `derivatives/remodel/remodeling_files` directory relative
+and store them in the `derivatives/remodel/remodeling_files` directory relative
 to the dataset root directory.
 
 The restructuring always proceeds by looking up each data file in the backup
@@ -255,16 +255,16 @@ at a single temporal marker.
 This strategy is known as *trial-level* encoding. 
 
 Our goal is to represent all the trial events (e.g., go signal, stop signal, and response)
-in separate rows of the event file using the *split_event* restructuring operation.
+in separate rows of the event file using the *split_rows* restructuring operation.
 The following example shows the remodeling operations to perform the splitting.
 
-````{admonition} Example of split_events operation for the AOMIC stop signal task.
+````{admonition} Example of split_rows operation for the AOMIC stop signal task.
 :class: tip
 
 ```json
 [
     {
-        "operation": "split_event",
+        "operation": "split_rows",
         "description": "Split response event from trial event based on response_time column.",
         "parameters": {
             "anchor_column": "trial_type",
@@ -280,14 +280,14 @@ The following example shows the remodeling operations to perform the splitting.
                     "copy_columns": []
                 }
             },
-            "remove_parent_event": false
+            "remove_parent_row": false
         }    
     }
 ]
 ```
 ````
 
-The example uses the *split_event* operation to convert this
+The example uses the *split_rows* operation to convert this
 file from trial encoding to event encoding.
 In trial encoding each event marker (row in the event file) represents 
 all the information in a single trial.
@@ -295,10 +295,10 @@ Event markers such as the participant's response key-press are encoded implicitl
 as an offset from the stimulus presentation.
 while event encoding includes event markers for each individual event within the trial.
 
-The [**Split event**](./FileRemodelingTools.md#split-event)
+The [**Split rows**](./FileRemodelingTools.md#split-rows)
 explanation under [**File remodeling tools**](./FileRemodelingTools.md)
-shows the required parameters for the *split_event* operation. 
-The required parameters are *anchor_column*, *new_events*, and *remove_parent_event*.
+shows the required parameters for the *split_rows* operation. 
+The required parameters are *anchor_column*, *new_events*, and *remove_parent_row*.
 
 The *anchor_column* is the column we want to add new events corresponding to the stop signal and the response.
 In this case we are going to add events to an existing column: *trial_type*.
@@ -378,7 +378,7 @@ but will soon move to the regular [**HED tools online tools server**](https://he
 To use the online remodeling tools, navigate to the events page and select the *Remodel file* action.
 Browse to select the data file to be remodeled and the JSON remodel file
 containing the remodeling operations. 
-The following screenshot shows these selections for the split event example of the previous section.
+The following screenshot shows these selections for the split rows example of the previous section.
 
 ![Remodeling tools online](./_static/images/RemodelingOnline.png)
 
@@ -406,21 +406,51 @@ A full overview of all arguments is available at
 The `run_remodel_backup` is usually run only once for a dataset. 
 It makes the baseline backup of the event files to assure that nothing will be lost. 
 The remodeling always starts from the backup files.
-The main script is the `run_remodel` which executes a remodeling script and overwrites
-the data files using the corresponding backup files as the starting point.
-An example command line call for `run_remodel` is shown in the following example.
+
+The `run_remodel` restores the data files from the corresponding backup files and then
+executes remodeling operations from a JSON file.
+A sample command line call for `run_remodel` is shown in the following example.
 
 (remodel-run-anchor)=
-````{admonition} Command to run summary on AOMIC dataset.
+````{admonition} Command to run a summary for the AOMIC dataset.
 :class: tip
 
 ```bash
-python run_remodel.py /data/ds002790  /data/ds002790/derivatives/remodel/remodeling_files/AOMIC_summarize_rmdl.json \
--s .txt -x derivatives -b 
+python run_remodel /data/ds002790  /data/ds002790/derivatives/remodel/remodeling_files/AOMIC_summarize_rmdl.json \
+ -b -s .txt -x derivatives
 
 ```
 ````
 
+The parameters are as follows:
+
+* `data_dir` -  (Required first argument) Root directory of the dataset.
+* `model_path` - (Required second argument) Path of JSON file with remodeling operations.
+* `-b` - (Optional) If present, assume BIDS formatted data.
+* `-s` - (Optional) list of formats to save summaries in.
+* `-x` - (Optional) List of directories to exclude from event processing.
+
+There are three types of command line arguments: 
+
+[**Positional arguments**](./FileRemodelingTools.md#positional-arguments),
+[**Named arguments**](./FileRemodelingTools.md#named-arguments), 
+and [**Named arguments with values**](./FileRemodelingTools.md#named-arguments).
+
+The positional arguments, `data_dir` and `model_path` are not optional and must
+be the first and second arguments to `run_remodel`.
+The named arguments (with and without values) are optional.
+They all have default values if omitted.
+
+The `-b` option is a named argument indicating whether the dataset is in BIDS format.
+If in BIDS format, the remodeling tools can extract information such as the HED schema
+and the HED annotations from the dataset.
+BIDS data file names are unique, which is convenient for reporting summary information.
+Name arguments are flags-- their presence indicates true and absence indicates false.
+
+The `-s` and `-x` options are examples of named arguments with values.
+The `-s .txt` specifies that summaries should be saved in text format.
+The `-x derivatives` indicates that the `derivatives` subdirectory should not
+be processed during remodeling.
 
 This script can be run multiple times without doing backups and restores, 
 since it always starts with the backed up files.
@@ -432,61 +462,25 @@ A number of optional key-value arguments are also available.
 After the `run_remodel` finishes, it overwrites the data files (not the backups)
 and writes any requested summaries in `derivatives/remodel/summaries`.
 
-If we want to run the split events operation we demonstrated earlier on the full AOMIC dataset, 
-we might first want to check whether the response_time exists for all subjects. 
-We can do this by running the `summarize_column_headers` operation.
-
-First we prepare the remodeler json file again.
-
-````{admonition} Split events remodeler json file for the AOMIC stop signal task.
-:class: tip
-
-```json
-[
-    {
-        "operation": "summarize_column_names",
-        "description": "Summarize existing column names across entire AOMIC dataset.",
-        "parameters": {
-            "summary_name": "AOMIC_column_headers",
-            "summary_filename": "AOMIC_column_headers"
-            }    
-    }
-]
-```
-````
-
-All summaries require summary name and summary filename parameters.
-The *summarize_column_names* summary does not require any additional parameters. 
-
-To run the summary we have to provide the following arguments:
-
-* *data dir*
-* *model-path*
-* *-s*, *--save-formats*
-* *-b*, *--bids-format*
-* *-x*, *--exclude-dirs*
-
-The exact paths will look different on your computer but the full command-line call should look something like this:
-
-(remodel-run-summary-anchor)=
-````{admonition} Command to run summary on AOMIC dataset.
-:class: tip
-
-```bash
-python run_remodel.py /data/ds002790  /data/ds002790/derivatives/remodel/remodeling_files/AOMIC_summarize_rmdl.json \
--s .txt -x derivatives -b 
-
-```
-````
-
 The summaries will be written to `/data/ds002790/derivatives/remodel/summaries` folder in text format. 
 By default, the summary operations will return both.
 
 The [**summary file**](./_static/data/AOMIC_column_names_2022_12_21_T_13_12_35_641062.txt) lists all different column combinations and for each combination, the files with those columns.
 Looking at the different column combinations you can see there are three, one for each task that was performed for this dataset.
-All event files for the stop signal task contain the `stop_signal_delay` column and the `response_time` column.
 
-Now you can try out the *split_events* on the full dataset!
+Going back to the [**split rows example**](#more-complex-remodeling) of remodeling,
+we see that splitting the rows into multiple rows only makes sense if the event files have the same columns.
+Only the event files for the stop signal task contain the `stop_signal_delay` column and the `response_time` column.
+The summarizing the column names across the dataset allows users to check whether the column
+names are consistent across the dataset.
+A common use case for BIDS datasets is that the event files have a different structure 
+for different tasks.  
+The `-t` command-line option allows users to specify which tasks to perform remodeling on.
+Using this option allows users to select only the files that have the specified task names
+in their filenames.
+
+
+Now you can try out the *split_rows* on the full dataset!
 
 
 (jupyter-notebooks-for-remodeling-anchor)=

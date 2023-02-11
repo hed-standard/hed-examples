@@ -5,7 +5,7 @@ from hed.tools.bids.bids_dataset import BidsDataset
 
 if __name__ == '__main__':
     path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                        '../../../datasets/eeg_ds003654s_hed_library')
+                        '../../../datasets/eeg_ds003645s_hed_library')
     bids = BidsDataset(path)
     # Validate and include warnings
     print("Validating and include warnings...")

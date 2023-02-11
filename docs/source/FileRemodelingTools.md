@@ -50,11 +50,11 @@ This user's guide contains the following topics:
   * [**Remove rows**](remove-rows-anchor) 
   * [**Rename columns**](rename-columns-anchor)
   * [**Reorder columns**](reorder-columns-anchor)
-  * [**Split event**](split-event-anchor)
+  * [**Split rows**](split-rows-anchor)
 * [**Remodel summarizations**](remodel-summarizations-anchor)
   * [**Summarize column names**](summarize-column-names-anchor)
   * [**Summarize column values**](summarize-column-values-anchor)
-  * [**Summarize events to sidecar**](summarize-events-to-sidecar-anchor)
+  * [**Summarize sidecar from events**](summarize-sidecar-from-events-anchor)
   * [**Summarize hed tags**](summarize-hed-tags-anchor)
   * [**Summarize hed type**](summarize-hed-type-anchor)
   * [**Summarize hed validation**](summarize-hed-validation-anchor)
@@ -114,7 +114,7 @@ The dispatcher stores information from each uniquely named summarization operati
 as a separate context.
 Within its context information, most summarization operations keep a separate 
 summary for each individual file and have methods to create an overall summary
-of the information for all the files that have been processed by the summarization..
+of the information for all the files that have been processed by the summarization.
 
 Summarization results are available in JSON (`.json`) and text (`.txt`) formats.
 
@@ -140,11 +140,11 @@ and links to further documentation. Operations not listed in the summarize secti
 | **restructure** |  |  | 
 |  | [*merge_consecutive*](merge-consecutive-anchor) | Replace multiple consecutive events of the same type<br/>with one event of longer duration. |
 |  | [*remap_columns*](remap-columns-anchor) | Create m columns from values in n columns (for recoding). |
-|  | [*split_event*](split-event-anchor) | Split trial-encoded rows into multiple events. |
+|  | [*split_rows*](split-rows-anchor) | Split trial-encoded rows into multiple events. |
 | **summarize** |  |  | 
 |  | [*summarize_column_names*](summarize-column-names-anchor) | Summarize column names and order in the files. |
 |  | [*summarize_column_values*](summarize-column-values-anchor) | Count the occurrences of the unique column values. |
-|  | [*summarize_events_to_sidecar*](summarize-events-to-sidecar-anchor) | Generate a sidecar template from an event file. |
+|  | [*summarize_sidecar_from_events*](summarize-sidecar-from-events-anchor) | Generate a sidecar template from an event file. |
 |  | [*summarize_hed_tags*](summarize-hed-tags-anchor) | Summarize the HED tags present in the  <br/> HED annotations for the dataset. |
 |  | [*summarize_hed_type*](summarize-hed-type-anchor) | Summarize the detailed usage of a particular type tag <br/> such as *Condition-variable* or *Task* <br/> (used to automatically extract experimental designs). |
 |  | [*summarize_hed_validation*](summarize-hed-validation-anchor) | Validate the data files and report any errors. |
@@ -348,7 +348,7 @@ These scripts can be run from the command line or from another Python program us
 The `run_remodel_backup` Python program creates a backup of the specified files.
 The backup is always created in the `derivatives/remodel/backups` subdirectory
 under the dataset root as shown in the following example for the
-sample dataset `eeg_ds003654s_hed_remodel`,
+sample dataset `eeg_ds003645s_hed_remodel`,
 which can be found in the `datasets` subdirectory of the 
 [**hed-examples**](https://github.com/hed-standard/hed-examples) GitHub repository.
 
@@ -368,15 +368,15 @@ In addition to the `backup_root`, the backup directory also contains a dictionar
 in the `backup_lock.json` file. This dictionary is used internally by the remodeling tools.
 The backup should be created once and not modified by the user.
 
-The following example shows how to run the `run_remodel_backup.py` program from the command line
-to back up the dataset located at `/datasets/eeg_ds003654s_hed_remodel`.
+The following example shows how to run the `run_remodel_backup` program from the command line
+to back up the dataset located at `/datasets/eeg_ds003645s_hed_remodel`.
 
 (remodel-backup-anchor)=
 ````{admonition} Example of calling run_remodel_backup from the command line.
 :class: tip
 
 ```bash
-python run_remodel_backup.py /datasets/eeg_ds003654s_hed_remodel -x derivatives stimuli
+python run_remodel_backup /datasets/eeg_ds003645s_hed_remodel -x derivatives stimuli
 
 ```
 ````
@@ -398,7 +398,7 @@ The command-line arguments are given in a list instead of on the command line.
 
 import hed.tools.remodeling.cli.run_remodel_backup as cli_backup
 
-data_root = '/datasets/eeg_ds003654s_hed_remodel'
+data_root = '/datasets/eeg_ds003645s_hed_remodel'
 arg_list = [data_root, '-x', 'derivatives', 'stimuli']
 cli_backup.main(arg_list)
 
@@ -434,7 +434,7 @@ before running the remodeling operations.
 Going without backup is not recommended unless you are only doing summarization operations.
 
 The operations are specified as a list of dictionaries in a JSON file in the
-[**remodel sampe files**](remodel-sample-files-anchor) as discussed below.
+[**remodel sample files**](remodel-sample-files-anchor) as discussed below.
 
 Before running remodeling transformations on an entire dataset,
 consider using the [**HED online tools**](https://hedtools.ucsd.edu/hed) 
@@ -452,7 +452,7 @@ The example assumes that the backup has already been created for the dataset.
 :class: tip
 
 ```bash
-python run_remodel.py /datasets/eeg_ds003654s_hed_remodel /datasets/remove_extra_rmdl.json -x derivatives simuli
+python run_remodel /datasets/eeg_ds003645s_hed_remodel /datasets/remove_extra_rmdl.json -x derivatives simuli
 
 ```
 ````
@@ -478,7 +478,7 @@ This code can be used in a Jupyter notebook or in another Python program.
 ```python
 import hed.tools.remodeling.cli.run_remodel as cli_remodel
 
-data_root = '/datasets/eeg_ds003654s_hed_remodel'
+data_root = '/datasets/eeg_ds003645s_hed_remodel'
 model_path = '/datasets/remove_extra_rmdl.json'
 arg_list = [data_root, model_path, '-x', 'derivatives', 'stimuli']
 cli_remodel.main(arg_list)
@@ -504,7 +504,7 @@ The restore operation restores all the files in the specified backup.
 :class: tip
 
 ```bash
-python run_remodel_restore.py /datasets/eeg_ds003654s_hed_remodel
+python run_remodel_restore /datasets/eeg_ds003645s_hed_remodel
 
 ```
 ````
@@ -517,7 +517,7 @@ As with the other command-line programs, `run_remodel_restore` can be also calle
 ```python
 import hed.tools.remodeling.cli.run_restore as cli_remodel
 
-data_root = '/datasets/eeg_ds003654s_hed_remodel'
+data_root = '/datasets/eeg_ds003645s_hed_remodel'
 cli_remodel.main([data_root])
 
 ```
@@ -601,8 +601,8 @@ the path to the JSON file with the HED annotations.
 :class: tip
 
 ```bash
-python run_remodel.py /datasets/eeg_ds003654s_hed_remodel /datasets/summarize_conditions_rmdl.json \
--x derivatives simuli -r 8.1.0 -j /datasets/eeg_ds003654s_hed_remodel/task-FacePerception_events.json
+python run_remodel /datasets/eeg_ds003645s_hed_remodel /datasets/summarize_conditions_rmdl.json \
+-x derivatives simuli -r 8.1.0 -j /datasets/eeg_ds003645s_hed_remodel/task-FacePerception_events.json
 
 ```
 ````
@@ -614,9 +614,9 @@ python run_remodel.py /datasets/eeg_ds003654s_hed_remodel /datasets/summarize_co
 ```python
 import hed.tools.remodeling.cli.run_remodel as cli_remodel
 
-data_root = '/datasets/eeg_ds003654s_hed_remodel'
+data_root = '/datasets/eeg_ds003645s_hed_remodel'
 model_path = '/datasets/summarize_conditions_rmdl.json'
-json_path = '/datasets/eeg_ds003654s_hed_remodel/task-FacePerception_events.json'
+json_path = '/datasets/eeg_ds003645s_hed_remodel/task-FacePerception_events.json'
 arg_list = [data_root, model_path, '-x', 'derivatives', 'stimuli', '-r' 8.1.0 '-j' json_path]
 cli_remodel.main(arg_list)
 
@@ -628,7 +628,8 @@ cli_remodel.main(arg_list)
 
 Errors can occur during several stages in during remodeling and how they are
 handled depends on the type of error and where the error occurs.
-The underlying
+Except for the validation summary, the underlying remodeling code raises exceptions for most errors.
+
 
 (errors-in-the-remodel-file-anchor)=
 ### Errors in the remodel file
@@ -998,7 +999,6 @@ The results of executing this *factor_hed-tags* operation on the
 | 17.1021 | 0.5083 | unsuccesful_stop | 0.25 | 0.633 | correct | left | male | 0 | 1 |
 | 21.6103 | 0.5083 | go | n/a | 0.443 | correct | left | male | 0 | 1 |
 ````
-**Note**: Put in a table of the assembled HED tags here to explain how these variables were created.
 
 (merge-consecutive-anchor)=
 ### Merge consecutive
@@ -1131,10 +1131,16 @@ Remapping can be used to convert the column containing these codes into one or m
 | *destination_columns* | list | A list of *n* names of the destination columns for the map. |
 | *map_list* | list | A list of mappings. Each element is a list of *m* source <br/>column values followed by *n* destination values.<br/> Mapping source values are treated as strings. |  
 | *ignore_missing* | bool | If false, source column values not in the map generate "n/a"<br/> destination values instead of errors. |
+| *integer_sources* | list | [**Optional**] A list of source columns that are integers.<br/> The *integer_sources* must be a subset of *source_columns*. |
 ```
 A column cannot be both a source and a destination,
 and all source columns must be present in the data files.
 New columns are created for destination columns that are missing from a data file.
+
+The *remap_columns* operation only works for columns containing strings or integers,
+as it is meant for remapping categorical codes.
+You must specify the which source columns contain integers so that `n/a` values
+can be handled appropriately.
 
 The *map_list* parameter specifies how each unique combination of values from the source 
 columns will be mapped into the destination columns.
@@ -1175,6 +1181,11 @@ based on the unique values in the combination of columns *response_accuracy* and
 }]
 ```
 ````
+In this example there are two source columns and one destination column,
+so each entry in *map_list* must be a list with three elements 
+two source values and one destination value).
+Since all the values in *map_list* are strings,
+the optional *integer_sources* list is not needed. 
 
 The results of executing the previous *remap_column* command on the
 [**sample remodel event file**](sample-remodel-event-file-anchor) are:
@@ -1444,10 +1455,10 @@ The results of executing the previous *reorder_columns* transformation on the
 | 21.6103 | 0.5083 | 0.443 | go |
 ````
 
-(split-event-anchor)=
-### Split event
+(split-rows-anchor)=
+### Split rows
 
-The *split_event* operation
+The *split_rows* operation
 is often used to convert event files from trial-level encoding to event-level encoding.
 
 In **trial-level** encoding, all the events in a single trial
@@ -1460,22 +1471,22 @@ In **event-level** encoding, each row represents the temporal marker for a singl
 In this case a trial consists of a sequence of multiple events.
 
 
-(split-event-parameters-anchor)=
-#### Split event parameters
+(split-rows-parameters-anchor)=
+#### Split rows parameters
 
-```{admonition} Parameters for the *split_event* operation.
+```{admonition} Parameters for the *split_rows* operation.
 :class: tip
 
 |  Parameter   | Type | Description | 
 | ------------ | ---- | ----------- | 
-| *anchor_column* | str | The name of the column that will be used for split-event codes.| 
+| *anchor_column* | str | The name of the column that will be used for split_rows codes.| 
 | *new_events* | dict | Dictionary whose keys are the codes to be inserted as new events<br>in the *anchor_column* and whose values are dictionaries with<br>keys *onset_source*, *duration*, and *copy_columns*. | 
 | *remove_parent_event* | bool | If true, remove parent event. | 
 
 ```
 
 
-The *split_event* operation requires an *anchor_column*, which could be an existing
+The *split_rows* operation requires an *anchor_column*, which could be an existing
 column or a new column to be appended to the data.
 The purpose of the *anchor_column* is to hold the codes for the new events.
 
@@ -1492,23 +1503,23 @@ to compute the `duration` column value for the new event.
 Unlisted columns are filled with `n/a`.
 
 
-The *split_event* operation sorts the split events by the `onset` column and raises a `TypeError`
+The *split_rows* operation sorts the split rows by the `onset` column and raises a `TypeError`
 if the `onset` and `duration` are improperly defined.
 The `onset` column is converted to numeric values as part splitting process.
 
-(split-events-example-anchor)=
-#### Split events example
+(split-rows-example-anchor)=
+#### Split rows example
 
-The *split_event* operation in the following example specifies that new rows should be added
+The *split_rows* operation in the following example specifies that new rows should be added
 to encode the response and stop signal. The anchor column is `trial_type`.
 
 
-````{admonition} A JSON file with a single *split_event* transformation operation.
+````{admonition} A JSON file with a single *split_rows* transformation operation.
 :class: tip
 
 ```json
 [{
-  "operation": "split_events",
+  "operation": "split_rows",
   "description": "add response events to the trials.",
         "parameters": {
             "anchor_column": "trial_type",
@@ -1530,10 +1541,10 @@ to encode the response and stop signal. The anchor column is `trial_type`.
 ```
 ````
 
-The results of executing this *split_event* operation on the
+The results of executing this *split_rows* operation on the
 [**sample remodel event file**](sample-remodel-event-file-anchor) are:
 
-````{admonition} Results of the previous *split_event* operation.
+````{admonition} Results of the previous *split_rows* operation.
 
 | onset | duration | trial_type | stop_signal_delay | response_time | response_accuracy | response_hand | sex |
 | ----- | -------- | ---------- | ----------------- | ------------- | ----------------- | ------------- | --- |
@@ -1570,8 +1581,9 @@ All summary operations have two required parameters: *summary_name* and *summary
 
 The *summary_name* is the unique key used to identify the
 particular incarnation of this summary in the dispatcher.
-Since a particular operation file may use a given operation multiple times,
-care should be taken to make sure that it is unique.
+Care should be taken to make sure that the *summary_name* is unique within
+a given JSON remodeling file if the same summary operation is used more than
+once within the file (e.g. for before and after summary information).
 
 The *summary_filename* should also be unique and is used for saving the summary upon request.
 When the remodeler is applied to full datasets rather than single files,
@@ -1652,7 +1664,8 @@ Dataset: Number of files=1
 
 Individual files:
 
-   sub-0013_task-stopsignal_acq-seq_events.tsv: ['onset', 'duration', 'trial_type', 'stop_signal_delay', 'response_time', 'response_accuracy', 'response_hand', 'sex']
+sub-0013_task-stopsignal_acq-seq_events.tsv: 
+   ['onset', 'duration', 'trial_type', 'stop_signal_delay', 'response_time', 'response_accuracy', 'response_hand', 'sex']
 		
 ```
 ````
@@ -1694,9 +1707,15 @@ In addition to the standard parameters, *summary_name* and *summary_filename* re
 the *summarize_column_values* operation requires two additional lists to be supplied.
 The *skip_columns* list specifies the names of columns to skip entirely in the summary.
 Typically, the `onset` and `sample` columns are skipped, since they have unique values for
-each row and their values have limited information. Limited information is also gathered for
-those columns are specified as *value_columns*. The unique values in the remaining columns
-are counted.
+each row and their values have limited information.
+
+The *summarize_column_values* is mainly meant for creating summary information about columns
+containing a finite number of distinct values.
+Columns that contain numeric information will usually have distinct entries for
+each row in a tabular file and are not amenable to such summarization.
+These columns could be specified as *skip_columns*, but another option is to
+designate them as *value_columns*. The *value_columns* are reported in the summary,
+but their distinct values are not reported individually.
 
 For datasets that include multiple tasks, the event values for each task may be distinct.
 The *summarize_column_values* operation does not separate by task, but expects the
@@ -1736,8 +1755,7 @@ Context name: AOMIC_column_values
 Context type: column_values
 Context filename: AOMIC_column_values
 
-Summary details:
-
+Overall summary:
 Dataset: Total events=6 Total files=1
    Categorical column values[Events, Files]:
       response_accuracy:
@@ -1754,7 +1772,8 @@ Dataset: Total events=6 Total files=1
 
 Individual files:
 
-   sub-0013_task-stopsignal_acq-seq_events.tsv:
+sub-0013_task-stopsignal_acq-seq_events.tsv:
+Total events=200
       Categorical column values[Events, Files]:
          response_accuracy:
             correct[5, 1] n/a[1, 1]
@@ -1779,19 +1798,28 @@ results from the individual data files are shown after the overall summary.
 The individual results are similar to the overall summary because only one data file
 was processed.
 
-(summarize-events-to-sidecar-anchor)=
-### Summarize events to sidecar
+For a more extensive example see the 
+[**text**](./_static/data/summaries/FacePerception_column_values_summary.txt) 
+and [**JSON**](./_static/data/summaries/FacePerception_column_values_summary.json) 
+format summaries of the sample dataset 
+[**ds003645s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) 
+using the [**summarize_columns_rmdl.json**](./static/data/summaries/summarize_columns_rmdl.json)
+remodeling file.
 
-The summarize events to sidecar operation generates a sidecar template from the event
+
+(summarize-sidecar-from-events-anchor)=
+### Summarize sidecar from events
+
+The summarize sidecar from events operation generates a sidecar template from the event
 files in the dataset. 
 
 
-(summarize-events-to-sidecar-parameters-anchor)=
-#### Summarize events to sidecar parameters
+(summarize-sidecar-from-events-parameters-anchor)=
+#### Summarize sidecar from events parameters
 
 The following table lists the parameters required for using the summary.
 
-```{admonition} Parameters for the *summarize_events_to_sidecar* operation.
+```{admonition} Parameters for the *summarize_sidcar_from_eventsr* operation.
 :class: tip
 
 |  Parameter   | Type | Description | 
@@ -1820,16 +1848,16 @@ generating the sidecar template.
 The *value_columns* list specifies the names of columns to treat as value columns
 when generating the sidecar template.
 
-(summarize-events-to-sidecar-example-anchor)=
-#### Summarize events to sidecar example
+(summarize-sidecar-from-events-example-anchor)=
+#### Summarize sidecar from events example
 
 The following example shows the JSON for including this operation in a remodeling file.
 
-````{admonition} A JSON file with a single *summarize_events_to_sidecar* summarization operation.
+````{admonition} A JSON file with a single *summarize_sidecar_from_events* summarization operation.
 :class: tip
 ```json
 [{
-    "operation": "summarize_events_to_sidecar",
+    "operation": "summarize_sidecar_from_events",
     "description": "Generate a sidecar from the excerpted events file.",
     "parameters": {
         "summary_name": "AOMIC_generate_sidecar",
@@ -1846,7 +1874,7 @@ The results of executing this operation on the
 [**sample remodel event file**](sample-remodel-event-file-anchor)
 are shown in the following example using the text format.
 
-````{admonition} Sample *summarize_events_to_sidecar* operation results in text format.
+````{admonition} Sample *summarize_sidecar_from_events* operation results in text format.
 :class: tip
 ```text
 Context name: AOMIC_generate_sidecar
@@ -1996,9 +2024,8 @@ Context name: summarize_hed_tags
 Context type: hed_tag_summary
 Context filename: summarize_hed_tags
 
-Summary details:
-
-Dataset: Total events=6 Total files=1
+Overall summary:
+Dataset: Total events=1200 Total1 file=6
 	Main tags[events,files]:
 		Sensory events:
 			Sensory-presentation[6,1] Visual-presentation[6,1] Auditory-presentation[3,1]
@@ -2010,17 +2037,18 @@ Dataset: Total events=6 Total files=1
 		Label[6,1] Def[6,1] Delay[3,1]
 
 Individual files:
-    
-    aomic_sub-0013_excerpt_events.tsv: Type=condition-variable Total events=6 
-        Main tags[events,files]:
-            Sensory events:
-                Sensory-presentation[6,1] Visual-presentation[6,1] Auditory-presentation[3,1]
-            Agent actions:
-                Incorrect-action[2,1] Correct-action[1,1]
-            Objects:
-                Image[6,1]
-        Other tags[events,files]:
-            Label[6,1] Def[6,1] Delay[3,1]
+
+aomic_sub-0013_excerpt_events.tsv:    
+Total events=6 
+   Main tags[events,files]:
+       Sensory events:
+          Sensory-presentation[6,1] Visual-presentation[6,1] Auditory-presentation[3,1]
+       Agent actions:
+          Incorrect-action[2,1] Correct-action[1,1]
+       Objects:
+          Image[6,1]
+   Other tags[events,files]:
+       Label[6,1] Def[6,1] Delay[3,1]
 
 ```
 ````
@@ -2034,6 +2062,13 @@ The sample events file had 6 events, including 1 correct action and 2 incorrect 
 Since only one file was processed, the information for *Dataset* was 
 similar to that presented under *Individual files*.
 
+For a more extensive example, see the 
+[**text**](./_static/data/summaries/FacePerception_hed_tag_summary.txt) 
+and [**JSON**](./_static/data/summaries/FacePerception_hed_tag_summary.json) 
+format summaries of the sample dataset 
+[**ds003645s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) 
+using the [**summarize_hed_tags_rmdl.json**](./static/data/summaries/summarize_hed_tags_rmdl.json)
+remodeling file.
 
 (summarize-hed-type-anchor)=
 ### Summarize HED type
@@ -2095,24 +2130,22 @@ Context name: AOMIC_condition_variables
 Context type: hed_type_summary
 Context filename: AOMIC_condition_variables
 
-Summary details:
+Overall summary:
 
-Dataset: Type=condition-variable Total events=6 Total files=1
-   image-sex:
-      Files:['aomic_sub-0013_excerpt_events.tsv']
-      Events: 6 out of 6 total events in 1 files
-         Levels[Events,Files]: [Tags]
-            female-image-cond [4,1]: ['Female', 'Image', 'Face']
-            male-image-cond [2,1]: ['Male', 'Image', 'Face']
+Dataset: Type=condition-variable Type values=1 Total events=6 Total files=1
+   image-sex: 2 levels in 6 event(s)s out of 6 total events in 1 file(s)
+       female-image-cond [4,1]: ['Female', 'Image', 'Face']
+       male-image-cond [2,1]: ['Male', 'Image', 'Face']
 
 Individual files:
 
-   aomic_sub-0013_excerpt_events.tsv: Type=condition-variable Total events=6 
-      image-sex:
-         Levels:2  Events:6
-         Levels[Events,Files]: [Tags]
-            female-image-cond [4,1]: ['Female', 'Image', 'Face']
-            male-image-cond [2,1]: ['Male', 'Image', 'Face']
+aomic_sub-0013_excerpt_events.tsv:
+Type=condition-variable Total events=6 
+      image-sex: 2 levels in 6 events
+         female-image-cond [4 events, 1 files]: 
+            Tags: ['Female', 'Image', 'Face']
+         male-image-cond [2 events, 1 files]: 
+            Tags: ['Male', 'Image', 'Face']
 ```
 ````
 
@@ -2121,6 +2154,14 @@ a HED schema version is required and a JSON sidecar is also usually needed.
 This summary was produced by using `hed_version="8.1.0"` when creating the `dispatcher`
 and using the [**sample remodel sidecar file**](sample-remodel-sidecar-file-anchor) in the `do_op`.
 The sidecar provides the annotations that use the `condition-variable` tag in the summary.
+
+For a more extensive example, see the 
+[**text**](./_static/data/summaries/FacePerception_hed_type_summary.txt) 
+and [**JSON**](./_static/data/summaries/FacePerception_hed_type_summary.json) 
+format summaries of the sample dataset 
+[**ds003645s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) 
+using the [**summarize_hed_types_rmdl.json**](./static/data/summaries/summarize_hed_types_rmdl.json)
+remodeling file.
 
 (summarize-hed-validation-anchor)=
 ### Summarize HED validation
@@ -2151,14 +2192,16 @@ The *summarize_hed_validation* is a HED operation and the calling program must p
 and usually a JSON sidecar containing the HED annotations.
 
 The validation process takes place in two stages: first the JSON sidecar is validated.
+This strategy is used because a single error in the JSON sidecar can generate an error message
+for every line in the corresponding data file.
+
 If the JSON sidecar has errors (warnings don't count), the validation process is terminated
 without validation of the data file and assembled HED annotations.
+
 If the JSON sidecar does not have errors, 
 the validator assembles the annotations for each line in the data files and validates
 the assembled HED annotation.
 Data file-wide consistency, such as matched onsets and offsets, is also checked.
-This strategy is used because a single error in the JSON sidecar can generate an error message
-for every line in the corresponding data file.
 
 
 (summarize-hed-validation-example-anchor)=
@@ -2312,7 +2355,7 @@ replaced by `numpy.NaN` values in the incoming dataframe `df`.
 The `Dispatcher` class has a static method `prep_data` that does this replacement.
 At the end of running all the remodeling operations on a data file `Dispatcher` `run_operations`
 method replaces all of the `numpy.NaN` values with `n/a`, the value expected by BIDS.
-This operation is performed by the `Dispatcher` static method `post_proc_data`. replaces
+This operation is performed by the `Dispatcher` static method `post_proc_data`.
 
 (the-do_op-for summarization-anchor)=
 ### The do_op for summarization
@@ -2378,5 +2421,5 @@ The `BaseContext` provides universal methods for converting this summary to JSON
   get_summary_details(self, verbose=True)
 ```
 ````
-The operation associated with this instance of it associated with a given informat
+The operation associated with this instance of it associated with a given format
 implementation
