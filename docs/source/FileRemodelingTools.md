@@ -1664,7 +1664,8 @@ Dataset: Number of files=1
 
 Individual files:
 
-   sub-0013_task-stopsignal_acq-seq_events.tsv: ['onset', 'duration', 'trial_type', 'stop_signal_delay', 'response_time', 'response_accuracy', 'response_hand', 'sex']
+sub-0013_task-stopsignal_acq-seq_events.tsv: 
+   ['onset', 'duration', 'trial_type', 'stop_signal_delay', 'response_time', 'response_accuracy', 'response_hand', 'sex']
 		
 ```
 ````
@@ -1771,7 +1772,8 @@ Dataset: Total events=6 Total files=1
 
 Individual files:
 
-   sub-0013_task-stopsignal_acq-seq_events.tsv:
+sub-0013_task-stopsignal_acq-seq_events.tsv:
+Total events=200
       Categorical column values[Events, Files]:
          response_accuracy:
             correct[5, 1] n/a[1, 1]
@@ -1801,7 +1803,7 @@ For a more extensive example see the
 and [**JSON**](./_static/data/summaries/FacePerception_column_values_summary.json) 
 format summaries of the sample dataset 
 [**ds003645s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) 
-using the [**summarize_columns_rmdl.json**](./static/data/summarize_columns_rmdl.json)
+using the [**summarize_columns_rmdl.json**](./static/data/summaries/summarize_columns_rmdl.json)
 remodeling file.
 
 
@@ -2022,9 +2024,8 @@ Context name: summarize_hed_tags
 Context type: hed_tag_summary
 Context filename: summarize_hed_tags
 
-Summary details:
-
-Dataset: Total events=6 Total files=1
+Overall summary:
+Dataset: Total events=1200 Total1 file=6
 	Main tags[events,files]:
 		Sensory events:
 			Sensory-presentation[6,1] Visual-presentation[6,1] Auditory-presentation[3,1]
@@ -2036,17 +2037,18 @@ Dataset: Total events=6 Total files=1
 		Label[6,1] Def[6,1] Delay[3,1]
 
 Individual files:
-    
-    aomic_sub-0013_excerpt_events.tsv: Type=condition-variable Total events=6 
-        Main tags[events,files]:
-            Sensory events:
-                Sensory-presentation[6,1] Visual-presentation[6,1] Auditory-presentation[3,1]
-            Agent actions:
-                Incorrect-action[2,1] Correct-action[1,1]
-            Objects:
-                Image[6,1]
-        Other tags[events,files]:
-            Label[6,1] Def[6,1] Delay[3,1]
+
+aomic_sub-0013_excerpt_events.tsv:    
+Total events=6 
+   Main tags[events,files]:
+       Sensory events:
+          Sensory-presentation[6,1] Visual-presentation[6,1] Auditory-presentation[3,1]
+       Agent actions:
+          Incorrect-action[2,1] Correct-action[1,1]
+       Objects:
+          Image[6,1]
+   Other tags[events,files]:
+       Label[6,1] Def[6,1] Delay[3,1]
 
 ```
 ````
@@ -2065,7 +2067,7 @@ For a more extensive example, see the
 and [**JSON**](./_static/data/summaries/FacePerception_hed_tag_summary.json) 
 format summaries of the sample dataset 
 [**ds003645s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) 
-using the [**summarize_hed_tags_rmdl.json**](./static/data/summarize_hed_tags_rmdl.json)
+using the [**summarize_hed_tags_rmdl.json**](./static/data/summaries/summarize_hed_tags_rmdl.json)
 remodeling file.
 
 (summarize-hed-type-anchor)=
@@ -2128,24 +2130,22 @@ Context name: AOMIC_condition_variables
 Context type: hed_type_summary
 Context filename: AOMIC_condition_variables
 
-Summary details:
+Overall summary:
 
-Dataset: Type=condition-variable Total events=6 Total files=1
-   image-sex:
-      Files:['aomic_sub-0013_excerpt_events.tsv']
-      Events: 6 out of 6 total events in 1 files
-         Levels[Events,Files]: [Tags]
-            female-image-cond [4,1]: ['Female', 'Image', 'Face']
-            male-image-cond [2,1]: ['Male', 'Image', 'Face']
+Dataset: Type=condition-variable Type values=1 Total events=6 Total files=1
+   image-sex: 2 levels in 6 event(s)s out of 6 total events in 1 file(s)
+       female-image-cond [4,1]: ['Female', 'Image', 'Face']
+       male-image-cond [2,1]: ['Male', 'Image', 'Face']
 
 Individual files:
 
-   aomic_sub-0013_excerpt_events.tsv: Type=condition-variable Total events=6 
-      image-sex:
-         Levels:2  Events:6
-         Levels[Events,Files]: [Tags]
-            female-image-cond [4,1]: ['Female', 'Image', 'Face']
-            male-image-cond [2,1]: ['Male', 'Image', 'Face']
+aomic_sub-0013_excerpt_events.tsv:
+Type=condition-variable Total events=6 
+      image-sex: 2 levels in 6 events
+         female-image-cond [4 events, 1 files]: 
+            Tags: ['Female', 'Image', 'Face']
+         male-image-cond [2 events, 1 files]: 
+            Tags: ['Male', 'Image', 'Face']
 ```
 ````
 
@@ -2160,7 +2160,7 @@ For a more extensive example, see the
 and [**JSON**](./_static/data/summaries/FacePerception_hed_type_summary.json) 
 format summaries of the sample dataset 
 [**ds003645s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) 
-using the [**summarize_hed_types_rmdl.json**](./static/data/summarize_hed_types_rmdl.json)
+using the [**summarize_hed_types_rmdl.json**](./static/data/summaries/summarize_hed_types_rmdl.json)
 remodeling file.
 
 (summarize-hed-validation-anchor)=
