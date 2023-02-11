@@ -3,7 +3,7 @@ Context type: hed_tag_summary
 Context filename: hed_tag_summary
 
 Overall summary:
-Dataset: 6 files with a total of 1200 events
+Dataset: Total events=1200 Total files=6
 
    Main tags[events,files]:
       Sensory events:
@@ -22,7 +22,7 @@ Dataset: 6 files with a total of 1200 events
 Individual files:
 
 g:\eeg_ds003645s\sub-002\eeg\sub-002_task-FacePerception_run-1_events.tsv:
-g:\eeg_ds003645s\sub-002\eeg\sub-002_task-FacePerception_run-1_events.tsv: 200 events
+Total events=200
 
    Main tags[events,files]:
       Sensory events:
@@ -40,7 +40,7 @@ g:\eeg_ds003645s\sub-002\eeg\sub-002_task-FacePerception_run-1_events.tsv: 200 e
 
 
 g:\eeg_ds003645s\sub-002\eeg\sub-002_task-FacePerception_run-2_events.tsv:
-g:\eeg_ds003645s\sub-002\eeg\sub-002_task-FacePerception_run-2_events.tsv: 200 events
+Total events=200
 
    Main tags[events,files]:
       Sensory events:
@@ -58,7 +58,7 @@ g:\eeg_ds003645s\sub-002\eeg\sub-002_task-FacePerception_run-2_events.tsv: 200 e
 
 
 g:\eeg_ds003645s\sub-002\eeg\sub-002_task-FacePerception_run-3_events.tsv:
-g:\eeg_ds003645s\sub-002\eeg\sub-002_task-FacePerception_run-3_events.tsv: 200 events
+Total events=200
 
    Main tags[events,files]:
       Sensory events:
@@ -76,7 +76,7 @@ g:\eeg_ds003645s\sub-002\eeg\sub-002_task-FacePerception_run-3_events.tsv: 200 e
 
 
 g:\eeg_ds003645s\sub-003\eeg\sub-003_task-FacePerception_run-1_events.tsv:
-g:\eeg_ds003645s\sub-003\eeg\sub-003_task-FacePerception_run-1_events.tsv: 200 events
+Total events=200
 
    Main tags[events,files]:
       Sensory events:
@@ -94,7 +94,7 @@ g:\eeg_ds003645s\sub-003\eeg\sub-003_task-FacePerception_run-1_events.tsv: 200 e
 
 
 g:\eeg_ds003645s\sub-003\eeg\sub-003_task-FacePerception_run-2_events.tsv:
-g:\eeg_ds003645s\sub-003\eeg\sub-003_task-FacePerception_run-2_events.tsv: 200 events
+Total events=200
 
    Main tags[events,files]:
       Sensory events:
@@ -112,7 +112,7 @@ g:\eeg_ds003645s\sub-003\eeg\sub-003_task-FacePerception_run-2_events.tsv: 200 e
 
 
 g:\eeg_ds003645s\sub-003\eeg\sub-003_task-FacePerception_run-3_events.tsv:
-g:\eeg_ds003645s\sub-003\eeg\sub-003_task-FacePerception_run-3_events.tsv: 200 events
+Total events=200
 
    Main tags[events,files]:
       Sensory events:

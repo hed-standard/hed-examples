@@ -20,7 +20,7 @@ Dataset: Total events=1200 Total files=6
 Individual files:
 
 g:\eeg_ds003645s\sub-002\eeg\sub-002_task-FacePerception_run-1_events.tsv:
-g:\eeg_ds003645s\sub-002\eeg\sub-002_task-FacePerception_run-1_events.tsv: 200 events
+Total events=200
       Categorical column values[Events, Files]:
          event_type:
             double_press[1, 1] left_press[20, 1] right_press[23, 1] setup_right_sym[1, 1] show_circle[52, 1] show_cross[51, 1] show_face[51, 1] show_face_initial[1, 1]
@@ -36,7 +36,7 @@ g:\eeg_ds003645s\sub-002\eeg\sub-002_task-FacePerception_run-1_events.tsv: 200 e
 
 
 g:\eeg_ds003645s\sub-002\eeg\sub-002_task-FacePerception_run-2_events.tsv:
-g:\eeg_ds003645s\sub-002\eeg\sub-002_task-FacePerception_run-2_events.tsv: 200 events
+Total events=200
       Categorical column values[Events, Files]:
          event_type:
             right_press[29, 1] setup_right_sym[1, 1] show_circle[57, 1] show_cross[56, 1] show_face[56, 1] show_face_initial[1, 1]
@@ -52,7 +52,7 @@ g:\eeg_ds003645s\sub-002\eeg\sub-002_task-FacePerception_run-2_events.tsv: 200 e
 
 
 g:\eeg_ds003645s\sub-002\eeg\sub-002_task-FacePerception_run-3_events.tsv:
-g:\eeg_ds003645s\sub-002\eeg\sub-002_task-FacePerception_run-3_events.tsv: 200 events
+Total events=200
       Categorical column values[Events, Files]:
          event_type:
             right_press[29, 1] setup_right_sym[1, 1] show_circle[57, 1] show_cross[56, 1] show_face[56, 1] show_face_initial[1, 1]
@@ -68,7 +68,7 @@ g:\eeg_ds003645s\sub-002\eeg\sub-002_task-FacePerception_run-3_events.tsv: 200 e
 
 
 g:\eeg_ds003645s\sub-003\eeg\sub-003_task-FacePerception_run-1_events.tsv:
-g:\eeg_ds003645s\sub-003\eeg\sub-003_task-FacePerception_run-1_events.tsv: 200 events
+Total events=200
       Categorical column values[Events, Files]:
          event_type:
             left_press[22, 1] right_press[28, 1] setup_right_sym[1, 1] show_circle[50, 1] show_cross[49, 1] show_face[49, 1] show_face_initial[1, 1]
@@ -84,7 +84,7 @@ g:\eeg_ds003645s\sub-003\eeg\sub-003_task-FacePerception_run-1_events.tsv: 200 e
 
 
 g:\eeg_ds003645s\sub-003\eeg\sub-003_task-FacePerception_run-2_events.tsv:
-g:\eeg_ds003645s\sub-003\eeg\sub-003_task-FacePerception_run-2_events.tsv: 200 events
+Total events=200
       Categorical column values[Events, Files]:
          event_type:
             left_press[17, 1] right_press[33, 1] setup_right_sym[1, 1] show_circle[50, 1] show_cross[49, 1] show_face[49, 1] show_face_initial[1, 1]
@@ -100,7 +100,7 @@ g:\eeg_ds003645s\sub-003\eeg\sub-003_task-FacePerception_run-2_events.tsv: 200 e
 
 
 g:\eeg_ds003645s\sub-003\eeg\sub-003_task-FacePerception_run-3_events.tsv:
-g:\eeg_ds003645s\sub-003\eeg\sub-003_task-FacePerception_run-3_events.tsv: 200 events
+Total events=200
       Categorical column values[Events, Files]:
          event_type:
             left_press[24, 1] right_press[26, 1] setup_right_sym[1, 1] show_circle[50, 1] show_cross[49, 1] show_face[49, 1] show_face_initial[1, 1]
