@@ -11,17 +11,17 @@ from hed.schema.hed_schema_group import HedSchemaGroup
 if __name__ == '__main__':
     hed_xml_url = 'https://raw.githubusercontent.com/hed-standard/hed-specification/master/hedxml/HED8.0.0.xml'
     hed_library_url1 = \
-        'https://raw.githubusercontent.com/hed-standard/hed-schema-library/main/hedxml/HED_score_0.0.1.xml'
+        'https://raw.githubusercontent.com/hed-standard/hed-schemas/main/hedxml/HED_score_1.0.0.xml'
     hed_library_url2 = \
-        'https://raw.githubusercontent.com/hed-standard/hed-schema-library/main/hedxml/HED_test_1.0.2.xml'
+        'https://raw.githubusercontent.com/hed-standard/hed-schemas/main/hedxml/HED_test_1.0.2.xml'
     hed_schema = load_schema(hed_xml_url)
     hed_schema_lib1 = load_schema(hed_library_url1)
     hed_schema_lib1.set_library_prefix("sc")
     hed_schema_lib2 = load_schema(hed_library_url2)
     hed_schema_lib2.set_library_prefix("test")
     events_file = os.path.join(
-        '../../../datasets/eeg_ds003654s_hed_library/sub-003/eeg/sub-003_task-FacePerception_run-2_events.tsv')
-    json_file = os.path.join('../../../datasets/eeg_ds003654s_hed_library/task-FacePerception_events.json')
+        '../../../datasets/eeg_ds003645s_hed_library/sub-003/eeg/sub-003_task-FacePerception_run-2_events.tsv')
+    json_file = os.path.join('../../../datasets/eeg_ds003645s_hed_library/task-FacePerception_events.json')
 
     schema_group = HedSchemaGroup([hed_schema, hed_schema_lib1, hed_schema_lib2])
     validator = HedValidator(hed_schema=schema_group)

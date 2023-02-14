@@ -1,0 +1,129 @@
+Context name: hed_tag_summary
+Context type: hed_tag_summary
+Context filename: hed_tag_summary
+
+Overall summary:
+Dataset: Total events=1200 Total files=6
+
+   Main tags[events,files]:
+      Sensory events:
+         Sensory-event[942,6] Cue[626,6] Experimental-stimulus[316,6]
+      Agent actions:
+         Agent-action[252,6] Press[1,1] Indeterminate-action[1,1] Participant-response[251,6]
+      Task properties:
+         Intended-effect[626,6]
+      Objects:
+         Image[942,6] Face[148,6] Keyboard-key[1,1]
+      Properties:
+         Def[1199,6] Onset[948,6] Experimental-trial[1194,6] Pathname[942,6] Offset[936,6] Item-interval[148,6]
+   Other tags[events,files]:
+      Experiment-structure[6,6]
+
+Individual files:
+
+g:\eeg_ds003645s\sub-002\eeg\sub-002_task-FacePerception_run-1_events.tsv:
+Total events=200
+
+   Main tags[events,files]:
+      Sensory events:
+         Sensory-event[155,1] Cue[103,1] Experimental-stimulus[52,1]
+      Agent actions:
+         Agent-action[44,1] Press[1,1] Indeterminate-action[1,1] Participant-response[43,1]
+      Task properties:
+         Intended-effect[103,1]
+      Objects:
+         Image[155,1] Face[24,1] Keyboard-key[1,1]
+      Properties:
+         Def[199,1] Onset[156,1] Experimental-trial[199,1] Pathname[155,1] Offset[154,1] Item-interval[24,1]
+   Other tags[events,files]:
+      Experiment-structure[1,1]
+
+
+g:\eeg_ds003645s\sub-002\eeg\sub-002_task-FacePerception_run-2_events.tsv:
+Total events=200
+
+   Main tags[events,files]:
+      Sensory events:
+         Sensory-event[170,1] Cue[113,1] Experimental-stimulus[57,1]
+      Agent actions:
+         Agent-action[29,1] Participant-response[29,1]
+      Task properties:
+         Intended-effect[113,1]
+      Objects:
+         Image[170,1] Face[27,1]
+      Properties:
+         Def[200,1] Onset[171,1] Experimental-trial[199,1] Pathname[170,1] Offset[169,1] Item-interval[27,1]
+   Other tags[events,files]:
+      Experiment-structure[1,1]
+
+
+g:\eeg_ds003645s\sub-002\eeg\sub-002_task-FacePerception_run-3_events.tsv:
+Total events=200
+
+   Main tags[events,files]:
+      Sensory events:
+         Sensory-event[170,1] Cue[113,1] Experimental-stimulus[57,1]
+      Agent actions:
+         Agent-action[29,1] Participant-response[29,1]
+      Task properties:
+         Intended-effect[113,1]
+      Objects:
+         Image[170,1] Face[27,1]
+      Properties:
+         Def[200,1] Onset[171,1] Experimental-trial[199,1] Pathname[170,1] Offset[169,1] Item-interval[27,1]
+   Other tags[events,files]:
+      Experiment-structure[1,1]
+
+
+g:\eeg_ds003645s\sub-003\eeg\sub-003_task-FacePerception_run-1_events.tsv:
+Total events=200
+
+   Main tags[events,files]:
+      Sensory events:
+         Sensory-event[149,1] Cue[99,1] Experimental-stimulus[50,1]
+      Agent actions:
+         Agent-action[50,1] Participant-response[50,1]
+      Task properties:
+         Intended-effect[99,1]
+      Objects:
+         Image[149,1] Face[24,1]
+      Properties:
+         Def[200,1] Onset[150,1] Experimental-trial[199,1] Pathname[149,1] Offset[148,1] Item-interval[24,1]
+   Other tags[events,files]:
+      Experiment-structure[1,1]
+
+
+g:\eeg_ds003645s\sub-003\eeg\sub-003_task-FacePerception_run-2_events.tsv:
+Total events=200
+
+   Main tags[events,files]:
+      Sensory events:
+         Sensory-event[149,1] Cue[99,1] Experimental-stimulus[50,1]
+      Agent actions:
+         Agent-action[50,1] Participant-response[50,1]
+      Task properties:
+         Intended-effect[99,1]
+      Objects:
+         Image[149,1] Face[23,1]
+      Properties:
+         Def[200,1] Onset[150,1] Experimental-trial[199,1] Pathname[149,1] Offset[148,1] Item-interval[23,1]
+   Other tags[events,files]:
+      Experiment-structure[1,1]
+
+
+g:\eeg_ds003645s\sub-003\eeg\sub-003_task-FacePerception_run-3_events.tsv:
+Total events=200
+
+   Main tags[events,files]:
+      Sensory events:
+         Sensory-event[149,1] Cue[99,1] Experimental-stimulus[50,1]
+      Agent actions:
+         Agent-action[50,1] Participant-response[50,1]
+      Task properties:
+         Intended-effect[99,1]
+      Objects:
+         Image[149,1] Face[23,1]
+      Properties:
+         Def[200,1] Onset[150,1] Experimental-trial[199,1] Pathname[149,1] Offset[148,1] Item-interval[23,1]
+   Other tags[events,files]:
+      Experiment-structure[1,1]

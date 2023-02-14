@@ -1,0 +1,10 @@
+[
+    {
+        "operation": "remove_columns",
+        "description": "Remove unwanted columns prior to analysis",
+        "parameters": {
+            "column_names": ["value", "sample"],
+            "ignore_missing": true
+        }
+    }
+]

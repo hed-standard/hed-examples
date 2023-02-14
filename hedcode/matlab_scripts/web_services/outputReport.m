@@ -40,5 +40,17 @@ function [] = outputReport(response, theTitle)
             fprintf('\n%s: %s\n', defNames{k}, results.definitions.(name));
         end
     end
+    
+    %% Output the file descriptions
+    if isfield(results, 'file_list') && ...
+        isstruct(results.file_list)
+        list = results.file_list;
+        fprintf('\n\n----------Summaries----------\n');
+        for k = 1:length(list)
+           fprintf('\nFile:%s File type:%s\n', ...
+               list(k).file_name, list(k).file_type)
+           fprintf('%s\n', list(k).content);
+        end
+    end
         
 end

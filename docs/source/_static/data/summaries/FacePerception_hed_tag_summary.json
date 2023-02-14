@@ -1,0 +1,1013 @@
+{
+    "Dataset": {
+        "Context name": "hed_tag_summary",
+        "Context type": "hed_tag_summary",
+        "Context filename": "hed_tag_summary",
+        "Overall summary": {
+            "name": "Dataset",
+            "total_events": 1200,
+            "files": [
+                "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv",
+                "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-2_events.tsv",
+                "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-3_events.tsv",
+                "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-1_events.tsv",
+                "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-2_events.tsv",
+                "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-3_events.tsv"
+            ],
+            "Main tags": {
+                "Sensory events": [
+                    {
+                        "tag": "Sensory-event",
+                        "events": 942,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-2_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-3_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-1_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-2_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-3_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Cue",
+                        "events": 626,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-2_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-3_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-1_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-2_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-3_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Experimental-stimulus",
+                        "events": 316,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-2_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-3_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-1_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-2_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-3_events.tsv"
+                        ]
+                    }
+                ],
+                "Agent actions": [
+                    {
+                        "tag": "Agent-action",
+                        "events": 252,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-2_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-3_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-1_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-2_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-3_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Press",
+                        "events": 1,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Indeterminate-action",
+                        "events": 1,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Participant-response",
+                        "events": 251,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-2_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-3_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-1_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-2_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-3_events.tsv"
+                        ]
+                    }
+                ],
+                "Task properties": [
+                    {
+                        "tag": "Intended-effect",
+                        "events": 626,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-2_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-3_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-1_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-2_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-3_events.tsv"
+                        ]
+                    }
+                ],
+                "Objects": [
+                    {
+                        "tag": "Image",
+                        "events": 942,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-2_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-3_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-1_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-2_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-3_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Face",
+                        "events": 148,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-2_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-3_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-1_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-2_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-3_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Keyboard-key",
+                        "events": 1,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv"
+                        ]
+                    }
+                ],
+                "Properties": [
+                    {
+                        "tag": "Def",
+                        "events": 1199,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-2_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-3_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-1_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-2_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-3_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Onset",
+                        "events": 948,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-2_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-3_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-1_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-2_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-3_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Experimental-trial",
+                        "events": 1194,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-2_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-3_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-1_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-2_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-3_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Pathname",
+                        "events": 942,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-2_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-3_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-1_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-2_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-3_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Offset",
+                        "events": 936,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-2_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-3_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-1_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-2_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-3_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Item-interval",
+                        "events": 148,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-2_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-3_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-1_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-2_events.tsv",
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-3_events.tsv"
+                        ]
+                    }
+                ]
+            },
+            "Other tags": [
+                {
+                    "tag": "Experiment-structure",
+                    "events": 6,
+                    "files": [
+                        "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv",
+                        "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-2_events.tsv",
+                        "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-3_events.tsv",
+                        "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-1_events.tsv",
+                        "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-2_events.tsv",
+                        "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-3_events.tsv"
+                    ]
+                }
+            ]
+        }
+    },
+    "Individual files": {
+        "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv": {
+            "name": "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv",
+            "total_events": 200,
+            "files": [
+                "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv"
+            ],
+            "Main tags": {
+                "Sensory events": [
+                    {
+                        "tag": "Sensory-event",
+                        "events": 155,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Cue",
+                        "events": 103,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Experimental-stimulus",
+                        "events": 52,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv"
+                        ]
+                    }
+                ],
+                "Agent actions": [
+                    {
+                        "tag": "Agent-action",
+                        "events": 44,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Press",
+                        "events": 1,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Indeterminate-action",
+                        "events": 1,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Participant-response",
+                        "events": 43,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv"
+                        ]
+                    }
+                ],
+                "Task properties": [
+                    {
+                        "tag": "Intended-effect",
+                        "events": 103,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv"
+                        ]
+                    }
+                ],
+                "Objects": [
+                    {
+                        "tag": "Image",
+                        "events": 155,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Face",
+                        "events": 24,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Keyboard-key",
+                        "events": 1,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv"
+                        ]
+                    }
+                ],
+                "Properties": [
+                    {
+                        "tag": "Def",
+                        "events": 199,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Onset",
+                        "events": 156,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Experimental-trial",
+                        "events": 199,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Pathname",
+                        "events": 155,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Offset",
+                        "events": 154,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Item-interval",
+                        "events": 24,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv"
+                        ]
+                    }
+                ]
+            },
+            "Other tags": [
+                {
+                    "tag": "Experiment-structure",
+                    "events": 1,
+                    "files": [
+                        "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv"
+                    ]
+                }
+            ]
+        },
+        "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-2_events.tsv": {
+            "name": "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-2_events.tsv",
+            "total_events": 200,
+            "files": [
+                "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-2_events.tsv"
+            ],
+            "Main tags": {
+                "Sensory events": [
+                    {
+                        "tag": "Sensory-event",
+                        "events": 170,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-2_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Cue",
+                        "events": 113,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-2_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Experimental-stimulus",
+                        "events": 57,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-2_events.tsv"
+                        ]
+                    }
+                ],
+                "Agent actions": [
+                    {
+                        "tag": "Agent-action",
+                        "events": 29,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-2_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Participant-response",
+                        "events": 29,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-2_events.tsv"
+                        ]
+                    }
+                ],
+                "Task properties": [
+                    {
+                        "tag": "Intended-effect",
+                        "events": 113,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-2_events.tsv"
+                        ]
+                    }
+                ],
+                "Objects": [
+                    {
+                        "tag": "Image",
+                        "events": 170,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-2_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Face",
+                        "events": 27,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-2_events.tsv"
+                        ]
+                    }
+                ],
+                "Properties": [
+                    {
+                        "tag": "Def",
+                        "events": 200,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-2_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Onset",
+                        "events": 171,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-2_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Experimental-trial",
+                        "events": 199,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-2_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Pathname",
+                        "events": 170,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-2_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Offset",
+                        "events": 169,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-2_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Item-interval",
+                        "events": 27,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-2_events.tsv"
+                        ]
+                    }
+                ]
+            },
+            "Other tags": [
+                {
+                    "tag": "Experiment-structure",
+                    "events": 1,
+                    "files": [
+                        "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-2_events.tsv"
+                    ]
+                }
+            ]
+        },
+        "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-3_events.tsv": {
+            "name": "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-3_events.tsv",
+            "total_events": 200,
+            "files": [
+                "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-3_events.tsv"
+            ],
+            "Main tags": {
+                "Sensory events": [
+                    {
+                        "tag": "Sensory-event",
+                        "events": 170,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-3_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Cue",
+                        "events": 113,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-3_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Experimental-stimulus",
+                        "events": 57,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-3_events.tsv"
+                        ]
+                    }
+                ],
+                "Agent actions": [
+                    {
+                        "tag": "Agent-action",
+                        "events": 29,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-3_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Participant-response",
+                        "events": 29,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-3_events.tsv"
+                        ]
+                    }
+                ],
+                "Task properties": [
+                    {
+                        "tag": "Intended-effect",
+                        "events": 113,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-3_events.tsv"
+                        ]
+                    }
+                ],
+                "Objects": [
+                    {
+                        "tag": "Image",
+                        "events": 170,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-3_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Face",
+                        "events": 27,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-3_events.tsv"
+                        ]
+                    }
+                ],
+                "Properties": [
+                    {
+                        "tag": "Def",
+                        "events": 200,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-3_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Onset",
+                        "events": 171,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-3_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Experimental-trial",
+                        "events": 199,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-3_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Pathname",
+                        "events": 170,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-3_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Offset",
+                        "events": 169,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-3_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Item-interval",
+                        "events": 27,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-3_events.tsv"
+                        ]
+                    }
+                ]
+            },
+            "Other tags": [
+                {
+                    "tag": "Experiment-structure",
+                    "events": 1,
+                    "files": [
+                        "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-3_events.tsv"
+                    ]
+                }
+            ]
+        },
+        "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-1_events.tsv": {
+            "name": "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-1_events.tsv",
+            "total_events": 200,
+            "files": [
+                "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-1_events.tsv"
+            ],
+            "Main tags": {
+                "Sensory events": [
+                    {
+                        "tag": "Sensory-event",
+                        "events": 149,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-1_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Cue",
+                        "events": 99,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-1_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Experimental-stimulus",
+                        "events": 50,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-1_events.tsv"
+                        ]
+                    }
+                ],
+                "Agent actions": [
+                    {
+                        "tag": "Agent-action",
+                        "events": 50,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-1_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Participant-response",
+                        "events": 50,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-1_events.tsv"
+                        ]
+                    }
+                ],
+                "Task properties": [
+                    {
+                        "tag": "Intended-effect",
+                        "events": 99,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-1_events.tsv"
+                        ]
+                    }
+                ],
+                "Objects": [
+                    {
+                        "tag": "Image",
+                        "events": 149,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-1_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Face",
+                        "events": 24,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-1_events.tsv"
+                        ]
+                    }
+                ],
+                "Properties": [
+                    {
+                        "tag": "Def",
+                        "events": 200,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-1_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Onset",
+                        "events": 150,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-1_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Experimental-trial",
+                        "events": 199,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-1_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Pathname",
+                        "events": 149,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-1_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Offset",
+                        "events": 148,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-1_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Item-interval",
+                        "events": 24,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-1_events.tsv"
+                        ]
+                    }
+                ]
+            },
+            "Other tags": [
+                {
+                    "tag": "Experiment-structure",
+                    "events": 1,
+                    "files": [
+                        "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-1_events.tsv"
+                    ]
+                }
+            ]
+        },
+        "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-2_events.tsv": {
+            "name": "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-2_events.tsv",
+            "total_events": 200,
+            "files": [
+                "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-2_events.tsv"
+            ],
+            "Main tags": {
+                "Sensory events": [
+                    {
+                        "tag": "Sensory-event",
+                        "events": 149,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-2_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Cue",
+                        "events": 99,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-2_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Experimental-stimulus",
+                        "events": 50,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-2_events.tsv"
+                        ]
+                    }
+                ],
+                "Agent actions": [
+                    {
+                        "tag": "Agent-action",
+                        "events": 50,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-2_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Participant-response",
+                        "events": 50,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-2_events.tsv"
+                        ]
+                    }
+                ],
+                "Task properties": [
+                    {
+                        "tag": "Intended-effect",
+                        "events": 99,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-2_events.tsv"
+                        ]
+                    }
+                ],
+                "Objects": [
+                    {
+                        "tag": "Image",
+                        "events": 149,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-2_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Face",
+                        "events": 23,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-2_events.tsv"
+                        ]
+                    }
+                ],
+                "Properties": [
+                    {
+                        "tag": "Def",
+                        "events": 200,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-2_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Onset",
+                        "events": 150,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-2_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Experimental-trial",
+                        "events": 199,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-2_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Pathname",
+                        "events": 149,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-2_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Offset",
+                        "events": 148,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-2_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Item-interval",
+                        "events": 23,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-2_events.tsv"
+                        ]
+                    }
+                ]
+            },
+            "Other tags": [
+                {
+                    "tag": "Experiment-structure",
+                    "events": 1,
+                    "files": [
+                        "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-2_events.tsv"
+                    ]
+                }
+            ]
+        },
+        "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-3_events.tsv": {
+            "name": "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-3_events.tsv",
+            "total_events": 200,
+            "files": [
+                "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-3_events.tsv"
+            ],
+            "Main tags": {
+                "Sensory events": [
+                    {
+                        "tag": "Sensory-event",
+                        "events": 149,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-3_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Cue",
+                        "events": 99,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-3_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Experimental-stimulus",
+                        "events": 50,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-3_events.tsv"
+                        ]
+                    }
+                ],
+                "Agent actions": [
+                    {
+                        "tag": "Agent-action",
+                        "events": 50,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-3_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Participant-response",
+                        "events": 50,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-3_events.tsv"
+                        ]
+                    }
+                ],
+                "Task properties": [
+                    {
+                        "tag": "Intended-effect",
+                        "events": 99,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-3_events.tsv"
+                        ]
+                    }
+                ],
+                "Objects": [
+                    {
+                        "tag": "Image",
+                        "events": 149,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-3_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Face",
+                        "events": 23,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-3_events.tsv"
+                        ]
+                    }
+                ],
+                "Properties": [
+                    {
+                        "tag": "Def",
+                        "events": 200,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-3_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Onset",
+                        "events": 150,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-3_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Experimental-trial",
+                        "events": 199,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-3_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Pathname",
+                        "events": 149,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-3_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Offset",
+                        "events": 148,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-3_events.tsv"
+                        ]
+                    },
+                    {
+                        "tag": "Item-interval",
+                        "events": 23,
+                        "files": [
+                            "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-3_events.tsv"
+                        ]
+                    }
+                ]
+            },
+            "Other tags": [
+                {
+                    "tag": "Experiment-structure",
+                    "events": 1,
+                    "files": [
+                        "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-3_events.tsv"
+                    ]
+                }
+            ]
+        }
+    }
+}

@@ -23,7 +23,7 @@ from hed.validator.hed_validator import HedValidator
 if __name__ == '__main__':
     hed_xml_url = 'https://raw.githubusercontent.com/hed-standard/hed-specification/master/hedxml/HED8.0.0.xml'
     hed_schema = load_schema(hed_xml_url)
-    json_filename = "../../../datasets/eeg_ds003654s_hed/task-FacePerception_events.json"
+    json_filename = "../../../datasets/eeg_ds003645s_hed/task-FacePerception_events.json"
 
     # Example 1
     print("\nExample 1 demonstrating Sidecar validation....")
@@ -31,9 +31,9 @@ if __name__ == '__main__':
     validator = HedValidator(hed_schema)
     issues = sidecar.validate_entries(validator, check_for_warnings=True)
     if issues:
-        print(get_printable_issue_string(issues), "JSON dictionary from eeg_ds003654s_hed has validation errors")
+        print(get_printable_issue_string(issues), "JSON dictionary from eeg_ds003645s_hed has validation errors")
     else:
-        print("JSON dictionary from eeg_ds003654s_hed has no validation errors")
+        print("JSON dictionary from eeg_ds003645s_hed has no validation errors")
 
     # Example 2: Convert JSON to long and output it.
     print("\n\nExample 2 converting a Sidecar to long in place ...")
