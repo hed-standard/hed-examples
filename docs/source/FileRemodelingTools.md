@@ -1803,7 +1803,7 @@ For a more extensive example see the
 and [**JSON**](./_static/data/summaries/FacePerception_column_values_summary.json) 
 format summaries of the sample dataset 
 [**ds003645s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) 
-using the [**summarize_columns_rmdl.json**](./static/data/summaries/summarize_columns_rmdl.json)
+using the [**summarize_columns_rmdl.json**](./_static/data/summaries/summarize_columns_rmdl.json)
 remodeling file.
 
 
@@ -2067,7 +2067,7 @@ For a more extensive example, see the
 and [**JSON**](./_static/data/summaries/FacePerception_hed_tag_summary.json) 
 format summaries of the sample dataset 
 [**ds003645s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) 
-using the [**summarize_hed_tags_rmdl.json**](./static/data/summaries/summarize_hed_tags_rmdl.json)
+using the [**summarize_hed_tags_rmdl.json**](./_static/data/summaries/summarize_hed_tags_rmdl.json)
 remodeling file.
 
 (summarize-hed-type-anchor)=
@@ -2160,7 +2160,7 @@ For a more extensive example, see the
 and [**JSON**](./_static/data/summaries/FacePerception_hed_type_summary.json) 
 format summaries of the sample dataset 
 [**ds003645s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) 
-using the [**summarize_hed_types_rmdl.json**](./static/data/summaries/summarize_hed_types_rmdl.json)
+using the [**summarize_hed_types_rmdl.json**](./_static/data/summaries/summarize_hed_types_rmdl.json)
 remodeling file.
 
 (summarize-hed-validation-anchor)=

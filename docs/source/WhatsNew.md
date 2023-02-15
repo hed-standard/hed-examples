@@ -1,28 +1,30 @@
 (whats-new-anchor)=
 # What's new?
 
-
-> **Upcoming ...   
-> March 27, 2023**: **HED Workshop at CNS 2023**
+<div>
+<span style="color:red;font-weight:bold;">Upcoming ...</span>
+</div>
+ 
+**March 27, 2023**: **HED Workshop at CNS 2023**   
 > **Title:** *Recording What Happened during your experiment using Hierarchical Event Descriptors (HED)*   
 > Led by [**Scott Makeig**](https://sccn.ucsd.edu/~scott/) UCSD and assisted by members of the HED Working Group.    
-> **Time and location:** at March 27, 2023 12:15-1:15 pm Seacliff room   Hyatt Regency San Francisco Hotel.   
+> **Time and location:** March 27, 2023 12:15-1:15 pm Seacliff Room  Hyatt Regency San Francisco Hotel.   
 
-> **Upcoming ...   
-> Feb 28, 2023**: **INCF Software Highlight on HED**   
+<div>
+<span style="color:red;font-weight:bold;">Upcoming ...</span>
+</div>
+
+**Feb 28, 2023**: **INCF Software Highlight on HED**   
 > Presented by [**Kay Robbins**](https://www.utsa.edu/sciences/computer-science/faculty/KayRobbins.html) UTSA, 
 > member of the HED Working Group.      
 > **Time and location:** 10 am CST Zoom.     
-<hr/>  
-<hr/>
 
-> **February 14, 2023**: **HEDTools 0.2.0 is released.**   
-> This release includes the HED remodeling tools.   
-> Improved local caching and schema validation messages are included.   
-> This is the first release with distinct `stable`, `master`, and `develop` branches.
+**February 14, 2023**: **HEDTools 0.2.0 is released.**  
+- This release includes the HED remodeling tools.   
+- Improved local caching and schema validation messages are included.   
+- This is the first release with distinct `stable`, `master`, and `develop` branches.
 
 **January 28, 2023**: **HED SCORE Library v1.0.0 released**<br/>
-
 > The HED score library schema v1.0.0 has been officially released.
 > This library is based on the Standardized Computer-based Organized Reporting of EEG
 > ([**SCORE**](https://pubmed.ncbi.nlm.nih.gov/28838815/)) standard and adapted for
