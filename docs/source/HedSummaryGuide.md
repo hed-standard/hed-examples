@@ -109,7 +109,7 @@ Notice that there is one *double_press* event in the *event_type* column of one 
 six event files analyzed in this summary.
 To narrow down which file this *double_press* event occurred in,
 we could look at the 
-[**full text summary**](./_static/data/summaries/FacePerception_column_value_summary.txt),
+[**full text summary**](./_static/data/summaries/FacePerception_column_values_summary.txt),
 which includes individual summaries for each event file.
 
 We also observe that three values *famous_face*, *unfamiliar_face* and *scrambled_face*
