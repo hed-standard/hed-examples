@@ -7,17 +7,19 @@
  
 **March 27, 2023**: **HED Workshop at CNS 2023**   
 > **Title:** *Recording What Happened during your experiment using Hierarchical Event Descriptors (HED)*   
-> Led by [**Scott Makeig**](https://sccn.ucsd.edu/~scott/) UCSD and assisted by members of the HED Working Group.    
-> **Time and location:** March 27, 2023 12:15-1:15 pm Seacliff Room  Hyatt Regency San Francisco Hotel.   
+> **Presenter**: [**Scott Makeig**](https://sccn.ucsd.edu/~scott/) UCSD and assisted by members of the HED Working Group.    
+> **Time and location:** 12:15-1:15 pm Seacliff Room  Hyatt Regency San Francisco Hotel.   
 
 <div>
 <span style="color:red;font-weight:bold;">Upcoming ...</span>
 </div>
 
 **Feb 28, 2023**: **INCF Software Highlight on HED**   
-> Presented by [**Kay Robbins**](https://www.utsa.edu/sciences/computer-science/faculty/KayRobbins.html) UTSA, 
-> member of the HED Working Group.      
-> **Time and location:** 10 am CST Zoom.     
+> **Title:** *HED, a practical system for describing an experiment using an analysis-ready framework*   
+> **Presenter:** [**Kay Robbins**](https://www.utsa.edu/sciences/computer-science/faculty/KayRobbins.html) UTSA, 
+> member of the HED Working Group.  
+> [**Abstract**](https://ocns.github.io/SoftwareWG/2023/02/17/software-highlight-kay-robbins-hed.html).      
+> **Time and location:** 10 am CST [**Zoom**](https://ucl.zoom.us/j/99321986413?pwd=OUdFTlJ3NVloUmJ1U0Q3WE9vRERMZz09#success).     
 
 **February 14, 2023**: **HEDTools 0.2.0 is released.**  
 - This release includes the HED remodeling tools.   
