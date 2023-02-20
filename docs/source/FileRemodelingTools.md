@@ -239,7 +239,7 @@ The programs use a standard command-line argument list for specifying input as s
 | ----------- | -------- | ------- |
 |*run_remodel_backup* | *data_dir*<br/>*-e -\\-extensions*<br/>*-f -\\-file-suffix*<br/>*-n -\\-backup-name*<br/>*-t -\\-task-names*<br/>*-v -\\-verbose*<br/>*-x -\\-exclude-dirs*| Create a backup event files. |
 |*run_remodel* | *data_dir*<br/>*model_path*<br/>*-b -\\-bids-format*<br/>*-e -\\-extensions*<br/>*-f -\\-file-suffix*<br/>*-i -\\-individual-summaries*<br/>*-n -\\-backup-name*<br/>*-j -\\-json-sidecar*<br/>*-r -\\-hed-version*<br/>*-s -\\-save-formats*<br/>*-t -\\-task-names*<br/>*-v -\\-verbose*<br/>*-x -\\-exclude-dirs* | Restructure or summarize the event files.<br/> <br/>If the backup name (*-n*) argument is omitted,<br>the backup called *default_back* is used.<br/>If you want to skip the backup, use *''*. |
-|*run_remodel_restore* | *data_dir*<br/>*-n -\\-backup-name*<br/>*-t -\\-task-names**-v -\\-verbose* | Restore a backup of event files. |
+|*run_remodel_restore* | *data_dir*<br/>*-n -\\-backup-name*<br/>*-t -\\-task-names*<br/>*-v -\\-verbose* | Restore a backup of event files. |
 
 ````
 All the scripts have a required argument, which is the full path of the dataset root (*data_dir*).
