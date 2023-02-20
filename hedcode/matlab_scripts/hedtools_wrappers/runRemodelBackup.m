@@ -1,15 +1,8 @@
-function issueString = runRemodelBackup(remodel_args)
-% Validate the HED annotations in a BIDS dataset
+function runRemodelBackup(backup_args)
+% Create a remodeling backup.
 % 
 % Parameters:
-%    dataPath  - Full path to the root directory of a BIDS dataset.
-%
-% Returns:
-%     issueString - A string with the validation issues suitable for
-%                   printing (has newlines).
-%
-    backup_dir = [remodel_args{1} filesep 'derivatives' filesep, ...
-        'remodeling' filesep, 'backups'];
+%    backup_args  - cell array with backup arguments.
+
     py.importlib.import_module('hed');
-    issues = py.hed.tools.remodeling.cli.run_remodel_backup.main(remodel_args);
-    issueString = 'to here';
+    py.hed.tools.remodeling.cli.run_remodel_backup.main(backup_args);

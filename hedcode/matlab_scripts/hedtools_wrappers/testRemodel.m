@@ -1,9 +1,16 @@
-%% A test script for a wrapper function to validate HED in a BIDS dataset.
+%% A test script for a wrapper function for run_remodel.
 
 dataPath = 'G:\eeg_ds003645s_hed';
 
-%% Make backup if it doesn't exist
-
+%% Backup the data using default backup name (only should be done once)
 backup_args = {dataPath, '-x', 'stimuli', 'derivatives'};
-issueString = runRemodelBackup(backup_args);
-fprintf('Validation errors for dataset %s:\n%s\n', dataPath, issueString);
+runRemodelBackup(backup_args);
+
+%% Run the remodeling file
+remodelFile = 'G:\summarize_hed_types_rmdl.json';
+remodel_args = {dataPath, remodelFile, '-b', '-x', 'stimuli', 'derivatives'};
+runRemodel(remodel_args);
+
+%% Restore the data files to originals (usually does not have to be done)
+restore_args = {dataPath};
+runRemodelRestore(restore_args);
