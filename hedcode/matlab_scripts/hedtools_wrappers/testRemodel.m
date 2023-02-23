@@ -8,6 +8,7 @@ runRemodelBackup(backup_args);
 
 %% Run the remodeling file
 remodelFile = 'G:\summarize_hed_types_rmdl.json';
+dataPath = 'G:\eeg_ds003645s_hed';
 remodel_args = {dataPath, remodelFile, '-b', '-x', 'stimuli', 'derivatives'};
 runRemodel(remodel_args);
 

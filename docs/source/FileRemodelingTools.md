@@ -1706,7 +1706,7 @@ The following table lists the parameters required for using the summary.
 In addition to the standard parameters, *summary_name* and *summary_filename* required of all summaries,
 the *summarize_column_values* operation requires two additional lists to be supplied.
 The *skip_columns* list specifies the names of columns to skip entirely in the summary.
-Typically, the `onset` and `sample` columns are skipped, since they have unique values for
+Typically, the `onset`, `duration`, and `sample` columns are skipped, since they have unique values for
 each row and their values have limited information.
 
 The *summarize_column_values* is mainly meant for creating summary information about columns

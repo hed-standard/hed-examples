@@ -761,7 +761,7 @@ Example MATLAB calling code for this function:
 
 ```matlab
 
-dataPath = 'G:\eeg_ds003645s_hed';
+dataPath = 'G:\ds003645';
 remodelFile = 'G:\summarize_hed_types_rmdl.json';
 remodel_args = {dataPath, remodelFile, '-b', '-x', 'stimuli', 'derivatives'};
 runRemodel(remodel_args);
@@ -771,6 +771,10 @@ runRemodel(remodel_args);
 
 The command line arguments to the various remodeling functions are
 given in a cell array, rather than a regular MATLAB array.
+For the remodeling operations, first and second operation must be the dataset root
+directory and the remodeling file name, respectively.
+In this example, dataset `ds003645` has been downloaded from [**openNeuro**](https://openneuro.org) to the `G:\` drive.
+The remodeling file used in this example can be found at 
 See [**File remodeling quickstart**](FileRemodelingQuickstart.md)
 and [**File remodeling tools**](FileRemodelingTools.md) for
 additional information.
