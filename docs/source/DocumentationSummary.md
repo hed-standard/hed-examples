@@ -44,7 +44,7 @@ and tagging hints.
 * - **Score library schemas**
   - 
 * - Expandable HTML
-  - [https://www.hedtags.org/display_hed_score.html](https://www.hedtags.org/display_hed_score.html)
+  - [https://www.hedtags.org/display_hed.html?schema=score](https://www.hedtags.org/display_hed.html?schema=score)
 * - Expandable prerelease HTML
   - [https://www.hedtags.org/display_hed_score_prerelease.html](https://www.hedtags.org/display_hed_score_prerelease.html)
 * - Mediawiki	

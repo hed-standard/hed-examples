@@ -31,6 +31,6 @@ if they come from the standard schema.
 
 | Viewer | Link | Use |
 | ------ | ---- |  --- |
-|Expandable<br/>HTML | [**Latest**](https://www.hedtags.org/display_hed_score.html) or<br/> [**Prerelease**](https://www.hedtags.org/display_hed_score_prerelease.html) | Look up or search for tags.<br/>View during vocabulary development. |
+|Expandable<br/>HTML | [**Latest**](https://www.hedtags.org/display_hed.html?schema=score) or<br/> [**Prerelease**](https://www.hedtags.org/display_hed_score_prerelease.html) | Look up or search for tags.<br/>View during vocabulary development. |
 | XML | [**Raw**](https://raw.githubusercontent.com/hed-standard/hed-schemas/main/library_schemas/score/hedxml/HED_score_1.0.0.xml) or<br/>[**Formatted**](https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/score/hedxml/HED_score_1.0.0.xml) | Accessed by tools for validation and analysis. |
 | Mediawiki | [**Raw**](https://raw.githubusercontent.com/hed-standard/hed-schemas/main/library_schemas/score/hedwiki/HED_score_1.0.0.mediawiki) or<br/> [**Formatted**](https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/score/hedwiki/HED_score_1.0.0.mediawiki) |  Edit to create a new schema.  |
