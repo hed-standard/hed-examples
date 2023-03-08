@@ -10,19 +10,15 @@
 > **Presenter**: [**Scott Makeig**](https://sccn.ucsd.edu/~scott/) UCSD and assisted by members of the HED Working Group.    
 > **Time and location:** 12:15-1:15 pm Seacliff Room  Hyatt Regency San Francisco Hotel.   
 
-<div>
-<span style="color:red;font-weight:bold;">Upcoming ...</span>
-</div>
-
 **Feb 28, 2023**: **INCF Software Highlight on HED**   
 > **Title:** *HED, a practical system for describing an experiment using an analysis-ready framework*   
 > **Presenter:** [**Kay Robbins**](https://www.utsa.edu/sciences/computer-science/faculty/KayRobbins.html) UTSA, 
 > member of the HED Working Group.  
-> [**Abstract**](https://ocns.github.io/SoftwareWG/2023/02/17/software-highlight-kay-robbins-hed.html).      
-> **Time and location:** 10 am CST [**Zoom**](https://ucl.zoom.us/j/99321986413?pwd=OUdFTlJ3NVloUmJ1U0Q3WE9vRERMZz09#success).     
+> [**Abstract**](https://ocns.github.io/SoftwareWG/2023/02/17/software-highlight-kay-robbins-hed.html). 
 
 **February 22, 2023**: **HED YouTube Channel goes live**<br/>
-> First video:  [**HED Tagging 101**](https://youtu.be/iRAWO-Fn6Bw)
+> First video:  [**HED Tagging 101**](https://youtu.be/iRAWO-Fn6Bw)  
+> HED YouTube channel: [**https://www.youtube.com/@hedworkinggroup/videos**](https://www.youtube.com/@hedworkinggroup/videos)
 
 **February 14, 2023**: **HEDTools 0.2.0 is released.**  
 - This release includes the HED remodeling tools.   

@@ -449,8 +449,8 @@ in making sure that their schema has the correct form.
 The schema tools also provide an easy mechanism for converting between
  `.xml` and `.mediawiki` schema formats.
 
-You can view standard schema using the 
-[expandable schema viewer](https://www.hedtags.org/display_hed.html).
+You can view standard schema using the expandable
+[**HED vocabulary viewer**](https://www.hedtags.org/display_hed.html).
 
 #### Validate a HED schema
 
