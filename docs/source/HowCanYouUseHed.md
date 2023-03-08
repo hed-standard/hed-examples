@@ -693,11 +693,12 @@ please email hed.maintainers@gmail.com.
 ### Viewing available schemas
 
 The first step in using or improving the HED vocabularies is to explore what
-is there using the [**Standard viewer**](https://www.hedtags.org/display_hed.html) for the HED standard
+is there using the [**HED vocabulary viewer**](https://www.hedtags.org/display_hed.html) for the HED standard
 schema.
 
 The SCORE library for clinical annotation of EEG
-can be viewed using the [**Score viewer**](https://www.hedtags.org/display_hed_score.html)
+can be viewed using the [**HED vocabulary viewer**](https://www.hedtags.org/display_hed.html?schema=score)
+for score.
 
 (improving-an-existing-schema-anchor)=
 ### Improving an existing schema
