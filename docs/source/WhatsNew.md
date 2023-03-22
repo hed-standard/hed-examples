@@ -10,6 +10,10 @@
 > **Presenter**: [**Scott Makeig**](https://sccn.ucsd.edu/~scott/) UCSD and assisted by members of the HED Working Group.    
 > **Time and location:** 12:15-1:15 pm Seacliff Room  Hyatt Regency San Francisco Hotel.   
 
+**March 22-23, 2023**: **HED at the 2023 Annual Assembly of the Global Brain Consortium**<br/>
+> Directions in EEG data-sharing - panel co-chaired by Kay Robbins and Dora Hermes  
+> [**Program and Registration**](https://globalbrainconsortium.org/documents/GBC_March-2023_Agenda_Annual_Meeting.pdf)
+
 **Feb 28, 2023**: **INCF Software Highlight on HED**   
 > **Title:** *HED, a practical system for describing an experiment using an analysis-ready framework*   
 > **Presenter:** [**Kay Robbins**](https://www.utsa.edu/sciences/computer-science/faculty/KayRobbins.html) UTSA, 
