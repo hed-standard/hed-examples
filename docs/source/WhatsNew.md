@@ -1,14 +1,16 @@
 (whats-new-anchor)=
 # What's new?
 
-<div>
-<span style="color:red;font-weight:bold;">Upcoming ...</span>
-</div>
- 
+**March 28, 2023**: **Release of HED Javascript validator for BIDS v3.9.0 on npm**   
+> The new version supports checking of onsets and offsets.
+
 **March 27, 2023**: **HED Workshop at CNS 2023**   
 > **Title:** *Recording what happened during your experiment using Hierarchical Event Descriptors (HED)*   
 > **Presenter**: [**Scott Makeig**](https://sccn.ucsd.edu/~scott/) UCSD and assisted by members of the HED Working Group.    
 > **Time and location:** 12:15-1:15 pm Seacliff Room  Hyatt Regency San Francisco Hotel.   
+
+**March 24, 2023**: **HED is now on Twitter**
+> Follow us at @HedDescriptors
 
 **March 22-23, 2023**: **HED at the 2023 Annual Assembly of the Global Brain Consortium**<br/>
 > Directions in EEG data-sharing - panel co-chaired by Kay Robbins and Dora Hermes  

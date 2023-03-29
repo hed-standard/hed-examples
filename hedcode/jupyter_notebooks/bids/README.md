@@ -10,8 +10,9 @@ validating, summarizing, and analyzing your BIDS datasets.
 | [`bids_generate_sidecar`](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_generate_sidecar.ipynb)  | Creates a JSON sidecar based on all the event files in a dataset. |
 | [`bids_merge_sidecar`](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_merge_sidecar.ipynb)    | Merges a spreadsheet version of a sidecar into a JSON sidecar. |
 | [`bids_sidecar_to_spreadsheet`](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_sidecar_to_spreadsheet.ipynb) | Converts the HED portion of a JSON sidecar into a 4-column spreadsheet. |
-| [`bids_summarize_events`](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_summarize_events.ipynb) | Summarizes the contents of the event files, including value counts.
-| [`bids_validate_dataset`](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_validate_dataset.ipynb)   | Validates the HED annotations in a BIDS dataset. |  
+| [`bids_summarize_events`](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_summarize_events.ipynb) | Summarizes the contents of the event files, including value counts. |  
+| [`bids_validate_dataset`](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_validate_dataset.ipynb)   | Validates the HED annotations in a BIDS dataset. | 
+| [`bids_validate_datasets`](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_validate_datasets.ipynb)   | Validates the HED annotations in a list of BIDS dataset. |  
 | [`bids_validate_dataset_with_libraries`](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_validate_dataset_with_libraries.ipynb)   | Demonstrates use of HED libraries in validation. |  
 
 These notebooks require HEDTOOLS, which can be installed using `pip` or directly.
