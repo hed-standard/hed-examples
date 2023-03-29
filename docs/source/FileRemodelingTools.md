@@ -97,7 +97,7 @@ section for information on how to call the operations.
 ### Summarization operations
 
 **Summarization** operations do not modify the input DataFrame
-but rather extract and save information from the input DataFrame 
+but rather extract and save information  
 in an internally stored context state as shown schematically in the following figure.
 
 ![Summary operations](./_static/images/SummaryOperation.png)
