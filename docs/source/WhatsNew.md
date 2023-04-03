@@ -1,6 +1,11 @@
 (whats-new-anchor)=
 # What's new?
 
+**April 3, 2023**: **New versions of HED schema browser available.**   
+> You can now use a single [**HED Schema Browser**](https://www.hedtags.org/display_hed.html) to view both standard and library schemas.  
+
+> A [**prelease viewer**](https://www.hedtags.org/display_hed_prerelease.html) is available for viewing all prerelease HED schemas.
+
 **March 28, 2023**: **Release of HED Javascript validator for BIDS v3.9.0 on npm**   
 > The new version supports checking of onsets and offsets.
 
