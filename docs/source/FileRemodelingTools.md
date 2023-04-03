@@ -583,9 +583,10 @@ In order to use HED operations, you must explicitly specify the HED versions
 using the `-r` option.
 The `-r` option supports a list of HED versions if multiple HED schemas are used.
 For example: `-r 8.1.0 sc:score_1.0.0` specifies that vocabulary will be drawn
-from standard HED Version [**8.1.0**](https://www.hedtags.org/display_hed.html?schema=standard&version=8.1.0) and from
-HED SCORE library version [**1.0.0**](https://www.hedtags.org/display_hed.html?schema=score&version=1.0.0).
+from standard HED Version 8.1.0 and from
+HED SCORE library version 1.0.0.
 Annotations containing tags from SCORE should be prefixed with `sc:`.
+Note: both of the schemas can be viewed by the [**HED Schema Browser**](https://www.hedtags.org/display_hed.html).
 
 Usually, annotators will consolidate HED annotations in a single JSON sidecar file
 located at the top-level of the dataset.
