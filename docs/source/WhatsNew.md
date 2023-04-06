@@ -1,6 +1,11 @@
 (whats-new-anchor)=
 # What's new?
 
+**April 6, 2023**: **Version 3.1.0 of the HED specification released.**  
+> [**Version 3.1.0**](https://hed-specification.readthedocs.io/en/stable/) of the HED specification clarifies existing features.  
+>
+> HED validators will be able to link error messages directly to descriptions in the spec.  
+
 **April 3, 2023**: **New versions of HED schema browser available.**   
 > You can now use a single [**HED Schema Browser**](https://www.hedtags.org/display_hed.html) to view both standard and library schemas.  
 
