@@ -151,40 +151,40 @@ sections that specify unit classes, unit modifiers, value classes, schema attrib
 and properties. The rules for the handling of these sections for a library schema are 
 as follows:
 
-&nbsp;&nbsp;&nbsp;&nbsp;### Required sections
+### Required sections
 
-&nbsp;&nbsp;&nbsp;&nbsp;The required sections of a library schema are: the *schema-specification*, 
+The required sections of a library schema are: the *schema-specification*, 
 the *unit-class-specification*, the *unit-modifier-specification*, 
 the *value-class-specification* section, the *schema-attribute-specification* section, 
 and the *property-specification*. The library schema must include all required 
 schema sections even if the content of these sections is empty.
 
-&nbsp;&nbsp;&nbsp;&nbsp;### Relation to base schema
+### Relation to base schema
 
-&nbsp;&nbsp;&nbsp;&nbsp;Any schema attribute, unit class, unit modifier, value class, or property used in the
+Any schema attribute, unit class, unit modifier, value class, or property used in the
 library schema must be specified in the appropriate section of the library schema
 regardless of whether these appear in base schema. Validators check the library
 schema strictly on the basis of its own specification without reference to another 
 schema.
 
-&nbsp;&nbsp;&nbsp;&nbsp;### Schema properties
+### Schema properties
 
-&nbsp;&nbsp;&nbsp;&nbsp;HED only supports the schema properties listed in Table B.2: *boolProperty*, 
+HED only supports the schema properties listed in Table B.2: *boolProperty*, 
 *unitClassProperty*, *unitModifierProperty*, *unitProperty*, and *valueClassProperty*.  
 If the library schema uses one of these in the library schema specification, 
 then its specification must appear in the *property-specification* section of the library schema.
 
-&nbsp;&nbsp;&nbsp;&nbsp;### Unit classes
+### Unit classes
 
-&nbsp;&nbsp;&nbsp;&nbsp;The library schema may define unit classes and units as desired or include unit classes or 
+The library schema may define unit classes and units as desired or include unit classes or 
 units from the base schema. Similarly, library schema may define unit modifiers or 
 reuse unit modifiers from the base schema. HED validation and basic analysis tools 
 validate these based strictly on the schema specification and do not use any outside 
 information for these.
 
-&nbsp;&nbsp;&nbsp;&nbsp;### Value classes
+### Value classes
 
-&nbsp;&nbsp;&nbsp;&nbsp;The standard value classes (*dateTimeClass[*]*, *nameClass*, *numericClass[*]*, 
+The standard value classes (*dateTimeClass[*]*, *nameClass*, *numericClass[*]*, 
 *posixPath[*]*, *textClass[*]*) if used, should have the same meaning as in the 
 base schema. The hard-coded behavior associated with the starred ([*]) value 
 classes will be the same. Library schema may define additional value classes and 
@@ -192,9 +192,9 @@ specify their allowed characters, but no additional hard-coded behavior will be
 available in the standard toolset. This does not preclude special-purpose tools 
 from incorporating their own behavior.
 
-&nbsp;&nbsp;&nbsp;&nbsp;### Schema attributes
+### Schema attributes
 
-&nbsp;&nbsp;&nbsp;&nbsp;The standard schema attributes (*allowedCharacter*, *defaultUnits*, *extensionAllowed*,
+The standard schema attributes (*allowedCharacter*, *defaultUnits*, *extensionAllowed*,
 *recommended*, *relatedTag*, *requireChild*, *required*, *SIUnit*, *SIUnitModifier*,
 *SIUnitSymbolModifier*, *suggestedTag*, *tagGroup*, *takesValue*, *topLevelTagGroup*, 
 *unique*, *unitClass*, *unitPrefix*, *unitSymbol*, *valueClass*) should have the same
