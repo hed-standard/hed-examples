@@ -9,6 +9,25 @@ in a scalable manner to support specialized data.
 
 This guide describes how to begin developing your own schema or contribute to existing HED vocabularies.
 
+## HED schema details
+_HED schema_ is the structured vocabulary from which HED annotations base on. HED annotations consist of comma-separated path strings,
+selected from the schema. In the newest versions of HED,
+all individual nodes in the vocabulary are unique, so users can annotate
+by using *short-form* which is the last node in the path string rather than *long-form* which is the entire path
+string: *Red* instead of *Attribute/Sensory/Sensory-property/Visual/Color/CSS-color/Red-color/Red*.
+
+The [hed-schemas](https://github.com/hed-standard/hed-schemas) repository contains the HED schema specification, where discussions on schema terms and syntax are held via Github issue mechanism and where HED-supporting tools can find machine-readable format of the schema. The HED schema is available in MediaWiki and XML. 
+
+The MediaWiki markdown format, stored in [`hedwiki`](https://github.com/hed-standard/hed-specification/tree/master/hedwiki),
+allows vocabulary developers to view and edit the vocabulary tree using a 
+human-readable markdown language available in Wikis and on GitHub repositories. 
+
+In addition, an expandable non-editable [HTML viewer](http://www.hedtags.org/display_hed.html)  is available
+to help users explore the vocabulary.
+
+All analysis and validation tools operate on an XML translation of the vocabulary 
+markdown document, stored in [`hedxml`](https://github.com/hed-standard/hed-specification/tree/master/hedxml). 
+
 ## Setting up for schema development
 
 Although schema developers work with HED schema in `.mediawiki` format for ease in editing,
@@ -211,33 +230,12 @@ As changes are accepted, they are incorporated into the
 These files are located in the **prerelease** subdirectory for the respective schema.
 Examples of these files for the standard schema can be found in the standard schema
 [**prerelease directory**](https://github.com/hed-standard/hed-schemas/tree/main/standard_schema/prerelease).
-[**Expandable html view of the prerelease HED schema**](https://www.hedtags.org/display_hed_prerelease.html) 
+
+This is viewable in the [**Expandable html view of the prerelease HED schema**](https://www.hedtags.org/display_hed_prerelease.html) 
 
 Upon final review, the new HED schema is released, the XML file is copied to the
 [**hedxml directory**](https://github.com/hed-standard/hed-schemas/tree/main/standard_schema/hedxml),
-the mediawiki file is copied to the
-[**hed]
-
-
-## HED schema details
-_HED schema_ is the structured vocabulary from which HED annotations base on. HED annotations consist of comma-separated path strings,
-selected from the schema. In the newest versions of HED,
-all individual nodes in the vocabulary are unique, so users can annotate
-by simply giving the last node in the path string rather than the entire path
-string: *Red* instead of *Attribute/Sensory/Sensory-property/Visual/Color/CSS-color/Red-color/Red*.
-
-This repository contains the HED schema specification, where discussions on schema terms and syntax are held via Github issue mechanism and where HED-supporting tools can find machine-readable format of the schema. The HED schema is available in MediaWiki and XML. 
-
-The MediaWiki markdown format, stored in 
-[`hedwiki`](https://github.com/hed-standard/hed-specification/tree/master/hedwiki),
-allows vocabulary developers to view and edit the vocabulary tree using a 
-human-readable markdown language available in Wikis and on GitHub repositories. 
-In addition, an expandable non-editable 
-[HTML viewer](http://www.hedtags.org/display_hed.html)  is available
-to help users explore the vocabulary.
-
-All analysis and validation tools operate on an XML translation of the vocabulary 
-markdown document, stored in [`hedxml`](https://github.com/hed-standard/hed-specification/tree/master/hedxml). 
+the mediawiki file is copied to the [**hedwiki directory**](https://github.com/hed-standard/hed-schemas/tree/main/standard_schema/hedwiki).
 
 
 ## Further documentation
