@@ -7,13 +7,7 @@ most human neuroimaging, behavioral, and physiological experiments.
 The HED ecosystem also supports (**HED library schemas**) to expand the HED vocabulary 
 in a scalable manner to support specialized data.
 
-Although you can create a private HED vocabulary for your
-
-This guide describes how to begin developing your own schema. 
-
-This section describes how you can contribute to existing HED vocabularies
-or creating an entirely new one.
-
+This guide describes how to begin developing your own schema or contribute to existing HED vocabularies.
 
 ## Setting up for schema development
 
@@ -25,8 +19,9 @@ HED tools generally use XML versions of the HED schema.
 
 1. Create or modify a `.mediawiki` file containing the schema.
 2. Validate the `.mediawiki` file using the [**HED online tools**](https://hedtools.ucsd.edu/hed/schema).
-2. Convert to `.xml` using the [**HED online tools**](https://hedtools.ucsd.edu/hed/schema).
-3. View in the [**expandable schema viewer**](https://www.hedtags.org/display_hed.html) to verify.
+3. Convert to `.xml` using the [**HED online tools**](https://hedtools.ucsd.edu/hed/schema).
+4. Act according to the (Procedure for updating a schema)[### Procedure for updating a schema.] section to contribute your changes to the GitHub [**HED schemas repository**](https://github.com/hed-standard/hed-schemas).
+5. View in the [**expandable schema viewer**](https://www.hedtags.org/display_hed.html) to verify.
 ````
 
 ## Design principles for schema
@@ -57,8 +52,8 @@ Since it would be impossible to avoid naming conflicts across schema libraries
 that may be built in parallel by different user communities,
 HED supports schema library namespaces.
 Users will be able to add library tags qualified with namespace designators.
-All HED schemas, including library schemas, 
-adhere to [semantic versioning](https://semver.org/). 
+
+All HED schemas, including library schemas, adhere to [semantic versioning](https://semver.org/). 
 
 
 ## Defining a schema
@@ -67,7 +62,7 @@ A HED library schema is defined in the same way as the base HED schema except th
 additional attribute name-value pair, `library="xxx"` in the schema header. We will use as an
 illustration a library schema for driving. Syntax details for a library schema are similar to
 those for the base HED schema.
-(See the [HED schema format specification](https://hed-specification.readthedocs.io/en/latest/03_Schema.html)
+(See the [HED schema format specification](https://hed-specification.readthedocs.io/en/develop/03_HED_formats.html)
 for more details).
 
 ````{admonition} **Example:** Driving library schema (MEDIAWIKI template).
@@ -82,7 +77,7 @@ HED library="driving" version="1.0.0"
 ```
 ````
 
-The required sections specifying the schema attributes  are *unit-class-specification*, 
+The required sections specifying the [schema attributes](## Attributes and classes)  are *unit-class-specification*, 
 *unit-modifier-specification*, *value-class-specification*, *schema-attribute-specification*,
 and *property-specification*.
 
@@ -127,8 +122,8 @@ dp:Change-lanes
 A colon (`:`) is used to separate the qualifying local name from the remainder of the tag. 
 Notice that *Action* also appears in the standard HED schema. Identical terms may be used 
 in a library schema and the standard HED schema. Use of the same term implies a similar 
-purpose. Library schema developers should try not to reuse terms in the standard schema 
-unless the intention is to convey a close or identical relationship.
+purpose. **Library schema developers should try not to reuse terms in the standard schema 
+unless the intention is to convey a close or identical relationship.**
 
 
 ## Attributes and classes
@@ -191,7 +186,7 @@ They will be checked for syntax, but no additional hard-coded behavior will be a
 in the standard toolset. This does not preclude special-purpose tools from incorporating
 their own behavior.
 
-### Syntax checking
+## Syntax checking
 
 Regardless of whether a specification is in the standard schema or a library schema,
 HED tools can perform basic syntax checking.
@@ -205,9 +200,9 @@ HED tools can perform basic syntax checking.
 4. Actual handling of the semantics by HED tools only occurs for entities appearing in the base schema.
 ````
 
-### Procedure for updating a schema.
+## Procedure for updating a schema.
 
-#### Proposing changes
+### Proposing changes
 As modifications to the HED schema are proposed, they are added to the
 **PROPOSED.md** file for the respective schema.
 As changes are accepted, they are incorporated into the 
