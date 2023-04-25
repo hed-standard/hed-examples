@@ -1,6 +1,9 @@
 (whats-new-anchor)=
 # What's new?
 
+**April 25, 2023**: **HED playlist goes live on YouTube.**  
+> The [**Hierarchical Event Descriptor**](https://www.youtube.com/playlist?list=PLeII6cRFsP6L5S6icwRrJp0DHkhOHtbp-) playlist is now available on YouTube. A 5-part short-course on HED (from OHBM 2022) has just been released.  
+
 **April 6, 2023**: **Version 3.1.0 of the HED specification released.**  
 > [**Version 3.1.0**](https://hed-specification.readthedocs.io/en/stable/) of the HED specification clarifies existing features.  
 >
