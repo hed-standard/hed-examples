@@ -1,4 +1,4 @@
-# HED schema development guide
+# HED schema developer's guide
 
 HED annotations consist of comma-separated terms drawn from a hierarchically
 structured vocabulary called a HED schema.
