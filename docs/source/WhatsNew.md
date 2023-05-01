@@ -1,6 +1,12 @@
 (whats-new-anchor)=
 # What's new?
 
+**April 28, 2023**: **HED standard schema v8.2.0 released.**  
+> The [**HED schema v8.2.0**](https://doi.org/10.5281/zenodo.7876037) has just
+been released. This release supports the `Inset` tag for annotating intermediate
+points in an ongoing event as well as partnered library schemas.
+
+
 **April 25, 2023**: **HED playlist goes live on YouTube.**  
 > The [**Hierarchical Event Descriptor**](https://www.youtube.com/playlist?list=PLeII6cRFsP6L5S6icwRrJp0DHkhOHtbp-) playlist is now available on YouTube. A 5-part short-course on HED (from OHBM 2022) has just been released.  
 
