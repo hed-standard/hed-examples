@@ -143,7 +143,6 @@ Visit the `HED project homepage <https://github.com/hed-standard>`_ for links to
    :caption: Datasets:
 
    HedTestDatasets.md
-   HedRepositoryDatasets.md
 
 
 Indices and tables
