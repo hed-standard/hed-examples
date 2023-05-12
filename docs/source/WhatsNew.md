@@ -1,6 +1,11 @@
 (whats-new-anchor)=
 # What's new?
 
+**May 12, 2023**: **Version 3.2.0 of the HED specification released.**  
+> [**Version 3.2.0**](https://doi.org/10.5281/zenodo.7869149) of the HED specification
+introduces the `Inset` tag as well as partnered and rooted library schemas.
+> This version is the first to support the curly brace notation in sidecars.
+
 **April 28, 2023**: **HED standard schema v8.2.0 released.**  
 > The [**HED schema v8.2.0**](https://doi.org/10.5281/zenodo.7876037) has just
 been released. This release supports the `Inset` tag for annotating intermediate

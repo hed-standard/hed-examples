@@ -159,7 +159,7 @@ Consider the annotation:
 In this form, tools cannot distinguish which color goes with which shape.
 Annotators must group tags using parentheses to make the meaning clear:
 
-> (*Red*, *Square*), (*Blue, *Triangle*)
+> (*Red*, *Square*), (*Blue*, *Triangle*)
 
 Indicates a red square and a blue triangle.
 Group queries allow analysts to detect these groupings.
