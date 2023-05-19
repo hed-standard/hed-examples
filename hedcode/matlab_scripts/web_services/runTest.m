@@ -3,4 +3,4 @@
 host = 'http://127.0.0.1:5000/';
 %host = 'https://hedtools.ucsd.edu/hed_dev';
 %errors = testLibraryServices(host);
-errors = testEventServices(host);
+errors = testSpreadsheetServices(host);

@@ -24,7 +24,7 @@ each focused on a particular type of file.
 * [**String online tools**](string-online-tools-anchor) - validation and transformation tools.
 * [**Schema online tools**](schema-online-tools-anchor) - validation and conversion tools.
 
-Many of the tools require that you to provide a HED schema.
+Many of the tools require that you provide a HED schema.
 Usually, you can do this by selecting one of the standard HED versions using a pull-down menu,
 and the tool downloads this version from GitHub if it doesn't already have it cached.
 
@@ -56,7 +56,7 @@ which are used as keys to metadata in accompanying JSON sidecars.
 The HED tools have three separate tools: validate, assemble annotations,
 and generate a sidecar.
 
-#### Validate events
+#### Validate an events file
 The validate tool for events is useful for debugging the HED annotations in your 
 BIDS dataset while avoiding a full BIDS-validation each time you make a change.
 The tool first validates the sidecar if present and
@@ -86,7 +86,7 @@ Python Jupyter notebook is available for validating all the event files
 in a BIDS dataset along with multiple sidecars.
 The Jupyter notebook handles validation with library schema.
 
-#### Assemble event annotations
+#### Assemble annotations
 
 Assembling HED annotations of a BIDS-style event file
 produces a two-column "event file" whose first column
@@ -132,6 +132,8 @@ For many BIDS datasets, this is sufficient for generating a complete template.
 However, for datasets that have many types of event files, you will want to use the
 he [bids_generate_sidecar.ipynb](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_processing/bids_generate_sidecar.ipynb)
 to generate a JSON sidecar based on all the event files in a BIDS dataset.
+
+#### Execute remodel script
 
 (sidecar-online-tools-anchor)=
 ### Sidecar files
