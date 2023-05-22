@@ -48,8 +48,8 @@ in long form or short form.
 
 
 (event-online-tools-anchor)=
-### Event files
-Event files are BIDS style tab-separated value files.
+### Events files
+Events files are BIDS style tab-separated value files.
 The first line is always a header line giving the names of the columns,
 which are used as keys to metadata in accompanying JSON sidecars.
 
@@ -60,15 +60,16 @@ and generate a sidecar.
 The validate tool for events is useful for debugging the HED annotations in your 
 BIDS dataset while avoiding a full BIDS-validation each time you make a change.
 The tool first validates the sidecar if present and
-then does a final validation in combination with the event file.
+then does a final validation in combination with the events file.
 
-``````{admonition} Validate a BIDS-style event file
+``````{admonition} Validate a BIDS-style events file
 
 **Steps:**
  - Select the `Validate` action.
- - Check the `Check for warnings` box if you want to include warnings.  
- - Upload an event file (`.tsv`) and an optional JSON sidecar file (`.json`).  
+ - Set `Check for warnings` on if you want to include warnings. 
  - Select the HED version.  
+ - Optionally upload a JSON sidecar file (`.json`).
+ - Upload an events file (`.tsv`).  
  - Click the `Process` button.
    
 **Returns:**  
@@ -76,64 +77,93 @@ If there are any errors, the tool returns a downloadable `.txt` file of error me
  
 ``````
 
-The online event validation tool is very useful for quick validation while developing your annotation.
-However, the tool only validates a single event file with an accompanying sidecar.
-The tool does not validate multiple event files at the same time,
+The online events file validation tool is very useful for quick validation while developing your annotation.
+However, the tool only validates a single events file with an accompanying sidecar.
+The tool does not validate multiple events files at the same time,
 nor does the tool handle inherited sidecars.
 
-The [bids_validate_hed.ipynb](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_processing/bids_validate_hed.ipynb)
-Python Jupyter notebook is available for validating all the event files
+The [bids_validate_hed.ipynb](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids/bids_validate_dataset.ipynb)
+Python Jupyter notebook is available for validating all the events files
 in a BIDS dataset along with multiple sidecars.
 The Jupyter notebook handles validation with library schema.
 
 #### Assemble annotations
 
-Assembling HED annotations of a BIDS-style event file
-produces a two-column "event file" whose first column
-contains the onsets of the original event file and the second column
+Assembling HED annotations of a BIDS-style events file
+produces a two-column result file whose first column
+contains the onsets of the original events file and the second column
 contains the fully assembled HED annotation for each event.
 
-``````{admonition} Assemble HED annotations for a BIDS-style event file.
+``````{admonition} Assemble HED annotations for a BIDS-style events file.
 
 **Steps:**
- - Select the `Assemble annotations` action.
- - Check the `Expand def` if you want to include expanded definitions. 
- - Upload the event file (`.tsv`) and an optional JSON sidecar file (`.json`).  
+ - Select the `Assemble annotations` action.  
+ - Set `Expand defs` on if you want to include expanded definitions.  
  - Specify the HED version.  
+ - Optionally upload a JSON sidecar file (`.json`).  
+ - Upload the events file (`.tsv`).    
+ 
  - Click the `Process` button.  
 
 **Returns:**  
 If there are any errors, the tool returns a downloadable `.txt` file of error messages,
-otherwise the tool returns the assembled `.tsv` event file.  
+otherwise the tool returns the assembled `.tsv` events file.  
 ``````
+
+The online tools do not allow the option of retaining other columns in the returned file.
+A more general alternative is to use the remodeling tools through the interface.
 
 #### Generate sidecar template
 
-Generating a sidecar template file from the information in a single event file
+Generating a sidecar template file from the information in a single events file
 produces a `.json` sidecar template file ready to be filled in with 
 descriptions and HED annotations.
 
-``````{admonition} Generate a sidecar template from an event file.
+``````{admonition} Generate a sidecar template from an events file.
 
 **Steps:**
  - Select the `Generate sidecar template` action.
- - Upload the event file (`.tsv`).    
+ - Upload the events file (`.tsv`).    
  - Click the `Process` button.  
 
 **Returns:**  
 If there are any errors, the tool returns a downloadable `.txt` file of error messages,
 otherwise the tool returns a downloadable `.json` sidecar template file 
-corresponding to the event file.  
+corresponding to the events file.  
 ``````
 
 The online generation tool is very useful for constructing a sidecar template file,
-but the template is based only on the particular event file used in the generation.
+but the template is based only on the particular events file used in the generation.
 For many BIDS datasets, this is sufficient for generating a complete template.
-However, for datasets that have many types of event files, you will want to use the
-he [bids_generate_sidecar.ipynb](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_processing/bids_generate_sidecar.ipynb)
-to generate a JSON sidecar based on all the event files in a BIDS dataset.
+However, for datasets that have many types of events files, you will want to use the
+he [bids_generate_sidecar.ipynb](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids/bids_generate_sidecar.ipynb)
+to generate a JSON sidecar based on all the events files in a BIDS dataset.
 
 #### Execute remodel script
+
+The HED remodeling tools provide an interface to nearly all the HED tools functionality without programming. To use the tools, create a JSON file containing the commands that you
+wish to execute on the events file. Command are available to do various transformations
+and summaries of events files as explained in
+the [**File remodeling quickstart**](https://www.hed-resources.org/en/latest/FileRemodelingQuickstart.html) and the
+[**File remodeling tools**](https://www.hed-resources.org/en/latest/FileRemodelingTools.html).
+
+``````{admonition} Execute a remodel script.
+
+**Steps:**
+ - Select the `Execute remodel script` action.  
+ - Set `Include summaries` if you wish to get the summary output.  
+ - Specify the HED version.  
+ - Upload a JSON file containing the remodel commands.  
+ - Optionally upload a JSON sidecar file (`.json`).  
+ - Upload the events file (`.tsv`).    
+ - Click the `Process` button.  
+
+**Returns:**  
+If there are any errors, the tool returns a downloadable `.txt` file of error messages.
+If there are no errors, the tool returns a zip archive containing 
+the transformed events file and any possible summaries that were generated.
+
+``````
 
 (sidecar-online-tools-anchor)=
 ### Sidecar files
@@ -150,9 +180,9 @@ The tool validates a single JSON sidecar.
 ``````{admonition} Validate a BIDS style JSON sidecar.
 
  - Select the `Validate` action.
- - Check the `Check for warnings` box if you want to include warnings.  
- - Upload a JSON sidecar file (`.json`).  
- - Select the HED version.  
+ - Set `Check for warnings` to on if you want to include warnings.  
+ - Select the HED version. 
+ - Upload a JSON sidecar file (`.json`).   
  - Click the `Process` button.
    
 **Returns:**  
@@ -166,7 +196,7 @@ dataset root directory, this is all that is needed.
 However, if the sidecar is part of an inheritance chain, some of its definitions
 are externally defined, or the sidecar contains tags from multiple HED schema,
 you should use the 
-[bids_validate_hed.ipynb](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_processing/bids_validate_hed.ipynb)
+[bids_validate_dataset.ipynb](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids/bids_validate_dataset.ipynb)
 Python Jupyter notebook to validate the HED in your BIDS dataset.
 
 #### Convert sidecar to long
@@ -182,10 +212,10 @@ are the same as in the original file.
 ``````{admonition} Convert a JSON sidecar HED tags to long form.
 
 **Steps:**
- - Select the `Convert to long` action.
- - Check the `Expand defs` box if you want to include expanded definitions.
+ - Select the `Convert to long` action.  
+ - Set `Expand defs` to on if you want to include expanded definitions.  
+ - Specify the HED version. 
  - Upload the JSON sidecar file (`.json`).     
- - Specify the HED version.
  - Click the `Process` button. 
     
 **Returns:**  
@@ -206,10 +236,10 @@ The non-HED portions of the sidecar are the same as in the original file.
 ``````{admonition} Convert a JSON sidecar HED tags to short form.
 
 **Steps:**
- - Select the `Convert to short` action.
- - Check the `Expand defs` box if you want to include expanded definitions.
- - Upload the JSON sidecar file (`.json`).     
- - Specify the HED version.
+ - Select the `Convert to short` action.  
+ - Set `Expand defs` to on if you want to include expanded definitions.  
+ - Specify the HED version.   
+ - Upload the JSON sidecar file (`.json`).  
  - Click the `Process` button. 
     
 **Returns:**  
@@ -236,7 +266,7 @@ for a tutorial on how to use the resulting spreadsheet for annotation.
 If there are any errors, the tool returns a downloadable `.txt` file of error messages,
 otherwise the tool returns a downloadable `.tsv` spreadsheet.  
 ``````
-The [bids_sidecar_to_spreadsheet.ipynb](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_processing/bids_sidecar_to_spreadsheet.ipynb) Python Jupyter notebook does the same operation.
+The [bids_sidecar_to_spreadsheet.ipynb](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids/bids_sidecar_to_spreadsheet.ipynb) Python Jupyter notebook does the same operation.
 
 #### Merge a spreadsheet with a sidecar
 
@@ -255,7 +285,7 @@ for a tutorial on how this works in practice.
 
 **Steps:**
  - Select the `Merge HED spreadsheet` action.
- - Check the `Include Description tags` box if you want to include descriptions.  
+ - Set `Include Description tags` to on if you want to include descriptions.  
  - Upload the target JSON sidecar file (`.json`).
  - Upload the spreadsheet to be merged (`.tsv` or `.xlsx`).    
  - Click the `Process` button. 
@@ -264,7 +294,7 @@ for a tutorial on how this works in practice.
 If there are any errors, the tool returns a downloadable `.txt` file of error messages,
 otherwise the tool returns a downloadable merged `.json` file.  
 ``````
-The [bids_merge_sidecar.ipynb](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_processing/bids_merge_sidecar.ipynb) Python Jupyter notebook does the same operation.
+The [bids_merge_sidecar.ipynb](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids/bids_merge_sidecar.ipynb) Python Jupyter notebook does the same operation.
 
 
 (spreadsheet-online-tools-anchor)=
@@ -281,7 +311,7 @@ particular HED tag prior to processing.
 Often prefixing is used for the *Description* tag.
 
 These spreadsheets are not necessarily associated with particular
-datasets or event files.
+datasets or events files.
 Rather, they are useful when you are developing annotations in general.
 
 #### Validate a spreadsheet
@@ -295,13 +325,12 @@ The Excel format supports spreadsheets containing multiple worksheets.
 ``````{admonition} Validate a spreadsheet.
 
  - Select the `Validate` action.
- - Check the `Check for warnings` box if you want to include warnings.  
+ - Set `Check for warnings` to on if you want to include warnings. 
+ - Select the HED version.   
  - Upload a spreadsheet file (`.tsv` or `.xlsx`).
  - Select a worksheet if necessary.
- - Check the `Has column names` if the first line contains column names.
  - Check the columns that contain HED information and should be validated.
  - Enter relevant prefixes in the text boxes to the right of the column names. 
- - Select the HED version.  
  - Click the `Process` button.
    
 **Returns:**  
@@ -325,18 +354,17 @@ The non-HED portions of the spreadsheet are the same as in the original file.
 ``````{admonition} Convert a spreadsheet to long.
 
  - Select the `Convert to long` action.
- - Check the `Expand defs` box if you want to include expanded definitions.  
+ - Select the HED version.  
  - Upload a spreadsheet file (`.tsv` or `.xlsx`).
  - Select a worksheet if necessary.
- - Check the `Has column names` if the first line should be treated as column names.
  - Check the columns that contain HED information and should be validated.
- - Enter relevant prefixes in the text boxes to the right of the column names.
- - Select the HED version.  
+ - Enter relevant prefixes (if any) in the text boxes to the right of the column names.
  - Click the `Process` button.
    
 **Returns:**  
 If there are any errors, the tool returns a downloadable `.txt` file of error messages,
 otherwise the tool returns a downloadable spreadsheet with the HED tags converted to long.  
+
 ``````
 
 #### Convert spreadsheet to short
@@ -356,13 +384,11 @@ The non-HED portions of the spreadsheet are the same as in the original file.
 ``````{admonition} Convert a spreadsheet to short form.
 
  - Select the `Convert to short` action.
- - Check the `Expand defs` box if you want to include expanded definitions.  
+  - Select the HED version.  
  - Upload a spreadsheet file (`.tsv` or `.xlsx`).
  - Select a worksheet if necessary.
- - Check the `Has column names` if the first line should be treated as column names.
  - Check the columns that contain HED information and should be validated.
  - Enter relevant prefixes in the text boxes to the right of the column names. 
- - Select the HED version.  
  - Click the `Process` button.
    
 **Returns:**  
@@ -374,7 +400,7 @@ otherise the tool returns a downloadable spreadsheet with the HED tags converted
 ### String online tools
 
 While in the process of annotating or working with HED,
-you might find it convenient to do a quick check or conversion on a HED string,
+you might find it convenient to do a quick check or conversion of a HED string,
 particularly when you are building complex annotations.
 The HED string online tools are useful for this.
 
@@ -386,13 +412,13 @@ The HED string may contain multiple HED tags and parenthesized groups of HED tag
 ``````{admonition} Validate a HED string.
 
  - Select the `Validate` action.
- - Check the `Check for warnings` box if you want to include warnings.  
+ - Set `Check for warnings` to on if you want to include warnings.
+ - Select the HED version.    
  - Type or paste your HED string into the text box.  
- - Select the HED version.  
  - Click the `Process` button.
    
 **Returns:** 
-Errors ae displayed in the *View results* text box at the bottom of the page.
+Errors ae displayed in the *Results* text box at the bottom of the page.
 ``````
 
 
@@ -403,21 +429,20 @@ to detect errors that prevent conversion from being successful.
 You should always do a full validation prior to doing conversion.
 
 If successful, the convert string to long tool displays the converted string
-in the *View results* text box at the bottom of the page.
+in the *Results* text box at the bottom of the page.
 You can then use copy or cut with paste to use the converted string in other documents.
 
 ``````{admonition} Convert HED string to long form.
 
 **Steps:**
- - Select the `Convert to long` action.
- - Check the `Expand defs` box if you want to include expanded definitions.  
+ - Select the `Convert to long` action.  
+ - Specify the HED version.  
  - Type or paste your HED string into the text box.
- - Specify the HED version.
  - Click the `Process` button. 
     
 **Returns:**  
-If there are any errors, the tool displays the error messages in the *View results* at the bottom of the page,
-otherwise the tool displays the converted string in the *View results* textbox.  
+If there are any errors, the tool displays the error messages in the *Results* at the bottom of the page,
+otherwise the tool displays the converted string in the *Results* textbox.  
 ``````
 
 #### Convert HED string to short
@@ -427,21 +452,20 @@ to detect errors that prevent conversion from being successful.
 You should always do a full validation prior to doing conversion.
 
 If successful, the convert string to short tool displays the converted string
-in the *View results* text box at the bottom of the page.
+in the *Results* text box at the bottom of the page.
 You can then use copy or cut with paste to use the converted string in other documents.
 
 ``````{admonition} Convert HED string to short form.
 
 **Steps:**
- - Select the `Convert to short` action.
- - Check the `Expand defs` box if you want to include expanded definitions.  
+ - Select the `Convert to short` action.  
+ - Specify the HED version.  
  - Type or paste your HED string into the text box.
- - Specify the HED version.
  - Click the `Process` button. 
      
 **Returns:**  
-If there are any errors, the tool displays the error messages in the *View results* at the bottom of the page,
-otherwise the tool displays the converted string in the *View results* textbox.  
+If there are any errors, the tool displays the error messages in the *Results* at the bottom of the page,
+otherwise the tool displays the converted string in the *Results* textbox.  
 ``````
 
 (schema-online-tools-anchor)=
@@ -462,8 +486,8 @@ Schema nodes must be unique and have a specified format.
 ``````{admonition} Validate a HED schema.
 
  - Select the `Validate` action.
- - Check the `Check for warnings` box if you want to include warnings.  
- - Enter a schema URL or upload a schema file (`.xml` or `.mediawiki`).  
+ - Set `Check for warnings` on if you want to include warnings.  
+ - Enter a schema URL or upload a schema file (`.xml` or `.mediawiki`) and select the corresponding option. 
  - Click the `Process` button.
    
 **Returns:**  
@@ -482,7 +506,7 @@ repository maintains both versions of the schema.
 ``````{admonition} Convert a HED schema.
 
  - Select the `Convert schema` action. 
- - Enter a schema URL or upload a schema file (`.xml` or `.mediawiki`).  
+ - Enter a schema URL or upload a schema file (`.xml` or `.mediawiki`) and select corresponding option.
  - Click the `Process` button.
    
 **Returns:**  
@@ -495,13 +519,13 @@ otherwise the tool returns a downloadable `.xml` or `.mediawiki` file.
 
 HED supports a number of REST web services in support of HED including schema conversion
 and validation, JSON sidecar validation, spreadsheet validation, and validation of a single
-BIDS event file with supporting JSON sidecar.
+BIDS events file with supporting JSON sidecar.
 
 Short-to-long and long-to-short conversion of HED tags are supported for HED strings,
 JSON sidecars, BIDS-style events files, and spreadsheets in `.tsv` or `.xlsx` format.
 
 Support is also included for assembling the annotations for a BIDS-style 
-event file with a JSON sidecar and for generating a template of a JSON sidecar from a BIDS events file.
+events file with a JSON sidecar and for generating a template of a JSON sidecar from a BIDS events file.
 
 The [**web_services**](https://github.com/hed-standard/hed-examples/tree/main/hedcode/matlab_scripts/web_services) directory in the `hed-examples` repository provides MATLAB examples of how to call these 
 services in MATLAB.
@@ -542,7 +566,7 @@ The service names are of the form `target_command` where `target` specifies the
 input data type (events, sidecar, spreadsheet, string, or schema)
 and `command`specifies the service to be performed. 
 For example, `events_validate` indicates that
-a BIDS-style event file is to be validated. 
+a BIDS-style events file is to be validated. 
 The exception to this naming rule is the `get_services` command,
 which returns a list of all available services and their parameters.
 
@@ -584,12 +608,12 @@ The parameters are explained in the following table. Parameter values listed in 
     schema_string],   
     check_for_warnings,     
     expand_defs   
-  - Assemble tags for each event in a BIDS-style event file into a single HED string. 
+  - Assemble tags for each event in a BIDS-style events file into a single HED string. 
        
     Returned data: a file of assembled events as text or an error file as text if errors.
 * - events_extract  
   - events_string   
-  - Extract a template JSON sidecar based on the contents of the event file.  
+  - Extract a template JSON sidecar based on the contents of the events file.  
     
     Returned data: A JSON sidecar (template) if no errors.
 * - events_validate  
@@ -599,7 +623,7 @@ The parameters are explained in the following table. Parameter values listed in 
      schema_url,  
      schema_version],  
     check_for_warnings   
-  - Validate a BIDS-style event file and its JSON sidecar if provided.  
+  - Validate a BIDS-style events file and its JSON sidecar if provided.  
       
     Returned data: an error file as text if errors.  
 * - sidecar_to_long  
