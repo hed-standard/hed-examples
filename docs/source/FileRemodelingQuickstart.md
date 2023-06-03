@@ -370,12 +370,9 @@ Although the event restructuring tools are designed to be run on an entire datas
 you should consider working with a single data file during debugging.
 The HED online tools provide support for debugging your remodeling script and for 
 seeing the effect of remodeling on a single data file before running on the entire dataset.
+You can access these tools on the [**HED tools online tools server**](https://hedtools.ucsd.edu/hed).
 
-Currently, the remodeling tools are only available on the 
-[**HED tools development server**](https://hedtools.ucsd.edu/hed_dev),
-but will soon move to the regular [**HED tools online tools server**](https://hedtools.ucsd.edu/hed).
-
-To use the online remodeling tools, navigate to the events page and select the *Remodel file* action.
+To use the online remodeling tools, navigate to the events page and select the *Execute remodel script* action.
 Browse to select the data file to be remodeled and the JSON remodel file
 containing the remodeling operations. 
 The following screenshot shows these selections for the split rows example of the previous section.
@@ -391,7 +388,8 @@ If the remodeling script contains summarization operations,
 the result will be a zip file with the modified data file and the summaries included.
 
 If you are using one of the remodeling operations that relies on HED tags, you will
-also need to upload a suitable JSON sidecar file containing the HED annotations for the data file.
+also need to upload a suitable JSON sidecar file containing the HED annotations for the data file
+if you turn the *Include summaries* option on.
 
 (the-command-line-interface-anchor)=
 ### The command-line interface

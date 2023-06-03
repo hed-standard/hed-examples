@@ -26,14 +26,14 @@ each focused on a particular type of file.
 
 Many of the tools require that you provide a HED schema.
 Usually, you can do this by selecting one of the standard HED versions using a pull-down menu,
-and the tool downloads this version from GitHub if it doesn't already have it cached.
+and the tool downloads this version from GitHub if the server doesn't already have it cached.
 
 If you want to use a different version of HED,
 you can select the *Other* option from the pull-down and upload your own HED schema.
 
 The long form HED tag consists of the tag's full path in the HED schema,
 while the short form consists only of the tag's leaf node in the schema and possibly a value.
-Intermediate form tags consist of a partial path from the leaf node to an 
+Intermediate form tags consist of a partial paths from a leaf node to an 
 intermediate node in the HED schema.
 Compliant HED tools should be able to handle any combination of short, long,
 or intermediate form tags.
@@ -53,8 +53,8 @@ Events files are BIDS style tab-separated value files.
 The first line is always a header line giving the names of the columns,
 which are used as keys to metadata in accompanying JSON sidecars.
 
-The HED tools have three separate tools: validate, assemble annotations,
-and generate a sidecar.
+The HED tools have four separate tools: validate, assemble annotations,
+generate sidecar template, and execute remodel script.
 
 #### Validate an events file
 The validate tool for events is useful for debugging the HED annotations in your 
@@ -123,7 +123,9 @@ descriptions and HED annotations.
 
 **Steps:**
  - Select the `Generate sidecar template` action.
- - Upload the events file (`.tsv`).    
+ - Upload the events file (`.tsv`). A list of the event file column names with number of unique values in each column appears below the selection.
+ - In the left column of checkboxes select those corresponding to columns you wish to include in the template.
+ - In the right column of checkboxes, select those corresponding to columns for which you wish to supply individual annotations for each unique value.
  - Click the `Process` button.  
 
 **Returns:**  
@@ -136,7 +138,7 @@ The online generation tool is very useful for constructing a sidecar template fi
 but the template is based only on the particular events file used in the generation.
 For many BIDS datasets, this is sufficient for generating a complete template.
 However, for datasets that have many types of events files, you will want to use the
-he [bids_generate_sidecar.ipynb](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids/bids_generate_sidecar.ipynb)
+[bids_generate_sidecar.ipynb](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids/bids_generate_sidecar.ipynb)
 to generate a JSON sidecar based on all the events files in a BIDS dataset.
 
 #### Execute remodel script
@@ -194,7 +196,7 @@ For datasets that have all of their HED annotations in a single JSON sidecar in 
 dataset root directory, this is all that is needed.
 
 However, if the sidecar is part of an inheritance chain, some of its definitions
-are externally defined, or the sidecar contains tags from multiple HED schema,
+are externally defined, or the sidecar contains tags from multiple HED schemas,
 you should use the 
 [bids_validate_dataset.ipynb](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids/bids_validate_dataset.ipynb)
 Python Jupyter notebook to validate the HED in your BIDS dataset.
@@ -252,7 +254,9 @@ otherwise the tool returns a downloadable converted JSON sidecar file.
 JSON sidecars are sometimes hard to edit, particularly if the annotations are complicated.
 The extract spreadsheet from sidecar tool
 produces a 4-column `.tsv` file that can be edited with tools such as Excel.
-See the [BIDS annotation quickstart](https://hed-examples.readthedocs.io/en/latest/BidsAnnotationQuickstart.html) 
+The first row of the extracted spreadsheet contains the 4 column names:
+`column_name`, `column_value`, `description` and `HED`.
+See the [**BIDS annotation quickstart**](https://hed-examples.readthedocs.io/en/latest/BidsAnnotationQuickstart.html) 
 for a tutorial on how to use the resulting spreadsheet for annotation.
 
 ``````{admonition} Extract a 4-column spreadsheet from a JSON sidecar.
@@ -273,12 +277,13 @@ The [bids_sidecar_to_spreadsheet.ipynb](https://github.com/hed-standard/hed-exam
 This tool merges a 4-column tag spreadsheet with an existing JSON file
 to produce a JSON file that contains HED annotations updated with the
 information from the spreadsheet.
-The spreadsheet can be in either tab-separated (`.tsv`) or in Excel (`.xlsx`) format.
+The spreadsheet can be in either tab-separated (`.tsv`) or in Excel (`.xlsx`) format,
+but it must have the 4 column names: `column_name`, `column_value`, `description` and `HED`.
 
 You have the option of including the contents of each cell in the *description* column
 of the spreadsheet as a *Description/xxx* tag in the corresponding HED annotation.
 
-See the [BIDS annotation quickstart](https://hed-examples.readthedocs.io/en/latest/BidsAnnotationQuickstart.html) 
+See the [**BIDS annotation quickstart**](https://hed-examples.readthedocs.io/en/latest/BidsAnnotationQuickstart.html) 
 for a tutorial on how this works in practice.
 
 ``````{admonition} Merge a 4-column spreadsheet with a JSON sidecar.
@@ -302,7 +307,7 @@ The [bids_merge_sidecar.ipynb](https://github.com/hed-standard/hed-examples/blob
 
 Spreadsheets (either in Excel or tab-separated-value format) are convenient for organizing tags.
 Of particular interest is the 4-column spreadsheet described in the
-[BIDS annotation quickstart](https://hed-examples.readthedocs.io/en/latest/BidsAnnotationQuickstart.html).
+[**BIDS annotation quickstart**](https://hed-examples.readthedocs.io/en/latest/BidsAnnotationQuickstart.html).
 However, the online tools support a more general spreadsheet format,
 where any columns can contain HED tags.
 You can also specify prefixed columns --- 
@@ -320,7 +325,12 @@ The validate tool for spreadsheets is useful for debugging HED annotations
 while you are developing them.
 The tool validates a single spreadsheet worksheet, either in tab-separated value (`.tsv`)
 or Excel (`.xlsx`) format.
-The Excel format supports spreadsheets containing multiple worksheets.
+The Excel format supports spreadsheets containing multiple worksheets,
+but you must validate each worksheet individually.
+When you select a spreadsheet or change the individual worksheet being considered,
+a list of column names will appear with checkboxes on the left and text boxes on the right.
+Select the checkboxes for columns you wish to validate. Add a prefix tag in the corresponding
+text box on the left, if the entry is to be prefixed by a particular tag before validating.
 
 ``````{admonition} Validate a spreadsheet.
 
@@ -344,12 +354,13 @@ to detect errors that prevent conversion from being successful.
 You should always do a full validation prior to doing conversion.
 
 As with other spreadsheet operations, you will have to provide information about
-which columns of the spreadsheet are relevant to HED.
-The format is the same as for validation as described above.
+which columns of the spreadsheet contain HED tags that should be converted to long
+by checking the appropriate boxes on the left next to the desired column names.
+This option does not have text boxes for prefixes.
 
 If successful, the convert spreadsheet to long tool produces a new spreadsheet file
 with all the HED tags in full long-form.
-The non-HED portions of the spreadsheet are the same as in the original file.
+The non-HED portions of the spreadsheet and the prefix-columns are the same as in the original file.
 
 ``````{admonition} Convert a spreadsheet to long.
 
@@ -358,7 +369,6 @@ The non-HED portions of the spreadsheet are the same as in the original file.
  - Upload a spreadsheet file (`.tsv` or `.xlsx`).
  - Select a worksheet if necessary.
  - Check the columns that contain HED information and should be validated.
- - Enter relevant prefixes (if any) in the text boxes to the right of the column names.
  - Click the `Process` button.
    
 **Returns:**  
@@ -374,12 +384,13 @@ to detect errors that prevent conversion from being successful.
 You should always do a full validation prior to doing conversion.
 
 As with other spreadsheet operations, you will have to provide information about
-which columns of the spreadsheet are relevant to HED.
-The format is the same as for validation as described above.
+which columns of the spreadsheet contain HED tags that should be converted to short
+by checking the appropriate boxes on the left next to the desired column names.
+This option does not have text boxes for prefixes.
 
 If successful, the convert spreadsheet to short tool produces a new spreadsheet file
 with all the HED tags in short form.
-The non-HED portions of the spreadsheet are the same as in the original file.
+The non-HED portions of the spreadsheet and the prefix-columns are the same as in the original file.
 
 ``````{admonition} Convert a spreadsheet to short form.
 
@@ -388,7 +399,6 @@ The non-HED portions of the spreadsheet are the same as in the original file.
  - Upload a spreadsheet file (`.tsv` or `.xlsx`).
  - Select a worksheet if necessary.
  - Check the columns that contain HED information and should be validated.
- - Enter relevant prefixes in the text boxes to the right of the column names. 
  - Click the `Process` button.
    
 **Returns:**  
@@ -418,7 +428,7 @@ The HED string may contain multiple HED tags and parenthesized groups of HED tag
  - Click the `Process` button.
    
 **Returns:** 
-Errors ae displayed in the *Results* text box at the bottom of the page.
+Errors are displayed in the *Results* text box at the bottom of the page.
 ``````
 
 
@@ -428,7 +438,7 @@ The convert string to long tool first does a preliminary validation of the strin
 to detect errors that prevent conversion from being successful.
 You should always do a full validation prior to doing conversion.
 
-If successful, the convert string to long tool displays the converted string
+If successful, the convert to long tool displays the converted string
 in the *Results* text box at the bottom of the page.
 You can then use copy or cut with paste to use the converted string in other documents.
 
@@ -451,7 +461,7 @@ The convert string to short tool first does a preliminary validation of the stri
 to detect errors that prevent conversion from being successful.
 You should always do a full validation prior to doing conversion.
 
-If successful, the convert string to short tool displays the converted string
+If successful, the convert to short tool displays the converted string
 in the *Results* text box at the bottom of the page.
 You can then use copy or cut with paste to use the converted string in other documents.
 
@@ -500,7 +510,7 @@ The convert HED schema tool allows you to convert between `.mediawiki` and `.xml
 All HED tools use the `.xml` format, but the `.mediawiki` format is much easier to read
 and modify.
 
-The [HED specification](https://github.com/hed-standard/hed-specification) GitHub
+The [**HED specification**](https://github.com/hed-standard/hed-specification) GitHub
 repository maintains both versions of the schema.
 
 ``````{admonition} Convert a HED schema.

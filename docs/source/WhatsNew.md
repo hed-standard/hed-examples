@@ -1,6 +1,9 @@
 (whats-new-anchor)=
 # What's new?
 
+**June 2, 2023**: **HED online tools have a new look.**  
+> The HED online tools at [**https://hedtools.ucsd.edu/hed**](https://hedtools.ucsd.edu/hed) have been redesigned and streamlined.  
+
 **May 12, 2023**: **Version 3.2.0 of the HED specification released.**  
 > [**Version 3.2.0**](https://doi.org/10.5281/zenodo.7869149) of the HED specification
 introduces the `Inset` tag as well as partnered and rooted library schemas.
