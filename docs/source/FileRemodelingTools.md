@@ -54,6 +54,7 @@ This user's guide contains the following topics:
 * [**Remodel summarizations**](remodel-summarizations-anchor)
   * [**Summarize column names**](summarize-column-names-anchor)
   * [**Summarize column values**](summarize-column-values-anchor)
+  * [**Summarize definitions**](summarize-definitions-anchor)
   * [**Summarize sidecar from events**](summarize-sidecar-from-events-anchor)
   * [**Summarize hed tags**](summarize-hed-tags-anchor)
   * [**Summarize hed type**](summarize-hed-type-anchor)
@@ -96,14 +97,12 @@ section for information on how to call the operations.
 (summarization-operations-anchor)=
 ### Summarization operations
 
-**Summarization** operations do not modify the input DataFrame
-but rather extract and save information  
-in an internally stored context state as shown schematically in the following figure.
+**Summarization** operations do not modify the input DataFrame but rather extract and save information in an internally stored summary dictionary as shown schematically in the following figure.
 
 ![Summary operations](./_static/images/SummaryOperation.png)
 
 The dispatcher that executes remodeling operations can be interrogated at any time
-for the state information contained in the context and can save the contexts.
+for the state information contained in the global summary dictionary and can save additional summary information at any time during execution.
 Usually summaries are dumped at the end of processing to the `derivatives/remodel/summaries`
 subdirectory under the dataset root.
 
@@ -111,8 +110,8 @@ Summarization operations may appear anywhere in the operation list,
 and the same type of summary may appear multiple times under different names in order to track progress.
 
 The dispatcher stores information from each uniquely named summarization operation 
-as a separate context.
-Within its context information, most summarization operations keep a separate 
+as a separate summary dictionary entry.
+Within its summary information, most summarization operations keep a separate 
 summary for each individual file and have methods to create an overall summary
 of the information for all the files that have been processed by the summarization.
 
@@ -546,10 +545,11 @@ For information about HED's integration into BIDS (Brain Imaging Data Structure)
 [**BIDS annotation quickstart**](./BidsAnnotationQuickstart.md).
 
 Currently, five remodeling operations rely on HED annotations: 
-[**factor_hed_tags**](factor-hed-tags-anchor), [**factor_hed_type**](factor-hed-type-anchor),
-[**summarize_hed_tags**](summarize-hed-tags-anchor),
-[**summarize_hed_type**](summarize-hed-type-anchor), and
-[**summarize_hed_validation**](summarize-hed-validation-anchor).
+- [**factor_hed_tags**](factor-hed-tags-anchor)  
+- [**factor_hed_type**](factor-hed-type-anchor)
+- [**summarize_hed_tags**](summarize-hed-tags-anchor)
+- [**summarize_hed_type**](summarize-hed-type-anchor)
+- [**summarize_hed_validation**](summarize-hed-validation-anchor).
 
 HED tags provide a mechanism for advanced data analysis and for 
 extracting experiment-specific information from the data files. 
@@ -1633,7 +1633,8 @@ all summaries.
 |  Parameter   | Type | Description | 
 | ------------ | ---- | ----------- | 
 | *summary_name* | str | A unique name used to identify this summary.| 
-| *summary_filename* | str | A unique file basename to use for saving this summary. |
+| *summary_filename* | str | A unique file basename to use for saving this summary. |  
+| *append_timecode* | bool | (Optional) If True, append a time code to filename.<br/>False is the default. |
 ```
 
 (summarize-column-names-example-anchor)=
@@ -1665,9 +1666,9 @@ the following text summary is produced.
 
 ```text
 
-Context name: AOMIC_column_names
-Context type: column_names
-Context filename: AOMIC_column_names
+Summary name: AOMIC_column_names
+Summary type: column_names
+Summary filename: AOMIC_column_names
 
 Summary details:
 
@@ -1713,7 +1714,9 @@ The following table lists the parameters required for using the summary.
 | *summary_name* | str | A unique name used to identify this summary.| 
 | *summary_filename* | str | A unique file basename to use for saving this summary. |
 | *skip_columns* | list | A list of column names to omit from the summary.| 
-| *value_columns* | list | A list of columns to omit the listing unique values. |
+| *value_columns* | list | A list of columns to omit the listing unique values. |  
+| *append_timecode* | bool | (Optional) If True, append a time code to filename.<br/>False is the default.| 
+
 ```
 
 In addition to the standard parameters, *summary_name* and *summary_filename* required of all summaries,
@@ -1764,9 +1767,9 @@ is shown in the following example.
 ````{admonition} Sample *summarize_column_values* operation results in text format.
 :class: tip
 ```text
-Context name: AOMIC_column_values
-Context type: column_values
-Context filename: AOMIC_column_values
+Summary name: AOMIC_column_values
+Summary type: column_values
+Summary filename: AOMIC_column_values
 
 Overall summary:
 Dataset: Total events=6 Total files=1
@@ -1820,144 +1823,81 @@ using the [**summarize_columns_rmdl.json**](./_static/data/summaries/summarize_c
 remodeling file.
 
 
-(summarize-sidecar-from-events-anchor)=
-### Summarize sidecar from events
+(summarize-definitions-anchor)=
+### Summarize definitions
 
-The summarize sidecar from events operation generates a sidecar template from the event
-files in the dataset. 
+The summarize definitions operation provides a summary of the definitions across the 
+dataset...
 
-
-(summarize-sidecar-from-events-parameters-anchor)=
-#### Summarize sidecar from events parameters
+(summarize-definitions-parameters-anchor)=
+#### Summarize definitions parameters
 
 The following table lists the parameters required for using the summary.
 
-```{admonition} Parameters for the *summarize_sidcar_from_eventsr* operation.
+```{admonition} Parameters for the *summarize_definitions* operation.
 :class: tip
 
 |  Parameter   | Type | Description | 
 | ------------ | ---- | ----------- | 
 | *summary_name* | str | A unique name used to identify this summary.| 
 | *summary_filename* | str | A unique file basename to use for saving this summary. |
-| *skip_columns* | list | A list of column names to omit from the sidecar.| 
-| *value_columns* | list | A list of columns to treat as value columns in the sidecar. |
+| *skip_columns* | list | A list of column names to omit from the summary.| 
+| *value_columns* | list | A list of columns to omit the listing unique values. | 
+| *append_timecode* | bool | (Optional) If True, append a time code to filename.<br/>False is the default.|
 ```
-The standard summary parameters, *summary_name* and *summary_filename* are required.
-The *summary_name* is the unique key used to identify the
-particular incarnation of this summary in the dispatcher.
-Since a particular operation file may use a given operation multiple times,
-care should be taken to make sure that it is unique.
 
-The *summary_filename* should also be unique and is used for saving the summary upon request.
-When the remodeler is applied to full datasets rather than single files,
-the summaries are saved in the `derivatives/remodel/summaries` directory under the dataset root.
-A time stamp and file extension are appended to the *summary_filename* when the
-summary is saved.
 
-In addition to the standard parameters, *summary_name* and *summary_filename* required of all summaries,
-the *summarize_column_values* operation requires two additional lists to be supplied.
-The *skip_columns* list specifies the names of columns to skip entirely in
-generating the sidecar template.
-The *value_columns* list specifies the names of columns to treat as value columns
-when generating the sidecar template.
 
-(summarize-sidecar-from-events-example-anchor)=
-#### Summarize sidecar from events example
+The *summarize_definitions* is mainly meant for ...
+
+
+(summarize-definitions-example-anchor)=
+#### Summarize definitions example
 
 The following example shows the JSON for including this operation in a remodeling file.
+(Show results on the hed_column ds003645s example)
 
-````{admonition} A JSON file with a single *summarize_sidecar_from_events* summarization operation.
+````{admonition} A JSON file with a single *summarize_definitions* summarization operation.
 :class: tip
 ```json
 [{
-    "operation": "summarize_sidecar_from_events",
-    "description": "Generate a sidecar from the excerpted events file.",
-    "parameters": {
-        "summary_name": "AOMIC_generate_sidecar",
-        "summary_filename": "AOMIC_generate_sidecar",
-        "skip_columns": ["onset", "duration"],
-        "value_columns": ["response_time", "stop_signal_delay"]
-    }
+   "operation": "summarize_definitions",
+   "description": "Summarize the definitions used in this dataset.",
+   "parameters": {
+       "summary_name": "HED_column_definition_summary",
+       "summary_filename": "HED_column_definition_summary"
+   }
 }]
-  
 ```
 ````
 
-The results of executing this operation on the
-[**sample remodel event file**](sample-remodel-event-file-anchor)
-are shown in the following example using the text format.
+A text format summary of the results of executing this operation on the
+...
+is shown in the following example.
 
-````{admonition} Sample *summarize_sidecar_from_events* operation results in text format.
+````{admonition} Sample *summarize_definitions* operation results in text format.
 :class: tip
 ```text
-Context name: AOMIC_generate_sidecar
-Context type: events_to_sidecar
-Context filename: AOMIC_generate_sidecar
+Summary name: 
+Summary type: 
+Summary filename: 
 
-Dataset: Currently no overall sidecar extraction is available
+Overall summary:
+Dataset: 
 
 Individual files:
 
-aomic_sub-0013_excerpt_events.tsv: Total events=6 Skip columns: ['onset', 'duration']
-Sidecar:
-{
-    "trial_type": {
-        "Description": "Description for trial_type",
-        "HED": {
-            "go": "(Label/trial_type, Label/go)",
-            "succesful_stop": "(Label/trial_type, Label/succesful_stop)",
-            "unsuccesful_stop": "(Label/trial_type, Label/unsuccesful_stop)"
-        },
-        "Levels": {
-            "go": "Here describe column value go of column trial_type",
-            "succesful_stop": "Here describe column value succesful_stop of column trial_type",
-            "unsuccesful_stop": "Here describe column value unsuccesful_stop of column trial_type"
-        }
-    },
-    "response_accuracy": {
-        "Description": "Description for response_accuracy",
-        "HED": {
-            "correct": "(Label/response_accuracy, Label/correct)"
-        },
-        "Levels": {
-            "correct": "Here describe column value correct of column response_accuracy"
-        }
-    },
-    "response_hand": {
-        "Description": "Description for response_hand",
-        "HED": {
-            "left": "(Label/response_hand, Label/left)",
-            "right": "(Label/response_hand, Label/right)"
-        },
-        "Levels": {
-            "left": "Here describe column value left of column response_hand",
-            "right": "Here describe column value right of column response_hand"
-        }
-    },
-    "sex": {
-        "Description": "Description for sex",
-        "HED": {
-            "female": "(Label/sex, Label/female)",
-            "male": "(Label/sex, Label/male)"
-        },
-        "Levels": {
-            "female": "Here describe column value female of column sex",
-            "male": "Here describe column value male of column sex"
-        }
-    },
-    "response_time": {
-        "Description": "Description for response_time",
-        "HED": "(Label/response_time, Label/#)"
-    },
-    "stop_signal_delay": {
-        "Description": "Description for stop_signal_delay",
-        "HED": "(Label/stop_signal_delay, Label/#)"
-    }
-}
 ```
 ````
 
-The current version of the summary does not generate a dataset-wide sidecar.
+Because the ...
+This command was executed with the `-i` option in `run_remodel`,
+results from the individual data files are shown after the overall summary.
+The individual results are similar to the overall summary because only one data file
+was processed.
+
+For a more extensive example see the ...
+
 
 (summarize-hed-tags-anchor)=
 ### Summarize HED tags
@@ -1982,7 +1922,8 @@ The *summarize_hed_tags* operation has the two required parameters
 | ------------ | ---- | ----------- | 
 | *summary_name* | str | A unique name used to identify this summary.| 
 | *summary_filename* | str | A unique file basename to use for saving this summary. |
-| *tags* | dict | Dictionary with category title keys and tags in that category as values. |
+| *tags* | dict | Dictionary with category title keys and tags in that category as values. |  
+| *append_timecode* | bool | (Optional) If True, append a time code to filename.<br/>False is the default.|  
 | *expand_context* | bool | (Optional) If true, expand `Event-context` to account for onsets and offsets. |
 ```
 
@@ -2032,9 +1973,9 @@ The results of executing this operation on the
 :class: tip
 
 ```text
-Context name: summarize_hed_tags
-Context type: hed_tag_summary
-Context filename: summarize_hed_tags
+Summary name: summarize_hed_tags
+Summary type: hed_tag_summary
+Summary filename: summarize_hed_tags
 
 Overall summary:
 Dataset: Total events=1200 Total1 file=6
@@ -2106,7 +2047,8 @@ This summary provides useful information about experimental design.
 | ------------ | ---- | ----------- | 
 | *summary_name* | str | A unique name used to identify this summary.| 
 | *summary_filename* | str | A unique file basename to use for saving this summary. |
-| *type_tag* | str | Tag to produce a summary for (most often *condition-variable*).| 
+| *type_tag* | str | Tag to produce a summary for (most often *condition-variable*).|  
+| *append_timecode* | bool | (Optional) If True, append a time code to filename.<br/>False is the default.| 
 ```
 In addition to the two standard parameters (*summary_name* and *summary_filename*),
 the *type_tag* parameter is required.
@@ -2138,9 +2080,9 @@ The results of executing this operation on the
 :class: tip
 
 ```text
-Context name: AOMIC_condition_variables
-Context type: hed_type_summary
-Context filename: AOMIC_condition_variables
+Summary name: AOMIC_condition_variables
+Summary type: hed_type_summary
+Summary filename: AOMIC_condition_variables
 
 Overall summary:
 
@@ -2198,7 +2140,8 @@ If *check_for_warnings* is false, the summary will not report warnings.
 | ------------ | ---- | ----------- | 
 | *summary_name* | str | A unique name used to identify this summary.| 
 | *summary_filename* | str | A unique file basename to use for saving this summary. |
-| *check_for_warnings* | bool | If true, warnings are reported, otherwise warnings are ignored. | 
+| *check_for_warnings* | bool | If true, warnings are reported, otherwise warnings are ignored. |  
+| *append_timecode* | bool | (Optional) If True, append a time code to filename.<br/>False is the default.| 
 ```
 The *summarize_hed_validation* is a HED operation and the calling program must provide a HED schema version
 and usually a JSON sidecar containing the HED annotations.
@@ -2247,9 +2190,9 @@ in the following example.
 :class: tip
 
 ```text
-Context name: AOMIC_sample_validation
-Context type: hed_validation
-Context filename: AOMIC_sample_validation
+Summary name: AOMIC_sample_validation
+Summary type: hed_validation
+Summary filename: AOMIC_sample_validation
 
 Summary details:
 
@@ -2275,12 +2218,153 @@ Individual files:
 This summary was produced using HED schema version `hed_version="8.1.0"` when creating the `dispatcher`
 and using the [**sample remodel sidecar file**](sample-remodel-sidecar-file-anchor) in the `do_op`.
 
+
+(summarize-sidecar-from-events-anchor)=
+### Summarize sidecar from events
+
+The summarize sidecar from events operation generates a sidecar template from the event
+files in the dataset. 
+
+
+(summarize-sidecar-from-events-parameters-anchor)=
+#### Summarize sidecar from events parameters
+
+The following table lists the parameters required for using the summary.
+
+```{admonition} Parameters for the *summarize_sidcar_from_eventsr* operation.
+:class: tip
+
+|  Parameter   | Type | Description | 
+| ------------ | ---- | ----------- | 
+| *summary_name* | str | A unique name used to identify this summary.| 
+| *summary_filename* | str | A unique file basename to use for saving this summary. |
+| *skip_columns* | list | A list of column names to omit from the sidecar.| 
+| *value_columns* | list | A list of columns to treat as value columns in the sidecar. |  
+| *append_timecode* | bool | (Optional) If True, append a time code to filename.<br/>False is the default. |  
+```
+The standard summary parameters, *summary_name* and *summary_filename* are required.
+The *summary_name* is the unique key used to identify the
+particular incarnation of this summary in the dispatcher.
+Since a particular operation file may use a given operation multiple times,
+care should be taken to make sure that it is unique.
+
+The *summary_filename* should also be unique and is used for saving the summary upon request.
+When the remodeler is applied to full datasets rather than single files,
+the summaries are saved in the `derivatives/remodel/summaries` directory under the dataset root.
+A time stamp and file extension are appended to the *summary_filename* when the
+summary is saved.
+
+In addition to the standard parameters, *summary_name* and *summary_filename* required of all summaries,
+the *summarize_column_values* operation requires two additional lists to be supplied.
+The *skip_columns* list specifies the names of columns to skip entirely in
+generating the sidecar template.
+The *value_columns* list specifies the names of columns to treat as value columns
+when generating the sidecar template.
+
+(summarize-sidecar-from-events-example-anchor)=
+#### Summarize sidecar from events example
+
+The following example shows the JSON for including this operation in a remodeling file.
+
+````{admonition} A JSON file with a single *summarize_sidecar_from_events* summarization operation.
+:class: tip
+```json
+[{
+    "operation": "summarize_sidecar_from_events",
+    "description": "Generate a sidecar from the excerpted events file.",
+    "parameters": {
+        "summary_name": "AOMIC_generate_sidecar",
+        "summary_filename": "AOMIC_generate_sidecar",
+        "skip_columns": ["onset", "duration"],
+        "value_columns": ["response_time", "stop_signal_delay"]
+    }
+}]
+  
+```
+````
+
+The results of executing this operation on the
+[**sample remodel event file**](sample-remodel-event-file-anchor)
+are shown in the following example using the text format.
+
+````{admonition} Sample *summarize_sidecar_from_events* operation results in text format.
+:class: tip
+```text
+Summary name: AOMIC_generate_sidecar
+Summary type: events_to_sidecar
+Summary filename: AOMIC_generate_sidecar
+
+Dataset: Currently no overall sidecar extraction is available
+
+Individual files:
+
+aomic_sub-0013_excerpt_events.tsv: Total events=6 Skip columns: ['onset', 'duration']
+Sidecar:
+{
+    "trial_type": {
+        "Description": "Description for trial_type",
+        "HED": {
+            "go": "(Label/trial_type, Label/go)",
+            "succesful_stop": "(Label/trial_type, Label/succesful_stop)",
+            "unsuccesful_stop": "(Label/trial_type, Label/unsuccesful_stop)"
+        },
+        "Levels": {
+            "go": "Here describe column value go of column trial_type",
+            "succesful_stop": "Here describe column value succesful_stop of column trial_type",
+            "unsuccesful_stop": "Here describe column value unsuccesful_stop of column trial_type"
+        }
+    },
+    "response_accuracy": {
+        "Description": "Description for response_accuracy",
+        "HED": {
+            "correct": "(Label/response_accuracy, Label/correct)"
+        },
+        "Levels": {
+            "correct": "Here describe column value correct of column response_accuracy"
+        }
+    },
+    "response_hand": {
+        "Description": "Description for response_hand",
+        "HED": {
+            "left": "(Label/response_hand, Label/left)",
+            "right": "(Label/response_hand, Label/right)"
+        },
+        "Levels": {
+            "left": "Here describe column value left of column response_hand",
+            "right": "Here describe column value right of column response_hand"
+        }
+    },
+    "sex": {
+        "Description": "Description for sex",
+        "HED": {
+            "female": "(Label/sex, Label/female)",
+            "male": "(Label/sex, Label/male)"
+        },
+        "Levels": {
+            "female": "Here describe column value female of column sex",
+            "male": "Here describe column value male of column sex"
+        }
+    },
+    "response_time": {
+        "Description": "Description for response_time",
+        "HED": "(Label/response_time, Label/#)"
+    },
+    "stop_signal_delay": {
+        "Description": "Description for stop_signal_delay",
+        "HED": "(Label/stop_signal_delay, Label/#)"
+    }
+}
+```
+````
+
+The current version of the summary does not generate a dataset-wide sidecar.
+
 (remodel-implementation-anchor)=
 ## Remodel implementation
 
 Operations are defined as classes that extent `BaseOp` regardless of whether 
 they are transformations or summaries. However, summaries must also implement
-an additional supporting class that extends `BaseContext` to hold the summary information.
+an additional supporting class that extends `BaseSummary` to hold the summary information.
 
 In order to be executed by the remodeling functions, 
 an operation must appear in the `valid_operations` dictionary.
@@ -2381,41 +2465,41 @@ by the following example.
 :class: tip
 ```python
     def do_op(self, dispatcher, df, name, sidecar=None):
-        summary = dispatcher.context_dict.get(self.summary_name, None)
+        summary = dispatcher.summary_dict.get(self.summary_name, None)
         if not summary:
-            summary = ColumnNameSummaryContext(self)
-            dispatcher.context_dict[self.summary_name] = summary
-        summary.update_context({"name": name, "column_names": list(df.columns)})
+            summary = ColumnNameSummary(self)
+            dispatcher.summary_dict[self.summary_name] = summary
+        summary.update_summary({"name": name, "column_names": list(df.columns)})
         return df
 
 ```
 ````
 
 A `do_op` operation for a summarization checks the `dispatcher` to see if the
-summary name is already in the dispatcher's `context_dict`. 
-If that summary is not yet in the `context_dict`, 
-the operation creates a `BaseContext` object for its summary (e.g., `ColumnNameSummaryContext`)
-and adds this object to the dispatcher's `context_dict`,
-otherwise the operation fetches the `BaseContext` object from 
-It then asks its `BaseContext` object to update the context based on the dataframe
+summary name is already in the dispatcher's `summary_dict`. 
+If that summary is not yet in the `summary_dict`, 
+the operation creates a `BaseSummary` object for its summary (e.g., `ColumnNameSummary`)
+and adds this object to the dispatcher's `summary_dict`,
+otherwise the operation fetches the `BaseSummary` object from 
+It then asks its `BaseSummary` object to update the summary based on the dataframe
 as explained in the next section.
 
 (additional-requirements-for-summarization-anchor)=
 ### Additional requirements for summarization
 
-Any summary operation must implement a supporting class that extends `BaseContext`.
+Any summary operation must implement a supporting class that extends `BaseSummary`.
 This class is used to hold and accumulate the information specific to the summary.
-This support class must implement two methods: `update_context` and `get_summary_details`.
+This support class must implement two methods: `update_summary` and `get_summary_details`.
 
-The `update_context` method is called by its associated `BaseOp` operation during the `do_op`
+The `update_summary` method is called by its associated `BaseOp` operation during the `do_op`
 to update the summary information based on the current dataframe.
-The `update_context` information takes a single parameter, which is a dictionary of information
+The `update_summary` information takes a single parameter, which is a dictionary of information
 specific to this operation.
 
-````{admonition} The update_context method required to be implemented by all BaseContext objects.
+````{admonition} The update_summary method required to be implemented by all BaseSummary objects.
 :class: tip
 ```python
-  def update_context(self, new_context)
+  def update_summary(self, summary_dict)
 ```
 ````
 
@@ -2424,10 +2508,10 @@ the dictionary is contains keys for `name` and `column_names.
 
 The `get_summary_details` returns a dictionary with the summary-specific information
 currently in the summary.
-The `BaseContext` provides universal methods for converting this summary to JSON or text format.
+The `BaseSummary` provides universal methods for converting this summary to JSON or text format.
 
 
-````{admonition} The get_summary_details method required to be implemented by all BaseContext objects.
+````{admonition} The get_summary_details method required to be implemented by all BaseSummary objects.
 :class: tip
 ```python
   get_summary_details(self, verbose=True)
