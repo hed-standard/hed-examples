@@ -1,6 +1,12 @@
 (whats-new-anchor)=
 # What's new?
 
+# What's new?
+
+**June 20, 2023**: **HEDTools version 0.3.0 released** 
+> [**HEDTools**](https://pypi.org/project/hedtools/) has been released on PyPI.  
+> See also [**hed-python**](https://github.com/hed-standard/hed-python) on GitHub.  
+
 **June 14, 2023**: **HED brain initiative meeting video poster online.**  
 > [**HED video poster**](https://brainmeeting2023.ipostersessions.com/?s=DA-51-73-83-1B-EA-B8-0A-CB-8F-41-BD-78-CD-68-D2) available until June 2024:  
 > *HED: Annotation standards and software infrastructure to enable sharing of analysis-reading neuroimaging and behavior data*  
