@@ -1826,8 +1826,8 @@ remodeling file.
 (summarize-definitions-anchor)=
 ### Summarize definitions
 
-The summarize definitions operation provides a summary of the Def-expand tags found across the dataset, 
-nothing any ambiguous or erroneous ones.  If working on a bids dataset, it will initialize with the known definitions
+The summarize definitions operation provides a summary of the `Def-expand` tags found across the dataset, 
+nothing any ambiguous or erroneous ones.  If working on a BIDS dataset, it will initialize with the known definitions
 from the sidecar, reporting any deviations from the known definitions as errors.
 
 (summarize-definitions-parameters-anchor)=
@@ -1845,7 +1845,7 @@ The following table lists the parameters required for using the summary.
 | *append_timecode* | bool | (Optional) If True, append a time code to filename.<br/>False is the default.|
 ```
 
-The *summarize_definitions* is mainly meant for verifying consistency in unknown Def-expand tags.  This comes up where you have an assembled dataset, but no longer have the definitions stored(or never created them to begin with)
+The *summarize_definitions* is mainly meant for verifying consistency in unknown `Def-expand` tags.  This comes up where you have an assembled dataset, but no longer have the definitions stored (or never created them to begin with).
 
 
 (summarize-definitions-example-anchor)=
@@ -1868,7 +1868,8 @@ The following example shows the JSON for including this operation in a remodelin
 ````
 
 A text format summary of the results of executing this operation on the 
-eeg_ds003645s_hed_column/sub-003_task-FacePerception_run-3_events.tsv file is shown in the following example.
+[**sub-003_task-FacePerception_run-3_events.tsv**](_static/data/sub-003_task-FacePerception_run-3_events.tsv) file 
+of the [**eeg_ds_003645s_hed_column**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed_column) dataset is shown in the following example.
 
 ````{admonition} Sample *summarize_definitions* operation results in text format.
 :class: tip
@@ -1936,12 +1937,12 @@ Overall summary:
 ```
 ````
 
-Since this file didn't have any ambiguous or incorrect Def-expand groups, those sections are empty.
+Since this file didn't have any ambiguous or incorrect `Def-expand` groups, those sections are empty.
 Ambiguous definitions are those that take a placeholder, but it doesn't have enough information 
-to be sure yet which tag the placeholder applies to.
-Erroneous ones are ones where they have conflicting expanded forms.  
+to be sure to which tag the placeholder applies.
+Erroneous ones are ones with conflicting expanded forms.  
 
-Currently, these do not generate individual summaries for files, but this is likely to change in the future.
+Currently, summaries are not generated for individual files, but this is likely to change in the future.
 
 Below is a simple example showing the format when erroneous or ambiguous definitions are found.
 
@@ -1975,8 +1976,8 @@ Overall summary:
 ````
 
 It is assumed the first definition encountered is the correct definition, unless the first one is ambiguous.
-Thus, it finds *(Def-expand/Initialize-recording,(Recording)* and considers it valid, before running into 
-*(Def-expand/Initialize-recording,(Recording, Event))* which is now deemed an error.
+Thus, it finds (`Def-expand/Initialize-recording`,(`Recording`) and considers it valid, before encountering
+(`Def-expand/Initialize-recording`,(`Recording`, `Event`)), which is now deemed an error.
 
 
 (summarize-hed-tags-anchor)=
