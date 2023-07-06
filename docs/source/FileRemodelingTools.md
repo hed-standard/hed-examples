@@ -2033,8 +2033,8 @@ Any leftover tags will appear under the title "Other tags".
    "operation": "summarize_hed_tags",
    "description": "Summarize the HED tags in the dataset.",
    "parameters": {
-       "summary_name": "AOMIC_condition_variables",
-       "summary_filename": "AOMIC_condition_variables",
+       "summary_name": "summarize_hed_tags",
+       "summary_filename": "summarize_hed_tags",
        "tags": {
            "Sensory events": ["Sensory-event", "Sensory-presentation",
                               "Task-stimulus-role", "Experimental-stimulus"],

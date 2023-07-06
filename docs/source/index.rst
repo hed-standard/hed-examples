@@ -128,7 +128,6 @@ Visit the `HED project homepage <https://github.com/hed-standard>`_ for links to
    :hidden:
    :caption: Tool documentation:
 
-   HedSchemaViewers.md
    HedOnlineTools.md
    CTaggerGuiTaggingTool.md
    FileRemodelingTools.md
@@ -140,8 +139,9 @@ Visit the `HED project homepage <https://github.com/hed-standard>`_ for links to
 .. toctree::
    :maxdepth: 3
    :hidden:
-   :caption: Datasets:
+   :caption: Data resources:
 
+   HedSchemas.md
    HedTestDatasets.md
 
 
