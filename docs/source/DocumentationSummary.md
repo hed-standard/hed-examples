@@ -3,19 +3,36 @@
 
 ## 1. HED publications
 
+### 1.1. Journal articles
+
 Explanation of the history, development, and motivation for third generation HED: 
 
-> Robbins, K., Truong, D., Jones, A., Callanan, I., & Makeig, S. (2021).  
+> Robbins, K., Truong, D., Jones, A., Callanan, I., and S. Makeig (2022).  
 > Building FAIR functionality: Annotating events in time series data using Hierarchical Event Descriptors (HED).  
 > Neuroinformatics Special Issue Building the NeuroCommons. Neuroinformatics https://doi.org/10.1007/s12021-021-09537-4.  
 > [https://link.springer.com/article/10.1007/s12021-021-09537-4](https://link.springer.com/article/10.1007/s12021-021-09537-4).
 
 Detailed case study in using HED-3G for tagging:
 
-> Robbins, K., Truong, D., Appelhoff, S., Delorme, A., & Makeig, S. (2021, May 7).   
+> Robbins, K., Truong, D., Appelhoff, S., Delorme, A., and S. Makeig (2021).   
 > Capturing the nature of events and event context using Hierarchical Event Descriptors (HED).  
 > NeuroImage Special Issue Practice in MEEG. NeuroImage  245  (2021)  118766.  
 > [https://www.sciencedirect.com/science/article/pii/S1053811921010387](https://www.sciencedirect.com/science/article/pii/S1053811921010387).
+
+### 1.2. Book chapters
+
+>  Truong, D., Robbins, K., Delorme, A., and S. Makeig (in press).  
+> End-to-end processing of M/EEG data with BIDS, HED, and EEGLAB.  
+> [**https://osf.io/8brgv/**](https://osf.io/8brgv/).   
+> in [**Methods for analyzing large neuroimaging datasets**](https://osf.io/d9r3x/) edited by Whelan and Lemaitre.   
+
+
+> Denissen, D., Richlan, F., Birklbauer, J., Pawlik, M., Ravenschlag, A., Himmelstoss, N., Hutzler, F. and K. Robbins (in press).   
+> Actionable event annotation and analysis in fMRI: A practical guide to event handling.   
+> [**https://osf.io/93km8/**](https://osf.io/93km8/).   
+> in
+[**Methods for analyzing large neuroimaging datasets**](https://osf.io/d9r3x/) edited by Whelan and Lemaitre.   
+
 
 ## HED viewers
 
@@ -44,9 +61,9 @@ and tagging hints.
 * - **Score library schemas**
   - 
 * - Expandable HTML
-  - [https://www.hedtags.org/display_hed_score.html](https://www.hedtags.org/display_hed_score.html)
+  - [https://www.hedtags.org/display_hed.html](https://www.hedtags.org/display_hed.html)
 * - Expandable prerelease HTML
-  - [https://www.hedtags.org/display_hed_score_prerelease.html](https://www.hedtags.org/display_hed_score_prerelease.html)
+  - [https://www.hedtags.org/display_hed_prerelease.html](https://www.hedtags.org/display_hed_prerelease.html)
 * - Mediawiki	
   - [https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/score/hedwiki/HED_score_1.0.0.mediawiki](https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/score/hedwiki/HED_score_1.0.0.mediawiki)
 * - XML	
@@ -66,10 +83,10 @@ The following is a summary of the HED-related websites:
   - Site
 * - HED organization website
   - [https://www.hedtags.org](https://www.hedtags.org)
+* - HED resources
+  - [https://www.hed-resources.org](https://www.hed-resources.org)
 * - HED specification
   - [https://hed-specification.readthedocs.io/en/latest/index.html](https://hed-specification.readthedocs.io/en/latest/index.html)
-* - HED examples and tutorials
-  - [https://hed-examples.readthedocs.io/en/latest/index.html](https://hed-examples.readthedocs.io/en/latest/index.html)
 * - CTAGGER executable jar
   - [https://github.com/hed-standard/hed-java/raw/master/ctagger.jar](https://github.com/hed-standard/hed-java/raw/master/ctagger.jar)
 * - **Repositories**
@@ -96,6 +113,8 @@ The following is a summary of the HED-related websites:
   -
 * - HED tools
   - [https://hedtools.ucsd.edu/hed](https://hedtools.ucsd.edu/hed)
+* - HED tools (development)
+  - [https://hedtools.ucsd.edu/hed_dev](https://hedtools.ucsd.edu/hed_dev)
 * - HED-2G support
   - [https://hedtools.ucsd.edu/hed2](https://hedtools.ucsd.edu/hed2)
 `````

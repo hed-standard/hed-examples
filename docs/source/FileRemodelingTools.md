@@ -54,6 +54,7 @@ This user's guide contains the following topics:
 * [**Remodel summarizations**](remodel-summarizations-anchor)
   * [**Summarize column names**](summarize-column-names-anchor)
   * [**Summarize column values**](summarize-column-values-anchor)
+  * [**Summarize definitions**](summarize-definitions-anchor)
   * [**Summarize sidecar from events**](summarize-sidecar-from-events-anchor)
   * [**Summarize hed tags**](summarize-hed-tags-anchor)
   * [**Summarize hed type**](summarize-hed-type-anchor)
@@ -96,14 +97,12 @@ section for information on how to call the operations.
 (summarization-operations-anchor)=
 ### Summarization operations
 
-**Summarization** operations do not modify the input DataFrame
-but rather extract and save information from the input DataFrame 
-in an internally stored context state as shown schematically in the following figure.
+**Summarization** operations do not modify the input DataFrame but rather extract and save information in an internally stored summary dictionary as shown schematically in the following figure.
 
 ![Summary operations](./_static/images/SummaryOperation.png)
 
 The dispatcher that executes remodeling operations can be interrogated at any time
-for the state information contained in the context and can save the contexts.
+for the state information contained in the global summary dictionary and can save additional summary information at any time during execution.
 Usually summaries are dumped at the end of processing to the `derivatives/remodel/summaries`
 subdirectory under the dataset root.
 
@@ -111,8 +110,8 @@ Summarization operations may appear anywhere in the operation list,
 and the same type of summary may appear multiple times under different names in order to track progress.
 
 The dispatcher stores information from each uniquely named summarization operation 
-as a separate context.
-Within its context information, most summarization operations keep a separate 
+as a separate summary dictionary entry.
+Within its summary information, most summarization operations keep a separate 
 summary for each individual file and have methods to create an overall summary
 of the information for all the files that have been processed by the summarization.
 
@@ -237,9 +236,9 @@ The programs use a standard command-line argument list for specifying input as s
 ````{table} Summary of command-line arguments for the remodeling programs.
 | Script name | Arguments | Purpose | 
 | ----------- | -------- | ------- |
-|*run_remodel_backup* | *data_dir*<br/>*-e -\\-extensions*<br/>*-f -\\-file-suffix*<br/>*-n -\\-backup-name*<br/>*-t -\\-task-names*<br/>*-v -\\-verbose*<br/>*-x -\\-exclude-dirs*| Create a backup event files. |
-|*run_remodel* | *data_dir*<br/>*model_path*<br/>*-b -\\-bids-format*<br/>*-e -\\-extensions*<br/>*-f -\\-file-suffix*<br/>*-i -\\-individual-summaries*<br/>*-n -\\-backup-name*<br/>*-j -\\-json-sidecar*<br/>*-r -\\-hed-version*<br/>*-s -\\-save-formats*<br/>*-t -\\-task-names*<br/>*-v -\\-verbose*<br/>*-x -\\-exclude-dirs* | Restructure or summarize the event files.<br/> <br/>If the backup name (*-n*) argument is omitted,<br>the backup called *default_back* is used.<br/>If you want to skip the backup, use *''*. |
-|*run_remodel_restore* | *data_dir*<br/>*-n -\\-backup-name*<br/>*-t -\\-task-names**-v -\\-verbose* | Restore a backup of event files. |
+|*run_remodel_backup* | *data_dir*<br/>*-e -\\-extensions*<br/>*-f -\\-file-suffix*<br/>*-n -\\-backup-name*<br/>*-t -\\-task-names*<br/>*-v -\\-verbose*<br/>*-w -\\-work-dir*<br/>*-x -\\-exclude-dirs*| Create a backup event files. |
+|*run_remodel* | *data_dir*<br/>*model_path*<br/>*-b -\\-bids-format*<br/>*-e -\\-extensions*<br/>*-f -\\-file-suffix*<br/>*-i -\\-individual-summaries*<br/>*-j -\\-json-sidecar*<br/>*-n -\\-backup-name*<br/>*-nb -\\-no-backup*<br/>*-ns -\\-no-summaries*<br/>*-nu -\\-no-update*<br/>*-r -\\-hed-version*<br/>*-s -\\-save-formats*<br/>*-t -\\-task-names*<br/>*-v -\\-verbose*<br/>*-w -\\-work-dir*<br/>*-x -\\-exclude-dirs* | Restructure or summarize the event files. |
+|*run_remodel_restore* | *data_dir*<br/>*-n -\\-backup-name*<br/>*-t -\\-task-names*<br/>*-v -\\-verbose*<br/>*-w -\\-work-dir*<br/> | Restore a backup of event files. |
 
 ````
 All the scripts have a required argument, which is the full path of the dataset root (*data_dir*).
@@ -299,9 +298,17 @@ Users are free to use either form.
 > This option is followed by the full path of the JSON sidecar with HED annotations to be
 > applied during the processing of HED-related remodeling operations.
 
-`-n`, `--backup_name`
+`-n`, `--backup-name`
 > The name of the backup used for the remodeling (default: `default_back`).
-> Use `''` if you wish to omit the backup (in `run_remodel`).
+
+`-nb`, `--no-backup`
+> If present, no backup is used. Rather operations are performed directly on the files.
+
+`-ns`, `--no-summaries`
+> If present, no summary files are output.
+
+`-nu`, `--no-update`
+> If present, the modified files are not output.
 
 `-r`, `--hed-versions`
 > This option is followed by one or more HED versions. Versions of the standard schema are specified
@@ -328,6 +335,10 @@ Users are free to use either form.
 `-v`, `--verbose`
 > If present, more comprehensive messages documenting transformation progress
 > are printed to standard output.
+
+`-w`, `--work-dir`
+> The path to the remodeling work root directory --both for backups and summaries (default: `[data_root]/derivatives/remodel`).
+> Use the `-nb` option if you wish to omit the backup (in `run_remodel`).
 
 `-x`, `--exclude-dirs`
 > The directories to exclude when gathering the data files to process.
@@ -534,10 +545,11 @@ For information about HED's integration into BIDS (Brain Imaging Data Structure)
 [**BIDS annotation quickstart**](./BidsAnnotationQuickstart.md).
 
 Currently, five remodeling operations rely on HED annotations: 
-[**factor_hed_tags**](factor-hed-tags-anchor), [**factor_hed_type**](factor-hed-type-anchor),
-[**summarize_hed_tags**](summarize-hed-tags-anchor),
-[**summarize_hed_type**](summarize-hed-type-anchor), and
-[**summarize_hed_validation**](summarize-hed-validation-anchor).
+- [**factor_hed_tags**](factor-hed-tags-anchor)  
+- [**factor_hed_type**](factor-hed-type-anchor)
+- [**summarize_hed_tags**](summarize-hed-tags-anchor)
+- [**summarize_hed_type**](summarize-hed-type-anchor)
+- [**summarize_hed_validation**](summarize-hed-validation-anchor).
 
 HED tags provide a mechanism for advanced data analysis and for 
 extracting experiment-specific information from the data files. 
@@ -583,9 +595,10 @@ In order to use HED operations, you must explicitly specify the HED versions
 using the `-r` option.
 The `-r` option supports a list of HED versions if multiple HED schemas are used.
 For example: `-r 8.1.0 sc:score_1.0.0` specifies that vocabulary will be drawn
-from standard HED Version [**8.1.0**](https://www.hedtags.org/display_hed.html) and from
-HED SCORE library version [**1.0.0**](https://www.hedtags.org/display_hed_score.html).
+from standard HED Version 8.1.0 and from
+HED SCORE library version 1.0.0.
 Annotations containing tags from SCORE should be prefixed with `sc:`.
+Note: both of the schemas can be viewed by the [**HED Schema Browser**](https://www.hedtags.org/display_hed.html).
 
 Usually, annotators will consolidate HED annotations in a single JSON sidecar file
 located at the top-level of the dataset.
@@ -877,8 +890,8 @@ The [**HED search guide**](./HedSearchGuide.md) tutorial discusses the HED searc
 | ------------ | ---- | ----------- | 
 | *queries* | list | A list of HED query strings. | 
 | *query_names* | list | A list of names for the resulting factor columns generated by the queries. |
-| *remove_types* | list | Structural HED tags to be removed (usually *Condition-variable* and *Task*). | 
-| *expand_context* | list | Expand the context and remove Onset and Offset tags before the query. | 
+| *remove_types* | list | Structural HED tags to be removed (usually `Condition-variable` and `Task`). | 
+| *expand_context* | bool | (Optional) Expand the context and remove `Onse` and`Offset` tags before the query. | 
 
 ```
 The *query_names* list, which must be empty or the same length as *queries*,
@@ -892,8 +905,8 @@ The *remove_types* and *expand_context* are not yet implemented, and hence ignor
 #### Factor HED tags example
 
 The *factor_hed-tags* operation in the following example produce two factor
-columns with 1's where the HED string for a row contains the *Correct-action*
-and *Incorrect-action*, respectively. 
+columns with 1's where the HED string for a row contains the `Correct-action`
+and `Incorrect-action`, respectively. 
 The resulting factor columns are named *correct* and *incorrect*, respectively.
 
 ````{admonition} A sample JSON file with a single *factor_hed_tags* transformation operation.
@@ -1620,7 +1633,8 @@ all summaries.
 |  Parameter   | Type | Description | 
 | ------------ | ---- | ----------- | 
 | *summary_name* | str | A unique name used to identify this summary.| 
-| *summary_filename* | str | A unique file basename to use for saving this summary. |
+| *summary_filename* | str | A unique file basename to use for saving this summary. |  
+| *append_timecode* | bool | (Optional) If True, append a time code to filename.<br/>False is the default. |
 ```
 
 (summarize-column-names-example-anchor)=
@@ -1652,9 +1666,9 @@ the following text summary is produced.
 
 ```text
 
-Context name: AOMIC_column_names
-Context type: column_names
-Context filename: AOMIC_column_names
+Summary name: AOMIC_column_names
+Summary type: column_names
+Summary filename: AOMIC_column_names
 
 Summary details:
 
@@ -1700,13 +1714,15 @@ The following table lists the parameters required for using the summary.
 | *summary_name* | str | A unique name used to identify this summary.| 
 | *summary_filename* | str | A unique file basename to use for saving this summary. |
 | *skip_columns* | list | A list of column names to omit from the summary.| 
-| *value_columns* | list | A list of columns to omit the listing unique values. |
+| *value_columns* | list | A list of columns to omit the listing unique values. |  
+| *append_timecode* | bool | (Optional) If True, append a time code to filename.<br/>False is the default.| 
+
 ```
 
 In addition to the standard parameters, *summary_name* and *summary_filename* required of all summaries,
 the *summarize_column_values* operation requires two additional lists to be supplied.
 The *skip_columns* list specifies the names of columns to skip entirely in the summary.
-Typically, the `onset` and `sample` columns are skipped, since they have unique values for
+Typically, the `onset`, `duration`, and `sample` columns are skipped, since they have unique values for
 each row and their values have limited information.
 
 The *summarize_column_values* is mainly meant for creating summary information about columns
@@ -1751,9 +1767,9 @@ is shown in the following example.
 ````{admonition} Sample *summarize_column_values* operation results in text format.
 :class: tip
 ```text
-Context name: AOMIC_column_values
-Context type: column_values
-Context filename: AOMIC_column_values
+Summary name: AOMIC_column_values
+Summary type: column_values
+Summary filename: AOMIC_column_values
 
 Overall summary:
 Dataset: Total events=6 Total files=1
@@ -1803,8 +1819,485 @@ For a more extensive example see the
 and [**JSON**](./_static/data/summaries/FacePerception_column_values_summary.json) 
 format summaries of the sample dataset 
 [**ds003645s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) 
-using the [**summarize_columns_rmdl.json**](./static/data/summaries/summarize_columns_rmdl.json)
+using the [**summarize_columns_rmdl.json**](./_static/data/summaries/summarize_columns_rmdl.json)
 remodeling file.
+
+
+(summarize-definitions-anchor)=
+### Summarize definitions
+
+The summarize definitions operation provides a summary of the `Def-expand` tags found across the dataset, 
+nothing any ambiguous or erroneous ones.  If working on a BIDS dataset, it will initialize with the known definitions
+from the sidecar, reporting any deviations from the known definitions as errors.
+
+(summarize-definitions-parameters-anchor)=
+#### Summarize definitions parameters
+
+The following table lists the parameters required for using the summary.
+
+```{admonition} Parameters for the *summarize_definitions* operation.
+:class: tip
+
+|  Parameter   | Type | Description | 
+| ------------ | ---- | ----------- | 
+| *summary_name* | str | A unique name used to identify this summary.| 
+| *summary_filename* | str | A unique file basename to use for saving this summary. |
+| *append_timecode* | bool | (Optional) If True, append a time code to filename.<br/>False is the default.|
+```
+
+The *summarize_definitions* is mainly meant for verifying consistency in unknown `Def-expand` tags.  This comes up where you have an assembled dataset, but no longer have the definitions stored (or never created them to begin with).
+
+
+(summarize-definitions-example-anchor)=
+#### Summarize definitions example
+
+The following example shows the JSON for including this operation in a remodeling file.
+
+````{admonition} A JSON file with a single *summarize_definitions* summarization operation.
+:class: tip
+```json
+[{
+   "operation": "summarize_definitions",
+   "description": "Summarize the definitions used in this dataset.",
+   "parameters": {
+       "summary_name": "HED_column_definition_summary",
+       "summary_filename": "HED_column_definition_summary"
+   }
+}]
+```
+````
+
+A text format summary of the results of executing this operation on the 
+[**sub-003_task-FacePerception_run-3_events.tsv**](_static/data/sub-003_task-FacePerception_run-3_events.tsv) file 
+of the [**eeg_ds_003645s_hed_column**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed_column) dataset is shown in the following example.
+
+````{admonition} Sample *summarize_definitions* operation results in text format.
+:class: tip
+```text
+Summary name: HED_column_definition_summary
+Summary type: definitions
+Summary filename: HED_column_definition_summary
+
+Overall summary:
+   Known Definitions: 17 items
+      cross-only: 2 items
+         description: A white fixation cross on a black background in the center of the screen.
+         contents: (Visual-presentation,(Background-view,Black),(Foreground-view,(Center-of,Computer-screen),(Cross,White)))
+      face-image: 2 items
+         description: A happy or neutral face in frontal or three-quarters frontal pose with long hair cropped presented as an achromatic foreground image on a black background with a white fixation cross superposed.
+         contents: (Visual-presentation,(Background-view,Black),(Foreground-view,((Center-of,Computer-screen),(Cross,White)),(Grayscale,(Face,Hair,Image))))
+      circle-only: 2 items
+         description: A white circle on a black background in the center of the screen.
+         contents: (Visual-presentation,(Background-view,Black),(Foreground-view,((Center-of,Computer-screen),(Circle,White))))
+      press-left-finger: 2 items
+         description: The participant presses a key with the left index finger to indicate a face symmetry judgment.
+         contents: ((Index-finger,(Experiment-participant,Left-side-of)),(Keyboard-key,Press))
+      press-right-finger: 2 items
+         description: The participant presses a key with the right index finger to indicate a face symmetry evaluation.
+         contents: ((Index-finger,(Experiment-participant,Right-side-of)),(Keyboard-key,Press))
+      famous-face-cond: 2 items
+         description: A face that should be recognized by the participants
+         contents: (Condition-variable/Face-type,(Image,(Face,Famous)))
+      unfamiliar-face-cond: 2 items
+         description: A face that should not be recognized by the participants.
+         contents: (Condition-variable/Face-type,(Image,(Face,Unfamiliar)))
+      scrambled-face-cond: 2 items
+         description: A scrambled face image generated by taking face 2D FFT.
+         contents: (Condition-variable/Face-type,(Image,(Disordered,Face)))
+      first-show-cond: 2 items
+         description: Factor level indicating the first display of this face.
+         contents: ((Condition-variable/Repetition-type,Item-interval/0,(Face,Item-count/1)))
+      immediate-repeat-cond: 2 items
+         description: Factor level indicating this face was the same as previous one.
+         contents: ((Condition-variable/Repetition-type,Item-interval/1,(Face,Item-count/2)))
+      delayed-repeat-cond: 2 items
+         description: Factor level indicating face was seen 5 to 15 trials ago.
+         contents: (Condition-variable/Repetition-type,(Face,Item-count/2),(Item-interval,(Greater-than-or-equal-to,Item-interval/5)))
+      left-sym-cond: 2 items
+         description: Left index finger key press indicates a face with above average symmetry.
+         contents: (Condition-variable/Key-assignment,((Asymmetrical,Behavioral-evidence),(Index-finger,(Experiment-participant,Right-side-of))),((Behavioral-evidence,Symmetrical),(Index-finger,(Experiment-participant,Left-side-of))))
+      right-sym-cond: 2 items
+         description: Right index finger key press indicates a face with above average symmetry.
+         contents: (Condition-variable/Key-assignment,((Asymmetrical,Behavioral-evidence),(Index-finger,(Experiment-participant,Left-side-of))),((Behavioral-evidence,Symmetrical),(Index-finger,(Experiment-participant,Right-side-of))))
+      face-symmetry-evaluation-task: 2 items
+         description: Evaluate degree of image symmetry and respond with key press evaluation.
+         contents: (Experiment-participant,Task,(Discriminate,(Face,Symmetrical)),(Face,See),(Keyboard-key,Press))
+      blink-inhibition-task: 2 items
+         description: Do not blink while the face image is displayed.
+         contents: (Experiment-participant,Inhibit-blinks,Task)
+      fixation-task: 2 items
+         description: Fixate on the cross at the screen center.
+         contents: (Experiment-participant,Task,(Cross,Fixate))
+      initialize-recording: 2 items
+         description: 
+         contents: (Recording)
+   Ambiguous Definitions: 0 items
+
+   Errors: 0 items
+```
+````
+
+Since this file didn't have any ambiguous or incorrect `Def-expand` groups, those sections are empty.
+Ambiguous definitions are those that take a placeholder, but it doesn't have enough information 
+to be sure to which tag the placeholder applies.
+Erroneous ones are ones with conflicting expanded forms.  
+
+Currently, summaries are not generated for individual files, but this is likely to change in the future.
+
+Below is a simple example showing the format when erroneous or ambiguous definitions are found.
+
+````{admonition} Sample input for *summarize_definitions* operation documenting ambiguous/erroneous definitions.
+:class: tip
+```text
+((Def-expand/Initialize-recording,(Recording)),Onset)
+((Def-expand/Initialize-recording,(Recording, Event)),Onset)
+(Def-expand/Specify-age/1,(Age/1, Item-count/1))
+```
+````
+
+````{admonition} Sample *summarize_definitions* operation error results in text format.
+:class: tip
+```text
+Summary name: HED_column_definition_summary
+Summary type: definitions
+Summary filename: HED_column_definition_summary
+
+Overall summary:
+   Known Definitions: 1 items
+      initialize-recording: 2 items
+         description: 
+         contents: (Recording)
+   Ambiguous Definitions: 1 items
+      specify-age/#: (Age/#,Item-count/#)
+   Errors: 1 items
+      initialize-recording:
+         (Event,Recording)
+```
+````
+
+It is assumed the first definition encountered is the correct definition, unless the first one is ambiguous.
+Thus, it finds (`Def-expand/Initialize-recording`,(`Recording`) and considers it valid, before encountering
+(`Def-expand/Initialize-recording`,(`Recording`, `Event`)), which is now deemed an error.
+
+
+(summarize-hed-tags-anchor)=
+### Summarize HED tags
+
+The *summarize_hed_tags* operation extracts a summary of the HED tags present
+in the annotations of a dataset.
+This summary operation assumes that the structure in question is suitably 
+annotated with HED (Hierarchical Event Descriptors).
+You must provide a HED schema version.
+If the data has annotations in a JSON sidecar, you must also provide its path.
+
+(summarize-hed-tags-parameters-anchor)=
+#### Summarize HED tags parameters
+
+The *summarize_hed_tags* operation has the two required parameters 
+(*tags* and *expand_context*) in addition to the standard *summary_name* and *summary_filename* parameters.
+
+```{admonition} Parameters for the *summarize_hed_tags* operation.
+:class: tip
+
+|  Parameter   | Type | Description | 
+| ------------ | ---- | ----------- | 
+| *summary_name* | str | A unique name used to identify this summary.| 
+| *summary_filename* | str | A unique file basename to use for saving this summary. |
+| *tags* | dict | Dictionary with category title keys and tags in that category as values. |  
+| *append_timecode* | bool | (Optional) If True, append a time code to filename.<br/>False is the default.|  
+| *expand_context* | bool | (Optional) If true, expand `Event-context` to account for onsets and offsets. |
+```
+
+The *tags* dictionary has keys that specify how the user wishes the tags 
+to be categorized for display. 
+Note that these keys are titles designating display categories, not HED tags.
+
+The *tags* dictionary values are lists of actual HED tags (or their children)
+that should be listed under the respective display categories.
+
+If *expand_context* is false, the counts are calculated without
+expanding the event context. The option of expanding the event context to account
+for onset/offset effects is not implemented in this release.
+
+The following remodeling command specifies that the tag counts should be grouped
+under the titles: *Sensory events*, *Agent actions*, and *Objects*.
+Any leftover tags will appear under the title "Other tags".
+
+(summarize-hed-tags-example-anchor)=
+#### Summarize HED tags example
+
+````{admonition} A JSON file with a single *summarize_hed_tags* summarization operation.
+:class: tip
+```json
+[{
+   "operation": "summarize_hed_tags",
+   "description": "Summarize the HED tags in the dataset.",
+   "parameters": {
+       "summary_name": "summarize_hed_tags",
+       "summary_filename": "summarize_hed_tags",
+       "tags": {
+           "Sensory events": ["Sensory-event", "Sensory-presentation",
+                              "Task-stimulus-role", "Experimental-stimulus"],
+           "Agent actions": ["Agent-action", "Agent", "Action", "Agent-task-role",
+                             "Task-action-type", "Participant-response"],
+           "Objects": ["Item"]
+         }
+     }
+}]
+```
+````
+
+The results of executing this operation on the
+[**sample remodel event file**](sample-remodel-event-file-anchor) are shown below.
+
+````{admonition} Text summary of *summarize_hed_tags* operation on the sample remodel file.
+:class: tip
+
+```text
+Summary name: summarize_hed_tags
+Summary type: hed_tag_summary
+Summary filename: summarize_hed_tags
+
+Overall summary:
+Dataset: Total events=1200 Total1 file=6
+	Main tags[events,files]:
+		Sensory events:
+			Sensory-presentation[6,1] Visual-presentation[6,1] Auditory-presentation[3,1]
+		Agent actions:
+			Incorrect-action[2,1] Correct-action[1,1]
+		Objects:
+			Image[6,1]
+	Other tags[events,files]:
+		Label[6,1] Def[6,1] Delay[3,1]
+
+Individual files:
+
+aomic_sub-0013_excerpt_events.tsv:    
+Total events=6 
+   Main tags[events,files]:
+       Sensory events:
+          Sensory-presentation[6,1] Visual-presentation[6,1] Auditory-presentation[3,1]
+       Agent actions:
+          Incorrect-action[2,1] Correct-action[1,1]
+       Objects:
+          Image[6,1]
+   Other tags[events,files]:
+       Label[6,1] Def[6,1] Delay[3,1]
+
+```
+````
+
+The HED tag *Task-action-type* was specified in the "Agent actions" category,
+*Incorrect-action* and *Correct-action*, which are children of *Task-action-type*
+in the [**HED schema**](https://www.hedtags.org/display_hed.html),
+will appear with counts in the list under this category.
+
+The sample events file had 6 events, including 1 correct action and 2 incorrect actions.
+Since only one file was processed, the information for *Dataset* was 
+similar to that presented under *Individual files*.
+
+For a more extensive example, see the 
+[**text**](./_static/data/summaries/FacePerception_hed_tag_summary.txt) 
+and [**JSON**](./_static/data/summaries/FacePerception_hed_tag_summary.json) 
+format summaries of the sample dataset 
+[**ds003645s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) 
+using the [**summarize_hed_tags_rmdl.json**](./_static/data/summaries/summarize_hed_tags_rmdl.json)
+remodeling file.
+
+(summarize-hed-type-anchor)=
+### Summarize HED type
+
+The *summarize_hed_type* operation is designed to extract experimental design matrices or other
+experimental structure.
+This summary operation assumes that the structure in question is suitably 
+annotated with HED (Hierarchical Event Descriptors). 
+The [**HED conditions and design matrices**](https://hed-examples.readthedocs.io/en/latest/HedConditionsAndDesignMatrices.html)
+explains how this works.
+
+(summarize-hed-type-parameters-anchor)=
+#### Summarize HED type parameters
+
+The *summarize_hed_type* operation provides detailed information about a specified tag,
+usually `Condition-variable` or `Task`.
+This summary provides useful information about experimental design.
+
+```{admonition} Parameters for the *summarize_hed_type* operation.
+:class: tip
+
+|  Parameter   | Type | Description | 
+| ------------ | ---- | ----------- | 
+| *summary_name* | str | A unique name used to identify this summary.| 
+| *summary_filename* | str | A unique file basename to use for saving this summary. |
+| *type_tag* | str | Tag to produce a summary for (most often *condition-variable*).|  
+| *append_timecode* | bool | (Optional) If True, append a time code to filename.<br/>False is the default.| 
+```
+In addition to the two standard parameters (*summary_name* and *summary_filename*),
+the *type_tag* parameter is required.
+Only one tag can be given, so you must provide a separate operations in the remodel file
+for multiple type tags.
+
+(summarize-hed-type-example-anchor)=
+#### Summarize HED type example
+
+````{admonition} A JSON file with a single *summarize_hed_type* summarization operation.
+:class: tip
+```json
+[{
+   "operation": "summarize_hed_type",
+   "description": "Summarize column names.",
+   "parameters": {
+       "summary_name": "AOMIC_condition_variables",
+       "summary_filename": "AOMIC_condition_variables",
+       "type_tag": "condition-variable"
+   }
+}]
+```
+````
+
+The results of executing this operation on the
+[**sample remodel event file**](sample-remodel-event-file-anchor) are shown below.
+
+````{admonition} Text summary of *summarize_hed_types* operation on the sample remodel file.
+:class: tip
+
+```text
+Summary name: AOMIC_condition_variables
+Summary type: hed_type_summary
+Summary filename: AOMIC_condition_variables
+
+Overall summary:
+
+Dataset: Type=condition-variable Type values=1 Total events=6 Total files=1
+   image-sex: 2 levels in 6 event(s)s out of 6 total events in 1 file(s)
+       female-image-cond [4,1]: ['Female', 'Image', 'Face']
+       male-image-cond [2,1]: ['Male', 'Image', 'Face']
+
+Individual files:
+
+aomic_sub-0013_excerpt_events.tsv:
+Type=condition-variable Total events=6 
+      image-sex: 2 levels in 6 events
+         female-image-cond [4 events, 1 files]: 
+            Tags: ['Female', 'Image', 'Face']
+         male-image-cond [2 events, 1 files]: 
+            Tags: ['Male', 'Image', 'Face']
+```
+````
+
+Because *summarize_hed_type* is a HED operation, 
+a HED schema version is required and a JSON sidecar is also usually needed.
+This summary was produced by using `hed_version="8.1.0"` when creating the `dispatcher`
+and using the [**sample remodel sidecar file**](sample-remodel-sidecar-file-anchor) in the `do_op`.
+The sidecar provides the annotations that use the `condition-variable` tag in the summary.
+
+For a more extensive example, see the 
+[**text**](./_static/data/summaries/FacePerception_hed_type_summary.txt) 
+and [**JSON**](./_static/data/summaries/FacePerception_hed_type_summary.json) 
+format summaries of the sample dataset 
+[**ds003645s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) 
+using the [**summarize_hed_types_rmdl.json**](./_static/data/summaries/summarize_hed_types_rmdl.json)
+remodeling file.
+
+(summarize-hed-validation-anchor)=
+### Summarize HED validation
+
+The *summarize_hed_validation* operation runs the HED validator on the requested data
+and produces a summary of the errors. 
+See the [**HED validation guide**](./HedValidationGuide.md) for available methods of
+running the HED validator.
+
+
+(summarize-hed-validation-parameters-anchor)=
+#### Summarize HED validation parameters
+
+In addition to the required *summary_name* and *summary_filename* parameters,
+the *summarize_hed_validation* operation has a required boolean parameter *check_for_warnings*.
+If *check_for_warnings* is false, the summary will not report warnings.
+
+```{admonition} Parameters for the *summarize_hed_validation* operation.
+:class: tip
+
+|  Parameter   | Type | Description | 
+| ------------ | ---- | ----------- | 
+| *summary_name* | str | A unique name used to identify this summary.| 
+| *summary_filename* | str | A unique file basename to use for saving this summary. |
+| *check_for_warnings* | bool | If true, warnings are reported, otherwise warnings are ignored. |  
+| *append_timecode* | bool | (Optional) If True, append a time code to filename.<br/>False is the default.| 
+```
+The *summarize_hed_validation* is a HED operation and the calling program must provide a HED schema version
+and usually a JSON sidecar containing the HED annotations.
+
+The validation process takes place in two stages: first the JSON sidecar is validated.
+This strategy is used because a single error in the JSON sidecar can generate an error message
+for every line in the corresponding data file.
+
+If the JSON sidecar has errors (warnings don't count), the validation process is terminated
+without validation of the data file and assembled HED annotations.
+
+If the JSON sidecar does not have errors, 
+the validator assembles the annotations for each line in the data files and validates
+the assembled HED annotation.
+Data file-wide consistency, such as matched onsets and offsets, is also checked.
+
+
+(summarize-hed-validation-example-anchor)=
+#### Summarize HED validation example
+
+````{admonition} A JSON file with a single *summarize_hed_validation* summarization operation.
+:class: tip
+```json
+[{
+   "operation": "summarize_hed_validation",
+   "description": "Summarize validation errors in the sample dataset.",
+   "parameters": {
+       "summary_name": "AOMIC_sample_validation",
+       "summary_filename": "AOMIC_sample_validation",
+       "check_for_warnings": true
+   }
+}]
+```
+````
+
+To demonstrate the output of the validation operation, we modified the first row of the
+[**sample remodel event file**](sample-remodel-event-file-anchor) 
+so that `trial_type` column contained the value `baloney` rather than `go`.
+This modification generates a warning because the meaning of `baloney` is not defined 
+in the [**sample remodel sidecar file**](sample-remodel-sidecar-file-anchor).
+The results of executing the example operation with the modified file are shown
+in the following example.
+
+
+````{admonition} Text summary of *summarize_hed_validation* operation on a modified sample data file.
+:class: tip
+
+```text
+Summary name: AOMIC_sample_validation
+Summary type: hed_validation
+Summary filename: AOMIC_sample_validation
+
+Summary details:
+
+Dataset: [1 sidecar files, 1 event files]
+   task-stopsignal_acq-seq_events.json: 0 issues
+   sub-0013_task-stopsignal_acq-seq_events.tsv: 6 issues
+
+Individual files:
+
+   sub-0013_task-stopsignal_acq-seq_events.tsv: 1 sidecar files
+      task-stopsignal_acq-seq_events.json has no issues
+      sub-0013_task-stopsignal_acq-seq_events.tsv issues:
+            HED_UNKNOWN_COLUMN: WARNING: Column named 'onset' found in file, but not specified as a tag column or identified in sidecars.
+            HED_UNKNOWN_COLUMN: WARNING: Column named 'duration' found in file, but not specified as a tag column or identified in sidecars.
+            HED_UNKNOWN_COLUMN: WARNING: Column named 'response_time' found in file, but not specified as a tag column or identified in sidecars.
+            HED_UNKNOWN_COLUMN: WARNING: Column named 'response_accuracy' found in file, but not specified as a tag column or identified in sidecars.
+            HED_UNKNOWN_COLUMN: WARNING: Column named 'response_hand' found in file, but not specified as a tag column or identified in sidecars.
+            HED_SIDECAR_KEY_MISSING[row=0,column=2]: WARNING: Category key 'baloney' does not exist in column.  Valid keys are: ['succesful_stop', 'unsuccesful_stop', 'go']
+
+```
+````
+
+This summary was produced using HED schema version `hed_version="8.1.0"` when creating the `dispatcher`
+and using the [**sample remodel sidecar file**](sample-remodel-sidecar-file-anchor) in the `do_op`.
 
 
 (summarize-sidecar-from-events-anchor)=
@@ -1827,7 +2320,8 @@ The following table lists the parameters required for using the summary.
 | *summary_name* | str | A unique name used to identify this summary.| 
 | *summary_filename* | str | A unique file basename to use for saving this summary. |
 | *skip_columns* | list | A list of column names to omit from the sidecar.| 
-| *value_columns* | list | A list of columns to treat as value columns in the sidecar. |
+| *value_columns* | list | A list of columns to treat as value columns in the sidecar. |  
+| *append_timecode* | bool | (Optional) If True, append a time code to filename.<br/>False is the default. |  
 ```
 The standard summary parameters, *summary_name* and *summary_filename* are required.
 The *summary_name* is the unique key used to identify the
@@ -1877,9 +2371,9 @@ are shown in the following example using the text format.
 ````{admonition} Sample *summarize_sidecar_from_events* operation results in text format.
 :class: tip
 ```text
-Context name: AOMIC_generate_sidecar
-Context type: events_to_sidecar
-Context filename: AOMIC_generate_sidecar
+Summary name: AOMIC_generate_sidecar
+Summary type: events_to_sidecar
+Summary filename: AOMIC_generate_sidecar
 
 Dataset: Currently no overall sidecar extraction is available
 
@@ -1946,329 +2440,12 @@ Sidecar:
 
 The current version of the summary does not generate a dataset-wide sidecar.
 
-(summarize-hed-tags-anchor)=
-### Summarize HED tags
-
-The *summarize_hed_tags* operation extracts a summary of the HED tags present
-in the annotations of a dataset.
-This summary operation assumes that the structure in question is suitably 
-annotated with HED (Hierarchical Event Descriptors).
-You must provide a HED schema version.
-If the data has annotations in a JSON sidecar, you must also provide its path.
-
-(summarize-hed-tags-parameters-anchor)=
-#### Summarize HED tags parameters
-
-The *summarize_hed_tags* operation has the two required parameters 
-(*tags* and *expand_context*) in addition to the standard *summary_name* and *summary_filename* parameters.
-
-```{admonition} Parameters for the *summarize_hed_tags* operation.
-:class: tip
-
-|  Parameter   | Type | Description | 
-| ------------ | ---- | ----------- | 
-| *summary_name* | str | A unique name used to identify this summary.| 
-| *summary_filename* | str | A unique file basename to use for saving this summary. |
-| *tags* | dict | Dictionary with category title keys and tags in that category as values. |
-| *expand_context* | bool | If true, expand *Event-context* to account for onsets and offsets. |
-```
-
-The *tags* dictionary has keys that specify how the user wishes the tags 
-to be categorized for display. 
-Note that these keys are titles designating display categories, not HED tags.
-
-The *tags* dictionary values are lists of actual HED tags (or their children)
-that should be listed under the respective display categories.
-
-If *expand_context* is false (the default), the counts are calculated without
-expanding the event context. The option of expanding the event context to account
-for onset/offset effects is not implemented in this release.
-
-The following remodeling command specifies that the tag counts should be grouped
-under the titles: *Sensory events*, *Agent actions*, and *Objects*.
-Any leftover tags will appear under the title "Other tags".
-
-(summarize-hed-tags-example-anchor)=
-#### Summarize HED tags example
-
-````{admonition} A JSON file with a single *summarize_hed_tags* summarization operation.
-:class: tip
-```json
-[{
-   "operation": "summarize_hed_tags",
-   "description": "Summarize the HED tags in the dataset.",
-   "parameters": {
-       "summary_name": "AOMIC_condition_variables",
-       "summary_filename": "AOMIC_condition_variables",
-       "tags": {
-           "Sensory events": ["Sensory-event", "Sensory-presentation",
-                              "Task-stimulus-role", "Experimental-stimulus"],
-           "Agent actions": ["Agent-action", "Agent", "Action", "Agent-task-role",
-                             "Task-action-type", "Participant-response"],
-           "Objects": ["Item"]
-         },
-       "expand_context": false
-     }
-}]
-```
-````
-
-The results of executing this operation on the
-[**sample remodel event file**](sample-remodel-event-file-anchor) are shown below.
-
-````{admonition} Text summary of *summarize_hed_tags* operation on the sample remodel file.
-:class: tip
-
-```text
-Context name: summarize_hed_tags
-Context type: hed_tag_summary
-Context filename: summarize_hed_tags
-
-Overall summary:
-Dataset: Total events=1200 Total1 file=6
-	Main tags[events,files]:
-		Sensory events:
-			Sensory-presentation[6,1] Visual-presentation[6,1] Auditory-presentation[3,1]
-		Agent actions:
-			Incorrect-action[2,1] Correct-action[1,1]
-		Objects:
-			Image[6,1]
-	Other tags[events,files]:
-		Label[6,1] Def[6,1] Delay[3,1]
-
-Individual files:
-
-aomic_sub-0013_excerpt_events.tsv:    
-Total events=6 
-   Main tags[events,files]:
-       Sensory events:
-          Sensory-presentation[6,1] Visual-presentation[6,1] Auditory-presentation[3,1]
-       Agent actions:
-          Incorrect-action[2,1] Correct-action[1,1]
-       Objects:
-          Image[6,1]
-   Other tags[events,files]:
-       Label[6,1] Def[6,1] Delay[3,1]
-
-```
-````
-
-The HED tag *Task-action-type* was specified in the "Agent actions" category,
-*Incorrect-action* and *Correct-action*, which are children of *Task-action-type*
-in the [**HED schema**](https://www.hedtags.org/display_hed.html),
-will appear with counts in the list under this category.
-
-The sample events file had 6 events, including 1 correct action and 2 incorrect actions.
-Since only one file was processed, the information for *Dataset* was 
-similar to that presented under *Individual files*.
-
-For a more extensive example, see the 
-[**text**](./_static/data/summaries/FacePerception_hed_tag_summary.txt) 
-and [**JSON**](./_static/data/summaries/FacePerception_hed_tag_summary.json) 
-format summaries of the sample dataset 
-[**ds003645s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) 
-using the [**summarize_hed_tags_rmdl.json**](./static/data/summaries/summarize_hed_tags_rmdl.json)
-remodeling file.
-
-(summarize-hed-type-anchor)=
-### Summarize HED type
-
-The *summarize_hed_type* operation is designed to extract experimental design matrices or other
-experimental structure.
-This summary operation assumes that the structure in question is suitably 
-annotated with HED (Hierarchical Event Descriptors). 
-The [**HED conditions and design matrices**](https://hed-examples.readthedocs.io/en/latest/HedConditionsAndDesignMatrices.html)
-explains how this works.
-
-(summarize-hed-type-parameters-anchor)=
-#### Summarize HED type parameters
-
-The *summarize_hed_type* operation provides detailed information about a specified tag,
-usually *Condition-variable* or *Task*.
-This summary provides useful information about experimental design.
-
-```{admonition} Parameters for the *summarize_hed_type* operation.
-:class: tip
-
-|  Parameter   | Type | Description | 
-| ------------ | ---- | ----------- | 
-| *summary_name* | str | A unique name used to identify this summary.| 
-| *summary_filename* | str | A unique file basename to use for saving this summary. |
-| *type_tag* | str | Tag to produce a summary for (most often *condition-variable*).| 
-```
-In addition to the two standard parameters (*summary_name* and *summary_filename*),
-the *type_tag* parameter is required.
-Only one tag can be given, so you must provide a separate operations in the remodel file
-for multiple type tags.
-
-(summarize-hed-type-example-anchor)=
-#### Summarize HED type example
-
-````{admonition} A JSON file with a single *summarize_hed_type* summarization operation.
-:class: tip
-```json
-[{
-   "operation": "summarize_hed_type",
-   "description": "Summarize column names.",
-   "parameters": {
-       "summary_name": "AOMIC_condition_variables",
-       "summary_filename": "AOMIC_condition_variables",
-       "type_tag": "condition-variable"
-   }
-}]
-```
-````
-
-The results of executing this operation on the
-[**sample remodel event file**](sample-remodel-event-file-anchor) are shown below.
-
-````{admonition} Text summary of *summarize_hed_types* operation on the sample remodel file.
-:class: tip
-
-```text
-Context name: AOMIC_condition_variables
-Context type: hed_type_summary
-Context filename: AOMIC_condition_variables
-
-Overall summary:
-
-Dataset: Type=condition-variable Type values=1 Total events=6 Total files=1
-   image-sex: 2 levels in 6 event(s)s out of 6 total events in 1 file(s)
-       female-image-cond [4,1]: ['Female', 'Image', 'Face']
-       male-image-cond [2,1]: ['Male', 'Image', 'Face']
-
-Individual files:
-
-aomic_sub-0013_excerpt_events.tsv:
-Type=condition-variable Total events=6 
-      image-sex: 2 levels in 6 events
-         female-image-cond [4 events, 1 files]: 
-            Tags: ['Female', 'Image', 'Face']
-         male-image-cond [2 events, 1 files]: 
-            Tags: ['Male', 'Image', 'Face']
-```
-````
-
-Because *summarize_hed_type* is a HED operation, 
-a HED schema version is required and a JSON sidecar is also usually needed.
-This summary was produced by using `hed_version="8.1.0"` when creating the `dispatcher`
-and using the [**sample remodel sidecar file**](sample-remodel-sidecar-file-anchor) in the `do_op`.
-The sidecar provides the annotations that use the `condition-variable` tag in the summary.
-
-For a more extensive example, see the 
-[**text**](./_static/data/summaries/FacePerception_hed_type_summary.txt) 
-and [**JSON**](./_static/data/summaries/FacePerception_hed_type_summary.json) 
-format summaries of the sample dataset 
-[**ds003645s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) 
-using the [**summarize_hed_types_rmdl.json**](./static/data/summaries/summarize_hed_types_rmdl.json)
-remodeling file.
-
-(summarize-hed-validation-anchor)=
-### Summarize HED validation
-
-The *summarize_hed_validation* operation runs the HED validator on the requested data
-and produces a summary of the errors. 
-See the [**HED validation guide**](./HedValidationGuide.md) for available methods of
-running the HED validator.
-
-
-(summarize-hed-validation-parameters-anchor)=
-#### Summarize HED validation parameters
-
-In addition to the required *summary_name* and *summary_filename* parameters,
-the *summarize_hed_validation* operation has a required boolean parameter *check_for_warnings*.
-If *check_for_warnings* is false, the summary will not report warnings.
-
-```{admonition} Parameters for the *summarize_hed_validation* operation.
-:class: tip
-
-|  Parameter   | Type | Description | 
-| ------------ | ---- | ----------- | 
-| *summary_name* | str | A unique name used to identify this summary.| 
-| *summary_filename* | str | A unique file basename to use for saving this summary. |
-| *check_for_warnings* | bool | If true, warnings are reported, otherwise warnings are ignored. | 
-```
-The *summarize_hed_validation* is a HED operation and the calling program must provide a HED schema version
-and usually a JSON sidecar containing the HED annotations.
-
-The validation process takes place in two stages: first the JSON sidecar is validated.
-This strategy is used because a single error in the JSON sidecar can generate an error message
-for every line in the corresponding data file.
-
-If the JSON sidecar has errors (warnings don't count), the validation process is terminated
-without validation of the data file and assembled HED annotations.
-
-If the JSON sidecar does not have errors, 
-the validator assembles the annotations for each line in the data files and validates
-the assembled HED annotation.
-Data file-wide consistency, such as matched onsets and offsets, is also checked.
-
-
-(summarize-hed-validation-example-anchor)=
-#### Summarize HED validation example
-
-````{admonition} A JSON file with a single *summarize_hed_validation* summarization operation.
-:class: tip
-```json
-[{
-   "operation": "summarize_hed_validation",
-   "description": "Summarize validation errors in the sample dataset.",
-   "parameters": {
-       "summary_name": "AOMIC_sample_validation",
-       "summary_filename": "AOMIC_sample_validation",
-       "check_for_warnings": true
-   }
-}]
-```
-````
-
-To demonstrate the output of the validation operation, we modified the first row of the
-[**sample remodel event file**](sample-remodel-event-file-anchor) 
-so that `trial_type` column contained the value `baloney` rather than `go`.
-This modification generates a warning because the meaning of `baloney` is not defined 
-in the [**sample remodel sidecar file**](sample-remodel-sidecar-file-anchor).
-The results of executing the example operation with the modified file are shown
-in the following example.
-
-
-````{admonition} Text summary of *summarize_hed_validation* operation on a modified sample data file.
-:class: tip
-
-```text
-Context name: AOMIC_sample_validation
-Context type: hed_validation
-Context filename: AOMIC_sample_validation
-
-Summary details:
-
-Dataset: [1 sidecar files, 1 event files]
-   task-stopsignal_acq-seq_events.json: 0 issues
-   sub-0013_task-stopsignal_acq-seq_events.tsv: 6 issues
-
-Individual files:
-
-   sub-0013_task-stopsignal_acq-seq_events.tsv: 1 sidecar files
-      task-stopsignal_acq-seq_events.json has no issues
-      sub-0013_task-stopsignal_acq-seq_events.tsv issues:
-            HED_UNKNOWN_COLUMN: WARNING: Column named 'onset' found in file, but not specified as a tag column or identified in sidecars.
-            HED_UNKNOWN_COLUMN: WARNING: Column named 'duration' found in file, but not specified as a tag column or identified in sidecars.
-            HED_UNKNOWN_COLUMN: WARNING: Column named 'response_time' found in file, but not specified as a tag column or identified in sidecars.
-            HED_UNKNOWN_COLUMN: WARNING: Column named 'response_accuracy' found in file, but not specified as a tag column or identified in sidecars.
-            HED_UNKNOWN_COLUMN: WARNING: Column named 'response_hand' found in file, but not specified as a tag column or identified in sidecars.
-            HED_SIDECAR_KEY_MISSING[row=0,column=2]: WARNING: Category key 'baloney' does not exist in column.  Valid keys are: ['succesful_stop', 'unsuccesful_stop', 'go']
-
-```
-````
-
-This summary was produced using HED schema version `hed_version="8.1.0"` when creating the `dispatcher`
-and using the [**sample remodel sidecar file**](sample-remodel-sidecar-file-anchor) in the `do_op`.
-
 (remodel-implementation-anchor)=
 ## Remodel implementation
 
 Operations are defined as classes that extent `BaseOp` regardless of whether 
 they are transformations or summaries. However, summaries must also implement
-an additional supporting class that extends `BaseContext` to hold the summary information.
+an additional supporting class that extends `BaseSummary` to hold the summary information.
 
 In order to be executed by the remodeling functions, 
 an operation must appear in the `valid_operations` dictionary.
@@ -2369,41 +2546,41 @@ by the following example.
 :class: tip
 ```python
     def do_op(self, dispatcher, df, name, sidecar=None):
-        summary = dispatcher.context_dict.get(self.summary_name, None)
+        summary = dispatcher.summary_dict.get(self.summary_name, None)
         if not summary:
-            summary = ColumnNameSummaryContext(self)
-            dispatcher.context_dict[self.summary_name] = summary
-        summary.update_context({"name": name, "column_names": list(df.columns)})
+            summary = ColumnNameSummary(self)
+            dispatcher.summary_dict[self.summary_name] = summary
+        summary.update_summary({"name": name, "column_names": list(df.columns)})
         return df
 
 ```
 ````
 
 A `do_op` operation for a summarization checks the `dispatcher` to see if the
-summary name is already in the dispatcher's `context_dict`. 
-If that summary is not yet in the `context_dict`, 
-the operation creates a `BaseContext` object for its summary (e.g., `ColumnNameSummaryContext`)
-and adds this object to the dispatcher's `context_dict`,
-otherwise the operation fetches the `BaseContext` object from 
-It then asks its `BaseContext` object to update the context based on the dataframe
+summary name is already in the dispatcher's `summary_dict`. 
+If that summary is not yet in the `summary_dict`, 
+the operation creates a `BaseSummary` object for its summary (e.g., `ColumnNameSummary`)
+and adds this object to the dispatcher's `summary_dict`,
+otherwise the operation fetches the `BaseSummary` object from 
+It then asks its `BaseSummary` object to update the summary based on the dataframe
 as explained in the next section.
 
 (additional-requirements-for-summarization-anchor)=
 ### Additional requirements for summarization
 
-Any summary operation must implement a supporting class that extends `BaseContext`.
+Any summary operation must implement a supporting class that extends `BaseSummary`.
 This class is used to hold and accumulate the information specific to the summary.
-This support class must implement two methods: `update_context` and `get_summary_details`.
+This support class must implement two methods: `update_summary` and `get_summary_details`.
 
-The `update_context` method is called by its associated `BaseOp` operation during the `do_op`
+The `update_summary` method is called by its associated `BaseOp` operation during the `do_op`
 to update the summary information based on the current dataframe.
-The `update_context` information takes a single parameter, which is a dictionary of information
+The `update_summary` information takes a single parameter, which is a dictionary of information
 specific to this operation.
 
-````{admonition} The update_context method required to be implemented by all BaseContext objects.
+````{admonition} The update_summary method required to be implemented by all BaseSummary objects.
 :class: tip
 ```python
-  def update_context(self, new_context)
+  def update_summary(self, summary_dict)
 ```
 ````
 
@@ -2412,10 +2589,10 @@ the dictionary is contains keys for `name` and `column_names.
 
 The `get_summary_details` returns a dictionary with the summary-specific information
 currently in the summary.
-The `BaseContext` provides universal methods for converting this summary to JSON or text format.
+The `BaseSummary` provides universal methods for converting this summary to JSON or text format.
 
 
-````{admonition} The get_summary_details method required to be implemented by all BaseContext objects.
+````{admonition} The get_summary_details method required to be implemented by all BaseSummary objects.
 :class: tip
 ```python
   get_summary_details(self, verbose=True)

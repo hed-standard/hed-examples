@@ -700,6 +700,11 @@ The [**hedtools_wrappers**](https://github.com/hed-standard/hed-examples/tree/ma
 [**hed-examples**](https://github.com/hed-standard/hed-examples) GitHub repository
 contains MATLAB wrapper functions for calling various commonly used HED tools.
 
+#### Direct calls to HEDTools
+
+Wrapper functions are provided to some of the more commonly used
+functions in the HEDTools suite.
+
 The following example shows the MATLAB wrapper function
 [**validateHedInBids.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/hedtools_wrappers/validateHedInBids.m),
 which contains the underlying calls to HEDTools Python BIDs validation.
@@ -734,11 +739,52 @@ In above example assumes that the BIDS dataset was located at `H:\datasets\eeg_d
 We tested it with the [**eeg_ds003645s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) available on GitHub.
 You can download and use this test data or set `dataPath` to the root directory of your own dataset.
 
+#### Calls to HED remodeling tools
+
+Many of the most useful HEDTools functions are packaged in the
+HED remodeling tool suite.
+These tools allow operations such as creating summaries, validating the dataset, and transforming event files to be run on an entire dataset.
+
+The following example illustrates a call that creates a summary of the
+experimental conditions for a HED-tagged dataset.
+
+````{admonition} A MATLAB wrapper function for a remodeling operation to create a summary.
+:class: tip
+
+```matlab
+function runRemodel(remodel_args)
+    py.importlib.import_module('hed');
+    py.hed.tools.remodeling.cli.run_remodel.main(remodel_args);
+```
+
+Example MATLAB calling code for this function:
+
+```matlab
+
+dataPath = 'G:\ds003645';
+remodelFile = 'G:\summarize_hed_types_rmdl.json';
+remodel_args = {dataPath, remodelFile, '-b', '-x', 'stimuli', 'derivatives'};
+runRemodel(remodel_args);
+
+```
+````
+
+The command line arguments to the various remodeling functions are
+given in a cell array, rather than a regular MATLAB array.
+For the remodeling operations, first and second operation must be the dataset root
+directory and the remodeling file name, respectively.
+In this example, dataset `ds003645` has been downloaded from [**openNeuro**](https://openneuro.org) to the `G:\` drive.
+The remodeling file used in this example can be found at 
+See [**File remodeling quickstart**](FileRemodelingQuickstart.md)
+and [**File remodeling tools**](FileRemodelingTools.md) for
+additional information.
+The wrapper functions are available on GitHub in
+the [**hedtools_wrappers**](https://github.com/hed-standard/hed-examples/tree/develop/hedcode/matlab_scripts/hedtools_wrappers) directory.
 
 
-### MATLAB calling syntax
+### MATLAB functions for Python
 
-The following table lists the relevant MATLAB commands that you will need to run Python in MATLAB.
+The following table lists the relevant MATLAB functions that are available.
 You should refer to the help facility for your version of MATLAB to get the details of what is
 supported for your version of MATLAB.
 

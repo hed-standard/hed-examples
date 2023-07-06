@@ -234,10 +234,8 @@ to fill in the annotations.
 
 Go to the [**Events**](https://hedtools.ucsd.edu/hed/events) page of the HED online tools.
 You will see the following menu:
-
-
-![GenerateSidecarTemplate1](./_static/images/GenerateSidecarTemplate1.png)
-*Default screen in the HED [**online event tools**](https://hedtools.ucsd.edu/hed/events).*
+ 
+![GenerateSidecarTemplate1](./_static/images/GenerateSidecarTemplate1.png)   
 
 Select **Generate sidecar template**.
 The application will adjust to your selection, showing only the information you need to provide.
@@ -249,8 +247,7 @@ Use the **Browse** button to choose an `events.tsv` file to upload.
 When the upload is complete, the local file name of the uploaded events
 file will be displayed next to the **Browse** button.
 
-![GenerateSidecarTemplate2](./_static/images/GenerateSidecarTemplate2.png)
-*Generate sidecar template screen in the HED [**online event tools**](https://hedtools.ucsd.edu/hed/events).*
+![GenerateSidecarTemplate2](./_static/images/GenerateSidecarTemplate2.png)  
 
 In this example, we have uploaded 
 [**sub-002_task-FacePerception_run-1_events.tsv**](./_static/data/sub-002_task-FacePerception_run-1_events.tsv).
@@ -292,8 +289,8 @@ You will not want to treat columns with a large number of unique values as
 categorical columns, since you will need to provide an individual annotation
 for each value in such a categorical column.
 
-![GenerateSidecarTemplate3](./_static/images/GenerateSidecarTemplate3.png)
-*Selection of which columns to include when generating a JSON sidecar in the HED [**online sidecar tools**](https://hedtools.ucsd.edu/hed/sidecar).*
+![GenerateSidecarTemplate3](./_static/images/GenerateSidecarTemplate3.png)  
+
 
 In the example, we have selected 7 columns to annotate.
 We omitted the `onset`, `duration`, and `sample` columns,
@@ -443,8 +440,8 @@ the steps to create a template are:
 Go to the [**Sidecar**](https://hedtools.ucsd.edu/hed/sidecar) page of the HED online tools.
 You will see the following menu:
 
-![SidecarToSpreadsheetTemplate1](./_static/images/SidecarToSpreadsheetTemplate1.png)
-*Default screen for the HED [**online sidecar tools**](https://hedtools.ucsd.edu/hed/sidecar).*
+![SidecarToSpreadsheetTemplate1](./_static/images/SidecarToSpreadsheetTemplate1.png)  
+
 
 Select **Extract HED spreadsheet**.
 The application will adjust to your selection, showing only the information you need to provide.
@@ -456,8 +453,8 @@ Use the **Browse** button to choose an `events.json` file to upload.
 When the upload is complete, the local file name of the uploaded events
 file will be displayed next to the **Browse** button.
 
-![SidecarToSpreadsheetTemplate2](./_static/images/SidecarToSpreadsheetTemplate2.png)
-*Choosing the Extract HED spreadsheet option in the HED [**online sidecar tools**](https://hedtools.ucsd.edu/hed/sidecar).*
+![SidecarToSpreadsheetTemplate2](./_static/images/SidecarToSpreadsheetTemplate2.png) 
+
 
 Pressing the **Process** button causes the application to generate a downloadable
 tab-separated-value spreadsheet for editing
@@ -471,11 +468,11 @@ generated from the
 ````{admonition} HED annotation table extracted from JSON sidecar template.
 | **column_name** | **column_value** | **description** | **HED** |
 | --------------- | ---------------- | --------------- | ------- |
-| event_type | setup_right_sym | Description for setup_right_sym | (Label/event_type, <br>Label/setup_right_sym) |
-| event_type | show_face | Description for show_face | (Label/event_type, <br>Label/show_face) |
-| event_type | left_press | Description for left_press | (Label/event_type, <br>Label/left_press) |
-| event_type | show_circle | Description for show_circle | (Label/event_type, <br>Label/show_circle) |
-| stim_file | n/a | Description for stim_file | Label/# |
+| event_type | setup_right_sym | Description for setup_right_sym | (*Label/event_type*, <br>*Label/setup_right_sym*) |
+| event_type | show_face | Description for show_face | (*Label/event_type*, <br>*Label/show_face*) |
+| event_type | left_press | Description for left_press | (*Label/event_type*, <br>*Label/left_press*) |
+| event_type | show_circle | Description for show_circle | (*Label/event_type*, <br>Label/show_circle) |
+| stim_file | n/a | Description for stim_file | *Label/#* |
 ````
 The spreadsheet has 4 columns: the **column_name** corresponds to the column
 name in the `events.tsv` file.
@@ -507,11 +504,11 @@ The following is the extracted spreadsheet corresponding to the
 ````{admonition} HED annotation table extracted from JSON sidecar template.
 | **column_name** | **column_value** | **description** | **HED** |
 | --------------- | ---------------- | --------------- | ------- |
-| event_type | setup_right_sym | Right index finger key press<br>means above average symmetry. | Experiment-structure,<br>Condition-variable/Right-key-assignment |
-| event_type | show_face | Display a stimulus face image. | Sensory-event, Experimental-stimulus,<br>Visual-presentation, Image, Face |
-| event_type | left_press | Participant presses key<br>with left index finger. | Agent-action, Participant-response,<br>(Press, Keyboard-key) |
-| event_type | show_circle | Display a white circle <br>on black background. | Sensory-event, (White, Circle),<br>(Intended-effect, Cue)|
-| stim_file | n/a | Filename of the presented <br>stimulus image. | (Image, Pathname/#) |
+| event_type | setup_right_sym | Right index finger key press<br>means above average symmetry. | *Experiment-structure*,<br>*Condition-variable/Right-key-assignment* |
+| event_type | show_face | Display a stimulus face image. | *Sensory-event*, *Experimental-stimulus*,<br>*Visual-presentation*, *Image*, *Face* |
+| event_type | left_press | Participant presses key<br>with left index finger. | *Agent-action*, *Participant-response*,<br>*(Press, Keyboard-key)* |
+| event_type | show_circle | Display a white circle <br>on black background. | *Sensory-event*, (*White*, *Circle*),<br>(*Intended-effect*, *Cue*)|
+| stim_file | n/a | Filename of the presented <br>stimulus image. | (*Image*, *Pathname/#*) |
 ````
 If you wish a particular table cell to be ignored, use `n/a` in the cell.
 
@@ -529,8 +526,7 @@ select merge HED spreadsheet as shown below.
 You may choose an existing edited sidecar, the original template,
 or an empty sidecar as the JSON target file for the merge.
 
-![MergeSpreadsheetTemplate1](./_static/images/MergeSpreadsheetTemplate1.png)
-*The Merge HED spreadsheet screen in the HED [**online sidecar tools**](https://hedtools.ucsd.edu/hed/sidecar).*
+![MergeSpreadsheetTemplate1](./_static/images/MergeSpreadsheetTemplate1.png)  
 
 Pressing the **Process** button causes the application to generate a downloadable
 version of the merged JSON file.

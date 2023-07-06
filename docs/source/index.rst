@@ -98,7 +98,7 @@ Visit the `HED project homepage <https://github.com/hed-standard>`_ for links to
 
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 4
    :hidden:
    :caption: Overview:
 
@@ -120,7 +120,7 @@ Visit the `HED project homepage <https://github.com/hed-standard>`_ for links to
    HedSummaryGuide.md
    HedConditionsAndDesignMatrices.md
    FileRemodelingQuickstart.md
-   HedSchemaDevelopmentGuide.md
+   HedSchemaDevelopersGuide.md
 
 
 .. toctree::
@@ -128,7 +128,6 @@ Visit the `HED project homepage <https://github.com/hed-standard>`_ for links to
    :hidden:
    :caption: Tool documentation:
 
-   HedSchemaViewers.md
    HedOnlineTools.md
    CTaggerGuiTaggingTool.md
    FileRemodelingTools.md
@@ -140,10 +139,10 @@ Visit the `HED project homepage <https://github.com/hed-standard>`_ for links to
 .. toctree::
    :maxdepth: 3
    :hidden:
-   :caption: Datasets:
+   :caption: Data resources:
 
+   HedSchemas.md
    HedTestDatasets.md
-   HedRepositoryDatasets.md
 
 
 Indices and tables
