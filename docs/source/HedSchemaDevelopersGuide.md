@@ -1,4 +1,4 @@
-# HED schema development guide
+# HED schema developer's guide
 
 The **HED standard schema** contains basic terms that are common across
 most human neuroimaging, behavioral, and physiological experiments.

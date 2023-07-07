@@ -1,6 +1,39 @@
 (whats-new-anchor)=
 # What's new?
 
+**July 5, 2023**: **HEDTools version 0.3.1 released** 
+> [**HEDTools**](https://pypi.org/project/hedtools/) version 0.3.1 has been released on PyPI.  
+> See also [**hed-python**](https://github.com/hed-standard/hed-python) on GitHub.  
+> This patch includes improvement to models exception handling, minor bug fixes, and improvement of format for JSON format of remodeling summaries.
+
+
+**June 20, 2023**: **HEDTools version 0.3.0 released** 
+> [**HEDTools**](https://pypi.org/project/hedtools/) version 0.3.0 has been released on PyPI.  
+> See also [**hed-python**](https://github.com/hed-standard/hed-python) on GitHub.  
+> This version uses the new DataFrame implementation of the models for improved efficiency.  
+
+**June 14, 2023**: **HED brain initiative meeting video poster online.**  
+> [**HED video poster**](https://brainmeeting2023.ipostersessions.com/?s=DA-51-73-83-1B-EA-B8-0A-CB-8F-41-BD-78-CD-68-D2) available until June 2024:  
+> *HED: Annotation standards and software infrastructure to enable sharing of analysis-reading neuroimaging and behavior data*  
+> Presented as part of the [**Brain Initiative Meeting 2023**](https://brainmeeting.swoogo.com/2023/begin?i=SChfLW2xODsF7JgaKhJT1nJAhf5QcbGi).  
+
+**June 2, 2023**: **HED online tools have a new look.**  
+> The HED online tools at [**https://hedtools.ucsd.edu/hed**](https://hedtools.ucsd.edu/hed) have been redesigned and streamlined.  
+
+**May 12, 2023**: **Version 3.2.0 of the HED specification released.**  
+> [**Version 3.2.0**](https://doi.org/10.5281/zenodo.7869149) of the HED specification
+introduces the `Inset` tag as well as partnered and rooted library schemas.
+> This version is the first to support the curly brace notation in sidecars.
+
+**April 28, 2023**: **HED standard schema v8.2.0 released.**  
+> The [**HED schema v8.2.0**](https://doi.org/10.5281/zenodo.7876037) has just
+been released. This release supports the `Inset` tag for annotating intermediate
+points in an ongoing event as well as partnered library schemas.
+
+
+**April 25, 2023**: **HED playlist goes live on YouTube.**  
+> The [**Hierarchical Event Descriptor**](https://www.youtube.com/playlist?list=PLeII6cRFsP6L5S6icwRrJp0DHkhOHtbp-) playlist is now available on YouTube. A 5-part short-course on HED (from OHBM 2022) has just been released.  
+
 **April 6, 2023**: **Version 3.1.0 of the HED specification released.**  
 > [**Version 3.1.0**](https://hed-specification.readthedocs.io/en/stable/) of the HED specification clarifies existing features.  
 >

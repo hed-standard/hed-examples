@@ -80,10 +80,11 @@ The following table gives a summary of the tools available in the HED remodeling
 | **summarization** |  |  | 
 |  | [*summarize_column_names*](summarize-column-names-anchor) | Summarize column names and order in the files. |
 |  | [*summarize_column_values*](summarize-column-values-anchor) |Count the occurrences of the unique column values. |
-|  | [*summarize_sidecar_from_events*](summarize-sidecar-from-events-anchor) | Generate a sidecar template from an event file. |
+|  | [*summarize_definitions*](summarize-definitions-anchor) |Summarize definitions used and report inconsistencies. |       
 |  | [*summarize_hed_tags*](summarize-hed-tags-anchor) | Summarize the HED tags present in the  <br/> HED annotations for the dataset. |
 |  | [*summarize_hed_type*](summarize-hed-type-anchor) | Summarize the detailed usage of a particular type tag <br/> such as *Condition-variable* or *Task* <br/> (used to automatically extract experimental designs). |
-|  | [*summarize_hed_validation*](summarize-hed-validation-anchor) | Validate the data files and report any errors. |
+|  | [*summarize_hed_validation*](summarize-hed-validation-anchor) | Validate the data files and report any errors. | 
+|  | [*summarize_sidecar_from_events*](summarize-sidecar-from-events-anchor) | Generate a sidecar template from an event file. | 
 ````
 
 The **clean-up** operations are used at various phases of restructuring to assure consistency
@@ -370,12 +371,9 @@ Although the event restructuring tools are designed to be run on an entire datas
 you should consider working with a single data file during debugging.
 The HED online tools provide support for debugging your remodeling script and for 
 seeing the effect of remodeling on a single data file before running on the entire dataset.
+You can access these tools on the [**HED tools online tools server**](https://hedtools.ucsd.edu/hed).
 
-Currently, the remodeling tools are only available on the 
-[**HED tools development server**](https://hedtools.ucsd.edu/hed_dev),
-but will soon move to the regular [**HED tools online tools server**](https://hedtools.ucsd.edu/hed).
-
-To use the online remodeling tools, navigate to the events page and select the *Remodel file* action.
+To use the online remodeling tools, navigate to the events page and select the *Execute remodel script* action.
 Browse to select the data file to be remodeled and the JSON remodel file
 containing the remodeling operations. 
 The following screenshot shows these selections for the split rows example of the previous section.
@@ -391,7 +389,8 @@ If the remodeling script contains summarization operations,
 the result will be a zip file with the modified data file and the summaries included.
 
 If you are using one of the remodeling operations that relies on HED tags, you will
-also need to upload a suitable JSON sidecar file containing the HED annotations for the data file.
+also need to upload a suitable JSON sidecar file containing the HED annotations for the data file
+if you turn the *Include summaries* option on.
 
 (the-command-line-interface-anchor)=
 ### The command-line interface
