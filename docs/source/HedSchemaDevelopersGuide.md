@@ -112,14 +112,6 @@ and *property-specification*.
 The schema XML file should be saved as `HED_driving_1.0.0.xml` to facilitate 
 specification in tools.
 
-### Partnered Schemas
-Starting with HED schema version **8.2.0**, HED supports **partnered schemas**,
-which are library schemas that are merged with a standard schema.
-Partnered schemas allow schema designers to include library
-tags that are elaborations of tags in the standard schema in addition to other
-specialized tags. See the [HED schemas documentation](https://www.hed-resources.org/en/latest/HedSchemas.html#types-of-schemas) for more details.
- 
-
 ## Schema namespaces
 
 As part of the HED annotation process, users must associate a standard HED schema with their
@@ -151,6 +143,12 @@ in a library schema and the standard HED schema. Use of the same term implies a 
 purpose. **Library schema developers should try not to reuse terms in the standard schema 
 unless the intention is to convey a close or identical relationship.**
 
+### Partnered Schemas
+Starting with HED schema version **8.2.0**, HED supports **partnered schemas**,
+which are library schemas that are merged with a standard schema.
+Partnered schemas allow schema designers to include library
+tags that are elaborations of tags in the standard schema in addition to other
+specialized tags. See the [HED schemas documentation](https://www.hed-resources.org/en/latest/HedSchemas.html#types-of-schemas) for more details.
 
 ## Attributes and classes
 
