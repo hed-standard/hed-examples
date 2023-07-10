@@ -69,7 +69,7 @@ of interest to particular to those communities.
 Since it would be impossible to avoid naming conflicts across schema libraries
 that may be built in parallel by different user communities,
 HED supports schema library namespaces.
-Users will be able to add library tags qualified with [namespace designators](## Schema namespaces).
+Users will be able to add library tags qualified with [namespace designators](##schema-namespaces).
 
 All HED schemas, including library schemas, adhere to [semantic versioning](https://semver.org/). 
 
@@ -95,7 +95,7 @@ HED library="driving" version="1.0.0"
 ```
 ````
 
-The required sections specifying the [schema attributes](## Attributes and classes)  are *unit-class-specification*, 
+The required sections specifying the [schema attributes](##attributes-and-classes)  are *unit-class-specification*, 
 *unit-modifier-specification*, *value-class-specification*, *schema-attribute-specification*,
 and *property-specification*.
 
