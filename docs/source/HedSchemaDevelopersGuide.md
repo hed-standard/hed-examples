@@ -80,8 +80,8 @@ A HED library schema is defined in the same way as the base HED schema except th
 additional attribute name-value pair, `library="xxx"` in the schema header. We will use as an
 illustration a library schema for driving. Syntax details for a library schema are similar to
 those for the base HED schema.
-(See the [HED schema format specification](https://hed-specification.readthedocs.io/en/develop/03_HED_formats.html)
-for more details).
+See the [HED schema format specification](https://hed-specification.readthedocs.io/en/develop/03_HED_formats.html)
+for more details.
 
 ````{admonition} **Example:** Driving library schema (MEDIAWIKI template).
 
@@ -111,6 +111,14 @@ and *property-specification*.
 
 The schema XML file should be saved as `HED_driving_1.0.0.xml` to facilitate 
 specification in tools.
+
+### Partnered Schemas
+Starting with HED schema version **8.2.0**, HED supports **partnered schemas**,
+which are library schemas that are merged with a standard schema.
+Partnered schemas allow schema designers to include library
+tags that are elaborations of tags in the standard schema in addition to other
+specialized tags. See the [HED schemas documentation](https://www.hed-resources.org/en/latest/HedSchemas.html#types-of-schemas) for more details.
+ 
 
 ## Schema namespaces
 
