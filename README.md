@@ -1,3 +1,4 @@
+[![Documentation Status](https://readthedocs.org/projects/hed-examples/badge/?version=latest)](https://www.hed-resources.org/en/latest/?badge=latest)
 
 # HED-examples
 This repository contains user supporting code and documentation
