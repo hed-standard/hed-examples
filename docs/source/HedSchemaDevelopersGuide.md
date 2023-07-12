@@ -1,19 +1,31 @@
 # HED schema developer's guide
 
-HED annotations consist of comma-separated terms drawn from a hierarchically
-structured vocabulary called a HED schema.
 The **HED standard schema** contains basic terms that are common across
 most human neuroimaging, behavioral, and physiological experiments.
 The HED ecosystem also supports (**HED library schemas**) to expand the HED vocabulary 
 in a scalable manner to support specialized data.
 
-Although you can create a private HED vocabulary for your
+This guide describes how to begin developing your own schema or contribute to existing HED vocabularies.
 
-This guide describes how to begin developing your own schema. 
+## HED schema details
+_HED schema_ is the structured vocabulary from which HED annotations base on. HED annotations consist of comma-separated path strings,
+selected from the schema. In the newest versions of HED,
+all individual nodes in the vocabulary are unique, so users can annotate
+by using *short-form* which is the last node in the path string rather than *long-form* which is the entire path
+string: *Red* instead of *Attribute/Sensory/Sensory-property/Visual/Color/CSS-color/Red-color/Red*.
 
-This section describes how you can contribute to existing HED vocabularies
-or creating an entirely new one.
+The [hed-schemas](https://github.com/hed-standard/hed-schemas) GitHub repository contains the HED schema specification, 
+where discussions on schema terms and syntax are held via Github issue mechanism and where HED-supporting tools can find machine-readable format of the schema.
 
+The HED schema is available in MediaWiki and XML:
+* The MediaWiki markdown format, stored in [`hedwiki`](https://github.com/hed-standard/hed-specification/tree/master/hedwiki),
+allows vocabulary developers to view and edit the vocabulary tree using a 
+human-readable markdown language available in Wikis and on GitHub repositories. 
+* All analysis and validation tools operate on an XML translation of the vocabulary 
+markdown document, stored in [`hedxml`](https://github.com/hed-standard/hed-specification/tree/master/hedxml). 
+
+In addition, an expandable non-editable [HTML viewer](http://www.hedtags.org/display_hed.html)  is available
+to help users explore the vocabulary.
 
 ## Setting up for schema development
 
@@ -25,8 +37,9 @@ HED tools generally use XML versions of the HED schema.
 
 1. Create or modify a `.mediawiki` file containing the schema.
 2. Validate the `.mediawiki` file using the [**HED online tools**](https://hedtools.ucsd.edu/hed/schema).
-2. Convert to `.xml` using the [**HED online tools**](https://hedtools.ucsd.edu/hed/schema).
-3. View in the [**expandable schema viewer**](https://www.hedtags.org/display_hed.html) to verify.
+3. Convert to `.xml` using the [**HED online tools**](https://hedtools.ucsd.edu/hed/schema).
+4. Act according to the (Procedure for updating a schema)[## Procedure for updating a schema] section to contribute your changes to the GitHub [**HED schemas repository**](https://github.com/hed-standard/hed-schemas).
+5. View in the [**expandable schema viewer**](https://www.hedtags.org/display_hed.html) to verify.
 ````
 
 ## Design principles for schema
@@ -48,7 +61,7 @@ Searching for A will also return B (search generality).
 
 ``````
 
-As in Python programming, we anticipate that many HED schema libraries may be defined 
+As in Python programming packages, we anticipate that many HED schema libraries may be defined 
 and used, in addition to the base HED schema. Libraries allow individual research or
 clinical communities to annotate details of events in experiments designed to answer questions 
 of interest to particular to those communities.
@@ -56,9 +69,9 @@ of interest to particular to those communities.
 Since it would be impossible to avoid naming conflicts across schema libraries
 that may be built in parallel by different user communities,
 HED supports schema library namespaces.
-Users will be able to add library tags qualified with namespace designators.
-All HED schemas, including library schemas, 
-adhere to [semantic versioning](https://semver.org/). 
+Users will be able to add library tags qualified with [namespace designators](##schema-namespaces).
+
+All HED schemas, including library schemas, adhere to [semantic versioning](https://semver.org/). 
 
 
 ## Defining a schema
@@ -67,8 +80,8 @@ A HED library schema is defined in the same way as the base HED schema except th
 additional attribute name-value pair, `library="xxx"` in the schema header. We will use as an
 illustration a library schema for driving. Syntax details for a library schema are similar to
 those for the base HED schema.
-(See the [HED schema format specification](https://hed-specification.readthedocs.io/en/latest/03_Schema.html)
-for more details).
+See the [HED schema format specification](https://hed-specification.readthedocs.io/en/develop/03_HED_formats.html)
+for more details.
 
 ````{admonition} **Example:** Driving library schema (MEDIAWIKI template).
 
@@ -82,7 +95,7 @@ HED library="driving" version="1.0.0"
 ```
 ````
 
-The required sections specifying the schema attributes  are *unit-class-specification*, 
+The required sections specifying the [schema attributes](##attributes-and-classes)  are *unit-class-specification*, 
 *unit-modifier-specification*, *value-class-specification*, *schema-attribute-specification*,
 and *property-specification*.
 
@@ -127,9 +140,15 @@ dp:Change-lanes
 A colon (`:`) is used to separate the qualifying local name from the remainder of the tag. 
 Notice that *Action* also appears in the standard HED schema. Identical terms may be used 
 in a library schema and the standard HED schema. Use of the same term implies a similar 
-purpose. Library schema developers should try not to reuse terms in the standard schema 
-unless the intention is to convey a close or identical relationship.
+purpose. **Library schema developers should try not to reuse terms in the standard schema 
+unless the intention is to convey a close or identical relationship.**
 
+### Partnered Schemas
+Starting with HED schema version **8.2.0**, HED supports **partnered schemas**,
+which are library schemas that are merged with a standard schema.
+Partnered schemas allow schema designers to include library
+tags that are elaborations of tags in the standard schema in addition to other
+specialized tags. See the [HED schemas documentation](https://www.hed-resources.org/en/latest/HedSchemas.html#types-of-schemas) for more details.
 
 ## Attributes and classes
 
@@ -191,7 +210,7 @@ They will be checked for syntax, but no additional hard-coded behavior will be a
 in the standard toolset. This does not preclude special-purpose tools from incorporating
 their own behavior.
 
-### Syntax checking
+## Syntax checking
 
 Regardless of whether a specification is in the standard schema or a library schema,
 HED tools can perform basic syntax checking.
@@ -205,44 +224,21 @@ HED tools can perform basic syntax checking.
 4. Actual handling of the semantics by HED tools only occurs for entities appearing in the base schema.
 ````
 
-### Procedure for updating a schema.
+## Procedure for updating a schema
 
-#### Proposing changes
+### Proposing changes
 As modifications to the HED schema are proposed, they are added to the
 **PROPOSED.md** file for the respective schema.
 As changes are accepted, they are incorporated into the 
 **prerelease** version of the schema and added as part of the 
 **prerelease CHANGES.md**. 
 These files are located in the **prerelease** subdirectory for the respective schema.
-Examples of these files for the standard schema can be found in the standard schema
-[**prerelease directory**](https://github.com/hed-standard/hed-schemas/tree/main/standard_schema/prerelease).
-[**Expandable html view of the prerelease HED schema**](https://www.hedtags.org/display_hed_prerelease.html) 
+Examples of these files for the standard schema can be found in the standard schema [**prerelease directory**](https://github.com/hed-standard/hed-schemas/tree/main/standard_schema/prerelease).
+This is viewable in the [**Expandable html view of the prerelease HED schema**](https://www.hedtags.org/display_hed_prerelease.html) 
 
 Upon final review, the new HED schema is released, the XML file is copied to the
 [**hedxml directory**](https://github.com/hed-standard/hed-schemas/tree/main/standard_schema/hedxml),
-the mediawiki file is copied to the
-[**hed]
-
-
-## HED schema details
-_HED schema_ is the structured vocabulary from which HED annotations base on. HED annotations consist of comma-separated path strings,
-selected from the schema. In the newest versions of HED,
-all individual nodes in the vocabulary are unique, so users can annotate
-by simply giving the last node in the path string rather than the entire path
-string: *Red* instead of *Attribute/Sensory/Sensory-property/Visual/Color/CSS-color/Red-color/Red*.
-
-This repository contains the HED schema specification, where discussions on schema terms and syntax are held via Github issue mechanism and where HED-supporting tools can find machine-readable format of the schema. The HED schema is available in MediaWiki and XML. 
-
-The MediaWiki markdown format, stored in 
-[`hedwiki`](https://github.com/hed-standard/hed-specification/tree/master/hedwiki),
-allows vocabulary developers to view and edit the vocabulary tree using a 
-human-readable markdown language available in Wikis and on GitHub repositories. 
-In addition, an expandable non-editable 
-[HTML viewer](http://www.hedtags.org/display_hed.html)  is available
-to help users explore the vocabulary.
-
-All analysis and validation tools operate on an XML translation of the vocabulary 
-markdown document, stored in [`hedxml`](https://github.com/hed-standard/hed-specification/tree/master/hedxml). 
+the mediawiki file is copied to the [**hedwiki directory**](https://github.com/hed-standard/hed-schemas/tree/main/standard_schema/hedwiki).
 
 
 ## Further documentation
