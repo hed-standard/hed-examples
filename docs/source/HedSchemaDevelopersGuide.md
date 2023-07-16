@@ -1,48 +1,80 @@
 # HED schema developer's guide
 
+A _HED schema_ is a structured vocabulary of terms that can be used in HED annotations.
 The **HED standard schema** contains basic terms that are common across
 most human neuroimaging, behavioral, and physiological experiments.
-The HED ecosystem also supports (**HED library schemas**) to expand the HED vocabulary 
-in a scalable manner to support specialized data.
+The HED ecosystem also supports **HED library schemas** to expand the HED vocabulary 
+in a scalable manner to support specialized data annotations.
 
-This guide describes how to begin developing your own schema or contribute to existing HED vocabularies.
+This guide describes how to begin developing your own library schema or 
+contribute to existing HED vocabularies.
+If you have questions about how to get started,
+please post an issue on the [**hed-schemas issues**](https://github.com/hed-standard/hed-schemas/issues) GitHub forum or
+email the [**HED maintainers**](mailto:hed.maintainers@gmail.com).
 
-## HED schema details
-_HED schema_ is the structured vocabulary from which HED annotations base on. HED annotations consist of comma-separated path strings,
-selected from the schema. In the newest versions of HED,
-all individual nodes in the vocabulary are unique, so users can annotate
-by using *short-form* which is the last node in the path string rather than *long-form* which is the entire path
-string: *Red* instead of *Attribute/Sensory/Sensory-property/Visual/Color/CSS-color/Red-color/Red*.
+More detailed information and exact syntax rules are available in
+the [**Library schemas**](https://https://hed-specification.readthedocs.io/en/latest/07_Library_schemas.html) chapter of
+the [**HED specification**](https://hed-specification.readthedocs.io/en/latest/index.html).
 
-The [hed-schemas](https://github.com/hed-standard/hed-schemas) GitHub repository contains the HED schema specification, 
-where discussions on schema terms and syntax are held via Github issue mechanism and where HED-supporting tools can find machine-readable format of the schema.
+Details about syntax are available in the 
+[**Schema formats**](https://hed-specification.readthedocs.io/en/latest/03_HED_formats.html#schema-formats) section and
+the [**Schema format details**](https://hed-specification.readthedocs.io/en/latest/Appendix_A.html) chapter of the
+[**HED specification**](https://hed-specification.readthedocs.io/en/latest/index.html).
 
-The HED schema is available in MediaWiki and XML:
-* The MediaWiki markdown format, stored in [`hedwiki`](https://github.com/hed-standard/hed-specification/tree/master/hedwiki),
-allows vocabulary developers to view and edit the vocabulary tree using a 
-human-readable markdown language available in Wikis and on GitHub repositories. 
-* All analysis and validation tools operate on an XML translation of the vocabulary 
-markdown document, stored in [`hedxml`](https://github.com/hed-standard/hed-specification/tree/master/hedxml). 
+## Schema design basics
 
-In addition, an expandable non-editable [HTML viewer](http://www.hedtags.org/display_hed.html)  is available
-to help users explore the vocabulary.
+A HED schema is structured as a set of trees,
+each of which corresponds to a major term category for the vocabulary.
 
-## Setting up for schema development
+Before developing a schema,
+you should explore the standard schema and other available schemas using the
+[**HED schema viewer**](https://www.hedtags.org/display_hed.html). 
+In the standard schema for example, the `Clap-hands` tag is in the `Action`
+subtree, but is 3 levels down:
 
-Although schema developers work with HED schema in `.mediawiki` format for ease in editing,
-HED tools generally use XML versions of the HED schema. 
+> `Action` &rarr; `Communicate` &rarr; `Communicate-gesturally` &rarr; `Clap-hands`
 
-````{admonition} **Standard development process for XML schema.**
-:class: tip
+### Uniqueness and forms
+All tags (vocabulary terms) in a HED schema must be unique, so the short-form `Clap-hands` uniquely specifies the term,
+as does any partial path: `Communicate-gesturally/Clap-hands`, 
+`Communicate/Communicate-gesturally/Clap-hands` and
+`Action/Communicate/Communicate-gesturally/Clap-hands`.
 
-1. Create or modify a `.mediawiki` file containing the schema.
-2. Validate the `.mediawiki` file using the [**HED online tools**](https://hedtools.ucsd.edu/hed/schema).
-3. Convert to `.xml` using the [**HED online tools**](https://hedtools.ucsd.edu/hed/schema).
-4. Act according to the (Procedure for updating a schema)[## Procedure for updating a schema] section to contribute your changes to the GitHub [**HED schemas repository**](https://github.com/hed-standard/hed-schemas).
-5. View in the [**expandable schema viewer**](https://www.hedtags.org/display_hed.html) to verify.
-````
+### Is-a
+An important feature of HED schemas is that each child (path successor) extends or
+specializes its parent (predecessor) in the hierarchy.
+Thus, `Clap-hands` is a type of `Communicate-gesturally` action.
+The **is-a** relationship between a child term and its ancestors in the hierarchy is fundamental
+to HED and enables search generality:  a search for `Communicate-gesturally` will return
+annotations that contain any of this tag's descendents (e.g., tags such as `Nod-head`, 
+`Pump-fist`, etc.).
 
-## Design principles for schema
+### Top-level as categories
+As a vocabulary designer, you should think about the **major categories** 
+that are appropriate for your schema
+in selecting top-level nodes to anchor your schema's major categories.
+For example, the standard schema has the following top-level tags:
+`Event`, `Agent`, `Action`, `Item`, `Property`, and `Relation`.
+
+### Choosing tag names
+
+Each individual tag in your vocabulary must stand by itself ---
+that is, its meaning should be clear.
+Tags must be unique and should be distinct from the tags in
+the standard schema.
+(Your should avoid overlap with tags from other libraries if possible.
+This is not required.)
+
+Tag names may only contain alphanumeric characters, hyphens, and underbars.
+No blanks are allowed.
+Except for certain SI unit designators, HED tags are case-insensitive.
+However, the tag names in the schema document follow the following conventions:
+- The first character of tag names starting with a letter is capitalized.  
+- All letters in a tag name except for the first character are in lower case.  
+- Tags representing multiple words are hyphenated.
+
+
+### Design principles for schema
 
 All HED schema (both the standard and library schemas) must conform to certain design principles
 in addition to properly validating.
@@ -55,11 +87,108 @@ HED schema terms.
 2. [**Meaningful**] Schema terms should be readily understood by most users. The terms should not be ambiguous and should be meaningful in themselves **without** reference to their position in the schema hierarchy.
 3. [**Organized**] If possible, a schema sub-tree should have no more than 7 direct subordinate sub-trees.
 4. [**Orthogonal**] Terms that are used independently of one another should be in different sub-trees (orthogonality).
-5. [**Sub-classed**]Every term in the hierarchy satistifies the **is-a** relationship with its parent.
-In other words if B has A as a parent in the schema hierarchy, then B is an example of A.
+5. [**Sub-classed**]Every term in the hierarchy satistifies the **is-a** relationship with its ancestors in the schema tree.
+In other words if B has A as an ancestor in the schema hierarchy, then B is an example of A.
 Searching for A will also return B (search generality).
 
 ``````
+
+### Deciding partnership
+
+While developing a schema as a standalone vocabulary is supported,
+**it is strongly recommended that library schemas partner with the (latest) standard schema**.
+For more detailed rules and syntax about partnering
+see the [**Partnered schemas**](https://hed-specification.readthedocs.io/en/latest/07_Library_schemas.html#partnered-schemas)
+section of the [**HED specification**](https://hed-specification.readthedocs.io/en/latest/index.html).
+
+#### Unpartnered libraries
+
+The standard schema provides the basic terms needed for annotating events in most experiments. 
+A library's role is to provide additional specialized vocabulary for a specific application.
+If multiple schemas are used to annotate a datasets, the tags from
+one of the datasets must be prefixed with a user-selected
+namespace designator as shown in this schematic.
+
+![standardPlusLibrary](./_static/images/standardPlusLibrary.png)
+
+Here the standard schema (shown in blue) and an unpartnered
+library schema (shown in green) are used in an annotation. 
+Each of these schemas could be used individually in a dataset
+without reference to the other.
+However, if annotations in a dataset use more than one schema,
+tags from one of the schemas must be prefixed with a namespace designator. 
+The choice of which schema's tags will be prefixed is up to the user.
+In the example on the right of the diagram, the tags from SCORE library version 1.0.0
+are prefixed with `sc:` as indicated by the **HEDVersion** specification at the bottom.
+
+#### Partnered schemas
+
+Most applications need to use terms from both the standard schema and possibly a library schema.
+For this reason the concept of **partnered schemas** was introduced.
+Schema partnership means that a library schema is merged with a
+specific version of the standard schema when the library schema is
+distributed with its standard schema partner as a single schema.
+Tags from both the library schema and its partnered can be used
+without prefixes as shown in the following schematic.
+Note however, that tags from additional schemas will still need to be prefixed.
+
+![partnered schema](./_static/images/PartneredSchema.png)
+
+Here the standard schema (shown in blue) and its partnered
+library schema (shown in green) are merged and viewed as a single
+schema when the schema is validated and distributed.
+
+Notice that some green nodes in the diagram are children
+of nodes in the standard schema.
+While some top-level nodes in your library schema may represent categories that stand by themselves,
+it is likely that other nodes are elaborations of terms that already exist in the standard schema.
+You can declare a top-level node in your schema (and its attached subtree)
+to be placed under a node in the standard schema by giving it the `rooted=XXX`
+attribute, where `XXX` is the name of the parent node in
+the standard schema under which the subtree should be rooted.
+
+
+## Creating your schema
+
+Schema developers work with HED schema in `.mediawiki` format for ease in editing.
+MediaWiki is a markdown-like text format that can be displayed
+in GitHub in a nicely formatted manner for easy editing.
+
+Mediawiki was chosen as the developer format because of its clear
+representation of indented outlines (or equivalently, trees)
+as illustrated in the following example:
+
+
+````{admonition} **Example:** Top-level node in MediaWiki format.
+
+```moin
+'''Top-level-1''' <nowiki>[The best top-level node in this schema.]</nowiki>
+* Child-1 <nowiki>{extensionAllowed}[A child of Top-level-1.]</nowiki>
+** Grandchild-1 <nowiki>[A child of Child-1.]</nowiki>
+* Child-2 <nowiki>[A child of Top-level-1 that cannot be extended.]</nowiki>
+```
+````
+
+Each line in the MediaWiki file represents a distinct tag (or other schema entity),
+so `Top-level-`, `Child-1`, `Grandchild-1`, and `Child-2` are all
+tags or terms in the schema.
+Lines defining tags cannot be split.
+
+Everything after the tag name should be enclosed in
+&lt;nowiki&gt; &lt;/nowiki&gt; delimiters.
+The tag description appears in square brackets ([ ]),
+while the schema attributes such as `extensionAllowed` are
+enclosed in curly braces ({ }).
+
+Each tag line should always inc
+or other schema element.
+The tag `Top-level-1` is a top-level tag, a root of one of the schema's trees,
+represents a major category in the schema. Top-level tags are enclosed in 
+sets of three consecutive single quotes.
+In contrast child tags a
+HED tools generally use XML versions of the HED schema. 
+
+
 
 As in Python programming packages, we anticipate that many HED schema libraries may be defined 
 and used, in addition to the base HED schema. Libraries allow individual research or
@@ -173,12 +302,7 @@ regardless of whether these appear in base schema. Validators check the library
 schema strictly on the basis of its own specification without reference to another 
 schema.
 
-### Schema properties
 
-HED only supports the schema properties listed in Table B.2: *boolProperty*, 
-*unitClassProperty*, *unitModifierProperty*, *unitProperty*, and *valueClassProperty*.  
-If the library schema uses one of these in the library schema specification, 
-then its specification must appear in the *property-specification* section of the library schema.
 
 ### Unit classes
 
@@ -209,6 +333,33 @@ attributes will be the same. Library schema may define additional schema attribu
 They will be checked for syntax, but no additional hard-coded behavior will be available
 in the standard toolset. This does not preclude special-purpose tools from incorporating
 their own behavior.
+
+### Schema properties
+
+[**Schema properties**](https://hed-specification.readthedocs.io/en/latest/03_HED_formats.html#schema-properties) apply to schema attributes
+and indicate what the type of the schema attribute is.
+You should not add properties to your library schema as
+the handling of the schema properties is hard-coded into the HED tools.
+If you feel that there is a property that is needed,
+please post an issue on the hed-schemas GitHub 
+[**issues forum**](https://github.com/hed-standard/hed-schemas/issues).
+You can view them HED only supports the schema properties listed in Table B.2: *boolProperty*, 
+*unitClassProperty*, *unitModifierProperty*, *unitProperty*, and *valueClassProperty*.  
+If the library schema uses one of these in the library schema specification, 
+then its specification must appear in the *property-specification* section of the library schema.
+
+### Schema development process
+
+
+````{admonition} **Standard development process for XML schema.**
+:class: tip
+
+1. Create or modify a `.mediawiki` file containing the schema.
+2. Validate the `.mediawiki` file using the [**HED online tools**](https://hedtools.ucsd.edu/hed/schema).
+3. Convert to `.xml` using the [**HED online tools**](https://hedtools.ucsd.edu/hed/schema).
+4. Act according to the (Procedure for updating a schema)[## Procedure for updating a schema] section to contribute your changes to the GitHub [**HED schemas repository**](https://github.com/hed-standard/hed-schemas).
+5. View in the [**expandable schema viewer**](https://www.hedtags.org/display_hed.html) to verify.
+````
 
 ## Syntax checking
 
@@ -250,3 +401,15 @@ The documentation on this page refers specifically to the HED vocabulary and sup
 All of the HED software is open-source and organized into various repositories on the HED standards organization website:
 
 > [**HED organization github repository**](https://github.com/hed-standard)
+The [hed-schemas](https://github.com/hed-standard/hed-schemas) GitHub repository contains the HED schema specification, 
+where discussions on schema terms and syntax are held via Github issue mechanism and where HED-supporting tools can find machine-readable format of the schema.
+
+The HED schema is available in MediaWiki and XML:
+* The MediaWiki markdown format, stored in [`hedwiki`](https://github.com/hed-standard/hed-specification/tree/master/hedwiki),
+allows vocabulary developers to view and edit the vocabulary tree using a 
+human-readable Markdown language available in Wikis and on GitHub repositories. 
+* All analysis and validation tools operate on an XML translation of the vocabulary 
+markdown document, stored in [`hedxml`](https://github.com/hed-standard/hed-specification/tree/master/hedxml). 
+
+In addition, an expandable non-editable [HTML viewer](http://www.hedtags.org/display_hed.html)  is available
+to help users explore the vocabulary.
