@@ -1,6 +1,9 @@
 (whats-new-anchor)=
 # What's new?
 
+**July 12, 2023**: **HED SCORE version 1.1.0 released**  
+> This is the first HED partnered schema.  
+
 **July 5, 2023**: **HEDTools version 0.3.1 released** 
 > [**HEDTools**](https://pypi.org/project/hedtools/) version 0.3.1 has been released on PyPI.  
 > See also [**hed-python**](https://github.com/hed-standard/hed-python) on GitHub.  
@@ -40,9 +43,7 @@ points in an ongoing event as well as partnered library schemas.
 > HED validators will be able to link error messages directly to descriptions in the spec.  
 
 **April 3, 2023**: **New versions of HED schema browser available.**   
-> You can now use a single [**HED Schema Browser**](https://www.hedtags.org/display_hed.html) to view both standard and library schemas.  
-
-> A [**prelease viewer**](https://www.hedtags.org/display_hed_prerelease.html) is available for viewing all prerelease HED schemas.
+> You can now use the [**HED Schema Viewer**](https://www.hedtags.org/display_hed.html) to view both standard and library schemas.
 
 **March 28, 2023**: **Release of HED Javascript validator for BIDS v3.9.0 on npm**   
 > The new version supports checking of onsets and offsets.

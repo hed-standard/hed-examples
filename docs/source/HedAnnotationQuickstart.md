@@ -21,7 +21,7 @@ free-form tagging for annotation is to avoid confusion and ambiguity
 and to promote data-sharing.
 
 The basic terms are organized into trees for easier access and search.
-The [**Expandable HED vocabulary viewer**](https://www.hedtags.org/display_hed.html) allows
+The [**HED Schema Viewer**](https://www.hedtags.org/display_hed.html) allows
 you to explore these terms.
 
 (a-recipe-for-simple-annotation-anchor)=
@@ -30,7 +30,7 @@ In thinking about how to annotate an event, you should always start
 by selecting a tag from the *Event* subtree to indicate the general event category.
 Possible choices are: *Sensory-event*, *Agent-action*, *Data-feature*, *Experiment-control*,
 *Experiment-procedure*, *Experiment-structure*, and *Measurement-event*.
-See the [**Expandable HED vocabulary viewer**](https://www.hedtags.org/display_hed.html)
+See the [**HED Schema Viewer**](https://www.hedtags.org/display_hed.html)
 to view the available tags.
 
 Most experiments will only have a few types of distinct events.

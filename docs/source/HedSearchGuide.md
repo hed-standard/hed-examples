@@ -89,8 +89,8 @@ The meanings of the different queries are explained in the following subsections
 
 #### Single-term search
 
-In a single-term search, the query is a single term or node in the 
-[**HED schema**](https://www.hedtags.org/display_hed.html).
+In a single-term search, the query is a single term or node in the HED schema.
+(Use the [**HED Schema Viewer**](https://www.hedtags.org/display_hed.html) to see the available tags for your search.)
 The query may not contain any slashes or wildcards.
 
 Single-term queries leverage the HED hierarchical structure,
