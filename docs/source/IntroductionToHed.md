@@ -78,8 +78,8 @@ and to inform new and existing researchers of its purpose and value.
 
 ## A basic HED annotation
 
-HED annotations are comma-separated lists of tags selected from a 
-[**hierarchically-organized vocabulary**](https://www.hedtags.org/display_hed.html).
+HED annotations are comma-separated lists of tags selected from a HED schema.
+(Use the [**HED Schema Viewer**](https://www.hedtags.org/display_hed.html) to explore the available tags).
 
 ````{admonition} A simple HED annotation of presentation of a face image stimulus.
 

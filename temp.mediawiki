@@ -1,0 +1,4 @@
+'''Top-level-1''' <nowiki>[The best top-level node in this schema.]</nowiki>
+* Child-1 <nowiki>{extensionAllowed}[A child of Top-level-1.]</nowiki>
+** Grandchild-1 <nowiki>[A child of Child-1.]</nowiki>
+* Child-2 <nowiki>[A child of Top-level-1 that cannot be extended.]</nowiki>

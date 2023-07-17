@@ -290,8 +290,7 @@ See [**BIDS annotation quickstart**](https://www.hed-resources.org/en/latest/Bid
 #### Viewing available tags
 
 - The HED vocabulary is hierarchically organized as shown
-in this [**expandable view**](https://www.hedtags.org/display_hed.html)
-of the HED standard vocabulary.
+in the schema as viewed in the [**HED Schema Viewer**](https://www.hedtags.org/display_hed.html).
 <p></p>
 
 - [**Schema viewers**](https://www.hed-resources.org/en/latest/HedSchemaViewers.html)
@@ -693,11 +692,11 @@ please email hed.maintainers@gmail.com.
 ### Viewing available schemas
 
 The first step in using or improving the HED vocabularies is to explore what
-is there using the [**HED vocabulary viewer**](https://www.hedtags.org/display_hed.html) for the HED standard
+is there using the [**HED Schema Viewer**](https://www.hedtags.org/display_hed.html) for the HED standard
 schema.
 
 The SCORE library for clinical annotation of EEG
-can be viewed using the [**HED vocabulary viewer**](https://www.hedtags.org/display_hed.html?schema=score)
+can be viewed using the [**HED Schema Viewer**](https://www.hedtags.org/display_hed.html?schema=score)
 for score.
 
 (improving-an-existing-schema-anchor)=
