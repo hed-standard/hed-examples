@@ -172,17 +172,6 @@ LInguistic Stimuli Annotation.
 A good name for a schema with vocabulary describing simulated driving
 experiments might be DRIVE.
 
-### Schema file names
-
-All HED schemas, including library schemas, adhere to [**semantic versioning**](https://semver.org/). 
-The rules for what constitutes major, minor and patch changes are given
-in the hed-schemas [**README**](https://github.com/hed-standard/hed-schemas/#hed-semantic-versioning).
-
-Suppose you are just starting to create a library called DRIVE for
-a vocabulary specific to simulated driving tasks.
-The file name for the first version of your schema should be `HED_drive_0.0.1.mediawiki`.
-This file will eventually go in your prerelease directory 
-on [**hed-schemas**](https://github.com/hed-standard/hed-schemas).
 
 ## Creating your schema
 
@@ -295,6 +284,17 @@ Use the [**HED online tools**](https://hedtools.org) to convert as shown in the 
 
 ![ConvertSchema](./_static/images/ConvertSchema.png)
 
+### Schema file names
+
+All HED schemas, including library schemas, adhere to [**semantic versioning**](https://semver.org/). 
+The rules for what constitutes major, minor and patch changes are given
+in the hed-schemas [**README**](https://github.com/hed-standard/hed-schemas/#hed-semantic-versioning).
+
+Suppose you are just starting to create a library called DRIVE for
+a vocabulary specific to simulated driving tasks.
+The file name for the first version of your schema should be `HED_drive_0.0.1.mediawiki`.
+This file will eventually go in your prerelease directory 
+on [**hed-schemas**](https://github.com/hed-standard/hed-schemas).
 
 ## Becoming official
 
