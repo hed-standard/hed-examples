@@ -11,6 +11,8 @@ contribute to existing HED vocabularies.
 If you have questions about how to get started,
 please post an issue on the [**hed-schemas issues**](https://github.com/hed-standard/hed-schemas/issues) GitHub forum or
 email the [**HED maintainers**](mailto:hed.maintainers@gmail.com).
+The HED Working Group would be happy to give you technical guidance in getting started
+and working through the process to final release.
 
 More detailed information is available in
 the [**Library schemas**](https://https://hed-specification.readthedocs.io/en/latest/07_Library_schemas.html) chapter of
@@ -134,7 +136,7 @@ Tags from both the library schema and its partnered standard schema can be used
 without prefixes as shown in the following schematic.
 Note that tags from other additional schemas will still need to be prefixed.
 
-![partnered schema](./_static/images/PartneredSchema.png)
+![partnered schema](./_static/images/partneredSchema.png)
 
 Here the standard schema (blue nodes) and its partnered
 library schema (green nodes) are merged and viewed as a single
@@ -151,7 +153,7 @@ the standard schema under which the subtree should be rooted.
 
 ```{warning}
 **Whether a particular library schema version is partnered or unpartnered is
-fixed when the library is released and cannot be changed.  
+fixed when the library is released and cannot be changed.**  
 
 For example,
 SCORE version 1.0.0 is unpartnered, but SCORE version 1.1.0 is partnered
