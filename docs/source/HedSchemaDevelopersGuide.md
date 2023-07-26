@@ -118,7 +118,7 @@ For example, a library schema to describe experiments using driving simulators
 would expand on the category of actions to describe actions relevant for driving.
 Partnering to the standard schema reduces workload on the schema developers, as top-level categories help to organize relevant terms into stable categories.
 Additionally, it ensures the power of search generalizability is not reduced for terms that are part of a library schema
-(i.e.  Actions relevant for driving are returned when searching for `Action`).
+(e.g.,  actions relevant for driving are returned when searching for `Action`).
 For more detailed rules and syntax about partnering
 see the [**Partnered schemas**](https://hed-specification.readthedocs.io/en/latest/07_Library_schemas.html#partnered-schemas)
 section of the [**HED specification**](https://hed-specification.readthedocs.io/en/latest/index.html).
@@ -175,7 +175,7 @@ fixed when the library is released and cannot be changed.**
 
 For example,
 SCORE version 1.0.0 is unpartnered, but SCORE version 1.1.0 is partnered
-with standard schema version 8.2.0.**
+with standard schema version 8.2.0.
 ```
 
 ### Naming your schema
@@ -185,12 +185,12 @@ It should be a relatively short, informative, alphabetic string.
 The name can be an acronym or a meaningful name, 
 but it cannot be the same name as any other recognized HED schema.
 
-The SCORE library, for example, is an acronym based on its derivation from the
+The *score* library, for example, is named for an acronym based on its derivation from the
 SCORE standard: Standardized Computer Based Organized Reporting of EEG.
-The LISA library, a language schema now in prerelease, is another acronym standing for
+The *lisa* library, a language schema now in prerelease, has a name representing the acronym 
 LInguistic Stimuli Annotation.
 A good name for a schema with vocabulary describing simulated driving
-experiments might be DRIVE.
+experiments might be *drive*.
 
 
 ## Creating your schema
@@ -204,7 +204,7 @@ Schema developers work with HED schema in `.mediawiki` format for ease in editin
 MediaWiki is a markdown-like text format that can be displayed
 in GitHub in a nicely formatted manner for easy editing.
 
-Mediawiki was chosen as the developer format because of its clear
+MediaWiki was chosen as the developer format because of its clear
 representation of indented outlines (or equivalently, trees)
 as illustrated in the following example:
 
@@ -252,7 +252,7 @@ while partnered schemas use the auxiliary sections from their standard
 schema partner.
 
 The following illustrates the format for using an
-exemplar library schema called drive. 
+exemplar library schema called *drive*. 
 
 ````{admonition} **Example:** Driving library schema (MEDIAWIKI template).
 
@@ -291,7 +291,7 @@ validating your schema using the online tools.
 
 ![ValidateSchema](./_static/images/ValidateSchema.png)
 
-Simply choose the MediaWiki file you wish to valid,
+Simply choose the MediaWiki file you wish to validate,
 select the *Validate* action and press *Process*.
 If your file has errors, a text file containing the errors will be
 available for download.
@@ -304,13 +304,15 @@ Use the [**HED online tools**](https://hedtools.org) to convert as shown in the 
 
 ![ConvertSchema](./_static/images/ConvertSchema.png)
 
-### Schema file names
+### Schema versions
 
 All HED schemas, including library schemas, adhere to [**semantic versioning**](https://semver.org/). 
 The rules for what constitutes major, minor and patch changes are given
 in the hed-schemas [**README**](https://github.com/hed-standard/hed-schemas/#hed-semantic-versioning).
 
-Suppose you are just starting to create a library called DRIVE for
+### Schema file names
+
+Suppose you are just starting to create a library called *drive* for
 a vocabulary specific to simulated driving tasks.
 The file name for the first version of your schema should be `HED_drive_0.0.1.mediawiki`.
 This file will eventually go in your prerelease directory 
@@ -351,7 +353,7 @@ The XML version is needed so that you can view your schema via the
 [**HED Schema Viewer**](https://www.hedtags.org/display_hed.html).
 
 You will also be asked to create and maintain a documentation page for your schema.
-For example, the SCORE library Markdown document is located in
+For example, the *score* library Markdown document is located in
 the [**hed-schemas/docs/source/hed_score_schema.md**](https://github.com/hed-standard/hed-schemas/blob/main/docs/source/hed_score_schema.md) file
 in the [**hed-schemas**](https://github.com/hed-standard/hed-schemas) repository.
 Your documentation page will be similarly named and located --- just replace the word
