@@ -31,25 +31,11 @@ each of which corresponds to a major term category for the vocabulary.
 Before developing a schema,
 you should explore the standard schema and other available schemas using the
 [**HED Schema Viewer**](https://www.hedtags.org/display_hed.html). 
+Major categories unfold into multiple levels of subcategories, which allow for fine-grained data-annotation.
 In the standard schema for example, the `Clap-hands` tag is in the `Action`
 subtree, but is 3 levels down:
 
 > `Action` &rarr; `Communicate` &rarr; `Communicate-gesturally` &rarr; `Clap-hands`
-
-### Uniqueness and forms
-All tags (vocabulary terms) in a HED schema must be unique, so the short-form `Clap-hands` uniquely specifies the term,
-as does any partial path: `Communicate-gesturally/Clap-hands`, 
-`Communicate/Communicate-gesturally/Clap-hands` and
-`Action/Communicate/Communicate-gesturally/Clap-hands`.
-
-### Is-a
-An important feature of HED schemas is that each child (path successor) extends or
-specializes its parent (predecessor) in the hierarchy.
-Thus, `Clap-hands` is a type of `Communicate-gesturally` action.
-The **is-a** relationship between a child term and its ancestors in the hierarchy is fundamental
-to HED and enables search generality:  a search for `Communicate-gesturally` will return
-annotations that contain any of this tag's descendents (e.g., tags such as `Nod-head`, 
-`Pump-fist`, etc.).
 
 ### Top-level as categories
 As a vocabulary designer, you should think about the **major categories** 
@@ -57,6 +43,30 @@ that are appropriate for your schema
 in selecting top-level nodes to anchor your schema's major categories.
 For example, the standard schema has the following top-level tags:
 `Event`, `Agent`, `Action`, `Item`, `Property`, and `Relation`.
+
+### Is-a
+An important feature of HED schemas is that each child (path successor) extends or
+specializes its parent (predecessor) in the hierarchy.
+Thus, `Clap-hands` is a type of `Communicate-gesturally` action.
+The **is-a** relationship between a child term and its ancestors in the hierarchy is fundamental
+to HED and enables search generality:  a search for `Communicate-gesturally` will return
+annotations that contain any of this tag's descendants (e.g., tags such as `Nod-head`, 
+`Pump-fist`, etc.).
+
+### Orthogonal design
+Independent terms should be part of different subtrees in the schema.
+This is specifically relevant for terms that represent properties. 
+`Left-handed` is not a type of `Item/Biological-item/Organism/Human`, 
+but a characteristic of such an `Item`.
+`Left-handed` is a type of `Property`
+Conflating properties with subcategories breaks search generality. 
+
+### Uniqueness and forms
+All tags (vocabulary terms) in a HED schema must define a unique concept. 
+The tags themselves must be unique as well, so the short-form `Clap-hands` uniquely specifies the term,
+as does any partial path: `Communicate-gesturally/Clap-hands`, 
+`Communicate/Communicate-gesturally/Clap-hands` and
+`Action/Communicate/Communicate-gesturally/Clap-hands`.
 
 ### Choosing tag names
 
@@ -86,14 +96,14 @@ in addition to properly validating.
 ``````{admonition} Rules for HED schema design.
 :class: tip
 
-1. [**Unique**] Every term must be unique within the schema and must conform to the rules for
-HED schema terms.
-2. [**Meaningful**] Schema terms should be readily understood by most users. The terms should not be ambiguous and should be meaningful in themselves **without** reference to their position in the schema hierarchy.
-3. [**Organized**] If possible, a schema sub-tree should have no more than 7 direct subordinate sub-trees.
-4. [**Orthogonal**] Terms that are used independently of one another should be in different sub-trees (orthogonality).
-5. [**Sub-classed**]Every term in the hierarchy satistifies the **is-a** relationship with its ancestors in the schema tree.
+1. [**Organized**] Top-level nodes represent categories. If possible, a schema sub-tree should have no more than 7 direct subordinate sub-trees to ensure human readability.
+2. [**Sub-classed**] Every term in the hierarchy satisfies the **is-a** relationship with its ancestors in the schema tree.
 In other words if B has A as an ancestor in the schema hierarchy, then B is an example of A.
 Searching for A will also return B (search generality).
+3. [**Orthogonal**] Terms that are used independently of one another should be in different sub-trees (orthogonality).
+4. [**Unique**] Every term must be unique within the schema and must conform to the rules for
+HED schema terms.
+5. [**Meaningful**] Schema terms should be readily understood by most users. The terms should not be ambiguous and should be meaningful in themselves **without** reference to their position in the schema hierarchy.
 
 ``````
 
@@ -101,6 +111,14 @@ Searching for A will also return B (search generality).
 
 While developing a schema as a standalone vocabulary is supported,
 **it is strongly recommended that library schemas partner with the (latest) standard schema**.
+As previously indicated the top nodes of a HED schema should represent the main categories of your schema.
+The top categories of the HED standard schema are essential to describing much of reality.
+The majority of library schemas will contain concepts that appropriately fit these categories.
+For example, a library schema to describe experiments using driving simulators
+would expand on the category of actions to describe actions relevant for driving.
+Partnering to the standard schema reduces workload on the schema developers, as top-level categories help to organize relevant terms into stable categories.
+Additionally, it ensures the power of search generalizability is not reduced for terms that are part of a library schema
+(i.e.  Actions relevant for driving are returned when searching for `Action`).
 For more detailed rules and syntax about partnering
 see the [**Partnered schemas**](https://hed-specification.readthedocs.io/en/latest/07_Library_schemas.html#partnered-schemas)
 section of the [**HED specification**](https://hed-specification.readthedocs.io/en/latest/index.html).
