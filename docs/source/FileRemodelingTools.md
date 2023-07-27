@@ -1715,7 +1715,9 @@ The following table lists the parameters required for using the summary.
 | *summary_filename* | str | A unique file basename to use for saving this summary. |
 | *skip_columns* | list | A list of column names to omit from the summary.| 
 | *value_columns* | list | A list of columns to omit the listing unique values. |  
-| *append_timecode* | bool | (Optional) If True, append a time code to filename.<br/>False is the default.| 
+| *append_timecode* | bool | (Optional) If True, append a time code to filename.<br/>False is the default.|  
+| *max_categorical* | int | (Optional) If given, the text summary shows top *max_categorical* values.<br/>Otherwise the text summary displays all categorical values.|  
+| *values_per_line* | bool | (Optional) If given, the text summary displays this <br/>number of values per line (default is 5).|   
 
 ```
 
@@ -1738,6 +1740,10 @@ The *summarize_column_values* operation does not separate by task, but expects t
 calling programs filter the files by task as desired.
 The `run_remodel` program supports selecting files corresponding to a particular task.
 
+Two additional optional parameters are available for specifying aspects of the text summary output.
+The *max_categorical* optional parameter specifies how many unique values should be displayed
+for each column. The *values_per_line* controls how many categorical column values (with counts)
+are displayed on each line of the output.  By default, 5 values are displayed.
 
 (summarize-column-values-example-anchor)=
 #### Summarize column values example
@@ -1942,7 +1948,8 @@ Ambiguous definitions are those that take a placeholder, but it doesn't have eno
 to be sure to which tag the placeholder applies.
 Erroneous ones are ones with conflicting expanded forms.  
 
-Currently, summaries are not generated for individual files, but this is likely to change in the future.
+Currently, summaries are not generated for individual files, 
+but this is likely to change in the future.
 
 Below is a simple example showing the format when erroneous or ambiguous definitions are found.
 
@@ -2005,7 +2012,8 @@ The *summarize_hed_tags* operation has the two required parameters
 | *summary_filename* | str | A unique file basename to use for saving this summary. |
 | *tags* | dict | Dictionary with category title keys and tags in that category as values. |  
 | *append_timecode* | bool | (Optional) If True, append a time code to filename.<br/>False is the default.|  
-| *expand_context* | bool | (Optional) If true, expand `Event-context` to account for onsets and offsets. |
+| *expand_context* | bool | (Optional) If true, expand the event context to <br/>account for onsets and offsets. |  
+| *expand_definitions* | bool | (Optional) If true, expand definitions and include in tag counts. |
 ```
 
 The *tags* dictionary has keys that specify how the user wishes the tags 
@@ -2015,16 +2023,23 @@ Note that these keys are titles designating display categories, not HED tags.
 The *tags* dictionary values are lists of actual HED tags (or their children)
 that should be listed under the respective display categories.
 
-If *expand_context* is false, the counts are calculated without
-expanding the event context. The option of expanding the event context to account
-for onset/offset effects is not implemented in this release.
+If the optional parameter *expand_context* is true, the counts include tags contributing
+to the event context in events intermediate between onsets and offsets.
+**The option of expanding the event context to account
+for onset/offset effects will be implemented in this release.**
+
+If the optional parameter *expand_definitions* is true, the tag counts include
+tags contributed by expanding the definitions.
+ **The option of expanding the event context to account
+for onset/offset effects will be implemented in this release.**
+
+
+(summarize-hed-tags-example-anchor)=
+#### Summarize HED tags example
 
 The following remodeling command specifies that the tag counts should be grouped
 under the titles: *Sensory events*, *Agent actions*, and *Objects*.
 Any leftover tags will appear under the title "Other tags".
-
-(summarize-hed-tags-example-anchor)=
-#### Summarize HED tags example
 
 ````{admonition} A JSON file with a single *summarize_hed_tags* summarization operation.
 :class: tip
@@ -2221,8 +2236,8 @@ If *check_for_warnings* is false, the summary will not report warnings.
 | ------------ | ---- | ----------- | 
 | *summary_name* | str | A unique name used to identify this summary.| 
 | *summary_filename* | str | A unique file basename to use for saving this summary. |
-| *check_for_warnings* | bool | If true, warnings are reported, otherwise warnings are ignored. |  
-| *append_timecode* | bool | (Optional) If True, append a time code to filename.<br/>False is the default.| 
+| *append_timecode* | bool | (Optional) If True, append a time code to filename.<br/>False is the default.|  
+| *check_for_warnings* | bool | (Optional) If true, warnings are reported in addition to errors.<br/>False is the default.|  
 ```
 The *summarize_hed_validation* is a HED operation and the calling program must provide a HED schema version
 and usually a JSON sidecar containing the HED annotations.
@@ -2312,7 +2327,7 @@ files in the dataset.
 
 The following table lists the parameters required for using the summary.
 
-```{admonition} Parameters for the *summarize_sidcar_from_eventsr* operation.
+```{admonition} Parameters for the *summarize_sidcar_from_events* operation.
 :class: tip
 
 |  Parameter   | Type | Description | 
@@ -2336,7 +2351,7 @@ A time stamp and file extension are appended to the *summary_filename* when the
 summary is saved.
 
 In addition to the standard parameters, *summary_name* and *summary_filename* required of all summaries,
-the *summarize_column_values* operation requires two additional lists to be supplied.
+the *summarize_sidecar_from_events* operation requires two additional lists to be supplied.
 The *skip_columns* list specifies the names of columns to skip entirely in
 generating the sidecar template.
 The *value_columns* list specifies the names of columns to treat as value columns
@@ -2437,8 +2452,6 @@ Sidecar:
 }
 ```
 ````
-
-The current version of the summary does not generate a dataset-wide sidecar.
 
 (remodel-implementation-anchor)=
 ## Remodel implementation

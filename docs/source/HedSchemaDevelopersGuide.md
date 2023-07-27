@@ -31,11 +31,24 @@ each of which corresponds to a major term category for the vocabulary.
 Before developing a schema,
 you should explore the standard schema and other available schemas using the
 [**HED Schema Viewer**](https://www.hedtags.org/display_hed.html). 
-Major categories unfold into multiple levels of subcategories, which allow for fine-grained data-annotation.
-In the standard schema for example, the `Clap-hands` tag is in the `Action`
-subtree, but is 3 levels down:
+Major categories unfold into multiple levels of subcategories, which allow for fine-grained data-annotation, as illustrated in the excerpt a screenshot of the HED schema browser viewing
+HED standard schema version 8.2.0.
 
+![Clap-hands tag in standard schema](./_static/images/ClapHandsInSchema.png)
+
+The text box on the right shows the details of the tag your cursor is hovering over,
+in this case the `Clap-hands` tag.  
+The `Clap-hands` tag is in the `Action`
+subtree, but is 3 levels down:
 > `Action` &rarr; `Communicate` &rarr; `Communicate-gesturally` &rarr; `Clap-hands`
+
+Notice that each level down gives a more specific instance of its parent node.
+The `Clap-hands` tag is the *short form* of the tag, while the full path in the schema
+tree:
+
+> `Action/Communicate/Communicate-gesturally/Clap-hands`
+
+is called the *long-form*.
 
 ### Top-level as categories
 As a vocabulary designer, you should think about the **major categories** 
@@ -72,10 +85,9 @@ as does any partial path: `Communicate-gesturally/Clap-hands`,
 
 Each individual tag in your vocabulary must stand by itself ---
 that is, its meaning should be clear.
-Tags must be unique and should be distinct from the tags in
+Tags must be unique and **must** be distinct from the tags in
 the standard schema.
-(You should avoid overlap with tags from other libraries if possible,
-although this is not required.)
+You should also try to avoid overlap with tags from other libraries if possible.
 
 Tag names may only contain alphanumeric characters, hyphens, and underbars.
 No blanks are allowed.
@@ -110,15 +122,10 @@ HED schema terms.
 ### Deciding partnership
 
 While developing a schema as a standalone vocabulary is supported,
-**it is strongly recommended that library schemas partner with the (latest) standard schema**.
-As previously indicated the top nodes of a HED schema should represent the main categories of your schema.
-The top categories of the HED standard schema are essential to describing much of reality.
-The majority of library schemas will contain concepts that appropriately fit these categories.
-For example, a library schema to describe experiments using driving simulators
-would expand on the category of actions to describe actions relevant for driving.
-Partnering to the standard schema reduces workload on the schema developers, as top-level categories help to organize relevant terms into stable categories.
-Additionally, it ensures the power of search generalizability is not reduced for terms that are part of a library schema
-(e.g.,  actions relevant for driving are returned when searching for `Action`).
+**it is strongly recommended that library schemas partner with the (latest) standard schema**,
+and this schema guide assumes that you are going to develop a partnered library.
+
+
 For more detailed rules and syntax about partnering
 see the [**Partnered schemas**](https://hed-specification.readthedocs.io/en/latest/07_Library_schemas.html#partnered-schemas)
 section of the [**HED specification**](https://hed-specification.readthedocs.io/en/latest/index.html).
@@ -177,6 +184,32 @@ For example,
 SCORE version 1.0.0 is unpartnered, but SCORE version 1.1.0 is partnered
 with standard schema version 8.2.0.
 ```
+
+#### Why partnership?
+
+There are many advantages to partnered libraries over standalone libraries, which are summarized here:
+
+``````{admonition} Advantages of schema partnership.
+:class: tip
+
+1. [**top-level categories**] As previously indicated the top nodes of a HED schema should represent the main categories of your schema. The top categories of the HED standard schema are essential to describing much of reality,
+   and most library schemas will contain concepts that appropriately fit these categories.  
+
+   For example, a library schema to describe experiments using driving simulators
+   would expand on the category of actions to describe actions relevant for driving.
+   Partnering to the standard schema reduces workload on the schema developers, as top-level categories help to organize relevant terms into stable categories.    
+&nbsp;   
+2. [**search generalizability**] By rooting the terms of your library schema within the standard schema, you can take advantage of search generalization.  
+
+   For example, a search for `Action` could also return actions relevant for driving.   
+&nbsp;
+3. [**structural tags**] There are special tags in the HED standard schema, such as `Onset` and `Offset`, that have
+  special meaning and HED-compliant tools handle them in specific ways.
+  If you want to use any of special features of HED such as definitions, you will need to use
+  the standard schema anyway.   
+&nbsp;
+4. [**schema attributes**] If you create a standalone schema library, you must duplicate from the standard schema all the special sections including value classes, unit classes, schema attributes, and schema properties. 
+``````
 
 ### Naming your schema
 
@@ -277,6 +310,9 @@ Drive has tags of interest to driving experiments.
 ```
 ````
 
+Notice that this schema does not include any auxilliary sections --- these are inherited
+from the standard schema.
+
 This schema would be saved in a MediaWiki file called `HED_drive_0.0.1.mediawiki`.
 To start developing simply replace "drive" with the name of your schema
 and replace the drive tags with your own.
@@ -285,8 +321,7 @@ and replace the drive tags with your own.
 
 While developing, you should validate your schema frequently using
 the [**HED online tools**](https://hedtools.org).
-
-The following tools shows screen shows the user interface for
+The screenshot shows the user interface for
 validating your schema using the online tools.
 
 ![ValidateSchema](./_static/images/ValidateSchema.png)
@@ -412,6 +447,7 @@ Here is a brief summary of the development process.
 
 - Choose a schema name.
 - Get listed on [**hed-schemas**](https://github.com/hed-standard/hed-schemas).
+- Request a branch be created on [**hed-schemas**](https://github.com/hed-standard/hed-schemas) for your development.
 - Develop your schema:
   - Modify your prerelease `.mediawiki`.
   - Validate the prerelease `.mediawiki` file using the [**HED online tools**](https://hedtools.org/hed/schema).
@@ -420,6 +456,7 @@ Here is a brief summary of the development process.
   - Update your prerelease `CHANGES.md` and `PROPOSED.md` files.
   - Update your schema's `README.md`.
   - Create and/or modify your schema's documentation page.
+  - Do a GitHub pull-request to your schema's GitHub branch.
   - Repeat until ready to release a permanent version.
 - Release your schema:
   - Choose the final version number.
