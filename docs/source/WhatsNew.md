@@ -1,6 +1,10 @@
 (whats-new-anchor)=
 # What's new?
 
+**August 2, 2023**: **HED has a mailing list/discussion forum**  
+> The HED mailing list/discussion forum is managed via googlegroups. 
+> To join email: [**hed-discussion+subscribe@googlegroups.com**](mailto:hed-discussion+subscribe@googlegroups.com).
+
 **July 12, 2023**: **HED SCORE version 1.1.0 released**  
 > This is the first HED partnered schema.  
 
