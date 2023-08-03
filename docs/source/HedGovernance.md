@@ -60,19 +60,21 @@ following organization chart and detailed in the following sections.
 ![leadership_figure](./_static/images/HEDOrganizationalChart.png "HED Leadership
 Structure")
 
-| Group                                                              | Function                                | Contact                                                                       | GitHub                                                                                        |   
-|--------------------------------------------------------------------|-----------------------------------------|-------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|  
-| [**HED Scientific Advisory Board**](#hed-scientific-advisory-board) | Strategic planning                      | Scott Makeig                                                                  | [**smakeig**](https://github.com/smakeig)                                                     |   
-| [**HED Working Group**](#hed-working-group)                        | Oversight and <br/>day-to-day decisions | Kay Robbins<br/>Scott Makeig                                                  | [**VisLab**](https://github.com/VisLab)<br/>[**smakeig**](https://github.com/smakeig)         |  
-| [**HED Library Development Teams**](#hed-library-development-teams) | Library development issues | Dora Hermes<br/>Tal Pal Attia | [**dorahermes**](https://github.com/dorahermes)<br/>[**tpatpa**](https://github.com/tpatpa)   |  
-| [**HED Maintainers**](#hed-maintainers) | Repository management | Kay Robbins<br/>Dung Truong                                                   | [**VisLab**](https://github.com/VisLab)<br/>[**dungscout96**](https://github.com/dungscout96) |  
-| [**HED Outreach**](#hed-outreach)  | Annotation assistance | Annalisa Salazar                                                              | [**asalazar4**](https://github.com/asalazar4)                                                 |                                 
+
+
+| Group | Function | Contact | GitHub |   
+| ---- | ---- | ---- | ---- |   
+| [**HED Scientific Advisory Board**](#hed-scientific-advisory-board) | Strategic planning   | Scott Makeig | [**smakeig**](https://github.com/smakeig)  |   
+| [**HED Working Group**](#hed-working-group) | Oversight and <br/>day-to-day decisions | Kay Robbins<br/>Scott Makeig | [**VisLab**](https://github.com/VisLab)<br/>[**smakeig**](https://github.com/smakeig) |  
+| [**HED Library Development Teams**](#hed-library-development-teams) | Library development issues | Dora Hermes<br/>Tal Pal Attia | [**dorahermes**](https://github.com/dorahermes)<br/>[**tpatpa**](https://github.com/tpatpa) |  
+| [**HED Maintainers**](#hed-maintainers) | Repository management | Kay Robbins<br/>Dung Truong     | [**VisLab**](https://github.com/VisLab)<br/>[**dungscout96**](https://github.com/dungscout96) |  
+| [**HED Outreach**](#hed-outreach) | Annotation assistance | Annalisa Salazar | [**asalazar4**](https://github.com/asalazar4) |   
 
 
 
 If you have a question or wish to become more involved in the HED efforts,
 post an issue to the main [HED issues forum](https://github.com/hed-standard/hed-schemas) or email
-[**hed.maintainers@gmail.com**](mailto: hed.maintainers@gmail.com )
+[**hed.maintainers@gmail.com**](mailto:hed.maintainers@gmail.com )
 
 ### HED Scientific Advisory Board
 
@@ -115,17 +117,17 @@ development of specialized vocabularies to support detailed
 annotation of experiments in specialized areas. 
 These specialized vocabularies are called **HED library schemas**.
 Each library schema has its own HED Library Development Team 
-to initially develop the schema and to update date the schema as needs arise.
+to initially develop the schema and to update the schema as needs arise.
 
-Any one can propose a HED library schema.
+Anyone can propose a HED library schema.
 As early as possible in the process, a member of the
 library schema development team should [**post an issue**](https://github.com/hed-standard/hed-schemas/issues) to the 
 [**hed-schemas**](https://github.com/hed-standard/hed-schemas) 
 GitHub repository indicating the
 proposed library name, team members (with GitHub usernames)
 to start the open process development.
-Alternatively, an interested user can post an issue to
-inquiring about user interest and the HED Working Group can
+Alternatively, an interested user can post an GitHub issue to
+inquire about user interest and the HED Working Group can
 publicize the potential development and ask for participation
 to get things started.
 This process and schema design guidelines are described 
