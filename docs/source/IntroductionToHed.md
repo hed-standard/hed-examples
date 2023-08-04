@@ -21,8 +21,38 @@ an early public repository for EEG data hosted by the
 Swartz Center for Computational Neuroscience, UCSD (Bigdely-Shamlo et al. 2013).
 HED has undergone several revisions and substantial infrastructure development since that time.
 
+### HED generation 1
+
+The first version of Hierarchical Event Descriptors was released in 2010
+to support annotation of events for
+ [**HeadIt**](https://headit.ucsd.edu/) an open repository of EEG datasets. 
+The work was initiated as part of the PhD thesis of Nima Bigdely-Shamlo 
+under the supervision of Scott Makeig and Kenneth Kreutz-delgado.
+HED Generation 1 (HED version < 4.0.0) was organized around a 
+single event hierarchy with root *Time-Locked Event* and 
+immediate children *Stimulus* and *Response*.
+
+### HED generation 2
+In 2010, the Army Research Laboratory funding a multi-institution 
+neuroergonomics project whose focus was to instrument the brain and 
+body at work (ARL W911NF-10-2-0022). 
+The project included the development of a repository
+[**https://cancta.net**](https://cancta.net) of data collected 
+using a standardized format [**EEG Study Schema (ESS)**](https://www.nitrc.org/projects/ess/)
+to enable data sharing and cross-study analysis. 
+
+A working group was formed to redesign HED to accommodate the vocabulary
+needed to annotate the greater variety of datasets.
+Recognizing the need for orthogonality in the vocabulary,
+the working group redesigned HED as a sub-tag system.
+Validators and online tools were developed to support HED.
+HED generation 2 (versions 4.0.0 < 8.0.0) was first released in 2016
+and iteratively improved over the next several years.
 The [BIDS (Brain Imaging Data Structure)](https://bids.neuroimaging.io/) standards
 group incorporated HED as annotation mechanism in 2019.
+
+### HED generation 3
+
 In 2019, work also began on a rethinking of the HED vocabulary design,
 resulting in the release of the third generation of HED in August 2021,
 representing a dramatic increase in annotation capacity and a significant

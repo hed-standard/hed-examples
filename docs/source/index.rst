@@ -144,6 +144,12 @@ Visit the `HED project homepage <https://github.com/hed-standard>`_ for links to
    HedSchemas.md
    HedTestDatasets.md
 
+.. toctree::
+   :maxdepth: 3
+   :hidden:
+   :caption: Drafts:
+
+   HedGovernance.md
 
 Indices and tables
 ==================
