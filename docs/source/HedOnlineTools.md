@@ -524,6 +524,24 @@ If there are any errors, the tool returns a downloadable `.txt` file of error me
 otherwise the tool returns a downloadable `.xml` or `.mediawiki` file.  
 ``````
 
+#### Compare HED schemas
+
+The compare HED schemas tool produces a summary of the differences between two schemas.
+This is useful for determining what has changed between schema versions or detecting overlap
+between different library schemas.
+
+``````{admonition} Compare HED schemas.
+
+ - Select the `Compare schemas` action. 
+ - Enter a schema URL or upload a schema file (`.xml` or `.mediawiki`) and select corresponding option for the first schema.  
+ - Enter a schema URL or upload a schema file (`.xml` or `.mediawiki`) and select corresponding option for the second schema.
+ - Click the `Process` button.
+   
+**Returns:**  
+If the schemas are invalid, the tool returns a downloadable `.txt` file of error messages,
+otherwise the tool returns a downloadable `.txt` file with the schema differences.  
+``````
+
 (hed-restful-services-anchor)=
 ## HED RESTful services
 

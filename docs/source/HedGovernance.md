@@ -231,7 +231,7 @@ organization site as indicated in the following table.
 | Python codebase | [hed-python](https://github.com/hed-standard/hed-python/issues)               | Bug reports and feature requests.                                                                   |  
 | JavaScript codebase | [hed-validator](https://github.com/hed-standard/hed-validator/issues)         | Bug reports and feature requests.                                                                   | 
 
-HED also has a HED discussion group which you can subscribe by emailing:
+HED also has a HED discussion group that you can subscribe to by emailing:
 [**hed-discussion+subscribe@googlegroups.com**](mailto:hed-discussion+subscribe@googlegroups.com).
 
 If you do not feel comfortable
