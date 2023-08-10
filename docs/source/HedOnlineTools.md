@@ -18,11 +18,14 @@ about download and deployment information.
 
 The HED browser-based tools are organized into the following pages,
 each focused on a particular type of file. 
-* [**Event online tools**](event-online-tools-anchor) - validation, summary, and generation tools.
-* [**Sidecar online tools**](sidecar-online-tools-anchor) - validation, transformation, extraction, and merging tools.
-* [**Spreadsheet online tools**](spreadsheet-online-tools-anchor) - validation and transformation tools.
-* [**String online tools**](string-online-tools-anchor) - validation and transformation tools.
-* [**Schema online tools**](schema-online-tools-anchor) - validation and conversion tools.
+
+| Operates on          | URL | Description |  
+|-----------------| ----- | ------- |  
+| [**Events**](events-online-tools-anchor)             | [**link**](https://hedtools.org/hed/events) | validation, summary, and generation tools. |  
+| [**Sidecars**](sidecars-online-tools-anchor)         | [**link**](https://hedtools.org/hed/sidecars) | validation, transformation, extraction, and merging tools. |  
+| [**Spreadsheets**](spreadsheets-online-tools-anchor) | [**link**](https://hedtools.org/hed/spreadsheets) | validation and transformation tools. |   
+| [**Strings**](strings-online-tools-anchor)           |  [**link**](https://hedtools.org/hed/spreadsheets) | validation and transformation tools. |   
+| [**Schemas**](schemas-online-tools-anchor)           | [**link**](https://hedtools.org/hed/schemas) | validation, conversion, and comparison tools. |  
 
 Many of the tools require that you provide a HED schema.
 Usually, you can do this by selecting one of the standard HED versions using a pull-down menu,
@@ -47,7 +50,7 @@ tag group of the form *(Def-expand/xxx, yyy)* where 'yyy' is the actual definiti
 in long form or short form.
 
 
-(event-online-tools-anchor)=
+(events-online-tools-anchor)=
 ### Events files
 Events files are BIDS style tab-separated value files.
 The first line is always a header line giving the names of the columns,
@@ -167,7 +170,7 @@ the transformed events file and any possible summaries that were generated.
 
 ``````
 
-(sidecar-online-tools-anchor)=
+(sidecars-online-tools-anchor)=
 ### Sidecar files
 
 BIDS JSON sidecars have file names ending in `events.json`.
@@ -302,7 +305,7 @@ otherwise the tool returns a downloadable merged `.json` file.
 The [bids_merge_sidecar.ipynb](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids/bids_merge_sidecar.ipynb) Python Jupyter notebook does the same operation.
 
 
-(spreadsheet-online-tools-anchor)=
+(spreadsheets-online-tools-anchor)=
 ### Spreadsheet files
 
 Spreadsheets (either in Excel or tab-separated-value format) are convenient for organizing tags.
@@ -406,7 +409,7 @@ If there are any errors, the tool returns a downloadable `.txt` file of error me
 otherise the tool returns a downloadable spreadsheet with the HED tags converted to short.  
 ``````
 
-(string-online-tools-anchor)=
+(strings-online-tools-anchor)=
 ### String online tools
 
 While in the process of annotating or working with HED,
@@ -478,7 +481,7 @@ If there are any errors, the tool displays the error messages in the *Results* a
 otherwise the tool displays the converted string in the *Results* textbox.  
 ``````
 
-(schema-online-tools-anchor)=
+(schemas-online-tools-anchor)=
 ### Schema online tools
 HED schema tools are designed to assist HED schema developers and library schema developers
 in making sure that their schema has the correct form.
