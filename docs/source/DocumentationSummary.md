@@ -34,41 +34,15 @@ Detailed case study in using HED-3G for tagging:
 [**Methods for analyzing large neuroimaging datasets**](https://osf.io/d9r3x/) edited by Whelan and Lemaitre.   
 
 
-## HED viewers
+## HED schema viewer
 
 The HED schema is usually developed in `.mediawiki` format and converted to XML for use by tools.
 However, researchers wishing to tag datasets will find both of these views hard to read. 
-For this reason, we provide links to three versions of the schema. The expandable
-HTML viewer is easier to navigate. Annotators can also use CTAGGER, which includes a schema viewer
-and tagging hints.
-
-`````{list-table} HED web-based schema vocabulary viewers.
-:header-rows: 1
-:widths: 20 50
-
-* - **Viewer**
-  - **Link**
-* - **standard HED schema**
-  -
-* - Expandable HTML	
-  - [https://www.hedtags.org/display_hed.html](https://www.hedtags.org/display_hed.html)
-* - Expandable prerelease HTML	
-  - [https://www.hedtags.org/display_hed_prerelease.html](https://www.hedtags.org/display_hed_prerelease.html)
-* - Mediawiki	
-  - [https://github.com/hed-standard/hed-schemas/blob/main/standard_schema/hedwiki/HED8.1.0.mediawiki](https://github.com/hed-standard/hed-schemas/blob/main/standard_schema/hedwiki/HED8.1.0.mediawiki)
-* - XML	
-  - [https://github.com/hed-standard/hed-schemas/blob/main/standard_schema/hedxml/HED8.1.0.xml](https://github.com/hed-standard/hed-schemas/blob/main/standard_schema/hedxml/HED8.1.0.xml)
-* - **Score library schemas**
-  - 
-* - Expandable HTML
-  - [https://www.hedtags.org/display_hed.html](https://www.hedtags.org/display_hed.html)
-* - Expandable prerelease HTML
-  - [https://www.hedtags.org/display_hed_prerelease.html](https://www.hedtags.org/display_hed_prerelease.html)
-* - Mediawiki	
-  - [https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/score/hedwiki/HED_score_1.0.0.mediawiki](https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/score/hedwiki/HED_score_1.0.0.mediawiki)
-* - XML	
-  - [https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/score/hedxml/HED_score_1.0.0.xml](https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/score/hedxml/HED_score_1.0.0.xml)
-`````  
+All versions of the standard schema and library schemas including the prerelease versions
+available via the expandable [**HTML viewer**](https://www.hedtags.org/display_hed.html).
+The  `.mediawiki` sources can be viewed on the 
+[**hed-schemas](https://github.com/hed-standard/hed-schemas) GitHub repository using
+GitHub's default markdown viewer.
 
 ## 3. HED Websites
 
@@ -112,11 +86,11 @@ The following is a summary of the HED-related websites:
 * - **Online tools**
   -
 * - HED tools
-  - [https://hedtools.ucsd.edu/hed](https://hedtools.ucsd.edu/hed)
+  - [https://hedtools.org](https://hedtools.org)
 * - HED tools (development)
-  - [https://hedtools.ucsd.edu/hed_dev](https://hedtools.ucsd.edu/hed_dev)
+  - [https://hedtools.org/hed_dev](https://hedtools.org/hed_dev)
 * - HED-2G support
-  - [https://hedtools.ucsd.edu/hed2](https://hedtools.ucsd.edu/hed2)
+  - [https://hedtools.org/hed2](https://hedtools.org)
 `````
 
 
