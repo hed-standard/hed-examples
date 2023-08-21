@@ -17,9 +17,9 @@ Table of Contents
 
 [**4. HED processes**](#4-hed-processes)
 
-[**5. License**](#5-license)  
+[**5. Operational guidelines**](#5-operational-guidelines)  
 
-[**6. Help**](#6-help)  
+[**6. License**](#6-license)  
 
 [**7. Acknowledgments**](#7-acknowledgments)
 
@@ -55,6 +55,8 @@ and tools requires many types of skills and tasks.
 To this end, the HED community has a number of identified groups acting in concert 
 to promote HED and achieve its goals as show in the
 following organization chart and detailed in the following sections.
+The arrows indicate lines of communication.
+Final decision-making is by consensus of the HED Working Group.
 
 
 ![leadership_figure](./_static/images/HEDOrganizationalChart.png "HED Leadership
@@ -73,7 +75,7 @@ Structure")
 
 
 If you have a question or wish to become more involved in the HED efforts,
-post an issue to the main [HED issues forum](https://github.com/hed-standard/hed-schemas) or email
+post an issue to the main [**HED issues forum**](https://github.com/hed-standard/hed-schemas) or email
 [**hed.maintainers@gmail.com**](mailto:hed.maintainers@gmail.com )
 
 ### HED Scientific Advisory Board
@@ -107,8 +109,6 @@ The HED Working Group currently meets twice a week and keeps a running
 agenda and minutes. 
 
 
-
-
 ### HED Library Development Teams
 
 In recognition that a single standardized vocabulary cannot capture
@@ -118,20 +118,9 @@ annotation of experiments in specialized areas.
 These specialized vocabularies are called **HED library schemas**.
 Each library schema has its own HED Library Development Team 
 to initially develop the schema and to update the schema as needs arise.
-
-Anyone can propose a HED library schema.
-As early as possible in the process, a member of the
-library schema development team should [**post an issue**](https://github.com/hed-standard/hed-schemas/issues) to the 
-[**hed-schemas**](https://github.com/hed-standard/hed-schemas) 
-GitHub repository indicating the
-proposed library name, team members (with GitHub usernames)
-to start the open process development.
-Alternatively, an interested user can post an GitHub issue to
-inquire about user interest and the HED Working Group can
-publicize the potential development and ask for participation
-to get things started.
-This process and schema design guidelines are described 
-in the [**HED schema developer's guide**](https://www.hed-resources.org/en/latest/HedSchemaDevelopersGuide.html).
+The HED Maintainers are responsible for checking that proposed changes
+meet the requirements of HED, but the library schema developers are
+responsible for the vocabulary itself.
 
 
 ### HED Maintainers
@@ -205,21 +194,14 @@ Once a schema version has been officially released, it cannot be
 changed, as tools use these released versions in computation.
 
 
-## 5. License
 
-To the extent possible under the law, the authors have waived all
-copyright and related or neighboring rights to the HED project
-governance and decision-making document, as per the [CC0 public domain
-dedication /
-license](https://creativecommons.org/publicdomain/zero/1.0/).
-
-## 6. Help
+## 5. Operational guidelines
 
 There are several resources that can help a new user get started
 on the [**HED resources**](https://www.hed-resources.org). The [**HED resources**](https://www.hed-resources.org) website
 contains links to all the HED informational and help materials.
 
-We encourage questions, suggestions, and discussion on the appropriate GitHub issues forum
+Users are encouraged to post questions, suggestions, and discussion on the appropriate GitHub issues forum
 on the GitHub [**hed-standard**](https://github.com/hed-standard)
 organization site as indicated in the following table.
 
@@ -231,7 +213,7 @@ organization site as indicated in the following table.
 | Python codebase | [hed-python](https://github.com/hed-standard/hed-python/issues)               | Bug reports and feature requests.                                                                   |  
 | JavaScript codebase | [hed-validator](https://github.com/hed-standard/hed-validator/issues)         | Bug reports and feature requests.                                                                   | 
 
-HED also has a HED discussion group that you can subscribe to by emailing:
+HED also has a HED discussion group. (Subscribe by emailing:
 [**hed-discussion+subscribe@googlegroups.com**](mailto:hed-discussion+subscribe@googlegroups.com).
 
 If you do not feel comfortable
@@ -239,12 +221,36 @@ asking your question publicly or have a concern please feel free to email the HE
 [**hed.maintainers@gmail.com**](mailto:hed.maintainers@gmail.com). 
 
 
+````{admonition} How to propose a library schema.
+Anyone can propose a HED library schema.
+As early as possible in the process, a member of the
+library schema development team should [**post an issue**](https://github.com/hed-standard/hed-schemas/issues) to the 
+[**hed-schemas**](https://github.com/hed-standard/hed-schemas) 
+GitHub repository indicating the
+proposed library name, team members (with GitHub usernames), and brief description
+to start the open process development.  
+
+Alternatively, an interested user can post an GitHub issue to
+inquire about user interest and the HED Working Group can
+publicize the potential development and ask for participation
+to get things started.
+This process and schema design guidelines are described 
+in the [**HED schema developer's guide**](https://www.hed-resources.org/en/latest/HedSchemaDevelopersGuide.html).
+````
 
 All HED community members are required to follow the HED
 [**Code of conduct**](https://github.com/hed-standard/hed-examples/blob/main/CODE_OF_CONDUCT.md).
 Please contact the HED maintainers at [**hed.maintainers+coc@gmail.com**](mailto:hed.maintainers+coc@gmail.com)
 if you have any concerns or would like to report a violation.
 
+
+## 6. License
+
+To the extent possible under the law, the authors have waived all
+copyright and related or neighboring rights to the HED project
+governance and decision-making document, as per the [CC0 public domain
+dedication /
+license](https://creativecommons.org/publicdomain/zero/1.0/).
 
 ## 7. Acknowledgments
 
