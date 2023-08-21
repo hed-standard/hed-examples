@@ -57,23 +57,16 @@ dataset for the following variables:
 | `dataset_path` | Full path to root directory of dataset.|
 | `exclude_dirs` | List of directories to exclude when constructing the list of event files. |
 | `skip_columns`  |  List of column names in the `events.tsv` files to skip in the template |
-| `value_columns` | List of columns names in the `events.tsv` files that will be annotated<br>as a whole rather than by individual column value. |
+| `value_columns` | List of columns names in the `events.tsv` files that will be annotated<br>as a whole rather than by individual column value. |   
+| `output_path` | Full path of output file. If None, then output is printed.   |    
 ```
-
 The `exclude_dirs` should usually include the `code`, `stimuli`, `derivatives`, and `sourcedata` subdirectories.
-The `onset`, `duration` and `sample` columns are almost always skipped, since these are predefined in BIDS.  
+The `onset`, `duration` and `sample` columns are almost always skipped, since these are predefined in BIDS.
 
-Columns designated as value columns are annotated with a single annotation that always includes a `#` placeholder.
-This placeholder marks the position in the annotation where each individual column value is substituted when
-the annotation is assembled.
+Columns designated as value columns are annotated with a single annotation that always includes a `#` placeholder. This placeholder marks the position in the annotation where each individual column value is substituted when the annotation is assembled.
 
-All columns not designated as skip columns or value columns are considered to be categorical columns. 
-Each individual value in a categorical column has its own 
-This annotation that must include a `#` indicating where each value in the value column is
-substituted when the annotation is assembled.
-You should take care to correctly identify the skip columns and the value columns,
-as the individual values in a column such as `onset` are usually unique across the data,
-resulting in a huge number of annotations.
+All columns not designated as skip columns or value columns are considered to be categorical columns. Each individual value in a categorical column has its own This annotation that must include a `#` indicating where each value in the value column is substituted when the annotation is assembled. You should take care to correctly identify the skip columns and the value columns, as the individual values in a column such as `onset` are usually unique across the data, resulting in a huge number of annotations.
+
 
 (find-event-combinations-anchor)=
 ### Find event combinations
@@ -88,9 +81,9 @@ The setup requires the following variables for your dataset:
 | Variable | Purpose |
 | -------- | ------- |
 | `dataset_path` | Full path to root directory of dataset.                                   |
-| `output_path`       | Output path for the spreadsheet template. If None, then print the result. |
 | `exclude_dirs`      | List of directories to exclude when constructing file lists.              |
 | `key_columns`       | List of column names in the events.tsv files to combine.                  |
+| `output_path`       | Output path for the spreadsheet template. If None, then print the result. |
 ```
 
 The result will be a tabular file (tab-separated file) whose columns are the `key_columns` in the order given. The values will be all unique combinations of the `key_columns`, sorted by columns from left to right.
@@ -176,18 +169,18 @@ dataset for the following variables:
 :class: tip
 | Variable | Purpose |
 | -------- | ------- |
-| dataset_path | Full path to root directory of dataset.|
-| exclude_dirs | List of directories to exclude when constructing the list of event files. |
-| `skip_columns`  |  List of column names in the `events.tsv` files to skip in the summary. |
-| `value_columns` | List of columns names in the `events.tsv` files that are just listed with element counts. |
+| `dataset_path` | Full path to root directory of dataset.|
+| `exclude_dirs` | List of directories to exclude when constructing the list of event files. |
+| `skip_columns`  |  List of column names in the `events.tsv` files to skip in the template |
+| `value_columns` | List of columns names in the `events.tsv` files that will be annotated<br>as a whole rather than by individual column value. |   
+| `output_path` | Full path of output file. If None, then output is printed.   |    
 ```
+
+These same variables are required for the [**Extract JSON template**](extract-json-template-anchor) operation.
 
 For large datasets, be sure to skip columns such as
 `onset` and `sample`, since the summary produces counts of the number of times
 each unique value appears somewhere in dataset event files.
-
-(summarize-events-by-task-anchor)=
-### Summarize events by task
 
 (validate-bids-dataset-anchor)=
 ### Validate BIDS dataset
@@ -205,12 +198,12 @@ and validates the sidecars. It then validates the individual `events.tsv` files
 based on applicable sidecars.
 
 
-```{admonition} Variables to set in the summarize_events.ipynb Jupyter notebook.
+```{admonition} Variables to set in the validate_bids_dataset.ipynb Jupyter notebook.
 :class: tip
 | Variable | Purpose |
 | -------- | ------- |
-| dataset_path | Full path to root directory of dataset.|
-| check_for_warnings | Boolean, which if True returns warnings as well as errors |
+| `dataset_path` | Full path to root directory of dataset.|
+| `check_for_warnings` | Boolean, which if True returns warnings as well as errors |
 ```
 
 The script requires you to set the `check_for_warnings` flag and the root path to
@@ -232,8 +225,9 @@ This is very useful for testing new schemas that are underdevelopment.
 (validate-bids-datasets-anchor)=
 ### Validate BIDS datasets
 
-The [**validate_bids_datasets.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/validate_bids_datasets.ipynb) is similar to the other validatation notebooks, but it takes a list of datasets to validate as a convenience.
- 
+The [**validate_bids_datasets.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/validate_bids_datasets.ipynb) is similar to the other validation notebooks, but it takes a list of datasets to validate as a convenience.
+
+
 (jupyter-curation-notebooks-anchor)=
 ## Jupyter notebooks for data curation
 
