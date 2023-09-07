@@ -27,7 +27,6 @@ for BIDS datasets.
 * [**Merge spreadsheet into sidecar**](merge-spreadsheet-into-sidecar-anchor)
 * [**Sidecar to spreadsheet**](sidecar-to-spreadsheet-anchor)
 * [**Summarize events**](summarize-events-anchor)
-* [**Summarize events by task**](summarize-events-by-task-anchor)
 * [**Validate BIDS dataset**](validate-bids-dataset-anchor)
 * [**Validate BIDS dataset with libraries**](validate-bids-dataset-with-libraries-anchor)
 * [**Validate BIDS datasets**](validate-bids-datasets-anchor)

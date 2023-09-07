@@ -98,7 +98,7 @@ Visit the `HED project homepage <https://github.com/hed-standard>`_ for links to
 
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 5
    :hidden:
    :caption: Overview:
 
@@ -109,7 +109,7 @@ Visit the `HED project homepage <https://github.com/hed-standard>`_ for links to
 
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 5
    :hidden:
    :caption: Tutorials:
 
