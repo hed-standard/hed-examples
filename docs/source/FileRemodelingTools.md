@@ -55,10 +55,10 @@ This user's guide contains the following topics:
   * [**Summarize column names**](summarize-column-names-anchor)
   * [**Summarize column values**](summarize-column-values-anchor)
   * [**Summarize definitions**](summarize-definitions-anchor)
-  * [**Summarize sidecar from events**](summarize-sidecar-from-events-anchor)
   * [**Summarize hed tags**](summarize-hed-tags-anchor)
   * [**Summarize hed type**](summarize-hed-type-anchor)
   * [**Summarize hed validation**](summarize-hed-validation-anchor)
+  * [**Summarize sidecar from events**](summarize-sidecar-from-events-anchor)
 * [**Remodel implementation**](remodel-implementation-anchor)
 
 
@@ -143,10 +143,10 @@ and links to further documentation. Operations not listed in the summarize secti
 | **summarize** |  |  | 
 |  | [*summarize_column_names*](summarize-column-names-anchor) | Summarize column names and order in the files. |
 |  | [*summarize_column_values*](summarize-column-values-anchor) | Count the occurrences of the unique column values. |
-|  | [*summarize_sidecar_from_events*](summarize-sidecar-from-events-anchor) | Generate a sidecar template from an event file. |
 |  | [*summarize_hed_tags*](summarize-hed-tags-anchor) | Summarize the HED tags present in the  <br/> HED annotations for the dataset. |
 |  | [*summarize_hed_type*](summarize-hed-type-anchor) | Summarize the detailed usage of a particular type tag <br/> such as *Condition-variable* or *Task* <br/> (used to automatically extract experimental designs). |
 |  | [*summarize_hed_validation*](summarize-hed-validation-anchor) | Validate the data files and report any errors. |
+|  | [*summarize_sidecar_from_events*](summarize-sidecar-from-events-anchor) | Generate a sidecar template from an event file. |
 ````
 
 The **clean-up** operations are used at various phases of restructuring to assure consistency
@@ -276,7 +276,7 @@ and a longer form (two hyphens followed by a more self-explanatory name).
 Users are free to use either form.
 
 `-b`, `--bids-format`
-> If this flag present, the dataset is in BIDS format with sidecars. Tabular files are located using BIDS naming.
+> If this flag present, the dataset is in BIDS format with sidecars. Tabular files and their associated sidecars are located using BIDS naming.
 
 `-e`, `--extensions`
 > This option is followed by a list of file extension(s) of the data files to process.
@@ -329,8 +329,17 @@ Users are free to use either form.
 > The name(s) of the tasks to be included (for BIDS-formatted files only).
 > When a dataset includes multiple tasks, the event files are often structured 
 > differently for each task and thus require different transformation files.
-> This option allows the backups and operations to be restricted to a single task.
-> If this option is omitted, all tasks are used.
+> This option allows the backups and operations to be restricted to a individual tasks.
+  
+> If this option is omitted, all tasks are used. This means that all `events.tsv` files are
+> restored from a backup if the backup is used, the operations are performed on all `events.tsv` files, and summaries are combined over all tasks.
+  
+> If a list of specific task names follows this option, only datafiles corresponding to 
+> the listed tasks are processed giving separate summaries for each listed task.  
+ 
+> If a "*" follows this option, all event files are processed and separate summaries are created for each task.
+  
+> Task detection follows the BIDS convention. Tasks are detected by finding "task-x" in the file names of `events.tsv` files. Here x is the name of the task. The task name is followed by an underbar, by a period, or be at the end of the filename.
 
 `-v`, `--verbose`
 > If present, more comprehensive messages documenting transformation progress
@@ -1839,6 +1848,7 @@ from the sidecar, reporting any deviations from the known definitions as errors.
 (summarize-definitions-parameters-anchor)=
 #### Summarize definitions parameters
 
+**NOTE: This summary is still under development**
 The following table lists the parameters required for using the summary.
 
 ```{admonition} Parameters for the *summarize_definitions* operation.
@@ -2012,8 +2022,9 @@ The *summarize_hed_tags* operation has the two required parameters
 | *summary_filename* | str | A unique file basename to use for saving this summary. |
 | *tags* | dict | Dictionary with category title keys and tags in that category as values. |  
 | *append_timecode* | bool | (Optional) If True, append a time code to filename.<br/>False is the default.|  
-| *expand_context* | bool | (Optional) If true, expand the event context to <br/>account for onsets and offsets. |  
-| *expand_definitions* | bool | (Optional) If true, expand definitions and include in tag counts. |
+| *include_context* | bool | (Optional) If true, expand the event context to <br/>account for onsets and offsets. |  
+| *replace_defs* | bool | (Optional) If true, the `Def` tags are replaced with the<br/>contents of the definition (no `Def` or `Def-expand`). |
+| *remove_types* | list | (Optional) A list of types (such as `Condition-variable` and `Task` to remove. |
 ```
 
 The *tags* dictionary has keys that specify how the user wishes the tags 
@@ -2023,15 +2034,11 @@ Note that these keys are titles designating display categories, not HED tags.
 The *tags* dictionary values are lists of actual HED tags (or their children)
 that should be listed under the respective display categories.
 
-If the optional parameter *expand_context* is true, the counts include tags contributing
+If the optional parameter *include_context* is true, the counts include tags contributing
 to the event context in events intermediate between onsets and offsets.
-**The option of expanding the event context to account
-for onset/offset effects will be implemented in this release.**
 
-If the optional parameter *expand_definitions* is true, the tag counts include
-tags contributed by expanding the definitions.
- **The option of expanding the event context to account
-for onset/offset effects will be implemented in this release.**
+If the optional parameter *replace_defs* is true, the tag counts include
+tags contributed by contents of the definitions.
 
 
 (summarize-hed-tags-example-anchor)=
