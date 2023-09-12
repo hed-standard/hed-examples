@@ -6,6 +6,12 @@
 > Half-day workshop at [**INCF Assembly 2023**](https://neuroinformatics.incf.org/register).  
 > Speakers: Scott Makeig, Dung Truong, Dora Hermes, and Monique Dennisen.  
 
+**September 12, 2023**: **New HED preprint on events in context**
+> *Events in context - A framework for the study of brain, experience and behavior*  
+> by Scott Makeig (UCSD) and Kay Robbins (UTSA)  
+> **Preprint**: [**https://psyarxiv.com/e7jbm**](https://psyarxiv.com/e7jbm)  
+> DOI: 10.31234/osf.io/e7jbm   
+
 **August 21, 2023**: **INCF 2022 HED workshop videos available**
 > [**Part 1: Documenting temporal structure** (48:04)](https://youtu.be/cCp314DXMos)  
 > [**Part 2: Annotating a BIDS dataset** (59:58)](https://youtu.be/BBiGNMyY3x8)   
