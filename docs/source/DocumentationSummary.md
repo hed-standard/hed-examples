@@ -1,9 +1,9 @@
 # Documentation summary
 
 
-## 1. HED publications
+## HED publications
 
-### 1.1. Journal articles
+### Journal articles
 
 Explanation of the history, development, and motivation for third generation HED: 
 
@@ -19,7 +19,14 @@ Detailed case study in using HED-3G for tagging:
 > NeuroImage Special Issue Practice in MEEG. NeuroImage  245  (2021)  118766.  
 > [https://www.sciencedirect.com/science/article/pii/S1053811921010387](https://www.sciencedirect.com/science/article/pii/S1053811921010387).
 
-### 1.2. Book chapters
+Framework for annotating and analyzing events in context:
+
+> Makeig, S. and K. Robbins (2023 under review).  
+> Events in context - A framework for the study of brain, experience and behavior.
+> **Preprint**: [**https://psyarxiv.com/e7jbm**](https://psyarxiv.com/e7jbm)  
+> DOI: 10.31234/osf.io/e7jbm   
+
+### Book chapters
 
 >  Truong, D., Robbins, K., Delorme, A., and S. Makeig (in press).  
 > End-to-end processing of M/EEG data with BIDS, HED, and EEGLAB.  
@@ -44,7 +51,7 @@ The  `.mediawiki` sources can be viewed on the
 [**hed-schemas](https://github.com/hed-standard/hed-schemas) GitHub repository using
 GitHub's default markdown viewer.
 
-## 3. HED Websites
+## HED Websites
 
 The following is a summary of the HED-related websites:
 
@@ -55,7 +62,7 @@ The following is a summary of the HED-related websites:
 
 * - Description
   - Site
-* - HED organization website
+* - HED project homepage
   - [https://www.hedtags.org](https://www.hedtags.org)
 * - HED resources
   - [https://www.hed-resources.org](https://www.hed-resources.org)
@@ -94,19 +101,19 @@ The following is a summary of the HED-related websites:
 `````
 
 
-## 4. HED working documents
+## HED working documents
 
 Mapping of HED terms and their descriptions to known ontologies is:
 
-> HED-3G Working Document on Ontology mapping
+> HED-3G Working Document on Ontology mapping   
 > [https://drive.google.com/file/d/13y17OwwNBlHdhB7hguSmOBdxn0Uk4hsI/view?usp=sharing](https://drive.google.com/file/d/13y17OwwNBlHdhB7hguSmOBdxn0Uk4hsI/view?usp=sharing)
 
 Two other working documents hold portions of the HED-3G specification that are under development 
 and will not be finalized for Release 1:
 
-> HED-3G Working Document on Spatial Annotation
+> HED-3G Working Document on Spatial Annotation   
 > [https://docs.google.com/document/d/1jpSASpWQwOKtan15iQeiYHVewvEeefcBUn1xipNH5-8/view?usp=sharing](https://docs.google.com/document/d/1jpSASpWQwOKtan15iQeiYHVewvEeefcBUn1xipNH5-8/view?usp=sharing)
 
-> HED-3G Working Document on Task Annotation
+> HED-3G Working Document on Task Annotation  
 > [https://docs.google.com/document/d/1eGRI_gkYutmwmAl524ezwkX7VwikrLTQa9t8PocQMlU/view?usp=sharing](https://docs.google.com/document/d/1eGRI_gkYutmwmAl524ezwkX7VwikrLTQa9t8PocQMlU/view?usp=sharing)
 
