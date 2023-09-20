@@ -290,10 +290,6 @@ file_list = get_file_list(bids_root_path, extensions=[ ".json", ".tsv"], name_su
 
 The HED tools provide both generic and BIDS-specific classes for dictionaries of filenames.
 
-
-The 
-Many of the HED data processing tools make extensive use of dictionaries specif
-
 #### BIDS-specific dictionaries of files
 
 Files in BIDS have unique names that indicate not only what the file represents, 
