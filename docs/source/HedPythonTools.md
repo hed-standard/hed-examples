@@ -436,7 +436,7 @@ and then to log each processing step using the file's key.
 This allows a processing step to be applied to all the relevant files in the dataset.
 After all the processing is complete, the `print_log` method
 outputs the logged messages by key, thus showing all the
-processing steps that hav been applied to each file
+processing steps that have been applied to each file
 as shown in the [**previous example**](example-output-hed-logger-anchor).
 
 (using-hed-logger-example-anchor)=
