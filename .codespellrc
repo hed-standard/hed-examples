@@ -1,4 +1,4 @@
 [codespell]
-skip = .git,*.pdf,*.svg,versioneer.py
+skip = .git,*.pdf,*.svg,versioneer.py,sub-*.json
 #
-# ignore-words-list =
+ignore-words-list = covert
