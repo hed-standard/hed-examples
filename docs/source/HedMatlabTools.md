@@ -329,7 +329,7 @@ in the *EEG.event* data structure in sufficient detail that anyone using the dat
 in the future will not need to find and read a separate, detailed description of the dataset
 or study to understand the recorded experimental events. 
 As demonstrated below, such annotation will allow us to extract epochs using meaningful
-HED tags instead of the alpha-numeric codes often associated with shared EEG data.
+HED tags instead of the alphanumeric codes often associated with shared EEG data.
 
 #### Launching EEGLAB HEDTools
 To add and view HED tags for the dataset, from EEGLAB menu, select:  
@@ -608,7 +608,7 @@ to indicate the command line version.
 
 Use the MATLAB `pyenv` function again without arguments to check that your installation is as expected.
 
-````{Admonition} Example response for pyenv all with no argments after setting environment.
+````{Admonition} Example response for pyenv all with no arguments after setting environment.
 
 ```matlab
  PythonEnvironment with properties:
