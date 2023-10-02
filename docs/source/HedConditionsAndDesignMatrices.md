@@ -346,7 +346,7 @@ Example 9 shows the portion of the
 [**task-facePerception_events.json**](./_static/data/task-FacePerception_events.json)
 that encodes information about the *setup_right_sym* event found as the first event
 in the event file excerpt of Example 8.
-This excerpt only contains the relevant definition and the relevant annotation.
+This excerpt only contains the relevent definition and the relevant annotation.
 
 
 ````{admonition} Example 9: Excerpt of the JSON sidecar relevant to the *setup_right_sym* event.

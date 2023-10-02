@@ -310,7 +310,7 @@ Drive has tags of interest to driving experiments.
 ```
 ````
 
-Notice that this schema does not include any auxiliary sections --- these are inherited
+Notice that this schema does not include any auxilliary sections --- these are inherited
 from the standard schema.
 
 This schema would be saved in a MediaWiki file called `HED_drive_0.0.1.mediawiki`.

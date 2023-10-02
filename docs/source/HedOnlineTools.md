@@ -406,7 +406,7 @@ The non-HED portions of the spreadsheet and the prefix-columns are the same as i
    
 **Returns:**  
 If there are any errors, the tool returns a downloadable `.txt` file of error messages,
-otherwise the tool returns a downloadable spreadsheet with the HED tags converted to short.  
+otherise the tool returns a downloadable spreadsheet with the HED tags converted to short.  
 ``````
 
 (strings-online-tools-anchor)=
