@@ -58,7 +58,7 @@ between 200 and 800 ms.
 
 **Note 1**:  ERP measure results for the FA and FV conditions only were presented in Ceponiene, R., Westerfield, M., Torki, M. and Townsend, J., 2008. Modality-specificity of sensory aging in vision and audition: evidence from event-related potentials.?Brain research,?1215, pp.53-68. Some unpublished results by Christian Kothe and Scott Makeig on the SH condition may be available from the authors <christiankothe@gmail.com> <smakeig@ucsd.edu>.
 
-**Note 2**: The code subdirectory has several auxilliary files that were produced during
+**Note 2**: The code subdirectory has several auxiliary files that were produced during
 the curation process. The curation was done using a series of Jupyter notebooks
 that are available as run in the code/curation_notebooks subdirectory.
 
