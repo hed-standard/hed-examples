@@ -138,13 +138,13 @@ comma-separated tags and parenthesized groups.
 The expressions for `A` and `B` are each evaluated and then combined using standard logic.
 
 
-| Query form                                                                                                            | Example query               | Matches                                                                                                              | Does not match                                                                                        |
-|-----------------------------------------------------------------------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| **`A`, `B`**<br/>Match if both `A` and `B`<br/>are matched.                                                           | *Event*, *Sensory-event*    | *Event*, *Sensory-event*<br/>*Sensory-event*, *Event*<br/>(*Event*, *Sensory-event*)                                 | *Event*                                                                                               |
+| Query form                                                                                       | Example query               | Matches                                                                                                              | Does not match                                                                                        |
+|--------------------------------------------------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
+| **`A`, `B`**<br/>Match if both `A` and `B`<br/>are matched.                                      | *Event*, *Sensory-event*    | *Event*, *Sensory-event*<br/>*Sensory-event*, *Event*<br/>(*Event*, *Sensory-event*)                                 | *Event*                                                                                               |
 | **`A` and `B`**<br/>Match if both `A` and `B` <br/>are matched.  <br>Same as the comma notation. | *Event* and *Sensory-event* | *Event*, *Sensory-event*<br/>*Sensory-event*, *Event*<br/>(*Event*, *Sensory-event*)                                 |                                                                                                       |  *Event*         |
-| **`A` or `B`**<br/>Match if either `A` or `B`.                                                | *Event* or *Sensory-event*  | *Event*, *Sensory-event*<br/>*Sensory-event*, *Event*<br/>(*Event*, *Sensory-event*)<br/>*Event*<br/>*Sensory-event* | *Agent-trait*                                                                                         |
-| **~`A`**<br/>Match groups that do<br/>not contain `A`<br/> `A` can be an arbitrary expression.                          | [[ *Event*, ~*Action* ]]    | (*Event*)<br/>(*Event*, *Animal-agent*)<br/>(*Sensory-event*, (*Action*))                                            | *Event*<br/>*Event*, *Action*<br/>(*Event*, *Action*)<br>                                             |
-| **@`A`**<br/>Match a line that <br/>does not contain `A`.                                                                  | @*Event*                    | *Action*<br>*Agent-trait*<br>*Action, Agent-Trait*<br>(*Action*, *Agent*)                                            | *Event*<br>(*Action*, *Event*)<br>(*Action*, *Sensory-event*)<br>(*Agent*, (*Sensory-event*, *Blue*)) |
+| **`A` or `B`**<br/>Match if either `A` or `B`.                                                   | *Event* or *Sensory-event*  | *Event*, *Sensory-event*<br/>*Sensory-event*, *Event*<br/>(*Event*, *Sensory-event*)<br/>*Event*<br/>*Sensory-event* | *Agent-trait*                                                                                         |
+| **~`A`**<br/>Match groups that do<br/>not contain `A`<br/> `A` can be an arbitrary expression.   | { *Event*, ~*Action* }      | (*Event*)<br/>(*Event*, *Animal-agent*)<br/>(*Sensory-event*, (*Action*))                                            | *Event*<br/>*Event*, *Action*<br/>(*Event*, *Action*)<br>                                             |
+| **@`A`**<br/>Match a line that <br/>does not contain `A`.                                        | @*Event*                    | *Action*<br>*Agent-trait*<br>*Action, Agent-Trait*<br>(*Action*, *Agent*)                                            | *Event*<br>(*Action*, *Event*)<br>(*Action*, *Sensory-event*)<br>(*Agent*, (*Sensory-event*, *Blue*)) |
 
 ### Group queries
 
@@ -164,31 +164,38 @@ Annotators must group tags using parentheses to make the meaning clear:
 Indicates a red square and a blue triangle.
 Group queries allow analysts to detect these groupings.
 
-As with logical queries, 
+As with logical queries,
 `A` and `B` represent HED expressions that may contain multiple
 comma-separated tags and parenthesized groups.
 
-| Query form                                                                                                               | Example query   | Matches                                                     | Does not match         |
-|--------------------------------------------------------------------------------------------------------------------------|-----------------|-------------------------------------------------------------|------------------------|
-| **[[`A`, `B`]]**<br/>Match a group that<br/>contains both `A` and `B`<br/>at the same level<br/>in the same group.       | *[[Red, Blue]]* | *(Red, Blue)*<br/>*(Red, Blue, Green)*                      | *(Red, (Blue, Green))* |
-| **[`A`, `B`]** <br/> Match a group that<br/>contains `A` and `B`.<br/> Both `A` and `B` could<br/>be any subgroup level. | *[Red, Blue]*   | *(Red, (Blue, Green))*<br/>*((Red, Yellow), (Blue, Green))* | *Red, (Blue, Green)*   |
-              
+| Query form                                                                                                               | Example query | Matches                                                     | Does not match                                                |
+|--------------------------------------------------------------------------------------------------------------------------|---------------|-------------------------------------------------------------|---------------------------------------------------------------|
+| **{`A`, `B`}**<br/>Match a group that<br/>contains both `A` and `B`<br/>at the same level<br/>in the same group.         | *{Red, Blue}* | *(Red, Blue)*<br/>*(Red, Blue, Green)*                      | *(Red, (Blue, Green))*                                        |
+| **[`A`, `B`]** <br/> Match a group that<br/>contains `A` and `B`.<br/> Both `A` and `B` could<br/>be any subgroup level. | *[Red, Blue]* | *(Red, (Blue, Green))*<br/>*((Red, Yellow), (Blue, Green))* | *Red, (Blue, Green)*                                          |
+| **{`A`, `B:`}**<br/>Match a group that<br/>contains both `A` and `B`<br/>at the same level<br/>and no other contents.    | *{Red, Blue:}*         | *(Red, Blue)*                                                   | *(Red, Blue, Green)*<br/>*(Red, Blue, (Green))*  |
+| **{`A`, `B: C`}**<br/>Match a group that<br/>contains both `A` and `B`<br/>at the same level<br/>and optionally `C`.     | *{Red, Blue: Green}*   | *(Red, Blue)*<br/>*(Red, Blue, Green)*                          | *(Red, (Blue, Green))*<br/>*(Red, Blue, (Green))*|
 
-These operations can be
-arbitrarily nested and combined, as for example in the query:
+These operations can be arbitrarily nested and combined, as for example in the query:
 
-> *[`A` or [[`B` and `C`]] ]*
+> *[`A` or {`B` and `C`} ]*
 
 In this query
-Ordering on either the search terms or strings to be searched doesn't matter unless it will impact
-precedence on the expression.  Use logical grouping with parentheses to assure
-the expected order.
+Ordering on either the search terms or strings to be searched doesn't matter, 
+precedence is generally left to right outside of grouping operations.
 
-Precedence is purely left to right outside of grouping operations.
-Thus, unlike many traditional programming languages, 
-**and** does not take precedence over **or**.
-This may change in the future.
+Wildcard matching is supported, but primarily makes sense in exact matching groups.
+You can replace any term with a wildcard:
 
+| Query form                           | Example query   | Matches               | Does not match                |
+|--------------------------------------|-----------------|-----------------------|-------------------------------|
+| **`?`**<br/>Matches any tag or group | {`A` and `?`}   | *(A, B}<br/>(A, (B))* | *(A)<br/>(B, C)*              |
+| **`??`**<br/>Matches any tag         | {`A` and `??`}  | *(A, B}*              | *(A)<br/>(B, C)<br/>(A, (B))* |
+| **`???`**<br/>Matches any group      | {`A` and `???`} | *(A, (B))*            | *(A)<br/>(B, C)<br/>(A, B)*   |
+
+
+**Notes**: You cannot use negation inside exact matching groups "{X:}" or "{X:Y}" notation. <br/>
+You cannot use negation in combination with wildcards ( ?, ??, or ??? )<br/>
+In exact group matching, or matches one or the other, not both.  eg. {A or B:} matches (A) or (B), but not (A, B)
 
 ## Where can HED search be used?
 
