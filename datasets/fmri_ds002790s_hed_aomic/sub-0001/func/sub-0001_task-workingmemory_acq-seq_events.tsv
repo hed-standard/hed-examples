@@ -32,7 +32,7 @@ onset	duration	trial_type	response_accuracy	response_time	response_hand
 228.3927	6	active_nochange	incorrect	1.5526000000000124	right
 238.4092	6	active_change	incorrect	1.8087999999999909	left
 244.4173	6	active_change	correct	1.4834999999999923	right
-252.43380000000002	6	active_change	correct	1.286799999999971	right
+252.4338	6	active_change	correct	1.286799999999971	right
 258.442	6	active_change	correct	1.6632999999999925	right
 264.4501	6	active_nochange	incorrect	1.3710999999999558	right
 272.4666	6	passive	n/a	1.272299999999973	right
