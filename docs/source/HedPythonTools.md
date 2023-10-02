@@ -290,6 +290,10 @@ file_list = get_file_list(bids_root_path, extensions=[ ".json", ".tsv"], name_su
 
 The HED tools provide both generic and BIDS-specific classes for dictionaries of filenames.
 
+
+The 
+Many of the HED data processing tools make extensive use of dictionaries specif
+
 #### BIDS-specific dictionaries of files
 
 Files in BIDS have unique names that indicate not only what the file represents, 
@@ -432,7 +436,7 @@ and then to log each processing step using the file's key.
 This allows a processing step to be applied to all the relevant files in the dataset.
 After all the processing is complete, the `print_log` method
 outputs the logged messages by key, thus showing all the
-processing steps that have been applied to each file
+processing steps that hav been applied to each file
 as shown in the [**previous example**](example-output-hed-logger-anchor).
 
 (using-hed-logger-example-anchor)=

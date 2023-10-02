@@ -34,7 +34,7 @@
     "Description": "Self-reported religious affiliation",
     "Levels": {
       "no": "No religious affiliation",
-      "yes": "Considers him/herself to be religious" 
+      "yes": "Considers him/herself to be religous" 
     }
   },
   "raven_score": {
