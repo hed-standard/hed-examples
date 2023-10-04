@@ -1,4 +1,4 @@
-host = 'https://hedtools.org/hed';
+dochost = 'https://hedtools.org/hed';
 %host = 'https://hedtools.org/hed_dev';
 %host = 'http://127.0.0.1:5000';
 
