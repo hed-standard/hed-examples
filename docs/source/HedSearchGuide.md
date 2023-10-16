@@ -127,7 +127,7 @@ The tag short forms are used for the matching to assure consistency.
 Matching using a tag prefix with the `*` wildcard, matches the starting portion of the tag.
 Thus, <em>Age/3*</em> matches *Age/3* as well as *Age/34*.
 
-Notice that the query <em>Age*</em> matches a myraid of tags including *Agent*, *Agent-state*,
+Notice that the query <em>Age*</em> matches a myriad of tags including *Agent*, *Agent-state*,
 and *Agent-property*.
 
 ### Logical queries
