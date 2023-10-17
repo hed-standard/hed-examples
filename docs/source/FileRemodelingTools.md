@@ -849,8 +849,8 @@ The resulting columns are called *stopped* and *stop_failed*, respectively.
 
 ```json
 [{ 
-    "operation": "factor_column"
-    "description": "Create factors for the succesful_stop and unsuccesful_stop values."
+    "operation": "factor_column",
+    "description": "Create factors for the succesful_stop and unsuccesful_stop values.",
     "parameters": {
         "column_name": "trial_type",
         "factor_values": ["succesful_stop", "unsuccesful_stop"],
@@ -923,12 +923,12 @@ The resulting factor columns are named *correct* and *incorrect*, respectively.
 
 ```json
 [{ 
-    "operation": "factor_hed_tags"
-    "description": "Create factors based on whether the event represented a correct or incorrect action.",
+    "operation": "factor_hed_tags",
+    "description": "Create factors based on whether the event represented a correct or incorrect action.",,
     "parameters": {
         "queries": ["correct-action", "incorrect-action"],
-        "query-names": ["correct", "incorrect"],
-        "remove-types": [],
+        "query_names": ["correct", "incorrect"],
+        "remove_types": [],
         "expand_context": false
     }
 }]
@@ -995,8 +995,8 @@ applies and 0's otherwise.
 
 ```json
 [{ 
-    "operation": "factor_hed_type"
-    "description": "Factor based on the sex of the images being presented."
+    "operation": "factor_hed_type",
+    "description": "Factor based on the sex of the images being presented.",
     "parameters": {
         "type_tag": "Condition-variable",
         "type_values": []
@@ -1075,8 +1075,8 @@ have the same values to be merged into a single event.
 
 ```json
 [{ 
-    "operation": "merge_consecutive"
-    "description": "Merge consecutive *succesful_stop* events that match the *match_columns."
+    "operation": "merge_consecutive",
+    "description": "Merge consecutive *succesful_stop* events that match the *match_columns.",
     "parameters": {
         "column_name": "trial_type",
         "event_code": "succesful_stop",
