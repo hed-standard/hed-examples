@@ -1,6 +1,10 @@
 (whats-new-anchor)=
 # What's new?
 
+<span style="color: red; font-weight: bold;">Upcoming... </span> **Nov. 10-17, 2023 sFN (Society for Neuroscience)** in Washington D.C.:  
+> **Visit SCCN booth (#3031)** for help and information (or just to visit) about **NEMAR/OpenNeuro**, **EEGLAB**, **HED**, **LSL**, and **MoBI**.  
+
+
 **September 20, 2023 16:00 CEST**: **INCF Workshop on HED and BIDS**
 > <em>Event annotation in neuroimaging using HED: from experiment to analysis</em>  
 > Half-day workshop at [**INCF Assembly 2023**](https://neuroinformatics.incf.org/register).  

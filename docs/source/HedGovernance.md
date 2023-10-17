@@ -1,4 +1,3 @@
--------------------DRAFT---------------------------------------------------
 # HED governance and decision-making
 
 Table of Contents
