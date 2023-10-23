@@ -236,9 +236,9 @@ The programs use a standard command-line argument list for specifying input as s
 ````{table} Summary of command-line arguments for the remodeling programs.
 | Script name | Arguments | Purpose | 
 | ----------- | -------- | ------- |
-|*run_remodel_backup* | *data_dir*<br/>*-e -\\-extensions*<br/>*-f -\\-file-suffix*<br/>*-n -\\-backup-name*<br/>*-t -\\-task-names*<br/>*-v -\\-verbose*<br/>*-w -\\-work-dir*<br/>*-x -\\-exclude-dirs*| Create a backup event files. |
-|*run_remodel* | *data_dir*<br/>*model_path*<br/>*-b -\\-bids-format*<br/>*-e -\\-extensions*<br/>*-f -\\-file-suffix*<br/>*-i -\\-individual-summaries*<br/>*-j -\\-json-sidecar*<br/>*-n -\\-backup-name*<br/>*-nb -\\-no-backup*<br/>*-ns -\\-no-summaries*<br/>*-nu -\\-no-update*<br/>*-r -\\-hed-version*<br/>*-s -\\-save-formats*<br/>*-t -\\-task-names*<br/>*-v -\\-verbose*<br/>*-w -\\-work-dir*<br/>*-x -\\-exclude-dirs* | Restructure or summarize the event files. |
-|*run_remodel_restore* | *data_dir*<br/>*-n -\\-backup-name*<br/>*-t -\\-task-names*<br/>*-v -\\-verbose*<br/>*-w -\\-work-dir*<br/> | Restore a backup of event files. |
+|*run_remodel_backup* | *data_dir*<br/>*-bd -\\-backup-dir*<br/>*-bn -\\-backup-name*<br/>*-e -\\-extensions*<br/>*-f -\\-file-suffix*<br/>*-t -\\-task-names*<br/>*-v -\\-verbose*<br/>*-x -\\-exclude-dirs*| Create a backup event files. |
+|*run_remodel* | *data_dir*<br/>*model_path*<br/>*-b -\\-bids-format*<br/>*-bd -\\-backup-dir*<br/>*-bn -\\-backup-name*<br/>*-e -\\-extensions*<br/>*-f -\\-file-suffix*<br/>*-i -\\-individual-summaries*<br/>*-j -\\-json-sidecar*<br/>*-nb -\\-no-backup*<br/>*-ns -\\-no-summaries*<br/>*-nu -\\-no-update*<br/>*-r -\\-hed-version*<br/>*-s -\\-save-formats*<br/>*-t -\\-task-names*<br/>*-v -\\-verbose*<br/>*-w -\\-work-dir*<br/>*-x -\\-exclude-dirs* | Restructure or summarize the event files. |
+|*run_remodel_restore* | *data_dir*<br/>*-bd -\\-backup-dir*<br/>*-bn -\\-backup-name*<br/>*-t -\\-task-names*<br/>*-v -\\-verbose*<br/> | Restore a backup of event files. |
 
 ````
 All the scripts have a required argument, which is the full path of the dataset root (*data_dir*).
@@ -278,6 +278,13 @@ Users are free to use either form.
 `-b`, `--bids-format`
 > If this flag present, the dataset is in BIDS format with sidecars. Tabular files and their associated sidecars are located using BIDS naming.
 
+`-bd`, `--backup-dir`
+> The path to the directory holding the backups (default: `[data_root]/derivatives/remodel/backups`).
+> Use the `-nb` option if you wish to omit the backup (in `run_remodel`).
+
+`-bn`, `--backup-name`
+> The name of the backup used for the remodeling (default: `default_back`).
+
 `-e`, `--extensions`
 > This option is followed by a list of file extension(s) of the data files to process.
 > The default is `.tsv`. Comma separated tabular files are not permitted.
@@ -297,9 +304,6 @@ Users are free to use either form.
 `-j`, `--json-sidecar`
 > This option is followed by the full path of the JSON sidecar with HED annotations to be
 > applied during the processing of HED-related remodeling operations.
-
-`-n`, `--backup-name`
-> The name of the backup used for the remodeling (default: `default_back`).
 
 `-nb`, `--no-backup`
 > If present, no backup is used. Rather operations are performed directly on the files.
@@ -346,7 +350,7 @@ Users are free to use either form.
 > are printed to standard output.
 
 `-w`, `--work-dir`
-> The path to the remodeling work root directory --both for backups and summaries (default: `[data_root]/derivatives/remodel`).
+> The path to the remodeling work root directory --both for summaries (default: `[data_root]/derivatives/remodel`).
 > Use the `-nb` option if you wish to omit the backup (in `run_remodel`).
 
 `-x`, `--exclude-dirs`
