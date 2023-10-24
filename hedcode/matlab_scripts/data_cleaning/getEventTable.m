@@ -1,5 +1,13 @@
 function eventTable = getEventTable(eventsFile, columnTypes, renameColumns)
 % Read the table of events from the events file
+%
+% Parameters:
+%     eventsFile - the path of a BIDS tabular events file.
+%     columnTypes - a cell array of two-element values: 
+%                    column-name, column-type
+%     renameColumns - a cell array of two-element values:
+%                    old-name, new-name
+%                      
    typeMap = containers.Map(columnTypes(:, 1), columnTypes(:, 2));       
    optsDect = detectImportOptions(eventsFile, 'FileType', 'delimitedtext');
   
