@@ -1,49 +1,8 @@
 %% This imports the _events.tsv into the corresponding EEG.set file
 
 %% Set up the specifics for your dataset
-filename = 'T:SummaryTests/ds004105-download/sub-01/ses-01/eeg/sub-01_ses-01_task-DriveRandomSound_run-1_events.tsv';
-eventstruct = importevent( filename, [], 1024, 'key1', 'value1', ...);
-% rootPath = '/XXX/SternbergWorkingPhaseTwo';
-% setname = '';
-% log_name = 'sternberg_12_import_events_log.txt';
-% renameColumns = {'event_type', 'type'; 'onset', 'latency'};
-% 
-% % rootPath = 'G:/AttentionShift/AttentionShiftWorkingPhaseTwo';
-% % setname = 'Auditory Visual Attention Shift';
-% % log_name = 'attention_shift_18_import_events_log.txt';
-% 
-% % rootPath = 's:/bcit/AdvancedGuardDutyWorkingPhaseTwo';
-% % setname = 'BCIT Advanced Guard Duty';
-% % log_name = 'bcit_advanced_guard_duty_10_import_events_log.txt';
-% % 
-% % rootPath = 's:/bcit/AuditoryCueingWorkingPhaseTwo';
-% % setname = 'BCIT Auditory Cueing';
-% % log_name = 'bcit_auditory_cueing_10_import_events_log.txt';
-% 
-% % rootPath = 's:/bcit/BaselineDrivingWorkingPhaseTwo';
-% % setname = 'BCIT Baseline Driving';
-% % log_name = 'bcit_baseline_driving_10_import_events_log.txt';
-% 
-% % rootPath = 's:/bcit/BasicGuardDutyWorkingPhaseTwo';
-% % setname = 'BCIT Basic Guard Duty';
-% % log_name = 'bcit_basic_guard_duty_10_import_events_log.txt';
-% 
-% % rootPath = 's:/bcit/CalibrationDrivingWorkingPhaseTwo';
-% % setname = 'BCIT Calibration Driving';
-% % log_name = 'bcit_calibration_driving_10_import_events_log.txt';
-% 
-% % rootPath = 's:/bcit/MindWanderingWorkingPhaseTwo';
-% % setname = 'BCIT Mind Wandering';
-% % log_name = 'bcit_mind_wandering_10_import_events_log.txt';
-% 
-% % rootPath = 's:/bcit/SpeedControlWorkingPhaseTwo';
-% % setname = 'BCIT Speed Control';
-% % log_name = 'bcit_speed_control_10_import_events_log.txt';
-% 
-% % rootPath = 's:/bcit/TrafficComplexityWorkingPhaseTwo';
-% % setname = 'BCIT Traffic Complexity';
-% % log_name = 'bcit_traffic_complexity_10_import_events_log.txt';
-% 
+filename = 'T:/SummaryTests/ds004105-download/sub-01/ses-01/eeg/sub-01_ses-01_task-DriveRandomSound_run-1_events.tsv';
+
 % excludeDirs = {'sourcedata', 'code', 'stimuli', 'derivatives'};
 % namePrefix = '';
 % nameSuffix = '_eeg';
