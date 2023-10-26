@@ -4,6 +4,11 @@
 <span style="color: red; font-weight: bold;">Upcoming... </span> **Nov. 10-17, 2023 sFN (Society for Neuroscience)** in Washington D.C.:  
 > **Visit SCCN booth (#3031)** for help and information (or just to visit) about **NEMAR/OpenNeuro**, **EEGLAB**, **HED**, **LSL**, and **MoBI**.  
 
+**October 4, 2023**: **New HED preprint Score HED library**
+> <em>Hierarchical Event Descriptor library schema for EEG data annotation</em>  
+> by Pal Attia, T., Robbins, K., Beniczky, S., Bosch-Bayard, J., Delorme, A., Lundstrom, B., Rogers, C., Rampp, S., Valdes-Sosa, P., Truong, D., Worrell, G., Makeig, S., and D. Hermes (2023).    
+> **Preprint**: [**https://arxiv.org/abs/2310.15173**](https://arxiv.org/abs/2310.15173).  
+> DOI:10.48550/arXiv.2310.15173.  
 
 **September 20, 2023 16:00 CEST**: **INCF Workshop on HED and BIDS**
 > <em>Event annotation in neuroimaging using HED: from experiment to analysis</em>  

@@ -19,14 +19,23 @@ Detailed case study in using HED-3G for tagging:
 > NeuroImage Special Issue Practice in MEEG. NeuroImage  245  (2021)  118766.  
 > [https://www.sciencedirect.com/science/article/pii/S1053811921010387](https://www.sciencedirect.com/science/article/pii/S1053811921010387).
 
+### Preprints
+
+Hierarchical Event Descriptor library schema for EEG data annotation:
+
+> Pal Attia, T., Robbins, K., Beniczky, S., Bosch-Bayard, J., Delorme, A., Lundstrom, B., Rogers, C., Rampp, S.,   
+>  Valdes-Sosa, P., Truong, D., Worrell, G., Makeig, S., and D. Hermes (2023).    
+> [**https://arxiv.org/abs/2310.15173**](https://arxiv.org/abs/2310.15173).  
+> DOI:10.48550/arXiv.2310.15173.  
+
 Framework for annotating and analyzing events in context:
 
 > Makeig, S. and K. Robbins (2023 under review).  
 > Events in context - A framework for the study of brain, experience and behavior.
 > **Preprint**: [**https://psyarxiv.com/e7jbm**](https://psyarxiv.com/e7jbm)  
-> DOI: 10.31234/osf.io/e7jbm   
+> DOI: 10.31234/osf.io/e7jbm.   
 
-### Book chapters
+### Book chapters (preprints)
 
 >  Truong, D., Robbins, K., Delorme, A., and S. Makeig (in press).  
 > End-to-end processing of M/EEG data with BIDS, HED, and EEGLAB.  
