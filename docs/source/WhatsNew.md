@@ -4,6 +4,11 @@
 <span style="color: red; font-weight: bold;">Upcoming... </span> **Nov. 10-17, 2023 sFN (Society for Neuroscience)** in Washington D.C.:  
 > **Visit SCCN booth (#3031)** for help and information (or just to visit) about **NEMAR/OpenNeuro**, **EEGLAB**, **HED**, **LSL**, and **MoBI**.  
 
+**October 27, 2023**: **HEDTools version 0.4.0 released** 
+> [**HEDTools**](https://pypi.org/project/hedtools/) version 0.4.0 has been released on PyPI.  
+> See also [**hed-python**](https://github.com/hed-standard/hed-python) on GitHub.  
+> This release includes refactoring and simplification of core models and improvements of remodeling tools.
+
 **October 4, 2023**: **New HED preprint Score HED library**
 > <em>Hierarchical Event Descriptor library schema for EEG data annotation</em>  
 > by Pal Attia, T., Robbins, K., Beniczky, S., Bosch-Bayard, J., Delorme, A., Lundstrom, B., Rogers, C., Rampp, S., Valdes-Sosa, P., Truong, D., Worrell, G., Makeig, S., and D. Hermes (2023).    
