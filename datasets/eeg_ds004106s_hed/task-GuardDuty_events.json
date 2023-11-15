@@ -1,8 +1,6 @@
 {
     "value": {
         "Levels": {
-            "1111": "Start of basic guard duty scenario.",
-            "1112": "End of basic guard duty scenario.",
             "1121": "Start advanced guard duty scenario.",
             "1122": "End advanced guard duty scenario.",
             "1211": "Start block of images from Area A.",
@@ -37,32 +35,30 @@
             "3242": "End of eye tracking system failure."
         },
         "HED": {
-            "1111": "(Def/Experiment/Basic-guard-scenario, Onset)",
-            "1112": "(Def/Experiment/Basic-guard-scenario, Offset)",
             "1121": "(Def/Experiment/Advanced-guard-scenario, Onset)",
             "1122": "(Def/Experiment/Advanced-guard-scenario, Offset)",
             "1211": "(Def/Environmental-area/Area-A, Onset)",
             "1212": "(Def/Environmental-area/Area-A, Offset)",
             "1221": "(Def/Environmental-area/Area-B, Onset)",
             "1222": "(Def/Environmental-area/Area-B, Offset)",
-            "1231": "(Def/Environmental-area/Area-C Onset)",
+            "1231": "(Def/Environmental-area/Area-C, Onset)",
             "1232": "(Def/Environmental-area/Area-C, Offset)",
             "1241": "(Def/Environmental-area/Area-D, Onset)",
             "1242": "(Def/Environmental-area/Area-D, Offset)",
             "1251": "(Def/Environmental-area/Area-E, Onset)",
             "1252": "(Def/Environmental-area/Area-E, Offset)",
-            "1311": "(Def/Show-image, (Valid), Onset)",
-            "1312": "(Def/Show-image, Offset)",
-            "1321": "(Def/Show-image, (Invalid, Label/No_access_to_level), Onset)",
-            "1322": "(Def/Show-image, Offset)",
-            "1331": "(Def/Show-image, (Invalid, Label/Expired_ID), Onset)",
-            "1332": "(Def/Show-image, Offset)",
-            "1341": "(Def/Show-image, (Invalid, Label/Photo_mismatch), Onset)",
-            "1342": "(Def/Show-image, Offset)",
-            "1351": "(Def/Show-image, (Invalid, Label/Suspicious_DOB), Onset)",
-            "1352": "(Def/Show-image, Offset)",
-            "1361": "(Def/Show-image, (Invalid, Label/No_watermark), Onset)",
-            "1362": "(Def/Show-image, Offset)",
+            "1311": "(Def/Show-image-valid, Onset)",
+            "1312": "(Def/Show-image-valid, Offset)",
+            "1321": "(Def/Show-image-invalid-level, Onset)",
+            "1322": "(Def/Show-image-invalid-level, Offset)",
+            "1331": "(Def/Show-image-invalid-expired, Onset)",
+            "1332": "(Def/Show-image-invalid-expired, Offset)",
+            "1341": "(Def/Show-image-invalid-mismatch, Onset)",
+            "1342": "(Def/Show-image-invalid-mismatch, Offset)",
+            "1351": "(Def/Show-image-invalid-dob, Onset)",
+            "1352": "(Def/Show-image-invalid-dob, Offset)",
+            "1361": "(Def/Show-image-invalid-watermark, Onset)",
+            "1362": "(Def/Show-image-invalid-watermark, Offset)",
             "2110": "Agent-action, Participant-response, (Press, Push-button), (Allow, Label/Area_access)",
             "2120": "Agent-action, Participant-response, (Press, Push-button), (Deny, Label/Area_access)",
             "3111": "(Def/Take-survey, Onset)",
@@ -74,53 +70,27 @@
         }
     },
     "gid": {
-        "Description": "ID of the badge image.",
-        "HED": "(Label/Badge-image, ID/#)"
+        "Description": "ID of the badge image."
     },
     "hed_defs": {
         "Levels": {
             "experiment": "Experiment ",
             "environmental_area": "Checks should be for authorization to a specified area.",
-            "show_image": "Show an ID image.",
+            "show_image_": "Show an ID image.",
             "take_survey": "Participant takes a survey",
             "system_failure": "A system failure causes data to be invalid"
         },
         "HED": {
             "experiment": "(Definition/Experiment/#,  (Experiment-structure, Task, Label/#))",
             "environmental_area": "(Definition/Environmental-area/#, (Experiment-structure,  Condition-variable/Environmental-area-cond, Label/#, Time-block))",
-            "show_image": "(Definition/Show-image, (Sensory-event, Visual-presentation, (Image, Label/ID-badge)))",
+            "show_image_valid": "(Definition/Show-image-valid, (Sensory-event, Visual-presentation, (Image, Valid, Label/ID-badge)))",
+			"show_image_invalid_level": "(Definition/Show-image-invalid-level, (Sensory-event, Visual-presentation, Label/No_access_to_level, (Image, Invalid, Label/ID-badge)))",
+			"show_image_invalid_expired": "(Definition/Show-image-invalid-expired, (Sensory-event, Visual-presentation, Label/Expired_ID, (Image, Invalid, Label/ID-badge)))",
+			"show_image_invalid_mismatch": "(Definition/Show-image-invalid-mismatch, (Sensory-event, Visual-presentation, Label/Photo_mismatch, (Image, Invalid, Label/ID-badge)))",
+			"show_image_invalid_dob": "(Definition/Show-image-invalid-dob, (Sensory-event, Visual-presentation, Label/Suspicious_DOB, (Image, Invalid, Label/ID-badge)))",
+			"show_image_invalid_watermark": "(Definition/Show-image-invalid-watermark, (Sensory-event, Visual-presentation, Label/No_watermark, (Image, Invalid, Label/ID-badge)))",
             "take_survey": "(Definition/Take-survey, (Agent-action, (Experiment-participant, (Perform, (Label/Take-survey, Touchscreen)))))",
             "system_failure": "(Definition/System-failure/#, (Experiment-control, Label/#, Mishap))"
-        }
-    },
-    "bcit_defs": {
-        "Levels": {
-            "course_correction": "Course correction has been detected because the vehicle has a heading error of more than 5.1566 degrees from the forward direction or the driver is steering away from the perturbation with a steering angle of more than 4 degrees.",
-            "cue_sound": "A sound which is meant to signal the start of a perturbation.",
-            "drive_vehicle": "Drive car.",
-            "driving_scenario": "A driving scenario with other cars or pedestrians in some configuration.",
-            "left_perturb": "Perturbation that moves the vehicle to the left via perpendicular force.",
-            "non_cue_sound": "A sound which is not meant to cue the start of a perturbation.",
-            "play_sound_clip": "Play a sound clip.",
-            "press_button": "Participant presses a button",
-            "right_perturb": "Perturbation that moves the vehicle to the right via perpendicular force.",
-            "show_speed_sign": "A mph road sign of specified speed.",
-            "trial_marker": "Data collection for a trial",
-            "tile_change": "A change of experimental condition with a 2 by 2 design varying visual complexity and perturbation rate."
-        },
-        "HED": {
-            "course_correction": "(Definition/Course-correction, (Agent-action, Experiment-participant, (Operate/Drive, (Vehicle, (Towards, Lane)))))",
-            "cue_sound": "(Definition/Cue-sound, (Sensory-event, Auditory-presentation, Sound, (Cue, (Away-from, (Center-of, Lane)))))",
-            "drive_vehicle": "(Definition/Drive-vehicle, (Agent-action, (Human-agent, Experiment-participant), (Operate/Drive, Car)))",
-            "driving_scenario": "(Definition/Driving-scenario/#, (Label/#, Environmental-property, Road, Outdoors))",
-            "left_perturb": "(Definition/Left-perturb, (Experiment-control, Sensory-event, Controller-agent, ((Push, (Car)), (Left-side-of, Lane))))",
-            "non_cue_sound": "(Definition/Non-cue-sound, (Sensory-event, Auditory-presentation, Sound, (Distractor, Non-informative, Random)))",
-            "play_sound_clip": "(Definition/Play-sound-clip/#, (Auditory-presentation, Audio-clip, Label/#))",
-            "press_button": "(Definition/Press-button, (Agent-action, Participant-response, (Experiment-participant, (Press, Push-button))))",
-            "right_perturb": "(Definition/Right-perturb, (Experiment-control, Sensory-event, Controller-agent, ((Push, (Car)), (Right-side-of, Lane))))",
-            "show_speed_sign": "(Definition/Show-speed-sign/#, (Sensory-event, Visual-presentation, (Navigational-object/Road-sign, Speed/# mph)))",
-            "trial_marker": "(Definition/Trial-marker, (Experiment-structure, Experimental-trial))",
-            "tile_change": "(Definition/Tile-change, (Experiment-structure, (Environmental-property, Terrain), (Experimental-stimulus, Temporal-rate)))"
         }
     }
 }

@@ -1,8 +1,13 @@
 (whats-new-anchor)=
 # What's new?
 
-<span style="color: red; font-weight: bold;">Upcoming... </span> **Nov. 10-17, 2023 sFN (Society for Neuroscience)** in Washington D.C.:  
-> **Visit SCCN booth (#3031)** for help and information (or just to visit) about **NEMAR/OpenNeuro**, **EEGLAB**, **HED**, **LSL**, and **MoBI**.  
+**Nov. 14, 2023 Dora Hermes elected to BIDS steering committee:**      
+>  HED working group member Dora Hermes from Mayo has been elected to the BIDS steering committee for a two-year term.
+>  **Congratulations** Dora!  
+
+**Nov. 10-17, 2023 sFN (Society for Neuroscience)** in Washington D.C.:  
+> **SCCN booth (#3031)** provided help and information about:  
+> **NEMAR/OpenNeuro**, **EEGLAB**, **HED**, **LSL**, and **MoBI**.  
 
 **October 27, 2023**: **HEDTools version 0.4.0 released** 
 > [**HEDTools**](https://pypi.org/project/hedtools/) version 0.4.0 has been released on PyPI.  

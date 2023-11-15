@@ -2,6 +2,10 @@
   "onset": {
     "Description": "Onset of the trial, i.e., the appearance of the grey screen (duration: 1 sec). Note, this is the onset of the trial. The onset of the different phases is as follows: encoding phase = onset + 1, retention phase = onset + 2, memory/retrieval phase = onset + 4"
   },
+  "duration": {
+    "Description": "Nominal duration of the event.",
+    "Units": "s"    
+  },
   "trial_type": {
     "LongName": "Condition of trial",
     "Description": "Whether the display was passive (no display), active which changed, or didn't change",
