@@ -7,8 +7,8 @@
             "CodeURL": "https://github.com/Donders-Institute/bidscoin"
         }
     ],
-    "BIDSVersion": "1.7.0",
-    "HEDVersion": "8.0.0",
+    "BIDSVersion": "1.8.0",
+    "HEDVersion": "8.2.0",
     "DatasetType": "raw",
     "License": "Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)",
     "Authors": [

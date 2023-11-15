@@ -1,14 +1,12 @@
-function eventTable = getEventTable(eventsFile, columnTypes, renameColumns)
+function eventTable = getEventTable(eventsFile, typeMap, renameMap)
 % Read the table of events from the events file
 %
 % Parameters:
 %     eventsFile - the path of a BIDS tabular events file.
-%     columnTypes - a cell array of two-element values: 
-%                    column-name, column-type
-%     renameColumns - a cell array of two-element values:
-%                    old-name, new-name
+%     typeMap - map of non-string column types: (column-name, column-type)
+%     renameMap - map of columns to be renamed: (old-name, new-name)
 %                      
-   typeMap = containers.Map(columnTypes(:, 1), columnTypes(:, 2));       
+  
    optsDect = detectImportOptions(eventsFile, 'FileType', 'delimitedtext');
   
    % Set the types and fill values of the columns as specified.
@@ -32,9 +30,10 @@ function eventTable = getEventTable(eventsFile, columnTypes, renameColumns)
    
    % Rename the columns that are requested.
    variableNames = eventTable.Properties.VariableNames;
-   for m = 1:length(renameColumns)
-      variableNames{strcmpi(variableNames, renameColumns{m, 1})} = ...
-          renameColumns{m, 2};
+   for m = 1:length(variableNames)
+       if isKey(renameMap, variableNames{m})
+           variableNames{m} = renameMap(variableNames{m});
+       end
    end
    eventTable.Properties.VariableNames = variableNames;
  

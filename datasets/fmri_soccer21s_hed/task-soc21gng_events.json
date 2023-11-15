@@ -4,17 +4,17 @@
         "HED": {
             "5": "Agent-action, (((Human-agent, Experiment-controller)), (Press , Push-button))",
             "train_block_end": "Experiment-structure",
-            "DealingWithErrors_3": "Sensory-event, (Visual-presentation, Computer-screen), (Textblock, Black, Foreground-view), (Background-view, White), (Query, (Agent-emotional-state/Distracted, (Participant-response, (Experimental-trial, Item-interval, Some)))) ",
-            "DealingWithErrors_2": "Sensory-event, (Visual-presentation, Computer-screen), (Textblock, Black, Foreground-view), (Background-view, White), (Query, (Delay, (Participant-response, (Experimental-trial, Item-interval, Some)))) ",
-            "DealingWithErrors_1": "Sensory-event, (Visual-presentation, Computer-screen), (Textblock, Black, Foreground-view), (Background-view, White), (Query, (Delay, (Participant-response, (Experimental-trial, Item-interval/1))))",
+            "DealingWithErrors_3": "Sensory-event, (Visual-presentation, Computer-screen), (Textblock, Black, Foreground-view), (Background-view, White),  (Query, Label/How-errors-affect-performance-next-trials-3)",
+            "DealingWithErrors_2": "Sensory-event, (Visual-presentation, Computer-screen), (Textblock, Black, Foreground-view), (Background-view, White), (Query,  Label/How-errors-affect-performance-next-trials-2)",
+            "DealingWithErrors_1": "Sensory-event, (Visual-presentation, Computer-screen), (Textblock, Black, Foreground-view), (Background-view, White), (Query, Label/How-errors-affect-performance-next-trials-1)",
             "Frust_post": "Sensory-event, (Visual-presentation, Computer-screen), (Textblock, Black, Foreground-view), (Background-view, White), (Query, (Agent-emotional-state/Frustrated))",
             "Stress_post": "Sensory-event, (Visual-presentation, Computer-screen), (Textblock, Black, Foreground-view), (Background-view, White), (Query, (Agent-emotional-state/Stressed))",
-            "survey_block_start": "Experiment-structure, (Def/Survey_block, Onset)",
-            "DealingWithErrors_4": "Sensory-event, (Visual-presentation, Computer-screen), (Textblock, Black, Foreground-view), (Background-view, White), (Query, (Agent-emotional-state/Motivated, (Participant-response, (Experimental-trial, Item-interval, Some))))",
-            "rest_block_start": "Experiment-structure, (Def/Rest_block, Onset)",
-            "rest_block_end": "Experiment-structure, (Def/Rest_block, Offset)",
-            "experiment_block_start": "Experiment-structure, (Def/Exp_block, Onset)",
-            "experiment_block_end": "Experiment-structure, (Def/Exp_block, Offset)",
+            "survey_block_start": "(Def/Survey_block, Onset)",
+            "DealingWithErrors_4": "Sensory-event, (Visual-presentation, Computer-screen), (Textblock, Black, Foreground-view), (Background-view, White), (Query, Label/How-errors-affect-motivation-next-trials)",
+            "rest_block_start": "(Def/Rest_block, Onset)",
+            "rest_block_end": "(Def/Rest_block, Offset)",
+            "experiment_block_start": "(Def/Exp_block, Onset)",
+            "experiment_block_end": "(Def/Exp_block, Offset)",
             "70": "Sensory-event, (Visual-presentation, Computer-screen), (Textblock, Black, Foreground-view), (Background-view, White), Feedback",
             "3": "Agent-action, (((Human-agent, Experiment-participant), Index-finger), (Press , Push-button)), Task-activity, Parameter-label/Indicate-done, Label/Button-3",
             "2s": "Agent-action, (((Human-agent, Experiment-participant), Index-finger), (Press , Push-button)), Task-activity, ((Move, Input-device/Slider), Rightward), Label/Button-2",
@@ -63,15 +63,14 @@
         }
     },
     "trial_number": {
-        "Description": "Number of the trial the event belongs to",
-        "HED": "(Def/Exp_block, Time-block, Label/#)"
+        "Description": "Number of the trial the event belongs to"
     },
     "HED_definitions": {
         "Description":"Definitions for soccer21 data.",
         "HED":{
-            "def_rest":"(Definition/Rest_block, (Time-Block))",
-            "def_exp": "(Definition/Exp_block, (Time-Block))",
-            "def_survey": "(Definition/Survey_block, (Time-Block))"
+            "def_rest":"(Definition/Rest_block, (Time-Block, Experiment-structure))",
+            "def_exp": "(Definition/Exp_block, (Time-Block, Experiment-structure))",
+            "def_survey": "(Definition/Survey_block, (Time-Block, Experiment-structure))"
         }
     }
 }
