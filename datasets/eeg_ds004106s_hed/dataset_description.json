@@ -13,6 +13,7 @@
 			  "Kay Robbins (curation)"],
   "Acknowledgments": "Tony Johnson and Mike Dunkel from DCS Corporation originally curated the data in ESS (EEG Study Schema) format. Kay Robbins, Joe Lambeth and Jonathan Balraj placed this dataset in BIDS format. The experiments were performed at SAIC (Louisville, CO) under contract with the US Army Research Laboratory. The study was reviewed and approved by the U.S. Army Human Research Protections Office (Protocol ARL 12-041) before the study began.",
   "HowToAcknowledge": "Touryan, J., Lance, B.J., Kerick, S.E., Ries, A.J., McDowell, K., 2016. Common EEG features for behavioral estimation in disparate, real-world tasks. Biol. Psychol. 114, 93–107 https://doi.org/10.1016/j.biopsycho.2015.12.009",
+  "EthicsApprovals": ["U.S. Army Human Research Protections Office (Protocol ARL 12–040)"],  
   "Funding": ["This research was sponsored by the Army Research Laboratory and was accomplished under Cooperative Agreement Number W911NF-10-0-0002."],
   "ReferencesAndLinks": [
   "Touryan, J., Lance, B.J., Kerick, S.E., Ries, A.J., McDowell, K., 2016. Common EEG features for behavioral estimation in disparate, real-world tasks. Biol. Psychol. 114, 93–107 https://doi.org/10.1016/j.biopsycho.2015.12.009",

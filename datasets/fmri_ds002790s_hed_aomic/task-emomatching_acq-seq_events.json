@@ -1,4 +1,15 @@
 {
+  "onset": {
+    "Description": "Time in seconds relative to the start of the recording.",
+    "Units": "s"
+  },
+  "duration": {
+    "Description": "Nominal duration of the event.",
+    "Units": "s"    
+  },
+  "response_time": {
+    "Description": "Participant response time."
+  },
   "trial_type": {
     "LongName": "Condition of trial",
     "Description": "Whether the trial was to match emotion or orientation (=control)",
@@ -42,13 +53,11 @@
     "Description": "Which sex did the presented faces have?",
     "Levels": {
       "male": "male",
-      "female": "female",
-      "n/a": "none (it was a control trial)"
+      "female": "female"
     },
     "HED": {
       "male": "Label/MaleImage",
-      "female": "Label/FemaleImage",
-      "n/a": "Label/UnknownImage"
+      "female": "Label/FemaleImage"
     }
   },
   "emo_match": {
@@ -56,13 +65,11 @@
     "Description": "The emotion of the face to match (in case of emotion trials)?",
     "Levels": {
       "fear": "fear",
-      "anger": "anger",
-      "n/a": "none (it was a control trial)"
+      "anger": "anger"
     },
     "HED": {
       "fear": "Label/FearFace",
-      "anger": "Label/AngerFace",
-      "n/a": "Label/UnknownFaceEmotion"
+      "anger": "Label/AngerFace"
     }
   },
   "ori_match": {
@@ -70,13 +77,11 @@
     "Description": "Which orientation did the participants have to match?",
     "Levels": {
       "horizontal": "horizontal",
-      "vertical": "vertical",
-      "n/a": "none (it was an emotion trial)"
+      "vertical": "vertical"
     },
     "HED": {
       "horizontal": "Label/HorizontalImageOrientation",
-      "vertical": "Label/VerticalImageOrientation",
-      "n/a": "Label/NoImageOrientation"
+      "vertical": "Label/VerticalImageOrientation"
     }
   },
   "ethn_target": {
@@ -85,14 +90,12 @@
     "Levels": {
       "caucasian": "target face was caucasian",
       "black": "target face was black",
-      "asian": "target face was asian",
-      "n/a": "none (it was an orientation trial)"
+      "asian": "target face was asian"
     },
     "HED": {
       "caucasian": "Label/Caucasian-face-target",
       "black": "Label/Black-face-target",
-      "asian": "Label/Asian-face-target",
-      "n/a": "Label/No-racial-face-target"
+      "asian": "Label/Asian-face-target"
     }
   },
   "ethn_match": {
@@ -101,14 +104,12 @@
     "Levels": {
       "caucasian": "match face was caucasian",
       "black": "match face was black",
-      "asian": "match face was asian",
-      "n/a": "none (it was a control trial)"
+      "asian": "match face was asian"
     },
     "HED": {
       "caucasian": "Label/Caucasian-match-face",
       "black": "Label/Black-match-face",
-      "asian": "Label/Asian-match-face",
-      "n/a": "Label/No-racial-match"
+      "asian": "Label/Asian-match-face"
     }
   },
   "ethn_distractor": {
@@ -117,14 +118,13 @@
     "Levels": {
       "caucasian": "distractor face was caucasian",
       "black": "distractor face was black",
-      "asian": "distractor face asian",
-      "n/a": "none (it was a control trial)"
+      "asian": "distractor face asian"
     },
     "HED": {
       "caucasian": "Label/Causasian-distractor-face",
+      "white": "Label/Causasian-distractor-face",
       "black": "Label/Black-distractor-face",
-      "asian": "Label/Asian-distractor-face",
-      "n/a": "Label/No-racial-distractor"
+      "asian": "Label/Asian-distractor-face"
     }
   }
 }

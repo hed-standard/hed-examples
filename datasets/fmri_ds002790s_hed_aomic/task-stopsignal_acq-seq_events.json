@@ -1,4 +1,15 @@
-{
+{  
+  "onset": {
+    "Description": "Time in seconds relative to the start of the recording.",
+    "Units": "s"
+  },
+  "duration": {
+    "Description": "Nominal duration of the event.",
+    "Units": "s"    
+  },
+  "response_time": {
+    "Description": "Participant response time."
+  },
   "trial_type": {
     "LongName": "Type of trial",
     "Description": "Whether the ",
@@ -53,8 +64,7 @@
     },
     "HED": {
       "male": "Label/Male-image",
-      "female": "Label/Female-image",
-      "n/a": "Label/Unknown-image"
+      "female": "Label/Female-image"
     }
   }
 }
