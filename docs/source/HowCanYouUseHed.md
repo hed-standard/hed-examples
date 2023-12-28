@@ -750,7 +750,7 @@ Be sure to include the following for your initial post proposing creation of a n
  
 ````
 
-You should also read the [**HED schema developers guide**](https://www.hed-resources.org/en/latest/HedSchemaDevelopersGuide.html) to get an overview of the development process.
+You should also read the [**HED schema developer's guide**](https://www.hed-resources.org/en/latest/HedSchemaDevelopersGuide.html) to get an overview of the development process.
 
 **Note**: You must have a GitHub account in order to work on the development of a
 new schema as all development processes for HED use the GitHub Pull Request mechanism for
