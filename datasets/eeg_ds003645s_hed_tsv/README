@@ -22,3 +22,8 @@ The preprocessing, which was performed using the `wh_extracteeg_BIDS.m` located 
 **Data curators:**
 Ramon Martinez, Dung Truong, Scott Makeig, Arnaud Delorme (UCSD, La Jolla, CA, USA), Kay Robbins (UTSA, San Antonio, TX, USA)
 
+**NOTE**: Although this dataset was derived from ds003645 on OpenNeuro,
+several items of the data have been changed to illustrate features of HED.
+This dataset has HED in the participants.tsv and participants.json files as well as the _events files.
+In addition "fake" _scans.tsv and _scans.json files have been added to illustrate the use of
+HED in these.
