@@ -1,12 +1,13 @@
 %% Import the _events.tsv into the corresponding EEG.event structure
 
 %% Set up the specifics for your dataset
-rootPath = 'T:/summaryTests/ds004105-download';
+rootPath = 'T:/summaryTests/ds004106-download';
+setname = 'BCITAdvancedGuardDuty_';
 excludeDirs = {'sourcedata', 'code', 'stimuli', 'derivatives', 'phenotype'};
 namePrefix = '';
 nameSuffix = '_eeg';
 extensions = {'.set'};
-setname = 'BCIT Auditory Cueing';
+
 
 % Designate the columns that are numeric (rest are char)
 columnTypes = containers.Map({'onset', 'duration', 'sample'}, ...
@@ -41,7 +42,6 @@ for k = 1:length(fileList)
       EEG.setname = [setname basename];
       fprintf('\tSet the EEG.setname\n');
    end
-  
    fprintf('\tResave the EEG.set file\n');
    EEG = pop_saveset(EEG, 'savemode', 'resave', 'version', '7.3');
 end
