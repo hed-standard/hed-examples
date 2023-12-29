@@ -1,0 +1,21 @@
+## Introduction
+This dataset is derived from a number of other datasets, but particularly ds003645 from openNeuro.
+The purpose of the dataset is to demonstrate how to use HED in various ways.
+
+| Topic | Description |
+| ----- | ------- |
+| [Sidecar] | How to use a sidecar. |
+
+### Basic use of sidecar 
+
+
+### Use of the HED column
+
+### Use of inheritance
+
+### Use of curly braces
+
+
+### Use of long form
+
+### Use in
