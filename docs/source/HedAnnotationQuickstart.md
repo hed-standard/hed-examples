@@ -167,3 +167,6 @@ you simply need to place this sidecar in the root directory of your BIDS dataset
 This quick start demonstrates the most basic HED annotations.
 HED is capable of much more extensive and expressive annotations as
 explained in a series of tutorials on this site.
+
+(assembly-and-curly-braces-anchor)=
+## Assembly and curly braces

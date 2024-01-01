@@ -20,10 +20,10 @@
       "double_press": "Experiment participant presses both keys ."
     },
     "HED": {
-      "show_face": "Sensory-event, Experimental-stimulus, (Def/Face-image, ({face_type}, {rep_status}, {rep_lag}, {stim_file}), Onset), (Def/Blink-inhibition-task,Onset),(Def/Cross-only, Offset)",
-      "show_face_initial": "Sensory-event, Experimental-stimulus, (Def/Face-image, ({face_type}, {rep_status}, {rep_lag}, {stim_file}), Onset), (Def/Blink-inhibition-task,Onset), (Def/Fixation-task, Onset)",
-      "show_circle": "Sensory-event, (Intended-effect, Cue), (Def/Circle-only, Onset), (Def/Face-image, Offset), (Def/Blink-inhibition-task, Offset), (Def/Fixation-task, Offset)",
-      "show_cross": "Sensory-event, (Intended-effect, Cue), (Def/Cross-only, Onset), (Def/Fixation-task, Onset),  (Def/Circle-only, Offset)",
+      "show_face": "Sensory-event, Experimental-stimulus, (Def/Face-image, ({face_type}, {rep_status}, {rep_lag}, {stim_file}), Onset),(Def/Cross-only, Offset)",
+      "show_face_initial": "Sensory-event, Experimental-stimulus, (Def/Face-image, ({face_type}, {rep_status}, {rep_lag}, {stim_file}), Onset)",
+      "show_circle": "Sensory-event, (Intended-effect, Cue), (Def/Circle-only, Onset), (Def/Face-image, Offset)",
+      "show_cross": "Sensory-event, (Intended-effect, Cue), (Def/Cross-only, Onset),  (Def/Circle-only, Offset)",
       "left_press": "Agent-action, Participant-response, Def/Press-left-finger",
       "right_press": "Agent-action, Participant-response, Def/Press-right-finger",
       "double_press": "Agent-action, Indeterminate-action, (Press, Keyboard-key)"
@@ -90,14 +90,6 @@
       "first_show_cond_def": "(Definition/First-show-cond, ((Condition-variable/Repetition-type, (Item-count/1, Face), Item-interval/0), Description/Factor level indicating the first display of this face.))",
       "immediate_repeat_cond_def": "(Definition/Immediate-repeat-cond, ((Condition-variable/Repetition-type, (Item-count/2, Face), Item-interval/1), Description/Factor level indicating this face was the same as previous one.))",
       "delayed_repeat_cond_def": "(Definition/Delayed-repeat-cond, (Condition-variable/Repetition-type, (Item-count/2, Face), (Item-interval, (Greater-than-or-equal-to, Item-interval/5)), Description/Factor level indicating face was seen 5 to 15 trials ago.))"
-    }
-  },
-  "hed_def_tasks": {
-    "Description": "Metadata dictionary for gathering task definitions",
-    "HED": {
-      "face_symmetry_evaluation_task_def": "(Definition/Face-symmetry-evaluation-task, (Task, Experiment-participant, (See, Face), (Discriminate, (Face, Symmetrical)), (Press, Keyboard-key), Description/Evaluate degree of image symmetry and respond with key press evaluation.))",
-      "blink_inhibition_task_def": "(Definition/Blink-inhibition-task, (Task, Experiment-participant, Inhibit-blinks, Description/Do not blink while the face image is displayed.))",
-      "fixation_task_def": "(Definition/Fixation-task, (Task, Experiment-participant, (Fixate, Cross), Description/Fixate on the cross at the screen center.))"
     }
   },
   "value": {
