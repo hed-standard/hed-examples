@@ -1,200 +1,200 @@
-onset	duration	sample	event_type	face_type	rep_status	rep_lag	trial	value	stim_file
-24.2667272727	n/a	26693.4	show_face_initial	scrambled_face	first_show	n/a	1	4	s107.bmp
-25.1130909091	n/a	27624.4	show_circle	n/a	n/a	n/a	1	0	circle.bmp
-25.2803636364	n/a	27808.4	right_press	n/a	n/a	n/a	1	4096	n/a
-26.8130909091	n/a	29494.4	show_cross	n/a	n/a	n/a	2	1	cross.bmp
-27.4067272727	n/a	30147.4	show_face	scrambled_face	immediate_repeat	1	2	18	s107.bmp
-28.0976363636	n/a	30907.4	right_press	n/a	n/a	n/a	2	4096	n/a
-28.2258181818	n/a	31048.4	show_circle	n/a	n/a	n/a	2	0	circle.bmp
-29.9258181818	n/a	32918.4	show_cross	n/a	n/a	n/a	3	1	cross.bmp
-30.4967272727	n/a	33546.4	show_face	famous_face	first_show	n/a	3	5	f150.bmp
-31.2794545455	n/a	34407.4	left_press	n/a	n/a	n/a	3	256	n/a
-31.3903636364	n/a	34529.4	show_circle	n/a	n/a	n/a	3	0	circle.bmp
-33.0903636364	n/a	36399.4	show_cross	n/a	n/a	n/a	4	1	cross.bmp
-33.7376363636	n/a	37111.4	show_face	famous_face	first_show	n/a	4	5	f046.bmp
-34.454	n/a	37899.4	right_press	n/a	n/a	n/a	4	4096	n/a
-34.6112727273	n/a	38072.4	show_circle	n/a	n/a	n/a	4	0	circle.bmp
-36.3112727273	n/a	39942.4	show_cross	n/a	n/a	n/a	5	1	cross.bmp
-36.9449090909	n/a	40639.4	show_face	unfamiliar_face	first_show	n/a	5	13	u112.bmp
-37.6649090909	n/a	41431.4	left_press	n/a	n/a	n/a	5	256	n/a
-37.8003636364	n/a	41580.4	show_circle	n/a	n/a	n/a	5	0	circle.bmp
-39.5003636364	n/a	43450.4	show_cross	n/a	n/a	n/a	6	1	cross.bmp
-40.1521818182	n/a	44167.4	show_face	unfamiliar_face	first_show	n/a	6	13	u054.bmp
-41.0267272727	n/a	45129.4	right_press	n/a	n/a	n/a	6	4096	n/a
-41.0994545455	n/a	45209.4	show_circle	n/a	n/a	n/a	6	0	circle.bmp
-42.7994545455	n/a	47079.4	show_cross	n/a	n/a	n/a	7	1	cross.bmp
-43.3594545455	n/a	47695.4	show_face	unfamiliar_face	immediate_repeat	1	7	14	u054.bmp
-44.0649090909	n/a	48471.4	right_press	n/a	n/a	n/a	7	4096	n/a
-44.254	n/a	48679.4	show_circle	n/a	n/a	n/a	7	0	circle.bmp
-45.954	n/a	50549.4	show_cross	n/a	n/a	n/a	8	1	cross.bmp
-46.5003636364	n/a	51150.4	show_face	unfamiliar_face	first_show	n/a	8	13	u017.bmp
-47.244	n/a	51968.4	right_press	n/a	n/a	n/a	8	4096	n/a
-47.4649090909	n/a	52211.4	show_circle	n/a	n/a	n/a	8	0	circle.bmp
-49.1649090909	n/a	54081.4	show_cross	n/a	n/a	n/a	9	1	cross.bmp
-49.7749090909	n/a	54752.4	show_face	unfamiliar_face	first_show	n/a	9	13	u138.bmp
-50.4558181818	n/a	55501.4	left_press	n/a	n/a	n/a	9	256	n/a
-50.7776363636	n/a	55855.4	show_circle	n/a	n/a	n/a	9	0	circle.bmp
-52.4776363636	n/a	57725.4	show_cross	n/a	n/a	n/a	10	1	cross.bmp
-52.9649090909	n/a	58261.4	show_face	unfamiliar_face	immediate_repeat	1	10	14	u138.bmp
-53.854	n/a	59239.4	show_circle	n/a	n/a	n/a	10	0	circle.bmp
-53.8994545455	n/a	59289.4	left_press	n/a	n/a	n/a	10	256	n/a
-55.554	n/a	61109.4	show_cross	n/a	n/a	n/a	11	1	cross.bmp
-56.0221818182	n/a	61624.4	show_face	famous_face	delayed_repeat	8	11	7	f150.bmp
-56.9658181818	n/a	62662.4	left_press	n/a	n/a	n/a	11	256	n/a
-57.034	n/a	62737.4	show_circle	n/a	n/a	n/a	11	0	circle.bmp
-58.734	n/a	64607.4	show_cross	n/a	n/a	n/a	12	1	cross.bmp
-59.3967272727	n/a	65336.4	show_face	unfamiliar_face	first_show	n/a	12	13	u074.bmp
-60.1167272727	n/a	66128.4	right_press	n/a	n/a	n/a	12	4096	n/a
-60.2785454545	n/a	66306.4	show_circle	n/a	n/a	n/a	12	0	circle.bmp
-61.9785454545	n/a	68176.4	show_cross	n/a	n/a	n/a	13	1	cross.bmp
-62.554	n/a	68809.4	show_face	famous_face	delayed_repeat	9	13	7	f046.bmp
-63.4376363636	n/a	69781.4	show_circle	n/a	n/a	n/a	13	0	circle.bmp
-63.6776363636	n/a	70045.4	left_press	n/a	n/a	n/a	13	256	n/a
-65.1376363636	n/a	71651.4	show_cross	n/a	n/a	n/a	14	1	cross.bmp
-65.6112727273	n/a	72172.4	show_face	unfamiliar_face	first_show	n/a	14	13	u096.bmp
-66.384	n/a	73022.4	left_press	n/a	n/a	n/a	14	256	n/a
-66.5758181818	n/a	73233.4	show_circle	n/a	n/a	n/a	14	0	circle.bmp
-68.2758181818	n/a	75103.4	show_cross	n/a	n/a	n/a	15	1	cross.bmp
-68.7849090909	n/a	75663.4	show_face	unfamiliar_face	delayed_repeat	10	15	15	u112.bmp
-69.524	n/a	76476.4	left_press	n/a	n/a	n/a	15	256	n/a
-69.6585454545	n/a	76624.4	show_circle	n/a	n/a	n/a	15	0	circle.bmp
-71.3585454545	n/a	78494.4	show_cross	n/a	n/a	n/a	16	1	cross.bmp
-72.0094545455	n/a	79210.4	show_face	famous_face	first_show	n/a	16	5	f096.bmp
-72.894	n/a	80183.4	right_press	n/a	n/a	n/a	16	4096	n/a
-72.974	n/a	80271.4	show_circle	n/a	n/a	n/a	16	0	circle.bmp
-74.674	n/a	82141.4	show_cross	n/a	n/a	n/a	17	1	cross.bmp
-75.2503636364	n/a	82775.4	show_face	famous_face	immediate_repeat	1	17	6	f096.bmp
-75.9830909091	n/a	83581.4	right_press	n/a	n/a	n/a	17	4096	n/a
-76.1303636364	n/a	83743.4	show_circle	n/a	n/a	n/a	17	0	circle.bmp
-77.8303636364	n/a	85613.4	show_cross	n/a	n/a	n/a	18	1	cross.bmp
-78.4403636364	n/a	86284.4	show_face	unfamiliar_face	first_show	n/a	18	13	u065.bmp
-79.3394545455	n/a	87273.4	show_circle	n/a	n/a	n/a	18	0	circle.bmp
-79.7203636364	n/a	87692.4	left_press	n/a	n/a	n/a	18	256	n/a
-79.8121818182	n/a	87793.4	double_press	n/a	n/a	n/a	18	4352	n/a
-81.0394545455	n/a	89143.4	show_cross	n/a	n/a	n/a	19	1	cross.bmp
-81.6485454545	n/a	89813.4	show_face	unfamiliar_face	immediate_repeat	1	19	14	u065.bmp
-82.5530909091	n/a	90808.4	show_circle	n/a	n/a	n/a	19	0	circle.bmp
-82.7658181818	n/a	91042.4	left_press	n/a	n/a	n/a	19	256	n/a
-84.2530909091	n/a	92678.4	show_cross	n/a	n/a	n/a	20	1	cross.bmp
-84.7385454545	n/a	93212.4	show_face	unfamiliar_face	delayed_repeat	12	20	15	u017.bmp
-85.6012727273	n/a	94161.4	show_circle	n/a	n/a	n/a	20	0	circle.bmp
-85.6558181818	n/a	94221.4	right_press	n/a	n/a	n/a	20	4096	n/a
-87.3012727273	n/a	96031.4	show_cross	n/a	n/a	n/a	21	1	cross.bmp
-87.8294545455	n/a	96612.4	show_face	unfamiliar_face	first_show	n/a	21	13	u011.bmp
-88.6394545455	n/a	97503.4	right_press	n/a	n/a	n/a	21	4096	n/a
-88.8121818182	n/a	97693.4	show_circle	n/a	n/a	n/a	21	0	circle.bmp
-90.5121818182	n/a	99563.4	show_cross	n/a	n/a	n/a	22	1	cross.bmp
-91.0867272727	n/a	100195.4	show_face	unfamiliar_face	immediate_repeat	1	22	14	u011.bmp
-91.6667272727	n/a	100833.4	right_press	n/a	n/a	n/a	22	4096	n/a
-92.0376363636	n/a	101241.4	show_circle	n/a	n/a	n/a	22	0	circle.bmp
-93.7376363636	n/a	103111.4	show_cross	n/a	n/a	n/a	23	1	cross.bmp
-94.2603636364	n/a	103686.4	show_face	unfamiliar_face	first_show	n/a	23	13	u081.bmp
-95.1694545455	n/a	104686.4	show_circle	n/a	n/a	n/a	23	0	circle.bmp
-95.3585454545	n/a	104894.4	right_press	n/a	n/a	n/a	23	4096	n/a
-96.8694545455	n/a	106556.4	show_cross	n/a	n/a	n/a	24	1	cross.bmp
-97.3512727273	n/a	107086.4	show_face	unfamiliar_face	delayed_repeat	12	24	15	u074.bmp
-98.2203636364	n/a	108042.4	show_circle	n/a	n/a	n/a	24	0	circle.bmp
-98.2712727273	n/a	108098.4	right_press	n/a	n/a	n/a	24	4096	n/a
-99.9203636364	n/a	109912.4	show_cross	n/a	n/a	n/a	25	1	cross.bmp
-100.3749090909	n/a	110412.4	show_face	unfamiliar_face	first_show	n/a	25	13	u069.bmp
-101.2403636364	n/a	111364.4	show_circle	n/a	n/a	n/a	25	0	circle.bmp
-101.4685454545	n/a	111615.4	right_press	n/a	n/a	n/a	25	4096	n/a
-102.9403636364	n/a	113234.4	show_cross	n/a	n/a	n/a	26	1	cross.bmp
-103.4649090909	n/a	113811.4	show_face	unfamiliar_face	delayed_repeat	12	26	15	u096.bmp
-104.2049090909	n/a	114625.4	left_press	n/a	n/a	n/a	26	256	n/a
-104.2985454545	n/a	114728.4	show_circle	n/a	n/a	n/a	26	0	circle.bmp
-105.9985454545	n/a	116598.4	show_cross	n/a	n/a	n/a	27	1	cross.bmp
-106.4549090909	n/a	117100.4	show_face	unfamiliar_face	first_show	n/a	27	13	u018.bmp
-107.4521818182	n/a	118197.4	show_circle	n/a	n/a	n/a	27	0	circle.bmp
-108.3076363636	n/a	119138.4	left_press	n/a	n/a	n/a	27	256	n/a
-109.1521818182	n/a	120067.4	show_cross	n/a	n/a	n/a	28	1	cross.bmp
-109.6794545455	n/a	120647.4	show_face	scrambled_face	first_show	n/a	28	17	s033.bmp
-110.6976363636	n/a	121767.4	show_circle	n/a	n/a	n/a	28	0	circle.bmp
-111.4921818182	n/a	122641.4	right_press	n/a	n/a	n/a	28	4096	n/a
-112.3976363636	n/a	123637.4	show_cross	n/a	n/a	n/a	29	1	cross.bmp
-113.054	n/a	124359.4	show_face	unfamiliar_face	first_show	n/a	29	13	u141.bmp
-113.9721818182	n/a	125369.4	show_circle	n/a	n/a	n/a	29	0	circle.bmp
-114.2621818182	n/a	125688.4	left_press	n/a	n/a	n/a	29	256	n/a
-115.6721818182	n/a	127239.4	show_cross	n/a	n/a	n/a	30	1	cross.bmp
-116.2776363636	n/a	127905.4	show_face	famous_face	first_show	n/a	30	5	f004.bmp
-117.2312727273	n/a	128954.4	show_circle	n/a	n/a	n/a	30	0	circle.bmp
-117.2412727273	n/a	128965.4	right_press	n/a	n/a	n/a	30	4096	n/a
-118.9312727273	n/a	130824.4	show_cross	n/a	n/a	n/a	31	1	cross.bmp
-119.5685454545	n/a	131525.4	show_face	famous_face	immediate_repeat	1	31	6	f004.bmp
-120.1876363636	n/a	132206.4	right_press	n/a	n/a	n/a	31	4096	n/a
-120.5212727273	n/a	132573.4	show_circle	n/a	n/a	n/a	31	0	circle.bmp
-122.2212727273	n/a	134443.4	show_cross	n/a	n/a	n/a	32	1	cross.bmp
-122.6930909091	n/a	134962.4	show_face	unfamiliar_face	delayed_repeat	9	32	15	u081.bmp
-123.704	n/a	136074.4	show_circle	n/a	n/a	n/a	32	0	circle.bmp
-123.7321818182	n/a	136105.4	right_press	n/a	n/a	n/a	32	4096	n/a
-125.404	n/a	137944.4	show_cross	n/a	n/a	n/a	33	1	cross.bmp
-125.9003636364	n/a	138490.4	show_face	famous_face	first_show	n/a	33	5	f008.bmp
-126.734	n/a	139407.4	show_circle	n/a	n/a	n/a	33	0	circle.bmp
-126.784	n/a	139462.4	left_press	n/a	n/a	n/a	33	256	n/a
-128.434	n/a	141277.4	show_cross	n/a	n/a	n/a	34	1	cross.bmp
-129.074	n/a	141981.4	show_face	famous_face	immediate_repeat	1	34	6	f008.bmp
-129.7358181818	n/a	142709.4	left_press	n/a	n/a	n/a	34	256	n/a
-130.0230909091	n/a	143025.4	show_circle	n/a	n/a	n/a	34	0	circle.bmp
-131.7230909091	n/a	144895.4	show_cross	n/a	n/a	n/a	35	1	cross.bmp
-132.2312727273	n/a	145454.4	show_face	unfamiliar_face	delayed_repeat	10	35	15	u069.bmp
-133.1621818182	n/a	146478.4	show_circle	n/a	n/a	n/a	35	0	circle.bmp
-133.1958181818	n/a	146515.4	right_press	n/a	n/a	n/a	35	4096	n/a
-134.8621818182	n/a	148348.4	show_cross	n/a	n/a	n/a	36	1	cross.bmp
-135.4885454545	n/a	149037.4	show_face	scrambled_face	first_show	n/a	36	17	s007.bmp
-136.3794545455	n/a	150017.4	left_press	n/a	n/a	n/a	36	256	n/a
-136.4549090909	n/a	150100.4	show_circle	n/a	n/a	n/a	36	0	circle.bmp
-138.1549090909	n/a	151970.4	show_cross	n/a	n/a	n/a	37	1	cross.bmp
-138.6458181818	n/a	152510.4	show_face	unfamiliar_face	delayed_repeat	10	37	15	u018.bmp
-139.5203636364	n/a	153472.4	right_press	n/a	n/a	n/a	37	4096	n/a
-139.5421818182	n/a	153496.4	show_circle	n/a	n/a	n/a	37	0	circle.bmp
-141.2421818182	n/a	155366.4	show_cross	n/a	n/a	n/a	38	1	cross.bmp
-141.854	n/a	156039.4	show_face	unfamiliar_face	first_show	n/a	38	13	u030.bmp
-142.5821818182	n/a	156840.4	left_press	n/a	n/a	n/a	38	256	n/a
-142.7058181818	n/a	156976.4	show_circle	n/a	n/a	n/a	38	0	circle.bmp
-144.4058181818	n/a	158846.4	show_cross	n/a	n/a	n/a	39	1	cross.bmp
-144.8776363636	n/a	159365.4	show_face	scrambled_face	delayed_repeat	11	39	19	s033.bmp
-145.7776363636	n/a	160355.4	show_circle	n/a	n/a	n/a	39	0	circle.bmp
-146.3158181818	n/a	160947.4	right_press	n/a	n/a	n/a	39	4096	n/a
-147.4776363636	n/a	162225.4	show_cross	n/a	n/a	n/a	40	1	cross.bmp
-148.1012727273	n/a	162911.4	show_face	scrambled_face	first_show	n/a	40	17	s014.bmp
-149.1003636364	n/a	164010.4	show_circle	n/a	n/a	n/a	40	0	circle.bmp
-149.2330909091	n/a	164156.4	right_press	n/a	n/a	n/a	40	4096	n/a
-150.8003636364	n/a	165880.4	show_cross	n/a	n/a	n/a	41	1	cross.bmp
-151.3758181818	n/a	166513.4	show_face	scrambled_face	immediate_repeat	1	41	18	s014.bmp
-152.2112727273	n/a	167432.4	right_press	n/a	n/a	n/a	41	4096	n/a
-152.3594545455	n/a	167595.4	show_circle	n/a	n/a	n/a	41	0	circle.bmp
-154.0594545455	n/a	169465.4	show_cross	n/a	n/a	n/a	42	1	cross.bmp
-154.5494545455	n/a	170004.4	show_face	unfamiliar_face	delayed_repeat	13	42	15	u141.bmp
-155.5149090909	n/a	171066.4	show_circle	n/a	n/a	n/a	42	0	circle.bmp
-156.0094545455	n/a	171610.4	left_press	n/a	n/a	n/a	42	256	n/a
-157.2149090909	n/a	172936.4	show_cross	n/a	n/a	n/a	43	1	cross.bmp
-157.6903636364	n/a	173459.4	show_face	famous_face	first_show	n/a	43	5	f018.bmp
-158.6185454545	n/a	174480.4	show_circle	n/a	n/a	n/a	43	0	circle.bmp
-159.2130909091	n/a	175134.4	right_press	n/a	n/a	n/a	43	4096	n/a
-160.3185454545	n/a	176350.4	show_cross	n/a	n/a	n/a	44	1	cross.bmp
-160.9312727273	n/a	177024.4	show_face	famous_face	immediate_repeat	1	44	6	f018.bmp
-161.6149090909	n/a	177776.4	left_press	n/a	n/a	n/a	44	256	n/a
-161.8467272727	n/a	178031.4	show_circle	n/a	n/a	n/a	44	0	circle.bmp
-163.5467272727	n/a	179901.4	show_cross	n/a	n/a	n/a	45	1	cross.bmp
-164.1721818182	n/a	180589.4	show_face	unfamiliar_face	first_show	n/a	45	13	u107.bmp
-165.1058181818	n/a	181616.4	show_circle	n/a	n/a	n/a	45	0	circle.bmp
-165.1494545455	n/a	181664.4	left_press	n/a	n/a	n/a	45	256	n/a
-166.8058181818	n/a	183486.4	show_cross	n/a	n/a	n/a	46	1	cross.bmp
-167.2458181818	n/a	183970.4	show_face	unfamiliar_face	immediate_repeat	1	46	14	u107.bmp
-168.0076363636	n/a	184808.4	left_press	n/a	n/a	n/a	46	256	n/a
-168.2058181818	n/a	185026.4	show_circle	n/a	n/a	n/a	46	0	circle.bmp
-169.9058181818	n/a	186896.4	show_cross	n/a	n/a	n/a	47	1	cross.bmp
-170.5030909091	n/a	187553.4	show_face	famous_face	first_show	n/a	47	5	f066.bmp
-171.4485454545	n/a	188593.4	show_circle	n/a	n/a	n/a	47	0	circle.bmp
-172.054	n/a	189259.4	right_press	n/a	n/a	n/a	47	4096	n/a
-173.1485454545	n/a	190463.4	show_cross	n/a	n/a	n/a	48	1	cross.bmp
-173.794	n/a	191173.4	show_face	famous_face	immediate_repeat	1	48	6	f066.bmp
-174.6749090909	n/a	192142.4	show_circle	n/a	n/a	n/a	48	0	circle.bmp
-175.3558181818	n/a	192891.4	right_press	n/a	n/a	n/a	48	4096	n/a
-176.3749090909	n/a	194012.4	show_cross	n/a	n/a	n/a	49	1	cross.bmp
-176.8676363636	n/a	194554.4	show_face	scrambled_face	delayed_repeat	13	49	19	s007.bmp
-177.7949090909	n/a	195574.4	show_circle	n/a	n/a	n/a	49	0	circle.bmp
-178.5858181818	n/a	196444.4	left_press	n/a	n/a	n/a	49	256	n/a
-179.4949090909	n/a	197444.4	show_cross	n/a	n/a	n/a	50	1	cross.bmp
-179.9912727273	n/a	197990.4	show_face	unfamiliar_face	first_show	n/a	50	13	u142.bmp
-180.8667272727	n/a	198953.4	show_circle	n/a	n/a	n/a	50	0	circle.bmp
+onset	duration	event_type	face_type	rep_status	rep_lag	trial	value	stim_file
+24.26672727	n/a	show_face_initial	scrambled_face	first_show	n/a	1	4	s107.bmp
+25.11309091	n/a	show_circle	n/a	n/a	n/a	1	0	circle.bmp
+25.28036364	n/a	right_press	n/a	n/a	n/a	1	4096	n/a
+26.81309091	n/a	show_cross	n/a	n/a	n/a	2	1	cross.bmp
+27.40672727	n/a	show_face	scrambled_face	immediate_repeat	1	2	18	s107.bmp
+28.09763636	n/a	right_press	n/a	n/a	n/a	2	4096	n/a
+28.22581818	n/a	show_circle	n/a	n/a	n/a	2	0	circle.bmp
+29.92581818	n/a	show_cross	n/a	n/a	n/a	3	1	cross.bmp
+30.49672727	n/a	show_face	famous_face	first_show	n/a	3	5	f150.bmp
+31.27945455	n/a	left_press	n/a	n/a	n/a	3	256	n/a
+31.39036364	n/a	show_circle	n/a	n/a	n/a	3	0	circle.bmp
+33.09036364	n/a	show_cross	n/a	n/a	n/a	4	1	cross.bmp
+33.73763636	n/a	show_face	famous_face	first_show	n/a	4	5	f046.bmp
+34.454	n/a	right_press	n/a	n/a	n/a	4	4096	n/a
+34.61127273	n/a	show_circle	n/a	n/a	n/a	4	0	circle.bmp
+36.31127273	n/a	show_cross	n/a	n/a	n/a	5	1	cross.bmp
+36.94490909	n/a	show_face	unfamiliar_face	first_show	n/a	5	13	u112.bmp
+37.66490909	n/a	left_press	n/a	n/a	n/a	5	256	n/a
+37.80036364	n/a	show_circle	n/a	n/a	n/a	5	0	circle.bmp
+39.50036364	n/a	show_cross	n/a	n/a	n/a	6	1	cross.bmp
+40.15218182	n/a	show_face	unfamiliar_face	first_show	n/a	6	13	u054.bmp
+41.02672727	n/a	right_press	n/a	n/a	n/a	6	4096	n/a
+41.09945455	n/a	show_circle	n/a	n/a	n/a	6	0	circle.bmp
+42.79945455	n/a	show_cross	n/a	n/a	n/a	7	1	cross.bmp
+43.35945455	n/a	show_face	unfamiliar_face	immediate_repeat	1	7	14	u054.bmp
+44.06490909	n/a	right_press	n/a	n/a	n/a	7	4096	n/a
+44.254	n/a	show_circle	n/a	n/a	n/a	7	0	circle.bmp
+45.954	n/a	show_cross	n/a	n/a	n/a	8	1	cross.bmp
+46.50036364	n/a	show_face	unfamiliar_face	first_show	n/a	8	13	u017.bmp
+47.244	n/a	right_press	n/a	n/a	n/a	8	4096	n/a
+47.46490909	n/a	show_circle	n/a	n/a	n/a	8	0	circle.bmp
+49.16490909	n/a	show_cross	n/a	n/a	n/a	9	1	cross.bmp
+49.77490909	n/a	show_face	unfamiliar_face	first_show	n/a	9	13	u138.bmp
+50.45581818	n/a	left_press	n/a	n/a	n/a	9	256	n/a
+50.77763636	n/a	show_circle	n/a	n/a	n/a	9	0	circle.bmp
+52.47763636	n/a	show_cross	n/a	n/a	n/a	10	1	cross.bmp
+52.96490909	n/a	show_face	unfamiliar_face	immediate_repeat	1	10	14	u138.bmp
+53.854	n/a	show_circle	n/a	n/a	n/a	10	0	circle.bmp
+53.89945455	n/a	left_press	n/a	n/a	n/a	10	256	n/a
+55.554	n/a	show_cross	n/a	n/a	n/a	11	1	cross.bmp
+56.02218182	n/a	show_face	famous_face	delayed_repeat	8	11	7	f150.bmp
+56.96581818	n/a	left_press	n/a	n/a	n/a	11	256	n/a
+57.034	n/a	show_circle	n/a	n/a	n/a	11	0	circle.bmp
+58.734	n/a	show_cross	n/a	n/a	n/a	12	1	cross.bmp
+59.39672727	n/a	show_face	unfamiliar_face	first_show	n/a	12	13	u074.bmp
+60.11672727	n/a	right_press	n/a	n/a	n/a	12	4096	n/a
+60.27854545	n/a	show_circle	n/a	n/a	n/a	12	0	circle.bmp
+61.97854545	n/a	show_cross	n/a	n/a	n/a	13	1	cross.bmp
+62.554	n/a	show_face	famous_face	delayed_repeat	9	13	7	f046.bmp
+63.43763636	n/a	show_circle	n/a	n/a	n/a	13	0	circle.bmp
+63.67763636	n/a	left_press	n/a	n/a	n/a	13	256	n/a
+65.13763636	n/a	show_cross	n/a	n/a	n/a	14	1	cross.bmp
+65.61127273	n/a	show_face	unfamiliar_face	first_show	n/a	14	13	u096.bmp
+66.384	n/a	left_press	n/a	n/a	n/a	14	256	n/a
+66.57581818	n/a	show_circle	n/a	n/a	n/a	14	0	circle.bmp
+68.27581818	n/a	show_cross	n/a	n/a	n/a	15	1	cross.bmp
+68.78490909	n/a	show_face	unfamiliar_face	delayed_repeat	10	15	15	u112.bmp
+69.524	n/a	left_press	n/a	n/a	n/a	15	256	n/a
+69.65854545	n/a	show_circle	n/a	n/a	n/a	15	0	circle.bmp
+71.35854545	n/a	show_cross	n/a	n/a	n/a	16	1	cross.bmp
+72.00945455	n/a	show_face	famous_face	first_show	n/a	16	5	f096.bmp
+72.894	n/a	right_press	n/a	n/a	n/a	16	4096	n/a
+72.974	n/a	show_circle	n/a	n/a	n/a	16	0	circle.bmp
+74.674	n/a	show_cross	n/a	n/a	n/a	17	1	cross.bmp
+75.25036364	n/a	show_face	famous_face	immediate_repeat	1	17	6	f096.bmp
+75.98309091	n/a	right_press	n/a	n/a	n/a	17	4096	n/a
+76.13036364	n/a	show_circle	n/a	n/a	n/a	17	0	circle.bmp
+77.83036364	n/a	show_cross	n/a	n/a	n/a	18	1	cross.bmp
+78.44036364	n/a	show_face	unfamiliar_face	first_show	n/a	18	13	u065.bmp
+79.33945455	n/a	show_circle	n/a	n/a	n/a	18	0	circle.bmp
+79.72036364	n/a	left_press	n/a	n/a	n/a	18	256	n/a
+79.81218182	n/a	double_press	n/a	n/a	n/a	18	4352	n/a
+81.03945455	n/a	show_cross	n/a	n/a	n/a	19	1	cross.bmp
+81.64854545	n/a	show_face	unfamiliar_face	immediate_repeat	1	19	14	u065.bmp
+82.55309091	n/a	show_circle	n/a	n/a	n/a	19	0	circle.bmp
+82.76581818	n/a	left_press	n/a	n/a	n/a	19	256	n/a
+84.25309091	n/a	show_cross	n/a	n/a	n/a	20	1	cross.bmp
+84.73854545	n/a	show_face	unfamiliar_face	delayed_repeat	12	20	15	u017.bmp
+85.60127273	n/a	show_circle	n/a	n/a	n/a	20	0	circle.bmp
+85.65581818	n/a	right_press	n/a	n/a	n/a	20	4096	n/a
+87.30127273	n/a	show_cross	n/a	n/a	n/a	21	1	cross.bmp
+87.82945455	n/a	show_face	unfamiliar_face	first_show	n/a	21	13	u011.bmp
+88.63945455	n/a	right_press	n/a	n/a	n/a	21	4096	n/a
+88.81218182	n/a	show_circle	n/a	n/a	n/a	21	0	circle.bmp
+90.51218182	n/a	show_cross	n/a	n/a	n/a	22	1	cross.bmp
+91.08672727	n/a	show_face	unfamiliar_face	immediate_repeat	1	22	14	u011.bmp
+91.66672727	n/a	right_press	n/a	n/a	n/a	22	4096	n/a
+92.03763636	n/a	show_circle	n/a	n/a	n/a	22	0	circle.bmp
+93.73763636	n/a	show_cross	n/a	n/a	n/a	23	1	cross.bmp
+94.26036364	n/a	show_face	unfamiliar_face	first_show	n/a	23	13	u081.bmp
+95.16945455	n/a	show_circle	n/a	n/a	n/a	23	0	circle.bmp
+95.35854545	n/a	right_press	n/a	n/a	n/a	23	4096	n/a
+96.86945455	n/a	show_cross	n/a	n/a	n/a	24	1	cross.bmp
+97.35127273	n/a	show_face	unfamiliar_face	delayed_repeat	12	24	15	u074.bmp
+98.22036364	n/a	show_circle	n/a	n/a	n/a	24	0	circle.bmp
+98.27127273	n/a	right_press	n/a	n/a	n/a	24	4096	n/a
+99.92036364	n/a	show_cross	n/a	n/a	n/a	25	1	cross.bmp
+100.3749091	n/a	show_face	unfamiliar_face	first_show	n/a	25	13	u069.bmp
+101.2403636	n/a	show_circle	n/a	n/a	n/a	25	0	circle.bmp
+101.4685455	n/a	right_press	n/a	n/a	n/a	25	4096	n/a
+102.9403636	n/a	show_cross	n/a	n/a	n/a	26	1	cross.bmp
+103.4649091	n/a	show_face	unfamiliar_face	delayed_repeat	12	26	15	u096.bmp
+104.2049091	n/a	left_press	n/a	n/a	n/a	26	256	n/a
+104.2985455	n/a	show_circle	n/a	n/a	n/a	26	0	circle.bmp
+105.9985455	n/a	show_cross	n/a	n/a	n/a	27	1	cross.bmp
+106.4549091	n/a	show_face	unfamiliar_face	first_show	n/a	27	13	u018.bmp
+107.4521818	n/a	show_circle	n/a	n/a	n/a	27	0	circle.bmp
+108.3076364	n/a	left_press	n/a	n/a	n/a	27	256	n/a
+109.1521818	n/a	show_cross	n/a	n/a	n/a	28	1	cross.bmp
+109.6794545	n/a	show_face	scrambled_face	first_show	n/a	28	17	s033.bmp
+110.6976364	n/a	show_circle	n/a	n/a	n/a	28	0	circle.bmp
+111.4921818	n/a	right_press	n/a	n/a	n/a	28	4096	n/a
+112.3976364	n/a	show_cross	n/a	n/a	n/a	29	1	cross.bmp
+113.054	n/a	show_face	unfamiliar_face	first_show	n/a	29	13	u141.bmp
+113.9721818	n/a	show_circle	n/a	n/a	n/a	29	0	circle.bmp
+114.2621818	n/a	left_press	n/a	n/a	n/a	29	256	n/a
+115.6721818	n/a	show_cross	n/a	n/a	n/a	30	1	cross.bmp
+116.2776364	n/a	show_face	famous_face	first_show	n/a	30	5	f004.bmp
+117.2312727	n/a	show_circle	n/a	n/a	n/a	30	0	circle.bmp
+117.2412727	n/a	right_press	n/a	n/a	n/a	30	4096	n/a
+118.9312727	n/a	show_cross	n/a	n/a	n/a	31	1	cross.bmp
+119.5685455	n/a	show_face	famous_face	immediate_repeat	1	31	6	f004.bmp
+120.1876364	n/a	right_press	n/a	n/a	n/a	31	4096	n/a
+120.5212727	n/a	show_circle	n/a	n/a	n/a	31	0	circle.bmp
+122.2212727	n/a	show_cross	n/a	n/a	n/a	32	1	cross.bmp
+122.6930909	n/a	show_face	unfamiliar_face	delayed_repeat	9	32	15	u081.bmp
+123.704	n/a	show_circle	n/a	n/a	n/a	32	0	circle.bmp
+123.7321818	n/a	right_press	n/a	n/a	n/a	32	4096	n/a
+125.404	n/a	show_cross	n/a	n/a	n/a	33	1	cross.bmp
+125.9003636	n/a	show_face	famous_face	first_show	n/a	33	5	f008.bmp
+126.734	n/a	show_circle	n/a	n/a	n/a	33	0	circle.bmp
+126.784	n/a	left_press	n/a	n/a	n/a	33	256	n/a
+128.434	n/a	show_cross	n/a	n/a	n/a	34	1	cross.bmp
+129.074	n/a	show_face	famous_face	immediate_repeat	1	34	6	f008.bmp
+129.7358182	n/a	left_press	n/a	n/a	n/a	34	256	n/a
+130.0230909	n/a	show_circle	n/a	n/a	n/a	34	0	circle.bmp
+131.7230909	n/a	show_cross	n/a	n/a	n/a	35	1	cross.bmp
+132.2312727	n/a	show_face	unfamiliar_face	delayed_repeat	10	35	15	u069.bmp
+133.1621818	n/a	show_circle	n/a	n/a	n/a	35	0	circle.bmp
+133.1958182	n/a	right_press	n/a	n/a	n/a	35	4096	n/a
+134.8621818	n/a	show_cross	n/a	n/a	n/a	36	1	cross.bmp
+135.4885455	n/a	show_face	scrambled_face	first_show	n/a	36	17	s007.bmp
+136.3794545	n/a	left_press	n/a	n/a	n/a	36	256	n/a
+136.4549091	n/a	show_circle	n/a	n/a	n/a	36	0	circle.bmp
+138.1549091	n/a	show_cross	n/a	n/a	n/a	37	1	cross.bmp
+138.6458182	n/a	show_face	unfamiliar_face	delayed_repeat	10	37	15	u018.bmp
+139.5203636	n/a	right_press	n/a	n/a	n/a	37	4096	n/a
+139.5421818	n/a	show_circle	n/a	n/a	n/a	37	0	circle.bmp
+141.2421818	n/a	show_cross	n/a	n/a	n/a	38	1	cross.bmp
+141.854	n/a	show_face	unfamiliar_face	first_show	n/a	38	13	u030.bmp
+142.5821818	n/a	left_press	n/a	n/a	n/a	38	256	n/a
+142.7058182	n/a	show_circle	n/a	n/a	n/a	38	0	circle.bmp
+144.4058182	n/a	show_cross	n/a	n/a	n/a	39	1	cross.bmp
+144.8776364	n/a	show_face	scrambled_face	delayed_repeat	11	39	19	s033.bmp
+145.7776364	n/a	show_circle	n/a	n/a	n/a	39	0	circle.bmp
+146.3158182	n/a	right_press	n/a	n/a	n/a	39	4096	n/a
+147.4776364	n/a	show_cross	n/a	n/a	n/a	40	1	cross.bmp
+148.1012727	n/a	show_face	scrambled_face	first_show	n/a	40	17	s014.bmp
+149.1003636	n/a	show_circle	n/a	n/a	n/a	40	0	circle.bmp
+149.2330909	n/a	right_press	n/a	n/a	n/a	40	4096	n/a
+150.8003636	n/a	show_cross	n/a	n/a	n/a	41	1	cross.bmp
+151.3758182	n/a	show_face	scrambled_face	immediate_repeat	1	41	18	s014.bmp
+152.2112727	n/a	right_press	n/a	n/a	n/a	41	4096	n/a
+152.3594545	n/a	show_circle	n/a	n/a	n/a	41	0	circle.bmp
+154.0594545	n/a	show_cross	n/a	n/a	n/a	42	1	cross.bmp
+154.5494545	n/a	show_face	unfamiliar_face	delayed_repeat	13	42	15	u141.bmp
+155.5149091	n/a	show_circle	n/a	n/a	n/a	42	0	circle.bmp
+156.0094545	n/a	left_press	n/a	n/a	n/a	42	256	n/a
+157.2149091	n/a	show_cross	n/a	n/a	n/a	43	1	cross.bmp
+157.6903636	n/a	show_face	famous_face	first_show	n/a	43	5	f018.bmp
+158.6185455	n/a	show_circle	n/a	n/a	n/a	43	0	circle.bmp
+159.2130909	n/a	right_press	n/a	n/a	n/a	43	4096	n/a
+160.3185455	n/a	show_cross	n/a	n/a	n/a	44	1	cross.bmp
+160.9312727	n/a	show_face	famous_face	immediate_repeat	1	44	6	f018.bmp
+161.6149091	n/a	left_press	n/a	n/a	n/a	44	256	n/a
+161.8467273	n/a	show_circle	n/a	n/a	n/a	44	0	circle.bmp
+163.5467273	n/a	show_cross	n/a	n/a	n/a	45	1	cross.bmp
+164.1721818	n/a	show_face	unfamiliar_face	first_show	n/a	45	13	u107.bmp
+165.1058182	n/a	show_circle	n/a	n/a	n/a	45	0	circle.bmp
+165.1494545	n/a	left_press	n/a	n/a	n/a	45	256	n/a
+166.8058182	n/a	show_cross	n/a	n/a	n/a	46	1	cross.bmp
+167.2458182	n/a	show_face	unfamiliar_face	immediate_repeat	1	46	14	u107.bmp
+168.0076364	n/a	left_press	n/a	n/a	n/a	46	256	n/a
+168.2058182	n/a	show_circle	n/a	n/a	n/a	46	0	circle.bmp
+169.9058182	n/a	show_cross	n/a	n/a	n/a	47	1	cross.bmp
+170.5030909	n/a	show_face	famous_face	first_show	n/a	47	5	f066.bmp
+171.4485455	n/a	show_circle	n/a	n/a	n/a	47	0	circle.bmp
+172.054	n/a	right_press	n/a	n/a	n/a	47	4096	n/a
+173.1485455	n/a	show_cross	n/a	n/a	n/a	48	1	cross.bmp
+173.794	n/a	show_face	famous_face	immediate_repeat	1	48	6	f066.bmp
+174.6749091	n/a	show_circle	n/a	n/a	n/a	48	0	circle.bmp
+175.3558182	n/a	right_press	n/a	n/a	n/a	48	4096	n/a
+176.3749091	n/a	show_cross	n/a	n/a	n/a	49	1	cross.bmp
+176.8676364	n/a	show_face	scrambled_face	delayed_repeat	13	49	19	s007.bmp
+177.7949091	n/a	show_circle	n/a	n/a	n/a	49	0	circle.bmp
+178.5858182	n/a	left_press	n/a	n/a	n/a	49	256	n/a
+179.4949091	n/a	show_cross	n/a	n/a	n/a	50	1	cross.bmp
+179.9912727	n/a	show_face	unfamiliar_face	first_show	n/a	50	13	u142.bmp
+180.8667273	n/a	show_circle	n/a	n/a	n/a	50	0	circle.bmp
