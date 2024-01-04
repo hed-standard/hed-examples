@@ -17,7 +17,7 @@ You will put the finished annotation file at the top level of your dataset.
 
 The approach that we will use is to create a template file from an `events.tsv` file
 in your BIDS dataset using the online tools available at
-[**hedtools.ucsd.edu/hed**](https://hedtools.ucsd.edu/hed).
+[**hedtools.org/hed**](https://hedtools.org/hed).
 
 You can then edit this JSON file directly using a text editor
 to insert data descriptions and HED annotations.
@@ -31,7 +31,7 @@ Although the HED web tools base the template on the information extracted from a
 `events.tsv` file, this will be sufficient to produce a good template for most datasets.
 
 For datasets with widely-varying event files, you should use the 
-[bids_validate_hed.ipynb](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids_processing/bids_generate_sidecar.ipynb)
+[validate_bids_dataset.ipynb](https://github.com/hed-standard/hed-examples/blob/develop/hedcode/jupyter_notebooks/bids/validate_bids_dataset.ipynb)
 Jupyter notebook version rather than the online tools.
 The Jupyter notebook consolidates information from all of the `events.tsv` files in the dataset
 to produce a comprehensive JSON sidecar template.
@@ -426,7 +426,7 @@ editing and then convert back to a JSON file afterwards.
 This tutorial assumes that you already have a JSON events sidecar
 or have [**extracted a JSON sidecar template**](create-a-json-template-anchor).
 
-Using the [**HED sidecar online tools**](https://hedtools.ucsd.edu/hed/sidecar),
+Using the [**HED sidecar online tools**](https://hedtools.org/hed/sidecars),
 the steps to create a template are:
 
 * [**Step 1: Select extract HED spreadsheet.**](step-1-select-extract-hed-spreadsheet-anchor)  

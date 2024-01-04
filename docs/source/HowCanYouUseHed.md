@@ -242,7 +242,7 @@ in [**Software currently supporting BIDS**](https://bids.neuroimaging.io/benefit
 (learning-about-hed-anchor)=
 #### Learning about HED
 
-- The [**HED introduction**](https://www.hed-resources.org/en/latest/HedIntroduction.html)
+- The [**Introduction to HED**](https://www.hed-resources.org/en/latest/IntroductionToHed.html)
 gives a basic overview of HED's history and goals.   
 <p></p>
 
@@ -291,11 +291,8 @@ See [**BIDS annotation quickstart**](https://www.hed-resources.org/en/latest/Bid
 
 - The HED vocabulary is hierarchically organized as shown
 in the schema as viewed in the [**HED Schema Viewer**](https://www.hedtags.org/display_hed.html).
+Library schemas can also be viewed using this viewer.
 <p></p>
-
-- [**Schema viewers**](https://www.hed-resources.org/en/latest/HedSchemaViewers.html)
-gives links to different versions of the HED standard HED vocabularies as well as 
-library vocabularies.
 
 (basic-annotation-strategies-anchor)=
 #### Basic annotation strategies
@@ -327,7 +324,7 @@ HED supports a number of advanced annotation concepts which are necessary for a 
 description of the experiment. 
 
 - **HED definitions**: allow users to define complex concepts.
-See [**HED definitions**](https://hed-specification.readthedocs.io/en/latest/05_Advanced_annotation.html#hed-definitions) for an overview and syntax.
+See [**Creating definitions**](https://hed-specification.readthedocs.io/en/develop/05_Advanced_annotation.html#creating-definitions) and [**Using definitions**](https://hed-specification.readthedocs.io/en/develop/05_Advanced_annotation.html#using-definitions) for an overview and syntax.
 <p></p>
 
 - **Temporal scope**: annotate event processes that extend over time and provide a context for
@@ -582,7 +579,7 @@ The code for HEDTools is in the [**hed-python**](https://github.com/hed-standard
 The latest stable release is available as [**hedtools**](https://pypi.org/project/hedtools/)
 on PyPI and can be installed using the regular `pip` install mechanism.
 
-The `develop` branch of [**hed-python**](https://github.com/hed-python) contains the latest
+The `develop` branch of [**hed-python**](https://github.com/hed-standard/hed-python) contains the latest
 versions of the tools and can be installed from GitHub using:
 
 ```bash
@@ -593,7 +590,7 @@ versions of the tools and can be installed from GitHub using:
 #### The HED JavaScript code base
 
 GitHub repository. The JavaScript tools focus on HED validation and its main client is the 
-[**Bids validator**](https://github.com/bids-standard/bids-javascript).
+[**Bids validator**](https://github.com/bids-standard/bids-validator).
 The code for this project is in the [**hed-javascript**](https://github.com/hed-standard/hed-javascript)
 
 The latest stable release is available as the [**hed-validator**](https://www.npmjs.com/package/hed-validator)

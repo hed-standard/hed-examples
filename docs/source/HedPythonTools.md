@@ -251,9 +251,6 @@ The example data curation scripts discussed in this section assume that two vers
 of each BIDS event file are present: `events.tsv` and a corresponding `events_temp.tsv` file.
 The example datasets that are using for these tutorials assume that the recordings
 are in EEG.set format.
-We used the [runEeglabEventsToFiles](https://raw.githubusercontent.com/hed-standard/hed-curation/main/src/curation/matlab_utility_scripts/hed_utilities/runEeglabEventsToFiles.m)
-MATLAB script to dump the events stored in the data.
-
 
 (calling-hed-tools-anchor)=
 ## Calling HED tools
@@ -380,10 +377,6 @@ The tuple (0, 1, 2, 3) also works giving `sub-001_ses-3_task-target_run-01`.
 If you choose the `name_indices` incorrectly, the keys for the event files
 will not be unique, and the notebook will throw a `HedFileError`.
 If this happens, modify your `name_indices` key choice to include more entity pairs.
-
-The Jupyter notebook
-[go_nogo_01_initial_summary.ipynb](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/jupyter_notebooks/dataset_specific_processing/go_nogo/go_nogo_01_initial_summary.ipynb)
-illustrates using this dictionary in a larger context.
 
 For example, to compare the events stored in a recording file and the events
 in the `events.tsv` file associated with that recording,
