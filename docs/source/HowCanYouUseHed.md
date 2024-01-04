@@ -553,7 +553,7 @@ to support HED for processing and analysis.
 
 
 The GitHub repositories and other resources associated with these projects are described in this section.
-The HED project page is [**https://hedtags.org**](https://hedtags.org).
+The HED project page is [**https://www.hedtags.org**](https://www.hedtags.org).
 The documentation and examples are housed in the 
 [**hed-examples**](https://github.com/hed-standard/hed-examples) GitHub repository.
 

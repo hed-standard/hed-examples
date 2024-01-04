@@ -15,7 +15,7 @@ The HED Working Group would be happy to give you technical guidance in getting s
 and working through the process to final release.
 
 More detailed information is available in
-the [**Library schemas**](https://https://https://hed-specification.readthedocs.io/en/latest/07_Library_schemas.html) chapter of
+the [**Library schemas**](https://hed-specification.readthedocs.io/en/latest/07_Library_schemas.html) chapter of
 the [**HED specification**](https://hed-specification.readthedocs.io/en/latest/index.html).
 
 Details about syntax are available in the 
@@ -343,7 +343,7 @@ Use the [**HED online tools**](https://hedtools.org) to convert as shown in the 
 
 All HED schemas, including library schemas, adhere to [**semantic versioning**](https://semver.org/). 
 The rules for what constitutes major, minor and patch changes are given
-in the hed-schemas [**README.md**](https://github.com/hed-standard/hed-schemas/README.md#hed-semantic-versioning).
+in the hed-schemas [**README.md**](https://github.com/hed-standard/hed-schemas/blob/main/README.md#hed-semantic-versioning).
 
 ### Schema file names
 

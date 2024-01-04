@@ -201,7 +201,7 @@ dataset root directory, this is all that is needed.
 However, if the sidecar is part of an inheritance chain, some of its definitions
 are externally defined, or the sidecar contains tags from multiple HED schemas,
 you should use the 
-[bids_validate_dataset.ipynb](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids/bids_validate_dataset.ipynb)
+[validate_bids_dataset.ipynb](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids/validate_bids_dataset.ipynb)
 Python Jupyter notebook to validate the HED in your BIDS dataset.
 
 #### Convert sidecar to long
@@ -585,7 +585,7 @@ web-based tools and services.
 * - CSRF token access
   - [https://hedtools.org/hed/services](https://hedtools.org/hed/services)  
 * - Service request
-  - [https://hedtools.org/hed/services_submit](https://hedtools.org/hed/services_submit)
+  - https://hedtools.org/hed/services_submit (with access token)
 `````
 
 ### Request format
