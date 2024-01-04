@@ -132,7 +132,7 @@ The dataset is used as a case study for the book chapter
 ## BIDS validation
 
 For general information on the `bids-validator`, including installation, configuration, and usage,
-see the [bids-validator README file](https://github.com/bids-standard/bids-validator#quickstart).
+see the [bids-validator README file](https://github.com/bids-standard/bids-validator/blob/master/README.md).
 
 **Example:** The following command validates the  `eeg_ds003645s_hed` dataset:
 

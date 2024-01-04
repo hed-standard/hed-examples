@@ -210,7 +210,7 @@ organization site as indicated in the following table.
 | Docs/examples         | [hed-examples](https://github.com/hed-standard/hed-examples/issues)           | Documentation corrections.<br/>Questions on examples.<br/>Help on annotation.                       |   
 | Specification | [hed-specification](https://github.com/hed-standard/hed-specification/issues) | Clarification/suggestions on the<br/>specification document and JSON tests.                         |
 | Python codebase | [hed-python](https://github.com/hed-standard/hed-python/issues)               | Bug reports and feature requests.                                                                   |  
-| JavaScript codebase | [hed-validator](https://github.com/hed-standard/hed-validator/issues)         | Bug reports and feature requests.                                                                   | 
+| JavaScript codebase | [hed-javascript](https://github.com/hed-standard/hed-javascript/issues)       | Bug reports and feature requests.                                                                   | 
 
 HED also has a HED discussion group. (Subscribe by emailing:
 [**hed-discussion+subscribe@googlegroups.com**](mailto:hed-discussion+subscribe@googlegroups.com).

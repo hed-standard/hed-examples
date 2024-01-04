@@ -15,7 +15,7 @@ The HED Working Group would be happy to give you technical guidance in getting s
 and working through the process to final release.
 
 More detailed information is available in
-the [**Library schemas**](https://https://hed-specification.readthedocs.io/en/latest/07_Library_schemas.html) chapter of
+the [**Library schemas**](https://https://https://hed-specification.readthedocs.io/en/latest/07_Library_schemas.html) chapter of
 the [**HED specification**](https://hed-specification.readthedocs.io/en/latest/index.html).
 
 Details about syntax are available in the 
@@ -343,7 +343,7 @@ Use the [**HED online tools**](https://hedtools.org) to convert as shown in the 
 
 All HED schemas, including library schemas, adhere to [**semantic versioning**](https://semver.org/). 
 The rules for what constitutes major, minor and patch changes are given
-in the hed-schemas [**README**](https://github.com/hed-standard/hed-schemas/#hed-semantic-versioning).
+in the hed-schemas [**README.md**](https://github.com/hed-standard/hed-schemas/README.md#hed-semantic-versioning).
 
 ### Schema file names
 
@@ -450,8 +450,8 @@ Here is a brief summary of the development process.
 - Request a branch be created on [**hed-schemas**](https://github.com/hed-standard/hed-schemas) for your development.
 - Develop your schema:
   - Modify your prerelease `.mediawiki`.
-  - Validate the prerelease `.mediawiki` file using the [**HED online tools**](https://hedtools.org/hed/schema).
-  - Convert to the prerelease `.mediawiki` file to `.xml` using the [**HED online tools**](https://hedtools.org/hed/schema) and replace the existing prerelease `.xml`.
+  - Validate the prerelease `.mediawiki` file using the [**HED online tools**](https://hedtools.org/hed/schemas).
+  - Convert to the prerelease `.mediawiki` file to `.xml` using the [**HED online tools**](https://hedtools.org/hed/schemas) and replace the existing prerelease `.xml`.
   - Check the schema using [**HED Schema Viewer**](https://www.hedtags.org/display_hed.html).
   - Update your prerelease `CHANGES.md` and `PROPOSED.md` files.
   - Update your schema's `README.md`.

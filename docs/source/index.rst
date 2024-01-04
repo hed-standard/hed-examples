@@ -91,7 +91,7 @@ funded by The Cognition and Neuroergonomics Collaborative Technology Alliance (C
 **HED (Gen 3, version >= 8.0.0)** is now maintained and further developed by the
 HED Working Group led by Kay Robbins and Scott Makeig with Dung Truong, Monique Denissen,
 Dora Hermes Miller, Tal Pal Attia, and Arnaud Delorme, with funding from NIH grant
-`RF1-MH126700 <https://braininitiative.nih.gov/funded-awards/brain-initiative-hierarchical-event-descriptors-hed-system-characterize-events>`_.
+`RF1-MH126700 <https://reporter.nih.gov/project-details/10480619>`_.
 
 HED is an open research community effort; others interested are invited to participate and contribute.
 Visit the `HED project homepage <https://github.com/hed-standard>`_ for links to the latest developments..

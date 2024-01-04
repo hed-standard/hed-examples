@@ -85,7 +85,7 @@ However, the tool only validates a single events file with an accompanying sidec
 The tool does not validate multiple events files at the same time,
 nor does the tool handle inherited sidecars.
 
-The [bids_validate_hed.ipynb](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids/bids_validate_dataset.ipynb)
+The [validate_bids_dataset.ipynb](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids/validate_bids_dataset.ipynb)
 Python Jupyter notebook is available for validating all the events files
 in a BIDS dataset along with multiple sidecars.
 The Jupyter notebook handles validation with library schema.
@@ -141,7 +141,7 @@ The online generation tool is very useful for constructing a sidecar template fi
 but the template is based only on the particular events file used in the generation.
 For many BIDS datasets, this is sufficient for generating a complete template.
 However, for datasets that have many types of events files, you will want to use the
-[bids_generate_sidecar.ipynb](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids/bids_generate_sidecar.ipynb)
+[extract_json_template.ipynb](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids/extract_json_template.ipynb)
 to generate a JSON sidecar based on all the events files in a BIDS dataset.
 
 #### Execute remodel script
@@ -273,7 +273,7 @@ for a tutorial on how to use the resulting spreadsheet for annotation.
 If there are any errors, the tool returns a downloadable `.txt` file of error messages,
 otherwise the tool returns a downloadable `.tsv` spreadsheet.  
 ``````
-The [bids_sidecar_to_spreadsheet.ipynb](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids/bids_sidecar_to_spreadsheet.ipynb) Python Jupyter notebook does the same operation.
+The [sidecar_to_spreadsheet.ipynb](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids/sidecar_to_spreadsheet.ipynb) Python Jupyter notebook does the same operation.
 
 #### Merge a spreadsheet with a sidecar
 
@@ -302,7 +302,7 @@ for a tutorial on how this works in practice.
 If there are any errors, the tool returns a downloadable `.txt` file of error messages,
 otherwise the tool returns a downloadable merged `.json` file.  
 ``````
-The [bids_merge_sidecar.ipynb](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids/bids_merge_sidecar.ipynb) Python Jupyter notebook does the same operation.
+The [bids_merge_spreadsheet_into_sidecar.ipynb](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids/merge_spreadsheet_into_sidecar.ipynb) Python Jupyter notebook does the same operation.
 
 
 (spreadsheets-online-tools-anchor)=
@@ -581,11 +581,11 @@ web-based tools and services.
 * - Service
   - URL
 * - Online HED tools
-  - [https://hedtools.ucsd.edu/hed](https://hedtools.ucsd.edu/hed)
+  - [https://hedtools.org/hed](https://hedtools.org/hed)
 * - CSRF token access
-  - [https://hedtools.ucsd.edu/hed/services](https://hedtools.ucsd.edu/hed/services)  
+  - [https://hedtools.org/hed/services](https://hedtools.org/hed/services)  
 * - Service request
-  - [https://hedtools.ucsd.edu/hed/services_submit](https://hedtools.ucsd.edu/hed/services_submit)
+  - [https://hedtools.org/hed/services_submit](https://hedtools.org/hed/services_submit)
 `````
 
 ### Request format

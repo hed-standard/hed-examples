@@ -17,8 +17,7 @@
       "show_cross": "Display only a white cross to mark start of trial and fixation.",
       "left_press": "Experiment participant presses a key with left index finger.",
       "right_press": "Experiment participant presses a key with right index finger.",
-      "setup_left_sym": "Setup for experiment with pressing key with left index finger means a face with above average symmetry.",
-      "setup_right_sym": "Setup for experiment with pressing key with right index finger means a face with above average symmetry.",
+
       "double_press": "Experiment participant presses both keys ."
     }
   },

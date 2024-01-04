@@ -109,7 +109,7 @@ points in an ongoing event as well as partnered library schemas.
 
 **February 22, 2023**: **HED YouTube Channel goes live**<br/>
 > First video:  [**HED Tagging 101**](https://youtu.be/iRAWO-Fn6Bw)  
-> HED YouTube channel: [**https://www.youtube.com/@hedworkinggroup/videos**](https://www.youtube.com/@hedworkinggroup/videos)
+> HED YouTube channel: [**https://www.youtube.com/@HierarchicalEventDescriptors/playlists**](https://www.youtube.com/@HierarchicalEventDescriptors/playlists)
 
 **February 14, 2023**: **HEDTools 0.2.0 is released.**  
 - This release includes the HED remodeling tools.   
@@ -121,7 +121,7 @@ points in an ongoing event as well as partnered library schemas.
 > This library is based on the Standardized Computer-based Organized Reporting of EEG
 > ([**SCORE**](https://pubmed.ncbi.nlm.nih.gov/28838815/)) standard and adapted for
 > annotation using the HED infrastructure and requirements. 
-> For more information see the [**SCORE schema library**](https://hed-schemas.readthedocs.io/en/latest/hed_score_library.html) guide.
+> For more information see the [**SCORE schema library**](https://hed-schemas.readthedocs.io/en/latest/hed_score_schema.html) guide.
 
 **January 20, 2023**: **New preprint available**<br/>
 
