@@ -90,7 +90,7 @@ The following is a summary of the HED-related websites:
 * - HED Python tools
   - [https://github.com/hed-standard/hed-python](https://github.com/hed-standard/hed-python)
 * - HED Javascript code
-  - [https://github.com/hed-standard/hed-javascript](https://github.com/hed-standard/hed-javacript)
+  - [https://github.com/hed-standard/hed-javascript](https://github.com/hed-standard/hed-javascript)
 * - HED Matlab code and EEGLAB support
   - [https://github.com/hed-standard/hed-matlab](https://github.com/hed-standard/hed-matlab)
 * - HED web deployment

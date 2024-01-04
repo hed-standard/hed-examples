@@ -479,7 +479,7 @@ reimplementing these operations in MATLAB.
 **Note:** For your reference, the source for `hedtools` is the 
 [**hed-python**](https://github.com/hed-standard/hed-python) GitHub repository.
 The code is fully open-source with an MIT license.
-The actual API documentation is available [**here**](https://hed-python.readthedocs.io/en/latest/api.html),
+The actual API documentation is available [**here**](https://hed-python.readthedocs.io/en/latest/api2.html),
 but the tutorials and tool documentation for `hedtools` on 
 [**HED Resources**](https://www.hed-resources.org/en/latest/index.html) provides more
 examples of use.
