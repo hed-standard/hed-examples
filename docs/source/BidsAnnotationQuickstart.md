@@ -437,7 +437,7 @@ the steps to create a template are:
 (step-1-select-extract-hed-spreadsheet-anchor)=
 ### Step 1: Select extract HED spreadsheet
 
-Go to the [**Sidecar**](https://hedtools.ucsd.edu/hed/sidecar) page of the HED online tools.
+Go to the [**Sidecar**](https://hedtools.org/hed/sidecars) page of the HED online tools.
 You will see the following menu:
 
 ![SidecarToSpreadsheetTemplate1](./_static/images/SidecarToSpreadsheetTemplate1.png)  

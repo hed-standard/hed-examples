@@ -9,8 +9,9 @@ HED resources
 
    * `PDF docs <https://hed-examples.readthedocs.io/_/downloads/en/latest/pdf/>`_
 
-   * `Source code <https://github.com/hed-standard/hed-examples/>`_
+   * `Source code <https://github.com/hed-standard/hed-examples/>`_  
 
+   * `HED homepage <https://www.hedtags.org/>`_ 
 
 What is HED?
 ************
@@ -134,6 +135,7 @@ Visit the `HED project homepage <https://github.com/hed-standard>`_ for links to
    HedPythonTools.md
    HedJavascriptTools.md
    HedMatlabTools.md
+   DocumentationSummary.md
 
 
 .. toctree::
