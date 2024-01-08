@@ -521,7 +521,7 @@ If you choose to extract a spreadsheet for editing your annotations,
 you will need to merge the edited spreadsheet back into a JSON sidecar
 before including it in your BIDS dataset.
 
-Using the [**HED sidecar online tools**](https://hedtools.ucsd.edu/hed/sidecar),
+Using the [**HED sidecar online tools**](https://hedtools.org/hed/sidecars),
 select merge HED spreadsheet as shown below.
 You may choose an existing edited sidecar, the original template,
 or an empty sidecar as the JSON target file for the merge.
