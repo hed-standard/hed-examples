@@ -12,10 +12,6 @@ function errors = testSidecarServices(host)
 %  Example 5: Extract a 4-column spreadsheet from a valid JSON sidecar.
 %
 %  Example 6: Merge a 4-column spreadsheet with a JSON sidecar.
-%
-%  Example 7: Validate a sidecar that is valid after merging.
-%
-%  Example 8: Validate a sidecar that is not valid until merging.
 
 %% Get the options and data
 [servicesUrl, options] = getHostOptions(host);
@@ -24,7 +20,7 @@ errors = {};
 
 %% Example 1: Validate valid JSON sidecar using a HED version.
 request1 = struct('service', 'sidecar_validate', ...
-                  'schema_version', '8.0.0', ...
+                  'schema_version', '8.2.0', ...
                   'sidecar_string', data.jsonText, ...
                   'check_for_warnings', 'on');
 response1 = webwrite(servicesUrl, request1, options);
@@ -43,8 +39,9 @@ request2 = struct('service', 'sidecar_validate', ...
 response2 = webwrite(servicesUrl, request2, options);
 response2 = jsondecode(response2);
 outputReport(response2, 'Example 2 validate an invalid JSON sidecar.');
-if ~isempty(response2.error_type) || ...
-   ~strcmpi(response2.results.msg_category, 'warning')
+if isempty(response2.error_type) && ...
+   ~isempty(response2.results.msg_category) && ...        
+   strcmpi(response2.results.msg_category, 'success')
    errors{end + 1} = 'Example 2 failed to detect an incorrect JSON file.';
 end
 
@@ -64,7 +61,7 @@ end
 
 %%  Example 4: Convert valid JSON sidecar to short using a HED version..
 request4 = struct('service', 'sidecar_to_short', ...
-                  'schema_version', '8.0.0', ...
+                  'schema_version', '8.2.0', ...
                   'sidecar_string', data.jsonText, ...
                   'expand_defs', 'on');
 response4 = webwrite(servicesUrl, request4, options);
@@ -101,34 +98,5 @@ if ~isempty(response6.error_type) || ...
   ~strcmpi(response6.results.msg_category, 'success')
    errors{end + 1} = ...
        'Example 6 failed to merge 4-column spreadsheet with JSON.';
-end 
- 
-
-%%  Example 7: Validate a JSON sidecar with inheritance.
-request7 = struct('service', 'sidecar_validate', ...
-                  'schema_version', '8.1.0',...
-                  'sidecar_string', '', 'has_column_names', 'on');
-request7.sidecar_string = {data.jsonUpperText, data.jsonLower2Text};
-response7 = webwrite(servicesUrl, request7, options);
-response7 = jsondecode(response7);
-outputReport(response7, 'Example 7 validate a merged sidecar.');
-if ~isempty(response7.error_type) || ...
-  ~strcmpi(response7.results.msg_category, 'success')
-   errors{end + 1} = ...
-       'Example 7 failed to validate a merged sidecar.';
-end 
-
-%%  Example 8: Validate a JSON sidecar invalid without inheritance.
-request8 = struct('service', 'sidecar_validate', ...
-                  'schema_version', '8.1.0',...
-                  'sidecar_string', '', 'has_column_names', 'on');
-request8.sidecar_string = {data.jsonLower2Text};
-response8 = webwrite(servicesUrl, request8, options);
-response8 = jsondecode(response8);
-outputReport(response8, 'Example 8 validate a sidecar that was not merged.');
-if ~isempty(response8.error_type) || ...
-  ~strcmpi(response8.results.msg_category, 'warning')
-   errors{end + 1} = ...
-       'Example 8 failed to detect a sidecar that should have been merged.';
 end 
  

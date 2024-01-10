@@ -1,7 +1,7 @@
 # HED online tools 
 
 HED web-based tools are available directly through a browser from 
-[https://hedtools.ucsd.edu/hed](https://hedtools.ucsd.edu/hed) or
+[**https://hedtools.org/hed]**(https://hedtools.org/hed) or
 as RESTful services from the same URL.
 These services do not require a login to use.
 
@@ -371,7 +371,7 @@ The non-HED portions of the spreadsheet and the prefix-columns are the same as i
  - Select the HED version.  
  - Upload a spreadsheet file (`.tsv` or `.xlsx`).
  - Select a worksheet if necessary.
- - Check the columns that contain HED information and should be validated.
+ - Check the columns that contain HED strings that should be converted to long form.
  - Click the `Process` button.
    
 **Returns:**  
@@ -401,7 +401,7 @@ The non-HED portions of the spreadsheet and the prefix-columns are the same as i
   - Select the HED version.  
  - Upload a spreadsheet file (`.tsv` or `.xlsx`).
  - Select a worksheet if necessary.
- - Check the columns that contain HED information and should be validated.
+ - Check the columns that contain HED strings to be converted to short form.
  - Click the `Process` button.
    
 **Returns:**  
@@ -558,7 +558,8 @@ JSON sidecars, BIDS-style events files, and spreadsheets in `.tsv` or `.xlsx` fo
 Support is also included for assembling the annotations for a BIDS-style 
 events file with a JSON sidecar and for generating a template of a JSON sidecar from a BIDS events file.
 
-The [**web_services**](https://github.com/hed-standard/hed-examples/tree/main/hedcode/matlab_scripts/web_services) directory in the `hed-examples` repository provides MATLAB examples of how to call these 
+The [**web_services**](https://github.com/hed-standard/hed-examples/tree/main/hedcode/matlab_scripts/web_services) 
+directory in the `hed-examples` GitHub repository provides MATLAB examples of how to call these 
 services in MATLAB.
 
 ### Service setup
