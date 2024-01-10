@@ -27,9 +27,9 @@ function data = getTestData()
         fileread('../../data/bids_data/both_types_events_errors.json');
     data.labelPrefix = 'Property/Informational-property/Label/';
     data.descPrefix = 'Property/Informational-property/Description/';
-    data.schemaText = fileread('../../data/schema_data/HED8.0.0.xml');
+    data.schemaText = fileread('../../data/schema_data/HED8.2.0.xml');
     data.schemaUrl = ['https://raw.githubusercontent.com/hed-standard/' ...
-                      'hed-schemas/master/standard_schema/hedxml/HED8.0.0.xml'];
+                      'hed-schemas/master/standard_schema/hedxml/HED8.2.0.xml'];
     data.spreadsheetText = ...
         fileread('../../data/spreadsheet_data/LKTEventCodesHED3.tsv');
     data.spreadsheetTextExtracted = ...
@@ -38,8 +38,4 @@ function data = getTestData()
         fileread('../../data/spreadsheet_data/LKTEventCodesHED2.tsv');
     data.goodStrings = {'Red,Blue', 'Green', 'White, (Black, Image)'}; 
     data.badStrings = {'Red, Blue, Blech', 'Green', 'White, Black, Binge'}; 
-    data.jsonUpperText = ...
-        fileread('../../../datasets/eeg_ds003645s_hed_inheritance/task-FacePerception_events.json');
-    data.jsonLower2Text = ...
-        fileread('../../../datasets/eeg_ds003645s_hed_inheritance/sub-002/sub-002_task-FacePerception_events.json');
 end
