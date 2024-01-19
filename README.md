@@ -18,7 +18,7 @@ The [**hedcode**](https://github.com/hed-standard/hed-examples/tree/main/hedcode
 subdirectory contains MATLAB scripts, Python Jupyter Notebooks,
 and Python scripts with direct calls to HedTools.
 The repository also contains example code in python and matlab. 
-See [**hedcode/README.md**](./hedcode/README.md) for details.
+See [**hedcode/README.md**](src/README.md) for details.
 The Python scripts and notebooks require the installation of
 `hedtools` whose [**installation**](./README.md#installation-of-hedtools)
 is described below.

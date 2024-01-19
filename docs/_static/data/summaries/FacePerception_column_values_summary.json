@@ -1,0 +1,864 @@
+{
+    "Dataset": {
+        "Context name": "column values summary",
+        "Context type": "column_values",
+        "Context filename": "column_values_summary",
+        "Overall summary": {
+            "Summary name": "Dataset",
+            "Total events": 1200,
+            "Total files": 6,
+            "Categorical columns": {
+                "event_type": {
+                    "double_press": [
+                        1,
+                        1
+                    ],
+                    "left_press": [
+                        83,
+                        4
+                    ],
+                    "right_press": [
+                        168,
+                        6
+                    ],
+                    "setup_right_sym": [
+                        6,
+                        6
+                    ],
+                    "show_circle": [
+                        316,
+                        6
+                    ],
+                    "show_cross": [
+                        310,
+                        6
+                    ],
+                    "show_face": [
+                        310,
+                        6
+                    ],
+                    "show_face_initial": [
+                        6,
+                        6
+                    ]
+                },
+                "face_type": {
+                    "famous_face": [
+                        108,
+                        6
+                    ],
+                    "n/a": [
+                        884,
+                        6
+                    ],
+                    "scrambled_face": [
+                        103,
+                        6
+                    ],
+                    "unfamiliar_face": [
+                        105,
+                        6
+                    ]
+                },
+                "rep_lag": {
+                    "1": [
+                        77,
+                        6
+                    ],
+                    "10": [
+                        15,
+                        6
+                    ],
+                    "11": [
+                        13,
+                        5
+                    ],
+                    "12": [
+                        9,
+                        5
+                    ],
+                    "13": [
+                        7,
+                        6
+                    ],
+                    "14": [
+                        6,
+                        4
+                    ],
+                    "15": [
+                        2,
+                        2
+                    ],
+                    "6": [
+                        1,
+                        1
+                    ],
+                    "7": [
+                        2,
+                        2
+                    ],
+                    "8": [
+                        6,
+                        4
+                    ],
+                    "9": [
+                        10,
+                        6
+                    ],
+                    "n/a": [
+                        1052,
+                        6
+                    ]
+                },
+                "rep_status": {
+                    "delayed_repeat": [
+                        71,
+                        6
+                    ],
+                    "first_show": [
+                        168,
+                        6
+                    ],
+                    "immediate_repeat": [
+                        77,
+                        6
+                    ],
+                    "n/a": [
+                        884,
+                        6
+                    ]
+                }
+            },
+            "Value columns": {
+                "stim_file": [
+                    1200,
+                    6
+                ],
+                "trial": [
+                    1200,
+                    6
+                ]
+            }
+        }
+    },
+    "Individual files": {
+        "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv": {
+            "Summary name": "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-1_events.tsv",
+            "Total events": 200,
+            "Total files": 1,
+            "Categorical columns": {
+                "event_type": {
+                    "double_press": [
+                        1,
+                        1
+                    ],
+                    "left_press": [
+                        20,
+                        1
+                    ],
+                    "right_press": [
+                        23,
+                        1
+                    ],
+                    "setup_right_sym": [
+                        1,
+                        1
+                    ],
+                    "show_circle": [
+                        52,
+                        1
+                    ],
+                    "show_cross": [
+                        51,
+                        1
+                    ],
+                    "show_face": [
+                        51,
+                        1
+                    ],
+                    "show_face_initial": [
+                        1,
+                        1
+                    ]
+                },
+                "face_type": {
+                    "famous_face": [
+                        14,
+                        1
+                    ],
+                    "n/a": [
+                        148,
+                        1
+                    ],
+                    "scrambled_face": [
+                        18,
+                        1
+                    ],
+                    "unfamiliar_face": [
+                        20,
+                        1
+                    ]
+                },
+                "rep_lag": {
+                    "1": [
+                        12,
+                        1
+                    ],
+                    "10": [
+                        2,
+                        1
+                    ],
+                    "11": [
+                        1,
+                        1
+                    ],
+                    "12": [
+                        2,
+                        1
+                    ],
+                    "13": [
+                        1,
+                        1
+                    ],
+                    "14": [
+                        3,
+                        1
+                    ],
+                    "6": [
+                        1,
+                        1
+                    ],
+                    "7": [
+                        1,
+                        1
+                    ],
+                    "9": [
+                        1,
+                        1
+                    ],
+                    "n/a": [
+                        176,
+                        1
+                    ]
+                },
+                "rep_status": {
+                    "delayed_repeat": [
+                        12,
+                        1
+                    ],
+                    "first_show": [
+                        28,
+                        1
+                    ],
+                    "immediate_repeat": [
+                        12,
+                        1
+                    ],
+                    "n/a": [
+                        148,
+                        1
+                    ]
+                }
+            },
+            "Value columns": {
+                "stim_file": [
+                    200,
+                    1
+                ],
+                "trial": [
+                    200,
+                    1
+                ]
+            }
+        },
+        "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-2_events.tsv": {
+            "Summary name": "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-2_events.tsv",
+            "Total events": 200,
+            "Total files": 1,
+            "Categorical columns": {
+                "event_type": {
+                    "right_press": [
+                        29,
+                        1
+                    ],
+                    "setup_right_sym": [
+                        1,
+                        1
+                    ],
+                    "show_circle": [
+                        57,
+                        1
+                    ],
+                    "show_cross": [
+                        56,
+                        1
+                    ],
+                    "show_face": [
+                        56,
+                        1
+                    ],
+                    "show_face_initial": [
+                        1,
+                        1
+                    ]
+                },
+                "face_type": {
+                    "famous_face": [
+                        26,
+                        1
+                    ],
+                    "n/a": [
+                        143,
+                        1
+                    ],
+                    "scrambled_face": [
+                        17,
+                        1
+                    ],
+                    "unfamiliar_face": [
+                        14,
+                        1
+                    ]
+                },
+                "rep_lag": {
+                    "1": [
+                        14,
+                        1
+                    ],
+                    "10": [
+                        2,
+                        1
+                    ],
+                    "11": [
+                        2,
+                        1
+                    ],
+                    "12": [
+                        2,
+                        1
+                    ],
+                    "13": [
+                        1,
+                        1
+                    ],
+                    "14": [
+                        1,
+                        1
+                    ],
+                    "15": [
+                        1,
+                        1
+                    ],
+                    "8": [
+                        2,
+                        1
+                    ],
+                    "9": [
+                        2,
+                        1
+                    ],
+                    "n/a": [
+                        173,
+                        1
+                    ]
+                },
+                "rep_status": {
+                    "delayed_repeat": [
+                        13,
+                        1
+                    ],
+                    "first_show": [
+                        30,
+                        1
+                    ],
+                    "immediate_repeat": [
+                        14,
+                        1
+                    ],
+                    "n/a": [
+                        143,
+                        1
+                    ]
+                }
+            },
+            "Value columns": {
+                "stim_file": [
+                    200,
+                    1
+                ],
+                "trial": [
+                    200,
+                    1
+                ]
+            }
+        },
+        "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-3_events.tsv": {
+            "Summary name": "g:\\eeg_ds003645s\\sub-002\\eeg\\sub-002_task-FacePerception_run-3_events.tsv",
+            "Total events": 200,
+            "Total files": 1,
+            "Categorical columns": {
+                "event_type": {
+                    "right_press": [
+                        29,
+                        1
+                    ],
+                    "setup_right_sym": [
+                        1,
+                        1
+                    ],
+                    "show_circle": [
+                        57,
+                        1
+                    ],
+                    "show_cross": [
+                        56,
+                        1
+                    ],
+                    "show_face": [
+                        56,
+                        1
+                    ],
+                    "show_face_initial": [
+                        1,
+                        1
+                    ]
+                },
+                "face_type": {
+                    "famous_face": [
+                        21,
+                        1
+                    ],
+                    "n/a": [
+                        143,
+                        1
+                    ],
+                    "scrambled_face": [
+                        16,
+                        1
+                    ],
+                    "unfamiliar_face": [
+                        20,
+                        1
+                    ]
+                },
+                "rep_lag": {
+                    "1": [
+                        14,
+                        1
+                    ],
+                    "10": [
+                        3,
+                        1
+                    ],
+                    "11": [
+                        4,
+                        1
+                    ],
+                    "12": [
+                        2,
+                        1
+                    ],
+                    "13": [
+                        1,
+                        1
+                    ],
+                    "8": [
+                        1,
+                        1
+                    ],
+                    "9": [
+                        2,
+                        1
+                    ],
+                    "n/a": [
+                        173,
+                        1
+                    ]
+                },
+                "rep_status": {
+                    "delayed_repeat": [
+                        13,
+                        1
+                    ],
+                    "first_show": [
+                        30,
+                        1
+                    ],
+                    "immediate_repeat": [
+                        14,
+                        1
+                    ],
+                    "n/a": [
+                        143,
+                        1
+                    ]
+                }
+            },
+            "Value columns": {
+                "stim_file": [
+                    200,
+                    1
+                ],
+                "trial": [
+                    200,
+                    1
+                ]
+            }
+        },
+        "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-1_events.tsv": {
+            "Summary name": "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-1_events.tsv",
+            "Total events": 200,
+            "Total files": 1,
+            "Categorical columns": {
+                "event_type": {
+                    "left_press": [
+                        22,
+                        1
+                    ],
+                    "right_press": [
+                        28,
+                        1
+                    ],
+                    "setup_right_sym": [
+                        1,
+                        1
+                    ],
+                    "show_circle": [
+                        50,
+                        1
+                    ],
+                    "show_cross": [
+                        49,
+                        1
+                    ],
+                    "show_face": [
+                        49,
+                        1
+                    ],
+                    "show_face_initial": [
+                        1,
+                        1
+                    ]
+                },
+                "face_type": {
+                    "famous_face": [
+                        20,
+                        1
+                    ],
+                    "n/a": [
+                        150,
+                        1
+                    ],
+                    "scrambled_face": [
+                        11,
+                        1
+                    ],
+                    "unfamiliar_face": [
+                        19,
+                        1
+                    ]
+                },
+                "rep_lag": {
+                    "1": [
+                        13,
+                        1
+                    ],
+                    "10": [
+                        2,
+                        1
+                    ],
+                    "11": [
+                        4,
+                        1
+                    ],
+                    "13": [
+                        2,
+                        1
+                    ],
+                    "8": [
+                        1,
+                        1
+                    ],
+                    "9": [
+                        2,
+                        1
+                    ],
+                    "n/a": [
+                        176,
+                        1
+                    ]
+                },
+                "rep_status": {
+                    "delayed_repeat": [
+                        11,
+                        1
+                    ],
+                    "first_show": [
+                        26,
+                        1
+                    ],
+                    "immediate_repeat": [
+                        13,
+                        1
+                    ],
+                    "n/a": [
+                        150,
+                        1
+                    ]
+                }
+            },
+            "Value columns": {
+                "stim_file": [
+                    200,
+                    1
+                ],
+                "trial": [
+                    200,
+                    1
+                ]
+            }
+        },
+        "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-2_events.tsv": {
+            "Summary name": "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-2_events.tsv",
+            "Total events": 200,
+            "Total files": 1,
+            "Categorical columns": {
+                "event_type": {
+                    "left_press": [
+                        17,
+                        1
+                    ],
+                    "right_press": [
+                        33,
+                        1
+                    ],
+                    "setup_right_sym": [
+                        1,
+                        1
+                    ],
+                    "show_circle": [
+                        50,
+                        1
+                    ],
+                    "show_cross": [
+                        49,
+                        1
+                    ],
+                    "show_face": [
+                        49,
+                        1
+                    ],
+                    "show_face_initial": [
+                        1,
+                        1
+                    ]
+                },
+                "face_type": {
+                    "famous_face": [
+                        13,
+                        1
+                    ],
+                    "n/a": [
+                        150,
+                        1
+                    ],
+                    "scrambled_face": [
+                        21,
+                        1
+                    ],
+                    "unfamiliar_face": [
+                        16,
+                        1
+                    ]
+                },
+                "rep_lag": {
+                    "1": [
+                        12,
+                        1
+                    ],
+                    "10": [
+                        2,
+                        1
+                    ],
+                    "12": [
+                        2,
+                        1
+                    ],
+                    "13": [
+                        1,
+                        1
+                    ],
+                    "14": [
+                        1,
+                        1
+                    ],
+                    "15": [
+                        1,
+                        1
+                    ],
+                    "7": [
+                        1,
+                        1
+                    ],
+                    "8": [
+                        2,
+                        1
+                    ],
+                    "9": [
+                        1,
+                        1
+                    ],
+                    "n/a": [
+                        177,
+                        1
+                    ]
+                },
+                "rep_status": {
+                    "delayed_repeat": [
+                        11,
+                        1
+                    ],
+                    "first_show": [
+                        27,
+                        1
+                    ],
+                    "immediate_repeat": [
+                        12,
+                        1
+                    ],
+                    "n/a": [
+                        150,
+                        1
+                    ]
+                }
+            },
+            "Value columns": {
+                "stim_file": [
+                    200,
+                    1
+                ],
+                "trial": [
+                    200,
+                    1
+                ]
+            }
+        },
+        "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-3_events.tsv": {
+            "Summary name": "g:\\eeg_ds003645s\\sub-003\\eeg\\sub-003_task-FacePerception_run-3_events.tsv",
+            "Total events": 200,
+            "Total files": 1,
+            "Categorical columns": {
+                "event_type": {
+                    "left_press": [
+                        24,
+                        1
+                    ],
+                    "right_press": [
+                        26,
+                        1
+                    ],
+                    "setup_right_sym": [
+                        1,
+                        1
+                    ],
+                    "show_circle": [
+                        50,
+                        1
+                    ],
+                    "show_cross": [
+                        49,
+                        1
+                    ],
+                    "show_face": [
+                        49,
+                        1
+                    ],
+                    "show_face_initial": [
+                        1,
+                        1
+                    ]
+                },
+                "face_type": {
+                    "famous_face": [
+                        14,
+                        1
+                    ],
+                    "n/a": [
+                        150,
+                        1
+                    ],
+                    "scrambled_face": [
+                        20,
+                        1
+                    ],
+                    "unfamiliar_face": [
+                        16,
+                        1
+                    ]
+                },
+                "rep_lag": {
+                    "1": [
+                        12,
+                        1
+                    ],
+                    "10": [
+                        4,
+                        1
+                    ],
+                    "11": [
+                        2,
+                        1
+                    ],
+                    "12": [
+                        1,
+                        1
+                    ],
+                    "13": [
+                        1,
+                        1
+                    ],
+                    "14": [
+                        1,
+                        1
+                    ],
+                    "9": [
+                        2,
+                        1
+                    ],
+                    "n/a": [
+                        177,
+                        1
+                    ]
+                },
+                "rep_status": {
+                    "delayed_repeat": [
+                        11,
+                        1
+                    ],
+                    "first_show": [
+                        27,
+                        1
+                    ],
+                    "immediate_repeat": [
+                        12,
+                        1
+                    ],
+                    "n/a": [
+                        150,
+                        1
+                    ]
+                }
+            },
+            "Value columns": {
+                "stim_file": [
+                    200,
+                    1
+                ],
+                "trial": [
+                    200,
+                    1
+                ]
+            }
+        }
+    }
+}

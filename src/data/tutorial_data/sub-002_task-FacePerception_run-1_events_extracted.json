@@ -1,0 +1,67 @@
+{
+    "event_type": {
+        "Description": "Description for event_type",
+        "HED": {
+            "setup_right_sym": "Label/setup_right_sym",
+            "show_face_initial": "Label/show_face_initial",
+            "double_press": "Label/double_press",
+            "left_press": "Label/left_press",
+            "right_press": "Label/right_press",
+            "show_face": "Label/show_face",
+            "show_circle": "Label/show_circle",
+            "show_cross": "Label/show_cross"
+        },
+        "Levels": {
+            "setup_right_sym": "Description for setup_right_sym",
+            "show_face_initial": "Description for show_face_initial",
+            "double_press": "Description for double_press",
+            "left_press": "Description for left_press",
+            "right_press": "Description for right_press",
+            "show_face": "Description for show_face",
+            "show_circle": "Description for show_circle",
+            "show_cross": "Description for show_cross"
+        }
+    },
+    "face_type": {
+        "Description": "Description for face_type",
+        "HED": {
+            "unfamiliar_face": "Label/unfamiliar_face",
+            "famous_face": "Label/famous_face",
+            "scrambled_face": "Label/scrambled_face"
+        },
+        "Levels": {
+            "unfamiliar_face": "Description for unfamiliar_face",
+            "famous_face": "Description for famous_face",
+            "scrambled_face": "Description for scrambled_face"
+        }
+    },
+    "rep_status": {
+        "Description": "Description for rep_status",
+        "HED": {
+            "delayed_repeat": "Label/delayed_repeat",
+            "immediate_repeat": "Label/immediate_repeat",
+            "first_show": "Label/first_show"
+        },
+        "Levels": {
+            "delayed_repeat": "Description for delayed_repeat",
+            "immediate_repeat": "Description for immediate_repeat",
+            "first_show": "Description for first_show"
+        }
+    },
+    "trial": {
+        "Description": "Description for trial",
+        "HED": "Label/#"
+    },
+    "rep_lag": {
+        "Description": "Description for rep_lag",
+        "HED": "Label/#"
+    },
+    "value": {
+        "Description": "Description for value",
+        "HED": "Label/#"
+    },
+    "stim_file": {
+        "Description": "Description for stim_file",
+        "HED": "Label/#"
+    }
+}
