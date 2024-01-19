@@ -7,14 +7,14 @@ There are currently three types of support available for HED (Hierarchical Event
 * [**Python HEDTools in MATLAB**](python-hedtools-in-matlab-anchor) - explains how to call the HED python tools from within MATLAB.
 
 HED services allow MATLAB programs to request the same services that are available 
-through the browser at [https://hedtools.ucsd.edu/hed](https://hedtools.ucsd.edu/hed).
+through the browser at [https://hedtools.edu/hed](https://hedtools.edu/hed).
 
 (hed-services-matlab-anchor)=
 ## HED services in MATLAB
 
 HED RESTful services allow programs to make requests directly to the
 HED online tools available at
-[https://hedtools.ucsd.edu/hed](https://hedtools.ucsd.edu/hed) or
+[https://hedtools.edu/hed](https://hedtools.edu/hed) or
 in a locally-deployed docker module.
 See [**HED-web**](https://hed-web.readthedocs.io/en/latest/index.html)
 for additional information on the deployment.
@@ -297,8 +297,7 @@ then click into the *Install/Update* button to install the plug-in.
 #### Method 2: Download and unzip
 
 Download the zip file with the content of the plug-in *HEDTools* either from
-[**HED Matlab EEGLAB plugins**](https://github.com/hed-standard/hed-matlab/blob/master/EEGLABPlugin)
-or from the EEGLAB [**plug-ins summary page**](https://sccn.ucsd.edu/eeglab/plugin_uploader/plugin_list_all.php). 
+the EEGLAB [**plug-ins summary page**](https://sccn.ucsd.edu/eeglab/plugin_uploader/plugin_list_all.php). 
 
 Unzip file into the folder *../eeglab/plugins* and restart the *eeglab* function in a MATLAB session.
 
