@@ -779,7 +779,7 @@ See [**File remodeling quickstart**](FileRemodelingQuickstart.md)
 and [**File remodeling tools**](FileRemodelingTools.md) for
 additional information.
 The wrapper functions are available on GitHub in
-the [**hedtools_wrappers**](https://github.com/hed-standard/hed-examples/tree/develop/hedcode/matlab_scripts/hedtools_wrappers) directory.
+the [**hedtools_wrappers**](https://github.com/hed-standard/hed-examples/tree/develop/src/matlab_scripts/hedtools_wrappers) directory.
 
 
 ### MATLAB functions for Python
