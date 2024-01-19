@@ -147,4 +147,4 @@ The `--config.ignore=99` flag tells the bids-validator to ignore empty data file
 rather than to report the empty file error.
 
 For additional information on BIDS validation,
-see the [bids-examples](https://github.com/bids-standard/bids-examples#readme).
+see the [bids-examples](https://github.com/bids-standard/bids-examples#readme.md).
