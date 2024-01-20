@@ -193,9 +193,10 @@ You can replace any term with a wildcard:
 | **`???`**<br/>Matches any group      | {`A` and `???`} | *(A, (B))*            | *(A)<br/>(B, C)<br/>(A, B)*   |
 
 
-**Notes**: You cannot use negation inside exact matching groups "{X:}" or "{X:Y}" notation. <br/>
-You cannot use negation in combination with wildcards ( ?, ??, or ??? )<br/>
-In exact group matching, or matches one or the other, not both.  eg. {A or B:} matches (A) or (B), but not (A, B)
+**Notes**: You cannot use negation inside exact matching groups `{X:}` or `{X:Y}` notation. <br/>
+You cannot use negation in combination with wildcards ( `?`, `??`, or `???` )<br/>
+In exact group matching, `or` matches one or the other, not both:
+`{A or B:}` matches `(A)` or `(B)`, but not `(A, B)`
 
 ## Where can HED search be used?
 

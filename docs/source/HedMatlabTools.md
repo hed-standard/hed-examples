@@ -50,8 +50,8 @@ Calling HED services from MATLAB requires the following steps:
    1. Establish a session by requesting a CSRF token and a cookie.
    2. Construct a header array using the token and the cookie.
 2. **Create a request structure**.
-5. **Make a request** using the MATLAB `webwrite`.
-6. **Decode the response** returned from `webwrite`.
+3. **Make a request** using the MATLAB `webwrite`.
+4. **Decode the response** returned from `webwrite`.
 
 Usually, you will do the first step (the session setup) once at the beginning of your script
 to construct a fixed session header that can be used in subsequent requests in your script.
@@ -267,7 +267,7 @@ If the sidecar had no errors, `results.data` will be an empty string.
 (eeglab-integration-anchor)=
 ## EEGLAB plug-in integration
 EEGLAB is the most widely used EEG software environment for analysis of 
-human electrophsyiological (and related) data.
+human electrophysiological (and related) data.
 EEGLAB combines graphical and command-line user interfaces,
 making it friendly for both beginners who may who prefer a visual,
 and automated way of analyzing data as well as experts,
@@ -316,7 +316,7 @@ Read a description of the dataset and of its included event codes by selecting:
 
 > **Edit --> About this dataset**:
 
-<img src="_static/images/I15about_this_dataset.png" alt="I15about_this_dataset" align="center" style="zoom:100%;" />
+<img src="_static/images/I15about_this_dataset.png" alt="I15about_this_dataset" style="zoom:100%;" />
 
 The description gives a general idea of the codes found in the event structure.
 Yet, inquisitive researchers interested in the nature of the stimuli

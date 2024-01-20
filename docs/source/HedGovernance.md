@@ -212,7 +212,7 @@ organization site as indicated in the following table.
 | Python codebase | [hed-python](https://github.com/hed-standard/hed-python/issues)               | Bug reports and feature requests.                                                                   |  
 | JavaScript codebase | [hed-javascript](https://github.com/hed-standard/hed-javascript/issues)       | Bug reports and feature requests.                                                                   | 
 
-HED also has a HED discussion group. (Subscribe by emailing:
+HED also has a HED discussion group. Subscribe by emailing:
 [**hed-discussion+subscribe@googlegroups.com**](mailto:hed-discussion+subscribe@googlegroups.com).
 
 If you do not feel comfortable

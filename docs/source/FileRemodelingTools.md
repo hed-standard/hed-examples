@@ -333,9 +333,9 @@ Users are free to use either form.
 > The name(s) of the tasks to be included (for BIDS-formatted files only).
 > When a dataset includes multiple tasks, the event files are often structured 
 > differently for each task and thus require different transformation files.
-> This option allows the backups and operations to be restricted to a individual tasks.
+> This option allows the backups and operations to be restricted to an individual task.
   
-> If this option is omitted, all tasks are used. This means that all `events.tsv` files are
+> If you omit this option, all tasks are used. This means that all `events.tsv` files are
 > restored from a backup if the backup is used, the operations are performed on all `events.tsv` files, and summaries are combined over all tasks.
   
 > If a list of specific task names follows this option, only datafiles corresponding to 

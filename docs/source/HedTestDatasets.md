@@ -6,7 +6,7 @@ a set of HED-annotated datasets in
 These datasets can be useful for:
 
 1. Writing lightweight software tests.
-1. Serving as examples of how to incorporate HED into BIDS-structured data.
+2. Serving as examples of how to incorporate HED into BIDS-structured data.
 
 The datasets have **empty raw data files**.
 However, some data headers containing the metadata are still intact.

@@ -144,7 +144,7 @@ You should only change the values in the **description** and the **HED** columns
 To use this notebook, you will need to provide the path to the JSON sidecar and a path to
 save the spreadsheet if you want to save it.
 If you don't wish to save the spreadsheet, assign `spreadsheet_filename` to be `None`
-and the result is just printed..
+and the result is just printed.
 
 
 (summarize-events-anchor)=
@@ -315,11 +315,11 @@ as the file key.
 
 For a file name `sub-001_ses-3_task-target_run-01_events.tsv`,
 the tuple ('sub', 'task') gives a key of `sub-001_task-target`,
-while the tuple ('sub', 'ses', 'run) gives a key of `sub-001_ses-3_run-01`.
+while the tuple ('sub', 'ses', 'run') gives a key of `sub-001_ses-3_run-01`.
 The use of dictionaries of file names with such keys makes it
 easier to associate related files in the BIDS naming structure.
 
-Notice that specifying entities ('sub', 'ses', 'run) gives the
+Notice that specifying entities ('sub', 'ses', 'run') gives the
 key `sub-001_ses-3_run-01` for all three files:
 `sub-001_ses-3_task-target_run-01_events.tsv`, `sub-001_ses-3_task-target_run-01_eeg.set`
 and `sub-001_ses-3_task-target_run-01_eeg.edf`.
