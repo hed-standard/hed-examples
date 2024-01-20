@@ -21,7 +21,7 @@ of factor vectors and experimental design if you are unfamiliar with these topic
 * [**HED annotations for conditions**](hed-annotations-for-conditions-anchor)
   * [**Direct condition variables**](direct-condition-variables-anchor)
   * [**Defined condition variables**](defined-condition-variables-anchor)
-  * [**Direct vs defined approaches**](direct-vs-defined-approaches-anchor))
+  * [**Direct vs defined approaches**](direct-vs-defined-approaches-anchor)
   * [**Column vs row annotations**](column-vs-row-annotations-anchor)
 * [**Experimental design concepts**](experimental-design-concepts-anchor)
   * [**Design matrices and factor variables**](design-matrices-and-factor-variables-anchor) 
@@ -93,7 +93,7 @@ corresponding HED annotation into a single string representing the annotation fo
 Annotations without #'s are used directly, while annotations with # have the corresponding
 column values substituted when the annotation is assembled. 
 
-Example 3 shows the Hed annotation for the first row in the `events.tsv` file of Example 1.
+Example 3 shows the HED annotation for the first row in the `events.tsv` file of Example 1.
 
 ````{admonition} Example 3: HED annotation for first event in Example 1 using JSON sidecar of Example 2.
 :class: tip
@@ -106,7 +106,7 @@ Example 3 shows the Hed annotation for the first row in the `events.tsv` file of
 Notice that *Building/House* is a partial path rather than a single tag.
 This is because *House* is currently not part of the base HED vocabulary.
 However, users are allowed to extend tags at most nodes in the HED schema,
-but they must use a path that includes a least one ancestor in the HED schema.
+but they must use a path that includes at least one ancestor in the HED schema.
 
 HED tools have the capability of automatically detecting *Condition-variable*
 tags in annotated HED datasets to create factor vectors and summaries automatically.
@@ -526,8 +526,8 @@ so any of the three possible encodings: categorical, ordinal, or one-hot can be 
 
 Traditional neuroimaging experiments are carefully designed to control and
 document the external conditions under which the experiment is conducted.
-Often a few items such as the task or the properties of a stimulus are
-systematically varied as the stimulus is presented and participant responses
+Often an experiment varies a few items such as the task or the properties of a stimulus 
+as the stimulus is presented and participant responses
 are recorded. 
 
 For example, in an experiment to test for differences in 
