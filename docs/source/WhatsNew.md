@@ -1,6 +1,9 @@
 (whats-new-anchor)=
 # What's new?
 
+**Jan 22, 2024 HED Wikipedia Page published:**       
+>  [**HED Wikipedia**](https://en.wikipedia.org/wiki/Hierarchical_Event_Descriptors)
+
 **Nov. 14, 2023 Dora Hermes elected to BIDS steering committee:**      
 >  HED working group member Dora Hermes from Mayo has been elected to the BIDS steering committee for a two-year term.
 >  **Congratulations** Dora!  

@@ -73,8 +73,10 @@ The following is a summary of the HED-related websites:
   - Site
 * - HED project homepage
   - [https://www.hedtags.org](https://www.hedtags.org)
-* - HED resources
+* - HED resources (docs)
   - [https://www.hed-resources.org](https://www.hed-resources.org)
+* - HED Wikipedia Page
+  - [https://https://en.wikipedia.org/wiki/Hierarchical_Event_Descriptors](https://en.wikipedia.org/wiki/Hierarchical_Event_Descriptors)
 * - HED specification
   - [https://hed-specification.readthedocs.io/en/latest/index.html](https://hed-specification.readthedocs.io/en/latest/index.html)
 * - CTAGGER executable jar
