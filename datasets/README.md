@@ -20,19 +20,20 @@ For example, eeg_ds003645s identifies a reduced dataset derived the EEG data
 in OpenNeuro dataset ds003645.
 The suffix modifier indicates what this dataset is designed to test.
 
-| Dataset                           | Description |
-|-----------------------------------|---------------|
-| eeg_ds002893s_hed_attention_shift | Auditory-visual attention shift data.<br>Illustrates remapping of multiple event columns. |
-| eeg_ds003645s_hed                 | Face Perception data using short form tags and definitions.   |
-| eeg_ds003645s_hed_demo            | Face Perception data demonstrating full usage of HED in tsv.  |
-| eeg_ds003645s_hed_library         | Face Perception data using HED libraries.                                |
-| eeg_ds003645s_hed_partnered       | Face Perception data using HED partnered libraries.                      |
-| eeg_ds003645s_hed_remodel | Face Perception data in remodeling. |
-| eeg_ds004105s_hed                 | BCIT Driving with auditory cueing data.<br>Part of a test data corpus for BIDS-MEGA testing. |
-| eeg_ds004106s_hed                 | BCIT Advanced guard duty data.<br> Part of a test data corpus for BIDS-MEGA testing. |
+| Dataset                           | Description                                                                                                   |
+|-----------------------------------|---------------------------------------------------------------------------------------------------------------|
+| eeg_ds002893s_hed_attention_shift | Auditory-visual attention shift data.<br>Illustrates remapping of multiple event columns.                     |
+| eeg_ds003645s_hed                 | Face Perception data using short form tags and definitions.                                                   |
+| eeg_ds003645s_hed_column          | Face Perception data to test annotations in HED column.                                                       |
+| eeg_ds003645s_hed_demo            | Face Perception data demonstrating full usage of HED in tsv.                                                  |
+| eeg_ds003645s_hed_library         | Face Perception data using HED libraries.                                                                     |
+| eeg_ds003645s_hed_partnered       | Face Perception data using HED partnered libraries.                                                           |
+| eeg_ds003645s_hed_remodel         | Face Perception data in remodeling.                                                                           |
+| eeg_ds004105s_hed                 | BCIT Driving with auditory cueing data.<br>Part of a test data corpus for BIDS-MEGA testing.                  |
+| eeg_ds004106s_hed                 | BCIT Advanced guard duty data.<br> Part of a test data corpus for BIDS-MEGA testing.                          |
 | eeg_ds004117s_hed_sternberg       | Sternberg working memory task.<br>Chosen as a replication study for [**EEGManyLabs**](https://osf.io/yb3pq/). |
-| frmi_ds002790s_hed_aomic | AOMIC data example |
-| fmri_soccer21_hed                 | HED tags using a single column.<br>Used for fMRI processing examples.    |
+| frmi_ds002790s_hed_aomic          | AOMIC data example                                                                                            |
+| fmri_soccer21_hed                 | HED tags using a single column.<br>Used for fMRI processing examples.                                         |
 
 
 ### Validating examples using the BIDS validator

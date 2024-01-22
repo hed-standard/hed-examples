@@ -30,7 +30,7 @@ but rather on how data should be recorded and transformed to maximize its downst
 **Here are some topics of interest to experimenters:**
 
 * [**Planning and running an experiment**](planning-and-running-an-experiment-anchor)
-* [**Post processing the data**](post-processing-the-data-anchor)
+* [**Post-processing the data**](post-processing-the-data-anchor)
 
 The *Actionable event annotation and analysis in fMRI: A practical guide to event handling* preprint,
 which can be found at [**https://osf.io/93km8/**](https://osf.io/93km8/),
@@ -135,7 +135,7 @@ to quickly get an overview of its contents.
 ### Post-processing the event data
 
 The information that first comes off the experimental logs is usually not directly usable for
-sharing and analysis. A number of HED [**File remodeling tools**](./FileRemodelingTools.md) tools
+sharing and analysis. A number of HED [**File remodeling tools**](./FileRemodelingTools.md)
 might be helpful for restructuring your first pass at the event files.
 
 The [**remap columns**](./FileRemodelingTools.md#remap-columns) transformation is 
@@ -336,8 +336,8 @@ and *Duration* together with the *Definition* tag. See [**Temporal scope**](http
 design, as well as other information such as task, and the experiment's temporal organization.
 See [**HED conditions and design matrices**](https://www.hed-resources.org/en/latest/HedConditionsAndDesignMatrices.html).
 
-The [**Advanced annotation**](https://hed-specification.readthedocs.io/en/latest/05_Advanced_annotation.html)) chapter of the HED specification
-explains the rules for using these more advanced concepts.
+The [**Advanced annotation**](https://hed-specification.readthedocs.io/en/latest/05_Advanced_annotation.html)
+chapter of the HED specification explains the rules for using these more advanced concepts.
 
 (checking-correctness-anchor)=
 ### Checking correctness

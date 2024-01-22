@@ -1,0 +1,20 @@
+{% extends "!layout.html" %}
+
+  {% block menu %}
+    {{ super() }}
+    <p class="caption" role="heading">
+      <span class="caption-text">Other HED resources:</span>
+    </p>
+    <ul>
+      <li class="toctree-li">
+        <a href="https://hedtags.org">Project homepage</a></li>
+      <li class="toctree-li">
+        <a href="https://www.youtube.com/channel/UCYu8B1eFb-gRemamXod-exQ">HED YouTube channel</a></li>
+      <li class="toctree-li">
+        <a href="https://hed-specification.readthedocs.io/en/latest/index.html">Specification</a></li>
+      <li class="toctree-li"><a href="https://hedtools.ucsd.edu/hed">Online tools</a></li>
+      <li class="toctree-li"><a href="https://hed-python.readthedocs.io/en/latest/">HEDTools API</a></li>
+      <li class="toctree-li"><a href="https://hed-web.readthedocs.io/en/latest/">Web deployment</a></li>
+      <li class="toctree-li"><a href="https://github.com/hed-standard/hed-examples/blob/master/CODE_OF_CONDUCT.md">Code of conduct</a></li>
+    </ul>
+  {% endblock %}

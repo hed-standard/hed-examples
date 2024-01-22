@@ -6,7 +6,7 @@ a set of HED-annotated datasets in
 These datasets can be useful for:
 
 1. Writing lightweight software tests.
-1. Serving as examples of how to incorporate HED into BIDS-structured data.
+2. Serving as examples of how to incorporate HED into BIDS-structured data.
 
 The datasets have **empty raw data files**.
 However, some data headers containing the metadata are still intact.
@@ -147,4 +147,4 @@ The `--config.ignore=99` flag tells the bids-validator to ignore empty data file
 rather than to report the empty file error.
 
 For additional information on BIDS validation,
-see the [bids-examples](https://github.com/bids-standard/bids-examples#readme).
+see the [bids-examples](https://github.com/bids-standard/bids-examples#readme.md).

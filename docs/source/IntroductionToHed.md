@@ -97,7 +97,7 @@ Current systems in neuroimaging experiments do not record events beyond simple n
 or text (Event type Target) labels whose more complete and precise meanings are known
 only to the experimenter(s). 
 
-A central goal of HED is to enable building of archives of brain imaging data in a
+A central goal of HED is to enable building of archives of brain imaging data in an
 amenable to large scale analysis, both within and across studies.
 Such event-related analysis requires that the nature(s) of the recorded events
 be specified in a common language.

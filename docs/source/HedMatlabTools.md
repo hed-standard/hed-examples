@@ -7,14 +7,14 @@ There are currently three types of support available for HED (Hierarchical Event
 * [**Python HEDTools in MATLAB**](python-hedtools-in-matlab-anchor) - explains how to call the HED python tools from within MATLAB.
 
 HED services allow MATLAB programs to request the same services that are available 
-through the browser at [https://hedtools.ucsd.edu/hed](https://hedtools.ucsd.edu/hed).
+through the browser at [https://hedtools.edu/hed](https://hedtools.edu/hed).
 
 (hed-services-matlab-anchor)=
 ## HED services in MATLAB
 
 HED RESTful services allow programs to make requests directly to the
 HED online tools available at
-[https://hedtools.ucsd.edu/hed](https://hedtools.ucsd.edu/hed) or
+[https://hedtools.edu/hed](https://hedtools.edu/hed) or
 in a locally-deployed docker module.
 See [**HED-web**](https://hed-web.readthedocs.io/en/latest/index.html)
 for additional information on the deployment.
@@ -50,8 +50,8 @@ Calling HED services from MATLAB requires the following steps:
    1. Establish a session by requesting a CSRF token and a cookie.
    2. Construct a header array using the token and the cookie.
 2. **Create a request structure**.
-5. **Make a request** using the MATLAB `webwrite`.
-6. **Decode the response** returned from `webwrite`.
+3. **Make a request** using the MATLAB `webwrite`.
+4. **Decode the response** returned from `webwrite`.
 
 Usually, you will do the first step (the session setup) once at the beginning of your script
 to construct a fixed session header that can be used in subsequent requests in your script.
@@ -267,7 +267,7 @@ If the sidecar had no errors, `results.data` will be an empty string.
 (eeglab-integration-anchor)=
 ## EEGLAB plug-in integration
 EEGLAB is the most widely used EEG software environment for analysis of 
-human electrophsyiological (and related) data.
+human electrophysiological (and related) data.
 EEGLAB combines graphical and command-line user interfaces,
 making it friendly for both beginners who may who prefer a visual,
 and automated way of analyzing data as well as experts,
@@ -297,8 +297,7 @@ then click into the *Install/Update* button to install the plug-in.
 #### Method 2: Download and unzip
 
 Download the zip file with the content of the plug-in *HEDTools* either from
-[**HED Matlab EEGLAB plugins**](https://github.com/hed-standard/hed-matlab/blob/master/EEGLABPlugin)
-or from the EEGLAB [**plug-ins summary page**](https://sccn.ucsd.edu/eeglab/plugin_uploader/plugin_list_all.php). 
+the EEGLAB [**plug-ins summary page**](https://sccn.ucsd.edu/eeglab/plugin_uploader/plugin_list_all.php). 
 
 Unzip file into the folder *../eeglab/plugins* and restart the *eeglab* function in a MATLAB session.
 
@@ -317,7 +316,7 @@ Read a description of the dataset and of its included event codes by selecting:
 
 > **Edit --> About this dataset**:
 
-<img src="_static/images/I15about_this_dataset.png" alt="I15about_this_dataset" align="center" style="zoom:100%;" />
+<img src="_static/images/I15about_this_dataset.png" alt="I15about_this_dataset" style="zoom:100%;" />
 
 The description gives a general idea of the codes found in the event structure.
 Yet, inquisitive researchers interested in the nature of the stimuli
@@ -779,7 +778,7 @@ See [**File remodeling quickstart**](FileRemodelingQuickstart.md)
 and [**File remodeling tools**](FileRemodelingTools.md) for
 additional information.
 The wrapper functions are available on GitHub in
-the [**hedtools_wrappers**](https://github.com/hed-standard/hed-examples/tree/develop/hedcode/matlab_scripts/hedtools_wrappers) directory.
+the [**hedtools_wrappers**](https://github.com/hed-standard/hed-examples/tree/develop/src/matlab_scripts/hedtools_wrappers) directory.
 
 
 ### MATLAB functions for Python

@@ -31,7 +31,7 @@ Although the HED web tools base the template on the information extracted from a
 `events.tsv` file, this will be sufficient to produce a good template for most datasets.
 
 For datasets with widely-varying event files, you should use the 
-[validate_bids_dataset.ipynb](https://github.com/hed-standard/hed-examples/blob/develop/hedcode/jupyter_notebooks/bids/validate_bids_dataset.ipynb)
+[validate_bids_dataset.ipynb](https://github.com/hed-standard/hed-examples/blob/develop/src/jupyter_notebooks/bids/validate_bids_dataset.ipynb)
 Jupyter notebook version rather than the online tools.
 The Jupyter notebook consolidates information from all of the `events.tsv` files in the dataset
 to produce a comprehensive JSON sidecar template.
