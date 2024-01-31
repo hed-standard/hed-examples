@@ -70,7 +70,7 @@ All columns not designated as skip columns or value columns are considered to be
 (find-event-combinations-anchor)=
 ### Find event combinations
 
-The [**find_event_combinations.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids/find_event_combinations.ipynb)
+The [**find_event_combinations.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/src/jupyter_notebooks/bids/find_event_combinations.ipynb)
 Jupyter notebook extracts a spreadsheet containing the unique combination of values in the
 specified `key_columns`.
 The setup requires the following variables for your dataset:
@@ -154,7 +154,7 @@ Sometimes event files include unexpected or incorrect codes.
 It is a good idea to find out what is actually in the dataset
 event files and whether the information is consistent before starting the annotation process.
 
-The [**summarize_events.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids/summarize_events.ipynb) finds the dataset event files and outputs
+The [**summarize_events.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/src/jupyter_notebooks/bids/summarize_events.ipynb) finds the dataset event files and outputs
 the column names and number of events for each event file.
 You can visually inspect the output to make sure that the event file column names
 are consistent across the dataset.
@@ -215,7 +215,7 @@ It does not do a full BIDS validation.
 ### Validate BIDS dataset with libraries
 
 
-The [**validate_bids_dataset_with_libraries.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids/validate_bids_dataset_with_libraries.ipynb)
+The [**validate_bids_dataset_with_libraries.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/src/jupyter_notebooks/bids/validate_bids_dataset_with_libraries.ipynb)
 Jupyter notebook validates HED in a BIDS dataset using the `validate` method of `BidsDataset`.
 The example uses three schemas and also illustrates how to manually override the
 schema specified in `dataset_description.json` with schemas from other places.
@@ -224,7 +224,7 @@ This is very useful for testing new schemas that are underdevelopment.
 (validate-bids-datasets-anchor)=
 ### Validate BIDS datasets
 
-The [**validate_bids_datasets.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids/validate_bids_datasets.ipynb) is similar to the other validation notebooks, but it takes a list of datasets to validate as a convenience.
+The [**validate_bids_datasets.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/src/jupyter_notebooks/bids/validate_bids_datasets.ipynb) is similar to the other validation notebooks, but it takes a list of datasets to validate as a convenience.
 
 
 (jupyter-curation-notebooks-anchor)=
