@@ -309,7 +309,7 @@ because *remove_parent_event* is false.
 rows in the data file no longer represent trials, but individual events within the trial.)
 
 Next we specify how the new events are generated in the *new_events* dictionary. 
-Each new event has a name, which is a key in the *new_events* dictionary.
+Each type of new event has a name, which is a key in the *new_events* dictionary.
 Each key is associated with a dictionary
 specifying the values of the following parameters.
 
@@ -338,7 +338,8 @@ The AOMIC data report indicates that the stop signal lasted 500 ms.
 The copy columns indicate which columns from the parent event should be copied to the
 newly-created event.
 We would like to transfer the *response_accuracy* and the *response_hand* information to the response event. 
-*Note:* Copy columns is an optional key in the new events dictionary. If you do not want to carry over any column values from the parent event to the new events you can omit this key.
+*Note:* Copy columns is an optional key in the *new_events* dictionary.
+If you do not want to carry over any column values from the parent event to the new events you can omit this key.
 
 
 The final remodeling file can be found at:

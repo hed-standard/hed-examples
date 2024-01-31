@@ -14,38 +14,14 @@ Most of these datasets have complete versions available on
 [**openNeuro**](https://openneuro.org/).
 See [**datasets/README.md**](./datasets/README.md) for details.
 
-The [**hedcode**](https://github.com/hed-standard/hed-examples/tree/main/hedcode)
-subdirectory contains MATLAB scripts, Python Jupyter Notebooks,
-and Python scripts with direct calls to HedTools.
-The repository also contains example code in python and matlab. 
-See [**hedcode/README.md**](src/README.md) for details.
-The Python scripts and notebooks require the installation of
-`hedtools` whose [**installation**](./README.md#installation-of-hedtools)
-is described below.
+The [**src**](https://github.com/hed-standard/hed-examples/tree/main/hedcode)
+subdirectory contains Python Jupyter notebooks demonstrating calls to HedTools.
+For MATLAB support for HED see the [**hed-matlab**](https://github.com/hed-standard/hed-matlab)
+GitHub repository.
 
 The [**docs**](https://github.com/hed-standard/hed-examples/tree/main/docs)
-subdirectory contains the main documentation for this and other HED resources.
-The [**HED GitHub organization repository**](https://github.com/hed-standard/)
+subdirectory contains the source documentation for this and other HED resources.
+The [**HED GitHub organization**](https://github.com/hed-standard/)
 gathers the HED supporting resources, all of which are open source.
 
 
-### Installation of hedtools
-
-The most of the Python-related resources in this repository
-require the installation of the HEDTools Python module, which can be
-installed using `pip` or directly from its GitHub repository as follows:
-
-To use `pip` to install `hedtools` from PyPI:
-
-   ```
-       pip install hedtools
-   ```
-
-To install directly from the 
-[GitHub](https://github.com/hed-standard/hed-python) repository:
-
-   ```
-       pip install git+https://github.com/hed-standard/hed-python/@master
-   ```
-
-HEDTools require python 3.7 or greater.

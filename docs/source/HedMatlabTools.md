@@ -1,70 +1,71 @@
 # HED MATLAB tools
 
-There are currently three types of support available for HED (Hierarchical Event Descriptors) supports in MATLAB:
+There are currently three types of support available for HED (Hierarchical Event Descriptors) in MATLAB:
 
-* [**HED services in MATLAB**](hed-services-matlab-anchor) - web services called from MATLAB scripts
-* [**EEGLAB plug-in integration**](eeglab-integration-anchor) - EEGLAB plugins and other HED support
-* [**Python HEDTools in MATLAB**](python-hedtools-in-matlab-anchor) - explains how to call the HED python tools from within MATLAB.
+* [**HED web services in MATLAB**](hed-web-services-in-matlab-anchor) - web services called from MATLAB scripts.
+* [**EEGLAB plug-in integration**](eeglab-integration-anchor) - EEGLAB plugins and other native MATLAB.
+* [**Python HEDTools in MATLAB**](python-hedtools-in-matlab-anchor) - calling HED python tools from within MATLAB.
 
-HED services allow MATLAB programs to request the same services that are available 
-through the browser at [https://hedtools.edu/hed](https://hedtools.edu/hed).
 
-(hed-services-matlab-anchor)=
-## HED services in MATLAB
+(hed-web-services-in-matlab-anchor)=
+## HED web services in MATLAB
 
-HED RESTful services allow programs to make requests directly to the
-HED online tools available at
-[https://hedtools.edu/hed](https://hedtools.edu/hed) or
-in a locally-deployed docker module.
-See [**HED-web**](https://hed-web.readthedocs.io/en/latest/index.html)
-for additional information on the deployment.
+HED web services allow MATLAB programs to request the same services that are available 
+through the online tools.
+These services are available through the [**https://hedtools.org/hed**](https://hedtools.org/hed) server.
+Alternatively, these services can be accessed through a locally-deployed docker module.
+See the [**hed-web**](https://hed-web.readthedocs.io/en/latest/index.html)
+GitHub repository documentation for additional information on the docker deployment.
+The MATLAB code to run demos of these services is available on the 
+[**hed-matlab**](https://github.com/hed-standard/hed-matlab/tree/main/hedmat/web_services)
+GitHub repository. 
 
-The [**runAllTests.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/runAllTests.m)
-is a main script that runs all the example code and reports whether
-the code runs successfully.
-You should start by running this script to make sure everything is working on your system,
+The following MATLAB code demos are available to show how to access HED web services.
+
+| Target | MATLAB source   | Purpose   |
+| ------ |-----------------|-----------|
+| Overall | [**runAllDemos.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/runAllDemos.m)   | Harness for running all demos.   |
+| Overall | [**demoGetServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/demoGetServices.m)   | List available services.  |
+| Events | [**demoEventServices.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/testEventServices.m)   | Validation, conversion, sidecar generation.  |
+| Events | [**demoEventSearchServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/demoEventSearchServices.m) | Search, assembly.  |
+| Schema | *in progress*   | For schema library developers.  |
+| Sidecars | [**demoSidecarServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/demoSidecarServices.m) | Validation, conversion, extraction, merging. |
+| Spreadsheets | [**demoSpreadsheetServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/demoSpreadsheetServices.m) | Validation, conversion.  |
+| Strings | [**demoStringServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/demoStringServices.m)     | Validation, conversion.  |
+
+
+The [**runAllDemos.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/runAllDemos.m)
+script runs all the demo code and reports whether
+the demos run successfully.
+Before using the HED web services from MATLAB, 
+you should run this script to make sure everything is working on your system,
 that you have Internet access, and that the HED services are available.
 
-This script also demonstrates how to call the individual test functions.
-Each test function takes a host URL as a parameter and returns a list of errors.
-The individual test scripts illustrate how to call each type of available web service.
+This script also demonstrates how to call the individual demo functions.
+Each demo function takes a host URL as a parameter and returns a list of errors.
+The demos all use demo data read by the 
+[**getDemoData**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/getDemoData.m) 
+function, which returns a MATLAB `struct` containing all needed test data.
+The individual demo scripts illustrate how to call each type of available web service.
 
-
-| Target | MATLAB source|  Purpose |
-| ------ | ------------- | ------- |
-| Overall | [**runAllTests.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/runAllTests.m) | Harness for running all tests. |
-| Overall | [**testGetServices.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/testGetServices.m) | List available services. |
-| Events | [**testEventServices.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/testEventServices.m) | Validation, conversion, sidecar generation. |
-| Events | [**testEventSearchServices.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/testEventSearchServices.m) | Search, assembly.|
-| Schema |      *in progress*          | For schema library developers. |
-| Sidecars | [**testSidecarServices.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/testSidecarServices.m) | Validation, conversion, extraction, merging. |
-| Spreadsheets | [**testSpreadsheetServices.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/testSpreadsheetServices.m) | Validation, conversion.|
-| Strings | [**testStringServices.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/testStringServices.m) | Validation, conversion. |
-
-
+(overview-of-service-requests-anchor)=
 ### Overview of service requests
 
 Calling HED services from MATLAB requires the following steps:
 
-1. **Set up a session**:
-   1. Establish a session by requesting a CSRF token and a cookie.
-   2. Construct a header array using the token and the cookie.
-2. **Create a request structure**.
-3. **Make a request** using the MATLAB `webwrite`.
-4. **Decode the response** returned from `webwrite`.
+1. [**Set up a session**](setting-up-a-session-from-matlab-anchor).
+2. [**Create a request structure**](creating-a-request-structure-anchor).
+3. [**Make a request**](making-a-service-request-anchor).
+4. [**Decode the response**](decoding-a-service-response-anchor).
 
 Usually, you will do the first step (the session setup) once at the beginning of your script
 to construct a fixed session header that can be used in subsequent requests in your script.
 
+(setting-up-a-session-from-matlab-anchor)=
 ### Setting up a session from MATLAB
 
 The goal of the session setup is to construct a header that can be used in subsequent web requests.
-The first step is to call the [**getHostOptions.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/getHostOptions.m).
-This function constructs the services URL from the host URL.
-The function also makes a service request to obtain a CSRF token and a cookie.
-The function then constructs a header and calls the MATLAB `weboptions` function
-to get an options object suitable for use with the MATLAB `webwrite` function
-use in all of our examples.
+The first step is to call the [**getHostOptions.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/getHostOptions.m).
 
 (setting)=
 `````{admonition} Establish a session.
@@ -80,19 +81,18 @@ The `host` should be set to the URL of the webserver that you are using.
 The call to `getHostOptions`, only needs to be done once at the beginning of your session.
 The `servicesURL` and the `options` can be used for all of your subsequent requests.
 
+This function constructs the services URL from the host URL.
+The function also makes a service request to obtain a CSRF token and a cookie using
+[**getSessionInfo**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/getSessionInfo.m).
+The function then constructs a header and calls the MATLAB `weboptions` function
+to get an options object suitable for use with the MATLAB `webwrite` function
+use in all of our examples.
 
 The `getHostOptions` does all the setup for using the services.
 As indicated by the code below, all communication is done in JSON.
 However, as demonstrated below, the MATLAB `webwrite` function
 takes a MATLAB `struct` as its `request` parameter and internally
 converts to the format specified in the header before making the request.
-
-The `Timeout` parameter indicates how many seconds MATLAB will wait for a response
-before returning as a failed operation.
-The `timeout` value of 120 seconds is sufficient for most situations.
-However, but this can be adjusted upward or downward to suit the user.
-The `HeaderFields` sets the parameters of HTTP request.
-
 
 (gethostoptions-source-anchor)=
 `````{admonition} Source for getHostOptions.
@@ -111,9 +111,13 @@ function [servicesUrl, options] = getHostOptions(host)
 ```
 `````
 
-In the following examples, we assume that `getHostOptions` has been called to retrieve
-`servicesUrl` and `options` for use in the session.
+The `Timeout` parameter indicates how many seconds MATLAB will wait for a response
+before returning as a failed operation.
+The `timeout` value of 120 seconds is sufficient for most situations.
+However, this can be adjusted upward or downward to suit the user.
+The `HeaderFields` sets the parameters of HTTP request.
 
+(creating-a-request-structure-anchor)=
 ### Creating a request structure
 
 The request structure is a MATLAB `struct` which must have a `service` field and can have an
@@ -121,7 +125,10 @@ arbitrary number of fields depending on which service is being requested.
 
 The simplest service is `get_services`,
 which returns a string containing information about the available services. 
-This service requires no additional parameters.
+This service requires no additional parameters. 
+In this and other examples, we assume that `getHostOptions` has been called to retrieve
+`servicesUrl` and `options` for use in the session.
+
 
 `````{admonition} Request a list of available HED web services.
 :class: tip
@@ -169,28 +176,29 @@ Another possibility is to provide a URL for the schema.
 The most-commonly used option is to use `schema_version` to indicate one of the supported
 versions available in the 
 [**hedxml**](https://github.com/hed-standard/hed-specification/tree/master/hedxml) directory of the
-[**hed-specification**](https://github.com/hed-standard/hed-specification) repository on GitHub.
+[**hed-schemas**](https://github.com/hed-standard/hed-schemas) repository on GitHub.
 
 (create-request-sidecar-validate-anchor)=
 `````{admonition} Create a request for the sidecar_validate web service.
 :class: tip
 ```matlab
-jsonText = fileread('../../../datasets/eeg_ds003645s_hed/task-FacePerception_events.json');
+jsonText = fileread('../../datasets/eeg_ds003645s_hed_demo/task-FacePerception_events.json');
 request = struct('service', 'sidecar_validate', ...
-                 'schema_version', '8.0.0', ...
+                 'schema_version', '8.2.0', ...
                  'json_string', jsonText, ...
                  'check_for_warnings', 'on');
 ```
 `````
 This example reads the JSON sidecar to be validated as a character array into the variable `jsonText`
-and makes a request for validation using HED8.0.0.xml.
+and makes a request for validation using `HED8.2.0.xml`.
 
 The request indicates that validation warnings as well as errors should be included in the response.
 If you wish to exclude warnings, use `off` instead of `on` as the `check_for_warnings` field value.
 
-The [**testSidecarServices.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/testSidecarServices.m)
+The [**demoSidecarServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/demoSidecarServices.m)
 function shows complete examples of the various HED services for JSON sidecars.
 
+(making-a-service-request-anchor)=
 ### Making a service request
 
 The HED services all use the MATLAB `webwrite` to make HED web service requests.
@@ -207,7 +215,7 @@ outputReport(response, 'Example: validate a JSON sidecar');
 ```
 `````
 
-The [**<code>outputReport.m</code>**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/outputReport.m)
+The [**<code>outputReport.m</code>**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/outputReport.m)
 MATLAB script outputs the response in readable form with a user-provided table.
 
 If the web server is down or times out during a request,
