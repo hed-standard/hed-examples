@@ -26,7 +26,7 @@ The following MATLAB code demos are available to show how to access HED web serv
 | ------ |-----------------|-----------|
 | Overall | [**runAllDemos.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/runAllDemos.m)   | Harness for running all demos.   |
 | Overall | [**demoGetServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/demoGetServices.m)   | List available services.  |
-| Events | [**demoEventServices.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/testEventServices.m)   | Validation, conversion, sidecar generation.  |
+| Events | [**demoEventServices.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/demoEventServices.m)   | Validation, conversion, sidecar generation.  |
 | Events | [**demoEventSearchServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/demoEventSearchServices.m) | Search, assembly.  |
 | Schema | *in progress*   | For schema library developers.  |
 | Sidecars | [**demoSidecarServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/demoSidecarServices.m) | Validation, conversion, extraction, merging. |
@@ -503,7 +503,7 @@ installed on your machine.
 The most difficult part of the process for users who are unfamiliar with Python is
 getting Python connected to MATLAB.
 Once that is done, many of the standard `hedtools` functions have 
-[**MATLAB wrapper functions**](https://github.com/hed-standard/hed-examples/tree/main/hedcode/matlab_scripts/hedtools_wrappers),
+[**MATLAB HED tool wrapper functions**](https://github.com/hed-standard/hed-matlab/tree/main/hedmat/hedtools_wrappers),
 which take MATLAB variables as arguments and return MATLAB variables.
 Thus, once the setup is done, you don't have to learn any additional Python syntax to use the tools.
 You should only have to do this setup once, since MATLAB retains the setup information
@@ -713,7 +713,7 @@ Wrapper functions are provided to some of the more commonly used
 functions in the HEDTools suite.
 
 The following example shows the MATLAB wrapper function
-[**validateHedInBids.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/hedtools_wrappers/validateHedInBids.m),
+[**validateHedInBids.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/hedtools_wrappers/validateHedInBids.m),
 which contains the underlying calls to HEDTools Python BIDs validation.
 
 

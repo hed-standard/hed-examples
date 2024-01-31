@@ -488,7 +488,7 @@ Now you can try out the *split_rows* on the full dataset!
 ### Jupyter notebooks for remodeling
 
 Three Jupyter remodeling notebooks are available at 
-[**Jupyter notebooks for remodeling**](https://github.com/hed-standard/hed-examples/tree/main/hedcode/jupyter_notebooks/remodeling).
+[**Jupyter notebooks for remodeling**](https://github.com/hed-standard/hed-examples/tree/main/src/jupyter_notebooks/remodeling).
 
 These notebooks are wrappers that create the backup as well as run restructuring operations on data files.
 If you do not have access to a Jupyter notebook facility, the article

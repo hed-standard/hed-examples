@@ -214,7 +214,7 @@ directly using PIP.
 
 #### Jupyter notebooks for validation
 
-Several [**Jupyter notebooks**](https://github.com/hed-standard/hed-examples/tree/main/hedcode/jupyter_notebooks) are available 
+Several [**Jupyter notebooks**](https://github.com/hed-standard/hed-examples/tree/main/src/jupyter_notebooks) are available 
 as wrappers for calling various Python HED tools. 
 
 For example, the [**validate_bids_datasets.ipynb**](https://github.com/hed-standard/hed-examples/blob/develop/src/jupyter_notebooks/bids/validate_bids_datasets.ipynb) notebook shown in the following example validates an entire BIDS dataset 
