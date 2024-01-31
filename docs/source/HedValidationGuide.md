@@ -173,10 +173,10 @@ HED validation in MATLAB is currently done by accessing the HED online tools as 
 #### Direct access to services
 Users can access these services directly by calling using the HED MATLAB web services 
 functions as explained in 
-[**HED services in MATLAB**](./HedMatlabTools.md#hed-services-in-matlab).
-Download the [**web_services**](https://github.com/hed-standard/hed-examples/tree/main/hedcode/matlab_scripts/web_services)
+[**HED web services in MATLAB**](./HedMatlabTools.md#hed-web-services-in-matlab).
+Download the [**web_services**](https://github.com/hed-standard/hed-matlab/tree/main/hedmat/web_services)
 directory from GitHub and include this directory in your MATLAB path.
-The [**runAllTests.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/runAllTests.m)
+The [**runAllDemos.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/runAllDemos.m)
 script calls all the services on test data.
 
 #### Access through EEGLAB

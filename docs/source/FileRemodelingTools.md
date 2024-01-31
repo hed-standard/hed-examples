@@ -661,15 +661,20 @@ Except for the validation summary, the underlying remodeling code raises excepti
 ### Errors in the remodel file
 
 Each operation requires specific parameters to execute properly. 
-The necessary parameters for every operation are defined using [json schema](https://json-schema.org/). 
-When passing a remodeler file to the `run_remodel` program the remodeler validator is called, 
-which compiles the json schema from individual operation
-and validates the remodeler file against the compiled json schema.
+The underlying implementation for each operation defines these parameters using a [**json schema**](https://json-schema.org/)
+as the `PARAMS` property of the operation's class definition.
+The use of the JSON schema allows the remodeler to specify and validate requirements on most of an
+operation's parameters using standardized methods.
+ 
+The remodeler [**validator**](https://raw.githubusercontent.com/hed-standard/hed-python/develop/hed/tools/remodeling/validator.py)
+compiles a JSON schema for the remodeler from individual operations and validates
+the remodel file against the compiled JSON schema. The validator should always before executing any remodel operations.
 
-If there are any errors in the remodel file,
-no operations are run, but the errors for all operations in the list are reported.
+For example, the command line [**run_remodel**](https://raw.githubusercontent.com/hed-standard/hed-python/develop/hed/tools/remodeling/cli/run_remodel.py)
+program calls the validator before executing any operations.
+If there are errors, `run_remodel` reports the errors for all operations and exits.
 This allows users to correct errors in all operations in one pass without any data modification.
-The [**HED online tools**](https://hedtools.ucsd.edu/hed) are particularly useful for debugging
+The [**HED online tools**](https://hedtools.org/hed) are particularly useful for debugging
 the syntax and other issues in the remodeling process. 
 
 (execution-time-remodel-errors-anchor)=
@@ -728,7 +733,7 @@ The parameters for each operation are listed in
 An operation may have both required and optional parameters.
 Optional parameters may be omitted if unneeded, but all parameters are specified in
 the "parameters" section of the dictionary.
-The full specification of the remodel file is also provided as a [json schema](https://json-schema.org/). 
+The full specification of the remodel file is also provided as a [**JSON schema**](https://json-schema.org/). 
 
 The remodeling JSON files should have names ending in `_rmdl.json` to more easily
 distinguish them from other JSON files.
@@ -2466,22 +2471,41 @@ Sidecar:
 (remodel-implementation-anchor)=
 ## Remodel implementation
 
-Operations are defined as classes that extent `BaseOp` regardless of whether 
+Operations are defined as classes that extend `BaseOp` regardless of whether 
 they are transformations or summaries. However, summaries must also implement
 an additional supporting class that extends `BaseSummary` to hold the summary information.
 
 In order to be executed by the remodeling functions, 
 an operation must appear in the `valid_operations` dictionary.
 
-All operations must provide have the attributes `NAME`, specifying the operation name (string), 
-`PARAMS`, a dictionary specifying the parameters of the operation as a json schema,
-a constructor that extends the base class constructor, a `do_ops` method and a `validate_input_data` method.
+Each operation class must have a `NAME` class variable, specifying the operation name (string) and a
+`PARAMS` class variable containing a dictionary of the operation's parameters represented as a json schema.
+The operation's constructor extends the `BaseOp` class constructor by calling:
+
+````{admonition} A remodel operation class must call the BaseOp constructor first.
+:class: tip
+```python
+   super().__init__(parameters)
+```
+````
+
+A remodel operation class must implement the `BaseOp` abstract methods `do_ops` and `validate_input_data`.
 
 ### The PARAMS dictionary
 
-The class-wide `PARAMS` dictionary specifies the required and optional parameters of the operation as a [json schema](https://json-schema.org/). We currently use draft-2020-12. The basic vocabulary allows specifying the type of parameters that are expected, whether a parameter is required or optional, but it is also possible to add dependencies between parameters. More information can be found in the [documentation](https://json-schema.org/learn/getting-started-step-by-step).
+The class-wide `PARAMS` dictionary specifies the required and optional parameters of the operation as a [**JSON schema**](https://json-schema.org/).
+We currently use draft-2020-12.
+The basic vocabulary allows specifying the type of parameters that are expected and
+whether a parameter is required or optional.
 
-On the highest level the type should always be specified as an object, as the parameters are always provided as a dictionary or json object. Under the properties key, the expected parameters should be listed, along with what datatype is expected for every parameter. The specification can be nested, for example, the rename columns operation requires a parameter column_mapping, which should be a json object whose keys are any valid string, and whose values are also strings. This is represented in json schema in the following way:
+It is also possible to add dependencies between parameters. More information can be found in the JSON schema 
+[**documentation**](https://json-schema.org/learn/getting-started-step-by-step).
+
+On the highest level the type should always be specified as an object, as the parameters are always provided as a dictionary or json object. 
+Under the properties key, the expected parameters should be listed, along with what datatype is expected for every parameter. 
+The specifications can be nested, for example, the `rename_columns` operation requires a parameter `column_mapping`, 
+which should be a JSON object whose keys are any valid string, and whose values are also strings. 
+This is represented in the following way:
 
 ```json
 {
@@ -2508,9 +2532,19 @@ On the highest level the type should always be specified as an object, as the pa
     }
 ```
 
-The PARAMS dictionary is read by the validator and compiled into a single json schema which represents the specification of an entire remodeler file.
+The `PARAMS` dictionaries for all available operations are read by the `validator` and compiled into a 
+single JSON schema which represents the specification for remodeler files.
+The `properties` dictionary explicitly specifies the parameters that are allowed for this operation.
+The `required` list specifies which parameters must be included when calling operation.
+Parameters that are not required may be omitted in the operation call.
+The `"additionalProperties": false` is the way that JSON schema use to
+indicate that no other parameters are allowed in the call to the operation.
 
-There is one limitation to json schema vocabulary. Although it can handle specific dependencies between keys in the data, it cannot validate the data that is provided in the json file against other data in the json file. For example, if the requirement is a list of elements whose length should be specified by another parameter, json schema does provide a vocabulary for setting this dependency. Instead, we handle these type of dependencies in the `validate_input_data` method. 
+A limitation to JSON schema representations is that although it can handle specific dependencies between keys in the data, 
+it cannot validate the data that is provided in the JSON file against other data in the JSON file. 
+For example, if the requirement is a list of elements whose length should be specified by another parameter, 
+JSON schema does not provide a vocabulary for setting this dependency.
+Instead, we handle these type of dependencies in the `validate_input_data` method. 
 
 (operation-class-constructor-anchor)=
 ### Operation class constructor
@@ -2538,14 +2572,18 @@ values to class properties. Validation takes place before the operation classes 
 
 (the-do_op-implementation-anchor)=
 ### The do_op implementation
+The remodeling script is meant to be executed by the `Dispatcher`,
+which keeps a compiled version of the remodeling script to execute on each tabular file to be remodeled.
 
 The main method that must be implemented by each operation is `do_op`, which takes
-an instance of the `Dispatcher` class as the first parameter and a Pandas `DataFrame`
-representing the event file as the second parameter.
-A third required parameter is a name used to identify the event file in error messages and summaries. 
+an instance of the `Dispatcher` class as the first parameter and a Pandas [`DataFrame`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html)
+representing the tabular file as the second parameter.
+A third required parameter is a name used to identify the tabular file in error messages and summaries. 
 This name is usually the filename or the filepath from the dataset root.
 An additional optional argument, a sidecar containing HED annotations,
 only need be included for HED operations.
+Note that the `Dispatcher` is responsible for holding the appropriate version of the HED schema if
+HED remodeling operations are included.
 
 The following example shows a sample implementation for `do_op`.
 
@@ -2571,16 +2609,17 @@ This operation is performed by the `Dispatcher` static method `post_proc_data`.
 
 ### The validate_input_data implementation
 
-This method exist to handle additional input data validation that cannot be specified in json schema. 
-It is a class method which is called by the validator. If there is no additional validation to be done, 
+This method exist to handle additional input data validation that cannot be specified in JSON schema. 
+It is a class method which is called by the `validator`. 
+If there is no additional validation to be done, 
 a minimal implementation of this method should take in a dictionary with the operation parameters and return an empty list.
-In case additional validation is required, the method should directly implement validation and return a list of user friendly 
-error messages (string) if validation fails, or an empty list if there are no errors.
+In case additional validation is required, the method should directly implement validation and return a list of user-friendly 
+error messages (strings) if validation fails, or an empty list if there are no errors.
 
-The following implementation of `validate_input_data` method, for the operation factor hed tags, checks whether 
-the parameter `query_names` is the same length as the input for parameter `queries`, since the names specified in 
-the first are meant to represent the queries provided in the latter. The check only takes place if `query_names` exist,
-since naming is handled automatically otherwise.
+The following implementation of `validate_input_data` method, for the `factor_hed_tags` operation, 
+checks whether the parameter `query_names` is the same length as the input for parameter `queries`, 
+since the names specified in the first parameter are meant to represent the queries provided in the latter. 
+The check only takes place if `query_names` exists, since naming is handled automatically otherwise.
 
 ```python
     @staticmethod
@@ -2620,8 +2659,8 @@ summary name is already in the dispatcher's `summary_dict`.
 If that summary is not yet in the `summary_dict`, 
 the operation creates a `BaseSummary` object for its summary (e.g., `ColumnNameSummary`)
 and adds this object to the dispatcher's `summary_dict`,
-otherwise the operation fetches the `BaseSummary` object from 
-It then asks its `BaseSummary` object to update the summary based on the dataframe
+otherwise the operation fetches the `BaseSummary` object from the dispatcher's `summary_dict`.
+It then asks this `BaseSummary` object to update the summary based on the `DataFrame`
 as explained in the next section.
 
 (additional-requirements-for-summarization-anchor)=
@@ -2632,7 +2671,7 @@ This class is used to hold and accumulate the information specific to the summar
 This support class must implement two methods: `update_summary` and `get_summary_details`.
 
 The `update_summary` method is called by its associated `BaseOp` operation during the `do_op`
-to update the summary information based on the current dataframe.
+to update the summary information based on the current `DataFrame`.
 The `update_summary` information takes a single parameter, which is a dictionary of information
 specific to this operation.
 
@@ -2644,7 +2683,7 @@ specific to this operation.
 ````
 
 In the example [do_op for ColumnNamesOp](implementation-of-do-op_summarize-column-names-anchor),
-the dictionary is contains keys for `name` and `column_names.
+the dictionary contains keys for `name` and `column_names.
 
 The `get_summary_details` returns a dictionary with the summary-specific information
 currently in the summary.
@@ -2662,33 +2701,62 @@ implementation
 
 ### Validator implementation
 
-The required input for the Remodeler is specified in json-schema format. See also [The PARAM dictionary](#the-params-dictionary). 
-Since every operation has its own parameter requirements, the complete json-schema is compiled from the specifications in the individual operations before validation. 
-The compiler takes the specification of the BASE_ARRAY. We then specify that each item in the BASE_ARRAY should follow the OPERATION_DICT specification.
-To get all the requirements of the individual operations we use the template parameter specification, which sets up the dependency between the operation value and parameter value. 
-We then get the PARAM dictionary from every operation and add it as the parameter specification.
-The input Remodel file is then validated directly against the compiled json-schema using [jsonschema](https://python-jsonschema.readthedocs.io/en/stable/).
+The required input for the remodeler is specified in JSON format and must follow
+the rules laid out by the JSON schema.
+The parameters in the remodeler file must conform to the properties specified
+in the corresponding JSON schema associated with each operation.
+The errors are retrieved from the validator but are not passed on directly but instead
+modified for display as user-friendly error messages. 
 
-The errors are retrieved from the jsonschema validator but are not passed on directly. Instead, we process the errors provided by json schema and modify them to user friendly error messages. 
+Validation errors are organized by stages as follows. 
 
-Validation errors can occur on different levels. The levels refer to the depth of the error in terms of nesting in the json schema. 
+#### Stage 0: top-level structure
 
-Zero is the base array/list of operations. It validates two properties, type and minItems. Each remodeler file should be an array/list with at least one item. 
+Stage 0 refers to the top-level structure of the remodel JSON file.
+As specified by the validator's `BASE_ARRAY`, 
+a JSON remodel file must be an array of operation dictionaries containing at least 1 item.
 
-The first level is the Operation dictionary. Every item in the base array should be an Operation Dictionary. It validates three properties, type, required, and additional properties. Every operation dictionary should be a dictionary/object, it should have the keys, operation, description, and parameters. It should have no other keys.
+#### Stage 1: operation dictionary format
 
-The second level concerns the values or input to the keys in the operation dictionary. It validates several properties. Some validation of individual remodeler parameters already take place on this level. 
+Stage 1 validation refers the structure of the individual operations as specified by the validator's `OPERATION_DICT`. 
+Every operation dictionary should have exactly the keys: `operation`, `description`, and `parameters`. 
 
-Type: This validates the type of input to an operation dictionary key. It should be a string for operation, a string for description, and an object/dictionary for parameters. The type of parameter values are validated on the next level.
+#### Stage 2: operation dictionary values
 
-Enum: This validates whether the string provided in the operation key is a valid operation.
+Stage 2 validates the values associated with the keys in each operation dictionary. 
+The `operation` and `description` keys should have a string values,
+while the `parameters` key should have a dictionary value.
 
-Required: This validates the keys in the parameters object. It checks if all keys required on the first level of the parameters object are there.
+Stage 2 validation also verifies that the operation value is one of the valid operations as
+enumerated in the `valid_operations` dictionary.
 
-Additional properties: This validates the keys in the parameters object. It checks if none of the provided keys are outside of the specification.
+Several checks are also applied to the `parameters` dictionary.
+The keys in the `parameters` dictionary must appear as keys in the `properties` specification in
+the operation's schema.
+Further the properties listed as `required` in the schema must appear as keys in the `parameters` dictionary.
 
-Dependent required: This validates the keys in the parameters object. Certain keys may only be required if another key is present. If this case it checks whether this dependency requirement is met.
+If additional properties are not allowed, as designated by `"additionalProperties": False` in the JSON schema,
+the validator verifies that parameters not mentioned in the schema do not appear. 
 
-All higher levels concern validation of the values given within the parameter object. They are all handled in a general way. The user is provided with the operation index, name and the 'path' of the value that is invalid. Note that while parameters always contains an object, the values in parameters can be of any type. So parameter values can be objects, whose values might also be expected to be objects, or arrays, or arrays of objects. Right now, there are appropriate messages for the following properties, which is everything that is used by the remodeler. When another property, one that is not part of the following list, is added to a operation specification, an appropriate error message needs to be added in the validator.
+If the schema for the operation has a `dependentRequired` dictionary, the validator
+verifies that the indicated keys are present only if the listed parameter values are also present.
+For example, the `factor_column_op` only allows the `factor_names` parameter if the `factor_values`
+parameter is also present. Otherwise, the operation automatically generates the factor names.
 
-When validation against json-schema passes, additional data specific validation is performed. For each operation, the validate_input_data method is called to verify input data that is outside of the scope of json schema. Also see the [validate_input_data method](#the-validate_input_data-implementation).
+#### Later validation stages
+
+Later stages in validation concern the values given within the parameter object, which can be nested to an arbitrary level
+and are handled in a general way. 
+The user is provided with the operation index, name and the 'path' of the value that is invalid. 
+Note that while parameters always contains an object, the values in parameters can be of any type. 
+Thus, parameter values can be objects whose values might also be expected to be objects, arrays, or arrays of objects. 
+The validator has appropriate messages for these properties, 
+but if a property is added with additional requirements, additional error messages may need to be added to the validator.
+
+When validation against JSON schema passes, 
+the validator performs additional data-specific validation by calling `validate_input_data` 
+for each operation to verify that input data satisfies the
+constraints that fall outside the scope of JSON schema. 
+Also see [**The validate_input_data implementation**](#the-validate_input_data-implementation) and
+[**The PARAMS dictionary**](#the-params-dictionary) sections for additional information. 
+requirements,
