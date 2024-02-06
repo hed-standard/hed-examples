@@ -1514,7 +1514,7 @@ In this case a trial consists of a sequence of multiple events.
 |  Parameter   | Type | Description | 
 | ------------ | ---- | ----------- | 
 | *anchor_column* | str | The name of the column that will be used for split_rows codes.| 
-| *new_events* | dict | Dictionary whose keys are the codes to be inserted as new events<br>in the *anchor_column* and whose values are dictionaries with<br>keys *onset_source*, *duration*, and *copy_columns*. | 
+| *new_events* | dict | Dictionary whose keys are the codes to be inserted as new events<br>in the *anchor_column* and whose values are dictionaries with<br>keys *onset_source*, *duration*, and *copy_columns (**Optional**)*. | 
 | *remove_parent_event* | bool | If true, remove parent event. | 
 
 ```
@@ -2735,17 +2735,19 @@ Stage 2 validation also verifies that the operation value is one of the valid op
 enumerated in the `valid_operations` dictionary.
 
 Several checks are also applied to the `parameters` dictionary.
-The keys in the `parameters` dictionary must appear as keys in the `properties` specification in
-the operation's schema.
-Further the properties listed as `required` in the schema must appear as keys in the `parameters` dictionary.
+The properties listed as `required` in the schema must appear as keys in the `parameters` dictionary.
 
 If additional properties are not allowed, as designated by `"additionalProperties": False` in the JSON schema,
 the validator verifies that parameters not mentioned in the schema do not appear. 
+Note this is currently true for all operations and recommended for new operations. 
 
 If the schema for the operation has a `dependentRequired` dictionary, the validator
-verifies that the indicated keys are present only if the listed parameter values are also present.
+verifies that the indicated keys are present if the listed parameter values are also present.
 For example, the `factor_column_op` only allows the `factor_names` parameter if the `factor_values`
-parameter is also present. Otherwise, the operation automatically generates the factor names.
+parameter is also present. In this case the dependency works only one way, such that `factor_values`
+can be provided without `factor_names`. If `factor_names` is provided alone the operation automatically generates the
+factor names based on the column names, however, without `factor_values` the names provided
+in `factor_names` do not correspond to anything, so this key cannot appear on its own.
 
 #### Later validation stages
 
@@ -2754,8 +2756,9 @@ and are handled in a general way.
 The user is provided with the operation index, name and the 'path' of the value that is invalid. 
 Note that while parameters always contains an object, the values in parameters can be of any type. 
 Thus, parameter values can be objects whose values might also be expected to be objects, arrays, or arrays of objects. 
-The validator has appropriate messages for these properties, 
-but if a property is added with additional requirements, additional error messages may need to be added to the validator.
+The validator has appropriate messages for many of the conditions that can be set with json schema, 
+but if an new operation parameter has a condition that has not been used yet, a new error message will need to be added to the validator.
+
 
 When validation against JSON schema passes, 
 the validator performs additional data-specific validation by calling `validate_input_data` 
@@ -2763,4 +2766,3 @@ for each operation to verify that input data satisfies the
 constraints that fall outside the scope of JSON schema. 
 Also see [**The validate_input_data implementation**](#the-validate_input_data-implementation) and
 [**The PARAMS dictionary**](#the-params-dictionary) sections for additional information. 
-requirements,
