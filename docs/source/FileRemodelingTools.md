@@ -237,7 +237,7 @@ The programs use a standard command-line argument list for specifying input as s
 | Script name | Arguments | Purpose | 
 | ----------- | -------- | ------- |
 |*run_remodel_backup* | *data_dir*<br/>*-bd -\\-backup-dir*<br/>*-bn -\\-backup-name*<br/>*-e -\\-extensions*<br/>*-f -\\-file-suffix*<br/>*-t -\\-task-names*<br/>*-v -\\-verbose*<br/>*-x -\\-exclude-dirs*| Create a backup event files. |
-|*run_remodel* | *data_dir*<br/>*model_path*<br/>*-b -\\-bids-format*<br/>*-bd -\\-backup-dir*<br/>*-bn -\\-backup-name*<br/>*-e -\\-extensions*<br/>*-f -\\-file-suffix*<br/>*-i -\\-individual-summaries*<br/>*-j -\\-json-sidecar*<br/>*-nb -\\-no-backup*<br/>*-ns -\\-no-summaries*<br/>*-nu -\\-no-update*<br/>*-r -\\-hed-version*<br/>*-s -\\-save-formats*<br/>*-t -\\-task-names*<br/>*-v -\\-verbose*<br/>*-w -\\-work-dir*<br/>*-x -\\-exclude-dirs* | Restructure or summarize the event files. |
+|*run_remodel* | *data_dir*<br/>*model_path*<br/>*-b -\\-bids-format*<br/>*-bd -\\-backup-dir*<br/>*-bn -\\-backup-name*<br/>*-e -\\-extensions*<br/>*-f -\\-file-suffix*<br/>*-i -\\-individual-summaries*<br/>*-j -\\-json-sidecar*<br/>*-ld -\\-log-dir*<br/>*-nb -\\-no-backup*<br/>*-ns -\\-no-summaries*<br/>*-nu -\\-no-update*<br/>*-r -\\-hed-version*<br/>*-s -\\-save-formats*<br/>*-t -\\-task-names*<br/>*-v -\\-verbose*<br/>*-w -\\-work-dir*<br/>*-x -\\-exclude-dirs* | Restructure or summarize the event files. |
 |*run_remodel_restore* | *data_dir*<br/>*-bd -\\-backup-dir*<br/>*-bn -\\-backup-name*<br/>*-t -\\-task-names*<br/>*-v -\\-verbose*<br/> | Restore a backup of event files. |
 
 ````
@@ -305,6 +305,13 @@ Users are free to use either form.
 > This option is followed by the full path of the JSON sidecar with HED annotations to be
 > applied during the processing of HED-related remodeling operations.
 
+`-ld`, `--log-dir`
+> This option is followed by the full path of a directory for writing log files.
+> A log file is written if the remodeling tools raise an exception and the program terminates.
+> Note that a log file is not written for issues gathered during operations such as `summarize_hed_valistion`
+> because reporting HED validation errors is a normal part of this operation.
+> On the other hand, errors in the JSON remodeling file do raise and exception and are reported in the log.
+
 `-nb`, `--no-backup`
 > If present, no backup is used. Rather operations are performed directly on the files.
 
@@ -333,7 +340,7 @@ Users are free to use either form.
 > The name(s) of the tasks to be included (for BIDS-formatted files only).
 > When a dataset includes multiple tasks, the event files are often structured 
 > differently for each task and thus require different transformation files.
-> This option allows the backups and operations to be restricted to a individual tasks.
+> This option allows the backups and operations to be restricted to an individual task.
   
 > If this option is omitted, all tasks are used. This means that all `events.tsv` files are
 > restored from a backup if the backup is used, the operations are performed on all `events.tsv` files, and summaries are combined over all tasks.
@@ -1067,7 +1074,7 @@ This method allows for small gaps between events and for events in which an
 intermediate event in the group ends after later events.
 If the *set_duration* parameter is false, the duration of the merged row is set to `n/a`.
 
-If the data file has other columns besides `onset`, `duration` and column *column_name*, 
+If the data file has other columns besides `onset`, `duration` and *column_name*, 
 the values in the other columns must be considered during the merging process.
 The *match_columns* is a list of the other columns whose values must agree with those
 of the anchor row in order for a merge to occur.  If *match_columns* is empty, the
@@ -1216,7 +1223,7 @@ based on the unique values in the combination of columns *response_accuracy* and
 ````
 In this example there are two source columns and one destination column,
 so each entry in *map_list* must be a list with three elements 
-two source values and one destination value).
+two source values and one destination value.
 Since all the values in *map_list* are strings,
 the optional *integer_sources* list is not needed. 
 
@@ -2035,8 +2042,9 @@ The *summarize_hed_tags* operation has the two required parameters
 | *tags* | dict | Dictionary with category title keys and tags in that category as values. |  
 | *append_timecode* | bool | (**Optional**: Default false) If true, append a time code to filename. |  
 | *include_context* | bool | (**Optional**: Default true) If true, expand the event context to <br/>account for onsets and offsets. |  
+| *remove_types* | list | (**Optional**) A list of types such as <br/>`Condition-variable` and `Task` to remove. |  
 | *replace_defs* | bool | (**Optional**: Default true) If true, the `Def` tags are replaced with the<br/>contents of the definition (no `Def` or `Def-expand`). |
-| *remove_types* | list | (**Optional**) A list of types such as `Condition-variable` and `Task` to remove. |
+| *word_cloud* | dict | (**Optional**) If present, the operation produces a <br/>word cloud image in addition to the summaries. |
 ```
 
 The *tags* dictionary has keys that specify how the user wishes the tags 
@@ -2052,6 +2060,28 @@ to the event context in events intermediate between onsets and offsets.
 If the optional parameter *replace_defs* is true, the tag counts include
 tags contributed by contents of the definitions.
 
+If *word_cloud* parameter is provided but its value is empty, the default word cloud settings are used.
+The following table lists the optional parameters used to control the appearance of the word cloud image.
+
+```{admonition} Optional keys in the word cloud dictionary value.
+:class: tip
+
+|  Parameter   | Type | Description |  
+| ------------ | ---- | ----------- |  
+| *background_color* | str | The matplotlib name of the background color (default "black").|  
+| *contour_color* | str | The matplotlib name of the contour color if mask provided. |
+| *contour_width* | float | Width of contour if mask provided (default 3). |  
+| *font_path* | str | The path of the system font to use if *set_font* is true. |  
+| *height* | int | Height in pixels of the image (default 300).|  
+| *mask_path* | str | The path of the mask image to use if *use_mask* is true<br/> and an image other than the brain is needed. |  
+| *max_font_size* | float | The maximum font size to use in the image (default 15). |  
+| *min_font_size* | float | The minimum font size to use in the image (default 8).|  
+| *prefer_horizontal* | float | Fraction of horizontal words in image (default 0.75). |  
+| *scale_adjustment* | float | Constant to add to log10 count transformation (default 7). |  
+| *set_font* | bool | If true, the system font given by *font_path* is used. |  
+| *use_mask* | dict | If true, a mask image is used to provide a contour around the words. |  
+| *width* | int | Width in pixels of image (default 400). |
+```
 
 (summarize-hed-tags-example-anchor)=
 #### Summarize HED tags example

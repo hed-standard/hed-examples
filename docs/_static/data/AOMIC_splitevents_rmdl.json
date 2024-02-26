@@ -12,8 +12,7 @@
                 },
                 "stop_signal": {
                     "onset_source": ["stop_signal_delay"],
-                    "duration": [0.5],
-                    "copy_columns": []
+                    "duration": [0.5]
                 }
             },
             "remove_parent_row": false
