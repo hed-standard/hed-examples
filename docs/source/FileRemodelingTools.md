@@ -2071,14 +2071,13 @@ The following table lists the optional parameters used to control the appearance
 | *background_color* | str | The matplotlib name of the background color (default "black").|  
 | *contour_color* | str | The matplotlib name of the contour color if mask provided. |
 | *contour_width* | float | Width of contour if mask provided (default 3). |  
-| *font_path* | str | The path of the system font to use if *set_font* is true. |  
+| *font_path* | str | The path of the system font to use in place of the default font. |  
 | *height* | int | Height in pixels of the image (default 300).|  
 | *mask_path* | str | The path of the mask image to use if *use_mask* is true<br/> and an image other than the brain is needed. |  
 | *max_font_size* | float | The maximum font size to use in the image (default 15). |  
 | *min_font_size* | float | The minimum font size to use in the image (default 8).|  
 | *prefer_horizontal* | float | Fraction of horizontal words in image (default 0.75). |  
-| *scale_adjustment* | float | Constant to add to log10 count transformation (default 7). |  
-| *set_font* | bool | If true, the system font given by *font_path* is used. |  
+| *scale_adjustment* | float | Constant to add to log10 count transformation (default 7). |   
 | *use_mask* | dict | If true, a mask image is used to provide a contour around the words. |  
 | *width* | int | Width in pixels of image (default 400). |
 ```
