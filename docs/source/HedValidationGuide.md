@@ -171,9 +171,9 @@ Use the [**HED online development server**](https://hedtools.ucsd.edu/hed_dev) t
 HED validation in MATLAB is currently done by accessing the HED online tools as web services.
 
 #### Direct access to services
-Users can access these services directly by calling using the HED MATLAB web services 
+Users can access these services directly by calling wrapper functions or by using the HED MATLAB web services 
 functions as explained in 
-[**HED web services in MATLAB**](./HedMatlabTools.md#hed-web-services-in-matlab).
+[**HED MATLAB tools**](./HedMatlabTools.md#hed-matlab-tools-anchor).
 Download the [**web_services**](https://github.com/hed-standard/hed-matlab/tree/main/hedmat/web_services)
 directory from GitHub and include this directory in your MATLAB path.
 The [**runAllDemos.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/runAllDemos.m)
