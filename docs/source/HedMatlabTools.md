@@ -1,70 +1,407 @@
 # HED MATLAB tools
 
-There are currently three types of support available for HED (Hierarchical Event Descriptors) supports in MATLAB:
+There are currently three types of support available for HED (Hierarchical Event Descriptors) in MATLAB:
+* [**Python HEDTools in MATLAB**](python-hedtools-in-matlab-anchor) - calling HED python tools from within MATLAB.
+* [**HED web services in MATLAB**](hed-web-services-in-matlab-anchor) - web services called from MATLAB scripts.
+* [**EEGLAB plug-in integration**](eeglab-integration-anchor) - EEGLAB plugins and other native MATLAB.
 
-* [**HED services in MATLAB**](hed-services-matlab-anchor) - web services called from MATLAB scripts
-* [**EEGLAB plug-in integration**](eeglab-integration-anchor) - EEGLAB plugins and other HED support
-* [**Python HEDTools in MATLAB**](python-hedtools-in-matlab-anchor) - explains how to call the HED python tools from within MATLAB.
+Python support in MATLAB 
 
-HED services allow MATLAB programs to request the same services that are available 
-through the browser at [https://hedtools.edu/hed](https://hedtools.edu/hed).
+(python-hedtools-in-matlab-anchor)=
+## Python HEDTools in MATLAB
 
-(hed-services-matlab-anchor)=
-## HED services in MATLAB
+Although MATLAB began python support of python in 2014, you must be using
+MATLAB version 2020b or later with the HEDTools because the
+current version of the HEDTools requires Python 3.8 or later.
+With these tools you can incorporate validation, summary, search, factorization,
+and other HED processing directly into your MATLAB processing scripts without 
+reimplementing these operations in MATLAB.
 
-HED RESTful services allow programs to make requests directly to the
-HED online tools available at
-[https://hedtools.edu/hed](https://hedtools.edu/hed) or
-in a locally-deployed docker module.
-See [**HED-web**](https://hed-web.readthedocs.io/en/latest/index.html)
-for additional information on the deployment.
+**Note:** For your reference, the source for `hedtools` is the 
+[**hed-python**](https://github.com/hed-standard/hed-python) GitHub repository.
+The code is fully open-source with an MIT license.
+The actual API documentation is available [**here**](https://hed-python.readthedocs.io/en/latest/api2.html),
+but the tutorials and tool documentation for `hedtools` on 
+[**HED Resources**](https://www.hed-resources.org/en/latest/index.html) provides more
+examples of use.
 
-The [**runAllTests.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/runAllTests.m)
-is a main script that runs all the example code and reports whether
-the code runs successfully.
-You should start by running this script to make sure everything is working on your system,
+
+### Getting started
+
+The `hedtools` library requires a Python version >= 3.8. 
+In order to call functions from this library in MATLAB, 
+you must be running MATLAB version >= R2019a and have a 
+[**compatible version of Python**](https://www.mathworks.com/support/requirements/python-compatibility.html)
+installed on your machine.
+
+The most difficult part of the process for users who are unfamiliar with Python is
+getting Python connected to MATLAB.
+Once that is done, many of the standard `hedtools` functions have 
+[**MATLAB HED tool wrapper functions**](https://github.com/hed-standard/hed-matlab/tree/main/hedmat/hedtools_wrappers),
+which take MATLAB variables as arguments and return MATLAB variables.
+Thus, once the setup is done, you don't have to learn any additional Python syntax to use the tools.
+You should only have to do this setup once, since MATLAB retains the setup information
+from session to session.
+
+````{admonition} Steps for setting up Python HEDtools for MATLAB.
+
+[**Step 1: Find Python**](step-1-find-python-anchor). If yes, skip to Step 3.
+<p></p1>
+
+[**Step 2: Install Python if needed**](step-2-install-python-if-needed-anchor) .
+<p></p> 
+
+[**Step 3: Connect Python to MATLAB**](step-3-connect-python-to-matlab-anchor).
+If already connected, skip to Step 4.
+<p></p> 
+
+[**Step 4: Install HEDtools**](step-4-install-hedtools-anchor)
+````
+
+(step-1-find-python-anchor)=
+#### Step 1: Find Python
+
+Follow these steps until you find a Python executable that is version 3.7 or greater.
+If you can't locate one, you will need to install it.
+
+````{Admonition} Does MATLAB already have a good version of Python you can use?
+
+In your MATLAB command window execute the following function:
+
+```matlab
+pyenv
+```
+The following example response shows that MATLAB is using Python version 3.9
+with executable located at `C:\Program Files\Python39\pythonw.exe`.
+
+```matlab
+  PythonEnvironment with properties:
+
+          Version: "3.9"
+       Executable: "C:\Program Files\Python39\pythonw.exe"
+          Library: "C:\Program Files\Python39\python39.dll"
+             Home: "C:\Program Files\Python39"
+           Status: NotLoaded
+    ExecutionMode: InProcess
+```
+````
+
+If MATLAB has already knows about a suitable Python version that is at least 3.7,
+you are ready to go to [**Step 4: Install HEDTools**](step-4-install-hedtools-anchor).
+Keep track of the location of the Python executable.
+
+If the `pyenv` did not indicate a suitable Python version, you will need to
+find the Python on your system (if there is one), or install your own.
+
+There are several likely places to look for Python on your system.
+
+**For Linux users**:
+
+>Likely places for system-space installation are `/bin`, `/local/bin`, `/usr/bin`, `/usr/local/bin`, or `/opt/bin`. User-space installations are usually your home directory in a subdirectory such as `~/bin`
+or `~/.local/bin`. 
+
+**For Windows users**:
+> Likely places for system-space installation are `C:\`, `C:\Python`, or `C:\Program Files`.
+User-space installations default to your personal account 
+in `C:\Users\yourname\AppData\Local\Programs\Python\python39` where `yourname` is your Windows account name
+and `python39` will be the particular version (in this case Python 3.9).
+
+If you don't have any success finding a Python executable,
+you will need to install Python as described in 
+[**Step 2: Install Python if needed**](step-2-install-python-if-needed-anchor).
+
+Otherwise, you can skip to [**Step 3:Connect Python to MATLAB**](step-3-connect-python-to-matlab-anchor).
+
+```{warning}
+**You need to keep track of the path to your Python executable for Step 3.**
+```
+
+(step-2-install-python-if-needed-anchor)=
+#### Step 2: Install Python if needed
+
+If you don't have Python on your system, you will need to install it.
+Go to [**Python downloads**](https://www.python.org/downloads/) and pick the correct installer
+for your operating system and version.
+
+Depending on your OS and the installer options you selected,
+Python may be installed in your user space or in system space for all users. 
+- You should keep track of the directory that Python was installed in.
+- You may want to add the location of the Python executable to your PATH.
+  (Most installers give you that option as part of the installation.)
+
+#### Installing in a virtual environment
+
+https://www.mathworks.com/support/search.html/answers/1750425-python-virtual-environments-with-python-interface.html?fq%5B%5D=asset_type_name:answer&page=1
+(step-3-connect-python-to-matlab-anchor)=
+#### Step 3: Connect Python to Matlab
+
+
+C:\Users\username\AppData\Local\Programs\Python\python -m venv C:\Users\username\py38 
+
+Setting the Python version uses the MATLAB `pyenv` function with the `'Version'` argument
+as illustrated by the following example.
+
+````{admonition} Example MATLAB function call connect MATLAB to Python.
+
+```matlab
+>> pyenv('Version', 'C:\Program Files\Python39\python.exe')
+```
+````
+
+Be sure to substitute the path of the Python that you have found.
+Notice that the executable listed in Step 1 was `pythonw.exe`, but we have used `python.exe` here
+to indicate the command line version.
+
+Use the MATLAB `pyenv` function again without arguments to check that your installation is as expected.
+
+````{Admonition} Example response for pyenv all with no arguments after setting environment.
+
+```matlab
+ PythonEnvironment with properties:
+
+          Version: "3.9"
+       Executable: "C:\Program Files\Python39\python.exe"
+          Library: "C:\Program Files\Python39\python39.dll"
+             Home: "C:\Program Files\Python39"
+           Status: NotLoaded
+    ExecutionMode: InProcess
+```
+````
+
+(step-4-install-hedtools-anchor)=
+#### Step 4: Install HEDTools  
+
+The general-purpose package manager for Python is called `pip`.
+By default, `pip` retrieves packages to be installed from the [**PyPI**](https://pypi.org)
+package repository. You will need to use the version of `pip` that corresponds
+to the version of Python that is connected to MATLAB.
+This may not be the default `pip` used from the command line.
+
+````{admonition} Command to install hedtools in MATLAB.
+To install the latest released version of `hedtools` type a pip command such as the
+following in your MATLAB command window.
+
+```matlab
+system('"C:\Program Files\Python39\Scripts\pip" install hedtools')
+```
+Use the full path of the pip associated
+with the Python that you are using with MATLAB
+````
+
+Giving the full path to `pip` corresponding to the Python installation that MATLAB
+is using ensures that MATLAB knows about `HEDtools`.
+(The version of MATLAB that Python is using may not be the same as the Python in the system PATH.)
+
+Also watch the resulting messages in the command window to make sure that HEDtools
+was successfully installed.
+In the case of the above example, the Python being used is in system space,
+which requires administrator privileges.
+
+The first line of the output was:
+
+```matlab
+   Defaulting to user installation because normal site-packages is not writeable
+```
+
+On Windows these packages will be found in a `site-packages` directory such as:
+
+```text
+`C:\Users\username\AppData\Roaming\Python\Python39\site-packages`
+```
+
+On Linux these packages might be found in directory such as:
+
+```text
+/home/username/.local/lib/python3.9/site-packages/
+```
+
+
+```{warning}
+If your system had a Python 2 installed at some point, your Python 3
+executable might be named `python3` rather than `python`.
+
+Similarly, the `pip` package manager might be named `pip3` instead of `pip`.
+
+```
+
+The following MATLAB statement can be used to test that everything was installed correctly.
+
+````{Admonition} Test that everything is installed.
+
+```matlab
+pyrun("from hed import _version as vr; print(f'Using HEDTOOLS version: {str(vr.get_versions())}')")
+```
+If everything installed correctly, the output will be something like
+
+```matlab
+Using HEDTOOLS version: {'date': '2022-06-20T14:40:24-0500', 'dirty': False, 'error': None, 'full-revisionid': 'c4ecd1834cd31a05ebad3e97dc57e537550da044', 'version': '0.1.0'}
+```
+````
+
+
+(matlab-wrappers-for-HED-tools-anchor)=
+### MATLAB wrappers for HEDTools
+
+The [**hedtools_wrappers**](https://github.com/hed-standard/hed-examples/tree/main/hedcode/matlab_scripts/hedtools_wrappers) directory in the
+[**hed-examples**](https://github.com/hed-standard/hed-examples) GitHub repository
+contains MATLAB wrapper functions for calling various commonly used HED tools.
+
+#### Direct calls to HEDTools
+
+Wrapper functions are provided to some of the more commonly used
+functions in the HEDTools suite.
+
+The following example shows the MATLAB wrapper function
+[**validateHedInBids.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/hedtools_wrappers/validateHedInBids.m),
+which contains the underlying calls to HEDTools Python BIDs validation.
+
+
+````{admonition} A MATLAB wrapper function for validating HED in a BIDS dataset.
+:class: tip
+
+```matlab
+function issueString = validateHedInBids(dataPath)
+    py.importlib.import_module('hed');
+    bids = py.hed.tools.BidsDataset(dataPath);
+    issues = bids.validate();
+    issueString = string(py.hed.get_printable_issue_string(issues));
+
+```
+
+Example MATLAB calling code for this function:
+
+```matlab
+dataPath = 'H:\datasets\eeg_ds003645s_hed';
+issueString = validateHedInBids(dataPath);
+if isempty(issueString)
+    fprintf('Dataset %s has no HED validation errors\n', dataPath);
+else
+    fprintf('Validation errors for dataset %s:\n%s\n', dataPath, issueString);
+end
+
+```
+````
+In above example assumes that the BIDS dataset was located at `H:\datasets\eeg_ds003645s_hed`.
+We tested it with the [**eeg_ds003645s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) available on GitHub.
+You can download and use this test data or set `dataPath` to the root directory of your own dataset.
+
+#### Calls to HED remodeling tools
+
+Many of the most useful HEDTools functions are packaged in the
+HED remodeling tool suite.
+These tools allow operations such as creating summaries, validating the dataset, and transforming event files to be run on an entire dataset.
+
+The following example illustrates a call that creates a summary of the
+experimental conditions for a HED-tagged dataset.
+
+````{admonition} A MATLAB wrapper function for a remodeling operation to create a summary.
+:class: tip
+
+```matlab
+function runRemodel(remodel_args)
+    py.importlib.import_module('hed');
+    py.hed.tools.remodeling.cli.run_remodel.main(remodel_args);
+```
+
+Example MATLAB calling code for this function:
+
+```matlab
+
+dataPath = 'G:\ds003645';
+remodelFile = 'G:\summarize_hed_types_rmdl.json';
+remodel_args = {dataPath, remodelFile, '-b', '-x', 'stimuli', 'derivatives'};
+runRemodel(remodel_args);
+
+```
+````
+
+The command line arguments to the various remodeling functions are
+given in a cell array, rather than a regular MATLAB array.
+For the remodeling operations, first and second operation must be the dataset root
+directory and the remodeling file name, respectively.
+In this example, dataset `ds003645` has been downloaded from [**openNeuro**](https://openneuro.org) to the `G:\` drive.
+The remodeling file used in this example can be found at 
+See [**File remodeling quickstart**](FileRemodelingQuickstart.md)
+and [**File remodeling tools**](FileRemodelingTools.md) for
+additional information.
+The wrapper functions are available on GitHub in
+the [**hedtools_wrappers**](https://github.com/hed-standard/hed-examples/tree/develop/src/matlab_scripts/hedtools_wrappers) directory.
+
+
+### MATLAB functions for Python
+
+The following table lists the relevant MATLAB functions that are available.
+You should refer to the help facility for your version of MATLAB to get the details of what is
+supported for your version of MATLAB.
+
+| MATLAB command | Purpose |
+| -------------- | --------|
+| `pyenv`   | Setup your Python environment in MATLAB.<br/>Without arguments outputs information about your current Python environment. |
+| `pyrun`  | Run a Python statement and return results. |
+| `pyargs` | A recent addition for more advanced argument handling. |
+| `pyrunfile` | Run a Python script from MATLAB. |
+
+The MATLAB `matlab.exception.PyException` captures error information generated during Python execution.
+
+(hed-web-services-in-matlab-anchor)=
+## HED web services in MATLAB
+
+HED web services allow MATLAB programs to request the same services that are available 
+through the online tools.
+These services are available through the [**https://hedtools.org/hed**](https://hedtools.org/hed) server.
+Alternatively, these services can be accessed through a locally-deployed docker module.
+See the [**hed-web**](https://hed-web.readthedocs.io/en/latest/index.html)
+GitHub repository documentation for additional information on the docker deployment.
+The MATLAB code to run demos of these services is available on the 
+[**hed-matlab**](https://github.com/hed-standard/hed-matlab/tree/main/hedmat/web_services)
+GitHub repository. 
+
+The following MATLAB code demos are available to show how to access HED web services.
+
+| Target | MATLAB source   | Purpose   |
+| ------ |-----------------|-----------|
+| Overall | [**runAllDemos.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/runAllDemos.m)   | Harness for running all demos.   |
+| Overall | [**demoGetServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/demoGetServices.m)   | List available services.  |
+| Events | [**demoEventServices.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/demoEventServices.m)   | Validation, conversion, sidecar generation.  |
+| Events | [**demoEventSearchServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/demoEventSearchServices.m) | Search, assembly.  |
+| Schema | *in progress*   | For schema library developers.  |
+| Sidecars | [**demoSidecarServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/demoSidecarServices.m) | Validation, conversion, extraction, merging. |
+| Spreadsheets | [**demoSpreadsheetServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/demoSpreadsheetServices.m) | Validation, conversion.  |
+| Strings | [**demoStringServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/demoStringServices.m)     | Validation, conversion.  |
+
+
+The [**runAllDemos.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/runAllDemos.m)
+script runs all the demo code and reports whether
+the demos run successfully.
+Before using the HED web services from MATLAB, 
+you should run this script to make sure everything is working on your system,
 that you have Internet access, and that the HED services are available.
 
-This script also demonstrates how to call the individual test functions.
-Each test function takes a host URL as a parameter and returns a list of errors.
-The individual test scripts illustrate how to call each type of available web service.
+This script also demonstrates how to call the individual demo functions.
+Each demo function takes a host URL as a parameter and returns a list of errors.
+The demos all use demo data read by the 
+[**getDemoData**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/getDemoData.m) 
+function, which returns a MATLAB `struct` containing all needed test data.
+The individual demo scripts illustrate how to call each type of available web service.
 
-
-| Target | MATLAB source|  Purpose |
-| ------ | ------------- | ------- |
-| Overall | [**runAllTests.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/runAllTests.m) | Harness for running all tests. |
-| Overall | [**testGetServices.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/testGetServices.m) | List available services. |
-| Events | [**testEventServices.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/testEventServices.m) | Validation, conversion, sidecar generation. |
-| Events | [**testEventSearchServices.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/testEventSearchServices.m) | Search, assembly.|
-| Schema |      *in progress*          | For schema library developers. |
-| Sidecars | [**testSidecarServices.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/testSidecarServices.m) | Validation, conversion, extraction, merging. |
-| Spreadsheets | [**testSpreadsheetServices.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/testSpreadsheetServices.m) | Validation, conversion.|
-| Strings | [**testStringServices.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/testStringServices.m) | Validation, conversion. |
-
-
+(overview-of-service-requests-anchor)=
 ### Overview of service requests
 
 Calling HED services from MATLAB requires the following steps:
 
-1. **Set up a session**:
-   1. Establish a session by requesting a CSRF token and a cookie.
-   2. Construct a header array using the token and the cookie.
-2. **Create a request structure**.
-3. **Make a request** using the MATLAB `webwrite`.
-4. **Decode the response** returned from `webwrite`.
+1. [**Set up a session**](setting-up-a-session-from-matlab-anchor).
+2. [**Create a request structure**](creating-a-request-structure-anchor).
+3. [**Make a request**](making-a-service-request-anchor).
+4. [**Decode the response**](decoding-a-service-response-anchor).
 
 Usually, you will do the first step (the session setup) once at the beginning of your script
 to construct a fixed session header that can be used in subsequent requests in your script.
 
+(setting-up-a-session-from-matlab-anchor)=
 ### Setting up a session from MATLAB
 
 The goal of the session setup is to construct a header that can be used in subsequent web requests.
-The first step is to call the [**getHostOptions.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/getHostOptions.m).
-This function constructs the services URL from the host URL.
-The function also makes a service request to obtain a CSRF token and a cookie.
-The function then constructs a header and calls the MATLAB `weboptions` function
-to get an options object suitable for use with the MATLAB `webwrite` function
-use in all of our examples.
+The first step is to call the [**getHostOptions.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/getHostOptions.m).
 
 (setting)=
 `````{admonition} Establish a session.
@@ -80,19 +417,18 @@ The `host` should be set to the URL of the webserver that you are using.
 The call to `getHostOptions`, only needs to be done once at the beginning of your session.
 The `servicesURL` and the `options` can be used for all of your subsequent requests.
 
+This function constructs the services URL from the host URL.
+The function also makes a service request to obtain a CSRF token and a cookie using
+[**getSessionInfo**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/getSessionInfo.m).
+The function then constructs a header and calls the MATLAB `weboptions` function
+to get an options object suitable for use with the MATLAB `webwrite` function
+use in all of our examples.
 
 The `getHostOptions` does all the setup for using the services.
 As indicated by the code below, all communication is done in JSON.
 However, as demonstrated below, the MATLAB `webwrite` function
 takes a MATLAB `struct` as its `request` parameter and internally
 converts to the format specified in the header before making the request.
-
-The `Timeout` parameter indicates how many seconds MATLAB will wait for a response
-before returning as a failed operation.
-The `timeout` value of 120 seconds is sufficient for most situations.
-However, but this can be adjusted upward or downward to suit the user.
-The `HeaderFields` sets the parameters of HTTP request.
-
 
 (gethostoptions-source-anchor)=
 `````{admonition} Source for getHostOptions.
@@ -111,9 +447,13 @@ function [servicesUrl, options] = getHostOptions(host)
 ```
 `````
 
-In the following examples, we assume that `getHostOptions` has been called to retrieve
-`servicesUrl` and `options` for use in the session.
+The `Timeout` parameter indicates how many seconds MATLAB will wait for a response
+before returning as a failed operation.
+The `timeout` value of 120 seconds is sufficient for most situations.
+However, this can be adjusted upward or downward to suit the user.
+The `HeaderFields` sets the parameters of HTTP request.
 
+(creating-a-request-structure-anchor)=
 ### Creating a request structure
 
 The request structure is a MATLAB `struct` which must have a `service` field and can have an
@@ -121,7 +461,10 @@ arbitrary number of fields depending on which service is being requested.
 
 The simplest service is `get_services`,
 which returns a string containing information about the available services. 
-This service requires no additional parameters.
+This service requires no additional parameters. 
+In this and other examples, we assume that `getHostOptions` has been called to retrieve
+`servicesUrl` and `options` for use in the session.
+
 
 `````{admonition} Request a list of available HED web services.
 :class: tip
@@ -169,28 +512,29 @@ Another possibility is to provide a URL for the schema.
 The most-commonly used option is to use `schema_version` to indicate one of the supported
 versions available in the 
 [**hedxml**](https://github.com/hed-standard/hed-specification/tree/master/hedxml) directory of the
-[**hed-specification**](https://github.com/hed-standard/hed-specification) repository on GitHub.
+[**hed-schemas**](https://github.com/hed-standard/hed-schemas) repository on GitHub.
 
 (create-request-sidecar-validate-anchor)=
 `````{admonition} Create a request for the sidecar_validate web service.
 :class: tip
 ```matlab
-jsonText = fileread('../../../datasets/eeg_ds003645s_hed/task-FacePerception_events.json');
+jsonText = fileread('../../datasets/eeg_ds003645s_hed_demo/task-FacePerception_events.json');
 request = struct('service', 'sidecar_validate', ...
-                 'schema_version', '8.0.0', ...
+                 'schema_version', '8.2.0', ...
                  'json_string', jsonText, ...
                  'check_for_warnings', 'on');
 ```
 `````
 This example reads the JSON sidecar to be validated as a character array into the variable `jsonText`
-and makes a request for validation using HED8.0.0.xml.
+and makes a request for validation using `HED8.2.0.xml`.
 
 The request indicates that validation warnings as well as errors should be included in the response.
 If you wish to exclude warnings, use `off` instead of `on` as the `check_for_warnings` field value.
 
-The [**testSidecarServices.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/testSidecarServices.m)
+The [**demoSidecarServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/demoSidecarServices.m)
 function shows complete examples of the various HED services for JSON sidecars.
 
+(making-a-service-request-anchor)=
 ### Making a service request
 
 The HED services all use the MATLAB `webwrite` to make HED web service requests.
@@ -207,7 +551,7 @@ outputReport(response, 'Example: validate a JSON sidecar');
 ```
 `````
 
-The [**<code>outputReport.m</code>**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/outputReport.m)
+The [**<code>outputReport.m</code>**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/outputReport.m)
 MATLAB script outputs the response in readable form with a user-provided table.
 
 If the web server is down or times out during a request,
@@ -462,336 +806,3 @@ Pressing "Enter" selects the current tag in the list and adds the tag to the sea
 You can continue search and add tags after adding a comma after each tag.
 When done, click the **Ok** button to return to the main epoching menu. 
 
-(python-hedtools-in-matlab-anchor)=
-## Python HEDTools in MATLAB
-
-<div style="background-color:gold;">
-<span style="color:red;font-weight:bold;">UNDER CONSTRUCTION</span>
-</div>
-
-You can run functions from the Python `hedtools` library
-directly in MATLAB versions R2019a or later. 
-With these tools you can incorporate validation, summary, search, factorization,
-and other HED processing directly into your MATLAB processing scripts without 
-reimplementing these operations in MATLAB.
-
-**Note:** For your reference, the source for `hedtools` is the 
-[**hed-python**](https://github.com/hed-standard/hed-python) GitHub repository.
-The code is fully open-source with an MIT license.
-The actual API documentation is available [**here**](https://hed-python.readthedocs.io/en/latest/api2.html),
-but the tutorials and tool documentation for `hedtools` on 
-[**HED Resources**](https://www.hed-resources.org/en/latest/index.html) provides more
-examples of use.
-
-
-### Getting started
-
-The `hedtools` library requires a Python version >= 3.7. 
-In order to call functions from this library in MATLAB, 
-you must be running MATLAB version >= R2019a and have a 
-[**compatible version of Python**](https://www.mathworks.com/support/requirements/python-compatibility.html)
-installed on your machine.
-
-The most difficult part of the process for users who are unfamiliar with Python is
-getting Python connected to MATLAB.
-Once that is done, many of the standard `hedtools` functions have 
-[**MATLAB wrapper functions**](https://github.com/hed-standard/hed-examples/tree/main/hedcode/matlab_scripts/hedtools_wrappers),
-which take MATLAB variables as arguments and return MATLAB variables.
-Thus, once the setup is done, you don't have to learn any additional Python syntax to use the tools.
-You should only have to do this setup once, since MATLAB retains the setup information
-from session to session.
-
-````{admonition} Steps for setting up Python HEDtools for MATLAB.
-
-[**Step 1: Find Python**](step-1-find-python-anchor). If yes, skip to Step 3.
-<p></p1>
-
-[**Step 2: Install Python if needed**](step-2-install-python-if-needed-anchor) .
-<p></p> 
-
-[**Step 3: Connect Python to MATLAB**](step-3-connect-python-to-matlab-anchor).
-If already connected, skip to Step 4.
-<p></p> 
-
-[**Step 4: Install HEDtools**](step-4-install-hedtools-anchor)
-````
-
-(step-1-find-python-anchor)=
-#### Step 1: Find Python
-
-Follow these steps until you find a Python executable that is version 3.7 or greater.
-If you can't locate one, you will need to install it.
-
-````{Admonition} Does MATLAB already have a good version of Python you can use?
-
-In your MATLAB command window execute the following function:
-
-```matlab
-pyenv
-```
-The following example response shows that MATLAB is using Python version 3.9
-with executable located at `C:\Program Files\Python39\pythonw.exe`.
-
-```matlab
-  PythonEnvironment with properties:
-
-          Version: "3.9"
-       Executable: "C:\Program Files\Python39\pythonw.exe"
-          Library: "C:\Program Files\Python39\python39.dll"
-             Home: "C:\Program Files\Python39"
-           Status: NotLoaded
-    ExecutionMode: InProcess
-```
-````
-
-If MATLAB has already knows about a suitable Python version that is at least 3.7,
-you are ready to go to [**Step 4: Install HEDTools**](step-4-install-hedtools-anchor).
-Keep track of the location of the Python executable.
-
-If the `pyenv` did not indicate a suitable Python version, you will need to
-find the Python on your system (if there is one), or install your own.
-
-There are several likely places to look for Python on your system.
-
-**For Linux users**:
-
->Likely places for system-space installation are `/bin`, `/local/bin`, `/usr/bin`, `/usr/local/bin`, or `/opt/bin`. User-space installations are usually your home directory in a subdirectory such as `~/bin`
-or `~/.local/bin`. 
-
-**For Windows users**:
-> Likely places for system-space installation are `C:\`, `C:\Python`, or `C:\Program Files`.
-User-space installations default to your personal account 
-in `C:\Users\yourname\AppData\Local\Programs\Python\python39` where `yourname` is your Windows account name
-and `python39` will be the particular version (in this case Python 3.9).
-
-If you don't have any success finding a Python executable,
-you will need to install Python as described in 
-[**Step 2: Install Python if needed**](step-2-install-python-if-needed-anchor).
-
-Otherwise, you can skip to [**Step 3:Connect Python to MATLAB**](step-3-connect-python-to-matlab-anchor).
-
-```{warning}
-**You need to keep track of the path to your Python executable for Step 3.**
-```
-
-(step-2-install-python-if-needed-anchor)=
-#### Step 2: Install Python if needed
-
-If you don't have Python on your system, you will need to install it.
-Go to [**Python downloads**](https://www.python.org/downloads/) and pick the correct installer
-for your operating system and version.
-
-Depending on your OS and the installer options you selected,
-Python may be installed in your user space or in system space for all users. 
-- You should keep track of the directory that Python was installed in.
-- You may want to add the location of the Python executable to your PATH.
-  (Most installers give you that option as part of the installation.)
-
-
-(step-3-connect-python-to-matlab-anchor)=
-#### Step 3: Connect Python to Matlab
-
-Setting the Python version uses the MATLAB `pyenv` function with the `'Version'` argument
-as illustrated by the following example.
-
-````{admonition} Example MATLAB function call connect MATLAB to Python.
-
-```matlab
->> pyenv('Version', 'C:\Program Files\Python39\python.exe')
-```
-````
-
-Be sure to substitute the path of the Python that you have found.
-Notice that the executable listed in Step 1 was `pythonw.exe`, but we have used `python.exe` here
-to indicate the command line version.
-
-Use the MATLAB `pyenv` function again without arguments to check that your installation is as expected.
-
-````{Admonition} Example response for pyenv all with no arguments after setting environment.
-
-```matlab
- PythonEnvironment with properties:
-
-          Version: "3.9"
-       Executable: "C:\Program Files\Python39\python.exe"
-          Library: "C:\Program Files\Python39\python39.dll"
-             Home: "C:\Program Files\Python39"
-           Status: NotLoaded
-    ExecutionMode: InProcess
-```
-````
-
-(step-4-install-hedtools-anchor)=
-#### Step 4: Install HEDTools  
-
-The general-purpose package manager for Python is called `pip`.
-By default, `pip` retrieves packages to be installed from the [**PyPI**](https://pypi.org)
-package repository. You will need to use the version of `pip` that corresponds
-to the version of Python that is connected to MATLAB.
-This may not be the default `pip` used from the command line.
-
-````{admonition} Command to install hedtools in MATLAB.
-To install the latest released version of `hedtools` type a pip command such as the
-following in your MATLAB command window.
-
-```matlab
-system('"C:\Program Files\Python39\Scripts\pip" install hedtools')
-```
-Use the full path of the pip associated
-with the Python that you are using with MATLAB
-````
-
-Giving the full path to `pip` corresponding to the Python installation that MATLAB
-is using ensures that MATLAB knows about `HEDtools`.
-(The version of MATLAB that Python is using may not be the same as the Python in the system PATH.)
-
-Also watch the resulting messages in the command window to make sure that HEDtools
-was successfully installed.
-In the case of the above example, the Python being used is in system space,
-which requires administrator privileges.
-
-The first line of the output was:
-
-```matlab
-   Defaulting to user installation because normal site-packages is not writeable
-```
-
-On Windows these packages will be found in a `site-packages` directory such as:
-
-```text
-`C:\Users\username\AppData\Roaming\Python\Python39\site-packages`
-```
-
-On Linux these packages might be found in directory such as:
-
-```text
-/home/username/.local/lib/python3.9/site-packages/
-```
-
-
-```{warning}
-If your system had a Python 2 installed at some point, your Python 3
-executable might be named `python3` rather than `python`.
-
-Similarly, the `pip` package manager might be named `pip3` instead of `pip`.
-
-```
-
-The following MATLAB statement can be used to test that everything was installed correctly.
-
-````{Admonition} Test that everything is installed.
-
-```matlab
-pyrun("from hed import _version as vr; print(f'Using HEDTOOLS version: {str(vr.get_versions())}')")
-```
-If everything installed correctly, the output will be something like
-
-```matlab
-Using HEDTOOLS version: {'date': '2022-06-20T14:40:24-0500', 'dirty': False, 'error': None, 'full-revisionid': 'c4ecd1834cd31a05ebad3e97dc57e537550da044', 'version': '0.1.0'}
-```
-````
-
-
-(matlab-wrappers-for-HED-tools-anchor)=
-### MATLAB wrappers for HEDTools
-
-The [**hedtools_wrappers**](https://github.com/hed-standard/hed-examples/tree/main/hedcode/matlab_scripts/hedtools_wrappers) directory in the
-[**hed-examples**](https://github.com/hed-standard/hed-examples) GitHub repository
-contains MATLAB wrapper functions for calling various commonly used HED tools.
-
-#### Direct calls to HEDTools
-
-Wrapper functions are provided to some of the more commonly used
-functions in the HEDTools suite.
-
-The following example shows the MATLAB wrapper function
-[**validateHedInBids.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/hedtools_wrappers/validateHedInBids.m),
-which contains the underlying calls to HEDTools Python BIDs validation.
-
-
-````{admonition} A MATLAB wrapper function for validating HED in a BIDS dataset.
-:class: tip
-
-```matlab
-function issueString = validateHedInBids(dataPath)
-    py.importlib.import_module('hed');
-    bids = py.hed.tools.BidsDataset(dataPath);
-    issues = bids.validate();
-    issueString = string(py.hed.get_printable_issue_string(issues));
-
-```
-
-Example MATLAB calling code for this function:
-
-```matlab
-dataPath = 'H:\datasets\eeg_ds003645s_hed';
-issueString = validateHedInBids(dataPath);
-if isempty(issueString)
-    fprintf('Dataset %s has no HED validation errors\n', dataPath);
-else
-    fprintf('Validation errors for dataset %s:\n%s\n', dataPath, issueString);
-end
-
-```
-````
-In above example assumes that the BIDS dataset was located at `H:\datasets\eeg_ds003645s_hed`.
-We tested it with the [**eeg_ds003645s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) available on GitHub.
-You can download and use this test data or set `dataPath` to the root directory of your own dataset.
-
-#### Calls to HED remodeling tools
-
-Many of the most useful HEDTools functions are packaged in the
-HED remodeling tool suite.
-These tools allow operations such as creating summaries, validating the dataset, and transforming event files to be run on an entire dataset.
-
-The following example illustrates a call that creates a summary of the
-experimental conditions for a HED-tagged dataset.
-
-````{admonition} A MATLAB wrapper function for a remodeling operation to create a summary.
-:class: tip
-
-```matlab
-function runRemodel(remodel_args)
-    py.importlib.import_module('hed');
-    py.hed.tools.remodeling.cli.run_remodel.main(remodel_args);
-```
-
-Example MATLAB calling code for this function:
-
-```matlab
-
-dataPath = 'G:\ds003645';
-remodelFile = 'G:\summarize_hed_types_rmdl.json';
-remodel_args = {dataPath, remodelFile, '-b', '-x', 'stimuli', 'derivatives'};
-runRemodel(remodel_args);
-
-```
-````
-
-The command line arguments to the various remodeling functions are
-given in a cell array, rather than a regular MATLAB array.
-For the remodeling operations, first and second operation must be the dataset root
-directory and the remodeling file name, respectively.
-In this example, dataset `ds003645` has been downloaded from [**openNeuro**](https://openneuro.org) to the `G:\` drive.
-The remodeling file used in this example can be found at 
-See [**File remodeling quickstart**](FileRemodelingQuickstart.md)
-and [**File remodeling tools**](FileRemodelingTools.md) for
-additional information.
-The wrapper functions are available on GitHub in
-the [**hedtools_wrappers**](https://github.com/hed-standard/hed-examples/tree/develop/src/matlab_scripts/hedtools_wrappers) directory.
-
-
-### MATLAB functions for Python
-
-The following table lists the relevant MATLAB functions that are available.
-You should refer to the help facility for your version of MATLAB to get the details of what is
-supported for your version of MATLAB.
-
-| MATLAB command | Purpose |
-| -------------- | --------|
-| `pyenv`   | Setup your Python environment in MATLAB.<br/>Without arguments outputs information about your current Python environment. |
-| `pyrun`  | Run a Python statement and return results. |
-| `pyargs` | A recent addition for more advanced argument handling. |
-| `pyrunfile` | Run a Python script from MATLAB. |
-
-The MATLAB `matlab.exception.PyException` captures error information generated during Python execution.

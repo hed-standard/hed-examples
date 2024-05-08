@@ -173,10 +173,10 @@ HED validation in MATLAB is currently done by accessing the HED online tools as 
 #### Direct access to services
 Users can access these services directly by calling using the HED MATLAB web services 
 functions as explained in 
-[**HED services in MATLAB**](./HedMatlabTools.md#hed-services-in-matlab).
-Download the [**web_services**](https://github.com/hed-standard/hed-examples/tree/main/hedcode/matlab_scripts/web_services)
+[**HED web services in MATLAB**](./HedMatlabTools.md#hed-web-services-in-matlab).
+Download the [**web_services**](https://github.com/hed-standard/hed-matlab/tree/main/hedmat/web_services)
 directory from GitHub and include this directory in your MATLAB path.
-The [**runAllTests.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/runAllTests.m)
+The [**runAllDemos.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/runAllDemos.m)
 script calls all the services on test data.
 
 #### Access through EEGLAB
@@ -214,7 +214,7 @@ directly using PIP.
 
 #### Jupyter notebooks for validation
 
-Several [**Jupyter notebooks**](https://github.com/hed-standard/hed-examples/tree/main/hedcode/jupyter_notebooks) are available 
+Several [**Jupyter notebooks**](https://github.com/hed-standard/hed-examples/tree/main/src/jupyter_notebooks) are available 
 as wrappers for calling various Python HED tools. 
 
 For example, the [**validate_bids_datasets.ipynb**](https://github.com/hed-standard/hed-examples/blob/develop/src/jupyter_notebooks/bids/validate_bids_datasets.ipynb) notebook shown in the following example validates an entire BIDS dataset 

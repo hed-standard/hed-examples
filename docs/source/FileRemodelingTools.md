@@ -237,7 +237,7 @@ The programs use a standard command-line argument list for specifying input as s
 | Script name | Arguments | Purpose | 
 | ----------- | -------- | ------- |
 |*run_remodel_backup* | *data_dir*<br/>*-bd -\\-backup-dir*<br/>*-bn -\\-backup-name*<br/>*-e -\\-extensions*<br/>*-f -\\-file-suffix*<br/>*-t -\\-task-names*<br/>*-v -\\-verbose*<br/>*-x -\\-exclude-dirs*| Create a backup event files. |
-|*run_remodel* | *data_dir*<br/>*model_path*<br/>*-b -\\-bids-format*<br/>*-bd -\\-backup-dir*<br/>*-bn -\\-backup-name*<br/>*-e -\\-extensions*<br/>*-f -\\-file-suffix*<br/>*-i -\\-individual-summaries*<br/>*-j -\\-json-sidecar*<br/>*-nb -\\-no-backup*<br/>*-ns -\\-no-summaries*<br/>*-nu -\\-no-update*<br/>*-r -\\-hed-version*<br/>*-s -\\-save-formats*<br/>*-t -\\-task-names*<br/>*-v -\\-verbose*<br/>*-w -\\-work-dir*<br/>*-x -\\-exclude-dirs* | Restructure or summarize the event files. |
+|*run_remodel* | *data_dir*<br/>*model_path*<br/>*-b -\\-bids-format*<br/>*-bd -\\-backup-dir*<br/>*-bn -\\-backup-name*<br/>*-e -\\-extensions*<br/>*-f -\\-file-suffix*<br/>*-i -\\-individual-summaries*<br/>*-j -\\-json-sidecar*<br/>*-ld -\\-log-dir*<br/>*-nb -\\-no-backup*<br/>*-ns -\\-no-summaries*<br/>*-nu -\\-no-update*<br/>*-r -\\-hed-version*<br/>*-s -\\-save-formats*<br/>*-t -\\-task-names*<br/>*-v -\\-verbose*<br/>*-w -\\-work-dir*<br/>*-x -\\-exclude-dirs* | Restructure or summarize the event files. |
 |*run_remodel_restore* | *data_dir*<br/>*-bd -\\-backup-dir*<br/>*-bn -\\-backup-name*<br/>*-t -\\-task-names*<br/>*-v -\\-verbose*<br/> | Restore a backup of event files. |
 
 ````
@@ -305,6 +305,13 @@ Users are free to use either form.
 > This option is followed by the full path of the JSON sidecar with HED annotations to be
 > applied during the processing of HED-related remodeling operations.
 
+`-ld`, `--log-dir`
+> This option is followed by the full path of a directory for writing log files.
+> A log file is written if the remodeling tools raise an exception and the program terminates.
+> Note that a log file is not written for issues gathered during operations such as `summarize_hed_valistion`
+> because reporting HED validation errors is a normal part of this operation.
+> On the other hand, errors in the JSON remodeling file do raise and exception and are reported in the log.
+
 `-nb`, `--no-backup`
 > If present, no backup is used. Rather operations are performed directly on the files.
 
@@ -335,7 +342,7 @@ Users are free to use either form.
 > differently for each task and thus require different transformation files.
 > This option allows the backups and operations to be restricted to an individual task.
   
-> If you omit this option, all tasks are used. This means that all `events.tsv` files are
+> If this option is omitted, all tasks are used. This means that all `events.tsv` files are
 > restored from a backup if the backup is used, the operations are performed on all `events.tsv` files, and summaries are combined over all tasks.
   
 > If a list of specific task names follows this option, only datafiles corresponding to 
@@ -660,18 +667,21 @@ Except for the validation summary, the underlying remodeling code raises excepti
 (errors-in-the-remodel-file-anchor)=
 ### Errors in the remodel file
 
-Each individual operation raises an exception if required parameters are missing or
-the values provided for the parameters are of the wrong type.
-However, the higher-level calling mechanisms provided through `run_remodel` 
-call the `parse_operations` static method provided by the `Dispatcher` to create
-a parsed operation list.
-This call either returns a list of parsed operations or a list of parse errors for
-the operations in the list.
+Each operation requires specific parameters to execute properly. 
+The underlying implementation for each operation defines these parameters using a [**json schema**](https://json-schema.org/)
+as the `PARAMS` property of the operation's class definition.
+The use of the JSON schema allows the remodeler to specify and validate requirements on most of an
+operation's parameters using standardized methods.
+ 
+The remodeler [**validator**](https://raw.githubusercontent.com/hed-standard/hed-python/develop/hed/tools/remodeling/validator.py)
+compiles a JSON schema for the remodeler from individual operations and validates
+the remodel file against the compiled JSON schema. The validator should always before executing any remodel operations.
 
-If there are any errors in the remodel file,
-no operations are run, but the errors for all operations in the list are reported.
+For example, the command line [**run_remodel**](https://raw.githubusercontent.com/hed-standard/hed-python/develop/hed/tools/remodeling/cli/run_remodel.py)
+program calls the validator before executing any operations.
+If there are errors, `run_remodel` reports the errors for all operations and exits.
 This allows users to correct errors in all operations in one pass without any data modification.
-The [**HED online tools**](https://hedtools.ucsd.edu/hed) are particularly useful for debugging
+The [**HED online tools**](https://hedtools.org/hed) are particularly useful for debugging
 the syntax and other issues in the remodeling process. 
 
 (execution-time-remodel-errors-anchor)=
@@ -708,8 +718,7 @@ from the data file if the columns exist.
         "operation": "remove_columns",
         "description": "Remove unwanted columns prior to analysis",
         "parameters": {
-            "remove_names": ["value", "sample"],
-            "ignore_missing": true
+            "remove_names": ["value", "sample"]
         }
     }
 ]
@@ -730,11 +739,12 @@ The parameters for each operation are listed in
 An operation may have both required and optional parameters.
 Optional parameters may be omitted if unneeded, but all parameters are specified in
 the "parameters" section of the dictionary.
+The full specification of the remodel file is also provided as a [**JSON schema**](https://json-schema.org/). 
 
 The remodeling JSON files should have names ending in `_rmdl.json` to more easily
 distinguish them from other JSON files.
 Although these files can be stored anywhere, their preferred location is
-in the `deriviatves/remodel/models` subdirectory under the dataset root so
+in the `derivatives/remodel/models` subdirectory under the dataset root so
 that they can provide provenance for the dataset.
 
 (sample-remodel-event-file-anchor)=
@@ -825,7 +835,7 @@ based on column values.
 | ------------ | ---- | ----------- | 
 | *column_name* | str | The name of the column to be factored.| 
 | *factor_values* | list | Column values to be included as factors. |
-| *factor_names* | list| Column names for created factors. |
+| *factor_names* | list| (**Optional**) Column names for created factors. |
 ```
 
 If *column_name* is not a column in the data file, a `ValueError` is raised.
@@ -837,8 +847,8 @@ If a specified value is missing in a particular file, the corresponding factor c
 If *factor_names* is empty, the newly created columns are of the 
 form *column_name.factor_value*.
 Otherwise, the newly created columns have names *factor_names*.
-If *factor_names* is not empty, then *factor_values* must also be specified and
-both lists must be of the same length.
+If *factor_names* is not empty, then *factor_values* must also be specified
+and both lists must be of the same length.
 
 (factor-column-example-anchor)=
 #### Factor column example
@@ -902,9 +912,9 @@ The [**HED search guide**](./HedSearchGuide.md) tutorial discusses the HED searc
 |  Parameter   | Type | Description | 
 | ------------ | ---- | ----------- | 
 | *queries* | list | A list of HED query strings. | 
-| *query_names* | list | A list of names for the resulting factor columns generated by the queries. |
-| *remove_types* | list | Structural HED tags to be removed (usually `Condition-variable` and `Task`). | 
-| *expand_context* | bool | (Optional) Expand the context and remove `Onse` and`Offset` tags before the query. | 
+| *query_names* | list | (**Optional**) A list of names for the factor columns generated by the queries. |
+| *remove_types* | list | (**Optional**) Structural HED tags to be removed (usually `Condition-variable` and `Task`). | 
+| *expand_context* | bool | (**Optional**: default True) Expand the context and remove <br/>`Onset` and`Offset` tags before the query. | 
 
 ```
 The *query_names* list, which must be empty or the same length as *queries*,
@@ -912,7 +922,10 @@ contains the names of the factor columns produced by the search.
 If the *query_names* list is empty, the result columns are titled "query_1",
 "query_2", etc.
 
-The *remove_types* and *expand_context* are not yet implemented, and hence ignored in the current release.
+Most of the time the *remove_types* should be set to `["Condition-variable", "Task"]` and the effects of
+the experimental design captured using the `factor_hed_types_op`.
+If *expand_context* is set to *false*, the additional context provided by `Onset`, `Offset`, and `Duration`
+is ignored.
 
 (factor-hed-tags-example-anchor)=
 #### Factor HED tags example
@@ -932,7 +945,7 @@ The resulting factor columns are named *correct* and *incorrect*, respectively.
     "parameters": {
         "queries": ["correct-action", "incorrect-action"],
         "query_names": ["correct", "incorrect"],
-        "remove_types": [],
+        "remove_types": ["Condition-variable", "Task"],
         "expand_context": false
     }
 }]
@@ -982,8 +995,10 @@ For additional information on how to encode experimental designs using HED, see
 |  Parameter   | Type | Description | 
 | ------------ | ---- | ----------- | 
 | *type_tag* | str | HED tag used to find the factors (most commonly *Condition-variable*).| 
-| *type_values* | list | Values to factor for the *type_tag*.<br>If empty, all values of that *type_tag* are used. |
+| *type_values* | list | (**Optional**) Values to factor for the *type_tag*.<br>If omitted, all values of that *type_tag* are used. |
 ```
+The event context (as defined by onsets, offsets and durations) is always expanded and one-hot (0's and 1's)
+encoding is used for the factors.
 
 (factor-hed-type-example-anchor)=
 #### Factor HED type example
@@ -1002,8 +1017,7 @@ applies and 0's otherwise.
     "operation": "factor_hed_type",
     "description": "Factor based on the sex of the images being presented.",
     "parameters": {
-        "type_tag": "Condition-variable",
-        "type_values": []
+        "type_tag": "Condition-variable"
     }
 }]
 ```
@@ -1043,9 +1057,9 @@ duration updated to encompass the temporal extent of the merged events.
 | ------------ | ---- | ----------- | 
 | *column_name* | str | The name of the column which is the basis of the merge.| 
 | *event_code* | str, int, float | The value in *column_name* that triggers the merge. | 
-| *match_columns* | list | Columns whose values must match to collapse events.  |
 | *set_durations* | bool | If true, set durations based on merged events. |
-| *ignore_missing* | bool | If true, missing *column_name* or *match_columns* do not raise an error. |  
+| *ignore_missing* | bool | If true, missing *column_name* or *match_columns* do not raise an error. | 
+| *match_columns* | list | (**Optional**) Columns whose values must match to collapse events.  | 
 ```
 
 The first of the group of rows (each representing an event) to be merged is called the anchor
@@ -1060,7 +1074,7 @@ This method allows for small gaps between events and for events in which an
 intermediate event in the group ends after later events.
 If the *set_duration* parameter is false, the duration of the merged row is set to `n/a`.
 
-If the data file has other columns besides `onset`, `duration` and column *column_name*, 
+If the data file has other columns besides `onset`, `duration` and *column_name*, 
 the values in the other columns must be considered during the merging process.
 The *match_columns* is a list of the other columns whose values must agree with those
 of the anchor row in order for a merge to occur.  If *match_columns* is empty, the
@@ -1084,9 +1098,9 @@ have the same values to be merged into a single event.
     "parameters": {
         "column_name": "trial_type",
         "event_code": "succesful_stop",
-        "match_columns": ["stop_signal_delay", "response_hand", "sex"],
         "set_durations": true,
-        "ignore_missing": true
+        "ignore_missing": true,
+        "match_columns": ["stop_signal_delay", "response_hand", "sex"]
     }
 }]
 ```
@@ -1157,7 +1171,7 @@ Remapping can be used to convert the column containing these codes into one or m
 | *destination_columns* | list | A list of *n* names of the destination columns for the map. |
 | *map_list* | list | A list of mappings. Each element is a list of *m* source <br/>column values followed by *n* destination values.<br/> Mapping source values are treated as strings. |  
 | *ignore_missing* | bool | If false, source column values not in the map generate "n/a"<br/> destination values instead of errors. |
-| *integer_sources* | list | [**Optional**] A list of source columns that are integers.<br/> The *integer_sources* must be a subset of *source_columns*. |
+| *integer_sources* | list | (**Optional**) A list of source columns that are integers.<br/> The *integer_sources* must be a subset of *source_columns*. |
 ```
 A column cannot be both a source and a destination,
 and all source columns must be present in the data files.
@@ -1165,7 +1179,7 @@ New columns are created for destination columns that are missing from a data fil
 
 The *remap_columns* operation only works for columns containing strings or integers,
 as it is meant for remapping categorical codes.
-You must specify the which source columns contain integers so that `n/a` values
+You must specify which source columns contain integers so that `n/a` values
 can be handled appropriately.
 
 The *map_list* parameter specifies how each unique combination of values from the source 
@@ -1209,7 +1223,7 @@ based on the unique values in the combination of columns *response_accuracy* and
 ````
 In this example there are two source columns and one destination column,
 so each entry in *map_list* must be a list with three elements 
-two source values and one destination value).
+two source values and one destination value.
 Since all the values in *map_list* are strings,
 the optional *integer_sources* list is not needed. 
 
@@ -1486,6 +1500,7 @@ The results of executing the previous *reorder_columns* transformation on the
 
 The *split_rows* operation
 is often used to convert event files from trial-level encoding to event-level encoding.
+This operation is meant only for tabular files that have `onset` and `duration` columns.
 
 In **trial-level** encoding, all the events in a single trial
 (usually some variation of the cue-stimulus-response-feedback-ready sequence)
@@ -1506,11 +1521,10 @@ In this case a trial consists of a sequence of multiple events.
 |  Parameter   | Type | Description | 
 | ------------ | ---- | ----------- | 
 | *anchor_column* | str | The name of the column that will be used for split_rows codes.| 
-| *new_events* | dict | Dictionary whose keys are the codes to be inserted as new events<br>in the *anchor_column* and whose values are dictionaries with<br>keys *onset_source*, *duration*, and *copy_columns*. | 
+| *new_events* | dict | Dictionary whose keys are the codes to be inserted as new events<br>in the *anchor_column* and whose values are dictionaries with<br>keys *onset_source*, *duration*, and *copy_columns (**Optional**)*. | 
 | *remove_parent_event* | bool | If true, remove parent event. | 
 
 ```
-
 
 The *split_rows* operation requires an *anchor_column*, which could be an existing
 column or a new column to be appended to the data.
@@ -1647,7 +1661,7 @@ all summaries.
 | ------------ | ---- | ----------- | 
 | *summary_name* | str | A unique name used to identify this summary.| 
 | *summary_filename* | str | A unique file basename to use for saving this summary. |  
-| *append_timecode* | bool | (Optional) If True, append a time code to filename.<br/>False is the default. |
+| *append_timecode* | bool | (**Optional**: Default false) If true, append a time code to filename. |
 ```
 
 (summarize-column-names-example-anchor)=
@@ -1726,11 +1740,11 @@ The following table lists the parameters required for using the summary.
 | ------------ | ---- | ----------- | 
 | *summary_name* | str | A unique name used to identify this summary.| 
 | *summary_filename* | str | A unique file basename to use for saving this summary. |
-| *skip_columns* | list | A list of column names to omit from the summary.| 
-| *value_columns* | list | A list of columns to omit the listing unique values. |  
-| *append_timecode* | bool | (Optional) If True, append a time code to filename.<br/>False is the default.|  
-| *max_categorical* | int | (Optional) If given, the text summary shows top *max_categorical* values.<br/>Otherwise the text summary displays all categorical values.|  
-| *values_per_line* | bool | (Optional) If given, the text summary displays this <br/>number of values per line (default is 5).|   
+| *append_timecode* | bool | (**Optional**: Default false) If True, append a time code to filename. |  
+| *max_categorical* | int | (**Optional**: Default 50) If given, the text summary shows top *max_categorical* values.<br/>Otherwise the text summary displays all categorical values.|   
+| *skip_columns* | list | (**Optional**) A list of column names to omit from the summary.| 
+| *value_columns* | list | (**Optional**) A list of columns to omit the listing unique values. |  
+| *values_per_line* | int | (**Optional**: Default 5) If given, the text summary displays this <br/>number of values per line (default is 5).|   
 
 ```
 
@@ -1862,10 +1876,11 @@ The following table lists the parameters required for using the summary.
 | ------------ | ---- | ----------- | 
 | *summary_name* | str | A unique name used to identify this summary.| 
 | *summary_filename* | str | A unique file basename to use for saving this summary. |
-| *append_timecode* | bool | (Optional) If True, append a time code to filename.<br/>False is the default.|
+| *append_timecode* | bool | (**Optional**: Default false) If true, append a time code to filename. |
 ```
 
-The *summarize_definitions* is mainly meant for verifying consistency in unknown `Def-expand` tags.  This comes up where you have an assembled dataset, but no longer have the definitions stored (or never created them to begin with).
+The *summarize_definitions* is mainly meant for verifying consistency in unknown `Def-expand` tags.
+This comes up where you have an assembled dataset, but no longer have the definitions stored (or never created them to begin with).
 
 
 (summarize-definitions-example-anchor)=
@@ -2025,10 +2040,11 @@ The *summarize_hed_tags* operation has the two required parameters
 | *summary_name* | str | A unique name used to identify this summary.| 
 | *summary_filename* | str | A unique file basename to use for saving this summary. |
 | *tags* | dict | Dictionary with category title keys and tags in that category as values. |  
-| *append_timecode* | bool | (Optional) If True, append a time code to filename.<br/>False is the default.|  
-| *include_context* | bool | (Optional) If true, expand the event context to <br/>account for onsets and offsets. |  
-| *replace_defs* | bool | (Optional) If true, the `Def` tags are replaced with the<br/>contents of the definition (no `Def` or `Def-expand`). |
-| *remove_types* | list | (Optional) A list of types (such as `Condition-variable` and `Task` to remove. |
+| *append_timecode* | bool | (**Optional**: Default false) If true, append a time code to filename. |  
+| *include_context* | bool | (**Optional**: Default true) If true, expand the event context to <br/>account for onsets and offsets. |  
+| *remove_types* | list | (**Optional**) A list of types such as <br/>`Condition-variable` and `Task` to remove. |  
+| *replace_defs* | bool | (**Optional**: Default true) If true, the `Def` tags are replaced with the<br/>contents of the definition (no `Def` or `Def-expand`). |
+| *word_cloud* | dict | (**Optional**) If present, the operation produces a <br/>word cloud image in addition to the summaries. |
 ```
 
 The *tags* dictionary has keys that specify how the user wishes the tags 
@@ -2044,6 +2060,27 @@ to the event context in events intermediate between onsets and offsets.
 If the optional parameter *replace_defs* is true, the tag counts include
 tags contributed by contents of the definitions.
 
+If *word_cloud* parameter is provided but its value is empty, the default word cloud settings are used.
+The following table lists the optional parameters used to control the appearance of the word cloud image.
+
+```{admonition} Optional keys in the word cloud dictionary value.
+:class: tip
+
+|  Parameter   | Type | Description |  
+| ------------ | ---- | ----------- |  
+| *background_color* | str | The matplotlib name of the background color (default "black").|  
+| *contour_color* | str | The matplotlib name of the contour color if mask provided. |
+| *contour_width* | float | Width of contour if mask provided (default 3). |  
+| *font_path* | str | The path of the system font to use in place of the default font. |  
+| *height* | int | Height in pixels of the image (default 300).|  
+| *mask_path* | str | The path of the mask image to use if *use_mask* is true<br/> and an image other than the brain is needed. |  
+| *max_font_size* | float | The maximum font size to use in the image (default 15). |  
+| *min_font_size* | float | The minimum font size to use in the image (default 8).|  
+| *prefer_horizontal* | float | Fraction of horizontal words in image (default 0.75). |  
+| *scale_adjustment* | float | Constant to add to log10 count transformation (default 7). |   
+| *use_mask* | dict | If true, a mask image is used to provide a contour around the words. |  
+| *width* | int | Width in pixels of image (default 400). |
+```
 
 (summarize-hed-tags-example-anchor)=
 #### Summarize HED tags example
@@ -2155,7 +2192,7 @@ This summary provides useful information about experimental design.
 | *summary_name* | str | A unique name used to identify this summary.| 
 | *summary_filename* | str | A unique file basename to use for saving this summary. |
 | *type_tag* | str | Tag to produce a summary for (most often *condition-variable*).|  
-| *append_timecode* | bool | (Optional) If True, append a time code to filename.<br/>False is the default.| 
+| *append_timecode* | bool | (**Optional**: Default false) If true, append a time code to filename.| 
 ```
 In addition to the two standard parameters (*summary_name* and *summary_filename*),
 the *type_tag* parameter is required.
@@ -2247,8 +2284,8 @@ If *check_for_warnings* is false, the summary will not report warnings.
 | ------------ | ---- | ----------- | 
 | *summary_name* | str | A unique name used to identify this summary.| 
 | *summary_filename* | str | A unique file basename to use for saving this summary. |
-| *append_timecode* | bool | (Optional) If True, append a time code to filename.<br/>False is the default.|  
-| *check_for_warnings* | bool | (Optional) If true, warnings are reported in addition to errors.<br/>False is the default.|  
+| *append_timecode* | bool | (**Optional**: Default false) If true, append a time code to filename. |  
+| *check_for_warnings* | bool | (**Optional**: Default false) If true, warnings are reported in addition to errors. |  
 ```
 The *summarize_hed_validation* is a HED operation and the calling program must provide a HED schema version
 and usually a JSON sidecar containing the HED annotations.
@@ -2467,39 +2504,80 @@ Sidecar:
 (remodel-implementation-anchor)=
 ## Remodel implementation
 
-Operations are defined as classes that extent `BaseOp` regardless of whether 
+Operations are defined as classes that extend `BaseOp` regardless of whether 
 they are transformations or summaries. However, summaries must also implement
 an additional supporting class that extends `BaseSummary` to hold the summary information.
 
 In order to be executed by the remodeling functions, 
 an operation must appear in the `valid_operations` dictionary.
 
-All operations must provide a `PARAMS` dictionary, a constructor that calls the
-base class constructor, and a `do_ops` method.
+Each operation class must have a `NAME` class variable, specifying the operation name (string) and a
+`PARAMS` class variable containing a dictionary of the operation's parameters represented as a json schema.
+The operation's constructor extends the `BaseOp` class constructor by calling:
+
+````{admonition} A remodel operation class must call the BaseOp constructor first.
+:class: tip
+```python
+   super().__init__(parameters)
+```
+````
+
+A remodel operation class must implement the `BaseOp` abstract methods `do_ops` and `validate_input_data`.
 
 ### The PARAMS dictionary
 
-The class-wide `PARAMS` dictionary has `operation`, `required_parameters` and `optional_parameters` keys.
-The `required_parameters` and `optional_parameters` have values that are themselves dictionaries
-specifying the names and types of the operation parameters.
+The class-wide `PARAMS` dictionary specifies the required and optional parameters of the operation as a [**JSON schema**](https://json-schema.org/).
+We currently use draft-2020-12.
+The basic vocabulary allows specifying the type of parameters that are expected and
+whether a parameter is required or optional.
 
-The following example shows the `PARAMS` dictionary for the `RemoveColumnsOp` class.
+It is also possible to add dependencies between parameters. More information can be found in the JSON schema 
+[**documentation**](https://json-schema.org/learn/getting-started-step-by-step).
 
-````{admonition} The class-wide PARAMS dictionary for the RemoveColumnsOp class.
-:class: tip
-```python
-PARAMS = {
-    "operation": "remove_columns",
-    "required_parameters": {
-        "column_names": list,
-        "ignore_missing": bool
-    },
-    "optional_parameters": {}
-}
+On the highest level the type should always be specified as an object, as the parameters are always provided as a dictionary or json object. 
+Under the properties key, the expected parameters should be listed, along with what datatype is expected for every parameter. 
+The specifications can be nested, for example, the `rename_columns` operation requires a parameter `column_mapping`, 
+which should be a JSON object whose keys are any valid string, and whose values are also strings. 
+This is represented in the following way:
+
+```json
+{
+        "type": "object",
+        "properties": {
+            "column_mapping": {
+                "type": "object",
+                "patternProperties": {
+                    ".*": {
+                        "type": "string"
+                    }
+                },
+                "minProperties": 1
+            },
+            "ignore_missing": {
+                "type": "boolean"
+            }
+        },
+        "required": [
+            "column_mapping",
+            "ignore_missing"
+        ],
+        "additionalProperties": false
+    }
 ```
-````
-The `PARAMS` dictionary allows the remodeling tools to check the syntax of the remodel input file for errors.
 
+The `PARAMS` dictionaries for all available operations are read by the `validator` and compiled into a 
+single JSON schema which represents the specification for remodeler files.
+The `properties` dictionary explicitly specifies the parameters that are allowed for this operation.
+The `required` list specifies which parameters must be included when calling operation.
+Parameters that are not required may be omitted in the operation call.
+The `"additionalProperties": false` is the way that JSON schema use to
+indicate that no other parameters are allowed in the call to the operation.
+
+A limitation to JSON schema representations is that although it can handle specific dependencies between keys in the data, 
+it cannot validate the data that is provided in the JSON file against other data in the JSON file. 
+For example, if the requirement is a list of elements whose length should be specified by another parameter, 
+JSON schema does not provide a vocabulary for setting this dependency.
+Instead, we handle these type of dependencies in the `validate_input_data` method. 
 
 (operation-class-constructor-anchor)=
 ### Operation class constructor
@@ -2511,7 +2589,7 @@ The following example shows the constructor for the `RemoveColumnsOp` class.
 :class: tip
 ```python
     def __init__(self, parameters):
-        super().__init__(self.PARAMS, parameters)
+        super().__init__(parameters)
         self.column_names = parameters['column_names']
         ignore_missing = parameters['ignore_missing']
         if ignore_missing:
@@ -2522,20 +2600,23 @@ The following example shows the constructor for the `RemoveColumnsOp` class.
 ````
     
 After the call to the base class constructor, the operation constructor assigns the operation-specific
-values to class properties and does any additional required operation-specific checks
-to assure that the parameters are valid.
+values to class properties. Validation takes place before the operation classes are initialized.
 
 
 (the-do_op-implementation-anchor)=
 ### The do_op implementation
+The remodeling script is meant to be executed by the `Dispatcher`,
+which keeps a compiled version of the remodeling script to execute on each tabular file to be remodeled.
 
 The main method that must be implemented by each operation is `do_op`, which takes
-an instance of the `Dispatcher` class as the first parameter and a Pandas `DataFrame`
-representing the event file as the second parameter.
-A third required parameter is a name used to identify the event file in error messages and summaries. 
+an instance of the `Dispatcher` class as the first parameter and a Pandas [`DataFrame`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html)
+representing the tabular file as the second parameter.
+A third required parameter is a name used to identify the tabular file in error messages and summaries. 
 This name is usually the filename or the filepath from the dataset root.
 An additional optional argument, a sidecar containing HED annotations,
 only need be included for HED operations.
+Note that the `Dispatcher` is responsible for holding the appropriate version of the HED schema if
+HED remodeling operations are included.
 
 The following example shows a sample implementation for `do_op`.
 
@@ -2557,6 +2638,32 @@ The `Dispatcher` class has a static method `prep_data` that does this replacemen
 At the end of running all the remodeling operations on a data file `Dispatcher` `run_operations`
 method replaces all of the `numpy.NaN` values with `n/a`, the value expected by BIDS.
 This operation is performed by the `Dispatcher` static method `post_proc_data`.
+
+
+### The validate_input_data implementation
+
+This method exist to handle additional input data validation that cannot be specified in JSON schema. 
+It is a class method which is called by the `validator`. 
+If there is no additional validation to be done, 
+a minimal implementation of this method should take in a dictionary with the operation parameters and return an empty list.
+In case additional validation is required, the method should directly implement validation and return a list of user-friendly 
+error messages (strings) if validation fails, or an empty list if there are no errors.
+
+The following implementation of `validate_input_data` method, for the `factor_hed_tags` operation, 
+checks whether the parameter `query_names` is the same length as the input for parameter `queries`, 
+since the names specified in the first parameter are meant to represent the queries provided in the latter. 
+The check only takes place if `query_names` exists, since naming is handled automatically otherwise.
+
+```python
+@staticmethod
+def validate_input_data(parameters):
+    errors = []
+    if parameters.get("query_names", False):
+        if len(parameters.get("query_names")) != len(parameters.get("queries")):
+            errors.append("The list in query_names, in the factor_hed_tags operation, should have the same number of items as queries.")
+    return errors
+```
+
 
 (the-do_op-for summarization-anchor)=
 ### The do_op for summarization
@@ -2585,8 +2692,8 @@ summary name is already in the dispatcher's `summary_dict`.
 If that summary is not yet in the `summary_dict`, 
 the operation creates a `BaseSummary` object for its summary (e.g., `ColumnNameSummary`)
 and adds this object to the dispatcher's `summary_dict`,
-otherwise the operation fetches the `BaseSummary` object from 
-It then asks its `BaseSummary` object to update the summary based on the dataframe
+otherwise the operation fetches the `BaseSummary` object from the dispatcher's `summary_dict`.
+It then asks this `BaseSummary` object to update the summary based on the `DataFrame`
 as explained in the next section.
 
 (additional-requirements-for-summarization-anchor)=
@@ -2597,7 +2704,7 @@ This class is used to hold and accumulate the information specific to the summar
 This support class must implement two methods: `update_summary` and `get_summary_details`.
 
 The `update_summary` method is called by its associated `BaseOp` operation during the `do_op`
-to update the summary information based on the current dataframe.
+to update the summary information based on the current `DataFrame`.
 The `update_summary` information takes a single parameter, which is a dictionary of information
 specific to this operation.
 
@@ -2609,7 +2716,7 @@ specific to this operation.
 ````
 
 In the example [do_op for ColumnNamesOp](implementation-of-do-op_summarize-column-names-anchor),
-the dictionary is contains keys for `name` and `column_names.
+the dictionary contains keys for `name` and `column_names.
 
 The `get_summary_details` returns a dictionary with the summary-specific information
 currently in the summary.
@@ -2624,3 +2731,67 @@ The `BaseSummary` provides universal methods for converting this summary to JSON
 ````
 The operation associated with this instance of it associated with a given format
 implementation
+
+### Validator implementation
+
+The required input for the remodeler is specified in JSON format and must follow
+the rules laid out by the JSON schema.
+The parameters in the remodeler file must conform to the properties specified
+in the corresponding JSON schema associated with each operation.
+The errors are retrieved from the validator but are not passed on directly but instead
+modified for display as user-friendly error messages. 
+
+Validation errors are organized by stages as follows. 
+
+#### Stage 0: top-level structure
+
+Stage 0 refers to the top-level structure of the remodel JSON file.
+As specified by the validator's `BASE_ARRAY`, 
+a JSON remodel file must be an array of operation dictionaries containing at least 1 item.
+
+#### Stage 1: operation dictionary format
+
+Stage 1 validation refers the structure of the individual operations as specified by the validator's `OPERATION_DICT`. 
+Every operation dictionary should have exactly the keys: `operation`, `description`, and `parameters`. 
+
+#### Stage 2: operation dictionary values
+
+Stage 2 validates the values associated with the keys in each operation dictionary. 
+The `operation` and `description` keys should have a string values,
+while the `parameters` key should have a dictionary value.
+
+Stage 2 validation also verifies that the operation value is one of the valid operations as
+enumerated in the `valid_operations` dictionary.
+
+Several checks are also applied to the `parameters` dictionary.
+The properties listed as `required` in the schema must appear as keys in the `parameters` dictionary.
+
+If additional properties are not allowed, as designated by `"additionalProperties": False` in the JSON schema,
+the validator verifies that parameters not mentioned in the schema do not appear. 
+Note this is currently true for all operations and recommended for new operations. 
+
+If the schema for the operation has a `dependentRequired` dictionary, the validator
+verifies that the indicated keys are present if the listed parameter values are also present.
+For example, the `factor_column_op` only allows the `factor_names` parameter if the `factor_values`
+parameter is also present. In this case the dependency works only one way, such that `factor_values`
+can be provided without `factor_names`. If `factor_names` is provided alone the operation automatically generates the
+factor names based on the column names, however, without `factor_values` the names provided
+in `factor_names` do not correspond to anything, so this key cannot appear on its own.
+
+#### Later validation stages
+
+Later stages in validation concern the values given within the parameter object, which can be nested to an arbitrary level
+and are handled in a general way. 
+The user is provided with the operation index, name and the 'path' of the value that is invalid. 
+Note that while parameters always contains an object, the values in parameters can be of any type. 
+Thus, parameter values can be objects whose values might also be expected to be objects, arrays, or arrays of objects. 
+The validator has appropriate messages for many of the conditions that can be set with json schema, 
+but if an new operation parameter has a condition that has not been used yet, a new error message will need to be added to the validator.
+
+
+When validation against JSON schema passes, 
+the validator performs additional data-specific validation by calling `validate_input_data` 
+for each operation to verify that input data satisfies the
+constraints that fall outside the scope of JSON schema. 
+Also see [**The validate_input_data implementation**](#the-validate_input_data-implementation) and
+[**The PARAMS dictionary**](#the-params-dictionary) sections for additional information. 

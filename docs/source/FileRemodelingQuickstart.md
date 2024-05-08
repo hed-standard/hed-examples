@@ -277,8 +277,7 @@ The following example shows the remodeling operations to perform the splitting.
                 },
                 "stop_signal": {
                     "onset_source": ["stop_signal_delay"],
-                    "duration": [0.5],
-                    "copy_columns": []
+                    "duration": [0.5]
                 }
             },
             "remove_parent_row": false
@@ -309,13 +308,13 @@ because *remove_parent_event* is false.
 rows in the data file no longer represent trials, but individual events within the trial.)
 
 Next we specify how the new events are generated in the *new_events* dictionary. 
-Each new event has a name, which is a key in the *new_events* dictionary.
-For each key is associated with a dictionary
+Each type of new event has a name, which is a key in the *new_events* dictionary.
+Each key is associated with a dictionary
 specifying the values of the following parameters.
 
 * *onset_source*
 * *duration*
-* *copy_columns`*
+* *copy_columns*
 
 The *onset_source* is a list indicating how to calculate the onset for the new event
 relative to the onset of the anchor event.
@@ -326,18 +325,20 @@ Column names are evaluated to the row values in the corresponding columns.
 In our example, the response time and stop signal delay are calculated relative to the trial's onset,
 so we only need to add the value from the respective column.
 Note that these new events do not exist for every trial. 
-Rows where there was no stop signal have an *n/a* in the *stop_signal_delay* column.
+Rows where there was no stop signal have an `n/a` in the *stop_signal_delay* column.
 This is processed automatically, and remodeler does not create new events
-when any items in the *onset_source* list is missing or *n/a*.
+when any items in the *onset_source* list is missing or `n/a`.
 
 The *duration* specifies the duration for the new events. 
 The AOMIC data did not measure the durations of the button presses,
 so we set the duration of the response event to 0.
 The AOMIC data report indicates that the stop signal lasted 500 ms. 
 
-The copy columns indicate which columns from the parent event should be copied to the
+The *copy_columns* is an optional parameter indicating which columns from the parent event should be copied to the
 newly-created event.
-We would like to transfer the *response_accuracy* and the *response_hand* information to the response event.
+We would like to transfer the *response_accuracy* and the *response_hand* information to the *response* event. 
+Since no extra column values are to be transferred for *stop_signal*, columns other than *onset*, *duration*,
+and *trial_type* are filled with `n/a`.
 
 
 The final remodeling file can be found at:
@@ -436,7 +437,7 @@ There are three types of command line arguments:
 and [**Named arguments with values**](./FileRemodelingTools.md#named-arguments).
 
 The positional arguments, `data_dir` and `model_path` are not optional and must
-be the first and second arguments to `run_remodel`.
+be the first and second arguments to `run_remodel`, respectively.
 The named arguments (with and without values) are optional.
 They all have default values if omitted.
 
@@ -486,7 +487,7 @@ Now you can try out the *split_rows* on the full dataset!
 ### Jupyter notebooks for remodeling
 
 Three Jupyter remodeling notebooks are available at 
-[**Jupyter notebooks for remodeling**](https://github.com/hed-standard/hed-examples/tree/main/hedcode/jupyter_notebooks/remodeling).
+[**Jupyter notebooks for remodeling**](https://github.com/hed-standard/hed-examples/tree/main/src/jupyter_notebooks/remodeling).
 
 These notebooks are wrappers that create the backup as well as run restructuring operations on data files.
 If you do not have access to a Jupyter notebook facility, the article
