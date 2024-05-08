@@ -1,10 +1,15 @@
 (whats-new-anchor)=
 # What's new?
 
-**Jan 22, 2024 HED Wikipedia Page published:**       
->  [**HED Wikipedia**](https://en.wikipedia.org/wiki/Hierarchical_Event_Descriptors)
 
-**Nov. 14, 2023 Dora Hermes elected to BIDS steering committee:**      
+**May 28 - May 30, 2024: MOBI Tools Workshop at** [**MOBI 2024**](https://sites.google.com/view/mobi-2024/program/workshop-schedule?authuser=0)
+>  - May 28th, Efficient MoBI data collection using the Lab-Streaming Layer  
+>  - May 29th, Recording ‘What happened?’ using Hierarchical Event Descriptors  
+>  - May 30th, Open-Science MoBI. Using open data archives and computational resources  
+
+**Jan 22, 2024** [**HED Wikipedia**](https://en.wikipedia.org/wiki/Hierarchical_Event_Descriptors) **Page published:**
+
+**Nov. 14, 2023 Dora Hermes elected to BIDS steering committee:**
 >  HED working group member Dora Hermes from Mayo has been elected to the BIDS steering committee for a two-year term.
 >  **Congratulations** Dora!  
 
