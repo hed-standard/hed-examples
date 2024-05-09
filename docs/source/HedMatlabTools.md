@@ -187,26 +187,23 @@ The right version of `pip` is found in the `Scripts` subdirectory of your Python
 
 
 ````{admonition} Command to install hedtools in MATLAB.
-To install the latest released version of `hedtools` type a pip command such as the
+To install the latest released version of `hedtools` type a `pip` command such as the
 following in your MATLAB command window.
 
 ```matlab
 system('"C:\Program Files\Python\Python39\Scripts\pip" install hedtools')
 ```
-Use the full path of the pip associated
-with the Python that you are using with MATLAB
+Use the full path of the `pip` associated with the Python that your MATLAB is using.
 ````
 
-Giving the full path to `pip` corresponding to the Python installation that MATLAB
-is using ensures that MATLAB knows about `HEDtools`.
-(The version of MATLAB that Python is using may not be the same as the Python in the system PATH.)
+Giving the full path to correct version of `pip` 
+ensures that MATLAB knows about `HEDtools`.
+(The version of Python that MATLAB is using may not be the same as the Python in the system PATH.)
 
-Also watch the resulting messages in the command window to make sure that HEDtools
+Also watch the resulting messages in the MATLAB command window to make sure that HEDtools
 was successfully installed.
-In the case of the above example, the Python being used is in system space,
-which requires administrator privileges.
-
-The first line of the output was:
+In the above example, the Python being used is in system space,
+which requires administrator privileges. The first line of the output from installation was:
 
 ```matlab
    Defaulting to user installation because normal site-packages is not writeable
@@ -215,7 +212,7 @@ The first line of the output was:
 On Windows these packages will be found in a `site-packages` directory such as:
 
 ```text
-`C:\Users\username\AppData\Roaming\Python\Python39\site-packages`
+C:\Users\username\AppData\Roaming\Python\Python39\site-packages
 ```
 
 On Linux these packages might be found in directory such as:
@@ -233,36 +230,38 @@ Similarly, the `pip` package manager might be named `pip3` instead of `pip`.
 
 ```
 
-You can also install the Python HEDtools from GitHub if you want the version that is under development.
+You will need to install the Python HEDTools.
 
-````{admonition} Command to install hedtools in MATLAB.
-To install the latest released version of `hedtools` type a pip command such as the
-following in your MATLAB command window.
+````{admonition} Command to install HEDTools in MATLAB.
+To install the latest released version of `hedtools` type a `pip` command such as the
+following in your MATLAB command window:
 
 ```matlab
 system('"C:\Program Files\Python\Python39\Scripts\pip" install hedtools')
 ```
-Use the full path of the pip associated
-with the Python that you are using with MATLAB
-````
-If you want the newest features of the Python HEDTools, you will need to install directly from the GitHub repository.
 
-````{admonition} Command to install hedtools from the GitHub repository.
+````
+The above command retrieves the latest version of HEDTools from the PyPI archive.
+If you want the newest features of the Python HEDTools, you will need to install directly from the GitHub repository
+as shown in the following example.
+
+````{admonition} Command to install HEDTools from the GitHub repository.
 
 ```matlab
 system('"C:\Program Files\Python\Python39\Scripts\pip" install git+https://github.com/hed-standard/hed-python/@develop')
 ```
-Be sure to replace the path to pip, with the one for your Python installation.
+This installs the version of HEDTools on the `develop` branch. 
+Be sure to replace the path to `pip`, with the one for your Python installation.
 ````
 
 ````{warning}
 If you have an existing version of HEDTools installed and you want to install a new version,
-**you must uninstall the hedtools first**.
+**you must uninstall the HEDTools first**:
 
 ```matlab
 system('"C:\Program Files\Python\Python39\Scripts\pip" uninstall hedtools')
 ```
-Be sure to replace the path to pip, with the one for your Python installation.
+Be sure to replace the path to `pip`, with the one for your Python installation.
 ````
 
 The following MATLAB statement can be used to test that everything was installed correctly.
