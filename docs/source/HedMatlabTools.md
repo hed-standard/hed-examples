@@ -1,67 +1,80 @@
 # HED MATLAB tools
 
+HED's primary code base is maintained in Python, but much of the HED tool functionality can also be accessed in MATLAB.
 There are currently three types of support available for HED (Hierarchical Event Descriptors) in MATLAB:
-* [**Python HEDTools in MATLAB**](python-hedtools-in-matlab-anchor) - calling HED python tools from within MATLAB.
-* [**HED web services in MATLAB**](hed-web-services-in-matlab-anchor) - web services called from MATLAB scripts.
-* [**EEGLAB plug-in integration**](eeglab-integration-anchor) - EEGLAB plugins and other native MATLAB.
+* [**HEDTools in MATLAB**](hedtools-in-matlab-anchor) - calling HED python tools from within MATLAB through MATLAB wrapper functions.
+* [**HED web services in MATLAB**](hed-web-services-in-matlab-anchor) - calling web services from MATLAB scripts.
+* [**EEGLAB integration**](eeglab-integration-anchor) - calling HED tools through the EEGLAB menus.
 
-Python support in MATLAB 
+The HED MATLAB wrapper functions allow you to incorporate validation, summary, search, factorization,
+and other HED processing directly into your MATLAB scripts without 
+reimplementing these operations in MATLAB or knowing Python.
+These tools require a one-time setup connecting your MATLAB to Python.
 
-(python-hedtools-in-matlab-anchor)=
-## Python HEDTools in MATLAB
+A second option is to call the HED python tools through MATLAB functions that call HED's online services.
+This method accesses the Internet to perform the main actions and requires no setup.
+This method is not designed for iteratively processing large collections of recordings,
+but is usually fine for processing individual recordings. 
 
-Although MATLAB began python support of python in 2014, you must be using
-MATLAB version 2020b or later with the HEDTools because the
-current version of the HEDTools requires Python 3.8 or later.
-With these tools you can incorporate validation, summary, search, factorization,
-and other HED processing directly into your MATLAB processing scripts without 
-reimplementing these operations in MATLAB.
+Many of HED's functions are also available through EEGLAB's GUI, but EEGLAB must be installed.
+EEGLAB uses one of the first two methods to access HED's functionality.
 
-**Note:** For your reference, the source for `hedtools` is the 
+(hedtools-in-matlab-anchor)=
+## HEDTools in MATLAB
+
+After an initial one-time setup, you can use the MATLAB HEDTools without knowing Python.
+The `hedtools` library requires a Python version >= 3.8. 
+In order to call functions from this library in MATLAB, 
+you must be running MATLAB version >= R2019a and have a 
+[**compatible version of Python**](https://www.mathworks.com/support/requirements/python-compatibility.html) installed on your machine.
+
+**Note:** For your reference, the source for the Python `hedtools` is the 
 [**hed-python**](https://github.com/hed-standard/hed-python) GitHub repository.
 The code is fully open-source with an MIT license.
 The actual API documentation is available [**here**](https://hed-python.readthedocs.io/en/latest/api2.html),
 but the tutorials and tool documentation for `hedtools` on 
 [**HED Resources**](https://www.hed-resources.org/en/latest/index.html) provides more
-examples of use.
-
+examples of use. 
+[**MATLAB HEDTools**](https://github.com/hed-standard/hed-matlab/tree/main/hedmat/hedtools_wrappers) 
+can be downloaded from...
 
 ### Getting started
 
-The `hedtools` library requires a Python version >= 3.8. 
-In order to call functions from this library in MATLAB, 
-you must be running MATLAB version >= R2019a and have a 
-[**compatible version of Python**](https://www.mathworks.com/support/requirements/python-compatibility.html)
-installed on your machine.
-
 The most difficult part of the process for users who are unfamiliar with Python is
 getting Python connected to MATLAB.
-Once that is done, many of the standard `hedtools` functions have 
-[**MATLAB HED tool wrapper functions**](https://github.com/hed-standard/hed-matlab/tree/main/hedmat/hedtools_wrappers),
-which take MATLAB variables as arguments and return MATLAB variables.
-Thus, once the setup is done, you don't have to learn any additional Python syntax to use the tools.
-You should only have to do this setup once, since MATLAB retains the setup information
-from session to session.
+Once the setup is done, you don't have to learn any additional Python syntax to use the tools.
+The MATLAB wrapper functions take MATLAB variables as arguments and return MATLAB variables
+or opaque objects which are passed on to other functions.
 
-````{admonition} Steps for setting up Python HEDtools for MATLAB.
 
-[**Step 1: Find Python**](step-1-find-python-anchor). If yes, skip to Step 3.
+````{admonition} Steps for setting up Python HEDtools for MATLAB (done once).
+
+[**Step 1: Find Python**](step-1-find-python-anchor). 
+- If no Python, go to **Step 2**.
+- If Python is present, but MATLAB doesn't know about it, go to **Step 3**.
+- If Python is on your system and it is connected to MATLAB, skip to **Step 4**. 
 <p></p1>
 
-[**Step 2: Install Python if needed**](step-2-install-python-if-needed-anchor) .
+[**Step 2: Install Python if needed**](step-2-install-python-if-needed-anchor).
+- Be sure to pick the latest version of Python that is
+[**compatible**](https://www.mathworks.com/support/requirements/python-compatibility.html) with your version of MATLAB.
+- REMEMBER the installation path of the Python.
 <p></p> 
 
 [**Step 3: Connect Python to MATLAB**](step-3-connect-python-to-matlab-anchor).
-If already connected, skip to Step 4.
+- If your Python is already connected to MATLAB (as checked in **Step 1**), go to **Step 4**.
 <p></p> 
 
-[**Step 4: Install HEDtools**](step-4-install-hedtools-anchor)
+[**Step 4: Install Python HEDtools**](step-4-install-python-hedtools-anchor)
+<p></p> 
+
+[**Step 5: Install MATLAB HEDtools**](step-5-install-matlab-hedtools-anchor)
 ````
 
 (step-1-find-python-anchor)=
 #### Step 1: Find Python
 
-Follow these steps until you find a Python executable that is version 3.7 or greater.
+Follow these steps until you find a Python executable that is version 3.8 or greater.
 If you can't locate one, you will need to install it.
 
 ````{Admonition} Does MATLAB already have a good version of Python you can use?
@@ -72,21 +85,21 @@ In your MATLAB command window execute the following function:
 pyenv
 ```
 The following example response shows that MATLAB is using Python version 3.9
-with executable located at `C:\Program Files\Python39\pythonw.exe`.
+with executable located at `C:\Program Files\Python\Python39\python.exe`.
 
 ```matlab
   PythonEnvironment with properties:
 
           Version: "3.9"
-       Executable: "C:\Program Files\Python39\pythonw.exe"
-          Library: "C:\Program Files\Python39\python39.dll"
-             Home: "C:\Program Files\Python39"
+       Executable: "C:\Program Files\Python\Python39\python.exe"
+          Library: "C:\Program Files\Python\Python39\python39.dll"
+             Home: "C:\Program Files\Python\Python39"
            Status: NotLoaded
     ExecutionMode: InProcess
 ```
 ````
 
-If MATLAB has already knows about a suitable Python version that is at least 3.7,
+If MATLAB has already knows about a suitable Python version that is at least 3.8,
 you are ready to go to [**Step 4: Install HEDTools**](step-4-install-hedtools-anchor).
 Keep track of the location of the Python executable.
 
@@ -101,9 +114,9 @@ There are several likely places to look for Python on your system.
 or `~/.local/bin`. 
 
 **For Windows users**:
-> Likely places for system-space installation are `C:\`, `C:\Python`, or `C:\Program Files`.
+> Likely places for system-space installation are `C:\`, `C:\Python`, `C:\Program Files`, or `C:\Program Files\Python`.
 User-space installations default to your personal account 
-in `C:\Users\yourname\AppData\Local\Programs\Python\python39` where `yourname` is your Windows account name
+in a location such as `C:\Users\yourname\AppData\Local\Programs\Python\python39` where `yourname` is your Windows account name
 and `python39` will be the particular version (in this case Python 3.9).
 
 If you don't have any success finding a Python executable,
@@ -117,7 +130,7 @@ Otherwise, you can skip to [**Step 3:Connect Python to MATLAB**](step-3-connect-
 ```
 
 (step-2-install-python-if-needed-anchor)=
-#### Step 2: Install Python if needed
+#### Step 2: Install Python if needed. (Remember where it is.)
 
 If you don't have Python on your system, you will need to install it.
 Go to [**Python downloads**](https://www.python.org/downloads/) and pick the correct installer
@@ -129,12 +142,12 @@ Python may be installed in your user space or in system space for all users.
 - You may want to add the location of the Python executable to your PATH.
   (Most installers give you that option as part of the installation.)
 
-#### Installing in a virtual environment
+We do not recommend using a Python virtual environment. If you are not running in administrative mode,
+MATLAB installs add-on Python packages in a specific place in your user space, and these packages are then
+available to all your MATLAB applications.
 
-https://www.mathworks.com/support/search.html/answers/1750425-python-virtual-environments-with-python-interface.html?fq%5B%5D=asset_type_name:answer&page=1
 (step-3-connect-python-to-matlab-anchor)=
 #### Step 3: Connect Python to Matlab
-
 
 C:\Users\username\AppData\Local\Programs\Python\python -m venv C:\Users\username\py38 
 
@@ -144,13 +157,11 @@ as illustrated by the following example.
 ````{admonition} Example MATLAB function call connect MATLAB to Python.
 
 ```matlab
->> pyenv('Version', 'C:\Program Files\Python39\python.exe')
+>> pyenv('Version', 'C:\Program Files\Python\Python39\python.exe')
 ```
 ````
 
 Be sure to substitute the path of the Python that you have found.
-Notice that the executable listed in Step 1 was `pythonw.exe`, but we have used `python.exe` here
-to indicate the command line version.
 
 Use the MATLAB `pyenv` function again without arguments to check that your installation is as expected.
 
@@ -160,16 +171,16 @@ Use the MATLAB `pyenv` function again without arguments to check that your insta
  PythonEnvironment with properties:
 
           Version: "3.9"
-       Executable: "C:\Program Files\Python39\python.exe"
-          Library: "C:\Program Files\Python39\python39.dll"
-             Home: "C:\Program Files\Python39"
+       Executable: "C:\Program Files\Python\Python39\python.exe"
+          Library: "C:\Program Files\Python\Python39\python39.dll"
+             Home: "C:\Program Files\Python\Python39"
            Status: NotLoaded
     ExecutionMode: InProcess
 ```
 ````
 
-(step-4-install-hedtools-anchor)=
-#### Step 4: Install HEDTools  
+(step-4-install-python-hedtools-anchor)=
+#### Step 4: Install Python HEDTools  
 
 The general-purpose package manager for Python is called `pip`.
 By default, `pip` retrieves packages to be installed from the [**PyPI**](https://pypi.org)
@@ -177,12 +188,12 @@ package repository. You will need to use the version of `pip` that corresponds
 to the version of Python that is connected to MATLAB.
 This may not be the default `pip` used from the command line.
 
-````{admonition} Command to install hedtools in MATLAB.
+````{admonition} Command to install Python HEDtools in MATLAB.
 To install the latest released version of `hedtools` type a pip command such as the
 following in your MATLAB command window.
 
 ```matlab
-system('"C:\Program Files\Python39\Scripts\pip" install hedtools')
+system('"C:\Program Files\Python\Python39\Scripts\pip" install hedtools')
 ```
 Use the full path of the pip associated
 with the Python that you are using with MATLAB
@@ -238,9 +249,34 @@ Using HEDTOOLS version: {'date': '2022-06-20T14:40:24-0500', 'dirty': False, 'er
 ```
 ````
 
+If you want to install a newer version of the Python HEDTools, you must first uninstall the current version.
 
-(matlab-wrappers-for-HED-tools-anchor)=
-### MATLAB wrappers for HEDTools
+````{Admonition} Uninstalling the current version of Python HEDTools.
+
+```matlab
+system('"C:\Program Files\Python\Python39\Scripts\pip" uninstall hedtools')
+```
+````
+If you want to install the latest unreleased version of the Python HEDTools, you should first uninstall your
+current HEDtools as above.  You can install from GitHub instead of the `pip` defaults by
+using the appropriate web address as shown in the following example.
+
+````{Admonition} Installing Python HEDTools from the GitHub develop branch.
+
+```matlab
+system('"C:\Program Files\Python\Python39\Scripts\pip" install git+https://github.com/hed-standard/hed-python/@develop')
+```
+````
+
+(step-5-install-matlab-hedtools-anchor)=
+#### Step 5: Install MATLAB HEDtools
+
+The final step in the setup is to download the MATLAB HEDTools and put in your MATLAB path.
+***Path to release zip to be added soon....***
+
+
+(running-matlab-hedtools-anchor)=
+### Running MATLAB HEDTools
 
 The [**hedtools_wrappers**](https://github.com/hed-standard/hed-examples/tree/main/hedcode/matlab_scripts/hedtools_wrappers) directory in the
 [**hed-examples**](https://github.com/hed-standard/hed-examples) GitHub repository
