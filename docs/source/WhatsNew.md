@@ -7,6 +7,12 @@
 >  - May 29th, Recording ‘What happened?’ using Hierarchical Event Descriptors  
 >  - May 30th, Open-Science MoBI. Using open data archives and computational resources  
 
+**May 23, 2024: New publication describing conceptual framework for HED**
+>  <em>Events in context—The HED framework for the study of brain, experience and behavior</em>  
+>  by Makeig, S. and K. Robbins (2024).     
+>  Front. Neuroinform. Vol. 18 Research Topic 15 Years of impact, open neuroscience  
+>  [https://doi.org/10.3389/fninf.2024.1292667](https://doi.org/10.3389/fninf.2024.1292667).  
+
 **May 23, 2024: EEGNET Spring Colloquium (10 am - noon CDT)** [**EEGNET 2024**](https://www.eventbrite.com/e/eegnet-spring-colloquium-2024-tickets-795533972527)
 >  Hear how EEGNET is advancing data sharing and annotation using HED.  
 >  Free but signup is required to receive zoom link.  

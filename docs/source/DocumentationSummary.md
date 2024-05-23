@@ -5,6 +5,13 @@
 
 ### Journal articles
 
+Conceptual framework for HED and path for future development: 
+
+> Makeig, S. and K. Robbins (2024).      
+> Events in context—The HED framework for the study of brain, experience and behavior.    
+> Front. Neuroinform. Vol. 18 Research Topic 15 Years of impact, open neuroscience.  
+> [https://doi.org/10.3389/fninf.2024.1292667]( https://doi.org/10.3389/fninf.2024.1292667).  
+
 Explanation of the history, development, and motivation for third generation HED: 
 
 > Robbins, K., Truong, D., Jones, A., Callanan, I., and S. Makeig (2022).  
