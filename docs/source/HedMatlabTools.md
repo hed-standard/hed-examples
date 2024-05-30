@@ -1,5 +1,5 @@
-(hed-matlab-tools-anchor)=
-# HED MATLAB tools
+(matlab-hedtools-anchor)=
+# MATLAB HedTools
 
 The goal of the HED MATLAB tools is to provide access to HED tools from MATLAB without knowledge of Python.
 The HED tools allow validation, summary, search, factorization, data epoching
