@@ -616,7 +616,7 @@ for more information on installation and use.
 The project source code is located in the [**CTagger**](https://github.com/hed-standard/ctagger) GitHub repository.
 <p></p>
 
-[**HED MATLAB tools**](https://www.hed-resources.org/en/latest/HedMatlabTools.html#hed-matlab-tools) explains how the 
+[*MATLAB HedTools**](https://www.hed-resources.org/en/latest/MatlabHedTools.md) explains how the 
 users can use the HEDTools in MATLAB using one of three approaches: using MATLAB wrappers for the HED Python tools,
 using MATLAB wrappers for the HED web services, or by calling HED tools through EEGLAB.
 
@@ -624,9 +624,6 @@ The [**HED online services**](https://hedtools.ucsd.edu/hed) can be called progr
 as described in [**Web tools and rest services**](web-tools-and-rest-services-anchor). 
 <p></p>
 
-[**Python HEDTools in MATLAB**](./HedMatlabTools.md#python-hedtools-in-matlab)
-explains how to install and call various Python tools from MATLAB.
-<p></p>
 
 (web-tools-and-rest-services-anchor)=
 #### Web tools and REST services
