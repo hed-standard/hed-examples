@@ -182,7 +182,7 @@ script calls all the services on test data.
 #### Access through EEGLAB
 [**EEGLAB**](https://sccn.ucsd.edu/eeglab/index.php) 
 users can access HED validation through the
-[**EEGLAB HEDTools plugin**](./HedMatlabTools.md#eeglab-plug-in-integration).
+[**EEGLAB HEDTools plugin**](./HedAndEEGLAB.md).
 
 [**CTagger**](./CTaggerGuiTaggingTool.md) is an annotation tool that
 guides users through the tagging process using a graphical user interface.

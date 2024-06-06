@@ -510,7 +510,7 @@ creates factors based on a HED tag representing structural information about the
 
 [**EEGLAB**](https://sccn.ucsd.edu/eeglab/index.php), the interactive
 MATLAB toolbox for EEG/MEG analysis, supports HED through the
-[**EEGLAB HEDTools plugin**](./HedMatlabTools.md#eeglab-plug-in-integration).
+[**EEGLAB HEDTools plugin**](./HedAndEEGLAB.md).
 
 The *End-to-end processing of EEG with HED and EEGLAB* preprint, which can be found 
 at [**https://osf.io/8brgv/**](https://osf.io/8brgv/),
