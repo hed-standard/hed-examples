@@ -7,13 +7,13 @@ These MATLAB wrappers allow MATLAB users to use HED without learning Python.
 
 The HED MATLAB tools provide the following interface to HEDTools as explained in more detail in the following sections. 
 
-| Matlab | Purpose     | Returns    |  
-| ------ |------------------|------------|  
-| `getHedAnnotations` | Assemble a cell array of HED annotations<br/>from data such as events.   | cell array of `char`     |  
-| `getHedFactors` | Given a cell array of *n* HED annotations and a cell array of *m* of HED queries<br/>return an *n* x *m* array indicating whether<br/>each annotation satisfied the respective query. | *n* x *m* array of 1's and 0's. |
-| `validateEvents` | Validate HED events data in various formats<br/>and return a printable string with HED issues.  | `char` array |
-| `validateSidecar` | Validate HED in a BIDS sidecar (in various formats)<br/>and return a printable string with HED issues. |   `char` array |    
-| `validateTags` | Validate a HED annotation (in various formats)<br/>and return a printable string with HED issues. |   `char` array |    
+| Matlab | Purpose                                                                                                                                                                                          | Returns    |  
+| ------ |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|  
+| `getHedAnnotations` | Assemble a cell array of HED string annotations<br/>from data such as events.                                                                                                                    | cell array of `char`     |  
+| `getHedFactors` | Given a cell array of *n* HED string annotations and<br/>a cell array of *m* of HED queries<br/>return an *n* x *m* array indicating whether<br/>each annotation satisfied the respective query. | *n* x *m* array of 1's and 0's. |
+| `validateEvents` | Validate HED events data in various formats<br/>and return a printable string with HED issues.                                                                                                   | `char` array |
+| `validateSidecar` | Validate HED in a BIDS sidecar (in various formats)<br/>and return a printable string with HED issues.                                                                                           |   `char` array |    
+| `validateTags` | Validate a HED annotation (in various formats)<br/>and return a printable string with HED issues.                                                                                                |   `char` array |    
 
 The MATLAB HEDTools package provides two interchangeable implementations of these functions -- calling the HED Python tools through a web service or directly calling the Python HEDTools.
 
@@ -22,38 +22,37 @@ The MATLAB HEDTools package provides two interchangeable implementations of thes
 Both approaches take as input, MATLAB data and translate these values as needed to access the HEDTools.
 After making the call, the implementation translates the results back into MATLAB data types.
 
-Calling the HEDTools using web services requires no installation beyond downloading the 
-MATLAB HEDTools package, but its use requires Internet access. 
+Calling the HED MATLAB tools using web services requires no installation beyond downloading the 
+HED MATLAB package, but its use requires Internet access. 
 
-Using direct calls to the HEDTools from MATLAB is more efficient
+Using direct calls to the Python HEDTools from MATLAB is more efficient
 and provides additional functionality not available through the web service interface.
-However, requires a one-time setup of Python for your MATLAB installation.
-You will need at least MATLAB version R2020b, since the Python HEDTools require at least Python 3.8.
+However, direct calls require a one-time setup of Python for your MATLAB installation.
+You will need at least MATLAB version R2020b, 
+since the Python HEDTools require at least Python 3.8.
 See [**MathWorks Python Compatibility Docs**](https://www.mathworks.com/support/requirements/python-compatibility.html) for additional information.
 
-
-
-A third option is to use the EEGLAB plug-in integration for HED.
-The EEGLAB plug-ins use one of the first two methods to perform the operations, but provide a user-interface.
+Another option is to use the [**EEGLAB HEDTools plug-in**](./HedAndEEGLAB.md) 
+integration for HED.
+The EEGLAB plug-ins provide easy access through the EEGLAB GUI interface
 
 (what-to-download-anchor)=
 ## What to download
 
-The MATLAB HEDtools can be downloaded from the [**hed-matlab**](https://github.com/hed-standard/hed-matlab)
-GitHub repository. You should add the **hedmat** directory and all of its subdirectories to your path.
+The HED MATLAB tools can be downloaded from the [**hed-matlab**](https://github.com/hed-standard/hed-matlab) GitHub repository.
+You should add the **hedmat** directory and all of its subdirectories to your path.
 
 The following table describes the directories of this repository:
 
-| Directory | Description |
-| --------- | ----------- |
-| *data* | Data used for the demos and tests. |
-| *docs* | Source code for the documentation. |
-| *hedmat/hed_wrappers* | Matlab wrapper functions for HED python tools. |
-| *hedmat/remodeling* | Matlab interface for the HED remodeling tools. |
-| *hedmat/utilities* | General purpose utilities. |
-| *hedmat/web_service_demos* | Demos of the web service direct calls. |
-| *hedmat/web_service_wrappers* | Matlab wrappers for the web services. |
-| *tests* | Unit tests for MATLAB. (Execute `run_tests.m` to run all unit tests. |
+| Directory                     | Description           |
+|-------------------------------|-----------------------|
+| *data*                        | Data used for the demos and tests.      |
+| *docs*                        | Source code for the documentation.                                             |
+| *hedmat/hedtools*             | Matlab interface for the HED tools.                                            |
+| *hedmat/remodeling_demos*     | Demos of calling the HED remodeling tools.                                     |
+| *hedmat/utilities*            | General purpose utilities.                                                     |
+| *hedmat/web_services_demos*   | Demos of directly using the HED web services (without hedtools).               |
+| *tests*                       | Unit tests for MATLAB. (Execute `run_tests.m` to run all unit tests.)<br/>Note |
 
 (wrappers-for-hedtools-anchor)=
 ## Wrappers for HEDTools
