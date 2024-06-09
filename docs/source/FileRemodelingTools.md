@@ -877,7 +877,7 @@ The resulting columns are called *stopped* and *stop_failed*, respectively.
 The results of executing this *factor_column* operation on the 
 [**sample remodel event file**](sample-remodel-event-file-anchor) are:
 
-````{admonition} Results of the factor_column operation on the sampe data.
+````{admonition} Results of the factor_column operation on the sample data.
 
 | onset | duration | trial_type | stop_signal_delay | response_time | response_accuracy | response_hand | sex | stopped | stop_failed |
 | ----- | -------- | ---------- |  ----------------- | ------------- | ----------------- | ------------- | --- | ---------- | ---------- |

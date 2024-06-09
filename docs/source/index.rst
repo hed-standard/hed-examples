@@ -135,6 +135,7 @@ Visit the `HED project homepage <https://github.com/hed-standard>`_ for links to
    HedPythonTools.md
    HedJavascriptTools.md
    HedMatlabTools.md
+   HedAndEEGLAB.md
    DocumentationSummary.md
 
 

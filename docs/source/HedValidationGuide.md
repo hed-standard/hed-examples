@@ -173,7 +173,7 @@ HED validation in MATLAB is currently done by accessing the HED online tools as 
 #### Direct access to services
 Users can access these services directly by calling wrapper functions or by using the HED MATLAB web services 
 functions as explained in 
-[**HED MATLAB tools**](./HedMatlabTools.md#hed-matlab-tools-anchor).
+[**MATLAB HedTools**](./HedMatlabTools.md).
 Download the [**web_services**](https://github.com/hed-standard/hed-matlab/tree/main/hedmat/web_services)
 directory from GitHub and include this directory in your MATLAB path.
 The [**runAllDemos.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/runAllDemos.m)
@@ -182,7 +182,7 @@ script calls all the services on test data.
 #### Access through EEGLAB
 [**EEGLAB**](https://sccn.ucsd.edu/eeglab/index.php) 
 users can access HED validation through the
-[**EEGLAB HEDTools plugin**](./HedMatlabTools.md#eeglab-plug-in-integration).
+[**EEGLAB HEDTools plugin**](./HedAndEEGLAB.md).
 
 [**CTagger**](./CTaggerGuiTaggingTool.md) is an annotation tool that
 guides users through the tagging process using a graphical user interface.

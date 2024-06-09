@@ -82,13 +82,13 @@ The HED standard schema source is located in the
 [**standard_schema**](https://github.com/hed-standard/hed-schemas/tree/main/standard_schema)
 directory of the [**hed-schemas**](https://github.com/hed-standard/hed-schemas) GitHub repository.
 
-| Format | Type | Use | 
-| ------ | ---- | ---- | 
-| XML |  [**Raw**](https://raw.githubusercontent.com/hed-standard/hed-schemas/main/standard_schema/hedxml/HED8.2.0.xml) | Accessed by tools for validation and analysis. |  
-|   | [**Formatted**](https://github.com/hed-standard/hed-schemas/blob/main/standard_schema/hedxml/HED8.2.0.xml) | Readable display. |
-| Mediawiki | [**Raw**](https://raw.githubusercontent.com/hed-standard/hed-schemas/main/standard_schema/hedwiki/HED8.1.0.mediawiki) | Edited to create a new schema. |  
-|  | [**Formatted**](https://github.com/hed-standard/hed-schemas/blob/main/standard_schema/hedwiki/HED8.1.0.mediawiki) |  Readable display for editing. |
-| Prerelease  | [**Directory**](https://github.com/hed-standard/hed-schemas/tree/main/library_schemas/score/prerelease) |  Working directory for developing the prerelease. |
+| Format     | Type | Use | 
+|------------| ---- | ---- | 
+| XML        |  [**Raw**](https://raw.githubusercontent.com/hed-standard/hed-schemas/main/standard_schema/hedxml/HED8.2.0.xml) | Accessed by tools for validation and analysis. |  
+|            | [**Formatted**](https://github.com/hed-standard/hed-schemas/blob/main/standard_schema/hedxml/HED8.2.0.xml) | Readable display. |
+| MediaWiki  | [**Raw**](https://raw.githubusercontent.com/hed-standard/hed-schemas/main/standard_schema/hedwiki/HED8.1.0.mediawiki) | Edited to create a new schema. |  
+|            | [**Formatted**](https://github.com/hed-standard/hed-schemas/blob/main/standard_schema/hedwiki/HED8.1.0.mediawiki) |  Readable display for editing. |
+| Prerelease | [**Directory**](https://github.com/hed-standard/hed-schemas/tree/main/library_schemas/score/prerelease) |  Working directory for developing the prerelease. |
 
 ### The SCORE library
 
@@ -96,13 +96,13 @@ The HED SCORE library is an implementation of the [**SCORE**](https://hed-schema
 For more information and the latest references see 
 [**HED SCORE schema**](https://hed-schemas.readthedocs.io/en/latest/hed_score_schema.html).
 
-| Format | Type | Use | 
-| ------ | ---- | ---- | 
-| XML |  [**Raw**](https://raw.githubusercontent.com/hed-standard/hed-schemas/main/library_schemas/score/hedxml/HED_score_1.0.0.xml) | Accessed by tools for validation and analysis. |  
-|   | [**Formatted**](https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/score/hedxml/HED_score_1.0.0.xml) | Readable display. |
-| Mediawiki | [**Raw**](https://raw.githubusercontent.com/hed-standard/hed-schemas/main/library_schemas/score/hedwiki/HED_score_1.0.0.mediawiki) | Edited to create a new schema. |  
-|  | [**Formatted**](https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/score/hedwiki/HED_score_1.0.0.mediawiki) |  Readable display for editing. |
-| Prerelease  | [**Directory**](https://github.com/hed-standard/hed-schemas/tree/main/library_schemas/score/prerelease) |  Working directory for developing the prerelease. |
+| Format     | Type | Use | 
+|------------| ---- | ---- | 
+| XML        |  [**Raw**](https://raw.githubusercontent.com/hed-standard/hed-schemas/main/library_schemas/score/hedxml/HED_score_1.0.0.xml) | Accessed by tools for validation and analysis. |  
+|            | [**Formatted**](https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/score/hedxml/HED_score_1.0.0.xml) | Readable display. |
+| MediaWiki  | [**Raw**](https://raw.githubusercontent.com/hed-standard/hed-schemas/main/library_schemas/score/hedwiki/HED_score_1.0.0.mediawiki) | Edited to create a new schema. |  
+|            | [**Formatted**](https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/score/hedwiki/HED_score_1.0.0.mediawiki) |  Readable display for editing. |
+| Prerelease | [**Directory**](https://github.com/hed-standard/hed-schemas/tree/main/library_schemas/score/prerelease) |  Working directory for developing the prerelease. |
 
 ### The LISA library
 
@@ -112,11 +112,11 @@ For more information and the latest references see
 [**HED LISA schema**](https://hed-schemas.readthedocs.io/en/latest/hed_lisa_schema.html).
 The LISA library is under development and is only available in prerelease format.
 
-| Format | Type | Use | 
-| ------ | ---- | ---- | 
-| XML | **Raw** | Accessed by tools for validation and analysis. |  
-|   | [**Formatted**] | Readable display. |
-| Mediawiki | [**Raw**] | Edited to create a new schema. |  
-|  | [**Formatted**] |  Readable display for editing. |
-| Prerelease  | [**Directory**](https://github.com/hed-standard/hed-schemas/tree/main/library_schemas/lisa/prerelease) |  Working directory for developing the prerelease. |
+| Format     | Type | Use | 
+|------------| ---- | ---- | 
+| XML        | **Raw** | Accessed by tools for validation and analysis. |  
+|            | [**Formatted**] | Readable display. |
+| MediaWiki  | [**Raw**] | Edited to create a new schema. |  
+|            | [**Formatted**] |  Readable display for editing. |
+| Prerelease | [**Directory**](https://github.com/hed-standard/hed-schemas/tree/main/library_schemas/lisa/prerelease) |  Working directory for developing the prerelease. |
 
