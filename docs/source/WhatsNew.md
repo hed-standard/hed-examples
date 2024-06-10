@@ -1,6 +1,9 @@
 (whats-new-anchor)=
 # What's new?
 
+**June 10, 2024**: **HED standard schema v8.3.0 released.**  
+> The [**HED schema v8.3,0**](https://doi.org/10.5281/zenodo.7876037) has just
+been released. This release introduces `hedId` globally unique identifiers for every HED element and enables mapping into a HED ontology.
 
 **May 28 - May 30, 2024: MOBI Tools Workshop at** [**MOBI 2024**](https://sites.google.com/view/mobi-2024/program/workshop-schedule?authuser=0)
 >  - May 28th, Efficient MoBI data collection using the Lab-Streaming Layer  
