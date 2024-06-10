@@ -1,52 +1,472 @@
+(matlab-hedtools-anchor)=
 # HED MATLAB tools
 
-There are currently three types of support available for HED (Hierarchical Event Descriptors) in MATLAB:
-* [**Python HEDTools in MATLAB**](python-hedtools-in-matlab-anchor) - calling HED python tools from within MATLAB.
-* [**HED web services in MATLAB**](hed-web-services-in-matlab-anchor) - web services called from MATLAB scripts.
-* [**EEGLAB plug-in integration**](eeglab-integration-anchor) - EEGLAB plugins and other native MATLAB.
+The HED MATLAB tools allow validation, summary, search, factorization, data epoching
+and other HED processing in MATLAB by providing MATLAB wrappers for the Python HEDTools.
+These MATLAB wrappers allow MATLAB users to use HED without learning Python. 
 
-Python support in MATLAB 
+## Tool overview
 
-(python-hedtools-in-matlab-anchor)=
-## Python HEDTools in MATLAB
+The HED MATLAB tools provide the following interface to HEDTools as explained in more detail in the following sections. 
+The MATLAB HEDTools package provides two interchangeable implementations of these functions -- calling the HED Python tools through a web service or directly calling the Python HEDTools.
 
-Although MATLAB began python support of python in 2014, you must be using
-MATLAB version 2020b or later with the HEDTools because the
+![HED MATLAB tools](./_static/images/MatLabHedToolsCloseFit.png). 
+
+Both approaches take MATLAB data as input and translate these values as needed to access the HEDTools.
+After making the call, the implementation translates the results back into MATLAB data types.
+
+Calling the HED MATLAB tools using web services requires no installation beyond downloading the 
+HED MATLAB package, but its use requires Internet access. 
+
+Using direct calls to the Python HEDTools from MATLAB is more efficient
+and provides additional functionality not available through the web service interface.
+However, direct calls require a one-time setup of Python for your MATLAB installation.
+See [**MATLAB Python install**](#matlab-python-install) for additional setup information.
+
+Another option is to use the [**EEGLAB HEDTools plug-in**](./HedAndEEGLAB.md) integration for HED.
+The EEGLAB plug-ins provide easy access through the EEGLAB GUI interface
+
+### The HED MATLAB interface
+
+The HED MATLAB tools provide the following routines for accessing HED:
+
+```{list-table} MATLAB HEDTools interface (* indicates optional Name-Value parameter)
+:header-rows: 1
+:name: matlab-hedtools-interface
+
+* - MATLAB
+  - Purpose
+  - Parameters
+  - Returns
+* - `getHedAnnotations`
+  - Assemble a cell array of HED string<br/>annotations from data such as events.
+  - `events`<br/>`sidecar`<br/>`removeTypesOn`<br/>`includeContext`<br/>`replaceDefs`
+  - cell array of `char`
+* - `searchHed`
+  - Given a cell array of *n* HED string<br/>annotations and a cell array of <br/>*m* of HED queries return an <br/>*n* x *m* array indicating whether<br/>each annotation satisfied the<br/>respective query.
+  - `annotations`<br/>`queries`
+  - *n* x *m* array of 1's and 0's.
+* - `validateEvents`
+  - Validate HED events data in various<br/>format sand return a printable<br/>string with HED issues.
+  - `events`<br/>`sidecar`<br/>`checkWarnings`*
+  -  `char`
+* - `validateSidecar`
+  - Validate HED in a BIDS sidecar<br/>(in various formats) and return a <br/>printable string with HED issues.
+  - `sidecar`<br/>`checkWarnings`*
+  -  `char`
+* - `validateTags`
+  - Validate a HED annotation<br/>(in various formats) and return a<br/>printable string with HED issues.
+  - `hedTags`<br/>`checkWarnings`*
+  - `char`
+```
+
+
+The parameters are defined as follows:
+
+```{list-table} Parameters for MATLAB HED tools (* indicates optional Name-Value parameter).
+:header-rows: 1
+:name: matlab-hedtools-parameters
+
+* - Parameter
+  - Description
+  - MATLAB type
+* - `annotations`
+  - Cell array with hed annotations.
+  - cell array of `char` or `string`, <br/>(or of `HedString` if Python)
+* - `events` 
+  - Tabular data with HED tags<br/>ex: EEGLAB EEG.events or BIDS _events.tsv.
+  - `char`, `string`, `struct` <br/>(or `TabularInput` if Python)
+* - `sidecar`
+  - Data representing a BIDS-type sidecar<br/>containing metadata for tabular data.
+  - `char`, `string`, `struct` <br/>(or `Sidecar` if Python)
+* - `hedtags`
+  - A HED annotation string.
+  -  `char`, `string`<br/> (or `HedString` if Python)
+* - `queries`
+  - Valid HED query strings.
+  - Cell array of `char` or `string`
+* - `checkWarnings`*
+  - Optional flag indicating whether to check<br/>for warnings during validation.
+  - `true` or `false`
+* - `includeContext`*
+  - Optional flag indicating whether to<br/>include the event context in assembling HED tags.
+  - `true` or `false`
+* - `removeTypesOn`*
+  - Optional flag indicating whether to<br/>remove *Condition-variable* and *Task* tags.  
+  - `true` or `false`
+* - `replaceDefs`*
+  - Optional flag indicataing whether to <br/>eplace *Def* tags with contents<br/>of their definitions.  
+  - `true` or `false`
+```
+
+(what-to-download-anchor)=
+### What to download
+
+The HED MATLAB tools can be downloaded from the [**hed-matlab**](https://github.com/hed-standard/hed-matlab) GitHub repository.
+**Add the <em>hedmat</em> directory and all of its subdirectories to your path.**
+
+The following table describes the directories of this repository:
+
+```{list-table} Directories in hed-matlab GitHub repo.
+:header-rows: 1
+:name: matlab-hedtools-download
+
+* - Directory
+  - Description
+* - Directory
+  - Description
+* - *data*
+  - Data used for the demos and tests.
+* - *docs*
+  - Source code for the documentation.
+* - *hedmat/hedtools*
+  - MATLAB interface for the HED tools.
+* - *hedmat/remodeling_demos*
+  - Demos of calling the HED remodeling tools.
+* - *hedmat/utilities*
+  - General purpose utilities.
+* - *hedmat/web_services_demos*
+  - Demos of directly using the HED web services (without hedtools).
+* - *tests*
+  - Unit tests for MATLAB. (Execute `run_tests.m` to run all unit tests.)
+```
+
+## Using MATLAB HEDTools
+
+This section gives some examples of using the HED MATLAB tools.
+
+### Getting a HEDTools object
+
+The HED MATLAB tools are all called by getting a `HedTools` object and then making the calls through this object.
+Use the `getHedTools` function to get a `HedTools` object.
+
+The following example gets a `HedTools` object using version 8.2.0 of the HED schema (standard vocabulary)
+and the webservice available at [**https://hedtools.org/hed**](https://hedtools.org/hed).
+
+````{admonition} Access HED tools through web services.
+:class: tip
+
+```matlab
+hed = getHedTools('8.2.0', 'https://hedtools.org/hed');
+```
+````
+
+The first parameter is number of the HED version to use, and the second parameter is the URL of the web service.
+The `hed` returned by this call is `HedToolsService`, which implements the interface by calls to HED web services.
+The [**https://hedtools.org/hed**](https://hedtools.org/hed) is the primary server for the HED online tools.
+An alternative server for the web services is [**https://hedtools.org/hed_dev**](https://hedtools.org/hed_dev).
+This is the HED development server, which deploys the latest features.
+
+If you have installed the HED Python tools, you can access the HED MATLAB interface using direct calls to Python.
+
+````{admonition} Access HED tools through direct Python calls.
+:class: tip
+
+```matlab
+hed = getHedTools('8.2.0');
+```
+````
+If you call the `getHedTools` with only the HED version number parameter,
+`getHedTools` assumes you are using direct calls to Python and returns a `HedToolsPython` object.
+The HED MATLAB interface calls and behavior are identical whether you use the services or direct calls.
+You must have the HED Python tools installed to use direct calls.
+See [**MATLAB Python install**](#matlab-python-install).
+
+### Calling a tool
+Once you have the HED tools object, you can use it to call the tools listed above
+as illustrated in the following example:
+
+````{admonition} Validate a string containing HED tags.
+:class: tip
+
+```matlab
+issues = validateTags(hed, 'Sensory-event,Red,Blech,(Image, Banana)');
+```
+````
+The `issues` is a printable `char` array.
+The HED tags string in the above example has two unrecognized tags: *Blech* and *Banana*. 
+The call to `validateTags` produces the following `issues` message:
+
+````{admonition} Validate a string containing HED tags.
+```text
+   TAG_INVALID: 'Blech' in Blech is not a valid base hed tag.
+   TAG_INVALID: 'Banana' in Banana is not a valid base hed tag.
+```
+````
+
+### Input of events
+
+Events are markers on the experimental timeline that indicate something of interest.
+One of HED's primary purposes is to annotation event markers with usable metadata to assist in analysis.
+
+Events are generally represented in a tabular input form with column names.
+Each row in such a table corresponds to information associated with one event marker.
+
+```{list-table} Example events input
+:header-rows: 1
+:name: example-events-tabular-input
+
+* - row #
+  - onset
+  - latency
+  - type
+  - modifier
+* - 1
+  - 8.50
+  - 851
+  - show
+  - A2
+* - 2
+  - 8.90
+  - 891
+  - show
+  - A5
+* - 3
+  - 9.00
+  - 901
+  - resp
+  - key1
+* - 4
+  - onset
+  - 1001
+  - resp
+  - key2
+```
+
+HED expects that event files have an `onset` column that provides the
+time in seconds of the event marker relative to the experimental timeline.
+
+When this data is stored in a tab-separated value file called `test.tsv`, 
+it can be read as:
+
+````{admonition} Read a tab-separated value file into a char array.
+:class: tip
+
+```matlab
+events = fileread('test.tsv')
+```
+The events is a char array:
+
+```text
+    'onset	latency	type	modifier
+     8.50	851	show	A2
+     8.90	891	show	A5
+     9.00	901	resp	but1
+     10.00	1001	resp	but2'
+```
+````
+
+The same data can also be stored in MATLAB `struct` array:
+
+````{admonition} Read a tab-separated value file into a char array.
+:class: tip
+
+```matlab
+events(1) = struct('onset', 8.5, 'latency', 851, 'type', 'show', 'modifier', 'A2');
+events(2) = struct('onset', 8.9, 'latency', 891, 'type', 'show', 'modifier', 'A5');
+events(3) = struct('onset', 9, 'latency', 901, 'type', 'resp', 'modifier', 'but1');
+events(4) = struct('onset', 10, 'latency', 1001, 'type', 'resp', 'modifier', 'but2');
+```
+Displaying events on the MATLAB command line just gives the overall structure:
+
+```text
+  1×4 struct array with fields:
+
+    onset
+    latency
+    type
+    modifier
+```
+but the MATLAB workspace editor provides a more informative view:
+![ExampeMATLABStruct](./_static/images/MatLabEventsStruct.png). 
+
+````
+
+Once you have events data, it is easy to validate the HED
+associated with this data as shown by the following example:
+
+````{admonition} Validate events data.
+:class: tip
+
+```matlab
+issues = hed.validateEvents(events, sidecar);
+```
+````
+
+### Input of sidecars
+A tabular dataset may have a `HED` column whose entries provide HED
+annotations for the individual event markers represented by the rows. 
+However, a more typical approach to annotation is to provide
+an additional dictionary, often called a sidecar.
+In [**BIDS**](https://bids.neuroimaging.io/) the sidecar dictionaries
+are represented in [**JSON**](https://www.json.org/json-en.html) format.
+The MATLAB `jsonencode` and `jsondecode` translate various MATLAB data 
+types into a JSON-compliant `char` value.
+
+HED expects that sidecars will follow the BIDS format for sidecars associated 
+with tabular files. The top-level JSON is a dictionary with keys that are the column
+names of the associated tabular file. Each key points to a dictionary of metadata for a column.
+One of the keys in this second dictionary can be `HED` as illustrated by the following example.
+
+````{admonition} JSON sidecar for the events of previous section.
+:class: tip
+
+```json
+{
+   "type": {
+      "HED": {
+         "show": "Sensory-presentation, Experimental-stimulus",
+         "resp": "Agent-action, Participant-response"
+      }
+   },
+   "modifier": {
+       "HED": {
+          "A2": "(Face, Image)",
+          "A5": "(Animal/Horse, Image)",
+          "but1": "(Press, (Left, Mouse-button))",
+          "but2": "(Press, (Right, Mouse-button))"
+      }
+   }
+}
+```
+````
+
+### Assembling HED annotations
+
+The `getHedAnnotations` tool assembles the complete HED annotation for each
+event marker (i.e., each row in an event structure).
+
+
+````{admonition} Assembling HED annotations.
+:class: tip
+
+```matlab
+annotations = hed.getHedAnnotations(events, sidecar);
+```
+````
+Here `annotations` is a cell array with the same number of rows as `events`
+containing the `char` HED annotations for the `events`.
+The HEDTools look up the HED annotation for each element in a row of an events table and concatenate
+those together (comma-separated) to form the HED annotation for the event marker. 
+
+For the event data and sidecar defined in the previous sections,
+the sidecar provides HED annotations for the `type` and `modifier` columns.
+The resulting HED annotations for each row are given in the following table:
+
+```{list-table} Example assembled HED annotations
+:header-rows: 1
+:name: assembled-hed-annotation-example
+
+* - row
+  - HED annotation
+* - 1
+  - *Sensory-presentation,Experimental-stimulus,(Face,Image)*
+* - 2
+  - *Sensory-presentation,Experimental-stimulus,(Animal/Horse,Image)*
+* - 3
+  - *Agent-action,Participant-response,(Press,(Left,Mouse-button))*
+* - 4
+  - *Agent-action,Participant-response,(Press,(Right,Mouse-button))*
+```
+
+The annotation for the first row consists of the HED tags for the `show` value in column `type`
+(i.e., *Sensory-presentation,Experimental-stimulus*) concatenated with the
+HED tags for the `A2` value in column `modifier` (i.e., *(Face,Image)*).
+Note: HED annotations are unordered, so the tags may appear in any order.
+Use parentheses to group tags as appropriate.
+
+The example annotations do not use any `Def` tags, so the `replaceDefs` option is not relevant.
+Users can give a name to particular string of HED tags using the `Definition` tag and then use
+the `Def` tag with that name as a shortcut in annotations. The `Def` tags are useful for
+tag strings that are frequently used and are required to define event processes.
+However, when assembling annotations to search for tags, you usually want to replace these shortcut `Def`
+tags with the actual HED tags they represent. Thus, the default value of `replaceDefs` is true.
+See [**Advanced annotation**](https://hed-specification.readthedocs.io/en/latest/05_Advanced_annotation.html)
+for details.
+
+Since no special tags defining extended event processes are used (i.e., `Onset`, `Offset`, `Duration`)
+in the example annotations, the `includeContext` option has no effect in this example.
+If `includeContext` is true (the default) event processes contribute their tags to the
+`Event-context` of time markers that fall in their scope. See
+[**Advanced annotation**](https://hed-specification.readthedocs.io/en/latest/05_Advanced_annotation.html)
+for an explanation of this.
+
+The example annotation does not contain any `Condition-variable` or `Task` tags, so `removeTypesOn` has no effect. 
+Typically `removeTypesOn` should be true to remove the effects of these tags for ordinary assembly and 
+searching as extraction of design matrices is a separate operation. 
+See [**HED conditions and design matrices**](https://www.hed-resources.org/en/latest/HedConditionsAndDesignMatrices.html)
+for additional information.
+
+### Searching HED annotations
+
+The `searchHed` tool takes a cell array of *n* HED annotations and a cell array of *m* HED search queries
+and returns an *n* x *m* array of 1's and 0's indicating whether the annotations satisfy the queries.
+
+````{admonition} Example search of HED annotations
+:class: tip
+
+```matlab
+factors = hed.searchHed(annotations, {'Sensory-event', 'Agent-action'});
+```
+```` 
+
+The result of this query is the following:
+
+```{list-table} Query result for the sample annotation.
+:header-rows: 0
+:name: query-results
+
+* - 1
+  - 0
+* - 1
+  - 0
+* - 0
+  - 1
+* - 0
+  - 1
+```
+The queries can be quite complex as described in the
+[**HED search guide**](https://www.hed-resources.org/en/latest/HedSearchGuide.html).
+
+(matlab-python-install-anchor)=
+## MATLAB Python install
+
+Although MATLAB began python support of python in 2014, **you must be using
+MATLAB version 2020b or later** with the HEDTools because the
 current version of the HEDTools requires Python 3.8 or later.
-With these tools you can incorporate validation, summary, search, factorization,
-and other HED processing directly into your MATLAB processing scripts without 
-reimplementing these operations in MATLAB.
+See [**compatible version of Python**](https://www.mathworks.com/support/requirements/python-compatibility.html) 
+for a listing of which 
+Python versions are compatible with which versions of MATLAB.
 
 **Note:** For your reference, the source for `hedtools` is the 
 [**hed-python**](https://github.com/hed-standard/hed-python) GitHub repository.
 The code is fully open-source with an MIT license.
 The actual API documentation is available [**here**](https://hed-python.readthedocs.io/en/latest/api2.html),
 but the tutorials and tool documentation for `hedtools` on 
-[**HED Resources**](https://www.hed-resources.org/en/latest/index.html) provides more
+[**HED Resources**](https://www.hed-resources.org/en/latest/index.html) site provides more
 examples of use.
 
+You will need at least MATLAB version R2020b, 
+since the Python HEDTools require at least Python 3.8.
+See [**MathWorks Python Compatibility Docs**](https://www.mathworks.com/support/requirements/python-compatibility.html) for additional information.
 
-### Getting started
+### Installing Python
 
-The `hedtools` library requires a Python version >= 3.8. 
-In order to call functions from this library in MATLAB, 
-you must be running MATLAB version >= R2019a and have a 
-[**compatible version of Python**](https://www.mathworks.com/support/requirements/python-compatibility.html)
-installed on your machine.
-
-The most difficult part of the process for users who are unfamiliar with Python is
+The greatest difficulty for users who are unfamiliar with Python is
 getting Python connected to MATLAB.
 Once that is done, many of the standard `hedtools` functions have 
-[**MATLAB HED tool wrapper functions**](https://github.com/hed-standard/hed-matlab/tree/main/hedmat/hedtools_wrappers),
-which take MATLAB variables as arguments and return MATLAB variables.
-Thus, once the setup is done, you don't have to learn any additional Python syntax to use the tools.
+[**MATLAB HED tool wrapper functions**](https://github.com/hed-standard/hed-matlab/tree/main/hedmat/hedtools_wrappers)
+that take MATLAB variables as arguments and return either MATLAB variables or opaque objects that
+can be passed to other MATLAB functions.
+
+Thus, once the setup is done, you don't have to learn any Python syntax to use the tools.
 You should only have to do this setup once, since MATLAB retains the setup information
 from session to session.
 
 ````{admonition} Steps for setting up Python HEDtools for MATLAB.
 
-[**Step 1: Find Python**](step-1-find-python-anchor). If yes, skip to Step 3.
-<p></p1>
+[**Step 1: Find Python**](step-1-find-python-anchor). If a version >= Python 3.8 is found, skip to Step 3.
+<p></p>
 
 [**Step 2: Install Python if needed**](step-2-install-python-if-needed-anchor) .
 <p></p> 
@@ -61,7 +481,7 @@ If already connected, skip to Step 4.
 (step-1-find-python-anchor)=
 #### Step 1: Find Python
 
-Follow these steps until you find a Python executable that is version 3.7 or greater.
+Follow these steps until you find a Python executable that is version 3.8 or greater.
 If you can't locate one, you will need to install it.
 
 ````{Admonition} Does MATLAB already have a good version of Python you can use?
@@ -69,24 +489,24 @@ If you can't locate one, you will need to install it.
 In your MATLAB command window execute the following function:
 
 ```matlab
-pyenv
+>> pyenv
 ```
 The following example response shows that MATLAB is using Python version 3.9
-with executable located at `C:\Program Files\Python39\pythonw.exe`.
+with executable located at `C:\Program Files\Python\Python39\python.EXE`.
 
 ```matlab
   PythonEnvironment with properties:
 
           Version: "3.9"
-       Executable: "C:\Program Files\Python39\pythonw.exe"
-          Library: "C:\Program Files\Python39\python39.dll"
-             Home: "C:\Program Files\Python39"
+       Executable: "C:\Program Files\Python\Python39\python.EXE"
+          Library: "C:\Program Files\Python\Python39\python39.dll"
+             Home: "C:\Program Files\Python\Python39"
            Status: NotLoaded
     ExecutionMode: InProcess
 ```
 ````
 
-If MATLAB has already knows about a suitable Python version that is at least 3.7,
+If MATLAB has already knows about a suitable Python version that is at least 3.8,
 you are ready to go to [**Step 4: Install HEDTools**](step-4-install-hedtools-anchor).
 Keep track of the location of the Python executable.
 
@@ -97,20 +517,16 @@ There are several likely places to look for Python on your system.
 
 **For Linux users**:
 
->Likely places for system-space installation are `/bin`, `/local/bin`, `/usr/bin`, `/usr/local/bin`, or `/opt/bin`. User-space installations are usually your home directory in a subdirectory such as `~/bin`
-or `~/.local/bin`. 
+>Likely places for system-space installation are `/bin`, `/local/bin`, `/usr/bin`, `/usr/local/bin`, or `/opt/bin`. User-space installations are usually your home directory in a subdirectory such as `~/bin` or `~/.local/bin`. The `which python` command will list the Python executable that is first found in your path.
 
 **For Windows users**:
-> Likely places for system-space installation are `C:\`, `C:\Python`, or `C:\Program Files`.
-User-space installations default to your personal account 
-in `C:\Users\yourname\AppData\Local\Programs\Python\python39` where `yourname` is your Windows account name
-and `python39` will be the particular version (in this case Python 3.9).
+> Likely places for system-space installation are `C:\`, `C:\Python`, `C:\Program Files` or `C:\Program Files\Python`. User-space installations default to your personal account in `C:\Users\yourname\AppData\Local\Programs\Python\python39` where `yourname` is your Windows account name and `python39` will be the particular version (in this case Python 3.9).
 
 If you don't have any success finding a Python executable,
 you will need to install Python as described in 
 [**Step 2: Install Python if needed**](step-2-install-python-if-needed-anchor).
 
-Otherwise, you can skip to [**Step 3:Connect Python to MATLAB**](step-3-connect-python-to-matlab-anchor).
+Otherwise, you can skip to [**Step 3: Connect Python to MATLAB**](step-3-connect-python-to-matlab-anchor).
 
 ```{warning}
 **You need to keep track of the path to your Python executable for Step 3.**
@@ -126,17 +542,16 @@ for your operating system and version.
 Depending on your OS and the installer options you selected,
 Python may be installed in your user space or in system space for all users. 
 - You should keep track of the directory that Python was installed in.
-- You may want to add the location of the Python executable to your PATH.
-  (Most installers give you that option as part of the installation.)
+- You may want to add the location of the Python executable to your system or user PATH.
 
-#### Installing in a virtual environment
+```{warning}
+MATLAB installs add-ons such as the HEDTools in a specific user directory as described below.
+This makes user-installed Python modules available to all MATLAB projects.
+**For this reason, we do not recommend trying to set up a virtual environment.**
+```
 
-https://www.mathworks.com/support/search.html/answers/1750425-python-virtual-environments-with-python-interface.html?fq%5B%5D=asset_type_name:answer&page=1
 (step-3-connect-python-to-matlab-anchor)=
-#### Step 3: Connect Python to Matlab
-
-
-C:\Users\username\AppData\Local\Programs\Python\python -m venv C:\Users\username\py38 
+#### Step 3: Connect Python to MATLAB
 
 Setting the Python version uses the MATLAB `pyenv` function with the `'Version'` argument
 as illustrated by the following example.
@@ -144,29 +559,13 @@ as illustrated by the following example.
 ````{admonition} Example MATLAB function call connect MATLAB to Python.
 
 ```matlab
->> pyenv('Version', 'C:\Program Files\Python39\python.exe')
+>> pyenv('Version', 'C:\Program Files\Python\Python39\python.exe')
 ```
 ````
 
 Be sure to substitute the path of the Python that you have found.
-Notice that the executable listed in Step 1 was `pythonw.exe`, but we have used `python.exe` here
-to indicate the command line version.
 
 Use the MATLAB `pyenv` function again without arguments to check that your installation is as expected.
-
-````{Admonition} Example response for pyenv all with no arguments after setting environment.
-
-```matlab
- PythonEnvironment with properties:
-
-          Version: "3.9"
-       Executable: "C:\Program Files\Python39\python.exe"
-          Library: "C:\Program Files\Python39\python39.dll"
-             Home: "C:\Program Files\Python39"
-           Status: NotLoaded
-    ExecutionMode: InProcess
-```
-````
 
 (step-4-install-hedtools-anchor)=
 #### Step 4: Install HEDTools  
@@ -175,29 +574,27 @@ The general-purpose package manager for Python is called `pip`.
 By default, `pip` retrieves packages to be installed from the [**PyPI**](https://pypi.org)
 package repository. You will need to use the version of `pip` that corresponds
 to the version of Python that is connected to MATLAB.
-This may not be the default `pip` used from the command line.
+The right version of `pip` is found in the `Scripts` subdirectory of your Python installation.
+
 
 ````{admonition} Command to install hedtools in MATLAB.
-To install the latest released version of `hedtools` type a pip command such as the
+To install the latest released version of `hedtools` type a `pip` command such as the
 following in your MATLAB command window.
 
 ```matlab
-system('"C:\Program Files\Python39\Scripts\pip" install hedtools')
+system('"C:\Program Files\Python\Python39\Scripts\pip" install hedtools')
 ```
-Use the full path of the pip associated
-with the Python that you are using with MATLAB
+Use the full path of the `pip` associated with the Python that your MATLAB is using.
 ````
 
-Giving the full path to `pip` corresponding to the Python installation that MATLAB
-is using ensures that MATLAB knows about `HEDtools`.
-(The version of MATLAB that Python is using may not be the same as the Python in the system PATH.)
+Giving the full path to correct version of `pip` 
+ensures that MATLAB knows about `HEDtools`.
+(The version of Python that MATLAB is using may not be the same as the Python in the system PATH.)
 
-Also watch the resulting messages in the command window to make sure that HEDtools
+Also watch the resulting messages in the MATLAB command window to make sure that HEDtools
 was successfully installed.
-In the case of the above example, the Python being used is in system space,
-which requires administrator privileges.
-
-The first line of the output was:
+In the above example, the Python being used is in system space,
+which requires administrator privileges. The first line of the output from installation was:
 
 ```matlab
    Defaulting to user installation because normal site-packages is not writeable
@@ -206,7 +603,7 @@ The first line of the output was:
 On Windows these packages will be found in a `site-packages` directory such as:
 
 ```text
-`C:\Users\username\AppData\Roaming\Python\Python39\site-packages`
+C:\Users\username\AppData\Roaming\Python\Python39\site-packages
 ```
 
 On Linux these packages might be found in directory such as:
@@ -224,6 +621,40 @@ Similarly, the `pip` package manager might be named `pip3` instead of `pip`.
 
 ```
 
+You will need to install the Python HEDTools.
+
+````{admonition} Command to install HEDTools in MATLAB.
+To install the latest released version of `hedtools` type a `pip` command such as the
+following in your MATLAB command window:
+
+```matlab
+system('"C:\Program Files\Python\Python39\Scripts\pip" install hedtools')
+```
+
+````
+The above command retrieves the latest version of HEDTools from the PyPI archive.
+If you want the newest features of the Python HEDTools, you will need to install directly from the GitHub repository
+as shown in the following example.
+
+````{admonition} Command to install HEDTools from the GitHub repository.
+
+```matlab
+system('"C:\Program Files\Python\Python39\Scripts\pip" install git+https://github.com/hed-standard/hed-python/@develop')
+```
+This installs the version of HEDTools on the `develop` branch. 
+Be sure to replace the path to `pip`, with the one for your Python installation.
+````
+
+````{warning}
+If you have an existing version of HEDTools installed and you want to install a new version,
+**you must uninstall the HEDTools first**:
+
+```matlab
+system('"C:\Program Files\Python\Python39\Scripts\pip" uninstall hedtools')
+```
+Be sure to replace the path to `pip`, with the one for your Python installation.
+````
+
 The following MATLAB statement can be used to test that everything was installed correctly.
 
 ````{Admonition} Test that everything is installed.
@@ -239,53 +670,25 @@ Using HEDTOOLS version: {'date': '2022-06-20T14:40:24-0500', 'dirty': False, 'er
 ````
 
 
-(matlab-wrappers-for-HED-tools-anchor)=
-### MATLAB wrappers for HEDTools
+### MATLAB functions for Python
 
-The [**hedtools_wrappers**](https://github.com/hed-standard/hed-examples/tree/main/hedcode/matlab_scripts/hedtools_wrappers) directory in the
-[**hed-examples**](https://github.com/hed-standard/hed-examples) GitHub repository
-contains MATLAB wrapper functions for calling various commonly used HED tools.
+The following table lists the relevant MATLAB functions that are available.
+You should refer to the help facility for your version of MATLAB to get the details of what is
+supported for your version of MATLAB.
 
-#### Direct calls to HEDTools
+| MATLAB command | Purpose |
+| -------------- | --------|
+| `pyenv`   | Setup your Python environment in MATLAB.<br/>Without arguments outputs information about your current Python environment. |
+| `pyrun`  | Run a Python statement and return results. |
+| `pyargs` | A recent addition for more advanced argument handling. |
+| `pyrunfile` | Run a Python script from MATLAB. |
 
-Wrapper functions are provided to some of the more commonly used
-functions in the HEDTools suite.
-
-The following example shows the MATLAB wrapper function
-[**validateHedInBids.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/hedtools_wrappers/validateHedInBids.m),
-which contains the underlying calls to HEDTools Python BIDs validation.
+The MATLAB `matlab.exception.PyException` captures error information generated during Python execution.
 
 
-````{admonition} A MATLAB wrapper function for validating HED in a BIDS dataset.
-:class: tip
+## Additional demos
 
-```matlab
-function issueString = validateHedInBids(dataPath)
-    py.importlib.import_module('hed');
-    bids = py.hed.tools.BidsDataset(dataPath);
-    issues = bids.validate();
-    issueString = string(py.hed.get_printable_issue_string(issues));
-
-```
-
-Example MATLAB calling code for this function:
-
-```matlab
-dataPath = 'H:\datasets\eeg_ds003645s_hed';
-issueString = validateHedInBids(dataPath);
-if isempty(issueString)
-    fprintf('Dataset %s has no HED validation errors\n', dataPath);
-else
-    fprintf('Validation errors for dataset %s:\n%s\n', dataPath, issueString);
-end
-
-```
-````
-In above example assumes that the BIDS dataset was located at `H:\datasets\eeg_ds003645s_hed`.
-We tested it with the [**eeg_ds003645s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) available on GitHub.
-You can download and use this test data or set `dataPath` to the root directory of your own dataset.
-
-#### Calls to HED remodeling tools
+### Calling HED remodeling tools
 
 Many of the most useful HEDTools functions are packaged in the
 HED remodeling tool suite.
@@ -327,26 +730,10 @@ additional information.
 The wrapper functions are available on GitHub in
 the [**hedtools_wrappers**](https://github.com/hed-standard/hed-examples/tree/develop/src/matlab_scripts/hedtools_wrappers) directory.
 
+(web-service-matlab-demos-anchor)=
+### Web service MATLAB demos
 
-### MATLAB functions for Python
-
-The following table lists the relevant MATLAB functions that are available.
-You should refer to the help facility for your version of MATLAB to get the details of what is
-supported for your version of MATLAB.
-
-| MATLAB command | Purpose |
-| -------------- | --------|
-| `pyenv`   | Setup your Python environment in MATLAB.<br/>Without arguments outputs information about your current Python environment. |
-| `pyrun`  | Run a Python statement and return results. |
-| `pyargs` | A recent addition for more advanced argument handling. |
-| `pyrunfile` | Run a Python script from MATLAB. |
-
-The MATLAB `matlab.exception.PyException` captures error information generated during Python execution.
-
-(hed-web-services-in-matlab-anchor)=
-## HED web services in MATLAB
-
-HED web services allow MATLAB programs to request the same services that are available 
+MATLAB HED web services allow MATLAB programs to request the same services that are available 
 through the online tools.
 These services are available through the [**https://hedtools.org/hed**](https://hedtools.org/hed) server.
 Alternatively, these services can be accessed through a locally-deployed docker module.
@@ -385,7 +772,7 @@ function, which returns a MATLAB `struct` containing all needed test data.
 The individual demo scripts illustrate how to call each type of available web service.
 
 (overview-of-service-requests-anchor)=
-### Overview of service requests
+#### Overview of service requests
 
 Calling HED services from MATLAB requires the following steps:
 
@@ -398,7 +785,7 @@ Usually, you will do the first step (the session setup) once at the beginning of
 to construct a fixed session header that can be used in subsequent requests in your script.
 
 (setting-up-a-session-from-matlab-anchor)=
-### Setting up a session from MATLAB
+#### Setting up a session from MATLAB
 
 The goal of the session setup is to construct a header that can be used in subsequent web requests.
 The first step is to call the [**getHostOptions.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/getHostOptions.m).
@@ -454,7 +841,7 @@ However, this can be adjusted upward or downward to suit the user.
 The `HeaderFields` sets the parameters of HTTP request.
 
 (creating-a-request-structure-anchor)=
-### Creating a request structure
+#### Creating a request structure
 
 The request structure is a MATLAB `struct` which must have a `service` field and can have an
 arbitrary number of fields depending on which service is being requested.
@@ -480,7 +867,6 @@ response = jsondecode(response);
 The MATLAB `webwrite` returns a JSON structure as specified in the `options`.
 The MATLAB `jsondecode` function returns a MATLAB `struct` whose format is explained
 below in [**Decoding a service response**](decoding-a-service-response-anchor).
-
 
 Except for `get_services`, all other services are of the form *target_command*
 where *target* is the primary type of data acted on (events, schema, sidecar, spreadsheet, or string).
@@ -535,7 +921,7 @@ The [**demoSidecarServices.m**](https://raw.githubusercontent.com/hed-standard/h
 function shows complete examples of the various HED services for JSON sidecars.
 
 (making-a-service-request-anchor)=
-### Making a service request
+#### Making a service request
 
 The HED services all use the MATLAB `webwrite` to make HED web service requests.
 The following call uses the 
@@ -562,7 +948,7 @@ If the connection completes successfully, the response will set.
 The next section explains the response structure in more detail.
 
 (decoding-a-service-response-anchor)=
-### Decoding a service response
+#### Decoding a service response
 
 All HED web services return a response consisting of a JSON dictionary with 
 4 keys as summarized in this table.
@@ -607,202 +993,4 @@ For example, if a sidecar had validation errors,
 `results.msg_category` will be `warning` and the `results.data` value
 should be interpreted as a list of errors.
 If the sidecar had no errors, `results.data` will be an empty string.
-
-(eeglab-integration-anchor)=
-## EEGLAB plug-in integration
-EEGLAB is the most widely used EEG software environment for analysis of 
-human electrophysiological (and related) data.
-EEGLAB combines graphical and command-line user interfaces,
-making it friendly for both beginners who may who prefer a visual,
-and automated way of analyzing data as well as experts,
-who can easily customize, extend, and automate the EEGLAB tool environment by writing new 
-EEGLAB-compatible scripts and functions.
-
-HED is fully integrated into EEGLAB via the *HEDTools* plug-in, allowing users to annotate their
-EEGLAB STUDY and datasets with HED,
-as well as enabling HED-based data manipulation and processing.
-
-### Installing *HEDTools*
-
-*HEDTools* EEGLAB plug-in can be installed using one of the following ways:
-
-#### Method 1: EEGLAB Extension Manager: 
-
-Launch EEGLAB. From the main GUI select:
-
-> **File --> Manage EEGLAB extension**
-
-The extension manager GUI will pop up. 
-
-From this GUI look for and select the plug-in *HEDTools* from the main window,
-then click into the *Install/Update* button to install the plug-in.
-
-
-#### Method 2: Download and unzip
-
-Download the zip file with the content of the plug-in *HEDTools* either from
-the EEGLAB [**plug-ins summary page**](https://sccn.ucsd.edu/eeglab/plugin_uploader/plugin_list_all.php). 
-
-Unzip file into the folder *../eeglab/plugins* and restart the *eeglab* function in a MATLAB session.
-
-(annotating-datasets-anchor)=
-### Annotating datasets
-
-We will start by adding HED annotations to the EEGLAB tutorial dataset.
-
-After installing the *HEDTools* open the EEGLAB main window and load the dataset by selecting the menu item:  
-
-> **File --> Load existing dataset** .
-
-Selecting the tutorial dataset under your eeglab installation _eeglab/sample_data/eeglab_data.set_. 
-
-Read a description of the dataset and of its included event codes by selecting:  
-
-> **Edit --> About this dataset**:
-
-<img src="_static/images/I15about_this_dataset.png" alt="I15about_this_dataset" style="zoom:100%;" />
-
-The description gives a general idea of the codes found in the event structure.
-Yet, inquisitive researchers interested in the nature of the stimuli
-(e.g., color and exact location of the squares on the screen)
-would have to look up the referenced paper for details.
-
-Our goal in using HED tags is to describe the experimental events that are recorded 
-in the *EEG.event* data structure in sufficient detail that anyone using the dataset
-in the future will not need to find and read a separate, detailed description of the dataset
-or study to understand the recorded experimental events. 
-As demonstrated below, such annotation will allow us to extract epochs using meaningful
-HED tags instead of the alphanumeric codes often associated with shared EEG data.
-
-#### Launching EEGLAB HEDTools
-To add and view HED tags for the dataset, from EEGLAB menu, select:  
-
-> **Edit --> Add/Edit event HED tags**.  
-
-_HEDTools_ will extract information from the *EEG.event* structure,
-automatically detecting the event structure fields and their unique values.  
-
-The _HEDTools_ ignore the fields the event structure fields *.latency*, *.epoch*, and *.urevent*. 
-
-A window will appear asking you to verify/select categorical fields:
-
-<img src="_static/images/CTagger_categorical_field.jpg" alt="categorical_fields" />
-
-Here both *position* and *type* are categorical fields. 
-*HEDTools* automatically selects fields with less than 20 unique values to be categorical,
-but the user can modify which values are chosen.
-
-CTagger (for 'Community Tagger') is a graphical user interface (GUI) built to facilitate
-the process of adding HED tags to recorded events in existing datasets.
-Clicking *Continue* brings up the *CTagger* interface:
-
-![CTagger](_static/images/CTagger_interface.jpg)
-
-The CTagger GUI is organized using a split window strategy.
-The left window shows the items to be tagged,
-and the right window shows the current HED tags associated with the selected item.
-The *Show HED schema* button brings up a browser for the HED vocabulary. 
-
-Through the CTagger GUI, users can explore the HED schema,
-quickly look up and add tags (or tag groups) to the desired event codes,
-and use import/export features to reuse tags on from other data recordings in the same study.
-
-The process of tagging is simply choosing tags from the available vocabulary
-(using the HED schema browser) and associating these tags with each event code.
-
-Once familiar with HED and the vocabulary, most users just type the tags directly in the tag window
-shown on the right. 
-
-CTagger is used as part of the HEDTools plug-in in this tutorial,
-but it can also be used as a standalone application. 
-
-Instructions on downloading and using the standalone version of CTagger,
-as well as step-by-step guide on how to add HED annotation with CTagger,
-can be found at in [**Tagging with CTagger**](./CTaggerGuiTaggingTool.md).
-
-#### Tagging the events
-A brief step-by-step guide to selecting tags can be found at
-[**HED annotation quickstart**](./HedAnnotationQuickstart.md).
-The following shows example annotations using the process suggested in the quickstart. we will import the annotation saved in the _events.json file format. 
-Download the file [**eeglab-tutorial_events.json**](./_static/data/eeglab-tutorial_events.json) then select:
-
-> **File --> Import --> Import BIDS events.json file**
-
-to import it to CTagger. You can now review all the tags via:
-
-> **File --> Review all tags** 
-
-![review tag](_static/images/review-all-tags.jpg)
-
-#### Validation
-The last step of the annotation process is to validate the HED annotations.
-Click on the *Validate all* button at the bottom pane.
-A window will pop up showing validation results.
-If there are issues with the annotation, there will be a line for each of the issues found.
-
-Here is an example of validation log file with issues:
-
-![validation-issues](_static/images/validation-error.jpg)
-
-If the annotation was correct, a message will appear confirming the validity:
-
-![validation-success](_static/images/validation-success.jpg)
-
-Click *Finish* on the main CTagger window to end the annotation. 
-
-The tag review window will show up again for a final review and the option to save
-the annotation into an _events.json file for distribution just as with the *eeglab-tutorial_events.json*.
-Hit *Ok* to continue after that.
-
-A last window will pop up asking what you would like to overwrite the old dataset with the
-tagged one or save new dataset as a separate file. Click **Ok** when you're done. 
-
-![new-set](_static/images/pop_newset.jpg)
-
-You just finished tagging! *HEDTools* generates the final HED string for each event
-by concatenating all tags associated with the event values of that event (separated by commas).
-The final concatenated version is put the string in a new field **HED** in EEG.event. 
-
-### HED-based epoching
-
-The EEGLAB *pop_epoch* function extracts data epochs that are time locked to specified event types.
-This function allows you to epoch on one of a specified list of event types as defined by the
-*EEG.event.type* field of the EEG structure. 
-
-*HEDTools* provides a simple way for extracting data epochs from annotated datasets using 
-a much richer set of conditions. 
-To use HED epoching, you must have annotated the EEG dataset. 
-
-If the dataset is not tagged, please refer to [Annotating datasets](#annotating-datasets)
-on how to tag a dataset.
-
-Start by choosing the menu option: **Tools --> Extract epochs by tags**:
-
-<img src="_static/images/extract-epoch-selection.png" alt="extract-epoch-selection" style="zoom:50%;" />
-
-
-This will bring up a window to specify the options for extracting data epochs:
-
-<img src="_static/images/epoch-options.png" alt="extract-epoch-selection" style="zoom:50%;" />
-
-The *pop_epochhed* menu is almost identical to the EEGLAB *pop_epoch* menu with the 
-exceptions of the first input field (**Time-locking HED tag(s)**) and the second 
-input field (**Exclusive HED tag(s)**). 
-
-Instead of passing in or selecting from a group of unique event types,
-the user passes in a comma separated list of HED tags.
-For each event all HED tags in this list must be found for a data epoch to be generated. 
-
-Clicking the adjacent button (with the label …) will open a search tool to help you select
-HED tags retrieved from the dataset.
-
-<img src="_static/images/epoch-tags.png" alt="extract-epoch-selection" style="zoom:50%;" />
-
-When you type something in the search bar, the dialog displays a list below containing possible matches.
-Pressing the "up" and "down" arrows on the keyboard while the cursor is in the search bar moves to the
-next or previous tag in the list.
-
-Pressing "Enter" selects the current tag in the list and adds the tag to the search bar.
-You can continue search and add tags after adding a comma after each tag.
-When done, click the **Ok** button to return to the main epoching menu. 
 

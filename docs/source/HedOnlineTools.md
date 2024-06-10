@@ -19,13 +19,13 @@ about download and deployment information.
 The HED browser-based tools are organized into the following pages,
 each focused on a particular type of file. 
 
-| Operates on          | URL | Description |  
-|-----------------| ----- | ------- |  
-| [**Events**](events-online-tools-anchor)             | [**link**](https://hedtools.org/hed/events) | validation, summary, and generation tools. |  
+| Operates on          | URL | Description                                                |  
+|-----------------| ----- |------------------------------------------------------------|  
+| [**Events**](events-online-tools-anchor)             | [**link**](https://hedtools.org/hed/events) | validation, summary, search, and generation tools.         |  
 | [**Sidecars**](sidecars-online-tools-anchor)         | [**link**](https://hedtools.org/hed/sidecars) | validation, transformation, extraction, and merging tools. |  
-| [**Spreadsheets**](spreadsheets-online-tools-anchor) | [**link**](https://hedtools.org/hed/spreadsheets) | validation and transformation tools. |   
-| [**Strings**](strings-online-tools-anchor)           |  [**link**](https://hedtools.org/hed/spreadsheets) | validation and transformation tools. |   
-| [**Schemas**](schemas-online-tools-anchor)           | [**link**](https://hedtools.org/hed/schemas) | validation, conversion, and comparison tools. |  
+| [**Spreadsheets**](spreadsheets-online-tools-anchor) | [**link**](https://hedtools.org/hed/spreadsheets) | validation and transformation tools.                       |   
+| [**Strings**](strings-online-tools-anchor)           |  [**link**](https://hedtools.org/hed/spreadsheets) | validation and transformation tools.                       |   
+| [**Schemas**](schemas-online-tools-anchor)           | [**link**](https://hedtools.org/hed/schemas) | validation, conversion, and comparison tools.              |  
 
 Many of the tools require that you provide a HED schema.
 Usually, you can do this by selecting one of the standard HED versions using a pull-down menu,
@@ -115,6 +115,8 @@ otherwise the tool returns the assembled `.tsv` events file.
 
 The online tools do not allow the option of retaining other columns in the returned file.
 A more general alternative is to use the remodeling tools through the interface.
+
+#### Search annotations
 
 #### Generate sidecar template
 

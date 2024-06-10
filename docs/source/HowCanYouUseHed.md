@@ -510,7 +510,7 @@ creates factors based on a HED tag representing structural information about the
 
 [**EEGLAB**](https://sccn.ucsd.edu/eeglab/index.php), the interactive
 MATLAB toolbox for EEG/MEG analysis, supports HED through the
-[**EEGLAB HEDTools plugin**](./HedMatlabTools.md#eeglab-plug-in-integration).
+[**EEGLAB HEDTools plugin**](./HedAndEEGLAB.md).
 
 The *End-to-end processing of EEG with HED and EEGLAB* preprint, which can be found 
 at [**https://osf.io/8brgv/**](https://osf.io/8brgv/),
@@ -616,14 +616,14 @@ for more information on installation and use.
 The project source code is located in the [**CTagger**](https://github.com/hed-standard/ctagger) GitHub repository.
 <p></p>
 
-[**HED services in MATLAB**](https://www.hed-resources.org/en/latest/HedMatlabTools.html#hed-services-in-matlab) explains how the [**HED online services**](https://hedtools.ucsd.edu/hed)
-can be called programmatically in MATLAB. The HED services are deployed online through a docker container
-as described in [**Web tools and rest services**](web-tools-and-rest-services-anchor).
+[*MATLAB HedTools**](https://www.hed-resources.org/en/latest/MatlabHedTools.md) explains how the 
+users can use the HEDTools in MATLAB using one of three approaches: using MATLAB wrappers for the HED Python tools,
+using MATLAB wrappers for the HED web services, or by calling HED tools through EEGLAB.
+
+The [**HED online services**](https://hedtools.ucsd.edu/hed) can be called programmatically in MATLAB. The HED services are deployed online through a docker container
+as described in [**Web tools and rest services**](web-tools-and-rest-services-anchor). 
 <p></p>
 
-[**Python HEDTools in MATLAB**](./HedMatlabTools.md#python-hedtools-in-matlab)
-explains how to install and call various Python tools from MATLAB.
-<p></p>
 
 (web-tools-and-rest-services-anchor)=
 #### Web tools and REST services
