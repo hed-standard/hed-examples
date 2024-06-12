@@ -138,13 +138,13 @@ comma-separated tags and parenthesized groups.
 The expressions for `A` and `B` are each evaluated and then combined using standard logic.
 
 
-| Query form                                                                                       | Example query               | Matches                                                                                                              | Does not match                                                                                        |
-|--------------------------------------------------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| **`A`, `B`**<br/>Match if both `A` and `B`<br/>are matched.                                      | *Event*, *Sensory-event*    | *Event*, *Sensory-event*<br/>*Sensory-event*, *Event*<br/>(*Event*, *Sensory-event*)                                 | *Event*                                                                                               |
-| **`A` and `B`**<br/>Match if both `A` and `B` <br/>are matched.  <br>Same as the comma notation. | *Event* and *Sensory-event* | *Event*, *Sensory-event*<br/>*Sensory-event*, *Event*<br/>(*Event*, *Sensory-event*)                                 |                                                                                                       |  *Event*         |
-| **`A` or `B`**<br/>Match if either `A` or `B`.                                                   | *Event* or *Sensory-event*  | *Event*, *Sensory-event*<br/>*Sensory-event*, *Event*<br/>(*Event*, *Sensory-event*)<br/>*Event*<br/>*Sensory-event* | *Agent-trait*                                                                                         |
-| **~`A`**<br/>Match groups that do<br/>not contain `A`<br/> `A` can be an arbitrary expression.   | { *Event*, ~*Action* }      | (*Event*)<br/>(*Event*, *Animal-agent*)<br/>(*Sensory-event*, (*Action*))                                            | *Event*<br/>*Event*, *Action*<br/>(*Event*, *Action*)<br>                                             |
-| **@`A`**<br/>Match a line that <br/>does not contain `A`.                                        | @*Event*                    | *Action*<br>*Agent-trait*<br>*Action, Agent-Trait*<br>(*Action*, *Agent*)                                            | *Event*<br>(*Action*, *Event*)<br>(*Action*, *Sensory-event*)<br>(*Agent*, (*Sensory-event*, *Blue*)) |
+| Query form                                                                                      | Example query               | Matches                                                                                                              | Does not match                                                                                        |
+|-------------------------------------------------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
+| **`A`, `B`**<br/>Match if both `A` and `B`<br/>are matched.                                     | *Event*, *Sensory-event*    | *Event*, *Sensory-event*<br/>*Sensory-event*, *Event*<br/>(*Event*, *Sensory-event*)                                 | *Event*                                                                                               |
+| **`A` && `B`**<br/>Match if both `A` and `B` <br/>are matched.  <br>Same as the comma notation. | *Event* and *Sensory-event* | *Event*, *Sensory-event*<br/>*Sensory-event*, *Event*<br/>(*Event*, *Sensory-event*)                                 |                                                                                                       |  *Event*         |
+| **`A` \|\| `B`**<br/>Match if either `A` or `B`.                                                | *Event* or *Sensory-event*  | *Event*, *Sensory-event*<br/>*Sensory-event*, *Event*<br/>(*Event*, *Sensory-event*)<br/>*Event*<br/>*Sensory-event* | *Agent-trait*                                                                                         |
+| **~`A`**<br/>Match groups that do<br/>not contain `A`<br/> `A` can be an arbitrary expression.  | { *Event*, ~*Action* }      | (*Event*)<br/>(*Event*, *Animal-agent*)<br/>(*Sensory-event*, (*Action*))                                            | *Event*<br/>*Event*, *Action*<br/>(*Event*, *Action*)<br>                                             |
+| **@`A`**<br/>Match a line that <br/>does not contain `A`.                                       | @*Event*                    | *Action*<br>*Agent-trait*<br>*Action, Agent-Trait*<br>(*Action*, *Agent*)                                            | *Event*<br>(*Action*, *Event*)<br>(*Action*, *Sensory-event*)<br>(*Agent*, (*Sensory-event*, *Blue*)) |
 
 ### Group queries
 
@@ -177,7 +177,7 @@ comma-separated tags and parenthesized groups.
 
 These operations can be arbitrarily nested and combined, as for example in the query:
 
-> *[`A` or {`B` and `C`} ]*
+> *[`A` || {`B` && `C`} ]*
 
 In this query
 Ordering on either the search terms or strings to be searched doesn't matter, 
@@ -188,15 +188,15 @@ You can replace any term with a wildcard:
 
 | Query form                           | Example query   | Matches               | Does not match                |
 |--------------------------------------|-----------------|-----------------------|-------------------------------|
-| **`?`**<br/>Matches any tag or group | {`A` and `?`}   | *(A, B}<br/>(A, (B))* | *(A)<br/>(B, C)*              |
-| **`??`**<br/>Matches any tag         | {`A` and `??`}  | *(A, B}*              | *(A)<br/>(B, C)<br/>(A, (B))* |
-| **`???`**<br/>Matches any group      | {`A` and `???`} | *(A, (B))*            | *(A)<br/>(B, C)<br/>(A, B)*   |
+| **`?`**<br/>Matches any tag or group | {`A` && `?`}    | *(A, B}<br/>(A, (B))* | *(A)<br/>(B, C)*              |
+| **`??`**<br/>Matches any tag         | {`A` && `??`}  | *(A, B}*              | *(A)<br/>(B, C)<br/>(A, (B))* |
+| **`???`**<br/>Matches any group      | {`A` && `???`} | *(A, (B))*            | *(A)<br/>(B, C)<br/>(A, B)*   |
 
 
 **Notes**: You cannot use negation inside exact matching groups `{X:}` or `{X:Y}` notation. <br/>
 You cannot use negation in combination with wildcards ( `?`, `??`, or `???` )<br/>
-In exact group matching, `or` matches one or the other, not both:
-`{A or B:}` matches `(A)` or `(B)`, but not `(A, B)`
+In exact group matching, `||` matches one or the other, not both:
+`{A || B:}` matches `(A)` or `(B)`, but not `(A, B)`
 
 ## Where can HED search be used?
 
@@ -217,3 +217,31 @@ Work is underway to integrate HED-based search into other tools including
 [**MNE-python**](https://mne.tools/stable/index.html) 
 as well into the analysis platforms [**NEMAR**](https://nemar.org/) and
 [**EEGNET**](http://eegnet.org/)
+
+### Basic search [In development - no web API yet]
+
+A simpler text search also exists, this is notably faster and still has the key features of searching parent tags and grouping.
+
+The simplest type of query is to search for the presence or absence of a single tag.  These can be combined in a few ways, but all searches are trying to match all terms.
+
+| Query type                                                                                                        | Example query  | Matches                                                              | Does not match                                |
+|-------------------------------------------------------------------------------------------------------------------|----------------|----------------------------------------------------------------------|-----------------------------------------------|
+| **Anywhere-term**<br/>Prefix the term with `@` to match anywhere within a line.                                   | *@A*           | Lines with the term A anywhere in them                               | Lines without the term A anywhere within them |
+| **Negation-term**<br/>Prefix the term with `~` to match lines that do NOT contain the term.                       | *~A*           | Lines that do not contain the term A                                 | Lines containing the term A                   |
+| **Nested-term**<br/>Elements within parentheses must appear at the same level of nesting.                         | *"(A), (B)"*   | (A), (B, C)<br/> ((A), (B, C))                                       | (A, B)<br/> (A, C, B)<br/> (A, (C, B))        |
+| **Wildcard-term**<br/>Use `*` to match any remaining word (anything but a comma or parenthesis).                   | *LongFormTag** | LongFormTag<br/> Parent/LongFormTagExample<br/> Parent/LongFormTagSample | Parent/OtherWordLongFormTag                   |
+
+### Notes
+
+- Specific words only care about their level relative to other specific words, not overall.
+- If there are no grouping or anywhere words in the search, it assumes all terms are anywhere words.
+- The format of the series should match the format of the search string, whether it's in short or long form.
+- To enable support for matching parent tags, ensure that both the series and search string are in long form.
+
+#### Example search queries
+
+| Query type                                  | Example query                                                                                       | Matches                                                                                         | Does not match                                                                                               |
+|---------------------------------------------|-----------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
+| **Tag sharing a group with another tag**    | `(Face, Item-interval/1)`<br/> Face in a group with the exact tag Item-interval/1                   | (Face, Item-interval/1)<br/> Face, Item-interval/1                                              | (Face, Item-interval/12)<br/> Face, Item-interval/1A<br/> (Face, Item-interval)<br/> (Item-interval/1)        |
+| **Tag sharing a group with a wildcard tag** | `(Face, Item-interval/1*)`<br/> Face in a group with a tag starting with Item-interval/1            | (Face, Item-interval/1)<br/> Face, Item-interval/12<br/> (Face, Item-interval/1A)               | (Face, Item-interval)<br/> (Item-interval/1)                                                                 |
+| **Tag sharing a group with a subgroup**     | `(Face, (Item-interval/1))`<br/> Face in a group, with subgroup containing Item-interval/1          | (Face, (Item-interval/1))<br/> Face, (Item-interval/1)<br/> (Item-interval/1), Event, Face       | (Face, Item-interval/1)<br/> (Item-interval/1)                                                               |
