@@ -14,4 +14,4 @@ To install directly from the
        pip install git+https://github.com/hed-standard/hed-python/@master
    ```
 
-HEDTools require python 3.7 or greater.
+HEDTools require python 3.8 or greater.
