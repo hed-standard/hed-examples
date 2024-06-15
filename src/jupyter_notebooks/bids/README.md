@@ -18,8 +18,11 @@ validating, summarizing, and analyzing your BIDS datasets.
 
 These notebooks require HEDTools, which can be installed using `pip` or directly.
 
-**NOTE:  These notebooks have been updated to use the HEDTOOLS version on the develop branch of the HedTools.
-These tools must be installed directly from GitHub until the newest version of HEDTools is released.**
+To use `pip` to install `hedtools` from PyPI:
+
+   ```
+       pip install hedtools
+   ```
 
 To install directly from the 
 [GitHub](https://github.com/hed-standard/hed-python) repository:
@@ -28,13 +31,5 @@ To install directly from the
        pip install git+https://github.com/hed-standard/hed-python/@master
    ```
 
-
-To use `pip` to install `hedtools` from PyPI:
-
-   ```
-       pip install hedtools
-   ```
-
-
-HEDTools require python 3.7 or greater.
+HEDTools require python 3.8 or greater.
 
