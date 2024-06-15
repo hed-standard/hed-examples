@@ -1,6 +1,11 @@
 (whats-new-anchor)=
 # What's new?
 
+**June 10, 2024**: **HEDTools 0.5.0 released on PyPI.**  
+> Remodeling tool validation uses JSON schema.  
+> Supports `.tsv` format and HED ontology generation for HED schemas.  
+> Additional visualizations and summaries.  
+
 **June 10, 2024**: **HED standard schema v8.3.0 released.**  
 > The [**HED schema v8.3,0**](https://doi.org/10.5281/zenodo.7876037) has just
 been released. This release introduces `hedId` globally unique identifiers for every HED element and enables mapping into a HED ontology.
