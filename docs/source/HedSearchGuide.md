@@ -202,32 +202,37 @@ which is notably faster than object-based search and still has the key features 
 
 ### Text-based search syntax
 HED text-based syntax is summarized in the following table:
-| Query type                                                                                | Example       | Matches                                         | Does not match                        |
-|-------------------------------------------------------------------------------------------|---------------|-------------------------------------------------|---------------------------------------|
-| **Anywhere-term**<br/>Prefix the term with *@* <br/>to match in line.                     | *@A*          | *A* in string                                   | No *A* in string                      |
-| **Negation-term**<br/>Prefix the term with *~* <br/>to match line with no term.           | *~A*          | No *A* in string                                | *A* in string                         |
-| **Nested-term**<br/>Elements in parentheses <br/>match tags at same level.                | *"(A), (B)"*  | *(A), (B, C)<br/>((A), (B, C))*                 | *(A, B)<br/>(A, C, B)<br/>(A, (C, B))* |
-| **Wildcard-term**<br/>Use <em>*</em> to match remaining word <br/>(except comma or parenthesis). | *Long** | *Long*<br/>Parent/LongX<br/>Parent/LongY | *Parent/Other*                        |
+
+| Query type                                                                                                                                   | Example       |Matches                                          | Does not match                         |
+|----------------------------------------------------------------------------------------------------------------------------------------------|---------------|-------------------------------------------------|----------------------------------------|
+| **Anywhere-term**<br/>Prefix the term with *@* <br/>to match in line.                                                                        | *@A*          | *A* in string                                   | No *A* in string                       |
+| **Negation-term**<br/>Prefix the term with *~* <br/>to match line with no term.                                                              | *~A*          | No *A* in string                                | *A* in string                          |
+| **Nested-term**<br/>Elements in searches with parentheses <br/>match tags at the relative level.                                             | *(A), (B)*    | *(A), (B, C)<br/>((A), (B, C))*                 | *(A, B)<br/>(A, C, B)<br/>(A, (C, B))* |
+| **Wildcard-term**<br/>Use <em>*</em> to match remaining terms <br/>(except comma or parenthesis).<br>Can be used in combination with @ or ~. | *Long**       | *Long*<br/>LongX<br/>LongY        | *TagDoesNotStartWithLong*         |
 
 The simplest type of query is to search for the presence or absence of a single tag.
 Searches can be combined, but all searches are trying to match all terms.
 The HED text-based searches do not use the HED schema, so searches can handle invalid HED annotations.
+ 
 
 ```{warning}
-- Specific words only care about their level relative to other specific words, not overall.
-- If there are no grouping or anywhere words in the search, it assumes all terms are anywhere words.
-- The format of the series should match the format of the search string, whether it's in short or long form.
-- To retrieve children of a parent tag, ensure that both the series and search string are in long form.
+- Note will only find exact tags unless you add *, to find descendants.
+- Nested terms only care about their level relative to other nested terms, not overall.
+- If there are no grouping or anywhere terms in the search, it assumes all terms are anywhere terms.
+- The format of the query should match the format of the string, whether it's in short or long form.
+- To find children of a parent tag, ensure that both the query and search string are in long form.
 ```
 
 ### Example text-based queries
 The following table shows some example queries and types of matches:
 
-| Query type                                  | Example query                                                                                           | Matches                                                                                        | Does not match                                                                                          |
-|---------------------------------------------|---------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
-| **Tag sharing group<br/>with another tag**  | *(Face, Item-interval/1)*<br/> *Face* in group with<br/>exact tag *Item-interval/1*                     | *(Face, Item-interval/1)*<br/>*Face, Item-interval/1*                                          | *(Face, Item-interval/12)*<br/>*Face, Item-interval/1A*<br/>*(Face, Item-interval)*<br/>*(Item-interval/1)*|
-| **Tag sharing group<br/>with wildcard tag** | <em>(Face, Item-interval/1*)</em><br/> *Face* in group with<br/>tag starting with<br/>*Item-interval/1* | *(Face, Item-interval/1)*<br/>*Face, Item-interval/12*<br/>*(Face, Item-interval/1A)*          | *(Face, Item-interval)*<br/>*(Item-interval/1)*                                                          |
-| **Tag sharing group<br/>with subgroup**   | *(Face, (Item-interval/1))*<br/> *Face* in group with<br/>subgroup containing<br/>*Item-interval/1*         | *(Face, (Item-interval/1))*<br/>*Face, (Item-interval/1)*<br/>*(Item-interval/1), Event, Face* | *(Face, Item-interval/1)*<br/>*(Item-interval/1)*                                                         |
+| Query type                                                    | Example query                                                                                                                                                | Matches                                                                                        | Does not match                                                                                              |
+|---------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
+| **Tag sharing group<br/>with another tag**                    | *(Head-part, Item-interval/1)*<br/> *Head-part* in group with<br/>exact tag *Item-interval/1*                                                                | *(Head-part, Item-interval/1)*<br/>*Head-part, Item-interval/1*                                          | *(Head-part, Item-interval/12)*<br/>*Head-part, Item-interval/1A*<br/>*(Head-part, Item-interval)*<br/>*(Item-interval/1)* |
+| **Tag sharing group<br/>with wildcard tag**                   | *(Head-part, Item-interval/1*)</em><br/> *Head-part* in group with<br/>tag starting with<br/>*Item-interval/1*                                               | *(Head-part, Item-interval/1)*<br/>*Head-part, Item-interval/12*<br/>*(Head-part, Item-interval/1A)*          | *(Head-part, Item-interval)*<br/>*(Item-interval/1)*                                                             |
+| **Tag sharing group<br/>with subgroup**                       | *(Head-part, (Item-interval/1))*<br/> *Head-part* in group with<br/>subgroup containing<br/>*Item-interval/1*                                                | *(Head-part, (Item-interval/1))*<br/>*Head-part, (Item-interval/1)*<br/>*(Item-interval/1), Event, Head-part* | *(Head-part, Item-interval/1)*<br/>*(Item-interval/1)*                                                           |
+| **Anywhere terms mixed with nested**                          | *@Event, Head-part, Item-interval/1*<br/> *Event* anywhere with<br/>*Head-part* and *Item-interval/1*<br/> in the same group as each other                   | *Item-interval/1, Event, Head-part*<br/> *Event, (Item-interval/1, Head-part)*<br/>                      | *Item-interval/1, Event, (Head-part)*<br/>                                                                       |
+| **If converted to long form first**<br>Will match parent tags | *@Event, Head-part*, Item-interval/1*<br/> *Event* anywhere with<br/>*Head-part*(or a descendant) and *Item-interval/1*<br/> in the same group as each other | *Item-interval/1, Event, Head-part*<br/> *Event, (Item-interval/1, Cheek)*<br/>                      | *Item-interval/1, Event, (Head-part)*<br/>                                                                       |
 
 ## Where can HED search be used?
 
