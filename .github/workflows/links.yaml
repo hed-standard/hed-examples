@@ -18,5 +18,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Codespell
-        uses: codespell-project/actions-codespell@v2
+
+      - name: Link Checker
+        id: lychee
+        uses: lycheeverse/lychee-action@v1
