@@ -740,24 +740,24 @@ Alternatively, these services can be accessed through a locally-deployed docker 
 See the [**hed-web**](https://hed-web.readthedocs.io/en/latest/index.html)
 GitHub repository documentation for additional information on the docker deployment.
 The MATLAB code to run demos of these services is available on the 
-[**hed-matlab**](https://github.com/hed-standard/hed-matlab/tree/main/hedmat/web_services)
-GitHub repository. 
+[**web_services_demo**](https://github.com/hed-standard/hed-matlab/tree/main/hedmat/web_services_demos)
+directory of the [**hed-matlab**](https://github.com/hed-standard/hed-matlab) GitHub repository. 
 
 The following MATLAB code demos are available to show how to access HED web services.
 
-| Target | MATLAB source   | Purpose   |
-| ------ |-----------------|-----------|
-| Overall | [**runAllDemos.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/runAllDemos.m)   | Harness for running all demos.   |
-| Overall | [**demoGetServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/demoGetServices.m)   | List available services.  |
-| Events | [**demoEventServices.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services/demoEventServices.m)   | Validation, conversion, sidecar generation.  |
-| Events | [**demoEventSearchServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/demoEventSearchServices.m) | Search, assembly.  |
-| Schema | *in progress*   | For schema library developers.  |
-| Sidecars | [**demoSidecarServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/demoSidecarServices.m) | Validation, conversion, extraction, merging. |
-| Spreadsheets | [**demoSpreadsheetServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/demoSpreadsheetServices.m) | Validation, conversion.  |
-| Strings | [**demoStringServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/demoStringServices.m)     | Validation, conversion.  |
+| Target | MATLAB source                                                                                                                                             | Purpose   |
+| ------ |-----------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|
+| Overall | [**runAllDemos.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services_demos/runAllDemos.m)                               | Harness for running all demos.   |
+| Overall | [**demoGetServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services_demos/demoGetServices.m)                       | List available services.  |
+| Events | [**demoEventServices.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services_demos/demoEventServices.m) | Validation, conversion, sidecar generation.  |
+| Events | [**demoEventSearchServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services_demos/demoEventSearchServices.m)       | Search, assembly.  |
+| Schema | *in progress*                                                                                                                                             | For schema library developers.  |
+| Sidecars | [**demoSidecarServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services_demos/demoSidecarServices.m)               | Validation, conversion, extraction, merging. |
+| Spreadsheets | [**demoSpreadsheetServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services_demos/demoSpreadsheetServices.m)       | Validation, conversion.  |
+| Strings | [**demoStringServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services_demos/demoStringServices.m)                 | Validation, conversion.  |
 
 
-The [**runAllDemos.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/runAllDemos.m)
+The [**runAllDemos.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services_demos/runAllDemos.m)
 script runs all the demo code and reports whether
 the demos run successfully.
 Before using the HED web services from MATLAB, 
@@ -767,7 +767,7 @@ that you have Internet access, and that the HED services are available.
 This script also demonstrates how to call the individual demo functions.
 Each demo function takes a host URL as a parameter and returns a list of errors.
 The demos all use demo data read by the 
-[**getDemoData**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/getDemoData.m) 
+[**getDemoData**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services_demos/getDemoData.m) 
 function, which returns a MATLAB `struct` containing all needed test data.
 The individual demo scripts illustrate how to call each type of available web service.
 
@@ -788,7 +788,7 @@ to construct a fixed session header that can be used in subsequent requests in y
 #### Setting up a session from MATLAB
 
 The goal of the session setup is to construct a header that can be used in subsequent web requests.
-The first step is to call the [**getHostOptions.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/getHostOptions.m).
+The first step is to call the [**getHostOptions.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services_demos/getHostOptions.m).
 
 (setting)=
 `````{admonition} Establish a session.
@@ -806,7 +806,7 @@ The `servicesURL` and the `options` can be used for all of your subsequent reque
 
 This function constructs the services URL from the host URL.
 The function also makes a service request to obtain a CSRF token and a cookie using
-[**getSessionInfo**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/getSessionInfo.m).
+[**getSessionInfo**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services_demos/getSessionInfo.m).
 The function then constructs a header and calls the MATLAB `weboptions` function
 to get an options object suitable for use with the MATLAB `webwrite` function
 use in all of our examples.
@@ -917,7 +917,7 @@ and makes a request for validation using `HED8.2.0.xml`.
 The request indicates that validation warnings as well as errors should be included in the response.
 If you wish to exclude warnings, use `off` instead of `on` as the `check_for_warnings` field value.
 
-The [**demoSidecarServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/demoSidecarServices.m)
+The [**demoSidecarServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services_demos/demoSidecarServices.m)
 function shows complete examples of the various HED services for JSON sidecars.
 
 (making-a-service-request-anchor)=
@@ -937,7 +937,7 @@ outputReport(response, 'Example: validate a JSON sidecar');
 ```
 `````
 
-The [**<code>outputReport.m</code>**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services/outputReport.m)
+The [**<code>outputReport.m</code>**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services_demos/outputReport.m)
 MATLAB script outputs the response in readable form with a user-provided table.
 
 If the web server is down or times out during a request,
@@ -993,4 +993,3 @@ For example, if a sidecar had validation errors,
 `results.msg_category` will be `warning` and the `results.data` value
 should be interpreted as a list of errors.
 If the sidecar had no errors, `results.data` will be an empty string.
-

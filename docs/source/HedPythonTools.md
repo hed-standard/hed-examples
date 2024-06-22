@@ -100,7 +100,7 @@ For this reason, the HED tools offer the option of creating a 4-column spreadshe
 a BIDS JSON sidecar and using it to create annotations. The four columns are: 
 `column_name`, `column_value`, `description`, and `HED`. 
 See [**task-WorkingMemory_example_spreadsheet.tsv**](https://github.com/hed-standard/hed-examples/blob/main/docs/source/_static/data/task-WorkingMemory_example_spreadsheet.tsv)
-The [**sidecar_to_spreadsheet.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids/sidecar_to_spreadsheet.ipynb)
+The [**sidecar_to_spreadsheet.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/src/jupyter_notebooks/bids/sidecar_to_spreadsheet.ipynb)
 
 ```{admonition} Variables to set in the extract_json_template.ipynb Jupyter notebook.
 :class: tip
@@ -121,7 +121,7 @@ spreadsheet rather than working with the JSON file directly as explained in the
 [**Spreadsheet templates**](https://hed-examples.readthedocs.io/en/latest/BidsAnnotationQuickstart.html#spreadsheet-templates-anchor)
 tutorial.
 
-The [**sidecar_to_spreadsheet.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids/sidecar_to_spreadsheet.ipynb)
+The [**sidecar_to_spreadsheet.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/src/jupyter_notebooks/bids/sidecar_to_spreadsheet.ipynb)
 notebook demonstrates how to extract the pertinent
 HED annotation to a 4-column spreadsheet (Pandas dataframe) corresponding
 to the HED content of a JSON sidecar.
@@ -154,7 +154,7 @@ Sometimes event files include unexpected or incorrect codes.
 It is a good idea to find out what is actually in the dataset
 event files and whether the information is consistent before starting the annotation process.
 
-The [**summarize_events.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/src/jupyter_notebooks/bids/summarize_events.ipynb) finds the dataset event files and outputs
+The [**summarize_events.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/src/jupyter_notebooks/bids/sidecar_to_spreadsheet.ipynb) finds the dataset event files and outputs
 the column names and number of events for each event file.
 You can visually inspect the output to make sure that the event file column names
 are consistent across the dataset.
@@ -189,7 +189,7 @@ faster to debug.
 The [**HED validation guide**](https://hed-examples.readthedocs.io/en/latest/HedValidationGuide.html)
 discusses various HED validation issues and how to fix them.
 
-The [**validate_bids_dataset.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids/validate_bids_dataset.ipynb)
+The [**validate_bids_dataset.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/src/jupyter_notebooks/bids/sidecar_to_spreadsheet.ipynb)
 Jupyter notebook validates HED in a BIDS dataset using the `validate` method
 of `BidsDataset`.
 The method first  gathers all the relevant JSON sidecars for each event file
