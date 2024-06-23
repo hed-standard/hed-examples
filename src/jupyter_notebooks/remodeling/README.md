@@ -7,7 +7,7 @@ restructuring tools through its command line interface.
 ## Quickstart
 
 A quickstart overview of the remodeling process and supporting tools can be
-found at [**Event file restructuring quickstart](https://hed-examples.readthedocs.io/en/latest/EventFileRestructuringQuickstart.html).
+found at [**File remodeling quickstart](https://www.hed-resources.org/en/latest/FileRemodelingQuickstart.html).
 
 ## Installation requirements
 
