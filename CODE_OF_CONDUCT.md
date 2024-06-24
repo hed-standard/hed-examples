@@ -46,4 +46,4 @@ Project maintainers who do not follow or enforce the Code of Conduct in good fai
 ## Attribution
 
 This Code of Conduct is adapted from the [**BIDS Code of Conduct**](https://github.com/bids-standard/bids-specification/blob/master/CODE_OF_CONDUCT.md) which is based on information from the
-[**Contributor Covenant**](http://contributor-covenant.org]).
+[**Contributor Covenant**](http://contributor-covenant.org).

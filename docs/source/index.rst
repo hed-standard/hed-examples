@@ -58,7 +58,6 @@ HED was accepted (2019) into the top-level
 thus becoming an integral part of the BIDS data storage standards for an ever-increasing
 number of neuroimaging data modalities.
 
-
 An efficient approach to integrating HED event descriptions into BIDS metadata has been
 demonstrated in this `2021 paper <https://www.sciencedirect.com/science/article/pii/S1053811921010387?via%3Dihub>`_.
 
