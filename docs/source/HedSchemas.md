@@ -92,31 +92,24 @@ directory of the [**hed-schemas**](https://github.com/hed-standard/hed-schemas) 
 
 ### The SCORE library
 
-The HED SCORE library is an implementation of the [**SCORE**](https://hed-schemas.readthedocs.io/en/latest/hed_lisa_schema.html) standard for clinical annotation of EEG by neurologists.
+The HED SCORE library is an implementation of the [**SCORE**](https://www.sciencedirect.com/science/article/pii/S1388245717309069?via%3Dihub) standard for clinical annotation of EEG by neurologists.
 For more information and the latest references see 
-[**HED SCORE schema**](https://hed-schemas.readthedocs.io/en/latest/hed_score_schema.html).
+[**HED SCORE schema**](https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/score/README.md).
 
 | Format     | Type | Use | 
 |------------| ---- | ---- | 
-| XML        |  [**Raw**](https://raw.githubusercontent.com/hed-standard/hed-schemas/main/library_schemas/score/hedxml/HED_score_1.0.0.xml) | Accessed by tools for validation and analysis. |  
-|            | [**Formatted**](https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/score/hedxml/HED_score_1.0.0.xml) | Readable display. |
-| MediaWiki  | [**Raw**](https://raw.githubusercontent.com/hed-standard/hed-schemas/main/library_schemas/score/hedwiki/HED_score_1.0.0.mediawiki) | Edited to create a new schema. |  
-|            | [**Formatted**](https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/score/hedwiki/HED_score_1.0.0.mediawiki) |  Readable display for editing. |
+| XML        |  [**Raw**](https://raw.githubusercontent.com/hed-standard/hed-schemas/main/library_schemas/score/hedxml/HED_score_1.1.0.xml) | Accessed by tools for validation and analysis. |  
+|            | [**Formatted**](https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/score/hedxml/HED_score_1.1.0.xml) | Readable display. |
+| MediaWiki  | [**Raw**](https://raw.githubusercontent.com/hed-standard/hed-schemas/main/library_schemas/score/hedwiki/HED_score_1.1.0.mediawiki) | Edited to create a new schema. |  
+|            | [**Formatted**](https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/score/hedwiki/HED_score_1.1.0.mediawiki) |  Readable display for editing. |
 | Prerelease | [**Directory**](https://github.com/hed-standard/hed-schemas/tree/main/library_schemas/score/prerelease) |  Working directory for developing the prerelease. |
 
-### The LISA library
+### The LANG library
 
-The HED LISA library represents a vocabulary for annotating linguistic stimuli in language and other
+The HED LANG library represents a vocabulary for annotating linguistic stimuli in language and other
 types of experiments.
 For more information and the latest references see 
-[**HED LISA schema**](https://hed-schemas.readthedocs.io/en/latest/hed_lisa_schema.html).
-The LISA library is under development and is only available in prerelease format.
-
-| Format     | Type | Use | 
-|------------| ---- | ---- | 
-| XML        | **Raw** | Accessed by tools for validation and analysis. |  
-|            | [**Formatted**] | Readable display. |
-| MediaWiki  | [**Raw**] | Edited to create a new schema. |  
-|            | [**Formatted**] |  Readable display for editing. |
-| Prerelease | [**Directory**](https://github.com/hed-standard/hed-schemas/tree/main/library_schemas/lisa/prerelease) |  Working directory for developing the prerelease. |
+[**HED LANG schema**](https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/lang/README.md).
+The LANG library is under development and is only available in 
+[**prerelease**](https://github.com/hed-standard/hed-schemas/tree/main/library_schemas/lang/prerelease) format.
 

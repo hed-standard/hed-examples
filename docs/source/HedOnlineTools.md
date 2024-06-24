@@ -85,7 +85,7 @@ However, the tool only validates a single events file with an accompanying sidec
 The tool does not validate multiple events files at the same time,
 nor does the tool handle inherited sidecars.
 
-The [validate_bids_dataset.ipynb](https://github.com/hed-standard/hed-examples/blob/main/src/jupyter_notebooks/bids/validate_bids_dataset.ipynb)
+The [validate_bids_dataset.ipynb](https://github.com/hed-standard/hed-examples/blob/main/src/jupyter_notebooks/bids/validate_bids_datasets.ipynb)
 Python Jupyter notebook is available for validating all the events files
 in a BIDS dataset along with multiple sidecars.
 The Jupyter notebook handles validation with library schema.
@@ -203,7 +203,7 @@ dataset root directory, this is all that is needed.
 However, if the sidecar is part of an inheritance chain, some of its definitions
 are externally defined, or the sidecar contains tags from multiple HED schemas,
 you should use the 
-[validate_bids_dataset.ipynb](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids/validate_bids_dataset.ipynb)
+[validate_bids_dataset.ipynb](https://github.com/hed-standard/hed-examples/blob/main/src/jupyter_notebooks/bids/validate_bids_datasets.ipynb)
 Python Jupyter notebook to validate the HED in your BIDS dataset.
 
 #### Convert sidecar to long
@@ -560,7 +560,7 @@ JSON sidecars, BIDS-style events files, and spreadsheets in `.tsv` or `.xlsx` fo
 Support is also included for assembling the annotations for a BIDS-style 
 events file with a JSON sidecar and for generating a template of a JSON sidecar from a BIDS events file.
 
-The [**web_services**](https://github.com/hed-standard/hed-matlab/tree/main/hedmat/web_servicess) 
+The [**web_services**](https://github.com/hed-standard/hed-matlab/tree/main/hedmat/web_services) 
 directory in the `hed-examples` GitHub repository provides MATLAB examples of how to call these 
 services in MATLAB.
 

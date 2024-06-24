@@ -14,7 +14,7 @@ Most of these datasets have complete versions available on
 [**openNeuro**](https://openneuro.org/).
 See [**datasets/README.md**](./datasets/README.md) for details.
 
-The [**src**](https://github.com/hed-standard/hed-examples/tree/main/hedcode)
+The [**src**](https://github.com/hed-standard/hed-examples/tree/main/src)
 subdirectory contains Python Jupyter notebooks demonstrating calls to HedTools.
 For MATLAB support for HED see the [**hed-matlab**](https://github.com/hed-standard/hed-matlab)
 GitHub repository.
