@@ -92,7 +92,7 @@ directory of the [**hed-schemas**](https://github.com/hed-standard/hed-schemas) 
 
 ### The SCORE library
 
-The HED SCORE library is an implementation of the [**SCORE**](https://www.sciencedirect.com/science/article/pii/S1388245717309069?via%3Dihub) standard for clinical annotation of EEG by neurologists.
+The HED SCORE library is an implementation of the [**SCORE**](https://www.sciencedirect.com/science/article/pii/S1388245717309069) standard for clinical annotation of EEG by neurologists.
 For more information and the latest references see 
 [**HED SCORE schema**](https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/score/README.md).
 

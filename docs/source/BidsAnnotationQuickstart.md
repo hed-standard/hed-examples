@@ -363,6 +363,7 @@ Once you have a JSON sidecar template, you should edit in your event annotations
 The following is an edited version of the 
 JSON template from the previous step containing a minimal set of HED annotations.
 
+(excerpted-json-file-with-tags-anchor)=
 `````{admonition} JSON sidecar with completed annotation.
 :class: tip
 ```json
@@ -496,7 +497,7 @@ or in a tool such as Excel.
 You may save the edited spreadsheet in either `.tsv` or `.xslx` format.
 
 The following is the extracted spreadsheet corresponding to the
-[**edited JSON sidecar above**](excerpted-json-file-with-tags).
+[**edited JSON sidecar above**](excerpted-json-file-with-tags-anchor).
 
 ````{admonition} HED annotation table extracted from JSON sidecar template.
 | **column_name** | **column_value** | **description** | **HED** |

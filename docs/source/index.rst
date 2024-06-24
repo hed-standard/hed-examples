@@ -86,7 +86,8 @@ San Diego (UCSD) under funding by The Swartz Foundation and by U.S. National Ins
 
 Further **HED (Gen 2, 4.0.0 <= version < 8.0.0)** development led by Kay Robbins
 of the University of Texas San Antonio was
-funded by The Cognition and Neuroergonomics Collaborative Technology Alliance (CaN CTA) program of U.S Army Research Laboratory (ARL) under Cooperative Agreement Number W911NF-10-2-0022.
+funded by The Cognition and Neuroergonomics Collaborative Technology Alliance (CaN CTA) program
+of U.S Army Research Laboratory (ARL) under Cooperative Agreement Number W911NF-10-2-0022.
 
 **HED (Gen 3, version >= 8.0.0)** is now maintained and further developed by the
 HED Working Group led by Kay Robbins and Scott Makeig with Dung Truong, Monique Denissen,

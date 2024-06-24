@@ -43,7 +43,7 @@ and an online version of the tools.
 The [**Create a JSON template**](https://hed-examples.readthedocs.io/en/latest/BidsAnnotationQuickstart.html#create-a-json-template) tutorial provides a step-by-step tutorial for using the online tool 
 that creates a template based on the information in a single `events.tsv` file.
 For most datasets, this is sufficient.
-In contrast, the [**extract_json_template.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/hedcode/jupyter_notebooks/bids/extract_json_template.ipynb)
+In contrast, the [**extract_json_template.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/src/jupyter_notebooks/bids/extract_json_template.ipynb)
 Jupyter notebook bases the extracted template on the entire dataset.
 
 To use this notebook, substitute the specifics of your BIDS

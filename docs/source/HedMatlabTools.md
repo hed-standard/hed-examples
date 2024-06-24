@@ -454,9 +454,8 @@ See [**MathWorks Python Compatibility Docs**](https://www.mathworks.com/support/
 
 The greatest difficulty for users who are unfamiliar with Python is
 getting Python connected to MATLAB.
-Once that is done, many of the standard `hedtools` functions have 
-[**MATLAB HED tool wrapper functions**](https://github.com/hed-standard/hed-matlab/tree/main/hedmat/hedtools_wrappers)
-that take MATLAB variables as arguments and return either MATLAB variables or opaque objects that
+Once that is done, many of the standard `hedtools` functions can be accessed through 
+method call that take MATLAB variables and return either MATLAB variables or opaque objects that
 can be passed to other MATLAB functions.
 
 Thus, once the setup is done, you don't have to learn any Python syntax to use the tools.
@@ -669,7 +668,6 @@ Using HEDTOOLS version: {'date': '2022-06-20T14:40:24-0500', 'dirty': False, 'er
 ```
 ````
 
-
 ### MATLAB functions for Python
 
 The following table lists the relevant MATLAB functions that are available.
@@ -727,8 +725,6 @@ The remodeling file used in this example can be found at
 See [**File remodeling quickstart**](FileRemodelingQuickstart.md)
 and [**File remodeling tools**](FileRemodelingTools.md) for
 additional information.
-The wrapper functions are available on GitHub in
-the [**hedtools_wrappers**](https://github.com/hed-standard/hed-examples/tree/develop/src/matlab_scripts/hedtools_wrappers) directory.
 
 (web-service-matlab-demos-anchor)=
 ### Web service MATLAB demos
@@ -745,16 +741,16 @@ directory of the [**hed-matlab**](https://github.com/hed-standard/hed-matlab) Gi
 
 The following MATLAB code demos are available to show how to access HED web services.
 
-| Target | MATLAB source                                                                                                                                             | Purpose   |
-| ------ |-----------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|
-| Overall | [**runAllDemos.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services_demos/runAllDemos.m)                               | Harness for running all demos.   |
-| Overall | [**demoGetServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services_demos/demoGetServices.m)                       | List available services.  |
-| Events | [**demoEventServices.m**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/hedcode/matlab_scripts/web_services_demos/demoEventServices.m) | Validation, conversion, sidecar generation.  |
-| Events | [**demoEventSearchServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services_demos/demoEventSearchServices.m)       | Search, assembly.  |
-| Schema | *in progress*                                                                                                                                             | For schema library developers.  |
-| Sidecars | [**demoSidecarServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services_demos/demoSidecarServices.m)               | Validation, conversion, extraction, merging. |
-| Spreadsheets | [**demoSpreadsheetServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services_demos/demoSpreadsheetServices.m)       | Validation, conversion.  |
-| Strings | [**demoStringServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services_demos/demoStringServices.m)                 | Validation, conversion.  |
+| Target | MATLAB source                                                                                                                                            | Purpose   |
+| ------ |----------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|
+| Overall | [**runAllDemos.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services_demos/runAllDemos.m)                              | Harness for running all demos.   |
+| Overall | [**demoGetServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services_demos/demoGetServices.m)                      | List available services.  |
+| Events | [**demoEventServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services_demos/demoEventServices.m) | Validation, conversion, sidecar generation.  |
+| Events | [**demoEventSearchServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services_demos/demoEventSearchServices.m)      | Search, assembly.  |
+| Schema | *in progress*                                                                                                                                            | For schema library developers.  |
+| Sidecars | [**demoSidecarServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services_demos/demoSidecarServices.m)              | Validation, conversion, extraction, merging. |
+| Spreadsheets | [**demoSpreadsheetServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services_demos/demoSpreadsheetServices.m)      | Validation, conversion.  |
+| Strings | [**demoStringServices.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services_demos/demoStringServices.m)                | Validation, conversion.  |
 
 
 The [**runAllDemos.m**](https://raw.githubusercontent.com/hed-standard/hed-matlab/main/hedmat/web_services_demos/runAllDemos.m)
