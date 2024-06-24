@@ -322,7 +322,6 @@ The [**sub-002_task-FacePerception_run-1_events.tsv**](./_static/data/sub-002_ta
 The following is a simplified excerpt of this template,
 which we will use to illustrate the rest of the annotation process.
 
-(simplified-json-template)=
 `````{admonition} JSON sidecar generated template.
 :class: tip
 ```json
@@ -362,10 +361,8 @@ when the annotation is assembled.
 
 Once you have a JSON sidecar template, you should edit in your event annotations.
 The following is an edited version of the 
-[**simplified template excerpt**](simplified-json-template)
-containing a minimal set of HED annotations.
+JSON template from the previous step containing a minimal set of HED annotations.
 
-(excerpted-json-file-with-tags)=
 `````{admonition} JSON sidecar with completed annotation.
 :class: tip
 ```json

@@ -218,9 +218,8 @@ of these operations and how to use them.
 
 The remodeling command-line interface can be used from the command line,
 called from another Python program, or used in a Jupyter notebooks.
-Example notebooks can be found in the
-[**Jupyter notebooks**](https://github.com/hed-standard/hed-examples/tree/main/hedcode/jupyter_notebooks/remodeling)
- to support remodeling.
+Example Jupyter notebooks using the remodeling commands can be found 
+[**here**](https://github.com/hed-standard/hed-examples/tree/main/src/jupyter_notebooks/remodeling).
 
 
 (calling-remodel-tools-anchor)=
@@ -673,7 +672,7 @@ as the `PARAMS` property of the operation's class definition.
 The use of the JSON schema allows the remodeler to specify and validate requirements on most of an
 operation's parameters using standardized methods.
  
-The remodeler [**validator**](https://raw.githubusercontent.com/hed-standard/hed-python/develop/hed/tools/remodeling/validator.py)
+The [**remodeler_validator**](https://github.com/hed-standard/hed-python/blob/master/hed/tools/remodeling/remodeler_validator.py)
 compiles a JSON schema for the remodeler from individual operations and validates
 the remodel file against the compiled JSON schema. The validator should always before executing any remodel operations.
 
