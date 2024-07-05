@@ -1,6 +1,13 @@
 (whats-new-anchor)=
 # What's new?
 
+**July 4, 2024**: **HED specification v3.3.0 released.**  
+> [**https://zenodo.org/records/12664745**](https://zenodo.org/records/12664745)  
+> Includes lazy partnering and HED ontology formats.
+
+**July 3, 2024**: **HED ontology released on Bioportal.**  
+> View on [**HEDBioportal**](https://bioportal.bioontology.org/ontologies/HED)   
+
 **June 10, 2024**: **HEDTools 0.5.0 released on PyPI.**  
 > Remodeling tool validation uses JSON schema.  
 > Supports `.tsv` format and HED ontology generation for HED schemas.  
