@@ -7,26 +7,6 @@ The mechanisms for doing this use HED (Hierarchical Event Descriptors) in conjun
 with a [BIDS](https://bids.neuroimaging.io/)
 (Brain Imaging Data Structure) representation of the dataset.
 
-The tutorial assumes that you have a basic understanding of HED and
-how HED annotations are used in BIDS.
-Please review [**Annotating a BIDS dataset**](https://bids-standard.github.io/bids-starter-kit/tutorials/annotation.html), 
-the [**BIDS annotation quickstart**](https://hed-examples.readthedocs.io/en/latest/BidsAnnotationQuickstart.html), and the
-[**HED annotation quickstart**](https://hed-examples.readthedocs.io/en/latest/HedAnnotationQuickstart.html)
-tutorials as needed.
-
-The [**Experimental design concepts**](experimental-design-concepts-anchor)
-section at the end of this tutorial provides a basic introduction to the ideas
-of factor vectors and experimental design if you are unfamiliar with these topics.
-
-* [**HED annotations for conditions**](hed-annotations-for-conditions-anchor)
-  * [**Direct condition variables**](direct-condition-variables-anchor)
-  * [**Defined condition variables**](defined-condition-variables-anchor)
-  * [**Direct vs defined approaches**](direct-vs-defined-approaches-anchor)
-  * [**Column vs row annotations**](column-vs-row-annotations-anchor)
-* [**Experimental design concepts**](experimental-design-concepts-anchor)
-  * [**Design matrices and factor variables**](design-matrices-and-factor-variables-anchor) 
-  * [**Types of condition encoding**](types-of-condition-encoding-anchor)
-
 This tutorial introduces tools and strategies for encoding information
 about the experimental design as part of a dataset metadata
 without excessive effort on the part of the researcher.
