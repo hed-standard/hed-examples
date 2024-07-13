@@ -116,6 +116,7 @@ Visit the `HED project homepage <https://github.com/hed-standard>`_ for links to
 
    BidsAnnotationQuickstart.md
    HedAnnotationQuickstart.md
+   HedAnnotationInNWB.md
    HedValidationGuide.md
    HedSearchGuide.md
    HedSummaryGuide.md
