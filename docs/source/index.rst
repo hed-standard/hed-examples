@@ -116,12 +116,13 @@ Visit the `HED project homepage <https://github.com/hed-standard>`_ for links to
 
    BidsAnnotationQuickstart.md
    HedAnnotationQuickstart.md
+   UnderstandingHedVersions.md
    HedAnnotationInNWB.md
    HedValidationGuide.md
    HedSearchGuide.md
    HedSummaryGuide.md
    HedConditionsAndDesignMatrices.md
-   FileRemodelingQuickstart.md
+   HedRemodelingQuickstart.md
    HedSchemaDevelopersGuide.md
 
 
@@ -132,7 +133,7 @@ Visit the `HED project homepage <https://github.com/hed-standard>`_ for links to
 
    HedOnlineTools.md
    CTaggerGuiTaggingTool.md
-   FileRemodelingTools.md
+   HedRemodelingTools.md
    HedPythonTools.md
    HedJavascriptTools.md
    HedMatlabTools.md

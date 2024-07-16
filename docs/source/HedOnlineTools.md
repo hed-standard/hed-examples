@@ -151,8 +151,8 @@ to generate a JSON sidecar based on all the events files in a BIDS dataset.
 The HED remodeling tools provide an interface to nearly all the HED tools functionality without programming. To use the tools, create a JSON file containing the commands that you
 wish to execute on the events file. Command are available to do various transformations
 and summaries of events files as explained in
-the [**File remodeling quickstart**](https://www.hed-resources.org/en/latest/FileRemodelingQuickstart.html) and the
-[**File remodeling tools**](https://www.hed-resources.org/en/latest/FileRemodelingTools.html).
+the [**HED remodeling quickstart**](https://www.hed-resources.org/en/latest/HedRemodelingQuickstart.html) and the
+[**HED remodeling tools**](https://www.hed-resources.org/en/latest/HedRemodelingTools.html).
 
 ``````{admonition} Execute a remodel script.
 
