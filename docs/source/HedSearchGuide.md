@@ -241,8 +241,8 @@ based on HED annotations in a dataset-independent manner.
 These queries can be used to locate data sets satisfying the specified criteria
 and to find the relevant event markers in that data.
 
-For example, the [**factor_hed_tags**](https://www.hed-resources.org/en/latest/FileRemodelingTools.html#factor-hed-tags) 
-operation of the HED [**file remodeling tools**](https://www.hed-resources.org/en/latest/FileRemodelingTools.html)
+For example, the [**factor_hed_tags**](https://www.hed-resources.org/en/latest/HedRemodelingTools.html#factor-hed-tags) 
+operation of the [**HED remodeling tools**](https://www.hed-resources.org/en/latest/HedRemodelingTools.html)
 creates factor vectors for selecting events satisfying general HED queries.
 
 The [**HED-based epoching**](https://www.hed-resources.org/en/latest/HedMatlabTools.html#hed-based-epoching) tools in [**EEGLAB**](https://sccn.ucsd.edu/eeglab/index.php) 
