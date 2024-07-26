@@ -2,7 +2,7 @@
 
 The primary codebase for HED support is in Python.
 Source code for the HED Python tools is available in the 
-[**hed-python**](https://github.com/hed-standard/hed-pythong) GitHub repository
+[**hed-python**](https://github.com/hed-standard/hed-python) GitHub repository
 See the [**HED tools API documentation**](https://hed-python.readthedocs.io/en/latest/) for 
 detailed information about the HED Tools API.
 

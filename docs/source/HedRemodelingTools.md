@@ -14,7 +14,7 @@ the tabular files unchanged.
 
 The file remodeling tools can be applied to any tab-separated value (`.tsv`) file
 but are particularly useful for restructuring files representing experimental events.
-Please read the [**HED remodeling quickstart**](./HedRemodelingQuickstart)
+Please read the [**HED remodeling quickstart**](./HedRemodelingQuickstart.md)
 tutorials for an introduction and basic use of the tools.
 
 The file remodeling tools can be applied to individual files using the 
