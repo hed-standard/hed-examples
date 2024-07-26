@@ -1,7 +1,7 @@
 (hed-summary-guide-anchor)=
 # HED summary guide
 
-The HED [**File remodeling tools**](https://www.hed-resources.org/en/latest/FileRemodelingTools.html) provide a number of event summaries
+The HED [**HED remodeling tools**](https://www.hed-resources.org/en/latest/HedRemodelingTools.html) provide a number of event summaries
 and event file transformations that are very useful during curation and analysis.
 
 The summaries described in this guide are:
@@ -10,8 +10,8 @@ The summaries described in this guide are:
 * [**HED tag summary**](hed-tag-summary-anchor)
 * [**Experimental design summary**](experimental-design-summary-anchor)
 
-As described in more detail in the [**File remodeling quickstart**](https://www.hed-resources.org/en/latest/FileRemodelingQuickstart.html) tutorial and the
-[**File remodeling tools**](https://www.hed-resources.org/en/latest/FileRemodelingTools.html)
+As described in more detail in the [**HED remodeling quickstart**](https://www.hed-resources.org/en/latest/HedRemodelingQuickstart.html) tutorial and the
+[**HED remodeling tools**](https://www.hed-resources.org/en/latest/HedRemodelingTools.html)
 user manual, these tools have as input, a JSON file with a list of remodeling commands and
 an event file. Summaries involving HED also require a HED schema version and possibly a
 JSON sidecar containing HED annotations.

@@ -1,22 +1,44 @@
 # HED Python tools
 
+The primary codebase for HED support is in Python.
+Source code for the HED Python tools is available in the 
+[**hed-python**](https://github.com/hed-standard/hed-pythong) GitHub repository
+See the [**HED tools API documentation**](https://hed-python.readthedocs.io/en/latest/) for 
+detailed information about the HED Tools API.
+
+Many of the most-frequently used tools are available using the
+[**HED remodeling tools**](https://www.hed-resources.org/en/latest/HedRemodelingTools.html).
+Using the remodeling interface, users specify operations and parameters in a JSON
+file rather than writing code. 
+
+The [**HED online tools**](https://hedtools.org/hed) provide an easy-to-use GUI and web service for accessing the tools.
+See the [**HED online tools documentation**](https://www.hed-resources.org/en/latest/HedOnlineTools.html)
+for more information.
+
+The [**HED MATLAB tools**](https://www.hed-resources.org/en/latest/HedMatlabTools.html)
+provide a MATLAB wrapper for the HED Python tools.
+For users that do not have an appropriate version of Python installed for their MATLAB,
+the tools access the online tool web service to perform the operation.
+
+## HED Python tool installation
 The HED (Hierarchical Event Descriptor) scripts and notebooks assume
 that the Python HedTools have been installed.
-The HedTools package is not yet available on PyPI, so you will need to install it
-directly from GitHub using:
+The HedTools package is available on PyPi and can be installed using:
 
 ```shell
- pip install git+https://github.com/hed-standard/hed-python/@master
+ pip install hedtools
 ```
-There are several types of Jupyter notebooks and other HED support tools:
-* [**Jupyter notebooks for HED in BIDS**](jupyter-notebooks-for-hed-in-bids-anchor) - aids for HED annotation in BIDS.
-* [**Jupyter notebooks for data curation**](jupyter-curation-notebooks-anchor) - aids for
-summarizing and reorganizing event data.
-* [**Calling HED tools**](calling-hed-tools-anchor) - specific useful functions/classes.
+Prerelease versions of HedTools are available on the `develop` branch of the
+[**hed-python**](https://github.com/hed-standard/hed-pythong) GitHub repository
+and can be installed using:
+
+```shell
+ pip install git+https://github.com/hed-standard/hed-python/@develop
+```
 
 
-(jupyter-notebooks-for-hed-in-bids-anchor)=
-## Jupyter notebooks for HED in BIDS
+(jupyter-notebooks-for-hed-anchor)=
+## Jupyter notebooks for HED
 
 The following notebooks are specifically designed to support HED annotation
 for BIDS datasets.
@@ -225,222 +247,3 @@ This is very useful for testing new schemas that are underdevelopment.
 ### Validate BIDS datasets
 
 The [**validate_bids_datasets.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/src/jupyter_notebooks/bids/validate_bids_datasets.ipynb) is similar to the other validation notebooks, but it takes a list of datasets to validate as a convenience.
-
-
-(jupyter-curation-notebooks-anchor)=
-## Jupyter notebooks for data curation
-
-All data curation notebooks and other examples can now be found
-in the [**hed-examples**](https://github.com/hed-standard/hed-examples) repository.
-
-
-(consistency-of-BIDS-event-files-anchor)=
-### Consistency of BIDS event files
-
-Some neuroimaging modalities such as EEG, typically contain event information
-encoded in the data recording files, and the BIDS `events.tsv` files are
-generated post hoc. 
-
-In general, the following things should be checked before data is released:
-1. The BIDS `events.tsv` files have the same number of events as the data
-recording and that onset times of corresponding events agree.
-2. The associated information contained in the data recording and event files is consistent.
-3. The relevant metadata is present in both versions of the data.
-
-The example data curation scripts discussed in this section assume that two versions
-of each BIDS event file are present: `events.tsv` and a corresponding `events_temp.tsv` file.
-The example datasets that are using for these tutorials assume that the recordings
-are in EEG.set format.
-
-(calling-hed-tools-anchor)=
-## Calling HED tools
-
-This section shows examples of useful processing functions provided in HedTools:
-
-* [**Getting a list of filenames**](getting-a-list-of-files-anchor)  
-* [**Dictionaries of filenames**](dictionaries-of-filenames-anchor) 
-* [**Logging processing steps**](logging-processing-steps-anchor) 
-
-
-(getting-a-list-of-files-anchor)=
-### Getting a list of files
-
-Many situations require the selection of files in a directory tree based on specified criteria.
-The `get_file_list` function allows you to pick out files with a specified filename
-prefix and filename suffix and specified extensions
-
-The following example returns a list of full paths of the files whose names end in `_events.tsv`
-or `_events.json` that are not in any `code` or `derivatives` directories in the `bids_root_path`
-directory tree.
-The search starts in the directory root `bids_root_path`:
-
-````{admonition} Get a list of specified files in a specified directory tree.
-:class: tip
-```python
-file_list = get_file_list(bids_root_path, extensions=[ ".json", ".tsv"], name_suffix="_events",
-                          name_prefix="", exclude_dirs=[ "code", "derivatives"])
-```
-````
-
-(dictionaries-of-filenames-anchor)=
-### Dictionaries of filenames
-
-The HED tools provide both generic and BIDS-specific classes for dictionaries of filenames.
-
-Many of the HED data processing tools make extensive use of dictionaries specifying both data and format.
-
-#### BIDS-specific dictionaries of files
-
-Files in BIDS have unique names that indicate not only what the file represents, 
-but also where that file is located within the BIDS dataset directory tree.
-
-##### BIDS file names and keys
-A BIDS file name consists of an underbar-separated list of entities,
-each specified as a name-value pair, 
-followed by suffix indicating the data modality.
-
-For example, the file name `sub-001_ses-3_task-target_run-01_events.tsv`
-has entities subject (`sub`), task (`task`), and run (`run`).
-The suffix is `events` indicating that the file contains events.
-The extension `.tsv` gives the data format.
-
-Modality is not the same as data format, since some modalities allow
-multiple formats. For example, `sub-001_ses-3_task-target_run-01_eeg.set`
-and `sub-001_ses-3_task-target_run-01_eeg.edf` are both acceptable
-representations of EEG files, but the data is in different formats.
-
-The BIDS file dictionaries represented by the class `BidsFileDictionary`
-and its extension `BidsTabularDictionary` use a set combination of entities
-as the file key.
-
-For a file name `sub-001_ses-3_task-target_run-01_events.tsv`,
-the tuple ('sub', 'task') gives a key of `sub-001_task-target`,
-while the tuple ('sub', 'ses', 'run') gives a key of `sub-001_ses-3_run-01`.
-The use of dictionaries of file names with such keys makes it
-easier to associate related files in the BIDS naming structure.
-
-Notice that specifying entities ('sub', 'ses', 'run') gives the
-key `sub-001_ses-3_run-01` for all three files:
-`sub-001_ses-3_task-target_run-01_events.tsv`, `sub-001_ses-3_task-target_run-01_eeg.set`
-and `sub-001_ses-3_task-target_run-01_eeg.edf`.
-Thus, the expected usage is to create a dictionary of files of one modality.
-
-````{admonition} Create a key-file dictionary for files ending in events.tsv in bids_root_path directory tree.
-:class: tip
-```python
-from hed.tools import FileDictionary
-from hed.util import get_file_list
-
-file_list = get_file_list(bids_root_path, extensions=[ ".set"], name_suffix="_eeg", 
-                          exclude_dirs=[ "code", "derivatives"])
-file_dict = BidsFileDictionary(file_list, entities=('sub', 'ses', 'run) )
-```
-````
-
-In this example, the `get_file_list` filters the files of the appropriate type,
-while the `BidsFileDictionary` creates a dictionary with keys such as
-`sub-001_ses-3_run-01` and values that are `BidsFile` objects.
-`BidsFile` can hold the file name of any BIDS file and keeps a parsed
-version of the file name.
-
-
-
-#### A generic dictionary of filenames
-
-
-````{admonition} Create a key-file dictionary for files ending in events.json in bids_root_path directory tree.
-:class: tip
-```python
-from hed.tools import FileDictionary
-from hed.util import get_file_list
-
-file_list = get_file_list(bids_root_path, extensions=[ ".json"], name_suffix="_events", 
-                          exclude_dirs=[ "code", "derivatives"])
-file_dict = FileDictionary(file_list, name_indices=name_indices)
-```
-````
-
-Keys are calculated from the filename using a `name_indices` tuple,
-which indicates the positions of the name-value entity pairs in the
-BIDS file name to use.
-
-The BIDS filename `sub-001_ses-3_task-target_run-01_events.tsv` has
-three name-value entity pairs (`sub-001`, `ses-3`, `task-target`,
-and `run-01`) separated by underbars.
-
-The tuple (0, 2) gives a key of `sub-001_task-target`,
-while the tuple (0, 3) gives a key of `sub-001_run-01`.
-Neither of these choices uniquely identifies the file.
-The tuple (0, 1, 3) gives a unique key of `sub-001_ses-3_run-01`.
-The tuple (0, 1, 2, 3) also works giving `sub-001_ses-3_task-target_run-01`.
-
-If you choose the `name_indices` incorrectly, the keys for the event files
-will not be unique, and the notebook will throw a `HedFileError`.
-If this happens, modify your `name_indices` key choice to include more entity pairs.
-
-For example, to compare the events stored in a recording file and the events
-in the `events.tsv` file associated with that recording,
-we might dump the recording events in files with the same name, but ending in `events_temp.tsv`.
-The `FileDictionary` class allows us to create a keyed dictionary for each of these event files.
-
-
-(logging-processing-steps-anchor)=
-### Logging processing steps
-
-Often event data files require considerable processing to assure
-internal consistency and compliance with the BIDS specification.
-Once this processing is done and the files have been transformed,
-it can be difficult to understand the relationship between the
-transformed files and the original data.
-
-The `HedLogger` allows you to document processing steps associated
-with the dataset by identifying key as illustrated in the following
-log file excerpt:
-
-(example-output-hed-logger-anchor)=
-`````{admonition} Example output from HED logger.
-:class: tip
-```text
-sub-001_run-01
-	Reordered BIDS columns as ['onset', 'duration', 'sample', 'trial_type', 'response_time', 'stim_file', 'value', 'HED']
-	Dropped BIDS skip columns ['trial_type', 'value', 'response_time', 'stim_file', 'HED']
-	Reordered EEG columns as ['sample_offset', 'event_code', 'cond_code', 'type', 'latency', 'urevent', 'usertags']
-	Dropped EEG skip columns ['urevent', 'usertags', 'type']
-	Concatenated the BIDS and EEG event files for processing
-	Dropped the sample_offset and latency columns
-	Saved as _events_temp1.tsv
-sub-002_run-01
-	Reordered BIDS columns as ['onset', 'duration', 'sample', 'trial_type', 'response_time', 'stim_file', 'value', 'HED']
-	Dropped BIDS skip columns ['trial_type', 'value', 'response_time', 'stim_file', 'HED']
-	Reordered EEG columns as ['sample_offset', 'event_code', 'cond_code', 'type', 'latency', 'urevent', 'usertags']
-	Dropped EEG skip columns ['urevent', 'usertags', 'type']
-	Concatenated the BIDS and EEG event files for processing
-	. . .
-```
-`````
-
-Each of the lines following a key represents a print message to the logger.
-
-The most common use for a logger is to create a file dictionary
-using [**make_file_dict**](dictionaries-of-filenames-anchor)
-and then to log each processing step using the file's key.
-This allows a processing step to be applied to all the relevant files in the dataset.
-After all the processing is complete, the `print_log` method
-outputs the logged messages by key, thus showing all the
-processing steps that have been applied to each file
-as shown in the [**previous example**](example-output-hed-logger-anchor).
-
-(using-hed-logger-example-anchor)=
-`````{admonition} Using the HED logger.
-:class: tip
-```python
-from hed.tools import HedLogger
-status = HedLogger()
-status.add(key, f"Concatenated the BIDS and EEG event files")
-
-# ... after processing is complete output or save the log
-status.print_log()
-```
-`````
-
-The `HedLogger` is used throughout the processing notebooks in this repository.

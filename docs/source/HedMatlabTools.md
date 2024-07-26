@@ -722,8 +722,8 @@ For the remodeling operations, first and second operation must be the dataset ro
 directory and the remodeling file name, respectively.
 In this example, dataset `ds003645` has been downloaded from [**openNeuro**](https://openneuro.org) to the `G:\` drive.
 The remodeling file used in this example can be found at 
-See [**File remodeling quickstart**](FileRemodelingQuickstart.md)
-and [**File remodeling tools**](FileRemodelingTools.md) for
+See [**HED remodeling quickstart**](HedRemodelingQuickstart)
+and [**HED remodeling tools**](HedRemodelingTools) for
 additional information.
 
 (web-service-matlab-demos-anchor)=
