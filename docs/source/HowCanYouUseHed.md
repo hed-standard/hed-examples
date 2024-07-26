@@ -92,7 +92,7 @@ in post-processing and assure that the conditions are correctly marked.
 #### Logs to event files
 
 Although the HED tools do not yet directly support any particular experimental presentation/control
-software packages, the HED [**HED remodeling tools**](./HedRemodelingTools) can
+software packages, the HED [**HED remodeling tools**](./HedRemodelingTools.md) can
 be useful in working with logged data.
 
 Assuming that you can put the information from your experimental log into a tabular form such as:
@@ -108,8 +108,8 @@ Assuming that you can put the information from your experimental log into a tabu
 
 ````
 
-The [**summarize column values**](./HedRemodelingTools#summarize-column-values)
-operation in the HED [**file remodeling tools**](./HedRemodelingTools)
+The [**summarize column values**](./HedRemodelingTools.md#summarize-column-values)
+operation in the HED [**file remodeling tools**](./HedRemodelingTools.md)
 compiles detailed summaries of the contents of tabular files.
 Use the following remodeling file and your tabular log file as input 
 to the HED online [**event remodeling**](https://hedtools.ucsd.edu/hed_dev/events) tools
@@ -135,10 +135,10 @@ to quickly get an overview of its contents.
 ### Post-processing the event data
 
 The information that first comes off the experimental logs is usually not directly usable for
-sharing and analysis. A number of HED [**HED remodeling tools**](./HedRemodelingTools)
+sharing and analysis. A number of HED [**HED remodeling tools**](./HedRemodelingTools.md)
 might be helpful for restructuring your first pass at the event files.
 
-The [**remap columns**](./HedRemodelingTools#remap-columns) transformation is 
+The [**remap columns**](./HedRemodelingTools.md#remap-columns) transformation is 
 particularly useful during the initial processing of tabular log information
 as exemplified by the following example
 
@@ -395,7 +395,7 @@ to improperly handle these situations, reducing the accuracy of analysis.
 At this time, your only option is to do manual checks or write custom code to
 detect these types of experiment-specific inconsistencies.
 However, work is underway to include some standard types of checks in the
-HED [**HED remodeling tools**](./HedRemodelingTools) in future releases.
+HED [**HED remodeling tools**](./HedRemodelingTools.md) in future releases.
 
 You may also want to reorganize the event files using the remodeling tools.
 See the [**Remap columns**](remap-columns-anchor) 
@@ -431,7 +431,7 @@ work and possibly contact with the data authors for correct use and interpretati
 You can get a preliminary sense about what is actually in the data by downloading a
 single event file (e.g., a BIDS `_events.tsv`) and its associated JSON sidecar
 (e.g., a BIDS `_events.json`) and creating HED remodeling tool summaries using the 
-[**HED online tools for debugging**](./HedRemodelingQuickstart#online-tools-for-debugging).
+[**HED online tools for debugging**](./HedRemodelingQuickstart.md#online-tools-for-debugging).
 Summaries of particular use for analysts include:
 
 - The [**column value summary**](./HedSummaryGuide.md#column-value-summary) compiles a summary of 
@@ -449,11 +449,11 @@ or temporal layout of the experiment.
 While HED tag summary and the experimental design summaries require that the dataset have HED annotations, these summaries do not rely on the experiment-specific
 event-coding used in each experiment and can be used to compare information for different datasets.
 
-The [**HED remodeling quickstart**](./HedRemodelingQuickstart) tutorial
+The [**HED remodeling quickstart**](./HedRemodelingQuickstart.md) tutorial
 gives an overview of the remodeling tools and how to use them.
-More detailed information can be found in [**HED remodeling tools**](./HedRemodelingTools).
+More detailed information can be found in [**HED remodeling tools**](./HedRemodelingTools.md).
 
-The [**Online tools for debugging**](./HedRemodelingQuickstart#online-tools-for-debugging)
+The [**Online tools for debugging**](./HedRemodelingQuickstart.md#online-tools-for-debugging)
 shows how to use remodeling tools to obtain these summaries without writing any code.
 
 The [**HED conditions and design matrices**](HedConditionsAndDesignMatrices.md) guide explains how
@@ -474,8 +474,8 @@ additional code, while generality allows comparison of criteria across different
 experiments.
 
 The factor generation as described in the next section relies on the HED
-[**HED remodeling tools**](HedRemodelingTools).
-See [**HED remodeling tools**](HedRemodelingTools).
+[**HED remodeling tools**](HedRemodelingTools.md).
+See [**HED remodeling tools**](HedRemodelingTools.md).
 
 (factor-vectors-and-selection-anchor)=
 #### Factor vectors and selection
@@ -490,18 +490,18 @@ rows as the event file (each row corresponding to an event marker).
 Factor vectors contain 1's for rows in which a specified criterion is satisfied
 and 0's otherwise.
 
-- The [**factor column operation**](./HedRemodelingTools#factor-column)
+- The [**factor column operation**](./HedRemodelingTools.md#factor-column)
 creates factor vectors based on the unique values in specified columns.
 This factor operation does not require any HED information.
 <p></p>
 
-- The [**factor HED tags**](./HedRemodelingTools#factor-hed-tags)
+- The [**factor HED tags**](./HedRemodelingTools.md#factor-hed-tags)
 creates factor vectors based on a HED tag query. 
 The [**HED search guide**](./HedSearchGuide.md) explains the HED query structure and
 available search options.
 <p></p>
 
-- The [**factor HED type**](./HedRemodelingTools#factor-hed-type)
+- The [**factor HED type**](./HedRemodelingTools.md#factor-hed-type)
 creates factors based on a HED tag representing structural information about the data such as
 *Condition-variable* (for experimental design and experimental conditions) or *Task*.
 
