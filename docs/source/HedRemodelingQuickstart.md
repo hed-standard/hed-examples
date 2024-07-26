@@ -16,7 +16,7 @@ for example, during the conversion from the experimental control software format
 The tools can be run using a command-line script, called from a Jupyter notebook,
 or run using online tools. This quickstart covers the basic concepts of remodeling and
 develops some basic examples of how remodeling is used. See the 
-[**HED remodeling tools**](./HedRemodelingTools)
+[**HED remodeling tools**](./HedRemodelingTools.md)
 guide for detailed descriptions of the available operations.
 
 * [**What is remodeling?**](what-is-remodeling-anchor)
@@ -170,7 +170,7 @@ the *trial_type* column to *event_type*.
 ````
 
 Each remodel operation has its own specific set of required parameters 
-that can be found under [**HED remodeling tools**](./HedRemodelingTools). 
+that can be found under [**HED remodeling tools**](./HedRemodelingTools.md). 
 For *rename_columns*, the required operations are *column_mapping* and *ignore_missing*.
 Some operations also have optional parameters.
 
@@ -295,8 +295,8 @@ Event markers such as the participant's response key-press are encoded implicitl
 as an offset from the stimulus presentation.
 while event encoding includes event markers for each individual event within the trial.
 
-The [**Split rows**](./HedRemodelingTools#split-rows)
-explanation under [**HED remodeling tools**](./HedRemodelingTools)
+The [**Split rows**](./HedRemodelingTools.md#split-rows)
+explanation under [**HED remodeling tools**](./HedRemodelingTools.md)
 shows the required parameters for the *split_rows* operation. 
 The required parameters are *anchor_column*, *new_events*, and *remove_parent_row*.
 
@@ -396,12 +396,12 @@ if you turn the *Include summaries* option on.
 (the-command-line-interface-anchor)=
 ### The command-line interface
 
-After [**installing the remodeler**](./HedRemodelingTools#installing-the-remodel-tools),
+After [**installing the remodeler**](./HedRemodelingTools.md#installing-the-remodel-tools),
 you can run the tools on a full BIDS dataset,
 or on any directory using the command-line interface using
 `run_remodel_backup`, `run_remodel`, and `run_remodel_restore`.
 A full overview of all arguments is available at
-[**HED remodeling tools**](./HedRemodelingTools#remodel-command-line-arguments).
+[**HED remodeling tools**](./HedRemodelingTools.md#remodel-command-line-arguments).
 
 The `run_remodel_backup` is usually run only once for a dataset. 
 It makes the baseline backup of the event files to assure that nothing will be lost. 
@@ -432,9 +432,9 @@ The parameters are as follows:
 
 There are three types of command line arguments: 
 
-[**Positional arguments**](./HedRemodelingTools#positional-arguments),
-[**Named arguments**](./HedRemodelingTools#named-arguments), 
-and [**Named arguments with values**](./HedRemodelingTools#named-arguments).
+[**Positional arguments**](./HedRemodelingTools.md#positional-arguments),
+[**Named arguments**](./HedRemodelingTools.md#named-arguments), 
+and [**Named arguments with values**](./HedRemodelingTools.md#named-arguments).
 
 The positional arguments, `data_dir` and `model_path` are not optional and must
 be the first and second arguments to `run_remodel`, respectively.
