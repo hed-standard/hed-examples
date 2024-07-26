@@ -1,4 +1,4 @@
-# HED annotation in NWB (draft)
+# HED annotation in NWB
 
 [**Neurodata Without Borders (NWB)**](https://www.nwb.org/) is a data standard for organizing neurophysiology data.
 NWB is used extensively as the data representation for single cell and animal recordings as well as
@@ -22,7 +22,14 @@ The `ndx-hed` extension is not currently supported in MATLAB, although support i
 
 ## NWB ndx-hed installation
 
-Should it be uploaded to PyPi?
+The `ndx-hed` extension for Python can be installed using `pip`:
+
+
+```bash
+pip install -U ndx-hed
+```
+
+The `ndx-hed` extension for MATLAB is under development and not available.
 
 ## NWB ndx-hed examples
 

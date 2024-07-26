@@ -1,6 +1,10 @@
 (whats-new-anchor)=
 # What's new?
 
+**July 25, 2024**: **ndx-hed 0.1.0 HED extension for NWB released on PyPI.**  
+> Initial support includes the HedTags class extending VectorData.  
+> HedTags objects may be added as columns to any NWB DynamicTable.  
+
 **July 4, 2024**: **HED specification v3.3.0 released.**  
 > [**https://zenodo.org/records/12664745**](https://zenodo.org/records/12664745)  
 > Includes lazy partnering and HED ontology formats.
