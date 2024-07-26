@@ -29,7 +29,7 @@ The HedTools package is available on PyPi and can be installed using:
  pip install hedtools
 ```
 Prerelease versions of HedTools are available on the `develop` branch of the
-[**hed-python**](https://github.com/hed-standard/hed-pythong) GitHub repository
+[**hed-python**](https://github.com/hed-standard/hed-python) GitHub repository
 and can be installed using:
 
 ```shell
