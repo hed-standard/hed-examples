@@ -47,6 +47,7 @@ The example uses the default column name (`HED`) and the default column descript
 :class: tip
 
 ```python
+from ndx_hed import HedTags
 tags = HedTags(hed_version='8.3.0', data=["Correct-action", "Incorrect-action"])
 ```
 ````
