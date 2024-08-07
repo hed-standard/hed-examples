@@ -107,6 +107,7 @@ Visit the `HED project homepage <https://github.com/hed-standard>`_ for links to
    WhatsNew.md
    HowCanYouUseHed.md
    HedGovernance.md
+   HEDSubmissionToINCF.md
 
 
 .. toctree::

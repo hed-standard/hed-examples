@@ -47,6 +47,7 @@ The example uses the default column name (`HED`) and the default column descript
 :class: tip
 
 ```python
+from ndx_hed import HedTags
 tags = HedTags(hed_version='8.3.0', data=["Correct-action", "Incorrect-action"])
 ```
 ````
@@ -151,10 +152,10 @@ The following table lists elements of the *ndx-events* extension that inherit fr
   - 
 ```
 
-HED annotations that are common to a particular type of event can be added to e NWB `EventsTypesTable`,
-which is analogous to the `events.json` in BIDS. 
-A `HED` column can be added to a BIDS `events.tsv` file to provide HED annotations specific 
-to each event instance. 
+HED annotations that are common to a particular type of event can be added to the NWB `EventsTypesTable`,
+which is analogous to the `events.json` file in BIDS. 
+A `HedTags` column named "HED" can be added to the NWB `EventsTable`, which is analogous to the BIDS `events.tsv` file,
+to provide HED annotations specific to each event instance. 
 Any number of `HedTags` columns can be added to the NWB `EventsTable` to provide different types
 of HED annotations for each event instance.
 
