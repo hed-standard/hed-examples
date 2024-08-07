@@ -1,8 +1,8 @@
 (whats-new-anchor)=
 # What's new?
 
-** August 5, 2024**: **INCF calls for HED community review.**  
-> HED is under consideration as a standard by INCF.  
+**August 5, 2024**: **INCF calls for HED community review.**  
+> HED is under consideration for endorsement by INCF.  
 > **Your comments are important**: [**Comment here**](https://www.incf.org/commentaries/hed)  
 > **HED application to INCF**: [**HED INCF Application**](./HEDSubmissionToINCF.md)  
 
