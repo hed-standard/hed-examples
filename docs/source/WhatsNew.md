@@ -1,6 +1,11 @@
 (whats-new-anchor)=
 # What's new?
 
+**August 5, 2024**: **INCF calls for HED community review.**  
+> HED is under consideration for endorsement by INCF.  
+> **Your comments are important**: [**Comment here**](https://www.incf.org/commentaries/hed)  
+> **HED application to INCF**: [**HED INCF Application**](./HEDSubmissionToINCF.md)  
+
 **July 25, 2024**: **ndx-hed 0.1.0 HED extension for NWB released on PyPI.**  
 > Initial support includes the HedTags class extending VectorData.  
 > HedTags objects may be added as columns to any NWB DynamicTable.  
