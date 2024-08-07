@@ -1,0 +1,3 @@
+[codespell]
+skip = datasets,.git,*.pdf,*.svg,deprecated,*.xml,*.mediawiki,*.omn,datasets
+ignore-words-list = covert,hed,recuse

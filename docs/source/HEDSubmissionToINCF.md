@@ -1,6 +1,6 @@
 # HED INCF Standard Application
 
-The following application was submitted to [**International Neuroinformatics Coordinating Facility (INCF)**](https://incf.or)
+The following application was submitted to [**International Neuroinformatics Coordinating Facility (INCF)**](https://incf.org)
 for consideration as an INCF standard. The application was reviewed, and the INCF has now called for community comments.
 
 
@@ -41,17 +41,17 @@ All HED resources are open and freely available, as summarized in Table 1 below.
 
 ***Table 1:** HED resources and their locations.*
 
-| Resource | URLs                                                                                                                                                                                                                                                                                                                                                   |
-| :---- |:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Specification | [doi.org/10.5281/zenodo.7869149](http://doi.org/10.5281/zenodo.7869149) (DOI)<br/>[hed-specification.readthedocs.io/en/latest/](https://hed-specification.readthedocs.io/en/latest/) (HTML)<br/>[github.com/hed-standard/hed-specification/docs](http://github.com/hed-standard/hed-specification/docs) (src)                                          |
-| Homepage | [www.hedtags.org](http://www.hedtags.org) (home)<br/>[github.com/hed-standard/hed-standard.github.io](http://github.com/hed-standard/hed-standard.github.io) (src)                                                                                                                                                                                     |
-| HED schemas (vocabularies) | [www.hedtags.org/display\_hed.html](http://www.hedtags.org/display\_hed.html) (viewer)<br/>[doi.org/10.5281/zenodo.7876037](http://doi.org/10.5281/zenodo.7876037) (standard schema DOI)<br/>[doi.org/10.5281/zenodo.7897596](http://doi.org/10.5281/zenodo.7897596) (score schema DOI)                                                                    |
+| Resource | URLs                                                                                                                                                                                                                                                                                                                                                              |
+| :---- |:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Specification | [doi.org/10.5281/zenodo.7869149](http://doi.org/10.5281/zenodo.7869149) (DOI)<br/>[hed-specification.readthedocs.io/en/latest/](https://hed-specification.readthedocs.io/en/latest/) (HTML)<br/>[github.com/hed-standard/hed-specification/tree/master/docs](https://github.com/hed-standard/hed-specification/tree/master/docs) (src)                                                    |
+| Homepage | [www.hedtags.org](http://www.hedtags.org) (home)<br/>[github.com/hed-standard/hed-standard.github.io](https://github.com/hed-standard/hed-standard.github.io) (src)                                                                                                                                                                                               |
+| HED schemas (vocabularies) | [www.hedtags.org/display\_hed.html](http://www.hedtags.org/display\_hed.html) (viewer)<br/>[doi.org/10.5281/zenodo.7876037](http://doi.org/10.5281/zenodo.7876037) (standard schema DOI)<br/>[doi.org/10.5281/zenodo.7897596](http://doi.org/10.5281/zenodo.7897596) (score schema DOI)                                                                           |
 | Python codebase | [doi.org/10.5281/zenodo.8056010](http://doi.org/10.5281/zenodo.8056010) (DOI)<br/>[hed-python.readthedocs.io/en/latest](http://hed-python.readthedocs.io/en/latest) (API docs HTML)<br/>[github.com/hed-standard/hed-python](http://github.com/hed-standard/hed-python) (src)<br/>[https://pypi.org/project/hedtools/](https://pypi.org/project/hedtools/) (PyPI) |
-| JavaScript codebase | [doi.org/10.5281/zenodo.8172804](http://doi.org/10.5281/zenodo.8172804) (DOI)<br/>[github.com/hed-standard/hed-validator](http://github.com/hed-standard/hed-validator) (src)<br/>[www.npmjs.com/package/hed-validator](http://www.npmjs.com/package/hed-validator) (npm)                                                                                     |
-| Documentation | [www.hed-resources.org](http://www.hed-resources.org) (HTML)<br/>[github.com/hed-standard/hed-examples/docs](https://github.com/hed-standard/hed-examples/docs) (src)                                                                                                                                                                                      |
-| Example datasets | [github.com/hed-standard/hed-examples/datasets](http://github.com/hed-standard/hed-examples/datasets) (src)                                                                                                                                                                                                                                            |
-| Youtube channel | [www.youtube.com/playlist?list=PLeII6cRFsP6L5S6icwRrJp0DHkhOHtbp-](http://www.youtube.com/playlist?list=PLeII6cRFsP6L5S6icwRrJp0DHkhOHtbp-)                                                                                                                                                                                                            |
-| Online tools | [hedtools.org](http://hedtools.org)  (online tools)<br/>[github.com/hed-standard/hed-web](http://github.com/hed-standard/hed-web) (src)                                                                                                                                                                                                                    |
+| JavaScript codebase | [doi.org/10.5281/zenodo.8172804](http://doi.org/10.5281/zenodo.8172804) (DOI)<br/>[github.com/hed-standard/hed-javascript](https://github.com/hed-standard/hed-javascript) (src)<br/>[www.npmjs.com/package/hed-validator](http://www.npmjs.com/package/hed-validator) (npm)                                                                                      |
+| Documentation | [www.hed-resources.org](http://www.hed-resources.org) (HTML)<br/>[https://github.com/hed-standard/hed-examples/tree/main/docs](https://github.com/hed-standard/hed-examples/tree/main/docs) (src)                                                                                                                                                                                             |
+| Example datasets | [github.com/hed-standard/hed-examples/tree/main/datasets](https://github.com/hed-standard/hed-examples/tree/main/datasets) (src)                                                                                                                                                                                                                                  |
+| Youtube channel | [www.youtube.com/playlist?list=PLeII6cRFsP6L5S6icwRrJp0DHkhOHtbp-](https://www.youtube.com/playlist?list=PLeII6cRFsP6L5S6icwRrJp0DHkhOHtbp-)                                                                                                                                                                                                                      |
+| Online tools | [hedtools.org](http://hedtools.org)  (online tools)<br/>[github.com/hed-standard/hed-web](https://github.com/hed-standard/hed-web) (src)                                                                                                                                                                                                                          |
 
 ## Open
 
@@ -165,7 +165,8 @@ be considered instead of the given tag in an annotation. These links reflect HED
 purpose as a front-end annotation technology for supporting searching and summary.  
 
 An RDF/OWL representation of the HED schemas and infrastructure is being developed using namespace 
-[https://purl.org/hed](https://purl.org/hed). However, this representation is not directly relevant to HED’s main purpose, 
+[https://purl.org/hed/hed.owl](https://purl.org/hed/hed.owl). 
+However, this representation is not directly relevant to HED’s main purpose, 
 which is as an annotation mechanism for events and other experimental metadata. 
 Rather, the goal of this development is to allow the association of external information that 
 is accessible to downstream tools. The HED Working Group plans to eventually apply to the 
@@ -234,12 +235,13 @@ through the command line interface provided by the HED remodeling tools without 
 Users create JSON files listing the commands that they wish to execute and then run the remodeling tools on a dataset.
 
 No programming is required to call the remodeling tools from the command line.  
-See the [File remodeling quickstart](https://www.hed-resources.org/en/latest/FileRemodelingQuickstart.html) tutorial and the [File remodeling tools](https://www.hed-resources.org/en/latest/FileRemodelingTools.html) user manual 
+See the [HED remodeling quickstart](https://www.hed-resources.org/en/latest/HedRemodelingQuickstart.html) tutorial and the [HED remodeling tools](https://www.hed-resources.org/en/latest/HedRemodelingTools.html) user manual 
 for additional information.
 
 Users can also access the functionality of the online tools through HED web services. 
 See [HED services in MATLAB](https://www.hed-resources.org/en/latest/HedMatlabTools.html\#hed-services-in-matlab) for examples of how these services can be called from MATLAB.  
-Example code for all of the services can be found in the [hed-examples](https://github.com/hed-standard/hed-examples/tree/main/hedcode/matlab\_scripts/web\_services) GitHub repository. 
+Example code for all services can be found in the [web_services-demos](https://github.com/hed-standard/hed-matlab/tree/main/hedmat/web_services_demos) 
+directory of the [hed-examples](https://github.com/hed-standard/hed-examples) GitHub repository. 
 
 **c. Schema development:** The [HED schema developer’s guide](https://www.hed-resources.org/en/latest/HedSchemaDevelopersGuide.html) describes HED’s 
 open process for adding a vocabulary to the HED ecosystem. While this process requires 
@@ -332,7 +334,7 @@ The HED organizational chart is shown in Figure 1 below.
 For additional details see the HED governance document.
 
 
-**2. Is the governing model document for maintenance and updates compatible with the [INCF project governing model document](https://space.incf.org/index.php/s/Ypig2tfHOU4no8C\#pdfviewer) 
+**2. Is the governing model document for maintenance and updates compatible with the INCF project governing model document 
 and the open standards principles?**   Yes.
 
 **3. Is the SBP actively supported by the community? If so, what is the evidence?**  
@@ -344,13 +346,13 @@ Yes.  HED is actively supported by a community of users/developers as evidenced 
 Yes. HED users are encouraged to post questions, suggestions, and discussion on the appropriate 
 GitHub issues forum on the GitHub [hed-standard](https://github.com/hed-standard) organization site as indicated in the following table: 
 
-| Issue/ suggestion type | Issue forum | Comments                                                                                  |
-| :---- | :---- |:------------------------------------------------------------------------------------------|
-| Main issue forum | [hed-schemas](https://github.com/hed-standard/hed-schemas/issues) | Primary forum for schema development.<br/>Any issue can be posted and will be redirected. |
-| Docs/examples | [hed-examples](https://github.com/hed-standard/hed-examples/issues) | Documentation corrections.<br/>Questions on examples.<br/>Help on annotation.                     |
+| Issue/ suggestion type | Issue forum                                                                   | Comments                                                                                  |
+| :---- |:------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------|
+| Main issue forum | [hed-schemas](https://github.com/hed-standard/hed-schemas/issues)             | Primary forum for schema development.<br/>Any issue can be posted and will be redirected. |
+| Docs/examples | [hed-examples](https://github.com/hed-standard/hed-examples/issues)           | Documentation corrections.<br/>Questions on examples.<br/>Help on annotation.                     |
 | Specification | [hed-specification](https://github.com/hed-standard/hed-specification/issues) | Clarification/suggestions on the<br/>specification document and JSON tests.                   |
-| Python codebase | [hed-python](https://github.com/hed-standard/hed-python/issues) | Bug reports and feature requests.                                                         |
-| JavaScript codebase | [hed-validator](https://github.com/hed-standard/hed-validator/issues) | Bug reports and feature requests.                                                         |
+| Python codebase | [hed-python](https://github.com/hed-standard/hed-python/issues)               | Bug reports and feature requests.                                                         |
+| JavaScript codebase | [hed-javascript](https://github.com/hed-standard/hed-javascript/issues)       | Bug reports and feature requests.                                                         |
 
 Users who wish to communicate privately about an issue, can email [hed.maintainers@gmail.com](mailto:hed.maintainers@gmail.com).
 
@@ -372,7 +374,7 @@ EEG at UCSD under Scott Makeig.
 During the next 9 years HED was developed and promoted as part of a multi-institution project 
 sponsored by the Army Research Laboratory to instrument the brain and body at work.  
 An important component of this project was to develop a standards-based publicly available repository 
-for the data collected in this project ([cancta.net](http://cancta.net)). A working-group organized within 
+for the data collected in this project ([cancta.net](https://cancta.net)). A working-group organized within 
 this multi-institutional project developed **second-generation HED** and assisted in the annotation of the CANCTA data corpus.  
 
 The effort to incorporate HED into BIDS (Brain Imaging Data Structure) began in 2017 with the initiation of 
@@ -422,7 +424,7 @@ tag summaries in its dataset summaries as seen in this [beta version](https://ne
   Tal Pal Attia, Kay Robbins, Harald Aurelien, Sándor Beniczky, Jorge Bosch, Arnaud Delorme, Brian Lundstrom, 
 * Christine Rogers, Stefan Rampp, Pedro Valdes-Sosa, Dung Truong, Greg Worrell, Scott Makeig, Dora Hermes
 
-  [https://www.biorxiv.org/](https://www.biorxiv.org/) 
+  [https://arxiv.org/abs/2310.15173](https://arxiv.org/abs/2310.15173) 
 
 * **HED as a FAIR system:**
 
