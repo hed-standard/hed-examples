@@ -334,7 +334,7 @@ The HED organizational chart is shown in Figure 1 below.
 For additional details see the HED governance document.
 
 
-**2. Is the governing model document for maintenance and updates compatible with the [INCF project governing model document](https://space.incf.org/index.php/s/Ypig2tfHOU4no8C\#pdfviewer) 
+**2. Is the governing model document for maintenance and updates compatible with the INCF project governing model document 
 and the open standards principles?**   Yes.
 
 **3. Is the SBP actively supported by the community? If so, what is the evidence?**  
