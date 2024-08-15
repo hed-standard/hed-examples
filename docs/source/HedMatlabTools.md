@@ -8,12 +8,19 @@ These MATLAB wrappers allow MATLAB users to use HED without learning Python.
 ## Tool overview
 
 The HED MATLAB tools provide the following interface to HEDTools as explained in more detail in the following sections. 
-The MATLAB HEDTools package provides two interchangeable implementations of these functions -- calling the HED Python tools through a web service or directly calling the Python HEDTools.
+The MATLAB HEDTools package provides two interchangeable implementations of these functions -- 
+calling the HED Python tools through a web service or directly calling the Python HEDTools.
+
+To use HED tools, you first create a HED object by calling `getHedTools`. 
+If you provide the optional host argument, the HED tools use services, otherwise
+direct calls to Python. Once created, you simply call the available methods
+using that reference. The process is summarized in the following diagram.
 
 ![HED MATLAB tools](./_static/images/MatLabHedToolsCloseFit.png). 
 
 Both approaches take MATLAB data as input and translate these values as needed to access the HEDTools.
 After making the call, the implementation translates the results back into MATLAB data types.
+The MATLAB HedTools accept a variety of different types of MATLAB variables as input.
 
 Calling the HED MATLAB tools using web services requires no installation beyond downloading the 
 HED MATLAB package, but its use requires Internet access. 
