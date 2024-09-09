@@ -1,6 +1,10 @@
 (whats-new-anchor)=
 # What's new?
 
+**Sept 8, 2024**: **HED SCORE 2.0.0 released.**  
+> HED SCORE 2.0.0 is a major revision to better align with SCORE standard.  
+> View using: [**SCHEMA VIEWER**](https://www.hedtags.org/display_hed.html)  
+
 **August 5, 2024**: **INCF calls for HED community review.**  
 > HED is under consideration for endorsement by INCF.  
 > **Your comments are important**: [**Comment here**](https://www.incf.org/commentaries/hed)  
