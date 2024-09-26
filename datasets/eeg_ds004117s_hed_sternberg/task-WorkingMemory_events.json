@@ -59,11 +59,11 @@
     },
     "letter": {
         "Description": "The character appearing on the screen",
-        "HED": "(Character, Label/#)"
+        "HED": "(Character, ID/#)"
     },
     "memory_cond": {
         "Description": "Number of letters that must be paid attention to or remembered.",
-        "HED": "(Condition-variable/Items-to-memorize, Item-count, Target, Label/#)"
+        "HED": "(Condition-variable/Items-to-memorize, Item-count/#, Target)"
     },
 	"sample": {
 		"Description": "Number of the sample taken in acquisition relative to EEG with first sample being 1."
