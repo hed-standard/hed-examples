@@ -1,6 +1,10 @@
 (whats-new-anchor)=
 # What's new?
 
+**Oct 6 to Oct 9, 2024**: **HED at sFN 2004**  
+> Stop by [**sFN Booth #1839](https://sfn24.smallworldlabs.com/co/swartz-center-for-computational-neuroscience)  
+> Hear about HED -- tell us about your thoughts and suggestions.  
+
 **Sept 20, 2024**: **HED LANG 1.0.0 paper preprint available.**  
 > HED LANG 1.0.0 is new HED library schema for describing language stimuli.  
 > HED LANG – A Hierarchical Event Descriptors library extension for annotation of language cognition experiments   
