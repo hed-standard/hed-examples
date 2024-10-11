@@ -5,6 +5,15 @@
 
 ### Journal articles
 
+Practical use of HED SCORE:  
+
+> Dan, J., Pale, U. Amirshahi, A., Capelletti, W. Ingolfsson, T., Wang, X., Cossettini, A.,
+> Bernini, A. Benini, L., Beniczky, S., Atienza, D., and P. Ryvlin (2024).  
+> SzCORE: Seizure Community Open-Source Research Evaluation framework for the validation  
+> of electroencephalography-based automated seizure detection algorithms  
+> Epilepsia, Sept 18, 2024.   
+> [**https://doi.org/10.1111/epi.18113**](https://doi.org/10.1111/epi.18113).  
+
 Conceptual framework for HED and path for future development: 
 
 > Makeig, S. and K. Robbins (2024).      
@@ -28,19 +37,22 @@ Detailed case study in using HED-3G for tagging:
 
 ### Preprints
 
-Hierarchical Event Descriptor library schema for EEG data annotation:
+Introducing the HED Lang library schema for annotation of linguistic stimulations: 
 
-> Pal Attia, T., Robbins, K., Beniczky, S., Bosch-Bayard, J., Delorme, A., Lundstrom, B., Rogers, C., Rampp, S.,   
->  Valdes-Sosa, P., Truong, D., Worrell, G., Makeig, S., and D. Hermes (2023).    
+> Denissen, M., Pöll, B., Robbins, K. Makeig, S. and Hutzler, F. (2024).  
+> HED LANG –A Hierarchical Event Descriptors library extension for annotation of language cognition experiments.  
+> [**https://osf.io/preprints/psyarxiv/bjz9q](https://osf.io/preprints/psyarxiv/bjz9q).  
+> DOI:10.31234/osf.io/bjz9q. 
+
+Development of the HED SCORE library schema for clinical annotation of EEG:  
+
+> Pal Attia, T., Robbins, K., Beniczky, S., Bosch-Bayard, J., Delorme, A., Lundstrom, B., Rogers, C., Rampp, S.,  
+>  Valdes-Sosa, P., Truong, D., Worrell, G., Makeig, S., and D. Hermes (2023).   
+> Hierarchical Event Descriptor library schema for EEG data annotation.  
 > [**https://arxiv.org/abs/2310.15173**](https://arxiv.org/abs/2310.15173).  
 > DOI:10.48550/arXiv.2310.15173.  
 
-Framework for annotating and analyzing events in context:
 
-> Makeig, S. and K. Robbins (2023 under review).  
-> Events in context - A framework for the study of brain, experience and behavior.
-> **Preprint**: [**https://psyarxiv.com/e7jbm**](https://psyarxiv.com/e7jbm)  
-> DOI: 10.31234/osf.io/e7jbm.   
 
 ### Book chapters (preprints)
 

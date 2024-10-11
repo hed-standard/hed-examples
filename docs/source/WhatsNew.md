@@ -1,6 +1,12 @@
 (whats-new-anchor)=
 # What's new?
 
+**Oct 11, 2024**: **Just published**
+> SzCORE: Seizure Community Open-Source Research Evaluation framework for the validation  
+> of electroencephalography-based automated seizure detection algorithms  
+> Epilepsia, Sept 18, 2024.   
+> [**https://doi.org/10.1111/epi.18113**](https://doi.org/10.1111/epi.18113).  
+
 **Oct 6 to Oct 9, 2024**: **HED at sFN 2004**  
 > Stop by [**sFN Booth #1839](https://sfn24.smallworldlabs.com/co/swartz-center-for-computational-neuroscience)  
 > Hear about HED -- tell us about your thoughts and suggestions.  
