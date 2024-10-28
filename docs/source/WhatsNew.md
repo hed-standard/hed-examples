@@ -1,6 +1,9 @@
 (whats-new-anchor)=
 # What's new?
 
+**July 12, 2023**: **HED LANG version 1.1.0 released**  
+> This HED library schema supports annotation of language stimuli in experiments.  
+
 **Oct 11, 2024**: **Just published**
 > SzCORE: Seizure Community Open-Source Research Evaluation framework for the validation  
 > of electroencephalography-based automated seizure detection algorithms  
