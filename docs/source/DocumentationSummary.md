@@ -41,13 +41,13 @@ Introducing the HED Lang library schema for annotation of linguistic stimulation
 
 > Denissen, M., Pöll, B., Robbins, K. Makeig, S. and Hutzler, F. (2024).  
 > HED LANG –A Hierarchical Event Descriptors library extension for annotation of language cognition experiments.  
-> [**https://osf.io/preprints/psyarxiv/bjz9q](https://osf.io/preprints/psyarxiv/bjz9q).  
+> [**https://osf.io/preprints/psyarxiv/bjz9q**(https://osf.io/preprints/psyarxiv/bjz9q).  
 > DOI:10.31234/osf.io/bjz9q. 
 
 Development of the HED SCORE library schema for clinical annotation of EEG:  
 
-> Pal Attia, T., Robbins, K., Beniczky, S., Bosch-Bayard, J., Delorme, A., Lundstrom, B., Rogers, C., Rampp, S.,  
->  Valdes-Sosa, P., Truong, D., Worrell, G., Makeig, S., and D. Hermes (2023).   
+> D. Hermes, Pal Attia, T., Beniczky, S., Bosch-Bayard, J., Delorme, A., Lundstrom, B., Rogers, C., Rampp, S.,  
+> Shirazi, S.,  Truong, D., Valdes-Sosa, P., Worrell, G., Makeig, S., and Robbins, K. (2024).   
 > Hierarchical Event Descriptor library schema for EEG data annotation.  
 > [**https://arxiv.org/abs/2310.15173**](https://arxiv.org/abs/2310.15173).  
 > DOI:10.48550/arXiv.2310.15173.  
