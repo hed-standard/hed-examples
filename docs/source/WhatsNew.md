@@ -2,6 +2,9 @@
 
 # What's new?
 
+**Dec 23, 2025**: *Methods for Analyzing Large Neuroimaging Dataset published**  
+> The [**book**](./DocumentationSummary.md#Book chapters) has several chapters on HED and events. 
+
 **Dec 2, 2024**: **HED endorsed as a standard by INCF**  
 > HED was officially endorsed by [**INCF**](https://incf.org) as a standard for event annotation. 
 
