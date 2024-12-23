@@ -41,7 +41,7 @@ Introducing the HED Lang library schema for annotation of linguistic stimulation
 
 > Denissen, M., Pöll, B., Robbins, K. Makeig, S. and Hutzler, F. (2024).  
 > HED LANG –A Hierarchical Event Descriptors library extension for annotation of language cognition experiments.  
-> [**https://osf.io/preprints/psyarxiv/bjz9q**(https://osf.io/preprints/psyarxiv/bjz9q).  
+> [**https://osf.io/preprints/psyarxiv/bjz9q**](https://osf.io/preprints/psyarxiv/bjz9q).  
 > DOI:10.31234/osf.io/bjz9q. 
 
 Development of the HED SCORE library schema for clinical annotation of EEG:  
@@ -54,19 +54,18 @@ Development of the HED SCORE library schema for clinical annotation of EEG:
 
 
 
-### Book chapters (preprints)
+### Book chapters
 
->  Truong, D., Robbins, K., Delorme, A., and S. Makeig (in press).  
-> End-to-end processing of M/EEG data with BIDS, HED, and EEGLAB.  
-> [**https://osf.io/8brgv/**](https://osf.io/8brgv/).   
-> in [**Methods for analyzing large neuroimaging datasets**](https://osf.io/d9r3x/) edited by Whelan and Lemaitre.   
+>  Truong, D., Robbins, K., Delorme, A., and S. Makeig (2025).  
+> End-to-end processing of M/EEG data with BIDS, HED, and EEGLAB. 
+> [**https://doi.org/10.1007/978-1-0716-4260-3_6**](https://doi.org/10.1007/978-1-0716-4260-3_6).  
+> in [**Methods for analyzing large neuroimaging datasets**](https://link.springer.com/book/10.1007/978-1-0716-4260-3?sap-outbound-id=69561CF5F3C7B79DBF9A0BB3B96DF69BB87216A4&utm_source=standard&utm_medium=email&utm_campaign=000_LAN36_0000019083_Book+author+congrats+NEW&utm_content=EN_34155_20241214&mkt-key=42010A0550671EEA9BCE72E91631DEBF) edited by Whelan and Lemaitre.   
 
 
 > Denissen, D., Richlan, F., Birklbauer, J., Pawlik, M., Ravenschlag, A., Himmelstoss, N., Hutzler, F. and K. Robbins (in press).   
 > Actionable event annotation and analysis in fMRI: A practical guide to event handling.   
-> [**https://osf.io/93km8/**](https://osf.io/93km8/).   
-> in
-[**Methods for analyzing large neuroimaging datasets**](https://osf.io/d9r3x/) edited by Whelan and Lemaitre.   
+> [**https://link.springer.com/protocol/10.1007/978-1-0716-4260-3_7**](https://link.springer.com/protocol/10.1007/978-1-0716-4260-3_7).   
+> in [**Methods for analyzing large neuroimaging datasets**](https://link.springer.com/book/10.1007/978-1-0716-4260-3?sap-outbound-id=69561CF5F3C7B79DBF9A0BB3B96DF69BB87216A4&utm_source=standard&utm_medium=email&utm_campaign=000_LAN36_0000019083_Book+author+congrats+NEW&utm_content=EN_34155_20241214&mkt-key=42010A0550671EEA9BCE72E91631DEBF) edited by Whelan and Lemaitre.   
 
 
 ## HED schema viewer
