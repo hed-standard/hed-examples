@@ -18,7 +18,7 @@ Please read the [**HED remodeling quickstart**](./HedRemodelingQuickstart.md)
 tutorials for an introduction and basic use of the tools.
 
 The file remodeling tools can be applied to individual files using the 
-[**HED online tools**](https://hedtools.ucsd.edu/hed) or to entire datasets 
+[**HED online tools**](https://hedtools.org/hed) or to entire datasets 
 using the [**remodel command-line interface**](remodel-command-line-interface-anchor)
 either by calling Python scripts directly from the command line 
 or by embedding calls in a Jupyter notebook.
