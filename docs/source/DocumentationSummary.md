@@ -28,21 +28,21 @@ Explanation of the history, development, and motivation for third generation HED
 > Neuroinformatics Special Issue Building the NeuroCommons. Neuroinformatics https://doi.org/10.1007/s12021-021-09537-4.  
 > [https://link.springer.com/article/10.1007/s12021-021-09537-4](https://link.springer.com/article/10.1007/s12021-021-09537-4).
 
-Detailed case study in using HED-3G for tagging:
+Detailed case study in using HED for tagging:
 
 > Robbins, K., Truong, D., Appelhoff, S., Delorme, A., and S. Makeig (2021).   
 > Capturing the nature of events and event context using Hierarchical Event Descriptors (HED).  
 > NeuroImage Special Issue Practice in MEEG. NeuroImage  245  (2021)  118766.  
 > [https://www.sciencedirect.com/science/article/pii/S1053811921010387](https://www.sciencedirect.com/science/article/pii/S1053811921010387).
 
-### Preprints
-
 Introducing the HED Lang library schema for annotation of linguistic stimulations: 
 
 > Denissen, M., Pöll, B., Robbins, K. Makeig, S. and Hutzler, F. (2024).  
 > HED LANG –A Hierarchical Event Descriptors library extension for annotation of language cognition experiments.  
-> [**https://osf.io/preprints/psyarxiv/bjz9q**](https://osf.io/preprints/psyarxiv/bjz9q).  
-> DOI:10.31234/osf.io/bjz9q. 
+> Scientific Data volume 11, Article number: 1428 (2024)  
+> [**https://www.nature.com/articles/s41597-024-04282-0#:~:text=The%20HED%20LANG%20extension%20will,readily%20reused%20for%20further%20analysis.**](https://www.nature.com/articles/s41597-024-04282-0#:~:text=The%20HED%20LANG%20extension%20will,readily%20reused%20for%20further%20analysis.).
+
+### Preprints
 
 Development of the HED SCORE library schema for clinical annotation of EEG:  
 

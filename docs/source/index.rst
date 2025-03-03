@@ -106,8 +106,6 @@ Visit the `HED project homepage <https://github.com/hed-standard>`_ for links to
    IntroductionToHed.md
    WhatsNew.md
    HowCanYouUseHed.md
-   HedGovernance.md
-   HEDSubmissionToINCF.md
 
 
 .. toctree::
@@ -139,7 +137,15 @@ Visit the `HED project homepage <https://github.com/hed-standard>`_ for links to
    HedJavascriptTools.md
    HedMatlabTools.md
    HedAndEEGLAB.md
+
+
+.. toctree::
+   :maxdepth: 3
+   :hidden:
+   :caption: Other resources:
+
    DocumentationSummary.md
+   HedGovernance.md
 
 
 .. toctree::
