@@ -2,6 +2,10 @@
 
 # What's new?
 
+**Mar 8, 2025**: *HED JavaScript validator 4.0.0 released.**  
+> This release now complies with the current HED specification.  
+> [**https://www.npmjs.com/package/hed-validator**](https://www.npmjs.com/package/hed-validator)  
+
 **Jan 1, 2025**: *HED LANG paper published**  
 > HED LANG – A Hierarchical Event Descriptors library extension for annotation of language cognition experiments  
 > by Denissen, M., Pöll, B., Robbins, K. Makeig, S. and Hutzler, F.  
