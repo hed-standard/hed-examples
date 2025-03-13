@@ -235,8 +235,8 @@ The programs use a standard command-line argument list for specifying input as s
 ````{table} Summary of command-line arguments for the remodeling programs.
 | Script name | Arguments | Purpose | 
 | ----------- | -------- | ------- |
-|*run_remodel_backup* | *data_dir*<br/>*-bd -\\-backup-dir*<br/>*-bn -\\-backup-name*<br/>*-e -\\-extensions*<br/>*-f -\\-file-suffix*<br/>*-t -\\-task-names*<br/>*-v -\\-verbose*<br/>*-x -\\-exclude-dirs*| Create a backup event files. |
-|*run_remodel* | *data_dir*<br/>*model_path*<br/>*-b -\\-bids-format*<br/>*-bd -\\-backup-dir*<br/>*-bn -\\-backup-name*<br/>*-e -\\-extensions*<br/>*-f -\\-file-suffix*<br/>*-i -\\-individual-summaries*<br/>*-j -\\-json-sidecar*<br/>*-ld -\\-log-dir*<br/>*-nb -\\-no-backup*<br/>*-ns -\\-no-summaries*<br/>*-nu -\\-no-update*<br/>*-r -\\-hed-version*<br/>*-s -\\-save-formats*<br/>*-t -\\-task-names*<br/>*-v -\\-verbose*<br/>*-w -\\-work-dir*<br/>*-x -\\-exclude-dirs* | Restructure or summarize the event files. |
+|*run_remodel_backup* | *data_dir*<br/>*-bd -\\-backup-dir*<br/>*-bn -\\-backup-name*<br/>*-fs -\\-file-suffix*<br/>*-t -\\-task-names*<br/>*-v -\\-verbose*<br/>*-x -\\-exclude-dirs*| Create a backup event files. |
+|*run_remodel* | *data_dir*<br/>*model_path*<br/>*-b -\\-bids-format*<br/>*-bd -\\-backup-dir*<br/>*-bn -\\-backup-name*<br/>*-fs -\\-file-suffix*<br/>*-hv -\\-hed-version*<br/>*-i -\\-individual-summaries*<br/>*-j -\\-json-sidecar*<br/>*-ld -\\-log-dir*<br/>*-nb -\\-no-backup*<br/>*-ns -\\-no-summaries*<br/>*-nu -\\-no-update*<br/>*-s -\\-save-formats*<br/>*-t -\\-task-names*<br/>*-v -\\-verbose*<br/>*-w -\\-work-dir*<br/>*-x -\\-exclude-dirs* | Restructure or summarize the event files. |
 |*run_remodel_restore* | *data_dir*<br/>*-bd -\\-backup-dir*<br/>*-bn -\\-backup-name*<br/>*-t -\\-task-names*<br/>*-v -\\-verbose*<br/> | Restore a backup of event files. |
 
 ````
@@ -284,15 +284,22 @@ Users are free to use either form.
 `-bn`, `--backup-name`
 > The name of the backup used for the remodeling (default: `default_back`).
 
-`-e`, `--extensions`
-> This option is followed by a list of file extension(s) of the data files to process.
-> The default is `.tsv`. Comma separated tabular files are not permitted.
-
-`-f`, `--file-suffix`
+`-fs`, `--file-suffix`
 > This option is followed by the suffix names of the files to be processed.
 > For example `events` (the default) captures files named `events.tsv` if the default extension is used.
 > The filename without the extension must end in one of the specified suffixes in order to be
 > backed up or transformed.
+
+`-hv`, `--hed-versions`
+> This option is followed by one or more HED versions. Versions of the standard schema are specified
+> by their semantic versions (e.g., `8.1.0`), while library schema versions are prefixed by their
+> library name (e.g., `score_1.0.0`). 
+
+> If more than one HED schema version is given, all but one of the versions must start with an
+> additional namespace designator (e.g., `sc:`). At most one version can omit the namespace designator
+> when multiple schema are being used. In annotations, tags must start with the namespace
+> designator of the corresponding schema from which they were selected (e.g. `sc:Sleep-modulator`
+> if the SCORE library was designated by `sc:score_1.0.0`).
 
 `-i`, `--individual-summaries`
 > This option offers a choice among three options:
@@ -319,17 +326,6 @@ Users are free to use either form.
 
 `-nu`, `--no-update`
 > If present, the modified files are not output.
-
-`-r`, `--hed-versions`
-> This option is followed by one or more HED versions. Versions of the standard schema are specified
-> by their semantic versions (e.g., `8.1.0`), while library schema versions are prefixed by their
-> library name (e.g., `score_1.0.0`). 
-
-> If more than one HED schema version is given, all but one of the versions must start with an
-> additional namespace designator (e.g., `sc:`). At most one version can omit the namespace designator
-> when multiple schema are being used. In annotations, tags must start with the namespace
-> designator of the corresponding schema from which they were selected (e.g. `sc:Sleep-modulator`
-> if the SCORE library was designated by `sc:score_1.0.0`).
 
 `-s`, `--save-formats`
 > This option is followed by the extensions (including .) of the formats in which 
