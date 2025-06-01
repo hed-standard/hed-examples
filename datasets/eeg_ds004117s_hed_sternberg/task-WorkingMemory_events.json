@@ -12,9 +12,9 @@
         "HED": {
             "left_click": "Agent-action, Participant-response, (Press, (Push-button, (Left-side-of)))",
             "right_click": "Agent-action, Participant-response, (Press, (Push-button, (Right-side-of)))",
-            "show_cross": "Sensory-event, Visual-presentation, (Cross, (Center-of, Computer-screen))",
+            "show_cross": "Sensory-event, Visual-presentation, Cue, (Cross, (Center-of, Computer-screen))",
             "show_dash": "Sensory-event, Visual-presentation, (Dash, (Center-of, Computer-screen))",
-            "show_letter": "Sensory-event, Visual-presentation, (Character, (Center-of, Computer-screen))",
+            "show_letter": "Sensory-event, Visual-presentation,  (Character, (Center-of, Computer-screen))",
             "sound_beep": "Sensory-event, Auditory-presentation, Beep",
             "sound_buzz": "Sensory-event, Auditory-presentation, Buzz"
         }
@@ -48,8 +48,8 @@
             "probe_target": "(Cue, Target)",
             "remembered_correct": "((Recall, Target), Correct-action)",
             "remembered_incorrect": "((Recall, Target), Incorrect-action)",
-            "to_ignore": "Non-target",
-            "to_remember": "Target",
+            "to_ignore": "(Experimental-stimulus, Non-target)",
+            "to_remember": "(Experimental-stimulus, Target)",
             "work_memory": "(Cue, Recall)"
         }
     },
