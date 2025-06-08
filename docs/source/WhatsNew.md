@@ -1,6 +1,10 @@
 (whats-new-anchor)=
 
 # What's new?
+**Jun 1, 2025**: **HED standard schema 8.4.0 released**  
+> Allows linking of other ontologies to HED tags.  
+> Three supported formats now equivalent.  
+> View using: [**SCHEMA VIEWER**](https://www.hedtags.org/display_hed.html)  
 
 **Mar 8, 2025**: **HED JavaScript validator 4.0.0 released.**  
 > This release now complies with the current HED specification.  
