@@ -1,7 +1,7 @@
 {
     "Name": "Auditory-Visual Shift Study",
     "BIDSVersion": "1.10.0",
-	"HEDVersion": "8.3.0",
+	"HEDVersion": "8.4.0",
     "License": "CC0",
     "Authors": [
         "Marissa Westerfield (data, curation)",
