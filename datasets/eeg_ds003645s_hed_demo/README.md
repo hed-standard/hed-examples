@@ -91,7 +91,7 @@ The demo [`participants.json`](./participants.json) is:
 The `participant_id` and `age` column are annotated as value columns,
 while `sex` is annotated as a value column.
 
-In the demo, the first row of the [`partipants.tsv`](./participants.tsv) file is:
+In the demo, the first row of the [`participants.tsv`](./participants.tsv) file is:
 
 | participant_id | age | sex | HED |
 | -------------- | --- | --- | --- |
