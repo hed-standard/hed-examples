@@ -1,7 +1,7 @@
 {
     "event_type": {
         "Levels": {
-            "left_click": "Participant pushes the left button.",
+            "left_click": "Particpant pushes the left button.",
             "right_click": "Participant pushes the right button",
             "show_cross": "Display an image of a cross character on the screen.",
             "show_dash": "Display an image of a dash character on the screen.",
@@ -12,9 +12,9 @@
         "HED": {
             "left_click": "Agent-action, Participant-response, (Press, (Push-button, (Left-side-of)))",
             "right_click": "Agent-action, Participant-response, (Press, (Push-button, (Right-side-of)))",
-            "show_cross": "Sensory-event, Visual-presentation, Cue, (Cross, (Center-of, Computer-screen))",
+            "show_cross": "Sensory-event, Visual-presentation, (Cross, (Center-of, Computer-screen))",
             "show_dash": "Sensory-event, Visual-presentation, (Dash, (Center-of, Computer-screen))",
-            "show_letter": "Sensory-event, Visual-presentation,  (Character, (Center-of, Computer-screen))",
+            "show_letter": "Sensory-event, Visual-presentation, (Character, (Center-of, Computer-screen))",
             "sound_beep": "Sensory-event, Auditory-presentation, Beep",
             "sound_buzz": "Sensory-event, Auditory-presentation, Buzz"
         }
@@ -48,8 +48,8 @@
             "probe_target": "(Cue, Target)",
             "remembered_correct": "((Recall, Target), Correct-action)",
             "remembered_incorrect": "((Recall, Target), Incorrect-action)",
-            "to_ignore": "(Experimental-stimulus, Non-target)",
-            "to_remember": "(Experimental-stimulus, Target)",
+            "to_ignore": "Non-target",
+            "to_remember": "Target",
             "work_memory": "(Cue, Recall)"
         }
     },
@@ -59,11 +59,11 @@
     },
     "letter": {
         "Description": "The character appearing on the screen",
-        "HED": "(Character, ID/#)"
+        "HED": "(Character, Parameter-value/#)"
     },
     "memory_cond": {
         "Description": "Number of letters that must be paid attention to or remembered.",
-        "HED": "(Condition-variable/Items-to-memorize, Item-count/#, Target)"
+        "HED": "(Condition-variable/Items-to-memorize, Item-count, Target, Parameter-value/#)"
     },
 	"sample": {
 		"Description": "Number of the sample taken in acquisition relative to EEG with first sample being 1."

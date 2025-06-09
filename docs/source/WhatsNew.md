@@ -6,18 +6,18 @@
 > Three supported formats now equivalent.  
 > View using: [**SCHEMA VIEWER**](https://www.hedtags.org/display_hed.html)  
 
-**Mar 8, 2025**: *HED JavaScript validator 4.0.0 released.**  
+**Mar 8, 2025**: **HED JavaScript validator 4.0.0 released.**  
 > This release now complies with the current HED specification.  
 > [**https://www.npmjs.com/package/hed-validator**](https://www.npmjs.com/package/hed-validator)  
 
-**Jan 1, 2025**: *HED LANG paper published**  
+**Jan 1, 2025**: **HED LANG paper published**  
 > HED LANG – A Hierarchical Event Descriptors library extension for annotation of language cognition experiments  
 > by Denissen, M., Pöll, B., Robbins, K. Makeig, S. and Hutzler, F.  
 > Scientific Data volume 11, Article number: 1428 (2024)  
 > [**Paper link**](https://www.nature.com/articles/s41597-024-04282-0#:~:text=The%20HED%20LANG%20extension%20will,readily%20reused%20for%20further%20analysis)  
 
-**Dec 23, 2024**: *Methods for Analyzing Large Neuroimaging Dataset published**  
-> The [**book**](./DocumentationSummary.md#Book chapters) has several chapters on HED and events. 
+**Dec 23, 2024**: **Methods for Analyzing Large Neuroimaging Dataset published**  
+> The [**book**](./DocumentationSummary.md) has several chapters on HED and events. 
 
 **Dec 2, 2024**: **HED endorsed as a standard by INCF**  
 > HED was officially endorsed by [**INCF**](https://incf.org) as a standard for event annotation. 
