@@ -1,6 +1,22 @@
 (whats-new-anchor)=
 
 # What's new?
+
+**Jun 25, 2025**: **HED-browser based HED validator released**  
+> Completely browser-based HED validator for datasets and files.  
+> All processing is done locally -- uses the HED JavaScript validator.  
+> Available at [**HED Validator**](https://www.hedtags.org/hed-javascript).  
+
+**Jun 10, 2025**: **HED LANG v 1.1.0 released**  
+> Allows linking of other ontologies to HED tags.  
+> Three supported formats now equivalent.  
+> View using: [**SCHEMA VIEWER**](https://www.hedtags.org/display_hed.html)
+
+**Jun 9, 2025**: **HED SCORE v 2.1.0 released**  
+> Allows linking of other ontologies to HED tags.  
+> Three supported formats now equivalent.  
+> View using: [**SCHEMA VIEWER**](https://www.hedtags.org/display_hed.html)  
+
 **Jun 1, 2025**: **HED standard schema 8.4.0 released**  
 > Allows linking of other ontologies to HED tags.  
 > Three supported formats now equivalent.  
