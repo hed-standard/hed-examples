@@ -40,7 +40,7 @@ Introducing the HED Lang library schema for annotation of linguistic stimulation
 > Denissen, M., Pöll, B., Robbins, K. Makeig, S. and Hutzler, F. (2024).  
 > HED LANG –A Hierarchical Event Descriptors library extension for annotation of language cognition experiments.  
 > Scientific Data volume 11, Article number: 1428 (2024)  
-> [**https://www.nature.com/articles/s41597-024-04282-0#:~:text=The%20HED%20LANG%20extension%20will,readily%20reused%20for%20further%20analysis.**](https://www.nature.com/articles/s41597-024-04282-0#:~:text=The%20HED%20LANG%20extension%20will,readily%20reused%20for%20further%20analysis.).
+> [**https://www.nature.com/articles/s41597-024-04282-0#:~:text=The%20HED%20LANG%20extension%20will,readily%20reused%20for%20further%20analysis.**](https://www.nature.com/articles/s41597-024-04282-0#:~:text=The%20HED%20LANG%20extension%20will,readily%20reused%20for%20further%20analysis).
 
 ### Preprints
 
