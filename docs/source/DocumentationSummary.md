@@ -125,8 +125,8 @@ The following is a summary of the HED-related websites:
   - [https://hedtools.org](https://hedtools.org)
 * - HED tools (development)
   - [https://hedtools.org/hed_dev](https://hedtools.org/hed_dev)
-* - HED-2G support
-  - [https://hedtools.org/hed2](https://hedtools.org)
+* - Browser-based validation
+  - [https://www.hedtags.org/hed-javascript/](https://www.hedtags.org/hed-javascript/)
 `````
 
 
