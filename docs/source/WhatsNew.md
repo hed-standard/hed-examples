@@ -3,19 +3,18 @@
 # What's new?
 
 **Aug 07, 2025**: **HEDTools 0.6.0 on PyPI**  
-> HEDTools 0.6.0 has new quality evaluations.  
+> Mew quality evaluations.  
 > Major improvements to infrastructure.  
 > See [v0.6.0 release notes](https://github.com/hed-standard/hed-python/releases/tag/0.6.0)  
 
 **Aug 05, 2025**: **HED-validator 4.1.0 on npm**  
-> HED-validator 4.1.0 is now available on npm.  
-> Full suport for HED dataset validation.  
+> Full support for HED dataset validation.  
 > See [v4.1.0 release notes](https://github.com/hed-standard/hed-javascript/releases/tag/v4.1.0)  
 
-**Jun 25, 2025**: **HED-browser based HED validator released**  
-> Completely browser-based HED validator for datasets and files.  
-> All processing is done locally -- uses the HED JavaScript validator.  
-> Available at [**HED Validator**](https://www.hedtags.org/hed-javascript).  
+**Jun 25, 2025**: *Browser-based HED validator**  
+> Validates datasets and files locally. 
+> Uses the HED JavaScript validator.  
+> Available at [**https://www.hedtags.org/hed-javascript**](https://www.hedtags.org/hed-javascript).  
 
 **Jun 10, 2025**: **HED LANG v 1.1.0 released**  
 > Allows linking of other ontologies to HED tags.  
