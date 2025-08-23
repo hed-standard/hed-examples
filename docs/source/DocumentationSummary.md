@@ -5,6 +5,20 @@
 
 ### Journal articles
 
+Introducing the HED SCORE library schema for annotation of EEG in clinical: settings:
+
+> Hermes, D., Pal Attia, T., Beniczky, S. et al. (2025).  
+> Hierarchical Event Descriptor library schema for EEG data annotation.  
+> Scientific Data volume 12, Article number 1448 (2025).  
+> [https://doi.org/10.1038/s41597-025-05791-2](https://doi.org/10.1038/s41597-025-05791-2).  
+
+Introducing the HED Lang library schema for annotation of linguistic stimulations: 
+
+> Denissen, M., Pöll, B., Robbins, K. Makeig, S. and Hutzler, F. (2024).  
+> HED LANG –A Hierarchical Event Descriptors library extension for annotation of language cognition experiments.  
+> Scientific Data volume 11, Article number: 1428 (2024)  
+> [**https://www.nature.com/articles/s41597-024-04282-0#:~:text=The%20HED%20LANG%20extension%20will,readily%20reused%20for%20further%20analysis.**](https://www.nature.com/articles/s41597-024-04282-0#:~:text=The%20HED%20LANG%20extension%20will,readily%20reused%20for%20further%20analysis).
+
 Practical use of HED SCORE:  
 
 > Dan, J., Pale, U. Amirshahi, A., Capelletti, W. Ingolfsson, T., Wang, X., Cossettini, A.,
@@ -35,12 +49,6 @@ Detailed case study in using HED for tagging:
 > NeuroImage Special Issue Practice in MEEG. NeuroImage  245  (2021)  118766.  
 > [https://www.sciencedirect.com/science/article/pii/S1053811921010387](https://www.sciencedirect.com/science/article/pii/S1053811921010387).
 
-Introducing the HED Lang library schema for annotation of linguistic stimulations: 
-
-> Denissen, M., Pöll, B., Robbins, K. Makeig, S. and Hutzler, F. (2024).  
-> HED LANG –A Hierarchical Event Descriptors library extension for annotation of language cognition experiments.  
-> Scientific Data volume 11, Article number: 1428 (2024)  
-> [**https://www.nature.com/articles/s41597-024-04282-0#:~:text=The%20HED%20LANG%20extension%20will,readily%20reused%20for%20further%20analysis.**](https://www.nature.com/articles/s41597-024-04282-0#:~:text=The%20HED%20LANG%20extension%20will,readily%20reused%20for%20further%20analysis).
 
 ### Preprints
 

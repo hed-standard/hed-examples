@@ -2,6 +2,12 @@
 
 # What's new?
 
+**Aug 22, 2025**: **SCORE paper published**  
+> Hierarchical Event Descriptor library schema for EEG data annotation  
+> Hermes, D., Pal Attia, T., Beniczky, S. et al. 
+>  Sci Data 12, 1448 (2025).   
+> [https://doi.org/10.1038/s41597-025-05791-2](https://doi.org/10.1038/s41597-025-05791-2).  
+
 **Aug 07, 2025**: **HEDTools 0.6.0 on PyPI**  
 > new quality evaluations.  
 > Major improvements to infrastructure.  
