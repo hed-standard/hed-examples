@@ -1,7 +1,7 @@
 {
     "event_type": {
         "Levels": {
-            "left_click": "Particpant pushes the left button.",
+            "left_click": "Participant pushes the left button.",
             "right_click": "Participant pushes the right button",
             "show_cross": "Display an image of a cross character on the screen.",
             "show_dash": "Display an image of a dash character on the screen.",
