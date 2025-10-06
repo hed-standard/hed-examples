@@ -2,6 +2,10 @@
 
 # What's new?
 
+**Oct 02, 2025**: **HEDTools 0.7.0 on PyPI**  
+> Logging on CLI  
+> See [v0.7.0 release notes](https://github.com/hed-standard/hed-python/releases/tag/0.7.0).
+
 **Aug 22, 2025**: **SCORE paper published**  
 > Hierarchical Event Descriptor library schema for EEG data annotation  
 > Hermes, D., Pal Attia, T., Beniczky, S. et al. 
