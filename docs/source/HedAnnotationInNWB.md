@@ -37,7 +37,9 @@ Version 0.2.0 introduces a three-class architecture:
 
 1. `HedLabMetaData` - required metadata container storing HED schema version and optional definitions. 
 2. `HedTags` - row-specific HED annotations for DynamicTable rows.  
-3. `HedValueVector` - column-wide HED templates with value placeholders (`#`).  
+3. `HedValueVector` - a column-wide HED template with a value placeholder (`#`).  
+
+ndx-hed version 0.2.0 also includes validation utilities and some BIDS conversion utilities.
 
 ### Required: HedLabMetaData
 
@@ -95,16 +97,18 @@ table = DynamicTable(
     name="events",
     description="Events with HED annotations",
     columns=[
-        VectorData(name="event_type", data=["go", "nogo", "cue"], description="Event types"),
+        VectorData(name="event_type", data=["right_button", "left_button", "cue"], description="Event types"),
         hed_tags  # Column name is automatically "HED"
     ]
+    # Add a row to the table after creation
+    table.add_row(event_type="feedback", HED="Sensory-event, Auditory-presentation, Feedback")
 )
 ```
 ````
 
 ### Column-wide templates with HedValueVector
 
-The `HedValueVector` class extends the NWB `VectorData` class that includes a HED annotation template
+The `HedValueVector` class extends the NWB `VectorData` class with a HED annotation template
 in its metadata. The template is a HED annotation that includes a single `#` placeholder.
 The template annotation applies to all the rows in the column.
 The applicable HED annotation for a given row is constructed by replacing the `#` with the
@@ -132,31 +136,6 @@ For example, the first value (0.5) expands to `Sensory-event, Visual-presentatio
 
 A `HedValueVector` can be used in any NWB `DynamicTable`, including the new `EventsTable` from ndx-events.
 
-### Examples of HED in DynamicTables
-
-HED annotations can be added to any NWB DynamicTable using either `HedTags` for row-specific annotations or `HedValueVector` for column-wide templates. Here are consolidated examples:
-
-````{admonition} HED in a simple lookup table
-:class: tip
-
-```python
-from pynwb.core import DynamicTable, VectorData
-from ndx_hed import HedTags
-
-# Create a color lookup table with HED annotations
-color_nums = VectorData(name="color_code", description="Internal color codes", data=[1, 2, 3])
-color_tags = HedTags(data=["Red", "Green", "Blue"])  # Automatically named "HED"
-
-color_table = DynamicTable(
-    name="colors",
-    description="Experimental colors",
-    columns=[color_nums, color_tags]
-)
-
-# Add a row to the table
-color_table.add_row(color_code=4, HED="Black")
-```
-````
 
 ## HED and ndx-events
 
@@ -175,16 +154,16 @@ The current ndx-events 0.4.0 provides these data types that can accommodate HED 
   - HED Usage
 * - `EventsTable`
   - Stores timestamped events<br/>One row per event instance.
-  - Can include `HedTags` columns for event annotations.
+  - • Can include `HedTags` columns for event annotations<br/>• Can include `HedValueVector` columns for templated annotations.
 * - `MeaningsTable`
   - Maps categorical values to descriptions<br/>Used with `CategoricalVectorData`.
-  - Can include `HedTags` columns for semantic annotations.
+  - Can include `HedTags` to provide HED annotations for these categorical values..
 * - `CategoricalVectorData`
-  - Stores categorical data with meanings<br/>References a `MeaningsTable`.
-  - The referenced `MeaningsTable` can contain HED annotations.
+  - Stores categorical data in the `EventsTable<br/>References a `MeaningsTable`.
+  - • The referenced `MeaningsTable` can contain HED annotations<br/>• Enables semantic annotation of categorical data
 ```
 
-### Using HED with EventsTable
+### HED with EventsTable
 
 The new `EventsTable` replaces the older table structures and provides a clean interface for event data:
 
@@ -224,19 +203,19 @@ events_table.add_column(
 # Add events with timestamps and HED annotations
 events_table.add_row(
     timestamp=1.0, 
-    HED="Sensory-event, Visual-presentation, (Onset, (Image, Face))"
+    HED="Sensory-event, Visual-presentation, (Image, Face))"
 )
 events_table.add_row(
     timestamp=2.5, 
-    HED="Sensory-event, Visual-presentation, (Onset, (Image, House))"
+    HED="Sensory-event, Visual-presentation, (Image, Building/House))"
 )
 
 # Add the table to the NWB file
-nwbfile.add_acquisition(events_table)
+nwbfile.add_events_table(events_table)
 ```
 ````
 
-### Using HED with CategoricalVectorData and MeaningsTable
+### HED with CategoricalVectorData
 
 For categorical event data, you can use HED annotations in the associated meanings:
 
@@ -269,7 +248,7 @@ meanings_table.add_row(
 meanings_table.add_row(
     value="house", 
     meaning="House photograph",
-    HED="Sensory-event, Visual-presentation, (Image, House)"
+    HED="Sensory-event, Visual-presentation, (Image, Building/House)"
 )
 
 # Create EventsTable with categorical stimulus types
@@ -295,15 +274,7 @@ events_table.add_row(timestamp=2.5, stimulus_type="house")
 ```
 ````
 
-**Important Note:** ndx-events 0.4.0 introduces breaking changes from previous versions. 
-If you need the older `EventsTypesTable` and `TtlTable` structures, use ndx-events version 0.2.1:
-
-```bash
-pip install ndx-events==0.2.1
-```
-
-The HED tools ecosystem is being updated to support the new ndx-events 0.4.0 architecture for 
-assembling complete annotations from multiple sources.
+**Important Note:** ndx-events 0.4.0 introduces breaking changes from previous versions.
 
 ## HED in NWB files
 
@@ -312,7 +283,7 @@ The NWB infrastructure efficiently handles reading, writing, and accessing large
 The following example shows the creation of a simple `NWBFile` using only the required constructor arguments.
 
 
-````{admonition} Create an `NWBFile` object called my_nwb.
+````{admonition} Create an NWBFile object called my_nwb.
 ```python
 from datetime import datetime
 from dateutil.tz import tzutc
@@ -387,7 +358,9 @@ nwbfile.add_trial(
 ```
 ````
 
-Definitions are expanded during validation and analysis. The definition `Def/Go-stimulus` expands to "Sensory-event, Visual-presentation", while `Def/Response-time/0.45` expands to "Time-interval/0.45 s".
+Definitions are expanded during validation and analysis. 
+The definition `Def/Go-stimulus` expands to `Sensory-event, Visual-presentation`, 
+while `Def/Response-time/0.45` expands to `Time-interval/0.45 s`.
 
 ## Validation
 
@@ -397,12 +370,14 @@ The `HedNWBValidator` class validates HED annotations against the schema:
 :class: tip
 
 ```python
+from ndx_hed import HedLabMetaData
 from ndx_hed.utils.hed_nwb_validator import HedNWBValidator
 
+hed_metadata = HedLabMetaData(hed_schema_version="8.4.0
 # Create validator from HedLabMetaData
 validator = HedNWBValidator(hed_metadata)
 
-# Validate entire file
+# Assume nwbfile is an NWBFile with HED annotations already added
 issues = validator.validate_file(nwbfile)
 
 if not issues:
@@ -413,11 +388,17 @@ else:
 ```
 ````
 
-Validation ensures that all HED tags conform to the specified schema version and that definitions are properly formed.
+Validation ensures that all HED tags conform to the specified schema version and that definitions are 
+properly formed. The `validate_file()` method checks all HED annotations in the `NWBFile`.
+The `validate_table` method can be used to validate a specific `DynamicTable`.
+The `validate_vector` method can be used to validate a specific `HedTags` or `HedValueVector`.
+The `validate_events` validates an `EventsTable` from ndx-events along with any associated `MeaningsTable`
+structures.
+
 
 ## BIDS Compatibility
 
-The `ndx_hed.utils.bids2nwb` module provides utilities for converting between BIDS events files and NWB EventsTable format:
+The `ndx_hed.utils.bids2nwb` module provides utilities for converting between BIDS events files and NWB `EventsTable` format:
 
 ````{admonition} Convert BIDS events to NWB
 :class: tip
@@ -458,3 +439,6 @@ with open("events.json", "w") as f:
     json.dump(bids_sidecar, f, indent=2)
 ```
 ````
+
+A more complete set of runable examples is available in the
+[ndx-hed examples directory](https://github.com/hed-standard/ndx-hed/tree/main/examples).
