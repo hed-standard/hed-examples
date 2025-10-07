@@ -16,7 +16,7 @@
 # 206: Partial Content (valid for range requests)
 # 403: Forbidden (some sites block automated requests but links work in browsers)
 # 429: Too Many Requests (rate limiting, link may be valid)
-accept = [200, 204, 206, 403, 429]
+accept = [200, 204, 206]
 
 # Timeout for requests (in seconds)
 timeout = 30
