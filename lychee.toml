@@ -1,5 +1,14 @@
 # Lychee link checker configuration
 # This file configures how lychee validates links in the repository
+#
+# For more information about lychee configuration, see:
+# https://github.com/lycheeverse/lychee#configuration
+#
+# This configuration addresses false positive errors from the link checker:
+# - 403 Forbidden: Some sites (npmjs.com, mathworks.com, doi.org) block automated 
+#   requests but work fine in browsers
+# - 429 Too Many Requests: Rate limiting doesn't mean the link is broken
+# - See .lycheeignore for sites/patterns that are completely excluded
 
 # Accept these HTTP status codes as valid
 # 200: OK (standard success)
@@ -19,5 +28,5 @@ max_retries = 3
 max_concurrency = 8
 
 # User agent string to use for requests
-# Some sites require a browser-like user agent
+# Some sites require a browser-like user agent to avoid blocking
 user_agent = "Mozilla/5.0 (X11; Linux x86_64; rv:100.0) Gecko/20100101 Firefox/100.0"
