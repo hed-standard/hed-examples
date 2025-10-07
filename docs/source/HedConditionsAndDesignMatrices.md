@@ -9,7 +9,7 @@ with a [BIDS](https://bids.neuroimaging.io/)
 
 The tutorial assumes that you have a basic understanding of HED and
 how HED annotations are used in BIDS.
-Please review [**Annotating a BIDS dataset**](https://bids-standard.github.io/bids-starter-kit/tutorials/annotation.html), 
+Please review [**Annotating a BIDS dataset**](https://bids.neuroimaging.io/getting_started/tutorials/annotation.html), 
 the [**BIDS annotation quickstart**](https://hed-examples.readthedocs.io/en/latest/BidsAnnotationQuickstart.html), and the
 [**HED annotation quickstart**](https://hed-examples.readthedocs.io/en/latest/HedAnnotationQuickstart.html)
 tutorials as needed.

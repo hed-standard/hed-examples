@@ -226,7 +226,7 @@ HED is well-integrated into the BIDS standard.
 gives an overview of how files in a BIDS dataset are organized.
 <p></p>
 
-- The [**Annotating a BIDS dataset**](https://bids-standard.github.io/bids-starter-kit/tutorials/annotation.html) tutorial gives an overview
+- The [**Annotating a BIDS dataset**](https://bids.neuroimaging.io/getting_started/tutorials/annotation.html) tutorial gives an overview
 of how to get the appropriate metadata into a BIDS dataset.
 <p></p>
 
