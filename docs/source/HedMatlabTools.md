@@ -448,14 +448,15 @@ Python versions are compatible with which versions of MATLAB.
 **Note:** For your reference, the source for `hedtools` is the 
 [**hed-python**](https://github.com/hed-standard/hed-python) GitHub repository.
 The code is fully open-source with an MIT license.
-The actual API documentation is available [**here**](https://hed-python.readthedocs.io/en/latest/api2.html),
+The actual API documentation is available [**here**](https://www.hedtags.org/hed-python),
 but the tutorials and tool documentation for `hedtools` on 
 [**HED Resources**](https://www.hed-resources.org/en/latest/index.html) site provides more
 examples of use.
 
-You will need at least MATLAB version R2020b, 
-since the Python HEDTools require at least Python 3.8.
-See [**MathWorks Python Compatibility Docs**](https://www.mathworks.com/support/requirements/python-compatibility.html) for additional information.
+You will need at least MATLAB version R2021b, 
+since the Python HEDTools require at least Python 3.9.
+See [**MathWorks Python Compatibility Docs**](https://www.mathworks.com/support/requirements/python-compatibility.html) 
+for additional information.
 
 ### Installing Python
 

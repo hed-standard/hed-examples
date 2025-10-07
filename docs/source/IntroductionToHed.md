@@ -16,8 +16,7 @@ and promotes accurate interpretation of what happened as an experiment unfolds.
 
 ## Brief history of HED
 HED was originally proposed by Nima Bigdely-Shamlo in 2010 to support
-annotation in [HeadIT](https://headit.ucsd.edu), 
-an early public repository for EEG data hosted by the 
+annotation in HeadIT, an early public repository for EEG data hosted by the 
 Swartz Center for Computational Neuroscience, UCSD (Bigdely-Shamlo et al. 2013).
 HED has undergone several revisions and substantial infrastructure development since that time.
 

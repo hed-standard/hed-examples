@@ -26,7 +26,7 @@ Practical use of HED SCORE:
 > SzCORE: Seizure Community Open-Source Research Evaluation framework for the validation  
 > of electroencephalography-based automated seizure detection algorithms  
 > Epilepsia, Sept 18, 2024.   
-> [**https://doi.org/10.1111/epi.18113**](https://doi.org/10.1111/epi.18113).  
+> [**https://onlinelibrary.wiley.com/doi/10.1111/epi.18113?af=R**](https://onlinelibrary.wiley.com/doi/10.1111/epi.18113?af=R).  
 
 Conceptual framework for HED and path for future development: 
 

@@ -59,7 +59,7 @@ The latest features appear on the `develop` branch before being propagated to `m
 and then released.
 
 ### JavaScript validator
-The JavaScript [**hed-validator**](https://www.npmjs.com/package/hed-validator/v/3.7.0) on npm
+The JavaScript [**hed-validator**](https://www.npmjs.com/package/hed-validator) on npm
 is the package used for validation in [**BIDS**](https://bids.neuroimaging.io/).
 Although the main interface is designed for BIDS integration,
 the underlying validation functions can be called directly.
