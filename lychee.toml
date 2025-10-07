@@ -1,0 +1,23 @@
+# Lychee link checker configuration
+# This file configures how lychee validates links in the repository
+
+# Accept these HTTP status codes as valid
+# 200: OK (standard success)
+# 204: No Content (valid response with no body)
+# 206: Partial Content (valid for range requests)
+# 403: Forbidden (some sites block automated requests but links work in browsers)
+# 429: Too Many Requests (rate limiting, link may be valid)
+accept = [200, 204, 206, 403, 429]
+
+# Timeout for requests (in seconds)
+timeout = 30
+
+# Maximum number of retries per link
+max_retries = 3
+
+# Maximum number of concurrent network requests
+max_concurrency = 8
+
+# User agent string to use for requests
+# Some sites require a browser-like user agent
+user_agent = "Mozilla/5.0 (X11; Linux x86_64; rv:100.0) Gecko/20100101 Firefox/100.0"
