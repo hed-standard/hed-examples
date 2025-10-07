@@ -31,7 +31,7 @@ pip install -U ndx-hed
 
 The `ndx-hed` extension for MATLAB is under development and not available.
 
-## ndx-hed 0.2.0 Architecture
+## ndx-hed 0.2.0 architecture
 
 Version 0.2.0 introduces a three-class architecture:
 
@@ -40,8 +40,6 @@ Version 0.2.0 introduces a three-class architecture:
 3. `HedValueVector` - a column-wide HED template with a value placeholder (`#`).  
 
 ndx-hed version 0.2.0 also includes validation utilities and some BIDS conversion utilities.
-
-### Required: HedLabMetaData
 
 **Important:** Before using any HED annotations in an `NWBFile`, you must add `HedLabMetaData` 
 to specify the HED schema version:
@@ -71,9 +69,9 @@ We recommend using the latest version of HED (currently 8.4.0).
 The `HedLabMetaData` object centralizes HED schema management for the entire `NWBFile`, 
 ensuring consistency across all HED annotations.
 
-## NWB ndx-hed Examples
+## NWB ndx-hed examples
 
-### Row-Specific annotations with HedTags
+### Row-Specific annotations
 
 The `HedTags` class extends `VectorData` to store one HED string per row. 
 It must be named "HED" (enforced by constructor). 
@@ -106,7 +104,7 @@ table = DynamicTable(
 ```
 ````
 
-### Column-wide templates with HedValueVector
+### Column-wide templates
 
 The `HedValueVector` class extends the NWB `VectorData` class with a HED annotation template
 in its metadata. The template is a HED annotation that includes a single `#` placeholder.
@@ -154,12 +152,12 @@ The current ndx-events 0.4.0 provides these data types that can accommodate HED 
   - HED Usage
 * - `EventsTable`
   - Stores timestamped events<br/>One row per event instance.
-  - • Can include `HedTags` columns for event annotations<br/>• Can include `HedValueVector` columns for templated annotations.
+  - • Can have a single `HedTags` column<br/>• Can have many `HedValueVector` columns.<br/>• Can have many `CategoricalVectorData`.<br/>• Can reference multiple `MeaningsTable` structures.
 * - `MeaningsTable`
   - Maps categorical values to descriptions<br/>Used with `CategoricalVectorData`.
-  - Can include `HedTags` to provide HED annotations for these categorical values..
+  - Can include a  `HedTags` column to provide<br/> HED annotations for these categorical values..
 * - `CategoricalVectorData`
-  - Stores categorical data in the `EventsTable<br/>References a `MeaningsTable`.
+  - Stores categorical data<br/>References a `MeaningsTable`.
   - • The referenced `MeaningsTable` can contain HED annotations<br/>• Enables semantic annotation of categorical data
 ```
 

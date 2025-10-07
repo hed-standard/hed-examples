@@ -177,7 +177,7 @@ OBO (Open Biological and Biomedical Ontologies) Foundry for recognition when thi
 Yes. HED is integrated and interoperable with [BIDS](https://bids.neuroimaging.io/) (**Brain Imaging Data Structure**) the
 ost widely used standard for structuring human neuroimaging datasets. The standards are loosely coupled 
 with clear guidance on how to interoperate in both BIDS (via the [Hierarchical Event Descriptors](https://bids-specification.readthedocs.io/en/stable/appendices/hed.html) appendix 
-of the [BIDS Specification](https://bids-specification.readthedocs.io/en/stable/appendices/hed.html) and in BIDS the BIDS Starter Kit tutorial [Annotating a BIDS dataset](https://bids-standard.github.io/bids-starter-kit/tutorials/annotation.html)) 
+of the [BIDS Specification](https://bids-specification.readthedocs.io/en/stable/appendices/hed.html) and in the BIDS tutorial [Annotating a BIDS dataset](https://bids.neuroimaging.io/getting_started/tutorials/annotation.html)) 
 and in HED (via the [HED support of BIDS](https://hed-specification.readthedocs.io/en/latest/06\_Infrastructure\_and\_tools.html\#hed-support-of-bidskit/tutorials/annotation.html) chapter in the [HED specification](https://hed-specification.readthedocs.io/en/latest/index.html) and 
 in the [BIDS annotation quickstart](https://www.hed-resources.org/en/latest/BidsAnnotationQuickstart.html) on the [HED resources](https://www.hed-resources.org/en/latest/index.html) site.  
  
