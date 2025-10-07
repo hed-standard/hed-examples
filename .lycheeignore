@@ -20,18 +20,6 @@ https://www.sciencedirect.com/science/article/pii/S1388245717309069
 # MathWorks links (blocks automated requests)  
 ^https?://.*\.mathworks\.com/
 
-# BIDS starter kit tutorials that have moved
-^https?://bids-standard\.github\.io/bids-starter-kit/tutorials/annotation\.html
-
-# GitHub links that may have changed (master to main branch)
-^https?://github\.com/bids-standard/bids-specification/blob/master/CODE_OF_CONDUCT\.md
-
-# HED Python API links that have changed
-^https?://hed-python\.readthedocs\.io/en/latest/api2\.html
-
-# Raw GitHub links that may not exist in develop branch
-^https?://raw\.githubusercontent\.com/hed-standard/hed-python/develop/
-
 # Brain Meeting poster links (expired/removed)
 ^https?://brainmeeting.*\.ipostersessions\.com/
 ^https?://globalbrainconsortium\.org/documents/GBC_March-2023_Agenda_Annual_Meeting\.pdf
