@@ -9,10 +9,7 @@ gathers the HED supporting resources, all of which are open source.
 
 The main documentation for this and other HED resources
 is available through the
-[**HED-resources**](https://www.hed-resources.org) documentation,
-whose source is contained in the 
-[**docs**](https://github.com/hed-standard/hed-examples/tree/main/docs)
-subdirectory of this repository.
+[**HED-resources**](https://www.hedtags.org/hed-resources) documentation.
 
 The [**src**](https://github.com/hed-standard/hed-examples/tree/main/src)
 subdirectory of the [**hed-examples**] GitHub repository contains Python Jupyter 
@@ -43,7 +40,7 @@ To install directly from the
 [GitHub](https://github.com/hed-standard/hed-python) repository:
 
    ```
-       pip install git+https://github.com/hed-standard/hed-python/@master
+       pip install git+https://github.com/hed-standard/hed-python/@main
    ```
 
-HEDTools require python 3.8 or greater.
+HEDTools require python 3.10 or greater.
