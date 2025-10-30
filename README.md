@@ -18,8 +18,7 @@ subdirectory contains Python Jupyter notebooks demonstrating calls to HedTools.
 For MATLAB support for HED see the [**hed-matlab**](https://github.com/hed-standard/hed-matlab)
 GitHub repository.
 
-The [**docs**](https://github.com/hed-standard/hed-examples/tree/main/docs)
-subdirectory contains the source documentation for this and other HED resources.
+HED documentation and tutorials are available at [**hed-resources**](https://www.hedtags.org/hed-resources).
 The [**HED GitHub organization**](https://github.com/hed-standard/)
 gathers the HED supporting resources, all of which are open source.
 

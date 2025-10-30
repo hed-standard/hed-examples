@@ -1,0 +1,82 @@
+---
+name: Validate HED BIDS Datasets
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['datasets/**']
+  pull_request:
+    branches: [main]
+    paths: ['datasets/**']
+
+permissions:
+  contents: read
+
+jobs:
+  validate-datasets:
+    name: Validate BIDS datasets
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install hedtools
+        run: |
+          pip install --upgrade pip
+          pip install hedtools==0.7.1
+
+      - name: Validate all datasets
+        run: |
+          # Initialize variables
+          failed_datasets=()
+          exit_code=0
+          
+          echo "Starting validation of all datasets in datasets/"
+          echo "================================================"
+          
+          # Loop through each dataset directory
+          for dataset in datasets/*/; do
+            # Skip if not a directory or if it's just the README
+            if [ ! -d "$dataset" ] || [ "$dataset" == "datasets/README.md" ]; then
+              continue
+            fi
+            
+            dataset_name=$(basename "$dataset")
+            echo ""
+            echo "Validating dataset: $dataset_name"
+            echo "----------------------------------------"
+            
+            # Run validation and capture exit code
+            if validate_bids "$dataset" -s "*" --verbose; then
+              echo "✓ $dataset_name: PASSED"
+            else
+              echo "✗ $dataset_name: FAILED"
+              failed_datasets+=("$dataset_name")
+              exit_code=1
+            fi
+          done
+          
+          # Print summary
+          echo ""
+          echo "================================================"
+          echo "Validation Summary"
+          echo "================================================"
+          
+          if [ ${#failed_datasets[@]} -eq 0 ]; then
+            echo "All datasets validated successfully!"
+          else
+            echo "Failed datasets (${#failed_datasets[@]}):"
+            for dataset in "${failed_datasets[@]}"; do
+              echo "  - $dataset"
+            done
+          fi
+          
+          # Exit with failure if any dataset failed
+          exit $exit_code
