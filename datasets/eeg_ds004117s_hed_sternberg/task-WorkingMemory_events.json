@@ -10,13 +10,13 @@
             "sound_buzz": "Play a buzz sound"
         },
         "HED": {
-            "left_click": "Agent-action, Participant-response, (Press, (Push-button, (Left-side-of)))",
-            "right_click": "Agent-action, Participant-response, (Press, (Push-button, (Right-side-of)))",
-            "show_cross": "Sensory-event, Visual-presentation, (Cross, (Center-of, Computer-screen))",
-            "show_dash": "Sensory-event, Visual-presentation, (Dash, (Center-of, Computer-screen))",
-            "show_letter": "Sensory-event, Visual-presentation, (Character, (Center-of, Computer-screen))",
-            "sound_beep": "Sensory-event, Auditory-presentation, Beep",
-            "sound_buzz": "Sensory-event, Auditory-presentation, Buzz"
+            "left_click": "Agent-action, {task_role}, (Experiment-participant, (Press, (Push-button, Left)))",
+            "right_click": "Agent-action, {task_role}, (Experiment-participant, (Press, (Push-button, Right)))",
+            "show_cross": "Sensory-event, {task_role}, Visual-presentation, (Cross, (Center-of, Computer-screen))",
+            "show_dash": "Sensory-event, {task_role}, Visual-presentation, (Dash, (Center-of, Computer-screen))",
+            "show_letter": "Sensory-event, {task_role}, Visual-presentation, ({letter}, (Center-of, Computer-screen))",
+            "sound_beep": "Sensory-event, {task_role}, Auditory-presentation, Beep",
+            "sound_buzz": "Sensory-event, {task_role}, Auditory-presentation, Buzz"
         }
     },
     "task_role": {
@@ -40,14 +40,14 @@
             "bad_trial": "(Invalid, Experimental-trial)",
             "feedback_correct": "(Feedback, Correct-action)",
             "feedback_incorrect": "(Feedback, Incorrect-action)",
-            "fixate": "(Task, Fixate)",
-            "ignored_correct": "((Recall, Non-target), Correct-action)",
-            "ignored_incorrect": "((Recall, Non-target), Incorrect-action)",
+            "fixate": "(Instructional, Fixate)",
+            "ignored_correct": "(Non-target, Correct-action)",
+            "ignored_incorrect": "(Non-target, Incorrect-action)",
             "indicate_ready": "(Appropriate-action, Label/Indicate-ready)",
             "probe_not_shown": "(Cue, Non-target)",
             "probe_target": "(Cue, Target)",
-            "remembered_correct": "((Recall, Target), Correct-action)",
-            "remembered_incorrect": "((Recall, Target), Incorrect-action)",
+            "remembered_correct": "(Target, Correct-action)",
+            "remembered_incorrect": "(Target, Incorrect-action)",
             "to_ignore": "Non-target",
             "to_remember": "Target",
             "work_memory": "(Cue, Recall)"
