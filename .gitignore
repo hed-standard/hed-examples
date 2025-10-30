@@ -122,6 +122,7 @@ Desktop.ini
 schema_cache_test/
 hed_cache/
 **/remodel/summaries/*
+status/
 
 # GitHub Copilot instructions (developer-specific)
 .github/copilot-instructions.md
