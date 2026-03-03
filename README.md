@@ -2,7 +2,6 @@
 This repository contains user supporting code and documentation
 for using the Hierarchical Event Descriptor (HED) system for
 annotating, summarizing, and analyzing data.
-The repository is organized into three subdirectories:
 
 The [**datasets**](https://github.com/hed-standard/hed-examples/tree/main/datasets)
 subdirectory contains [HED-annotated](https://hed-specification.readthedocs.io/en/latest/index.html)
