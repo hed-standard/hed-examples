@@ -1,0 +1,22 @@
+[files]
+# Match the previous codespell skip behavior.
+extend-exclude = [
+  "datasets",
+  ".git",
+  "deprecated",
+  "*.pdf",
+  "*.svg",
+  "*.xml",
+  "*.mediawiki",
+  "*.omn",
+  ".venv",
+  "docs/_build",
+  "docs/source/_static",
+  "dist",
+]
+
+[default.extend-words]
+# Match previous codespell ignore-words-list behavior.
+covert = "covert"
+hed = "hed"
+recuse = "recuse"

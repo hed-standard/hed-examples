@@ -134,11 +134,11 @@ Two GitHub Actions workflows run on pull requests (defined in `.github/workflows
 - **Tool**: `hedtools` installed via `uv tool install hedtools`, runs `validate_bids` on every `datasets/*/` directory
 - **Must pass** for any PR that modifies dataset files
 
-### `codespell.yml` — spelling check
+### `typos.yaml` — spelling check
 - **Triggers**: push or PR to `main` (all files)
-- **Tool**: `uvx --with tomli codespell .`
-- **Config**: `.codespellrc` at repo root — skips `datasets/`, `.venv/`, `*.xml`, `*.svg`, `deprecated/`, etc.; ignores words: `covert`, `hed`, `recuse`
-- **Must pass** for every PR — fix spelling errors before committing, or add legitimate words to `.codespellrc` `ignore-words-list`
+- **Tool**: `uvx typos --config .typos.toml`
+- **Config**: `.typos.toml` at repo root — excludes `datasets/`, `.venv/`, `*.xml`, `*.svg`, `deprecated/`, etc.; allowlist words: `covert`, `hed`, `recuse`
+- **Must pass** for every PR — fix spelling errors before committing, or add legitimate terms to `.typos.toml` `[default.extend-words]`
 
 ## Avoid
 - Don't commit Jupyter notebooks with cell outputs (clear before committing)
