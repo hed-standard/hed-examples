@@ -117,6 +117,7 @@
     "Description": "Which ethnicity did the distractor face have?",
     "Levels": {
       "caucasian": "distractor face was caucasian",
+      "white": "distractor face was caucasian",
       "black": "distractor face was black",
       "asian": "distractor face asian"
     },

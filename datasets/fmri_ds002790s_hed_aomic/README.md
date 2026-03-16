@@ -1,3 +1,5 @@
+# PIOP2 fmri
+
 The PIOP2 dataset is part of the Amsterdam Open MRI Collection (AOMIC), a collection of multimodal (3T) MRI datasets including structural (T1-weighted), diffusion-weighted, and (resting-state and task-based) functional BOLD MRI data, as well as detailed demographics and psychometric variables from a large set of healthy participants.
 This dataset contains both raw and preprocessed data (and other "derivatives"), which is available on [Openneuro](https://openneuro.org/datasets/ds002790).
 

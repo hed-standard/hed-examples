@@ -1,9 +1,11 @@
-### Introduction
+# Auditory cueing during driving
 
-**Overview:** Subjects in the Auditory Cueing study performed a long-duration simulated driving task with perturbations and audio stimuli in a visually sparse environment. The purpose of this effort was to supplement and extend the related driving research to collect prolonged time-on-task measurements of subjects performing a driving task in a simulated environment in order to assess fatigue-based performance through novel biomarkers. Similar to the Baseline Driving study, the Auditory Cueing study was intended to identify periods of driver fatigue via predictive algorithms formulated from the analysis of driver EEG data, in comparison to the objective performance measures, and in contrast with the (non-fatigued) Calibration driving session for the subject. Auditory Cueing extended the Baseline Driving paradigm by adding predictive and non-predictive (random) pre-perturbation onset audio cues and increasing the frequency and magnitude of perturbation events vs. baseline driving. Further information is available on request from [cancta.net](https://cancta.net).
+Subjects in the Auditory Cueing study performed a long-duration simulated driving task with perturbations and audio stimuli in a visually sparse environment. The purpose of this effort was to supplement and extend the related driving research to collect prolonged time-on-task measurements of subjects performing a driving task in a simulated environment in order to assess fatigue-based performance through novel biomarkers. 
+
+Similar to the Baseline Driving study, the Auditory Cueing study was intended to identify periods of driver fatigue via predictive algorithms formulated from the analysis of driver EEG data, in comparison to the objective performance measures, and in contrast with the (non-fatigued) Calibration driving session for the subject. Auditory Cueing extended the Baseline Driving paradigm by adding predictive and non-predictive (random) pre-perturbation onset audio cues and increasing the frequency and magnitude of perturbation events vs. baseline driving. Further information is available on request from [cancta.net](https://cancta.net).
 
 
-### Methods   
+## Methods   
 
 **Subjects:** Volunteers from the local community recruited through advertisements.  
  

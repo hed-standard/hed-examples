@@ -1,10 +1,16 @@
-**Introduction:**
-This dataset consists of the MEEG (sMRI+MEG+EEG) portion of the multi-subject, multi-modal face processing dataset (ds000117). This dataset was originally acquired and shared by Daniel Wakeman and Richard Henson (https://pubmed.ncbi.nlm.nih.gov/25977808/). The data has been repackaged in EEGLAB format and has undergone minimal preprocessing as well as reorganization and annotation of the dataset events.
+# Face processing dataset
 
-**Overview of the experiment:**
+This dataset is a modified version of ds003645s which is designed to illustrate the
+use of multiple HED library schema requiring prefixes in the same dataset.
+
+The original ds003645 dataset consists of the MEEG (sMRI+MEG+EEG) portion of the multi-subject, multi-modal face processing dataset (ds000117). This dataset was originally acquired and shared by Daniel Wakeman and Richard Henson (https://pubmed.ncbi.nlm.nih.gov/25977808/). The data has been repackaged in EEGLAB format and has undergone minimal preprocessing as well as reorganization and annotation of the dataset events.
+
+
+
+## Overview of the experiment
 Eighteen participants completed two recording sessions spaced three months apart – one session recorded fMRI  and the other simultaneously recorded MEG and EEG data. During each session, participants performed the same simple perceptual task, responding to presented photographs of famous, unfamiliar, and scrambled faces by pressing one of two keyboard keys to indicate a subjective yes or no decision as to the relative spatial symmetry of the viewed face. Famous faces were feature-matched to unfamiliar faces; half the faces were female. The two sessions (MEEG, fMRI) had different organizations of event timing and presentation because of technological requirements of the respective imaging modalities. Each individual face was presented twice during the session. For half of the presented faces, the second presentation followed immediately after the first. For the other half, the second presentation was delayed by 5-15 face presentations.
 
-**Preprocessing:**
+## Preprocessing
 The preprocessing, which was performed using the `wh_extracteeg_BIDS.m` located in the code directory, includes the following steps:
 * Ignore MRI data except for sMRI.
 * Extract  EEG channels out of the MEG/EEG fif data
@@ -19,6 +25,6 @@ The preprocessing, which was performed using the `wh_extracteeg_BIDS.m` located 
 * Remove event fields `urevent` and `duration`
 * Save as EEGLAB .set format
 
-**Data curators:**
+## Data curators
 Ramon Martinez, Dung Truong, Scott Makeig, Arnaud Delorme (UCSD, La Jolla, CA, USA), Kay Robbins (UTSA, San Antonio, TX, USA)
 
