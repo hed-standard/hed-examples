@@ -1,4 +1,4 @@
-## Modified Sternberg Working Memory Experiment
+## Modified Sternberg working memory
 
 **Project name:** EEG and working memory
 

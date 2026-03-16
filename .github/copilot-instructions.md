@@ -19,7 +19,7 @@ This repository contains user supporting code and example datasets for the Hiera
 - **Target Audience**: HED users learning to annotate and analyze data
 - **Repository Focus**: Practical examples, tutorial code, and test datasets
 
-## Key Principles
+## Key principles
 
 ### 1. HED annotation standards
 - HED uses hierarchical, orthogonal vocabulary organized in tag trees
@@ -28,7 +28,7 @@ This repository contains user supporting code and example datasets for the Hiera
 - Definitions allow reusable annotation patterns with placeholders
 - Library schemas extend the standard schema with domain-specific vocabulary
 
-### 2. Dataset Standards
+### 2. Dataset standards
 - All example datasets follow BIDS format with HED annotations
 - Datasets use empty raw data files to reduce size while maintaining metadata
 - Dataset names follow convention: `{modality}_ds{accession}{suffix}_{modifier}`
@@ -36,14 +36,14 @@ This repository contains user supporting code and example datasets for the Hiera
 - Event files include HED annotations in JSON sidecars or TSV columns
 - All datasets should be validatable with bids-validator
 
-### 3. Code Standards
+### 3. Code standards
 - Python code should follow PEP 8 style guidelines
 - Jupyter notebooks should include clear markdown explanations
 - Use hedtools package for all HED operations (validation, summarization, remodeling)
 - Use descriptive variable names (e.g., `hed_string`, `schema_version`, `events_path`)
 - Include error handling for file operations and HED validation
 
-### 4. File Organization
+### 4. File organization
 - **datasets/**: BIDS-formatted example datasets with HED annotations
 - **src/jupyter_notebooks/**: Python Jupyter notebooks organized by topic
   - **bids/**: Notebooks for BIDS dataset operations (validation, summarization, etc.)
@@ -83,9 +83,9 @@ This repository contains user supporting code and example datasets for the Hiera
 - Use context managers for file operations
 - Test with both string and file-based inputs
 
-## Important Conventions
+## Important conventions
 
-### HED Syntax in Examples
+### HED syntax in examples
 - Use backticks for inline HED tags: `Sensory-event`
 - Use code blocks for multi-line HED strings:
   ```hed
@@ -93,7 +93,7 @@ This repository contains user supporting code and example datasets for the Hiera
   ```
 - Show both short form (e.g., `Red`) and long form when teaching concepts
 
-### Dataset References
+### Dataset references
 - Link to OpenNeuro for full datasets: `https://openneuro.org/datasets/ds{accession}`
 - Reference BIDS specification: `https://bids.neuroimaging.io/`
 - Include dataset table from `datasets/README.md` when describing multiple datasets
@@ -148,9 +148,9 @@ Two GitHub Actions workflows run on pull requests (defined in `.github/workflows
 - Don't commit large data files (datasets use empty stubs only)
 - Don't mix test/temporary files with example code (use `.status/` directory)
 
-## Related Resources
+## Related resources
 - [HED Resources Documentation](https://www.hedtags.org/hed-resources)
-- [HED Specification](https://hed-specification.readthedocs.io)
+- [HED Specification](https://www.hedtags.org/hed-specification)
 - [HED Schemas Repository](https://github.com/hed-standard/hed-schemas)
 - [HED Python Tools](https://github.com/hed-standard/hed-python)
 - [HED MATLAB Tools](https://github.com/hed-standard/hed-matlab)
