@@ -126,6 +126,3 @@ hed_cache/
 **/remodel/summaries/*
 status/
 .status/
-
-# GitHub Copilot instructions (developer-specific)
-.github/copilot-instructions.md
