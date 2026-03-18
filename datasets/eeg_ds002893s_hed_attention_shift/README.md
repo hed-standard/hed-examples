@@ -69,12 +69,4 @@ Department of Psychiatry laboratory of Jeanne Townsend, University of California
 **Note 1:** ERP measure results for the FA and FV conditions only were presented in Ceponiene, R., Westerfield, M., Torki, M. and Townsend, J., 2008. Modality-specificity of sensory aging in vision and audition: evidence from event-related potentials. Brain research, 1215, pp.53-68. Some unpublished results by Christian Kothe and Scott Makeig on the SH condition may be available from the authors <christiankothe@gmail.com> <smakeig@ucsd.edu>.
 
 **Note 2:** The code subdirectory has several auxiliary files that were produced during
-the curation process. The curation was done using a series of Jupyter notebooks
-that are available as run in the code/curation_notebooks subdirectory.
-
-During the running of these curation notebooks information about the status was logged
-using the HEDLogger. The output of the logging process is in code/curation_logs.
-
-Updated versions of the curation notebooks can be found at:
-https://github.com/hed-standard/hed-examples/tree/main/hedcode/jupyter_notebooks/dataset_specific_processing/attention_shift.
-
+the curation process.
