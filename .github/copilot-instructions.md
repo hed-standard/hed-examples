@@ -1,23 +1,18 @@
 # HED-examples developer instructions
 
-> **Local environment**: If `.status/local-environment.md` exists in this repository, check it first for machine-specific setup (OS, shell, virtual environment activation) before running any commands. That file is gitignored and local-only.
+> **Local environment**: If `.status/local-environment.md` exists in this repository, check it first for machine-specific setup before running any commands. That file is gitignored and local-only.
 
 When you create markdown files, only capitalize the first letter of the first word in headings/titles.
 
 ## Repository overview
-This repository contains user supporting code and example datasets for the Hierarchical Event Descriptor (HED) system, including:
+This repository contains example datasets for the Hierarchical Event Descriptor (HED) system, including:
 - BIDS-formatted example datasets with HED annotations (in `datasets/`)
-- Python Jupyter notebooks demonstrating HedTools usage (in `src/jupyter_notebooks/`)
-- Example data files for tutorials and testing (in `src/data/`)
 - Lightweight test datasets with empty raw data files but intact metadata
 
 ## Project context
-- **Primary Language**: Python (Jupyter notebooks and scripts)
-- **Python Version**: 3.10 or greater required
-- **Key Dependency**: hedtools Python package
 - **Dataset Format**: BIDS-compatible with HED annotations
 - **Target Audience**: HED users learning to annotate and analyze data
-- **Repository Focus**: Practical examples, tutorial code, and test datasets
+- **Repository Focus**: Example and test datasets
 
 ## Key principles
 
@@ -36,19 +31,8 @@ This repository contains user supporting code and example datasets for the Hiera
 - Event files include HED annotations in JSON sidecars or TSV columns
 - All datasets should be validatable with bids-validator
 
-### 3. Code standards
-- Python code should follow PEP 8 style guidelines
-- Jupyter notebooks should include clear markdown explanations
-- Use hedtools package for all HED operations (validation, summarization, remodeling)
-- Use descriptive variable names (e.g., `hed_string`, `schema_version`, `events_path`)
-- Include error handling for file operations and HED validation
-
-### 4. File organization
+### 3. File organization
 - **datasets/**: BIDS-formatted example datasets with HED annotations
-- **src/jupyter_notebooks/**: Python Jupyter notebooks organized by topic
-  - **bids/**: Notebooks for BIDS dataset operations (validation, summarization, etc.)
-  - **remodeling/**: Notebooks demonstrating HED remodeling operations
-- **src/data/**: Example data files for tutorials and testing
 - **`.status/`**: Temporary analysis and tracking files (gitignored — local only)
 - **docs/source/**: Documentation source files (currently empty)
 
@@ -61,27 +45,12 @@ This repository contains user supporting code and example datasets for the Hiera
 - Ensure dataset_description.json includes HED version information
 - Test with hedtools validation before committing changes
 
-### When creating or modifying Jupyter notebooks
-- Start with imports: `from hed import HedValidator, TabularInput, load_schema_version`, etc.
-- Include cell with dataset/file path setup
-- Add markdown cells explaining each step
-- Show both successful operations and error handling
-- Save notebooks with output cleared for version control
-- Test notebooks in clean environment before committing
-
 ### When working with HED schemas
 - HED schema files are XML with `.xml` extension
 - Schema version format: `HED{major}.{minor}.{patch}.xml`
 - Use `load_schema_version()` to load specific versions
 - Latest stable schema: loaded with `load_schema_version(None)` or `load_schema_version('8.3.0')`
 - Library schemas: loaded with `load_schema_version('score_1.1.0')` format
-
-### When writing Python scripts
-- Use type hints for function parameters and return values
-- Handle file paths using `pathlib.Path` for cross-platform compatibility
-- Include docstrings for functions and classes
-- Use context managers for file operations
-- Test with both string and file-based inputs
 
 ## Important conventions
 
@@ -98,25 +67,11 @@ This repository contains user supporting code and example datasets for the Hiera
 - Reference BIDS specification: `https://bids.neuroimaging.io/`
 - Include dataset table from `datasets/README.md` when describing multiple datasets
 
-### Jupyter Notebook Patterns
-- Import cell at top with all required packages
-- Path setup cell with configurable paths
-- Processing cells with clear operations
-- Result display/validation cells
-- Error handling demonstrations where applicable
-
 ## Setup and installation
 
 ### Initial setup
-1. Create and activate a Python virtual environment (`.venv/` at repo root) — see `.status/local-environment.md` for OS-specific activation command
-2. Install hedtools: `pip install hedtools` or `pip install git+https://github.com/hed-standard/hed-python/@main`
-3. Verify installation: `python -c "import hed; print(hed.__version__)"`
-
-### Running Jupyter notebooks
-1. Activate virtual environment
-2. Start Jupyter: `jupyter notebook` or `jupyter lab`
-3. Navigate to `src/jupyter_notebooks/{topic}/`
-4. Open and run desired notebook
+1. Install hedtools: `pip install hedtools` or `pip install git+https://github.com/hed-standard/hed-python/@main`
+2. Verify installation: `python -c "import hed; print(hed.__version__)"`
 
 ### Validating datasets locally
 - Install hedtools (`pip install hedtools`) to get the `validate_bids` CLI tool
@@ -141,10 +96,7 @@ Two GitHub Actions workflows run on pull requests (defined in `.github/workflows
 - **Must pass** for every PR — fix spelling errors before committing, or add legitimate terms to `.typos.toml` `[default.extend-words]`
 
 ## Avoid
-- Don't commit Jupyter notebooks with cell outputs (clear before committing)
 - Don't modify dataset files without understanding BIDS structure
-- Don't use absolute paths in notebooks (use relative paths from notebook location)
-- Don't install packages directly in notebooks (use requirements or environment setup)
 - Don't commit large data files (datasets use empty stubs only)
 - Don't mix test/temporary files with example code (use `.status/` directory)
 
