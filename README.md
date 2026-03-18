@@ -1,5 +1,5 @@
 # HED-examples
-This repository contains user supporting code and documentation
+This repository contains example datasets and documentation
 for using the Hierarchical Event Descriptor (HED) system for
 annotating, summarizing, and analyzing data.
 
@@ -63,11 +63,6 @@ bids-validator fmri_soccer21s_hed --config.ignore=99 --ignoreNiftiHeaders
 
 For additional information on BIDS validation,
 see the [bids-examples](https://github.com/bids-standard/bids-examples#readme).
-
-The [**src**](https://github.com/hed-standard/hed-examples/tree/main/src)
-subdirectory contains Python Jupyter notebooks demonstrating calls to HedTools.
-For MATLAB support for HED see the [**hed-matlab**](https://github.com/hed-standard/hed-matlab)
-GitHub repository.
 
 HED documentation and tutorials are available at [**hed-resources**](https://www.hedtags.org/hed-resources).
 The [**HED GitHub organization**](https://github.com/hed-standard/)
