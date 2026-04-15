@@ -105,6 +105,9 @@ docs/_build/
 
 # Pycharm
 .idea/
+
+# VS Code
+.vscode/
 /venv/
 config.py
 .venv/
