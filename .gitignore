@@ -106,8 +106,9 @@ docs/_build/
 # Pycharm
 .idea/
 
-# VS Code
-.vscode/
+# VS Code (settings.json is committed; everything else is personal)
+.vscode/*
+!.vscode/settings.json
 /venv/
 config.py
 .venv/
@@ -127,5 +128,16 @@ Desktop.ini
 schema_cache_test/
 hed_cache/
 **/remodel/summaries/*
-status/
+
+# Personal per-repo Claude Code notes (imports .status/local-environment.md)
+CLAUDE.local.md
+
+# Personal per-repo settings (absolute paths, claudeMdExcludes)
+.claude/settings.local.json
+
+# Real tokens and machine values
+.env
+
+# Working notes, plans, prompts, and decision records. Deliberately NOT
+# committed: this repo is public and .status/ holds half-formed thinking.
 .status/
