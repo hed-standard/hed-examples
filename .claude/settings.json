@@ -35,6 +35,10 @@
     "deny": [
       "Read(.env)",
       "Read(.envrc)",
+      "Bash(cat .env*)",
+      "Bash(head .env*)",
+      "Bash(tail .env*)",
+      "Bash(grep * .env*)",
       "Read(.status/archive/**)",
       "Bash(rm -rf *)",
       "Bash(rm -r *)",

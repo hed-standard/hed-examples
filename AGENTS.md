@@ -9,7 +9,8 @@ repositories (see below). There is no application code here.
 ## Commands
 
 Test framework: none - this is a dataset-only repo with no Python suite.
-Validation stands in for tests and CI runs it on every PR.
+Validation stands in for tests; CI runs it on every PR that changes
+`datasets/**` (spelling runs on every PR regardless).
 
 - Validate one dataset: `uvx --from hedtools validate_bids datasets/<name> -s "*"`
   (add `--verbose` for detail; CI installs hedtools with `uv tool install hedtools`
@@ -44,7 +45,7 @@ Validation stands in for tests and CI runs it on every PR.
 
 - HED tags are hierarchical with `/` separators, e.g.
   `Sensory-event/Visual-presentation`; however, preferred usage is the leaf tag.
-  groups use parentheses. Use backticks for inline HED tags in markdown.
+  Groups use parentheses. Use backticks for inline HED tags in markdown.
 - HED annotations live in JSON sidecars (`*_events.json`) or in a HED
   column of the events TSV - a dataset's choice between them is intentional;
   do not move annotations between the two.
