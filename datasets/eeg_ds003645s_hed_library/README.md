@@ -1,7 +1,8 @@
 # Face processing dataset
 
 This dataset is a modified version of ds003645s which is designed to illustrate the
-use of multiple HED library schema requiring prefixes in the same dataset.
+use of multiple HED library schemas (score and lang) that are partnered with
+the same standard schema, so their tags are used together without prefixes.
 
 The original ds003645 dataset consists of the MEEG (sMRI+MEG+EEG) portion of the multi-subject, multi-modal face processing dataset (ds000117). This dataset was originally acquired and shared by Daniel Wakeman and Richard Henson (https://pubmed.ncbi.nlm.nih.gov/25977808/). The data has been repackaged in EEGLAB format and has undergone minimal preprocessing as well as reorganization and annotation of the dataset events.
 
