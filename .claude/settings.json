@@ -1,29 +1,26 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-
   "permissions": {
     "allow": [
       "Bash(validate_bids *)",
+      "Bash(uvx --from hedtools validate_bids *)",
+      "Bash(uvx --native-tls --from hedtools validate_bids *)",
+      "Bash(bids-validator *)",
+      "Bash(typos *)",
+      "Bash(uvx typos *)",
+      "Bash(uvx --native-tls typos *)",
       "Bash(python -c *)",
       "Bash(python --version)",
-      "Bash(git status)",
       "Bash(git status *)",
-      "Bash(git log)",
       "Bash(git log *)",
-      "Bash(git diff)",
       "Bash(git diff *)",
-      "Bash(git show *)",
       "Bash(git branch)",
-      "Bash(git ls-files *)",
-      "Bash(grep *)",
-      "Bash(ls)",
-      "Bash(ls *)",
-      "Bash(head *)",
-      "Bash(tail *)",
-      "Bash(cat *)",
-      "Bash(wc *)"
+      "Bash(git branch --show-current)",
+      "Bash(git branch -a)",
+      "Bash(git branch -r)",
+      "Bash(git branch -vv)",
+      "Bash(git ls-files *)"
     ],
-
     "ask": [
       "Bash(git add *)",
       "Bash(git commit *)",
@@ -31,7 +28,6 @@
       "Bash(git restore *)",
       "Bash(git stash *)"
     ],
-
     "deny": [
       "Read(.env)",
       "Read(.envrc)",
@@ -39,7 +35,6 @@
       "Bash(head .env*)",
       "Bash(tail .env*)",
       "Bash(grep * .env*)",
-      "Read(.status/archive/**)",
       "Bash(rm -rf *)",
       "Bash(rm -r *)",
       "Bash(git push)",

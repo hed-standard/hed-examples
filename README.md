@@ -28,7 +28,6 @@ The suffix modifier indicates what this dataset is designed to test.
 | eeg_ds003645s_hed_column          | Face Perception data to test annotations in HED column.                                                       |
 | eeg_ds003645s_hed_demo            | Face Perception data demonstrating full usage of HED in tsv.                                                  |
 | eeg_ds003645s_hed_library         | Face Perception data using HED libraries.                                                                     |
-| eeg_ds003645s_hed_partnered       | Face Perception data using HED partnered libraries.                                                           |
 | eeg_ds003645s_hed_remodel         | Face Perception data in remodeling.                                                                           |
 | eeg_ds004105s_hed                 | BCIT Driving with auditory cueing data.<br>Part of a test data corpus for BIDS-MEGA testing.                  |
 | eeg_ds004106s_hed                 | BCIT Advanced guard duty data.<br>Part of a test data corpus for BIDS-MEGA testing.                           |
